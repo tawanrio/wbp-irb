@@ -30,7 +30,7 @@ export const header = {
         ]
     },
     logo : {
-      url: '/images/header/logo.svg',
+      url: '/images/header/logo.webp',
       alt: 'IRB automotive',
       route: '/'
     }
