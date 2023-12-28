@@ -15,7 +15,7 @@ export default function Products({products , baseUrl}) {
             my-10
             ">
 
-           <ProductsCard cards={products.collection} baseUrl={baseUrl} textSize={'md:text-[1.7rem]'}/>
+           <ProductsCard cards={products.collection} baseUrl={baseUrl} textSize={'md:text-2xl'}/>
             </div>
             </div>
         </section>
