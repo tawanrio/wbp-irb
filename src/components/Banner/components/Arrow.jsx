@@ -7,7 +7,7 @@ export default function Arrow({controllerBanner}) {
       absolute 
       w-full 
       md:max-w-[85rem]
-      
+      select-none
       
       ${!(banners.carousel.length  > 1)&& 'hidden'}
       `}>

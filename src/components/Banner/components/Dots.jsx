@@ -15,6 +15,7 @@ export default function Dots({controllerBanner}) {
         mx-[3px]
         opacity-30
         cursor-pointer
+        select-none
         box-content
         ${index === activeBanner ? '!opacity-100' : ''}
         `}
