@@ -65,14 +65,15 @@ export default function products({ product }) {
 export async function getServerSideProps (context){
 
   
-
-  const res = await fetch('http://localhost:3000/api/products',{
+  const url = (context.req.url);
+console.log(context.req);
+  
+  const res = await fetch('http://irb.webfoco.com/api/products',{
     method: 'get'
   });
-    
+  
   const data = await res.json()
 
-  const url = (context.req.url);
   const product = getProductFromUrl(data.products, url)
 
   function getProductFromUrl(products, pageUrl){
