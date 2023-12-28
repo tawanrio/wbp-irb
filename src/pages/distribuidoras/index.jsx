@@ -15,10 +15,10 @@ import ContentImgDescription from '@/components/ContentImgDescription';
 import ProductFaq from '@/components/ProductFaq';
 
 // Context Api
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { PageData } from '@/context/pageData';
 
-export default function distribuidoras() {
+export default function Distribuidoras() {
   const { distributors, products } = useContext(PageData);
 
   const banners = distributors.banners

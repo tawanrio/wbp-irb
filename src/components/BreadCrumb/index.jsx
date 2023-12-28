@@ -59,6 +59,7 @@ export default function BreadCrumb() {
                                 </Link>
                                 {pathname.length - 1 !== index && (
                                     <Image
+                                        alt="icon separate link"
                                         src={icons.arrow}
                                         width={18}
                                         height={18}

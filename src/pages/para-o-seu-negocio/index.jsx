@@ -17,7 +17,7 @@ import ContentImgDescription from '@/components/ContentImgDescription';
 import { useContext } from 'react';
 import { PageData } from '@/context/pageData';
 
-export default function paraseunegocio() {
+export default function Paraseunegocio() {
   const { paraOSeuNegocio } = useContext(PageData);
 
   const banners = paraOSeuNegocio.banners

@@ -17,7 +17,7 @@ import { useContext } from 'react';
 import { PageData } from '@/context/pageData';
 
 
-export default function quemSomos() {
+export default function QuemSomos() {
     const { about, partners, products, contact, distributors } = useContext(PageData);
 
    

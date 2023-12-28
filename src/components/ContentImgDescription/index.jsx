@@ -56,6 +56,7 @@ export default function ContentImgDescription({content}) {
                         </div>
                         {content.imageSobre && (
                             <Image
+                            alt="imagem description"
                             src={content.imageSobre}
                             width={500}
                             height={1500}

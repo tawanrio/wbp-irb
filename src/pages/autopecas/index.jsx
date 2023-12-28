@@ -18,7 +18,7 @@ import ProductFaq from '@/components/ProductFaq';
 import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
 
-export default function autoparts() {
+export default function Autoparts() {
   const { autoparts, products } = useContext(PageData);
 
 

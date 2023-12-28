@@ -19,7 +19,7 @@ import Faq from '@/components/Faq';
 import { useContext } from 'react';
 import { PageData } from '@/context/pageData';
 
-export default function fabrica() {
+export default function Fabrica() {
   const { factory, products } = useContext(PageData);
 
   const banners = factory.banners
