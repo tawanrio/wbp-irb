@@ -1,3 +1,3 @@
 export const icons = {
-    arrow : '/images/arrow.svg'
+    arrow : '/images/arrow.webp'
 }

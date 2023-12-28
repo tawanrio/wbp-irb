@@ -7,8 +7,8 @@ export const autoparts = {
     imgDescription :{
         borderRadius: '40% 20px 40% 20px',
         title: 'Lorem Ipsum is simply dummy',
-        image : '/images/pages/paraoseunegocio/imgdescription.svg',
-        secondImage: '/images/carousel/banner2.svg',
+        image : '/images/pages/paraoseunegocio/imgdescription.webp',
+        secondImage: '/images/carousel/banner2.webp',
         imageSobre: null,
         description: [
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
@@ -28,28 +28,28 @@ export const autoparts = {
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner2.svg',
+           url: '/images/carousel/banner2.webp',
            alt: 'banner dois',
            position: 'center'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner1.svg',
+           url: '/images/carousel/banner1.webp',
            alt: 'banner dois',
            position: 'start'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner3.svg',
+           url: '/images/carousel/banner3.webp',
            alt: 'banner dois',
            position: 'center'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner4.svg',
+           url: '/images/carousel/banner4.webp',
            alt: 'banner dois',
            position: 'start'
          }
@@ -64,7 +64,7 @@ export const autoparts = {
         },
         title : 'missão',
         description : 'Gerar valor e entusiasmo ao nosso cliente fornecendo peças automotivas, com qualidade e alta performance, à toda frota brasileira de veículos.',
-        image: '/images/components/companyValues/mission.svg' 
+        image: '/images/components/companyValues/mission.webp' 
       },
       {
         colors : {
@@ -74,7 +74,7 @@ export const autoparts = {
         },
         title : 'visão',
         description : 'Ser referência global em peças automotivas.',
-        image: '/images/components/companyValues/vision.svg' 
+        image: '/images/components/companyValues/vision.webp' 
       },
       {
         colors : {
@@ -84,7 +84,7 @@ export const autoparts = {
         },
         title : 'valores',
         description : 'Ética, respeito, inovação, entusiasmo, simplicidade, profissionalismo e segurança automotiva',
-        image: '/images/components/companyValues/values.svg' 
+        image: '/images/components/companyValues/values.webp' 
       },
     ],
     contentDescription : [
@@ -102,38 +102,38 @@ export const autoparts = {
       {
         asking: 'Lorem Ipsum is simply dummy text ',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text o',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the  Lorem Ipsum is simply dummy text o printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
     ]
   }

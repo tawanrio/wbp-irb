@@ -13,28 +13,28 @@ export const about = {
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner2.svg',
+           url: '/images/carousel/banner2.webp',
            alt: 'banner dois',
            position: 'center'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner1.svg',
+           url: '/images/carousel/banner1.webp',
            alt: 'banner dois',
            position: 'start'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner3.svg',
+           url: '/images/carousel/banner3.webp',
            alt: 'banner dois',
            position: 'center'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner4.svg',
+           url: '/images/carousel/banner4.webp',
            alt: 'banner dois',
            position: 'start'
          }
@@ -49,7 +49,7 @@ export const about = {
         },
         title : 'missão',
         description : 'Gerar valor e entusiasmo ao nosso cliente fornecendo peças automotivas, com qualidade e alta performance, à toda frota brasileira de veículos.',
-        image: '/images/components/companyValues/mission.svg' 
+        image: '/images/components/companyValues/mission.webp' 
       },
       {
         colors : {
@@ -59,7 +59,7 @@ export const about = {
         },
         title : 'visão',
         description : 'Ser referência global em peças automotivas.',
-        image: '/images/components/companyValues/vision.svg' 
+        image: '/images/components/companyValues/vision.webp' 
       },
       {
         colors : {
@@ -69,7 +69,7 @@ export const about = {
         },
         title : 'valores',
         description : 'Ética, respeito, inovação, entusiasmo, simplicidade, profissionalismo e segurança automotiva',
-        image: '/images/components/companyValues/values.svg' 
+        image: '/images/components/companyValues/values.webp' 
       },
     ],
     contentDescription : [
@@ -80,38 +80,38 @@ export const about = {
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
       {
         asking: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         answer: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ',
-        iconOpen: '/images/arrow.svg',
-        iconClosed: '/images/arrow.svg'
+        iconOpen: '/images/arrow.webp',
+        iconClosed: '/images/arrow.webp'
       },
     ]
     }

@@ -11,28 +11,28 @@ export const banners = {
                       {
          title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
          description: '',
-         url: '/images/carousel/banner2.svg',
+         url: '/images/carousel/banner2.webp',
          alt: 'banner dois',
          position: 'center'
        },
                       {
          title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
          description: '',
-         url: '/images/carousel/banner1.svg',
+         url: '/images/carousel/banner1.webp',
          alt: 'banner dois',
          position: 'start'
        },
                       {
          title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
          description: '',
-         url: '/images/carousel/banner3.svg',
+         url: '/images/carousel/banner3.webp',
          alt: 'banner dois',
          position: 'center'
        },
                       {
          title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
          description: '',
-         url: '/images/carousel/banner4.svg',
+         url: '/images/carousel/banner4.webp',
          alt: 'banner dois',
          position: 'start'
        }
