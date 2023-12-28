@@ -66,7 +66,6 @@ export async function getServerSideProps (context){
 
   
   const url = (context.req.url);
-console.log(context.req);
   
   const res = await fetch('http://irb.webfoco.com/api/products',{
     method: 'get'
