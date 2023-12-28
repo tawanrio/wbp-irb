@@ -79,15 +79,8 @@ export default function Products({ products }) {
   )
 }
 
-export const getStaticPaths = async () => {
-  
-  return {
-    paths: [],
-    fallback: true,
-  };
-};
 
-export const getStaticProps = async ({ url }) => {
+export const getServerSideProps = async ({ url }) => {
   const res = await fetch('http://irb.webfoco.com/api/products',{
     method: 'get'
   });
