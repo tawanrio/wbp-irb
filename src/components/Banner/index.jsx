@@ -9,7 +9,7 @@ export default function Banner({banners}) {
 
 
   function nextBanner(){
-    const qntBanner = banners.carousel.length-1
+    const qntBanner = banners?.carousel.length-1
     if(activeBanner === qntBanner){
       setActiveBanner(0)
     }else{
@@ -17,14 +17,14 @@ export default function Banner({banners}) {
     }
   }
   function prevBanner(){
-    const qntBanner = banners.carousel.length-1
+    const qntBanner = banners?.carousel.length-1
     if(activeBanner === 0){
       setActiveBanner(qntBanner)
     }else{
       setActiveBanner(activeBanner-1)
     }
   }
-  if(banners.carousel.length > 1){
+  if(banners?.carousel.length > 1){
     // useEffect(()=>{
     //   const interval = setInterval(nextBanner, 3000)
       

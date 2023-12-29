@@ -17,15 +17,16 @@ import { useContext, useState} from 'react';
 import { PageData } from '@/context/pageData';
 
 
-export default function QuemSomos() {
-    const { _about, partners, products, contact } = useContext(PageData);
+export default function QuemSomos({products}) {
+    const { _about, partners, contact } = useContext(PageData);
 
-    const [metaTitle] = useState(_about.metaTitle)
-    const [metaDescription] = useState(_about.metaDescription)
-    const [banners] = useState(_about.banners)
-    const [title] = useState(_about.title)
-    const [cardsValues] = useState(_about.companyValues)
-    const [description] = useState(_about.contentDescription)
+    const [metaTitle] = useState(_about?.metaTitle)
+    const [metaDescription] = useState(_about?.metaDescription)
+    const [banners] = useState(_about?.banners)
+    const [title] = useState(_about?.title)
+    const [cardsValues] = useState(_about?.companyValues)
+    const [description] = useState(_about?.contentDescription)
+
 
   return (
     <>
@@ -50,4 +51,19 @@ export default function QuemSomos() {
     <Copyright/>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  // const res = await fetch('http://irb.webfoco.com/api/products',{
+  const res = await fetch('http://localhost:3000/api/products',{
+    method: 'GET'
+  });
+  const data = await res.json()
+  
+  const products = data.products
+
+  return {props :{
+    products
+  }
+}
 }

@@ -4,7 +4,7 @@ export default function Images({controllerBanner}) {
     const {activeBanner, setActiveBanner, banners} = controllerBanner
   return (
     <div className="w-full md:h-banner-home-h" id='imagesBanners'>
-    {banners.carousel.map((banner, index)=> (
+    {banners?.carousel.map((banner, index)=> (
       <div key={index}
        className={`
       opacity-0
@@ -18,9 +18,9 @@ export default function Images({controllerBanner}) {
               src={banner.url}
               alt={banner.name}
               width={500}
-              height={banners.size.height}
+              height={banners?.size.height}
             />
-            <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners.colors.text }}
+            <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners?.colors.text }}
              className="
               md:h-banner-home-h
               md:px-28

@@ -17,57 +17,47 @@ import Error from '@/components/Error';
 
 
 // Context Api
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { PageData } from '@/context/pageData';
 
 // Others
 import { useRouter } from 'next/router';
 
-export default function Products({ products }) {
+export default function Products({ products, produto }) {
 
   const route = useRouter()
   const pageUrl = route.asPath.replace('/','')
 
 
-  const [product] = useState(getProductFromUrl(products, pageUrl))
-  
+  const [product, setProduct] = useState(produto)
 
-  const [banners] = useState(product?.banners)
-  const [title] = useState(product?.title)
-  const [description] = useState(product?.contentDescription)
-  const [metaTitle] = useState(product?.metaTitle)
-  const [metaDescription] = useState(product?.metaDescription)
-  const [models] = useState(product?.models)
-  const [faq] = useState(product?.faq)
+  useEffect(()=>{
+    setProduct(getProductFromUrl(products, pageUrl))
 
+  },[pageUrl,products, product])
 
-  //  FUNÇÃO UTIL
-  function getProductFromUrl(products, pageUrl){
-    const product = products?.filter((item) => formatString(item.title) === formatString(pageUrl) )
-    return product[0]
-  }
-  
-  function formatString(string){
-  let formatedString = string && string.toLowerCase().trim().replace('/', '').replaceAll(' ','-')
-  return formatedString
-  }
-  // fim FUNÇÃO UTIL
 
   return (
   <>
     <Head>
-       <title>{metaTitle || title}</title>
-       <meta name="description" content={metaDescription || description} />
+       <title>{product?.metaTitle || product?.title}</title>
+       <meta name="description" content={product?.metaDescription || product?.ContentDescription} />
      </Head>
+     <Header/>
    <main>
-    {(product) && (
+    
+    { (product) ? (
       <>
-    <Banner banners={banners}/>
+    <Banner banners={product?.banners}/>
     <BreadCrumb/>
-    <Title title={title}/>
-    <ContentDescription content={description}/>
-    <ProductModels products={models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/>
-    <Faq faq={faq}/>
+    <Title title={product?.title}/>
+    <ContentDescription content={product?.ContentDescription}/>
+    <ProductModels products={products} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/>
+    <Faq faq={product?.faq}/>
+      </>
+    ): (
+      <>
+      <ContentDescription content={['Ops!','Página não encontrada']}/>
       </>
     )
     }
@@ -80,19 +70,39 @@ export default function Products({ products }) {
 }
 
 
-export const getServerSideProps = async ({ url }) => {
-  const res = await fetch('http://irb.webfoco.com/api/products',{
-  // const res = await fetch('http://localhost:3000/api/products',{
+export const getServerSideProps = async (context) => {
+  // const res = await fetch('http://irb.webfoco.com/api/products',{
+  const res = await fetch('http://localhost:3000/api/products',{
     method: 'GET'
   });
   const data = await res.json()
   
-  const products = data.products.collection
-  
+  const products = data.products
+
+  const url = context.resolvedUrl
+
+  const produto = getProductFromUrl(products, url) || null
 
 
   return {props :{
-    products
+    products,
+    produto
   }
 }
 }
+
+ //  FUNÇÃO UTIL
+ function getProductFromUrl(products, pageUrl) {
+  const product = products?.collection.filter((item) => {
+    let produto = formatString(item.title) === formatString(pageUrl)
+    return produto
+  } )
+  return product[0]
+}
+
+const formatString = (string) =>{
+  let formatedString = string && string.toLowerCase().trim().replace('/', '').replaceAll(' ','-')
+  console.log();
+return formatedString
+}
+// fim FUNÇÃO UTIL

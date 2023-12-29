@@ -18,7 +18,7 @@ export default function Parceiros({title, partners, colors}) {
             my-10
             ">
 
-            {partners.map((partner, pId)=>(
+            {partners?.map((partner, pId)=>(
                 <Link key={pId} 
                 href={'/'+partner.category}
                 className="

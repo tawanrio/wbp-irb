@@ -18,8 +18,8 @@ import ProductFaq from '@/components/ProductFaq';
 import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
 
-export default function Autoparts() {
-  const { _autoparts, products } = useContext(PageData);
+export default function Autoparts({products}) {
+  const { _autoparts } = useContext(PageData);
 
 
   const [banners] = useState(_autoparts.banners)
@@ -51,4 +51,19 @@ export default function Autoparts() {
    <Copyright/>
    </>
   )
+}
+
+export const getServerSideProps = async () => {
+  // const res = await fetch('http://irb.webfoco.com/api/products',{
+  const res = await fetch('http://localhost:3000/api/products',{
+    method: 'GET'
+  });
+  const data = await res.json()
+  
+  const products = data.products
+
+  return {props :{
+    products
+  }
+}
 }

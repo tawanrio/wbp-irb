@@ -1,7 +1,7 @@
 import SectionTitle from "@/components/SectionTitle"
 import ProductsCard from "../components/ProductsCard"
 
-export default function ModelsProduct({products , baseUrl, title}) {
+export default function ModelsProduct({products, cards , baseUrl, title}) {
    if(!products) return
     return (
 
@@ -17,7 +17,7 @@ export default function ModelsProduct({products , baseUrl, title}) {
            my-10
             ">
 
-           <ProductsCard cards={products} baseUrl={baseUrl} textSize={'md:text-[1.7rem]'}/>
+           <ProductsCard products={products} cards={cards} baseUrl={baseUrl} textSize={'md:text-[1.7rem]'}/>
             </div>
             </div>
         </section>

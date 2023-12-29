@@ -22,7 +22,7 @@ export default function ProductFaq({products, faq}) {
                     ">
                          <SectionTitle title={'Produtos'} className="md:mb-5"/>
                          <div className=" my-8 ">
-                            <ProductsCard cards={products.collection} textSize={'md:text-[1.2rem'} />
+                            <ProductsCard products={products} cards={products.collection} textSize={'md:text-[1.2rem'} />
                          </div>
                     </div>
                     <div className="

@@ -19,8 +19,8 @@ import Faq from '@/components/Faq';
 import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
 
-export default function Fabrica() {
-  const { _factory, products } = useContext(PageData);
+export default function Fabrica({products}) {
+  const { _factory } = useContext(PageData);
 
   const [banners] = useState(_factory.banners)
   const [title] = useState(_factory.title)
@@ -51,4 +51,19 @@ export default function Fabrica() {
    <Copyright/>
    </>
   )
+}
+
+export const getServerSideProps = async () => {
+  // const res = await fetch('http://irb.webfoco.com/api/products',{
+  const res = await fetch('http://localhost:3000/api/products',{
+    method: 'GET'
+  });
+  const data = await res.json()
+  
+  const products = data.products
+
+  return {props :{
+    products
+  }
+}
 }

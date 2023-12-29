@@ -21,7 +21,7 @@ export default function CompanyValues({cards}) {
             ">
 
           
-        {cards.map((card, cId) => {
+        {cards?.map((card, cId) => {
             return (
                 <div key={cId} style={{background:card.colors.bg, color:card.colors.text, scrollSnapAlign: 'start'}} 
                 className={`

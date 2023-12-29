@@ -1,10 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-import { useContext,  } from 'react';
-import { PageData } from '@/context/pageData';
 
-export default function ProductsCard({cards, textSize, baseUrl}) {
-  const { products } = useContext(PageData);
+export default function ProductsCard({products, cards, textSize, baseUrl}) {
 
   function generateProductUrl(baseUrl, product){
     let productName = product.toLowerCase().trim().replaceAll(' ','-');
@@ -22,7 +19,7 @@ export default function ProductsCard({cards, textSize, baseUrl}) {
             justify-between
             ">
 
-            {cards.map((product, pId)=>(
+            {cards?.map((product, pId)=>(
                 <Link key={pId} 
                 href={generateProductUrl(baseUrl,product.title)}
                 className="
@@ -62,7 +59,7 @@ export default function ProductsCard({cards, textSize, baseUrl}) {
                     "
                     />
                     <div
-                    style={{ color: products.colors.text || '#fff', textShadow: products.colors.border || '2px 2px 1px #000'}}
+                    style={{ color: products?.colors.text || '#fff', textShadow: products?.colors.border || '2px 2px 1px #000'}}
                     className={`
                     absolute
                     ${textSize}

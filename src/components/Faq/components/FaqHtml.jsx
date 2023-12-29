@@ -13,13 +13,13 @@ export default function FaqHtml({faq}) {
                 md:flex-row
                 ">
                     <div className="flex w-full flex-col gap-5 text-justify ">
-                        {faq.items.map((item, fId) => !!(fId % 2 === 0) && (
+                        {faq?.items.map((item, fId) => !!(fId % 2 === 0) && (
                             <FaqItem key={fId} fId={fId} item={item} colors={faq.colors} />
                         )
                         )}
                     </div>
                     <div className="flex w-full flex-col gap-5 text-justify">
-                        {faq.items.map((item, fId) => !!(fId % 2 !== 0) && (
+                        {faq?.items.map((item, fId) => !!(fId % 2 !== 0) && (
                             <FaqItem key={fId} fId={fId} item={item} colors={faq.colors} />
                         )
                         )}
