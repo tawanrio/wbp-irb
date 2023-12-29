@@ -30,7 +30,9 @@ export default function BreadCrumb() {
                 uppercase
                 flex
                 gap-2
+                animate-fadeOut
                 md:gap-4
+                
                 ">
                     {pathname.map((page, index) => {
                         let currentPage = '';
@@ -48,12 +50,12 @@ export default function BreadCrumb() {
                                 <Link
                                     href={dynamicUrl}
                                     style={{ ...pathname.length - 1 === index && { fontWeight: '600' } }}
-                                    className="
+                                    className={`
+                                    ${pathname.length - 1 === index && 'animate-bounce'}
                                     hover:underline
                                     hover:text-blue-800
                                     duration-500
-                                    "
-                                >
+                                    `}>
                                     {index === 0 ? (`home${page}`.replaceAll('-', ' ')) : (`${page.replaceAll('-', ' ')}`)}
 
                                 </Link>
@@ -67,6 +69,7 @@ export default function BreadCrumb() {
                                         w-[10px]
                                         md:w-[18px]
                                 rotate-[-90deg]
+                                
                                 "
                                     />
                                 )}

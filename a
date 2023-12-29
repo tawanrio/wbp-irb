@@ -1,0 +1,172 @@
+[33mcommit 9fef23a64dbf9e7fa8688a8d3a6f7fc62e92ca24[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: tawanrio <stawanrio@gmail.com>
+Date:   Thu Dec 28 18:57:37 2023 -0300
+
+    select none
+
+ src/components/Banner/components/Arrow.jsx | 7 [32m++++[m[31m---[m
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+[33mcommit 01dfbf8ddd27723f000fcf98eb10403af5396663[m
+Author: tawanrio <stawanrio@gmail.com>
+Date:   Thu Dec 28 18:56:16 2023 -0300
+
+    select none
+
+ src/components/Banner/components/Arrow.jsx | 2 [32m+[m[31m-[m
+ src/components/Banner/components/Dots.jsx  | 1 [32m+[m
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+[33mcommit 3fe4ff2245705fce5ed30d2d473eba1f49ab1d3b[m
+Author: tawanrio <stawanrio@gmail.com>
+Date:   Thu Dec 28 18:53:54 2023 -0300
+
+    svg from webp
+
+ src/controller/components/icons.js | 2 [32m+[m[31m-[m
+ src/controller/layouts/header.js   | 2 [32m+[m[31m-[m
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+[33mcommit 2d04754d4496b470aa4f69d3065ee7e43ddd66ef[m
+Author: tawanrio <stawanrio@gmail.com>
+Date:   Thu Dec 28 18:46:55 2023 -0300
+
+    svg from webp
+
+ public/images/banner/a-empresa.svg                 |  17 [31m-[m
+ public/images/banner/home.svg                      |  14 [31m-[m
+ public/images/carousel/banner1.svg                 |   9 [31m-[m
+ public/images/carousel/banner1.webp                | Bin [31m0[m -> [32m34778[m bytes
+ public/images/carousel/banner2.svg                 |   9 [31m-[m
+ public/images/carousel/banner2.webp                | Bin [31m0[m -> [32m28090[m bytes
+ public/images/carousel/banner3.svg                 |   9 [31m-[m
+ public/images/carousel/banner3.webp                | Bin [31m0[m -> [32m22630[m bytes
+ public/images/carousel/banner4.svg                 |   9 [31m-[m
+ public/images/carousel/banner4.webp                | Bin [31m0[m -> [32m19622[m bytes
+ public/images/components/companyValues/mission.svg |   9 [31m-[m
+ .../images/components/companyValues/mission.webp   | Bin [31m0[m -> [32m678[m bytes
+ public/images/components/companyValues/values.svg  |   9 [31m-[m
+ public/images/components/companyValues/values.webp | Bin [31m0[m -> [32m964[m bytes
+ public/images/components/companyValues/vision.svg  |   9 [31m-[m
+ public/images/components/companyValues/vision.webp | Bin [31m0[m -> [32m884[m bytes
+ public/images/components/partners/bg1.svg          |  12 [31m-[m
+ public/images/components/partners/bg2.svg          |  11 [31m-[m
+ public/images/components/partners/bg3.svg          |  29 [31m--[m
+ public/images/components/partners/bg4.svg          |   9 [31m-[m
+ public/images/footer/flags/american.svg            |   9 [31m-[m
+ public/images/footer/flags/diners.svg              |   9 [31m-[m
+ public/images/footer/flags/elo.svg                 |   9 [31m-[m
+ public/images/footer/flags/master.svg              |   9 [31m-[m
+ public/images/footer/flags/visa.svg                |   9 [31m-[m
+ public/images/footer/google-play.svg               |   9 [31m-[m
+ public/images/footer/play-store.svg                |   9 [31m-[m
+ public/images/header/arrow-down.svg                |   3 [31m-[m
+ public/images/header/arrow-down.webp               | Bin [31m0[m -> [32m144[m bytes
+ public/images/header/logo.svg                      |   9 [31m-[m
+ public/images/header/logo.webp                     | Bin [31m0[m -> [32m6568[m bytes
+ public/images/header/notification.svg              |  12 [31m-[m
+ public/images/header/user.svg                      |   5 [31m-[m
+ .../pages/paraoseunegocio/imgdescription.svg       |   9 [31m-[m
+ .../pages/paraoseunegocio/imgdescription.webp      | Bin [31m0[m -> [32m17308[m bytes
+ .../pages/paraoseunegocio/imgdescription2.svg      |  14 [31m-[m
+ public/images/pages/paraoseunegocio/mecanico.svg   |   9 [31m-[m
+ public/images/pages/paraoseunegocio/mecanico.webp  | Bin [31m0[m -> [32m22278[m bytes
+ src/controller/components/banners.js               |   8 [32m+[m[31m-[m
+ src/controller/components/icons.js                 |   2 [32m+[m[31m-[m
+ src/controller/components/partners.js              |   8 [32m+[m[31m-[m
+ src/controller/components/products.js              | 420 [32m++++++++++[m[31m-----------[m
+ src/controller/pages/about.js                      |  38 [32m+[m[31m-[m
+ src/controller/pages/autoparts.js                  |  42 [32m+[m[31m--[m
+ src/controller/pages/distributors.js               |  42 [32m+[m[31m--[m
+ src/controller/pages/factory.js                    |  42 [32m+[m[31m--[m
+ src/controller/pages/home.js                       |   8 [32m+[m[31m-[m
+ src/pages/api/products.js                          | 420 [32m++++++++++[m[31m-----------[m
+ 48 files changed, 515 insertions(+), 794 deletions(-)
+
+[33mcommit 68de3abdde355aebcbde0e9e39ea5ec8178ae807[m
+Author: tawanrio <stawanrio@gmail.com>
+Date:   Thu Dec 28 18:17:28 2023 -0300
+
+    serversideprops
+
+ src/pages/[product]/index.jsx               |  9 [32m+[m[31m---[m
+ src/pages/para-o-seu-negocio/[id]/index.jsx | 59 [31m--------------------------[m
+ src/pages/para-o-seu-negocio/id/index.jsx   | 65 [32m+++++++++++++++++++++++++++++[m
+ 3 files changed, 66 insertions(+), 67 deletions(-)
+
+[33mcommit 81c159dcd182e0c0ea8a11e1b5efab4baf6d647f[m
+Author: tawanrio <stawanrio@gmail.com>
+Date:   Thu Dec 28 18:12:59 2023 -0300
+
+    teste
+
+ package-lock.json | 253 [32m++++++++++++++++++++++++++++++++++++++++++[m[31m------------[m
+ package.json      |   1 [31m-[m
+ 2 files changed, 198 insertions(+), 56 deletions(-)
+
+[33mcommit 59bbde311839cf012738ab5373faa6fb98f7b3f0[m
+Author: tawanrio <stawanrio@gmail.com>
+Date:   Thu Dec 28 18:08:30 2023 -0300
+
+    testando getstaticpath
+
+ .eslintrc.json                                     |    3 [32m+[m
+ package-lock.json                                  | 5701 [32m++++++++++++++++++[m[31m--[m
+ package.json                                       |    2 [32m+[m
+ src/components/Banner/components/Arrow.jsx         |   96 [32m+[m[31m-[m
+ src/components/Banner/components/Dots.jsx          |   54 [32m+[m[31m-[m
+ src/components/Banner/components/ImagesBanners.jsx |  106 [32m+[m[31m-[m
+ src/components/Banner/index.jsx                    |   94 [32m+[m[31m-[m
+ src/components/BreadCrumb/index.jsx                |  159 [32m+[m[31m-[m
+ src/components/CompanyValues/index.jsx             |  216 [32m+[m[31m-[m
+ src/components/Contact/index.jsx                   |  300 [32m+[m[31m-[m
+ src/components/ContentDescription/index.jsx        |   20 [32m+[m[31m-[m
+ src/components/ContentImgDescription/index.jsx     |  181 [32m+[m[31m-[m
+ src/components/Description/index.jsx               |   36 [32m+[m[31m-[m
+ src/components/Error/index.jsx                     |   16 [32m+[m[31m-[m
+ src/components/Faq/components/FaqHtml.jsx          |   56 [32m+[m[31m-[m
+ src/components/Faq/components/FaqItem.jsx          |  136 [32m+[m[31m-[m
+ src/components/Faq/index.jsx                       |   36 [32m+[m[31m-[m
+ src/components/InsertVideo/index.jsx               |   20 [32m+[m[31m-[m
+ src/components/Partners/index.jsx                  |  150 [32m+[m[31m-[m
+ src/components/ProductFaq/index.jsx                |  102 [32m+[m[31m-[m
+ src/components/Products/ProductModels/index.jsx    |   48 [32m+[m[31m-[m
+ .../Products/components/ProductsCard.jsx           |  162 [32m+[m[31m-[m
+ src/components/Products/index.jsx                  |   44 [32m+[m[31m-[m
+ src/components/SectionTitle/index.jsx              |   52 [32m+[m[31m-[m
+ src/components/Templates/index.jsx                 |   18 [32m+[m[31m-[m
+ src/components/Title/index.jsx                     |   16 [32m+[m[31m-[m
+ src/context/pageData.jsx                           |  140 [32m+[m[31m-[m
+ src/controller/components/banners.js               |   78 [32m+[m[31m-[m
+ src/controller/components/clientInfo.js            |    4 [32m+[m[31m-[m
+ src/controller/components/contact.js               |   12 [32m+[m[31m-[m
+ src/controller/components/icons.js                 |    4 [32m+[m[31m-[m
+ src/controller/components/partners.js              |   58 [32m+[m[31m-[m
+ src/controller/components/products.js              | 3042 [32m+++++[m[31m------[m
+ src/controller/data-old.js                         |  934 [32m++[m[31m--[m
+ src/controller/data.js                             |   88 [32m+[m[31m-[m
+ src/controller/layouts/copyright.js                |   14 [32m+[m[31m-[m
+ src/controller/layouts/footer.js                   |  116 [32m+[m[31m-[m
+ src/controller/layouts/header.js                   |   72 [32m+[m[31m-[m
+ src/controller/layouts/template.js                 |   20 [32m+[m[31m-[m
+ src/controller/pages/about.js                      |  232 [32m+[m[31m-[m
+ src/controller/pages/autoparts.js                  |  278 [32m+[m[31m-[m
+ src/controller/pages/distributors.js               |  278 [32m+[m[31m-[m
+ src/controller/pages/factory.js                    |  278 [32m+[m[31m-[m
+ src/controller/pages/home.js                       |   84 [32m+[m[31m-[m
+ src/controller/pages/paraoseunegocio.js            |  258 [32m+[m[31m-[m
+ .../components/RenderList/RenderListItem.jsx       |   52 [32m+[m[31m-[m
+ .../irb/Footer/components/RenderList/index.jsx     |   62 [32m+[m[31m-[m
+ .../irb/Footer/components/SocialMidia/index.jsx    |   64 [32m+[m[31m-[m
+ src/pages/[product]/index.jsx                      |  201 [32m+[m[31m-[m
+ src/pages/api/products.js                          | 3052 [32m+++++[m[31m------[m
+ src/pages/api/teste.js                             |   14 [32m+[m[31m-[m
+ src/pages/autopecas/index.jsx                      |  104 [32m+[m[31m-[m
+ src/pages/distribuidoras/index.jsx                 |  102 [32m+[m[31m-[m
+ src/pages/fabrica/index.jsx                        |  104 [32m+[m[31m-[m
+ src/pages/para-o-seu-negocio/[id]/index.jsx        |   59 [32m+[m
+ src/pages/para-o-seu-negocio/index.jsx             |   94 [32m+[m[31m-[m
+ src/pages/para-o-seu-negocio/teste/index.jsx       |   12 [32m+[m[31m-[m
+ .../para-o-seu-negocio/teste/newpage/index.jsx     |   12 [32m+[m[31m-[m
+ src/pages/quem-somos/index.jsx                     |  106 [32m+[m[31m-[m
+ 59 files changed, 11423 insertions(+), 6429 deletions(-)

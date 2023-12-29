@@ -19,22 +19,23 @@ import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
 
 export default function Autoparts() {
-  const { autoparts, products } = useContext(PageData);
+  const { _autoparts, products } = useContext(PageData);
 
 
-  const [banners] = useState(autoparts.banners)
-  const [title] = useState(autoparts.title)
-  const [description] = useState(autoparts.description)
-  const [imgDescription] = useState(autoparts.imgDescription)
-  const [faq] = useState(autoparts.faq)
+  const [banners] = useState(_autoparts.banners)
+  const [title] = useState(_autoparts.title)
+  const [description] = useState(_autoparts.contentDescription)
+  const [metaTitle] = useState(_autoparts.metaTitle)
+  const [metaDescription] = useState(_autoparts.metaDescription)
+  const [imgDescription] = useState(_autoparts.imgDescription)
+  const [faq] = useState(_autoparts.faq)
 
    
   return (
     <>
     <Head>
-       <title>IRB Automotive - Quem Somos</title>
-       <meta name="description" content="IRB Automotive" />
-      
+       <title>{metaTitle || title}</title>
+       <meta name="description" content={metaDescription || description} />
      </Head>
    <Header/>
    <main>

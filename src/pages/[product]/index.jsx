@@ -26,48 +26,48 @@ import { useRouter } from 'next/router';
 export default function Products({ products }) {
 
   const route = useRouter()
-
   const pageUrl = route.asPath.replace('/','')
+
+
+  const [product] = useState(getProductFromUrl(products, pageUrl))
+  
+
+  const [banners] = useState(product?.banners)
+  const [title] = useState(product?.title)
+  const [description] = useState(product?.contentDescription)
+  const [metaTitle] = useState(product?.metaTitle)
+  const [metaDescription] = useState(product?.metaDescription)
+  const [models] = useState(product?.models)
+  const [faq] = useState(product?.faq)
+
 
   //  FUNÇÃO UTIL
   function getProductFromUrl(products, pageUrl){
     const product = products?.filter((item) => formatString(item.title) === formatString(pageUrl) )
-   return product[0]
+    return product[0]
   }
   
   function formatString(string){
   let formatedString = string && string.toLowerCase().trim().replace('/', '').replaceAll(' ','-')
   return formatedString
   }
-// fim FUNÇÃO UTIL
-  
-
-
-  const product = getProductFromUrl(products, pageUrl)
-
-  
-  const productName = product?.title[0].toUpperCase() + product?.title.slice(1)
-  const title = `IRB Automotive - ${productName}`
-
-
+  // fim FUNÇÃO UTIL
 
   return (
   <>
     <Head>
-       <title>{title}</title>
-       <meta name="description" content={product?.metaDescription ? product?.metaDescription : product?.description} />
-      
+       <title>{metaTitle || title}</title>
+       <meta name="description" content={metaDescription || description} />
      </Head>
-   <Header/>
    <main>
     {(product) && (
       <>
-    <Banner banners={product?.banners}/>
+    <Banner banners={banners}/>
     <BreadCrumb/>
-    <Title title={product?.title}/>
-    <ContentDescription content={product?.description}/>
-    <ProductModels products={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/>
-    <Faq faq={product?.faq}/>
+    <Title title={title}/>
+    <ContentDescription content={description}/>
+    <ProductModels products={models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/>
+    <Faq faq={faq}/>
       </>
     )
     }
@@ -81,8 +81,9 @@ export default function Products({ products }) {
 
 
 export const getServerSideProps = async ({ url }) => {
-  const res = await fetch('http://irb.webfoco.com/api/products',{
-    method: 'get'
+  // const res = await fetch('http://irb.webfoco.com/api/products',{
+  const res = await fetch('http://localhost:3000/api/products',{
+    method: 'GET'
   });
   const data = await res.json()
   

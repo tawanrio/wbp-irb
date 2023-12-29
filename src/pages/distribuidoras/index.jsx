@@ -15,25 +15,27 @@ import ContentImgDescription from '@/components/ContentImgDescription';
 import ProductFaq from '@/components/ProductFaq';
 
 // Context Api
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
 
 export default function Distribuidoras() {
-  const { distributors, products } = useContext(PageData);
+  const { _distributors, products } = useContext(PageData);
 
-  const banners = distributors.banners
-  const title = distributors.title
-  const description = distributors.description
-  const imgDescription = distributors.imgDescription
-  const faq = distributors.faq
+
+  const [banners] = useState(_distributors.banners)
+  const [title] = useState(_distributors.title)
+  const [metaTitle] = useState(_distributors.metaTitle)
+  const [metaDescription] = useState(_distributors.metaDescription)
+  const [description] = useState(_distributors.contentDescription)
+  const [imgDescription] = useState(_distributors.imgDescription)
+  const [faq] = useState(_distributors.faq)
 
    
   return (
     <>
     <Head>
-       <title>IRB Automotive - Quem Somos</title>
-       <meta name="description" content="IRB Automotive" />
-      
+       <title>{metaTitle || title}</title>
+       <meta name="description" content={metaDescription || description} />
      </Head>
    <Header/>
    <main>

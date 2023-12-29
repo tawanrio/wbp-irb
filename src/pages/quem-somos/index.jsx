@@ -13,27 +13,26 @@ import Products from '@/components/Products';
 import BreadCrumb from '@/components/BreadCrumb';
 
 
-import { useContext } from 'react';
+import { useContext, useState} from 'react';
 import { PageData } from '@/context/pageData';
 
 
 export default function QuemSomos() {
-    const { about, partners, products, contact, distributors } = useContext(PageData);
+    const { _about, partners, products, contact } = useContext(PageData);
 
-   
-
-    const banners = about.banners
-    const title = about.title
-    const cardsValues = about.companyValues
-    const description = about.contentDescription
+    const [metaTitle] = useState(_about.metaTitle)
+    const [metaDescription] = useState(_about.metaDescription)
+    const [banners] = useState(_about.banners)
+    const [title] = useState(_about.title)
+    const [cardsValues] = useState(_about.companyValues)
+    const [description] = useState(_about.contentDescription)
 
   return (
     <>
      <Head>
-        <title>IRB Automotive - Quem Somos</title>
-        <meta name="description" content="IRB Automotive" />
-       
-      </Head>
+       <title>{metaTitle || title}</title>
+       <meta name="description" content={metaDescription || description} />
+     </Head>
     <Header/>
     <main>
         <Banner banners={banners}/>

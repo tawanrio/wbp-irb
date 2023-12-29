@@ -1,4 +1,4 @@
-export const  partners = {
+export const partners = {
     colors: {
       text: '#fff',
       textShadow : null

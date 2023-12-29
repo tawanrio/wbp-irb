@@ -9,12 +9,14 @@ import Footer from '../layouts/irb/Footer'
 import Copyright from '@/layouts/irb/Copyright'
 import Banner from '@/components/Banner'
 
+import Products from '@/components/Products';
+
 import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
 
 export default function Home() {
-  const { dataRota, home } = useContext(PageData);
-    const banners = home.banners
+  const { _home , products} = useContext(PageData);
+    const banners = _home.banners
 
   return (
     <>
@@ -25,6 +27,7 @@ export default function Home() {
         <Header/>
       <main >
         <Banner banners={banners}/>
+        <Products products={products}/>
       </main>
          <Footer/>
         <Copyright/> 

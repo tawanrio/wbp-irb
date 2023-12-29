@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-import { home as pageHome } from './src/controller/data';
+import { _home  } from './src/controller/data';
 
 
 
-const home = pageHome
+const home = _home 
 
 module.exports = {
   content: [

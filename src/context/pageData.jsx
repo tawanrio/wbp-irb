@@ -3,12 +3,14 @@ import {
   template, 
   copyright as dataCopyright,
   // page
-  home as pageHome, 
-  about as pageAbout, 
-  paraOSeuNegocio as pageParaOSeuNegocio,
-  distributors as pageDistributors,
-  factory as pageFactory,
-  autoparts as pageAutoparts,
+  _home as pageHome, 
+  _about as pageAbout, 
+  _paraOSeuNegocio as pageParaOSeuNegocio,
+  _distributors as pageDistributors,
+  _factory as pageFactory,
+  _autoparts as pageAutoparts,
+  _contact as pageContact,
+
   // components
   banners as dataBanners,
   partners as dataPartners,
@@ -23,12 +25,13 @@ export const PageData = createContext(null)
 export default function ContextPage({children}) {
 
   // Pages
-  const [home] = useState(pageHome)
-  const [about] = useState(pageAbout)
-  const [paraOSeuNegocio] = useState(pageParaOSeuNegocio)
-  const [factory] = useState(pageFactory)
-  const [distributors] = useState(pageDistributors)
-  const [autoparts] = useState(pageAutoparts)
+  const [_home] = useState(pageHome)
+  const [_about] = useState(pageAbout)
+  const [_paraOSeuNegocio] = useState(pageParaOSeuNegocio)
+  const [_factory] = useState(pageFactory)
+  const [_distributors] = useState(pageDistributors)
+  const [_autoparts] = useState(pageAutoparts)
+  const [_contact] = useState(pageContact)
 
   // Template Layouts
   const [layouts] = useState(template)
@@ -47,13 +50,14 @@ export default function ContextPage({children}) {
     copyright,
 
     // Pages
-    home, 
-    about, 
-    paraOSeuNegocio,
-    factory,
-    distributors,
-    autoparts,
-    
+    _home, 
+    _about, 
+    _paraOSeuNegocio,
+    _factory,
+    _distributors,
+    _autoparts,
+    _contact,
+
     // Components
     banners,
     partners,

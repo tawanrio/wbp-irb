@@ -9,10 +9,7 @@ export default function MenuDesktop() {
     const [submenuOpen, setSubmenuOpen] = useState(false);
 
 
-    const { dataRota, layouts } = useContext(PageData);
-
-    // const dataHeader = dataRota.template.header
-    // const colors = dataRota.template.header.colors
+    const { layouts } = useContext(PageData);
 
     const dataHeader = layouts.header
     const colors = layouts.header.colors

@@ -1,44 +1,33 @@
-import {clientInfo as dataClientInfo} from './components/clientInfo';
-export const clientInfo = dataClientInfo;
+export { clientInfo } from './components/clientInfo';
 
 // Template
-import {template as layouts} from './layouts/template';
-export const template = layouts;
+export { template } from './layouts/template';
 
 // Pages
-import {home as pageHome} from './pages/home'
-export const home = pageHome;
+export {home as _home} from './pages/_home'
 
-import {about as pageAbout} from './pages/about'
-export const about = pageAbout;
+export {about as _about} from './pages/_about'
 
-import {paraOSeuNegocio as pageParaOSeuNegocio} from './pages/paraoseunegocio'
-export const paraOSeuNegocio = pageParaOSeuNegocio;
+export {paraOSeuNegocio as _paraOSeuNegocio} from './pages/_paraoseunegocio'
 
-import {factory as pageFactory} from './pages/factory'
-export const factory = pageFactory;
+export {factory as _factory} from './pages/_factory'
 
-import {distributors as pageDistributors} from './pages/distributors'
-export const distributors = pageDistributors;
+export {distributors as _distributors} from './pages/_distributors'
 
-import {autoparts as pageAutoparts} from './pages/autoparts'
-export const autoparts = pageAutoparts;
+export {autoparts as _autoparts} from './pages/_autoparts'
+
+export {contact as _contact} from './pages/_contact'
 
 
 
 // Components
-import {contact as dataContact} from './components/contact';
-export const contact = dataContact;
+export { contact } from './components/contact';
 
-import {products as dataProducts} from './components/products';
-export const products = dataProducts;
+export { products } from './components/products';
 
-import {partners as dataPartners} from './components/partners';
-export const partners = dataPartners;
+export { partners } from './components/partners';
 
-import {icons as dataIcons} from './components/icons';
-export const icons = dataIcons;
+export { icons } from './components/icons';
 
-import {banners as dataBanners} from './components/banners';
-export const banners = dataBanners;
+export { banners } from './components/banners';
 

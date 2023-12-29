@@ -16,27 +16,28 @@ import Products from '@/components/Products';
 import Faq from '@/components/Faq';
 
 // Context Api
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
 
 export default function Fabrica() {
-  const { factory, products } = useContext(PageData);
+  const { _factory, products } = useContext(PageData);
 
-  const banners = factory.banners
-  const title = factory.title
-  const description = factory.description
-  const imgDescription = factory.imgDescription
-  const faq = factory.faq
+  const [banners] = useState(_factory.banners)
+  const [title] = useState(_factory.title)
+  const [description] = useState(_factory.contentDescription)
+  const [metaTitle] = useState(_factory.metaTitle)
+  const [metaDescription] = useState(_factory.metaDescription)
+  const [imgDescription] = useState(_factory.imgDescription)
+  const [faq] = useState(_factory.faq)
 
   return (
     <>
     <Head>
-       <title>IRB Automotive - Quem Somos</title>
-       <meta name="description" content="IRB Automotive" />
-      
+       <title>{metaTitle || title}</title>
+       <meta name="description" content={metaDescription || description} />
      </Head>
    <Header/>
-   <main>
+   <main >
        <Banner banners={banners}/>
        <BreadCrumb/>
        <Title title={title}/>

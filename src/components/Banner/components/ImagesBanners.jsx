@@ -14,7 +14,7 @@ export default function Images({controllerBanner}) {
        md:justify-center 
        ${index === activeBanner && '!opacity-100'}`} >
             <Image
-            className="w-full md:h-banner-home-h h-52 object-cover drop-shadow-lg"
+            className="w-full md:h-banner-home-h h-52 object-cover drop-shadow-lg "
               src={banner.url}
               alt={banner.name}
               width={500}
