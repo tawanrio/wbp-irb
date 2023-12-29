@@ -53,8 +53,8 @@ export default function Distribuidoras({products}) {
   )
 }
 export const getServerSideProps = async () => {
-  // const res = await fetch('http://irb.webfoco.com/api/products',{
-  const res = await fetch('http://localhost:3000/api/products',{
+  const res = await fetch('http://irb.webfoco.com/api/products',{
+  // const res = await fetch('http://localhost:3000/api/products',{
     method: 'GET'
   });
   const data = await res.json()
