@@ -10,34 +10,36 @@ import Copyright from '@/layouts/irb/Copyright';
 
 // Components
 import BreadCrumb from '@/components/BreadCrumb';
+import IrbContact from '@/components/IrbContact'
 
 // Context Api
 import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
+import ServiceAddress from '@/components/ServiceAddress';
 
 export default function Contato() {
-  const { contact, products } = useContext(PageData);
+  const { _contact, products } = useContext(PageData);
 
 
-  const [banners] = useState(contact.banners)
-  const [title] = useState(contact.title)
-  const [metaTitle] = useState(contact.metaTitle)
-  const [metaDescription] = useState(contact.metaDescription)
+  const [banners] = useState(_contact?.banners)
+  const [title] = useState(_contact?.title)
+  const [metaTitle] = useState(_contact?.metaTitle)
+  const [metaDescription] = useState(_contact?.metaDescription)
+  const [logoContact] = useState(_contact?.logoContact)
 
    
   return (
     <>
-    <Head>
-       <title>{metaTitle}</title>
-       <meta name="description" content={metaDescription} />
-      
+   <Head>
+       <title>{metaTitle || title}</title>
+       <meta name="description" content={metaDescription || description} />
      </Head>
    <Header/>
    <main>
        <Banner banners={banners}/>
        <BreadCrumb/>
-       <Title title={title}/>
-       
+       <IrbContact data={logoContact} />
+       <ServiceAddress products={products} address={_contact?.address}/>
    </main>
    <Footer/>
    <Copyright/>

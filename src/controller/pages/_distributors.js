@@ -53,38 +53,6 @@ export const distributors = {
          }
        ],
     },
-    companyValues : [
-      {
-        colors : {
-          bg : '#22326E',
-          text: '#fff',
-          hr: '#6FBFD8' || '#fff'
-        },
-        title : 'missão',
-        description : 'Gerar valor e entusiasmo ao nosso cliente fornecendo peças automotivas, com qualidade e alta performance, à toda frota brasileira de veículos.',
-        image: '/images/components/companyValues/mission.webp' 
-      },
-      {
-        colors : {
-          bg : '#353535',
-          text: '#fff',
-          hr: '#C12025' || '#fff'
-        },
-        title : 'visão',
-        description : 'Ser referência global em peças automotivas.',
-        image: '/images/components/companyValues/vision.webp' 
-      },
-      {
-        colors : {
-          bg : '#C12025',
-          text: '#fff',
-          hr: '#22326E' || '#fff'
-        },
-        title : 'valores',
-        description : 'Ética, respeito, inovação, entusiasmo, simplicidade, profissionalismo e segurança automotiva',
-        image: '/images/components/companyValues/values.webp' 
-      },
-    ],
     contentDescription : [
       'A IRB Automotive é uma empresa, de marca própria, que fornece peças automotivas para todo o Brasil. Com mais de 22 anos de atuação no segmento de reposição automotiva, e com comprometimento e amor ao que fazemos, nos tornamos referência nacional na linha de Rolamentos e Cubos de Roda para linha leve de veículos. No decorrer dos anos nos dedicamos a desenvolver itens que atendessem toda a frota brasileira de veículos e esse se tornou nosso grande diferencial. Hoje, somos a empresa que oferece o maior portfólio de Rolamentos e Cubos de Roda.',
       'Com a constante evolução e crescimento do mercado, e seguindo o princípio de levar segurança e qualidade aos nossos clientes, ampliamos nosso portfólio pois sentimos a necessidade de trazer ao setor de reposição automotiva a qualidade, alta performance e diferenciais dos Rolamentos e Cubos de Roda IRB para outros produtos. Atualmente, trabalhamos com as seguintes linhas: Radiadores, Trizetas, Linha 6000 (Rolamentos para motocicletas e máquinas agrícolas), Rolamentos e Cubos de Roda (Linha leve) e Rolamentos de Roda (Linha pesada).'

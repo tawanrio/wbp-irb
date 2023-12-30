@@ -15,13 +15,16 @@ import ContentImgDescription from '@/components/ContentImgDescription';
 import Products from '@/components/Products';
 import Faq from '@/components/Faq';
 
-// Context Api
-import { useContext, useState } from 'react';
+// Others
+import { useContext, useState} from 'react';
 import { PageData } from '@/context/pageData';
+import  {useRouter}  from 'next/router';
 
-export default function Fabrica({products}) {
-  const { _factory } = useContext(PageData);
+export default function Fabrica() {
+  const { _factory, products } = useContext(PageData);
 
+  const router = useRouter()
+  const pageUrl = router.asPath.replace('/','')
   const [banners] = useState(_factory.banners)
   const [title] = useState(_factory.title)
   const [description] = useState(_factory.contentDescription)
@@ -29,6 +32,7 @@ export default function Fabrica({products}) {
   const [metaDescription] = useState(_factory.metaDescription)
   const [imgDescription] = useState(_factory.imgDescription)
   const [faq] = useState(_factory.faq)
+
 
   return (
     <>
@@ -42,7 +46,7 @@ export default function Fabrica({products}) {
        <BreadCrumb/>
        <Title title={title}/>
        <ContentDescription content={description}/>
-       <Products products={products}/>
+       <Products products={products} baseUrl={`/${pageUrl}/`}/>
        <ContentImgDescription content={imgDescription}/>
        <Faq faq={faq}/>
        
@@ -51,19 +55,4 @@ export default function Fabrica({products}) {
    <Copyright/>
    </>
   )
-}
-
-export const getServerSideProps = async () => {
-  const res = await fetch('http://irb.webfoco.com/api/products',{
-  // const res = await fetch('http://localhost:3000/api/products',{
-    method: 'GET'
-  });
-  const data = await res.json()
-  
-  const products = data.products
-
-  return {props :{
-    products
-  }
-}
 }

@@ -13,14 +13,11 @@ import ContentDescription from '@/components/ContentDescription';
 import BreadCrumb from '@/components/BreadCrumb';
 import Faq from '@/components/Faq';
 import ProductModels from '@/components/Products/ProductModels';
-import Error from '@/components/Error';
 
-
-// Context Api
-import { useEffect, useState, useCallback } from 'react';
-import { PageData } from '@/context/pageData';
 
 // Others
+import { useEffect, useState } from 'react';
+import { PageData } from '@/context/pageData';
 import { useRouter } from 'next/router';
 
 export default function Products({ products, produto }) {

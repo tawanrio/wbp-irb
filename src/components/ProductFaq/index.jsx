@@ -2,7 +2,7 @@ import SectionTitle from "../SectionTitle"
 import ProductsCard from "../Products/components/ProductsCard"
 import FaqItem from "../Faq/components/FaqItem"
 
-export default function ProductFaq({products, faq}) {
+export default function ProductFaq({products, faq, baseUrl}) {
     return (
         <section className="flex flex-col items-center " id={`product-faq_${crypto.randomUUID().slice(-8)}`}>
             <div className="w-full max-w-7xl md:px-14 px-6 md:my-10 my-4  flex flex-col md:gap-10">
@@ -22,7 +22,7 @@ export default function ProductFaq({products, faq}) {
                     ">
                          <SectionTitle title={'Produtos'} className="md:mb-5"/>
                          <div className=" my-8 ">
-                            <ProductsCard products={products} cards={products.collection} textSize={'md:text-[1.2rem'} />
+                            <ProductsCard products={products} cards={products.collection} baseUrl={baseUrl} textSize={'md:text-[1.2rem'} />
                          </div>
                     </div>
                     <div className="

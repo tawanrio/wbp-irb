@@ -14,14 +14,16 @@ import BreadCrumb from '@/components/BreadCrumb';
 import ContentImgDescription from '@/components/ContentImgDescription';
 import ProductFaq from '@/components/ProductFaq';
 
-// Context Api
-import { useContext, useState } from 'react';
+// Others
+import { useContext, useState} from 'react';
 import { PageData } from '@/context/pageData';
+import  {useRouter}  from 'next/router';
 
-export default function Distribuidoras({products}) {
-  const { _distributors } = useContext(PageData);
+export default function Distribuidoras({}) {
+  const { _distributors, products } = useContext(PageData);
 
-
+  const router = useRouter()
+  const pageUrl = router.asPath.replace('/','')
   const [banners] = useState(_distributors.banners)
   const [title] = useState(_distributors.title)
   const [metaTitle] = useState(_distributors.metaTitle)
@@ -44,25 +46,11 @@ export default function Distribuidoras({products}) {
        <Title title={title}/>
        <ContentDescription content={description}/>
        <ContentImgDescription content={imgDescription}/>
-       <ProductFaq products={products} faq={faq}/>
+       <ProductFaq products={products} faq={faq} baseUrl={`/${pageUrl}/`}/>
        
    </main>
    <Footer/>
    <Copyright/>
    </>
   )
-}
-export const getServerSideProps = async () => {
-  const res = await fetch('http://irb.webfoco.com/api/products',{
-  // const res = await fetch('http://localhost:3000/api/products',{
-    method: 'GET'
-  });
-  const data = await res.json()
-  
-  const products = data.products
-
-  return {props :{
-    products
-  }
-}
 }

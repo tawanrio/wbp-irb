@@ -25,8 +25,8 @@ export default function Arrow({controllerBanner}) {
       w-2/12
       select-none
       flex
-      " role="button" tabindex="0" href="#" onClick={prevBanner}>
-      <svg className="md:w-24 w-8 select-none" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor"  stroke-linecap="round" ><path d="m15 18-6-6 6-6"/></svg>
+      " role="button" href="#" onClick={prevBanner}>
+      <svg className="md:w-24 w-8 select-none" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor"  ><path d="m15 18-6-6 6-6"/></svg>
       </a>
       <a 
       style={{ color:banners?.colors.controllers }}
@@ -42,8 +42,8 @@ export default function Arrow({controllerBanner}) {
       w-2/12
       h-52
       items-center
-      " role="button" tabindex="0" href="#" onClick={nextBanner}>
-        <svg className="md:w-24 w-8 select-none" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor"  stroke-linecap="round" ><path d="m9 18 6-6-6-6"/></svg>
+      " role="button" href="#" onClick={nextBanner}>
+        <svg className="md:w-24 w-8 select-none" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor"  ><path d="m9 18 6-6-6-6"/></svg>
       </a>
         </div>
   )

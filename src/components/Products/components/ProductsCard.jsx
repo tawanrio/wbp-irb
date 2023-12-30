@@ -1,8 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function ProductsCard({products, cards, textSize, baseUrl}) {
+export default function ProductsCard({products, cards, textSize, baseUrl, limit}) {
 
+  const limitCard = limit || 6
+  
   function generateProductUrl(baseUrl, product){
     let productName = product.toLowerCase().trim().replaceAll(' ','-');
     baseUrl = baseUrl ? baseUrl : '/';
@@ -16,10 +18,11 @@ export default function ProductsCard({products, cards, textSize, baseUrl}) {
             md:gap-8
             gap-3
             flex-wrap
-            justify-between
+            justify-center
             ">
 
             {cards?.map((product, pId)=>(
+              pId <= limitCard-1 &&
                 <Link key={pId} 
                 href={generateProductUrl(baseUrl,product.title)}
                 className="
@@ -51,7 +54,7 @@ export default function ProductsCard({products, cards, textSize, baseUrl}) {
                     alt={product.title}
                     className="
                     md:h-[200%]
-                    md:group-hover:h-[155%]
+                    md:group-hover:h-[162%]
                     h-[250%]
                     group-hover:h-[191%]
                     object-cover

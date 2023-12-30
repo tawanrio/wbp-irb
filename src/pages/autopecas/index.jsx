@@ -14,14 +14,15 @@ import BreadCrumb from '@/components/BreadCrumb';
 import ContentImgDescription from '@/components/ContentImgDescription';
 import ProductFaq from '@/components/ProductFaq';
 
-// Context Api
-import { useContext, useState } from 'react';
+// Others
+import { useContext, useState} from 'react';
 import { PageData } from '@/context/pageData';
+import  Router  from 'next/router';
 
 export default function Autoparts({products}) {
   const { _autoparts } = useContext(PageData);
 
-
+  const pageUrl = Router.asPath.replace('/','')
   const [banners] = useState(_autoparts.banners)
   const [title] = useState(_autoparts.title)
   const [description] = useState(_autoparts.contentDescription)
@@ -44,7 +45,7 @@ export default function Autoparts({products}) {
        <Title title={title}/>
        <ContentDescription content={description}/>
        <ContentImgDescription content={imgDescription}/>
-       <ProductFaq products={products} faq={faq}/>
+       <ProductFaq products={products} faq={faq} baseUrl={`/${pageUrl}/`}/>
        
    </main>
    <Footer/>

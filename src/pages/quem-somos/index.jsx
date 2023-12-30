@@ -1,24 +1,31 @@
+// SEO
 import Head from 'next/head'
+
+// Template / Layout
 import Header from "@/layouts/irb/Header";
 import Banner from "@/components/Banner";
 import Footer from "@/layouts/irb/Footer";
 import Title from '@/components/Title';
 import Copyright from '@/layouts/irb/Copyright';
+
+// Components
 import ContentDescription from '@/components/ContentDescription';
 import InsertVideo from '@/components/InsertVideo';
 import Partners from '@/components/Partners';
-import Contact from '@/components/Contact';
+import Form from '@/components/Form';
 import CompanyValues from '@/components/CompanyValues';
 import Products from '@/components/Products';
 import BreadCrumb from '@/components/BreadCrumb';
 
 
+// Others
 import { useContext, useState} from 'react';
 import { PageData } from '@/context/pageData';
 
 
-export default function QuemSomos({products}) {
-    const { _about, partners, contact } = useContext(PageData);
+
+export default function QuemSomos({}) {
+    const { _about, partners, form, products } = useContext(PageData);
 
     const [metaTitle] = useState(_about?.metaTitle)
     const [metaDescription] = useState(_about?.metaDescription)
@@ -43,27 +50,12 @@ export default function QuemSomos({products}) {
         <InsertVideo/>
         <ContentDescription content={description}/>
         <Partners title={partners.title} partners={partners.cards}  colors={partners.colors}/>
-        <Products products={products}/>
-        <Contact contact={contact} />
+        <Products products={products} />
+        <Form form={form} />
         
     </main>
     <Footer/>
     <Copyright/>
     </>
   )
-}
-
-export const getServerSideProps = async () => {
-  const res = await fetch('http://irb.webfoco.com/api/products',{
-  // const res = await fetch('http://localhost:3000/api/products',{
-    method: 'GET'
-  });
-  const data = await res.json()
-  
-  const products = data.products
-
-  return {props :{
-    products
-  }
-}
 }

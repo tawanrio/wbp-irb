@@ -21,7 +21,7 @@ export {contact as _contact} from './pages/_contact'
 
 
 // Components
-export { contact } from './components/contact';
+export { form } from './components/form';
 
 export { products } from './components/products';
 

@@ -37,6 +37,7 @@ export default function Images({controllerBanner}) {
               <h2 className='
               md:text-4xl
               md:w-1/2
+              dropShadown
               w-2/3
               
               [text-shadow:_1px_1px_5px_rgb(0_0_0_/_100%)]

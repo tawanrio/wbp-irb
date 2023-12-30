@@ -15,7 +15,7 @@ import {
   banners as dataBanners,
   partners as dataPartners,
   products as dataProducts,
-  contact as dataContact,
+  form as dataForm,
   icons as dataIcons
 } from '@/controller/data'
 
@@ -41,7 +41,7 @@ export default function ContextPage({children}) {
   const [banners] = useState(dataBanners)
   const [partners] = useState(dataPartners)
   const [products] = useState(dataProducts)
-  const [contact] = useState(dataContact)
+  const [form] = useState(dataForm)
   const [icons] = useState(dataIcons)
 
   const exportData = {
@@ -62,7 +62,7 @@ export default function ContextPage({children}) {
     banners,
     partners,
     products,
-    contact,
+    form,
     icons,
   }
 
