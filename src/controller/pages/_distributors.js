@@ -5,7 +5,7 @@ export const distributors = {
     imgDescription :{
       borderRadius: '30px 30px 50% 50%',
       title: 'Lorem Ipsum is simply dummy',
-      image : '/images/pages/paraoseunegocio/imgdescription.webp',
+      image : '/images/pages/autoparts/imgdescription.webp',
       secondImage: '/images/carousel/banner2.webp',
       imageSobre: null,
       description: [

@@ -5,7 +5,7 @@ export const autoparts = {
     imgDescription :{
         borderRadius: '40% 20px 40% 20px',
         title: 'Lorem Ipsum is simply dummy',
-        image : '/images/pages/paraoseunegocio/imgdescription.webp',
+        image : '/images/pages/autoparts/imgdescription.webp',
         secondImage: '/images/carousel/banner2.webp',
         imageSobre: '/images/pages/autoparts/mecanico.png',
         description: [
