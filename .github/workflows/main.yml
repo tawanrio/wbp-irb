@@ -18,6 +18,10 @@ jobs:
         username: ${{ secrets.sftp_user }}
         password: ${{ secrets.sftp_pass }}
         server-dir: /public/wbp-irb/
+  build-next:
+      name: Build Next
+      runs-on: ubuntu-latest
+      steps:
+      - name: Create Build
+        uses: npm run build
 
-    - name: Build Next
-      run: npm run build
