@@ -4,7 +4,7 @@ export default function Dots({controllerBanner}) {
     <div id="dotsBanners" className={`absolute z-30 bottom-0 md:mb-10 mb-2 ${!(banners?.carousel.length  > 1)&& 'md:hidden'}`}>
           {banners?.carousel.map((banner, index)=>(
         <button type="button"
-        key={index+'_'+crypto.randomUUID()}
+        key={index+'_'+Math.random().toString().slice(-8)}
         style={{ background:banners?.colors.controllers }}
         className={`
         md:w-7
