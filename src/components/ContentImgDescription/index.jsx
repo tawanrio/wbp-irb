@@ -6,7 +6,7 @@ import Description from "../Description"
 export default function ContentImgDescription({content}) {
     return (
         <>
-         <article className="flex flex-col items-center " id={`content-img-description_${crypto.randomUUID().slice(-8)}`}>
+         <article className="flex flex-col items-center " id={`content-img-description_`}>
             <div className="w-full max-w-7xl md:px-14 px-6 md:my-10 my-4 flex flex-col md:justify-between md:gap-10">
                 <SectionTitle title={content.title} line/>
                 <div

@@ -33,7 +33,7 @@ export default function Banner({banners}) {
   }
   
   return (
-    <section className="relative"  id={`description_${crypto.randomUUID().slice(-8)}`} >
+    <section className="relative"  id={`description_`} >
         <div className="flex justify-center md:mb-10 md:h-banner-home-h h-52 mb-3  " id='containerBanner'>
         <Dots controllerBanner={{banners,setActiveBanner, activeBanner}}/>
         <ImagesBanners controllerBanner={{banners,setActiveBanner, activeBanner}} />

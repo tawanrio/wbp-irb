@@ -22,7 +22,7 @@ export default function BreadCrumb() {
     }, [router.asPath])
 
     return (
-        <div className="flex flex-col items-center " id={`breadcrumb_${crypto.randomUUID().slice(-8)}`}>
+        <div className="flex flex-col items-center " id={`breadcrumb_`}>
             <div className="w-full max-w-7xl md:px-14 px-6 flex flex-col justify-between gap-16">
                 <div className="
                 md:text-xl

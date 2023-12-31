@@ -3,7 +3,7 @@ export default function Description({ content }) {
         <>
           {content?.map((text , tId)=>(
               <p key={tId} 
-              id={`description_${crypto.randomUUID().slice(-8)}`}
+              id={`description_`}
               className="
               md:text-xl
               text-base

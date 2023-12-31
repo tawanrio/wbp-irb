@@ -4,7 +4,7 @@ import Address from "../Address"
 
 export default function ServiceAddress({products, address}) {
     return (
-        <section className="flex flex-col items-center " id={`service-address_${crypto.randomUUID().slice(-8)}`}>
+        <section className="flex flex-col items-center " id={`service-address_`}>
             <div className="w-full max-w-7xl md:px-14 px-6  my-4 md:mb-10 mb-14 flex flex-col md:gap-10">
                 <div className="
                 flex

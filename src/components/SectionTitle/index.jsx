@@ -1,7 +1,7 @@
 export default function SectionTitle({ title, line, className }) {
     return (
         <div
-        id={`section-title_${crypto.randomUUID().slice(-8)}`}
+        id={`section-title_`}
         className={` 
         ${className}
         flex

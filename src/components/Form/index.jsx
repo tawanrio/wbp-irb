@@ -2,7 +2,7 @@ import SectionTitle from "../SectionTitle"
 
 export default function Form({form}) {
   return (
-    <section className="flex flex-col items-center " id={`contact_${crypto.randomUUID().slice(-8)}`}>
+    <section className="flex flex-col items-center " id={`contact_`}>
     <div className="w-full max-w-7xl md:px-14 md:my-5 px-6 my-4 mb-10 flex flex-col justify-between gap-10">
         <SectionTitle title={'Contato'} line/>
         <form className="flex flex-col items-center gap-10 ">

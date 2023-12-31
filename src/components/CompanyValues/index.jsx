@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function CompanyValues({cards}) {
     
   return (
-    <section className="flex flex-col items-center" id={`company-values_${crypto.randomUUID().slice(-8)}`}>
+    <section className="flex flex-col items-center" id={`company-values_`}>
         <div className="w-full md:max-w-7xl md:px-14 md:my-10 my-4 px-6 flex max-w-lg ">
 
             <div 

@@ -5,7 +5,7 @@ import Button from "../Button"
 
 export default function ProductFaq({ data }) {
     return (
-        <section className="flex flex-col items-center " id={`irb-contact_${crypto.randomUUID().slice(-8)}`}>
+        <section className="flex flex-col items-center " id={`irb-contact_`}>
             <div className="w-full max-w-7xl md:px-14 px-6 md:my-10  flex flex-col md:gap-10">
                 <div className="
                 flex
