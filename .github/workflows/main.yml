@@ -20,7 +20,4 @@ jobs:
         server-dir: /public/wbp-irb/
   build-next:
       name: Build Next
-      runs-on: ubuntu-latest
-      steps:
-      - name: Create Build
-        uses: npm run build
+        run: npm run build
