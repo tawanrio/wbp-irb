@@ -17,4 +17,4 @@ jobs:
         server: ${{ secrets.sftp_host }}
         username: ${{ secrets.sftp_user }}
         password: ${{ secrets.sftp_pass }}
-        server-dir: /home/public/wbp-irb/
+        server-dir: /public/wbp-irb/
