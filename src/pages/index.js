@@ -14,8 +14,8 @@ import Products from '@/components/Products';
 import { useContext, useState } from 'react';
 import { PageData } from '@/context/pageData';
 
-export default function Home({products}) {
-  const { _home } = useContext(PageData);
+export default function Home() {
+  const { _home, products } = useContext(PageData);
 
   
     const [banners] = useState(_home.banners)
@@ -35,20 +35,4 @@ export default function Home({products}) {
         <Copyright/> 
     </>
   )
-}
-
-export const getServerSideProps = async () => {
-  const res = await fetch('http://irb.webfoco.com/api/products',{
-  // const res = await fetch('http://localhost:3000/api/products',{
-    method: 'GET'
-  });
-  const data = await res.json()
-  
-  const products = data.products
-
-
-  return {props :{
-    products
-  }
-}
 }
