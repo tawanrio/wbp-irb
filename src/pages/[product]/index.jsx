@@ -13,6 +13,7 @@ import ContentDescription from '@/components/ContentDescription';
 import BreadCrumb from '@/components/BreadCrumb';
 import Faq from '@/components/Faq';
 import ProductModels from '@/components/Products/ProductModels';
+import Filter from '@/components/Filter';
 
 
 // Others
@@ -50,6 +51,7 @@ export default function Products({ products, produto }) {
     <Title title={product?.title}/>
     <ContentDescription content={product?.ContentDescription}/>
     <ProductModels products={products} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/>
+    <Filter/>
     <Faq faq={product?.faq}/>
       </>
     ): (
