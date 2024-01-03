@@ -1,92 +1,37 @@
 import { useEffect, useState } from "react"
 import SectionTitle from "../SectionTitle"
 import Select from "./components/Select"
-import Filter from "./components/Filter"
+import Description from "../Description"
 
-export default function Index() {
-    const select = [
-        {
-          title: 'Linha',
-          items : [
-            {
-                title: 'linha taltal',
-              contentDescription : [
-                'Descricao',
-                'loren ipson'
-              ]
-    
-            },
-            {
-                title: 'linha blabla',
-              contentDescription : [
-                'Descricao',
-                'loren ipson'
-              ]
-    
-            }
-          ]
-        },
-        {
-          title: 'código',
-          items : [
-            {
-                title: 'código taltal',
-              contentDescription : [
-                'Descricao',
-                'loren ipson'
-              ]
-    
-            },
-            {
-                title: 'código blabla',
-              contentDescription : [
-                'Descricao',
-                'loren ipson'
-              ]
-    
-            }
-          ]
-        },
-        {
-          title: 'veículo',
-          items : [
-            {
-                title: 'veículo taltal',
-              contentDescription : [
-                'Descricao',
-                'loren ipson'
-              ]
-    
-            },
-            {
-                title: 'veículo blabla',
-              contentDescription : [
-                'Descricao',
-                'loren ipson'
-              ]
-    
-            }
-          ]
-        }
-      ]
+export default function Index({select, title}) {
 
-      const [filter, setFilter] = useState()
+  const [filter, setFilter] = useState()
+  const [content, setContent] = useState()
 
-      
-    return (
-        <section className="flex flex-col items-center " id={`products_`}>
-            <div className="w-full max-w-7xl md:px-14 px-6 md:my-10 my-4  flex flex-col justify-between md:gap-10">
-            <SectionTitle title={'Filtro'} line/>
-            <div>
-                <span>Filtro:</span>{filter}
-                <br/>
-                
-                <Select select={select} set={setFilter}/>
-                {filter && 
-                <Filter select={select} filter={filter} />
-                }
-            </div>
-            </div>
-        </section>
-    )
+  useEffect(()=>{
+    setContent([])
+  },[filter])
+
+
+  return (
+    <section className="flex flex-col items-center " id={`products_`}>
+      <div className="w-full max-w-7xl md:px-14 px-6 md:my-10 my-4  flex flex-col justify-between md:gap-10">
+        <SectionTitle title={title} line />
+        <div className="
+            flex
+            justify-center
+            gap-10
+            
+            ">
+            <Select textDefault={"Modelos"} select={select} set={setFilter} />
+          {filter &&
+            <Select textDefault={"Selecione"} select={select} filter={filter} content={content} setContent={setContent} />
+          }
+        </div>
+        <div>
+          {content && <Description content={content}/>}
+        </div>
+      </div>
+    </section>
+  )
 }

@@ -49,9 +49,9 @@ export default function Products({ products, produto }) {
     <Banner banners={product?.banners}/>
     <BreadCrumb/>
     <Title title={product?.title}/>
-    <ContentDescription content={product?.ContentDescription}/>
-    <ProductModels products={products} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/>
-    <Filter/>
+    <ContentDescription content={product?.contentDescription}/>
+    {/* <ProductModels products={products} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
+    <Filter select={product?.models}  title={'Título h2 - Modelos Produtos'}/>
     <Faq faq={product?.faq}/>
       </>
     ): (
@@ -70,8 +70,8 @@ export default function Products({ products, produto }) {
 
 
 export const getServerSideProps = async (context) => {
-  const res = await fetch('http://irb.webfoco.com/api/products',{
-  // const res = await fetch('http://localhost:3000/api/products',{
+  // const res = await fetch('http://irb.webfoco.com/api/products',{
+  const res = await fetch('http://localhost:3000/api/products',{
     method: 'GET'
   });
   const data = await res.json()

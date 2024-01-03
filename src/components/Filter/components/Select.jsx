@@ -1,17 +1,34 @@
-export default function Select({select, set, filter}) {
+import { useEffect } from "react";
+
+export default function Select({ select, set, filter, content, setContent, textDefault}) {
  
+  const handleSet = (e) =>{
+    set && set(e.target.value);
+    content && setContent(e.target.value.split(','));
+  }
   return (
-    <select onChange={(e) => set(e.target.value)}>
-       <option value="">Select</option>
+    <select value={content}  onChange={handleSet}  
+    className={`
+    bg-neutral-100
+    appearance-none
+    py-5
+    px-5
+    rounded-lg
+    w-3/12
+    uppercase
+    text-base text-gray-900 border   focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500
+    `}
+    >
+       <option value='' >{textDefault}</option>
 
        {filter ?
   (
     <>
      {select
     .filter((option) => option.title === filter) // Filtra as opções com base no título
-    .map((filteredOption) =>
-      filteredOption.items.map((filterOption, fId) => (
-        <option key={fId} value={filterOption.title}>
+    .map((option) =>
+      option?.items.map((filterOption, fId) => (
+        <option key={fId} value={filterOption.contentDescription} >
           {filterOption.title}
         </option>
       ))
@@ -19,7 +36,7 @@ export default function Select({select, set, filter}) {
     </>
   ) :   (
     <>
-     {select.map((option, id)=>(
+     {select?.map((option, id)=>(
         <option key={id} value={option.title} >{option.title}</option>
       ))}
     </>
