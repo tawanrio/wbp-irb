@@ -1,6 +1,6 @@
 
 export const about = {
-    title : 'quem somos - deploy automatic teste ultimo',
+    title : 'quem somos',
     metaTitle: 'IRB Automotive - Quem somos',
     metaDescription: [' Blablabla',' blablabla 2'],
     banners : {
