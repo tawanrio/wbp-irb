@@ -36,7 +36,7 @@ export default function MenuDesktop() {
             md:max-w-7xl 
             md:mx-auto 
             md:px-14
-
+            md:min-h-[110px]
             relative
             flex
             items-center

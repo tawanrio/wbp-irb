@@ -6,7 +6,7 @@ export const autoparts = {
         borderRadius: '40% 20px 40% 20px',
         title: 'Lorem Ipsum is simply dummy',
         image : '/images/pages/autoparts/imgdescription.webp',
-        secondImage: '/images/carousel/banner2.webp',
+        secondImage: '/images/carousel/banner2.svg',
         imageSobre: '/images/pages/autoparts/mecanico.png',
         description: [
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
@@ -26,28 +26,28 @@ export const autoparts = {
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner2.webp',
+           url: '/images/carousel/banner2.svg',
            alt: 'banner dois',
            position: 'center'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner1.webp',
+           url: '/images/carousel/banner1.svg',
            alt: 'banner dois',
            position: 'start'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner3.webp',
+           url: '/images/carousel/banner3.svg',
            alt: 'banner dois',
            position: 'center'
          },
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
-           url: '/images/carousel/banner4.webp',
+           url: '/images/carousel/banner4.svg',
            alt: 'banner dois',
            position: 'start'
          }

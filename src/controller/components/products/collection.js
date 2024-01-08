@@ -43,28 +43,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -72,7 +72,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -82,7 +82,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -92,7 +92,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -123,7 +123,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -133,7 +133,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -164,7 +164,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -174,7 +174,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -205,7 +205,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -215,7 +215,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -246,7 +246,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -256,7 +256,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -287,7 +287,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -297,7 +297,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -396,28 +396,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -425,7 +425,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -435,7 +435,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -445,7 +445,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -476,7 +476,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -486,7 +486,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -517,7 +517,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -527,7 +527,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -558,7 +558,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -568,7 +568,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -599,7 +599,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -609,7 +609,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -640,7 +640,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -650,7 +650,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -749,28 +749,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -778,7 +778,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -788,7 +788,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -798,7 +798,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -829,7 +829,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -839,7 +839,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -870,7 +870,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -880,7 +880,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -911,7 +911,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -921,7 +921,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -952,7 +952,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -962,7 +962,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -993,7 +993,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1003,7 +1003,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1102,28 +1102,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -1131,7 +1131,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -1141,7 +1141,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1151,7 +1151,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1182,7 +1182,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1192,7 +1192,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1223,7 +1223,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1233,7 +1233,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1264,7 +1264,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1274,7 +1274,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1305,7 +1305,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1315,7 +1315,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1346,7 +1346,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1356,7 +1356,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1455,28 +1455,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -1484,7 +1484,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -1494,7 +1494,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1504,7 +1504,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1535,7 +1535,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1545,7 +1545,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1576,7 +1576,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1586,7 +1586,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1617,7 +1617,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1627,7 +1627,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1658,7 +1658,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1668,7 +1668,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1699,7 +1699,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1709,7 +1709,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1808,28 +1808,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -1837,7 +1837,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -1847,7 +1847,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1857,7 +1857,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1888,7 +1888,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1898,7 +1898,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1929,7 +1929,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1939,7 +1939,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -1970,7 +1970,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -1980,7 +1980,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2011,7 +2011,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2021,7 +2021,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2052,7 +2052,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2062,7 +2062,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2161,28 +2161,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -2190,7 +2190,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -2200,7 +2200,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2210,7 +2210,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2241,7 +2241,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2251,7 +2251,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2282,7 +2282,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2292,7 +2292,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2323,7 +2323,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2333,7 +2333,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2364,7 +2364,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2374,7 +2374,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2405,7 +2405,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2415,7 +2415,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2514,28 +2514,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -2543,7 +2543,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -2553,7 +2553,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2563,7 +2563,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2594,7 +2594,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2604,7 +2604,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2635,7 +2635,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2645,7 +2645,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2676,7 +2676,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2686,7 +2686,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2717,7 +2717,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2727,7 +2727,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2758,7 +2758,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2768,7 +2768,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2867,28 +2867,28 @@ export const collection = [
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner2.webp",
+              url: "/images/carousel/banner2.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner1.webp",
+              url: "/images/carousel/banner1.svg",
               alt: "banner dois",
               position: "start",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner3.webp",
+              url: "/images/carousel/banner3.svg",
               alt: "banner dois",
               position: "center",
             },
             {
               title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
               description: "",
-              url: "/images/carousel/banner4.webp",
+              url: "/images/carousel/banner4.svg",
               alt: "banner dois",
               position: "start",
             },
@@ -2896,7 +2896,7 @@ export const collection = [
         },
         thumbnail: {
           title: "title img",
-          imageUrl: "/images/carousel/banner1.webp",
+          imageUrl: "/images/carousel/banner1.svg",
           alt: "rolamento",
         },
         models: [
@@ -2906,7 +2906,7 @@ export const collection = [
             metaDescription: ["produto tal blabla", "seila blabla"],
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2916,7 +2916,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2947,7 +2947,7 @@ export const collection = [
             title: "codigo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2957,7 +2957,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -2988,7 +2988,7 @@ export const collection = [
             title: "veiculo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -2998,7 +2998,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -3029,7 +3029,7 @@ export const collection = [
             title: "tipo",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -3039,7 +3039,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -3070,7 +3070,7 @@ export const collection = [
             title: "categoria",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -3080,7 +3080,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {
@@ -3111,7 +3111,7 @@ export const collection = [
             title: "seila",
             thumbnail: {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "rolamento",
             },
             contentDescription: [
@@ -3121,7 +3121,7 @@ export const collection = [
             gallery: [
               {
                 title: "title img",
-                imageUrl: "/images/carousel/banner1.webp",
+                imageUrl: "/images/carousel/banner1.svg",
                 alt: "alt",
               },
               {

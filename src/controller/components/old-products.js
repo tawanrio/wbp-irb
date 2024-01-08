@@ -29,28 +29,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -58,7 +58,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -68,7 +68,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -78,7 +78,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -112,7 +112,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -122,7 +122,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -156,7 +156,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -166,7 +166,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -200,7 +200,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -210,7 +210,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -244,7 +244,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -254,7 +254,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -288,7 +288,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -298,7 +298,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -416,28 +416,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -445,7 +445,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -455,7 +455,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -465,7 +465,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -499,7 +499,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -509,7 +509,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -543,7 +543,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -553,7 +553,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -587,7 +587,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -597,7 +597,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -631,7 +631,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -641,7 +641,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -675,7 +675,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -685,7 +685,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -799,28 +799,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -828,7 +828,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -838,7 +838,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -848,7 +848,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -882,7 +882,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -892,7 +892,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -926,7 +926,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -936,7 +936,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -970,7 +970,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -980,7 +980,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1014,7 +1014,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1024,7 +1024,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1058,7 +1058,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1068,7 +1068,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1182,28 +1182,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -1211,7 +1211,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -1221,7 +1221,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1231,7 +1231,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1265,7 +1265,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1275,7 +1275,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1309,7 +1309,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1319,7 +1319,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1353,7 +1353,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1363,7 +1363,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1397,7 +1397,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1407,7 +1407,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1441,7 +1441,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1451,7 +1451,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1565,28 +1565,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -1594,7 +1594,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -1604,7 +1604,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1614,7 +1614,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1648,7 +1648,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1658,7 +1658,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1692,7 +1692,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1702,7 +1702,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1736,7 +1736,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1746,7 +1746,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1780,7 +1780,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1790,7 +1790,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1824,7 +1824,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1834,7 +1834,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -1948,28 +1948,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -1977,7 +1977,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -1987,7 +1987,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -1997,7 +1997,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2031,7 +2031,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2041,7 +2041,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2075,7 +2075,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2085,7 +2085,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2119,7 +2119,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2129,7 +2129,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2163,7 +2163,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2173,7 +2173,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2207,7 +2207,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2217,7 +2217,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2331,28 +2331,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -2360,7 +2360,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -2370,7 +2370,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2380,7 +2380,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2414,7 +2414,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2424,7 +2424,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2458,7 +2458,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2468,7 +2468,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2502,7 +2502,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2512,7 +2512,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2546,7 +2546,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2556,7 +2556,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2590,7 +2590,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2600,7 +2600,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2714,28 +2714,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -2743,7 +2743,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -2753,7 +2753,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2763,7 +2763,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2797,7 +2797,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2807,7 +2807,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2841,7 +2841,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2851,7 +2851,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2885,7 +2885,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2895,7 +2895,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2929,7 +2929,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2939,7 +2939,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -2973,7 +2973,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -2983,7 +2983,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -3097,28 +3097,28 @@ export const products = {
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner2.webp",
+            url: "/images/carousel/banner2.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner1.webp",
+            url: "/images/carousel/banner1.svg",
             alt: "banner dois",
             position: "start",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner3.webp",
+            url: "/images/carousel/banner3.svg",
             alt: "banner dois",
             position: "center",
           },
           {
             title: "TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.",
             description: "",
-            url: "/images/carousel/banner4.webp",
+            url: "/images/carousel/banner4.svg",
             alt: "banner dois",
             position: "start",
           },
@@ -3126,7 +3126,7 @@ export const products = {
       },
       thumbnail: {
         title: "title img",
-        imageUrl: "/images/carousel/banner1.webp",
+        imageUrl: "/images/carousel/banner1.svg",
         alt: "rolamento",
       },
       models: [
@@ -3136,7 +3136,7 @@ export const products = {
           metaDescription: ["produto tal blabla", "seila blabla"],
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -3146,7 +3146,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -3180,7 +3180,7 @@ export const products = {
           title: "codigo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -3190,7 +3190,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -3224,7 +3224,7 @@ export const products = {
           title: "veiculo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -3234,7 +3234,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -3268,7 +3268,7 @@ export const products = {
           title: "tipo",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -3278,7 +3278,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -3312,7 +3312,7 @@ export const products = {
           title: "categoria",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -3322,7 +3322,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
@@ -3356,7 +3356,7 @@ export const products = {
           title: "seila",
           thumbnail: {
             title: "title img",
-            imageUrl: "/images/carousel/banner1.webp",
+            imageUrl: "/images/carousel/banner1.svg",
             alt: "rolamento",
           },
           contentDescription: [
@@ -3366,7 +3366,7 @@ export const products = {
           gallery: [
             {
               title: "title img",
-              imageUrl: "/images/carousel/banner1.webp",
+              imageUrl: "/images/carousel/banner1.svg",
               alt: "alt",
             },
             {
