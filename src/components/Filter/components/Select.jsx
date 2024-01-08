@@ -16,7 +16,7 @@ export default function Select({ select, set, filter, content, setContent, textD
     rounded-lg
     w-3/12
     uppercase
-    text-base text-gray-900 border   focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500
+    text-base text-gray-900 border   focus:ring-blue-500 focus:border-blue-500 
     `}
     >
        <option value='' >{textDefault}</option>

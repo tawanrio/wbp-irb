@@ -18,6 +18,8 @@ export {autoparts as _autoparts} from './pages/_autoparts'
 
 export {contact as _contact} from './pages/_contact'
 
+export {autocenters as _autocenters} from './pages/_autocenters'
+
 
 
 // Components

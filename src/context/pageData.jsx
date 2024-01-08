@@ -10,6 +10,7 @@ import {
   _factory as pageFactory,
   _autoparts as pageAutoparts,
   _contact as pageContact,
+  _autocenters as pageAutocenters,
 
   // components
   banners as dataBanners,
@@ -32,6 +33,7 @@ export default function ContextPage({children}) {
   const [_distributors] = useState(pageDistributors)
   const [_autoparts] = useState(pageAutoparts)
   const [_contact] = useState(pageContact)
+  const [_autocenters] = useState(pageAutocenters)
 
   // Template Layouts
   const [layouts] = useState(template)
@@ -57,6 +59,7 @@ export default function ContextPage({children}) {
     _distributors,
     _autoparts,
     _contact,
+    _autocenters,
 
     // Components
     banners,

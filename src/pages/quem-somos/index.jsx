@@ -34,6 +34,8 @@ export default function QuemSomos({}) {
     const [cardsValues] = useState(_about?.companyValues)
     const [description] = useState(_about?.contentDescription)
 
+   
+
 
   return (
     <>

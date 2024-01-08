@@ -106,14 +106,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -147,14 +147,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -188,14 +188,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -229,14 +229,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -270,14 +270,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -311,14 +311,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -459,14 +459,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -500,14 +500,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -541,14 +541,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -582,14 +582,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -623,14 +623,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -664,14 +664,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -812,14 +812,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -853,14 +853,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -894,14 +894,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -935,14 +935,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -976,14 +976,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1017,14 +1017,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1165,14 +1165,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1206,14 +1206,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1247,14 +1247,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1288,14 +1288,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1329,14 +1329,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1370,14 +1370,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1518,14 +1518,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1559,14 +1559,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1600,14 +1600,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1641,14 +1641,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1682,14 +1682,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1723,14 +1723,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1871,14 +1871,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1912,14 +1912,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1953,14 +1953,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -1994,14 +1994,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2035,14 +2035,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2076,14 +2076,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2224,14 +2224,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2265,14 +2265,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2306,14 +2306,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2347,14 +2347,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2388,14 +2388,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2429,14 +2429,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2577,14 +2577,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2618,14 +2618,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2659,14 +2659,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2700,14 +2700,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2741,14 +2741,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2782,14 +2782,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2930,14 +2930,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -2971,14 +2971,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -3012,14 +3012,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -3053,14 +3053,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -3094,14 +3094,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],
@@ -3135,14 +3135,14 @@ export const collection = [
                 title: "linha taltal",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "blabla blabla blabla blabla blabla blabla ipson",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
               {
                 title: "linha blabla",
                 contentDescription: [
                   "Linha tal lorem ipson",
-                  "taltal taltal taltal taltal taltal taltal taltal taltal",
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                 ],
               },
             ],

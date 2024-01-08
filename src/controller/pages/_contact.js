@@ -99,13 +99,7 @@ export const contact = {
         height : 430
       },
       carousel : [
-                        {
-           title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
-           description: '',
-           url: '/images/carousel/banner2.webp',
-           alt: 'banner dois',
-           position: 'center'
-         },
+                        
                         {
            title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
            description: '',
@@ -126,7 +120,14 @@ export const contact = {
            url: '/images/carousel/banner4.webp',
            alt: 'banner dois',
            position: 'start'
-         }
+         },
+         {
+          title: 'TUDO QUE VOCÊ PRECISA, EM UM SÓ LUGAR.',
+          description: '',
+          url: '/images/carousel/banner2.webp',
+          alt: 'banner dois',
+          position: 'center'
+        },
        ],
     },
     faq: [
