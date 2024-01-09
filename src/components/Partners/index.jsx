@@ -9,7 +9,6 @@ export default function Parceiros({title, partners, colors}) {
             <SectionTitle title={title} line/>
             <div className="
             md:my-6
-            md:mx-7
             flex
             md:gap-8
             gap-5
@@ -40,6 +39,13 @@ export default function Parceiros({title, partners, colors}) {
                 overflow-hidden
                 hover:scale-105
                 group
+                before:content-['']
+                before:block
+                before:absolute
+                before:bg-[#0a0a0a3a]
+                before:z-[2]
+                before:w-full
+                before:h-full
                 ">
                     <Image
                     width={300}
@@ -59,13 +65,13 @@ export default function Parceiros({title, partners, colors}) {
                     md:text-2xl
                     text-sm
                     absolute
-                    bg-[#00000099]
                     w-full
-                    group-hover:scale-[1.15]
+                    group-hover:scale-[1.10]
                     duration-700
                     text-center
                     uppercase
                     font-medium
+                    z-10
                     ">{partner.title}</div>                    
                 </Link>
             ))}

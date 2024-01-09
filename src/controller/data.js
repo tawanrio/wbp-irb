@@ -2,6 +2,7 @@ export { clientInfo } from './components/clientInfo';
 
 // Template
 export { template } from './layouts/template';
+export { base } from './base'
 
 // Pages
 export {home as _home} from './pages/_home'

@@ -1,4 +1,6 @@
-import {  useState, useEffect } from 'react';
+import {  useState, useEffect,useContext } from 'react';
+import { PageData } from '@/context/pageData';
+
 
 import Dots from './components/Dots';
 import ImagesBanners from './components/ImagesBanners';
@@ -6,7 +8,8 @@ import Arrow from './components/Arrow';
 
 export default function Banner({banners}) {
   const [activeBanner, setActiveBanner] = useState(0)
-
+  const { _home } = useContext(PageData);
+  const size = _home.banners.size.height
 
   function nextBanner(){
     const qntBanner = banners?.carousel.length-1
@@ -34,7 +37,8 @@ export default function Banner({banners}) {
   
   return (
     <section className="relative"  id={`description_`} >
-        <div className="flex justify-center md:mb-10 md:h-banner-home-h h-52 mb-3  " id='containerBanner'>
+        <div 
+        className="flex justify-center md:mb-10 md:h-banner-home-h h-52 mb-3  " id='containerBanner'>
         <Dots controllerBanner={{banners,setActiveBanner, activeBanner}}/>
         <ImagesBanners controllerBanner={{banners,setActiveBanner, activeBanner}} />
         <Arrow controllerBanner={{banners,setActiveBanner, activeBanner, prevBanner, nextBanner}} />

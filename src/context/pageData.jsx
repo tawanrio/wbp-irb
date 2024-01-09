@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { 
   template, 
   copyright as dataCopyright,
+  base,
   // page
   _home as pageHome, 
   _about as pageAbout, 
@@ -50,6 +51,7 @@ export default function ContextPage({children}) {
     // Template
     layouts, 
     copyright,
+    base,
 
     // Pages
     _home, 

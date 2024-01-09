@@ -5,7 +5,7 @@ export default function Description({ content }) {
               <p key={tId} 
               id={`description_`}
               className="
-              md:text-xl
+              md:text-lg
               text-base
               flex
               font-[400]

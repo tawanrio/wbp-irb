@@ -11,7 +11,7 @@ export default function Form({form}) {
             w-full
             flex
             justify-between
-            md:px-20
+            md:px-0
             md:gap-10
             md:my-0
             gap-4

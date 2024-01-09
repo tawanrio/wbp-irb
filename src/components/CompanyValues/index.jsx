@@ -17,6 +17,7 @@ export default function CompanyValues({cards}) {
             gap-4
             justify-start
             scrollbar-hide
+            md:p-0
             p-5
             ">
 
@@ -26,16 +27,15 @@ export default function CompanyValues({cards}) {
                 <div key={cId} style={{background:card.colors.bg, color:card.colors.text, scrollSnapAlign: 'start'}} 
                 className={`
                  md:w-full 
-                md:max-w-[370px]
                 md:min-w-[250px]
-                min-w-[250px]
+                min-w-[240px]
                 flex 
                 flex-initial
                 flex-col 
                 rounded-3xl
                 shadow-[0px_0px_25px_-10px_rgba(0,0,0,.6)]
-                pt-5
-                md:pb-12
+                pt-4
+                md:pb-10
                 pb-6
                 `}>
                     <div className="
@@ -43,7 +43,7 @@ export default function CompanyValues({cards}) {
                         items-end
                         gap-6
                         md:px-10
-                        md:pb-9
+                        md:pb-7
                         pb-4
                         px-5
                         relative
@@ -53,13 +53,13 @@ export default function CompanyValues({cards}) {
                             <Image 
                             src={card.image} 
                             alt={card.title}
-                            width={60}
-                            height={60}
-                            className="md:w-[60px] md:h-[60px] w-9 h-9"
+                            width={50}
+                            height={50}
+                            className="md:w-[50px] md:h-[50px] w-9 h-9"
                             />
                         </div>
                         <h3 className="
-                        md:text-3xl 
+                        md:text-2xl 
                         text-2xl 
                         w-full 
                         font-bold 

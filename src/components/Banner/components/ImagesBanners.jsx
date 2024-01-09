@@ -1,12 +1,21 @@
 import Image from 'next/image';
 
-export default function Images({controllerBanner}) {
+export default function Images({controllerBanner, backdrop}) {
     const {activeBanner, setActiveBanner, banners} = controllerBanner
   return (
     <div className="w-full md:h-banner-home-h" id='imagesBanners'>
     {banners?.carousel.map((banner, index)=> (
       <div key={index}
        className={`
+       ${backdrop &&`
+       before:content-['']
+       before:block
+       before:absolute
+       before:bg-circle
+       before:z-[2]
+       before:w-full
+       before:h-full
+       `}
       opacity-0
        absolute 
        w-full 
@@ -14,18 +23,21 @@ export default function Images({controllerBanner}) {
        md:justify-center 
        ${index === activeBanner && '!opacity-100'}`} >
             <Image
-            className="w-full md:h-banner-home-h h-52 object-cover drop-shadow-lg "
+            style={{height:controllerBanner?.size}}
+            className={`w-full md:h-banner-home-h object-cover drop-shadow-lg
+           
+            `}
+              quality={1}
               src={banner.url}
               alt={banner.name}
               width={500}
               height={banners?.size.height}
             />
-            <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners?.colors.text }}
+            <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners?.colors.text,height:controllerBanner.size }}
              className="
               md:h-banner-home-h
-              md:px-28
-              md:max-w-7xl 
-              h-52
+              md:px-24
+              md:max-w-6xl 
               px-16
               absolute
               top-0
@@ -37,16 +49,16 @@ export default function Images({controllerBanner}) {
               <h2 className='
               md:text-4xl
               md:w-1/2
-              dropShadown
+              dropShadownBanner
               w-2/3
               
               [text-shadow:_1px_1px_5px_rgb(0_0_0_/_100%)]
               font-bold
               text-xl
+              z-10
               '>{banner.title}</h2>
               <p>{banner.description}</p>
             </div>
-
             </div>
         ))}
     

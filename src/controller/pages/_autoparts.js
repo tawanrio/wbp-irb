@@ -1,3 +1,5 @@
+import {base} from '../base'
+
 export const autoparts = {
     title : 'autopeças',
     metaTitle: 'IRB Automotive - Autopeças',
@@ -20,7 +22,7 @@ export const autoparts = {
         controllers : '#fff'
       },
       size :{
-        height : 430
+        height : base.banner.size.height
       },
       carousel : [
                         {

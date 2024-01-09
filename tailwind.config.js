@@ -1,9 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-import { _home  } from './src/controller/data';
+import { base  } from './src/controller/base';
 
 
 
-const home = _home 
 
 module.exports = {
   content: [
@@ -15,12 +14,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      
+      backgroundImage: {
+          'circle': 'linear-gradient(330deg, rgba(0,0,5,0) 13%, rgba(0,2,3,1) 86%)',
+          'white-to-tramsp': 'linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(0,0,0,0) 100%)',
+        },
       fontFamily: {
         sans : ['Inter', 'sans']
       },
       height: {
-        'banner-home-h': [home.banners.size.height],
+        'banner-home-h': [base.banner.size.height],
       },
       animation: {
         fadeIn: 'fadeIn 1s',

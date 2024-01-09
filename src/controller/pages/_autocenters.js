@@ -1,3 +1,5 @@
+import {base} from '../base'
+
 export const autocenters = {
     title : 'Autocenters',
     metaTitle: 'IRB Automotive - Autocenters',
@@ -20,7 +22,7 @@ export const autocenters = {
         controllers : '#fff'
       },
       size :{
-        height : 430
+        height : base.banner.size.height
       },
       carousel : [
                         {

@@ -1,3 +1,5 @@
+import {base} from '../base'
+
 export const distributors = {
     title : 'distribuidoras',
     metaTitle: 'IRB Automotive - Distribuidoras',
@@ -20,7 +22,7 @@ export const distributors = {
         controllers : '#fff'
       },
       size :{
-        height : 430
+        height : base.banner.size.height
       },
       carousel : [
                         {

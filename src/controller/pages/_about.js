@@ -1,3 +1,4 @@
+import {base} from '../base'
 
 export const about = {
     title : 'quem somos',
@@ -10,7 +11,7 @@ export const about = {
         controllers : '#fff'
       },
       size :{
-        height : 430
+        height : base.banner.size.height
       },
       carousel : [
                         {

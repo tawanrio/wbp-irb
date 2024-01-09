@@ -39,18 +39,18 @@ export const footer = {
         networks : [
           {
             name : 'Facebook',
-            imageUrl : '/images/footer/face.svg', 
+            imageUrl : '/images/templates/footer/face.svg', 
             url: 'www.google.com'
           
         },
         {
             name : 'Instagram',
-            imageUrl : '/images/footer/instagram.svg' ,
+            imageUrl : '/images/templates/footer/instagram.svg' ,
             url: ''
         },
         {
             name : 'Whatsapp',
-            imageUrl : '/images/footer/instagram.svg' ,
+            imageUrl : '/images/templates/footer/instagram.svg' ,
             url: ''
         }
         ]

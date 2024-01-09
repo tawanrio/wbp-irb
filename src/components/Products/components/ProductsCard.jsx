@@ -18,7 +18,7 @@ export default function ProductsCard({products, cards, textSize, baseUrl, limit}
             md:gap-8
             gap-3
             flex-wrap
-            justify-center
+            justify-between
             ">
 
             {cards?.map((product, pId)=>(
@@ -46,20 +46,29 @@ export default function ProductsCard({products, cards, textSize, baseUrl, limit}
                 duration-500
                 hover:scale-105
                 group
+                
+                before:content-['']
+                before:block
+                before:absolute
+                before:bg-[#0a0a0a3a]
+                before:z-[2]
+                before:w-full
+                before:h-full
                 ">
                       <Image
                     width={400}
                     height={500}
                     src={product.thumbnail.imageUrl}
                     alt={product.title}
-                    className="
+                    className={`
                     md:h-[200%]
-                    md:group-hover:h-[162%]
+                    md:group-hover:h-[170%]
                     h-[250%]
                     group-hover:h-[191%]
+                    
                     object-cover
                     duration-700
-                    "
+                    `}
                     />
                     <div
                     style={{ color: products?.colors.text || '#fff', textShadow: products?.colors.border || '2px 2px 1px #000'}}
@@ -67,13 +76,13 @@ export default function ProductsCard({products, cards, textSize, baseUrl, limit}
                     absolute
                     ${textSize}
                     text-base
-                    md:group-hover:scale-[1.20]
+                    md:group-hover:scale-[1.10]
                     duration-700
                     text-center
-                    bg-[#0a0a0a99]
                     uppercase
-                    w-full
+                    w-3/4
                     font-medium
+                    z-10
                     `}>{product.title}</div>                    
                 </Link>
             ))}

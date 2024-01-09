@@ -25,7 +25,7 @@ export default function BreadCrumb() {
         <div className="flex flex-col items-center " id={`breadcrumb_`}>
             <div className="w-full max-w-7xl md:px-14 px-6 flex flex-col justify-between gap-16">
                 <div className="
-                md:text-xl
+                md:text-base
                 text-xs
                 uppercase
                 flex
@@ -51,7 +51,7 @@ export default function BreadCrumb() {
                                     href={dynamicUrl}
                                     style={{ ...pathname.length - 1 === index && { fontWeight: '600' } }}
                                     className={`
-                                    ${pathname.length - 1 === index && 'animate-bounce'}
+                                    ${pathname.length - 1 === index && ''}
                                     hover:underline
                                     hover:text-blue-800
                                     duration-500
@@ -63,11 +63,11 @@ export default function BreadCrumb() {
                                     <Image
                                         alt="icon separate link"
                                         src={icons.arrow}
-                                        width={18}
-                                        height={18}
+                                        width={12}
+                                        height={12}
                                         className="
                                         w-[10px]
-                                        md:w-[18px]
+                                        md:w-3
                                 rotate-[-90deg]
                                 
                                 "

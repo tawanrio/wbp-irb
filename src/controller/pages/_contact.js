@@ -1,3 +1,5 @@
+import {base} from '../base'
+
 export const contact = {
     title : 'Contato',
     metaTitle: 'IRB Automotive - Contato',
@@ -96,7 +98,7 @@ export const contact = {
         controllers : '#fff'
       },
       size :{
-        height : 430
+        height : base.banner.size.height
       },
       carousel : [
                         

@@ -1,3 +1,5 @@
+import {base} from '../base'
+
 export const factory = {
     title : 'fábrica de peças automotivas',
     metaTitle: 'IRB Automotive - Fábrica',
@@ -20,7 +22,7 @@ export const factory = {
         controllers : '#fff'
       },
       size :{
-        height : 430
+        height : base.banner.size.height
       },
       carousel : [
                         {

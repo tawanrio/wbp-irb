@@ -2,11 +2,11 @@
 import Head from 'next/head'
 
 // Template / Layout
-import Header from "@/layouts/irb/Header";
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 import Banner from "@/components/Banner";
-import Footer from "@/layouts/irb/Footer";
 import Title from '@/components/Title';
-import Copyright from '@/layouts/irb/Copyright';
 
 // Components
 import ContentDescription from '@/components/ContentDescription';
