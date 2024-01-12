@@ -1,3 +1,5 @@
+import {base} from '../../base'
+
 const colors = {
     collection : {
     text: "#fff",
@@ -21,7 +23,7 @@ const colors = {
   }
 
 const bannerSize = {
-    height : 430,
+    height : base.banner.size.height,
 }
 export const collection = [
       {
