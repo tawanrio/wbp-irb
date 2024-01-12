@@ -17,7 +17,7 @@ export const home = {
         {  
            title: 'REFERÊNCIA EM PEÇAS AUTOMOTIVAS',
            description: '',
-           url: '/images/pages/home/banners/banner1.svg',
+           url: '/images/pages/home/banners/banner1.png',
            alt: 'banner um',
            position: 'end'
          }

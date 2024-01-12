@@ -1,7 +1,8 @@
 export const headerHome = {
     colors:{
-      bg : 'transparent',
+      bg : '#fff',
       text: '#fff',
+      textSub: '#000',
       hoverbg: 'transparent',
       hovertext: '#fff'
     },
@@ -12,7 +13,9 @@ export const headerHome = {
           { label: 'home', route: '/' },
           { label: 'quem somos', route: '/quem-somos' },
           // { label: 'para o seu negócio', route: '/para-o-seu-negocio' },
-          { label: 'parceiros', route: '#'},
+            { label: 'fábrica', route: '/fabrica' },
+          { label: 'parceiros', route: '/parceiros' },
+          // { label: 'parceiros', route: '#',
           // submenu: [
           //   { label: 'fábrica', route: '/fabrica' },
           //   { label: 'distribuidoras', route: '/distribuidoras' },
@@ -20,7 +23,8 @@ export const headerHome = {
           //   { label: 'autocenters e mecânicas', route: '/autocenter-e-mecanicas' }
           // ] },
           { label: 'produtos', route: '/produtos'},
-          // ,submenu: [
+          // { label: 'produtos', route: '/produtos',
+          // submenu: [
           //   { label: 'rolamento', route: '/rolamento' },
           //   { label: 'radiadores e intercooler', route: '/radiadores-e-intercooler' },
           //   { label: 'cubos de rodas', route: '/cubos-de-rodas' },

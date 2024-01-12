@@ -16,7 +16,7 @@ export default function ProductsCard({products, cards, textSize, baseUrl, limit}
     <div className="
             flex
             md:gap-8
-            gap-3
+            gap-3=
             flex-wrap
             justify-between
             ">

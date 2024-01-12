@@ -14,7 +14,7 @@ export  function RenderListItem({name, href, liId}) {
         onMouseLeave={() => setIsHovered(false)}
           style={{...isHovered && isHovered === liId &&{background:colors.hoverbg, color: colors.hovertext} }} className='
       first:font-bold
-      first:uppercase
+      first:capitalize
       md:text-xl
       text-sm
       ' ><Link

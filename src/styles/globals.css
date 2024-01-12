@@ -9,6 +9,7 @@
 }
 main{
     flex: 1;
+    margin-bottom: 70px;
 }
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {

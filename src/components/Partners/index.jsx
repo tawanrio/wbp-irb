@@ -5,10 +5,10 @@ import Link from "next/link"
 export default function Parceiros({title, partners, colors}) {
     return (
         <section className="flex flex-col items-center " id={`partners_`}>
-            <div className="w-full max-w-7xl md:px-14 md:my-10 my-4 px-6  flex flex-col justify-between md:gap-10 ">
+            <div className="w-full max-w-7xl md:px-14 md:my-7 my-4 px-6  flex flex-col justify-between md:gap-10 ">
             <SectionTitle title={title} line/>
             <div className="
-            md:my-6
+            md:my-2
             flex
             md:gap-8
             gap-5

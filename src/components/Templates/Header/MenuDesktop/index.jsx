@@ -118,7 +118,7 @@ export default function MenuDesktop() {
                             mx-1
                             duration-500
                             flex
-                            font-semibold
+                            font-medium
                             flex-row-reverse
                             gap-3
                             '

@@ -33,6 +33,7 @@ export default function QuemSomos({}) {
     const [title] = useState(_about?.title)
     const [cardsValues] = useState(_about?.companyValues)
     const [description] = useState(_about?.contentDescription)
+    
 
    
 

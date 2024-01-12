@@ -22,17 +22,18 @@ export default function Images({controllerBanner, backdrop}) {
        flex 
        md:justify-center 
        ${index === activeBanner && '!opacity-100'}`} >
+        <div style={{height:controllerBanner?.size}}>
             <Image
-            style={{height:controllerBanner?.size}}
-            className={`w-full md:h-banner-home-h object-cover drop-shadow-lg
+            className={` object-cover 
            
             `}
-              quality={1}
+              quality={100}
+              fill
+              sizes="100vw"
               src={banner.url}
               alt={banner.name}
-              width={500}
-              height={banners?.size.height}
             />
+            </div>
             <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners?.colors.text,height:controllerBanner.size }}
              className="
               md:h-banner-home-h

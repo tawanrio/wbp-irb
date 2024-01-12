@@ -2,7 +2,7 @@ import {  useState, useEffect, useContext } from 'react';
 import { PageData } from '@/context/pageData';
 
 import Dots from './components/Dots';
-import ImagesBanners from './components/ImagesBanners';
+import ImagesBannersHome from './components/ImagesBannersHome';
 import Arrow from './components/Arrow';
 
 export default function Banner({banners}) {
@@ -42,7 +42,7 @@ export default function Banner({banners}) {
         style={{height:size}}
         className="flex justify-center md:mb-10 md:h-banner-home-h mb-3  " id='containerBanner'>
         <Dots controllerBanner={{banners,setActiveBanner, activeBanner, size}}/>
-        <ImagesBanners controllerBanner={{banners,setActiveBanner, activeBanner,size}} backdrop />
+        <ImagesBannersHome controllerBanner={{banners,setActiveBanner, activeBanner,size}} backdrop />
         <Arrow controllerBanner={{banners,setActiveBanner, activeBanner, prevBanner, nextBanner,size}} />
       
       </div>

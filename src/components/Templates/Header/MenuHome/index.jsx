@@ -36,41 +36,48 @@ export default function MenuDesktop() {
             md:mx-auto 
             md:mt-14
             md:w-full
-            flex-col
+            md:flex-col 
             md:px-14
             md:min-h-[110px]
+            md:py-0
+            flex-row
+            py-3
+            items-center
             relative
             flex
-            items-start
+            md:items-start
             px-6
+            z-30
             '>
-                <Link href={dataHeader.logo.route} className='w-20 md:w-[190px] md:my-7 z-10'>
+                
+                <Link href={dataHeader.logo.route} className='w-20 h-14 md:h-24 md:w-[120px] md:my-7 relative z-10'>
                     <Image
                         src={dataHeader.logo.url}
                         alt={dataHeader.logo.alt}
-                        width={200}
-                        height={300}
-                        className='md:px-0 px-4'
+                       sizes='100vw'
+                       fill
+                        className='md:px-0 '
                     />
                 </Link>
-
-                <div className='flex flex-col md:w-2/3'>
+                <div className='flex md:flex-col flex-row md:w-2/3 z-10'>
                     <div className='md:hidden flex w-full cursor-pointer justify-end items-center gap-4 ' 
                     onClick={() => handleMenu()}>
-                        <span className='text-xl font-semibold capitalize'>Menu</span>
+                        <span
+                        style={{ color:colors.text ,}}
+                         className='text-xl font-semibold capitalize '>Menu</span>
                         <div className='relative w-5'>
                             <div 
                             style={{...menuOpen && {transform:'translateY(8px)', rotate:'45deg'},}}
-                            className="bar w-full border-b-2 duration-300 z-20 border-black h-0 "></div>
+                            className="bar w-full border-b-2 duration-300 z-20 border-white h-0 "></div>
                             <div 
                             style={{...menuOpen && {opacity:'0'}}}
-                            className="bar w-full border-b-2 duration-200 my-1 z-20 border-black h-0 opacity-100"></div>
+                            className="bar w-full border-b-2 duration-200 my-1 z-20 border-white h-0 opacity-100"></div>
                             <div 
                             style={{...menuOpen && {transform:'translateY(-8px)', rotate:'-45deg'}}}
-                            className="bar w-full border-b-2 duration-300 z-20 border-black h-0 "></div>
+                            className="bar w-full border-b-2 duration-300 z-20 border-white h-0 "></div>
                         </div>
                     </div>
-                <div style={{...menuOpen && {opacity:'1',zIndex:'10'}, background:colors.bg, color:colors.text ,}} className="
+                <div style={{...menuOpen && {width:'100vw',opacity:'1',zIndex:'10'}, color:colors.text ,}} className="
                     md:flex-col
                     md:items-start  
                     md:justify-center
@@ -82,10 +89,13 @@ export default function MenuDesktop() {
                     md:z-20
                     md:w-full
                     md:mt-0
+                    md:bg-transparent   
                     
+                    bg-white
                     z-0
+                    overflow-hidden
                     right-0
-                    w-[65%]
+                    w-0
                     opacity-0
                     duration-300
                     absolute
@@ -111,13 +121,19 @@ export default function MenuDesktop() {
                                 
                                 setIsHovered(false)}}
                               onClick={(event)=> handleSubmenu(event,'l'+lId, page.hasOwnProperty("submenu"))}
-                                style={{ ...(isHovered && !page.hasOwnProperty("submenu")) && isHovered === 'l'+lId? {background:colors.hoverbg, color: colors.hovertext} : ''}}
+                                style={{ 
+                                    ...((isHovered && !page.hasOwnProperty("submenu")) && isHovered === 'l'+lId? {background:colors.hoverbg, color: colors.hovertext} : ''),
+                                   
+                            }}
                             className='
                             md:flex-row
                             md:text-xl
                             md:group-hover:scale-[1.3]
-                            md:group-hover:translate-x-3
+                            md:group-hover:translate-x-5
                             md:px-0
+                            
+                            md:text-white
+                            text-black
                             px-4
                             py-2
                             justify-start
@@ -126,7 +142,7 @@ export default function MenuDesktop() {
                             mx-1
                             duration-300
                             flex
-                            font-semibold
+                            font-medium
                             flex-row-reverse
                             gap-3
                             '
@@ -141,7 +157,7 @@ export default function MenuDesktop() {
                                                                         className='
                                                                         md:rotate-[-90deg]
                                                                         rotate-[90deg]
-                                                                        
+                                                                        md:!hidden
                                                                         duration-300
                                                                         md:group-hover:rotate-[0deg]
                                                                         '
@@ -149,17 +165,23 @@ export default function MenuDesktop() {
                             </Link>
                             {page.hasOwnProperty("submenu") && (
                                 <div 
-                                style={{...(submenuOpen && submenuOpen === 'l'+lId) && {display:'block'}, background:colors.bg, color:colors.text}}
+                                style={{
+                                    ...(submenuOpen && submenuOpen === 'l'+lId) && {display:'block'}, background:colors.bg, color:colors.text,
+                                    color: colors.textSub || colors.text
+                                }}
+                                
                                 className="
                                 md:group-hover:block 
+                                md:!hidden 
                                 hidden 
                                 md:absolute 
-                                
                                 md:py-2 
-                                z-20
                                 md:shadow-[0_10px_15px_-10px_rgba(0,0,0,.8)]
-                                md:rounded-2xl	
+                               
                                 md:overflow-hidden
+                                md:w-1/2
+                                w-full
+                                z-20
                                 text-sm
                                 ">
                                     {page.submenu.map((submenu, sId) => (
@@ -173,7 +195,7 @@ export default function MenuDesktop() {
                                             md:text-start
                                             md:text-xl
                                             w-full 
-                                            py-1
+                                            py-1 
                                             flex
                                             justify-end
                                             md:justify-start
