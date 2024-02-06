@@ -8,9 +8,9 @@ import { getDataPage } from '@/service/model/routeTwo'
 import Contato from '@/components/Pages/Contato'
 import QuemSomos from '@/components/Pages/QuemSomos'
 import Fabrica from '@/components/Pages/Fabrica'
-import Distribuidoras from '@/components/Pages/Distribuidoras'
+import DistribuidorasOne from '@/components/Pages/DistribuidorasOne'
 import AutopecasOne from '@/components/Pages/AutopecasOne'
-import AutocenterEMecanicas from '@/components/Pages/AutocenterEMecanicas'
+import MecanicasOne from '@/components/Pages/MecanicasOne'
 import Parceiro from '@/components/Pages/Parceiro'
 import Produtos from '@/components/Pages/Produtos'
 import Produto from '@/components/Pages/Produto'
@@ -45,9 +45,9 @@ export default function Index({content}) {
       )}
 
         {content?.type === 'geo-fabrica' && (<Fabrica content={content}/>)}
-        {content?.type === 'geo-distribuidoras' && (<Distribuidoras content={content}/>)}
+        {content?.type === 'geo-distribuidoras' && (<DistribuidorasOne content={content}/>)}
         {content?.type === 'geo-autopecas' && (<AutopecasOne content={content}/>)}
-        {content?.type === 'geo-mecanicas' && (<AutocenterEMecanicas content={content}/>)}
+        {content?.type === 'geo-mecanicas' && (<MecanicasOne content={content}/>)}
       
       {content?.type === 'error' && (
         <>
