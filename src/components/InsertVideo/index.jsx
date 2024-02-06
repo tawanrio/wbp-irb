@@ -5,15 +5,10 @@ export default function InsertVideo({content, home}) {
       {! home ? (
         <div className="flex flex-col items-center " id={`video_`}>
         <div className="w-full max-w-7xl md:px-14 md:my-10 my-4 mb-6 px-6 flex justify-between">
-<<<<<<< HEAD
+
         
         <video className="w-full shadow-[-20px_35px_90px_-30px_rgba(0,0,0,.8)]"  src={content?.url} controls width={1080} height={500}/>
         
-=======
-  
-          <video className="w-full shadow-[-20px_35px_90px_-30px_rgba(0,0,0,.8)]"  src={'/video/videoirb.mp4'} controls width={1080} height={500}/>
-          
->>>>>>> f45f98161f5704a9f95a01693948a2515c09ab7f
         </div>
         </div>
         ):(
