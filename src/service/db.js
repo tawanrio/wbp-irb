@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 
 const connectMongoDB = async () => {
   try {
-    // await mongoose.connect('mongodb://186.202.57.154:27017/irb');
-    await mongoose.connect('mongodb://localhost:27017/irb');
+    await mongoose.connect('mongodb://186.202.57.154:27017/irb');
+    // await mongoose.connect('mongodb://localhost:27017/irb');
     console.log('Conexão estabelecida com sucesso.');
   } catch (error) {
     console.error('Erro ao conectar ao MongoDB:', error);
