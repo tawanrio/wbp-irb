@@ -19,7 +19,7 @@ module.exports = {
           'white-to-tramsp': 'linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(0,0,0,0) 100%)',
         },
       fontFamily: {
-        sans : ['Inter', 'sans']
+        sans : ['Inter', 'arial', 'Times New Roman']
       },
       height: {
         'banner-home-h': [base.banner.size.height],
