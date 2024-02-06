@@ -1,45 +1,51 @@
 import Image from "next/image"
 import Link from "next/link"
 
-export default function ProductsCard({products, cards, textSize, baseUrl, limit}) {
+export default function ProductsCard({colors, products, textSize, baseUrl, limit, heightCard,baseUrlGeo}) {
 
   const limitCard = limit || 6
   
-  function generateProductUrl(baseUrl, product){
+  function generateProductUrl({baseUrl,baseUrlGeo, product}){
     let productName = product.toLowerCase().trim().replaceAll(' ','-');
     baseUrl = baseUrl ? baseUrl : '/';
-
+    
+    if(baseUrlGeo){
+      const arrRoute = baseUrlGeo.replace('/','').split('/')
+      return `/${arrRoute[0]}/${productName}/${arrRoute[1]}`
+    }
     return baseUrl + productName
   }
+  
   
   return (
     <div className="
             flex
             md:gap-8
-            gap-3=
+            gap-3
             flex-wrap
             justify-between
+            w-full
             ">
 
-            {cards?.map((product, pId)=>(
+            {products?.map((product, pId)=>(
               pId <= limitCard-1 &&
                 <Link key={pId} 
-                href={generateProductUrl(baseUrl,product.title)}
-                className="
+                href={generateProductUrl({baseUrl:baseUrl,baseUrlGeo: baseUrlGeo ,product:product.label})}
+                className={`
                 flex
-                grayscale-[50%]
+                grayscale-[100%]
                 flex-1
                 md:min-w-[25%]
                 min-w-[48%]
                 w-full
+                md:h-[135px]
                 py-5
                 max-w-[30%]
                 rounded-[90px_25px_90px_25px]
                 bg-cover
                 bg-center
                 items-center
-                shadow-[0px_0px_40px_-10px_rgba(0,0,0,1)]
-                hover:shadow-[0px_0px_30px_3px_rgba(0,0,0,1)]
+               
                 hover:grayscale-[0%]
                 justify-center
                 overflow-hidden
@@ -50,14 +56,17 @@ export default function ProductsCard({products, cards, textSize, baseUrl, limit}
                 before:content-['']
                 before:block
                 before:absolute
-                before:bg-[#0a0a0a3a]
+                before:bg-[#0a0a0aa3]
                 before:z-[2]
                 before:w-full
                 before:h-full
-                ">
-                      <Image
-                    width={400}
-                    height={500}
+                ${heightCard && heightCard}
+                `}>
+
+                    
+                     <Image
+                    fill
+                    sizes="100vw"
                     src={product.thumbnail.imageUrl}
                     alt={product.title}
                     className={`
@@ -71,7 +80,7 @@ export default function ProductsCard({products, cards, textSize, baseUrl, limit}
                     `}
                     />
                     <div
-                    style={{ color: products?.colors.text || '#fff', textShadow: products?.colors.border || '2px 2px 1px #000'}}
+                    style={{ color: colors?.text || '#fff', textShadow: '2px 2px 1px #000'}}
                     className={`
                     absolute
                     ${textSize}

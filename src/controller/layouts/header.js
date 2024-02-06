@@ -10,9 +10,7 @@ export const header = {
       separateIcon : '/images/arrow.svg',
       links :[
           { label: 'home', route: '/' },
-          { label: 'quem somos', route: '/quem-somos' },
-          // { label: 'para o seu negócio', route: '/para-o-seu-negocio' },
-          { label: 'fábrica', route: '/fabrica' },
+          { label: 'a IRB', route: '/fabrica' },
           { label: 'parceiros', route: '#', submenu: [
             { label: 'distribuidoras', route: '/distribuidoras' },
             { label: 'autopeças', route: '/autopecas' },

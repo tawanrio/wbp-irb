@@ -3,11 +3,11 @@ import Image from 'next/image';
 export default function Images({controllerBanner, backdrop}) {
     const {activeBanner, setActiveBanner, banners} = controllerBanner
   return (
-    <div className="w-full md:h-banner-home-h" id='imagesBanners'>
+    <div className="w-full " id='imagesBanners'>
     {banners?.carousel.map((banner, index)=> (
       <div key={index}
        className={`
-       ${backdrop &&`
+       ${backdrop ? `
        before:content-['']
        before:block
        before:absolute
@@ -15,10 +15,19 @@ export default function Images({controllerBanner, backdrop}) {
        before:z-[2]
        before:w-full
        before:h-full
+       ` : `
+       before:content-['']
+       before:block
+       before:absolute
+       before:bg-[#3338579e]
+       before:z-[2]
+       before:w-full
+       before:h-full
        `}
       opacity-0
        absolute 
        w-full 
+       
        flex 
        md:justify-center 
        ${index === activeBanner && '!opacity-100'}`} >
@@ -31,14 +40,14 @@ export default function Images({controllerBanner, backdrop}) {
               fill
               sizes="100vw"
               src={banner.url}
-              alt={banner.name}
+              alt={banner.alt}
             />
             </div>
             <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners?.colors.text,height:controllerBanner.size }}
              className="
-              md:h-banner-home-h
-              md:px-24
-              md:max-w-6xl 
+              
+              md:px-14
+              md:max-w-7xl 
               px-16
               absolute
               top-0
@@ -47,18 +56,29 @@ export default function Images({controllerBanner, backdrop}) {
               flex-col
               w-full
               ">
-              <h2 className='
-              md:text-4xl
-              md:w-1/2
+              <h2 
+              style={{width: `${banner?.textWidth}%`}}
+              className='
+              md:text-5xl
+              md:w-[60%]
               dropShadownBanner
               w-2/3
               
-              [text-shadow:_1px_1px_5px_rgb(0_0_0_/_100%)]
+             
               font-bold
               text-xl
               z-10
               '>{banner.title}</h2>
-              <p>{banner.description}</p>
+              <p className='
+              md:text-2xl
+               md:w-[50%]
+              dropShadownBanner
+              w-2/3
+              
+              [text-shadow:_1px_1px_5px_rgb(0_0_0_/_100%)]
+              font-normal
+              text-xl
+              z-10 '>{banner.description}</p>
             </div>
             </div>
         ))}

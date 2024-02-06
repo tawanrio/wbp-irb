@@ -1,16 +1,12 @@
-import { useContext } from 'react';
-import { PageData } from '@/context/pageData';
+export default function Copyright({content}) {
 
-export default function Copyright() {
+    const copyright = content?.items.find(item => item.label === 'default')
+    const colors = copyright?.colors
 
-  const { layouts } = useContext(PageData);
-    const dataCopyright = layouts.copyright
-    const colors = layouts.copyright.colors
-    
   return (
     <>
         <section 
-        style={{background:colors.bg, color:colors.text}}
+        style={{background:colors?.bg, color:colors?.text}}
         className={`
         text-[.8rem]
         flex
@@ -18,7 +14,7 @@ export default function Copyright() {
         md:py-10
         py-5
         `}>
-                <span  className='text-center'>{dataCopyright.label} </span>
+                <span  className='text-center'>{copyright?.text} </span>
         </section>
     </>
   )

@@ -1,14 +1,17 @@
 
 import Image from "next/image"
 import SectionTitle from "../SectionTitle"
-import Description from "../Description"
+import InsertText from "@/components/InserText"
+import dynamic from 'next/dynamic'
+ 
+// const InsertText = dynamic(() => import('@/components/InserText'), { ssr: false })
 
 export default function ContentImgDescription({content}) {
     return (
         <>
          <article className="flex flex-col items-center " id={`content-img-description_`}>
             <div className="w-full max-w-7xl md:px-14 px-6 md:my-10 my-4 flex flex-col md:justify-between md:gap-10">
-                <SectionTitle title={content.title} line/>
+                <SectionTitle title={content?.title} line/>
                 <div
                 className="
                 md:flex-row
@@ -22,44 +25,65 @@ export default function ContentImgDescription({content}) {
                 ">
                     <div
                     className="
-                    h-full
+                    h-[400px]
                     relative
                     group
-                    
                     ">
                         <div 
-                        style={{borderRadius:content.borderRadius}}
+                        style={{borderRadius:content?.borderRadius}}
                         className="
                          overflow-hidden
                          md:min-w-[380px]
                          h-full
                          group-hover:scale-105
-                         shadow-[0px_0px_40px_-10px_rgba(0,0,0,1)]
-                         hover:shadow-[0px_0px_30px_3px_rgba(0,0,0,1)]
+                         
                          duration-700
                         ">
+                            <div className="relative">
+                            <div className="
+                        z-90
+                        w-full 
+                        absolute 
+                        md:min-h-[400px] 
+                        bg-[#0a0a0aa3]
+                        flex
+                        z-[99]
+                        justify-center
+                        items-center
+                        uppercase
+                        text-white
+                        font-bold
+                        text-2xl
+                        ">{content?.titleImg}</div>
                         <Image
-                        src={content.image}
-                        width={400}
-                        height={1500}
+                        src={content?.image}
+                        fill
+                        sizes="100vw"
+                        quality={100}
                         alt="image"
                         className="
                         h-full
-                        md:min-h-[500px]
+                        md:min-h-[400px]
                         w-full
                         object-cover
-                        scale-150
+                        scale-110
+                        z-20
                         group-hover:scale-100
                         duration-1000
+                        
                         "
                         />
+                       
                         </div>
-                        {content.imageSobre && (
+                        </div>
+                        {content?.imageSobre && (
+                            <div className="relative">
                             <Image
                             alt="imagem description"
-                            src={content.imageSobre}
-                            width={500}
-                            height={1500}
+                            src={content?.imageSobre}
+                            fill
+                            sizes="100vw"
+                            quality={100}
                             className="
                            absolute
                            bottom-0
@@ -73,6 +97,7 @@ export default function ContentImgDescription({content}) {
                            duration-700
                             "
                             />
+                            </div>
                         )}
                     </div>
                     <div className="
@@ -82,7 +107,7 @@ export default function ContentImgDescription({content}) {
                     flex-col  
                     gap-8
                     ">
-                        <Description content={content.description} />
+                        <InsertText content={content?.description} datetime="2016-10-25" suppressHydrationWarning />
                     </div>
                 </div>
             </div>

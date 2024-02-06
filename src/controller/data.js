@@ -9,8 +9,6 @@ export {home as _home} from './pages/_home'
 
 export {about as _about} from './pages/_about'
 
-export {paraOSeuNegocio as _paraOSeuNegocio} from './pages/_paraoseunegocio'
-
 export {factory as _factory} from './pages/_factory'
 
 export {distributors as _distributors} from './pages/_distributors'
@@ -20,6 +18,12 @@ export {autoparts as _autoparts} from './pages/_autoparts'
 export {contact as _contact} from './pages/_contact'
 
 export {autocenters as _autocenters} from './pages/_autocenters'
+
+export { _partners } from './pages/_partners'
+
+export { _products } from './pages/_products'
+
+
 
 
 

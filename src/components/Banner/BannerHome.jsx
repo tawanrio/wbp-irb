@@ -37,7 +37,7 @@ export default function Banner({banners}) {
   }
   
   return (
-    <section className="relative"  id={`description_`} >
+    <section className="relative"  id={`bannerHome`} >
         <div 
         style={{height:size}}
         className="flex justify-center md:mb-10 md:h-banner-home-h mb-3  " id='containerBanner'>

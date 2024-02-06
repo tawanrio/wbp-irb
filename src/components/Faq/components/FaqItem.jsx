@@ -16,7 +16,7 @@ export default function FaqHtml({fId, item, colors, climb}) {
     gap-2
     ">
         <div 
-        style={{backgroundColor: colors.askingBg, color: colors.askingText}}
+        style={{backgroundColor: colors?.askingBg, color: colors?.askingText}}
         className="
         flex 
         items-center
@@ -27,6 +27,7 @@ export default function FaqHtml({fId, item, colors, climb}) {
         px-8
         ">
             <span 
+            style={{color:'#666'}}
             className={`
             md:text-xl
             w-10/12 
@@ -38,7 +39,7 @@ export default function FaqHtml({fId, item, colors, climb}) {
             ${(faqOpen && faqOpen === 'f'+fId) && '!line-clamp-none'}
             `}>
 
-            {item.asking}
+            {item?.asking}
             </span>
             <div className="relative w-4">
                 <div 
@@ -51,7 +52,7 @@ export default function FaqHtml({fId, item, colors, climb}) {
             </div>
         </div>
         <div
-         style={{backgroundColor: colors.answerBg, color: colors.answerText, ...(faqOpen && faqOpen === 'f'+fId) && {display:'flex'}}}
+         style={{backgroundColor: colors?.answerBg, color: "#666", ...(faqOpen && faqOpen === 'f'+fId) && {display:'flex'}}}
         className="
         p-4
         px-8
@@ -62,7 +63,7 @@ export default function FaqHtml({fId, item, colors, climb}) {
         font-light
         shadow-[0px_0px_25px_-28px_rgba(0,0,0,1)]
         ">
-            {item.answer}
+            {item?.answer}
         </div>
     </div>
   )

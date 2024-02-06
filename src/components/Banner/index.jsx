@@ -4,11 +4,12 @@ import {  useState,} from 'react';
 import Dots from './components/Dots';
 import ImagesBanners from './components/ImagesBanners';
 import Arrow from './components/Arrow';
+import InsertVideo from '@/components/InsertVideo';
 
-export default function Banner({banners}) {
+export default function Banner({banners, video}) {
   const [activeBanner, setActiveBanner] = useState(0)
 
-  const size = banners.size.height
+  const size = banners?.size.height
 
   function nextBanner(){
     const qntBanner = banners?.carousel.length-1
@@ -37,9 +38,31 @@ export default function Banner({banners}) {
   return (
     <section className="relative"  id={`description_`} >
         <div 
-        className="flex justify-center md:mb-10 md:h-banner-home-h h-52 mb-3  " id='containerBanner'>
+        style={{height:size}}
+        className="flex justify-center md:mb-10  mb-3 relative " id='containerBanner'>
         <Dots controllerBanner={{banners,setActiveBanner, activeBanner,size}}/>
-        <ImagesBanners controllerBanner={{banners,setActiveBanner, activeBanner,size}} />
+        {!video 
+        ? (<ImagesBanners controllerBanner={{banners,setActiveBanner, activeBanner,size}} />) 
+        : (
+        <><InsertVideo content={video} home/>
+        <div 
+        style={{height:size}}
+        className='w-full absolute flex items-center'>
+        <h2 className='
+              w-full
+              md:text-5xl
+              uppercase
+              absolute
+              text-center
+              md:w-[100%]
+              px-[175px]
+              text-[#fff]
+              font-bold
+              text-xl
+              z-20
+              '>REFERÊNCIA EM PEÇAS AUTOMOTIVAS</h2>
+        </div></>)
+        }
         <Arrow controllerBanner={{banners,setActiveBanner, activeBanner, prevBanner, nextBanner,size}} />
       
       </div>

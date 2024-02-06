@@ -6,9 +6,9 @@ export const partners = {
     title: 'Para o seu negócio',
     cards : [
       {
-        title: 'Fábricas',
+        title: 'Fábrica',
         bgImage: '/images/carousel/banner1.svg',
-        category: 'fabricas'
+        category: 'fabrica'
       },
       {
         title: 'Distribuidoras',

@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Description from "../Description"
 
 export default function CompanyValues({cards}) {
     
@@ -96,7 +97,21 @@ export default function CompanyValues({cards}) {
                     font-light
                     px-5
                     ">
-                        <span>{card.description}</span>
+                        <span> {card.description?.map((text , tId)=>(
+              <p key={tId} 
+              id={`description_`}
+              className="
+              md:text-lg
+              text-base
+              flex
+              text-center
+              "
+              >
+              {text}
+            </p>
+          ))}
+                            {/* <Description content={card.description} color="#fff" size="10px"/> */}
+                            </span>
                     </div>
                 </div>
                 )

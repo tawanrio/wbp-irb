@@ -1,4 +1,5 @@
 export const footer = {
+    title : "footer",
     colors:{
       bg : '#000',
       text: '#fff',

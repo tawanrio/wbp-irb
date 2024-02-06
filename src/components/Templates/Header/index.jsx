@@ -1,11 +1,24 @@
 import React from 'react'
-import MenuDesktop from "./MenuDesktop";
+import Menu from "./Menu";
+import MenuHome from "./MenuHome";
 
 
-export default function Header() {
+export default function Header({style, content, page}) {
+    const size = page?.banners.size.height
     return (
-        <header>
-            <MenuDesktop/>
-        </header>
+       <>
+            {!!style ? (
+                <header 
+                style={{ height: size}}
+                className='absolute w-full '>
+                    <MenuHome content={content}/>
+                </header>
+            ):(
+                <header>
+                    <Menu content={content}/>
+                </header>
+            )}
+        </>
     )
 }
+

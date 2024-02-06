@@ -37,7 +37,7 @@ export default function BreadCrumb() {
                     {pathname.map((page, index) => {
                         let currentPage = '';
                         for (let i = 0; i <= index; i++) {
-                            currentPage += '/' + pathname[i];
+                            currentPage +=  pathname[i] + '/';
                         }
                         const dynamicUrl = hostname + currentPage
 
@@ -46,16 +46,18 @@ export default function BreadCrumb() {
                         flex
                         gap-2
                         md:gap-4
-                        ">
+                        "
+                        >
                                 <Link
                                     href={dynamicUrl}
-                                    style={{ ...pathname.length - 1 === index && { fontWeight: '600' } }}
+                                    style={{ ...pathname.length - 1 === index && { fontWeight: '600'},...{color:'#666'} }}
                                     className={`
                                     ${pathname.length - 1 === index && ''}
                                     hover:underline
                                     hover:text-blue-800
                                     duration-500
-                                    `}>
+                                    `}
+                                    >
                                     {index === 0 ? (`home${page}`.replaceAll('-', ' ')) : (`${page.replaceAll('-', ' ')}`)}
 
                                 </Link>

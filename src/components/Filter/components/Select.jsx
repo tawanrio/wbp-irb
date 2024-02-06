@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import Image from "next/image";
 export default function Select({ select, set, filter, content, setContent, textDefault}) {
  
   const handleSet = (e) =>{
@@ -7,14 +7,17 @@ export default function Select({ select, set, filter, content, setContent, textD
     content && setContent(e.target.value.split(','));
   }
   return (
+    <div className=" justify-center items-center flex">
     <select value={content}  onChange={handleSet}  
     className={`
-    bg-neutral-100
+    bg-[#D9D9D9]
     appearance-none
     py-5
     px-5
+    text-center
     rounded-lg
-    w-3/12
+    w-[300px]
+    font-medium
     uppercase
     text-base text-gray-900 border   focus:ring-blue-500 focus:border-blue-500 
     `}
@@ -43,5 +46,15 @@ export default function Select({ select, set, filter, content, setContent, textD
   )     
        }
     </select>
+    <div className="relative w-[15px] h-[15px]">
+      <Image
+        fill
+        sizes="100vw"
+        src={"/images/components/icons/pol-filter.png"}
+        alt="icon arrow select"
+        className="translate-x-[-35px]"
+      />
+    </div>
+    </div>
   )
 }

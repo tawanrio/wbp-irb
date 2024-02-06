@@ -1,18 +1,15 @@
 import Image from 'next/image'
-import { useContext, useState } from 'react';
-import { PageData } from '@/context/pageData';
 import Link from 'next/link';
+import { useState } from 'react';
 
-export default function MenuDesktop() {
+export default function MenuDesktop({content}) {
     const [isHovered, setIsHovered] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [submenuOpen, setSubmenuOpen] = useState(false);
 
+    const dataHeader = content
+    const colors = content?.colors
 
-    const { layouts } = useContext(PageData);
-
-    const dataHeader = layouts.headerHome
-    const colors = layouts.headerHome.colors
 
     function handleSubmenu(event,key, submenu){
         submenu && event.preventDefault();
@@ -50,10 +47,10 @@ export default function MenuDesktop() {
             z-30
             '>
                 
-                <Link href={dataHeader.logo.route} className='w-20 h-14 md:h-24 md:w-[120px] md:my-7 relative z-10'>
+                <Link href={dataHeader?.logo.route} className='w-20 h-14 md:h-24 md:w-[120px] md:my-7 relative z-10'>
                     <Image
-                        src={dataHeader.logo.url}
-                        alt={dataHeader.logo.alt}
+                        src={dataHeader?.logo.url}
+                        alt={dataHeader?.logo.alt}
                        sizes='100vw'
                        fill
                         className='md:px-0 '
@@ -77,7 +74,7 @@ export default function MenuDesktop() {
                             className="bar w-full border-b-2 duration-300 z-20 border-white h-0 "></div>
                         </div>
                     </div>
-                <div style={{...menuOpen && {width:'100vw',opacity:'1',zIndex:'10'}, color:colors.text ,}} className="
+                <div style={{...menuOpen && {width:'100vw',opacity:'1',zIndex:'10'}, color:colors?.text ,}} className="
                     md:flex-col
                     md:items-start  
                     md:justify-center
@@ -105,7 +102,7 @@ export default function MenuDesktop() {
                     mt-10
                     flex-col
                 ">
-                    {dataHeader.nav.links.map((page, lId) => (
+                    {dataHeader?.nav[0].links.map((page, lId) => (
                         <ul key={'l'+lId} className="
                         md:w-auto
                         md:inline-block
@@ -122,7 +119,7 @@ export default function MenuDesktop() {
                                 setIsHovered(false)}}
                               onClick={(event)=> handleSubmenu(event,'l'+lId, page.hasOwnProperty("submenu"))}
                                 style={{ 
-                                    ...((isHovered && !page.hasOwnProperty("submenu")) && isHovered === 'l'+lId? {background:colors.hoverbg, color: colors.hovertext} : ''),
+                                    ...((isHovered && !page.hasOwnProperty("submenu")) && isHovered === 'l'+lId? {background:colors?.hoverbg, color: colors?.hovertext} : ''),
                                    
                             }}
                             className='
@@ -149,8 +146,8 @@ export default function MenuDesktop() {
                             >
                                 <span>{page.label}</span>
                                 {page.hasOwnProperty("submenu") && ( <Image
-                                                                        src={dataHeader.nav.icon}
-                                                                        alt={dataHeader.logo.alt}
+                                                                        src={dataHeader?.nav.icon}
+                                                                        alt={dataHeader?.logo.alt}
                                                                         width={15}
                                                                         height={15}
                                                                         style={{...(submenuOpen && submenuOpen === 'l'+lId) && {transform:'rotate(0deg)'}}}
@@ -166,8 +163,8 @@ export default function MenuDesktop() {
                             {page.hasOwnProperty("submenu") && (
                                 <div 
                                 style={{
-                                    ...(submenuOpen && submenuOpen === 'l'+lId) && {display:'block'}, background:colors.bg, color:colors.text,
-                                    color: colors.textSub || colors.text
+                                    ...(submenuOpen && submenuOpen === 'l'+lId) && {display:'block'}, background:colors.bg, color:colors?.text,
+                                    color: colors?.textSub || colors?.text
                                 }}
                                 
                                 className="
@@ -190,7 +187,7 @@ export default function MenuDesktop() {
                                             <Link href={submenu.route || "/#"}
                                             onMouseEnter={() => setIsHovered('s'+sId)}
                                             onMouseLeave={() => setIsHovered(false)}
-                                              style={{...isHovered && isHovered === 's'+sId? {background:colors.hoverbg, color: colors.hovertext} : ''}}
+                                              style={{...isHovered && isHovered === 's'+sId? {background:colors?.hoverbg, color: colors?.hovertext} : ''}}
                                             className='
                                             md:text-start
                                             md:text-xl

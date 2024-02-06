@@ -1,6 +1,7 @@
 import SectionTitle from "../SectionTitle"
 
-export default function Form({form}) {
+export default function Form({inputs, colors}) {
+  const colorText = '#666'
   return (
     <section className="flex flex-col items-center " id={`contact_`}>
     <div className="w-full max-w-7xl md:px-14 md:my-7 px-6 my-4 mb-10 flex flex-col justify-between gap-10">
@@ -22,7 +23,7 @@ export default function Form({form}) {
                     flex-col
                 gap-4
                     ">
-                    {form?.name && (
+                    {inputs?.name && (
                     <div className="
                     flex
                     flex-col
@@ -31,7 +32,7 @@ export default function Form({form}) {
                         font-bold
                         capitalize
                         text-lg
-                        " htmlFor="nome">Nome</label>
+                        " htmlFor="nome" style={{color:colorText}}>Nome</label>
                         <input type="text" id="nome" placeholder="Nome"
                         className="
                        border
@@ -41,7 +42,7 @@ export default function Form({form}) {
                         />
                     </div>
                     )}
-                    {form?.email && (
+                    {inputs?.email && (
                       <div className="
                     flex
                     flex-col
@@ -50,7 +51,7 @@ export default function Form({form}) {
                         font-bold
                         capitalize
                         text-lg
-                        " htmlFor="email">Email</label>
+                        " htmlFor="email" style={{color:colorText}}>Email</label>
                         <input type="text" id="email" placeholder="Email"
                         className="
                        border
@@ -60,7 +61,7 @@ export default function Form({form}) {
                         />
                     </div>
                     )}
-                    {form?.phone && (
+                    {inputs?.phone && (
                       <div className="
                     flex
                     flex-col
@@ -69,7 +70,7 @@ export default function Form({form}) {
                         font-bold
                         capitalize
                         text-lg
-                        " htmlFor="phone">Telefone</label>
+                        " htmlFor="phone" style={{color:colorText}}>Telefone</label>
                         <input type="text" id="phone" placeholder="Telefone"
                         className="
                        border
@@ -79,7 +80,7 @@ export default function Form({form}) {
                         />
                     </div>
                     )}
-                    {form?.subject && (
+                    {inputs?.subject && (
                       <div className="
                     flex
                     flex-col
@@ -88,7 +89,7 @@ export default function Form({form}) {
                         font-bold
                         capitalize
                         text-lg
-                        " htmlFor="subject">Assunto</label>
+                        " htmlFor="subject" style={{color:colorText}}>Assunto</label>
                         <input type="text" id="subject" placeholder="Assunto"
                         className="
                         border
@@ -104,7 +105,7 @@ export default function Form({form}) {
                 flex
                 w-1/2
                 ">
-                {form?.message && (
+                {inputs?.message && (
                      <div className="
                      flex
                      flex-col
@@ -114,7 +115,7 @@ export default function Form({form}) {
                         font-bold
                         capitalize
                         text-lg
-                        " htmlFor="message">Menssagem</label>
+                        " htmlFor="message" style={{color:colorText}}>Menssagem</label>
                         <textarea name="message" id="message" cols="50" rows="5" placeholder="Menssagem"
                          className="
                          border
@@ -129,15 +130,13 @@ export default function Form({form}) {
             </div>
             <div>
                 <button
+                style={{backgroundColor: colors?.button.bg, color: colors?.button.text}}
                 className="
-                bg-[#22326E]
                 px-20
                 py-2
                 text-white
                 text-2xl
                 rounded-full
-                shadow-[0px_0px_30px_-10px_rgba(0,0,0,1)]
-                hover:shadow-[0px_0px_30px_-5px_rgba(0,0,0,1)]
                 hover:scale-110
                 duration-500
                 "

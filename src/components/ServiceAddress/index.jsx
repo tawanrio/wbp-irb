@@ -19,11 +19,10 @@ export default function ServiceAddress({products, address}) {
                     md:w-6/12
                     w-12/12
                     flex-wrap
-                    
                     ">
                          <SectionTitle title={'Serviço / Produtos'} className="md:mb-5"/>
                          <div className=" my-8 ">
-                            <ProductsCard products={products} limit={9} cards={products?.collection} textSize={'md:text-[1.2rem'} />
+                            <ProductsCard products={products} limit={9} cards={products?.collection} textSize={'md:text-[1.2rem'}  heightCard={'md:!h-[95px]'}/>
                          </div>
                     </div>
                     <div className="border-l mt-20 mb-6 hidden md:block"></div>

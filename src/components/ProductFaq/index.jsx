@@ -22,7 +22,7 @@ export default function ProductFaq({products, faq, baseUrl}) {
                     ">
                          <SectionTitle title={'Produtos'} className="md:mb-5"/>
                          <div className=" my-8 ">
-                            <ProductsCard products={products} cards={products.collection} baseUrl={baseUrl} textSize={'md:text-[1.2rem'} />
+                            <ProductsCard products={products} cards={products?.collection} baseUrl={baseUrl} textSize={'md:text-[1.2rem'} heightCard={'md:!h-[100px]'} />
                          </div>
                     </div>
                     <div className="
@@ -39,10 +39,9 @@ export default function ProductFaq({products, faq, baseUrl}) {
                             my-8
                             ">
                         
-                            <FaqItem fId={'f01'} item={faq.items[0]} colors={faq.colors} climb={'line-clamp-1'} />
-                            <FaqItem fId={'f02'} item={faq.items[1]} colors={faq.colors} climb={'line-clamp-1'} />
-                            <FaqItem fId={'f03'} item={faq.items[2]} colors={faq.colors} climb={'line-clamp-1'} />
-                            <FaqItem fId={'f03'} item={faq.items[2]} colors={faq.colors} climb={'line-clamp-1'} />
+                            <FaqItem fId={'f01'} item={faq?.items[0]} colors={faq?.colors} climb={'line-clamp-1'} />
+                            <FaqItem fId={'f02'} item={faq?.items[1]} colors={faq?.colors} climb={'line-clamp-1'} />
+                            <FaqItem fId={'f03'} item={faq?.items[2]} colors={faq?.colors} climb={'line-clamp-1'} />
                 </div>
                     </div>
                 </div>

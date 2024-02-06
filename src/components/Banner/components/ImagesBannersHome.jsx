@@ -31,7 +31,7 @@ export default function Images({controllerBanner, backdrop}) {
               fill
               sizes="100vw"
               src={banner.url}
-              alt={banner.name}
+              alt={banner.alt || 'Banner'}
             />
             </div>
             <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners?.colors.text,height:controllerBanner.size }}

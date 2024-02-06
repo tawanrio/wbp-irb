@@ -2,11 +2,11 @@ import Image from "next/image"
 import SectionTitle from "../SectionTitle"
 import Link from "next/link"
 
-export default function Parceiros({title, partners, colors}) {
+export default function Parceiros({title, partners, colors, hiddenTitle}) {
     return (
         <section className="flex flex-col items-center " id={`partners_`}>
             <div className="w-full max-w-7xl md:px-14 md:my-7 my-4 px-6  flex flex-col justify-between md:gap-10 ">
-            <SectionTitle title={title} line/>
+            {!hiddenTitle && <SectionTitle title={title} line/>}
             <div className="
             md:my-2
             flex
@@ -18,11 +18,12 @@ export default function Parceiros({title, partners, colors}) {
             ">
 
             {partners?.map((partner, pId)=>(
+           
                 <Link key={pId} 
-                href={'/'+partner.category}
+                href={"/"+partner.label}
                 className="
                 flex
-                grayscale-[50%]
+                grayscale-[100%]
                 flex-1
                 md:min-w-[20%]
                 min-w-[40%]
@@ -32,8 +33,7 @@ export default function Parceiros({title, partners, colors}) {
                 rounded-3xl
                 h-40
                 items-center
-                shadow-[0px_0px_40px_-10px_rgba(0,0,0,1)]
-                hover:shadow-[0px_0px_30px_3px_rgba(0,0,0,1)]
+                
                 hover:grayscale-[0%]
                 justify-center
                 overflow-hidden
@@ -42,14 +42,15 @@ export default function Parceiros({title, partners, colors}) {
                 before:content-['']
                 before:block
                 before:absolute
-                before:bg-[#0a0a0a3a]
+                before:bg-[#0a0a0aa3]
                 before:z-[2]
                 before:w-full
                 before:h-full
-                ">
+                "><div>
+
                     <Image
-                    width={300}
-                    height={400}
+                    fill
+                    sizes="100vw"
                     src={partner.bgImage}
                     alt={partner.title}
                     className="
@@ -59,6 +60,7 @@ export default function Parceiros({title, partners, colors}) {
                     duration-700
                     "
                     />
+                     </div>
                     <div
                     style={{color: colors.text || '#fff', textShadow: colors.border || '2px 2px 1px #000'}}
                     className="

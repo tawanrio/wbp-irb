@@ -6,7 +6,7 @@ export default function Arrow({controllerBanner}) {
     className={`
       absolute 
       w-full 
-      md:max-w-6xl
+      md:max-w-8xl
       select-none
       
       ${!(banners?.carousel.length  > 1)&& 'hidden'}
@@ -22,10 +22,11 @@ export default function Arrow({controllerBanner}) {
       justify-center
       md:w-1/12
       w-2/12
+      z-10
       select-none
       flex
       " role="button" href="#" onClick={prevBanner}>
-      <svg className="md:w-24 translate-x-[-40%] w-8 select-none" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor"  ><path d="m15 18-6-6 6-6"/></svg>
+      <svg className="md:w-24  w-8 select-none" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor"  ><path d="m15 18-6-6 6-6"/></svg>
       </a>
       <a 
       style={{ color:banners?.colors.controllers }}
@@ -40,9 +41,10 @@ export default function Arrow({controllerBanner}) {
       md:w-1/12
       w-2/12
       h-52
+      z-10
       items-center
       " role="button" href="#" onClick={nextBanner}>
-        <svg className="md:w-24 w-8 translate-x-[40%] select-none" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor"  ><path d="m9 18 6-6-6-6"/></svg>
+        <svg className="md:w-24 w-8  select-none" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor"  ><path d="m9 18 6-6-6-6"/></svg>
       </a>
         </div>
   )
