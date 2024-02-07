@@ -90,7 +90,7 @@ export default function Distribuidoras({content}) {
 
        <ContentImgDescription content={imgDescription}/>
        {/* <ProductFaq products={content?.products} faq={faq} baseUrl={`/${pageUrl}/`}/>  */}
-       <Categories categories={content?.categories} colors={content?.page?.colors.products} title baseUrl={`/${pageUrl}/`}/>
+       <Categories categories={content?.categories} colors={content?.page?.colors.products} title baseUrlGeo={`/${pageUrl}/`}/>
        {/* <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`/${pageUrl}/`} title /> */}
        <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>
 
