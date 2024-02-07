@@ -81,7 +81,7 @@ export default function Fabrica({page, partners, products, form, menu, template}
        <ContentDescription content={description}/>
        <Products baseUrl={`/${pageUrl}/`} products={products} colors={page?.colors.products} title={'Produtos'} />
        <ContentImgDescription content={imgDescription}/>
-       <Faq faq={faq}/>
+        {/* <Faq faq={faq}/> */}
     </Templates>
           
    </>

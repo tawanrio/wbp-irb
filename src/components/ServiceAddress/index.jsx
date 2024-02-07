@@ -10,7 +10,8 @@ export default function ServiceAddress({products, address}) {
                 flex
                 md:flex-row
                 flex-col
-                gap-10
+                md:gap-10
+                gap-0
                 ">
                     <div className="
                     flex
@@ -21,11 +22,11 @@ export default function ServiceAddress({products, address}) {
                     flex-wrap
                     ">
                          <SectionTitle title={'Serviço / Produtos'} className="md:mb-5"/>
-                         <div className=" my-8 ">
-                            <ProductsCard products={products} limit={9} cards={products?.collection} textSize={'md:text-[1.2rem'}  heightCard={'md:!h-[95px]'}/>
+                         <div className=" my-1 ">
+                            <ProductsCard products={products} limit={9} cards={products?.collection} textSize={'md:text-[1.2rem'}  heightCard={'!h-[95px]'}/>
                          </div>
                     </div>
-                    <div className="border-l mt-20 mb-6 hidden md:block"></div>
+                    <div className="border-l md:mt-20 md:mb-6 hidden md:block"></div>
                     <div className="
                     w-12/12
                     md:w-5/12
@@ -36,7 +37,7 @@ export default function ServiceAddress({products, address}) {
                             w-full 
                             flex-col
                             gap-5
-                            md:py-8
+                            md:py-0
                             ">
                             <Address address={address}/>
                         </div>

@@ -25,7 +25,8 @@ export default function ContentImgDescription({content}) {
                 ">
                     <div
                     className="
-                    h-[400px]
+                    md:h-[400px]
+                    h-[100px]
                     relative
                     group
                     ">
@@ -45,6 +46,7 @@ export default function ContentImgDescription({content}) {
                         w-full 
                         absolute 
                         md:min-h-[400px] 
+                        min-h-[100px]
                         bg-[#0a0a0aa3]
                         flex
                         z-[99]
@@ -64,6 +66,8 @@ export default function ContentImgDescription({content}) {
                         className="
                         h-full
                         md:min-h-[400px]
+                        min-h-[100px]
+
                         w-full
                         object-cover
                         scale-110

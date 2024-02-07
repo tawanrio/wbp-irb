@@ -8,7 +8,7 @@ import QuemSomos from '@/components/Pages/QuemSomos'
 import Fabrica from '@/components/Pages/Fabrica'
 import Distribuidoras from '@/components/Pages/Distribuidoras'
 import Autopecas from '@/components/Pages/Autopecas'
-import AutocenterEMecanicas from '@/components/Pages/AutocenterEMecanicas'
+import AutocenterEMecanicas from '@/components/Pages/Mecanicas'
 import Parceiro from '@/components/Pages/Parceiro'
 import Produtos from '@/components/Pages/Produtos'
 import ProdutoGeo from '@/components/Pages/ProdutoGeo'
@@ -19,6 +19,7 @@ import Page from '@/service/model/schemas/pageSchema'
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 import {Address} from '@/service/model/schemas/addressSchema'
 import {Menu} from '@/service/model/schemas/menuSchema'
+import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSchema'
 import {Template} from '@/service/model/schemas/templateSchema'
 import {Categories} from '@/service/model/schemas/categoriesSchema'
 import {Geo} from '@/service/model/schemas/geoSchema'
@@ -29,6 +30,7 @@ import {formatStrToNoDash} from '@/utils/functions'
 
 export default function index({content}) {
   // const page = content.page.label;
+  console.log(content);
   return (
     <>
     {content?.type === 'product' && (
@@ -88,41 +90,63 @@ const singlePartner = async (route,collection)=>{
   }
 }
 
-const pagePartner = async (route) =>{
-  const partner = formatStrToNoDash(route[1]);
+const routeError = async (error) => {
+  const template = await Template.find();
+  const menu = await Menu.findOne({label:"menu"}).lean();
+  return {
+    type: 'error',
+    page:JSON.parse(JSON.stringify(error)),
+    template: template && JSON.parse(JSON.stringify(template)),
+    menu: menu && JSON.parse(JSON.stringify(menu)),
+  }
+}
+
+
+const routePartner = async (arrRoute) =>{
+  const partner = formatStrToNoDash(arrRoute[1]);
 
   const collection = await Collection.findOne({
-    label: { $regex: new RegExp(route[0], 'i') },
+    label: { $regex: new RegExp(arrRoute[0], 'i') },
     name: { $regex: new RegExp(partner, 'i') }
   }).lean();
 
   // se existir um parceiro
 if(collection){
     console.log('é um parceiro');
-  const partner = await singlePartner(route,collection)
+  const partner = await singlePartner(arrRoute,collection)
   return partner
 }
 
-const product = await ProductsDb.findOne({label:route[1]}).lean();
-if(product){
-  const data = await singleProduct(product,route)
-  return data;
+// se existir um produto
+if(arrRoute[0] !== 'mecanicas'){
+// const product = await ProductsDb.findOne({label:arrRoute[1]}).lean();
+const category = await CategoriesProducts.findOne({label:arrRoute[1]}).lean();
+if(category) return await singleProduct(category,arrRoute)
 }
+
+
+// rota inexistente
+const  error = await Page.findOne({label:'error'}).lean();
+if(error) return await routeError(error);
+
 
 }
 
-const singleProduct = async (product,arrRoute) =>{
+const singleProduct = async (category,arrRoute) =>{
+  
   const partner = formatStrToNoDash(arrRoute[1]);
   const stateName = formatStrToNoDash(arrRoute[2]);
   const page = await Page.findOne({label:"produtos"}).lean();
   const products = await ProductsDb.find().lean();
   const template = await Template.find();
+  const categories = await CategoriesProducts.find().lean();
   const menu = await Menu.findOne({label:"menu"}).lean();
   const partners = await Categories.findOne({label:"partners"}).lean();
     
   const geoDocument = await Geo.findOne().lean();
   const country = geoDocument.countries.find(country => country.name === 'brasil');
-  const collection = await Collection.find().lean();
+  const collection = await Collection.find({label:arrRoute[0]}).lean();
+  
   // const collection = await Collection.findOne({
   //   label: { $regex: new RegExp(route[0], 'i') },
   //   name: { $regex: new RegExp(partner, 'i') }
@@ -136,10 +160,11 @@ const singleProduct = async (product,arrRoute) =>{
     })[0];
 
     if(states){
-      product.title = `${product.title}s em ${states.name}`;
+      categories.title = `${categories.title}s em ${states.name}`;
       return {
         type: 'product',
-        product:JSON.parse(JSON.stringify(product)),
+        category:JSON.parse(JSON.stringify(category)),
+        categories: categories && JSON.parse(JSON.stringify(categories)),
         page: JSON.parse(JSON.stringify(page)),
         arrRoute:JSON.parse(JSON.stringify(arrRoute)),
         template: template && JSON.parse(JSON.stringify(template)),
@@ -147,7 +172,6 @@ const singleProduct = async (product,arrRoute) =>{
         menu: menu && JSON.parse(JSON.stringify(menu)),
         partners: partners && JSON.parse(JSON.stringify(partners)),
         products: products && JSON.parse(JSON.stringify(products)),
-        // states: states && JSON.parse(JSON.stringify(states)),
       }
     }
 
@@ -179,52 +203,44 @@ const singleProduct = async (product,arrRoute) =>{
 
     if(cityName) {
 
-      product.title = `${product.title}s em ${cityName}`;
+      categories.title = `${categories.title}s em ${cityName}`;
   return {
     type: 'product',
-        product:JSON.parse(JSON.stringify(product)),
+    categories: categories && JSON.parse(JSON.stringify(categories)),
         page: JSON.parse(JSON.stringify(page)),
         arrRoute:JSON.parse(JSON.stringify(arrRoute)),
+        category:JSON.parse(JSON.stringify(category)),
         partners: partners && JSON.parse(JSON.stringify(partners)),
         collection: collection && JSON.parse(JSON.stringify(collection)),
-        product:JSON.parse(JSON.stringify(product)),
+        // product:JSON.parse(JSON.stringify(product)),
         template: template && JSON.parse(JSON.stringify(template)),
         menu: menu && JSON.parse(JSON.stringify(menu)),
         products: products && JSON.parse(JSON.stringify(products)),
   }
-}else{
-  const page = await Page.findOne({label:"error"}).lean();
-  const template = await Template.find();
-  const menu = await Menu.findOne({label:"menu"}).lean();
-  return {
-    collection: collection && JSON.parse(JSON.stringify(collection)),
-    arrRoute:JSON.parse(JSON.stringify(arrRoute)),
-    type: 'error',
-    page: JSON.parse(JSON.stringify(page)),
-    template: template && JSON.parse(JSON.stringify(template)),
-    menu: menu && JSON.parse(JSON.stringify(menu)),
-
-  }
 }
 
-      
+
+// rota inexistente
+const  error = await Page.findOne({label:'error'}).lean();
+if(error) return await routeError(error);
+
+
 }
 
-async function getDataPage(resolvedUrl){
+async function getDataPage(arrRoute){
     try{
 
-    const route = await resolveRoute(resolvedUrl)
+    // const route = await resolveRoute(arrRoute)
     await connectMongoDB();
 
     // se for a rota for distribuidor/ autopeça/ autocenter
     if(
-      route[0] === 'distribuidoras' ||
-      route[0] === 'autopecas' ||
-      route[0] === 'fabrica' ||
-      route[0] === 'autocenter-e-mecanicas'
+      arrRoute[0] === 'distribuidoras' ||
+      arrRoute[0] === 'autopecas' ||
+      arrRoute[0] === 'fabrica' ||
+      arrRoute[0] === 'mecanicas'
     ){
-     const data = await pagePartner(route)
-     return data;
+     return await routePartner(arrRoute)
   }
 
      // se a rota for um produto
@@ -261,9 +277,9 @@ async function getDataPage(resolvedUrl){
 
 export const getServerSideProps  = async (context) => {
   try {
-    const resolvedUrl = context.resolvedUrl;
+    const arrRoute = context.resolvedUrl.replace('/', '').split('/');
    
-    const content = await getDataPage(resolvedUrl);
+    const content = await getDataPage(arrRoute);
 
     return {
       props: {
@@ -279,4 +295,4 @@ export const getServerSideProps  = async (context) => {
       },
     };
   }
-};
+}

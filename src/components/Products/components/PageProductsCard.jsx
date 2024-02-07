@@ -34,7 +34,7 @@ export default function ProductsCard({products, colors, textSize, baseUrl, limit
                 md:min-w-[25%]
                 min-w-[48%]
                 w-1/3
-                h-80
+                md:h-80
                 py-5
                 max-w-[30%]
                 rounded-[90px_25px_90px_25px]

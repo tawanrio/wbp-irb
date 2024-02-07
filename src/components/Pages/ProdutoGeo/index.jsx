@@ -13,6 +13,7 @@ import Filter from '@/components/Filter';
 import FindPartners from '@/components/FindPartners';
 import Partners from '@/components/Partners';
 import SearchPartners from '@/components/SearchPartners';
+import Categories from '@/components/Categories';
 import Products from '@/components/Products';
 
 // Database // Schema
@@ -73,28 +74,37 @@ menu:content?.menu,
     templateName: "footer"
   })
   
+  let partnerName
+  if(content?.arrRoute[0] !== 'fabrica'){
+     partnerName = content?.partners.types.find(item => item.label == content?.arrRoute[0]);
+  }else{
+    partnerName ={ title: 'Fábricas'}
+
+  }
+
   // content.partners.types = content?.partners.types?.filter((partner)=> partner.title.toLowerCase() != content?.product[0])
   
 
   return (
   <>
     <Head>
-       <title>{product?.metaTitle || product?.title}</title>
-       <meta name="description" content={product?.metaDescription || product?.contentDescription} />
+       <title>{content?.category?.metaTitle || content?.category?.title}</title>
+       <meta name="description" content={content?.category?.metaDescription || content?.category?.contentDescription} />
      </Head>
 
       <Templates template={content?.template} page={content?.page}>
-          <Banner banners={content?.product?.banners} />
+          <Banner banners={content?.category?.banners} />
           <BreadCrumb/>
-          <Title title={content?.product?.title}/>
-          <ContentDescription content={content?.product?.contentDescription}/>
+          <Title title={content?.category?.title}/>
+          <ContentDescription content={content?.category?.partner.description}/>
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
           {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners title={content?.partners?.title} product={product} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle /> */}
-          <SearchPartners collections={content?.collection} products={content?.products} arrRoute={content?.arrRoute} hiddenProductSearch />
+          <SearchPartners title={`Encontre um(a) ${partnerName.title}`} collections={content?.collection} products={content?.products} arrRoute={content?.arrRoute} hiddenProductSearch />
           {/* <Faq faq={product?.faq}/> */}
           {/* <Products products={content?.products} colors={content?.page?.colors.products} title /> */}
-          <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`/${content?.arrRoute[0]}/`} title />
+          <Categories baseUrl={`/${content?.arrRoute[0]}/`} categories={content?.categories} colors={content?.page?.colors.products} title />
+          {/* <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`/${content?.arrRoute[0]}/`} title /> */}
         <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>
         </Templates>
     

@@ -21,13 +21,18 @@ export default function Index({select, title}) {
             flex
             justify-center
             gap-10
+            md:flex-row
+            flex-col
+            md:py-0
+            py-5
+
             ">
             <Select textDefault={"Selecione o modelo"} select={select} set={setFilter} />
           {filter &&
             <Select textDefault={"Selecione"} select={select} filter={filter} content={content} setContent={setContent} />
           }
         </div>
-        <div className={`${ content?.length > 0 &&( "mb-10")}`}>
+        <div className={`${ content?.length > 0 &&( "mb-10 md:mt-0 ")}`}>
           {content && <Description content={content}  />}
         </div>
       </div>

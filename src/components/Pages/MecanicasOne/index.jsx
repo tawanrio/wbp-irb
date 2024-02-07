@@ -85,7 +85,7 @@ export default function AutocenterEMecanicas({content}) {
 
        {/* <SearchPartners hiddenProductSearch title="Encontre uma mecânica" collections={content?.collection} products={content?.products} /> */}
 
-       <SearchPartnersOne arrRoute={content?.arrRoute} hiddenProductSearch title="Encontre um distribuidor" collections={content?.collection} products={content?.products}/>
+       <SearchPartnersOne partnerType='mecanica' arrRoute={content?.arrRoute} hiddenProductSearch title="Encontre um distribuidor" collections={content?.collection} products={content?.products}/>
 
        <ContentImgDescription content={imgDescription}/>
 

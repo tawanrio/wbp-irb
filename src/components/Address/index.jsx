@@ -11,12 +11,24 @@ export default function Address({ address }) {
         <div className="flex flex-col items-center " id="address">
             <div className="w-full max-w-7xl  flex flex-col justify-between md:gap-10">
                 <div>
+                    <div>
+                        <span className="
+                        md:text-base
+                        text-sm
+                        w-full 
+                        first-letter:ca
+                        "
+                        >
+                       {address.street}, {address.number} - {address.city} - {address.state} - {address.country}
+                        </span>
+                    </div>
                     <div><h3 className="
-                    md:text-2xl
+                    md:text-xl
                     text-lg
                     w-full 
-                    uppercase
-                    
+                    mt-2
+                    capitalize
+                    text-[#666]
                     font-bold
                     "
                     

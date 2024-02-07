@@ -10,11 +10,13 @@ export default function Header({style, content, page}) {
             {!!style ? (
                 <header 
                 style={{ height: size}}
-                className='absolute w-full '>
+                className='absolute w-full md:py-0 my-10 '>
                     <MenuHome content={content}/>
                 </header>
             ):(
-                <header>
+                <header
+                className='md:my-0 my-5 '
+                >
                     <Menu content={content}/>
                 </header>
             )}

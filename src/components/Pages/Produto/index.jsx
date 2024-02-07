@@ -10,8 +10,10 @@ import BreadCrumb from '@/components/BreadCrumb';
 import ProductModels from '@/components/Products/ProductModels';
 import Faq from '@/components/Faq';
 import Filter from '@/components/Filter';
+import ImgProductDescription from '@/components/ImgProductDescription';
 import FindPartners from '@/components/FindPartners';
 import Partners from '@/components/Partners';
+import Utilities from '@/components/Utilities';
 
 // Database // Schema
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
@@ -30,6 +32,7 @@ export default function Produto({ content }) {
   const route = useRouter()
   let pageUrl = route.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
+  console.log(content);
  
   const [product, setProduct] = useState(content?.product)
 
@@ -87,12 +90,14 @@ menu:content?.menu,
           <Banner banners={product?.banners} />
           <BreadCrumb/>
           <Title title={product?.title}/>
-          <ContentDescription content={product?.contentDescription}/>
+          {/* <ContentDescription content={product?.contentDescription}/> */}
+          <ImgProductDescription  description={product?.contentDescription} image={product?.thumbnail}/>
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
-          <Filter select={product?.models}  title={'Modelos de Produtos'}/>
+          {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners partners={content?.partners} /> */}
           <FindPartners title={content?.partners?.title} product={product} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle />
-          <Faq faq={product?.faq}/>
+          <Utilities title={'Utilidades'}/>
+          {/* <Faq faq={product?.faq}/> */}
         </Templates>
     
    </>

@@ -10,7 +10,8 @@ import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 import Page from '@/service/model/schemas/pageSchema'
 import {Menu} from '@/service/model/schemas/menuSchema'
 import {Template} from '@/service/model/schemas/templateSchema'
-import {Categories} from '@/service/model/schemas/categoriesSchema'
+import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
+import Categories from '@/components/Categories';
 import {Collection} from '@/service/model/schemas/collectionsSchema'
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 
@@ -85,11 +86,12 @@ export default function Distribuidoras({content}) {
 
        {/* <SearchPartners title="Encontre um distribuidor" collections={content?.collection} hiddenProductSearch  products={content?.products} /> */}
 
-       <SearchPartnersOne arrRoute={content?.arrRoute} hiddenProductSearch title="Encontre um distribuidor" collections={content?.collection} products={content?.products}/>
+       <SearchPartnersOne partnerType='distribuidor' arrRoute={content?.arrRoute} hiddenProductSearch title="Encontre um distribuidor" collections={content?.collection} products={content?.products}/>
 
        <ContentImgDescription content={imgDescription}/>
        {/* <ProductFaq products={content?.products} faq={faq} baseUrl={`/${pageUrl}/`}/>  */}
-       <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`${pageUrl}/`} title />
+       <Categories categories={content?.categories} colors={content?.page?.colors.products} title baseUrl={`/${pageUrl}/`}/>
+       {/* <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`/${pageUrl}/`} title /> */}
        <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>
 
        </Templates>

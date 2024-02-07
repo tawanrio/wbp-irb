@@ -30,7 +30,7 @@ const routePage = async (page, template, route) => {
      }
 }
 
-const routeProduct = async (product, template) =>{
+const routeProduct = async (categories, template) =>{
        const page = await Page.findOne({label:"produtos"}).lean();
        const products = await ProductsDb.find().lean();
        const partners = await Categories.findOne({label:"partners"}).lean();
@@ -38,7 +38,7 @@ const routeProduct = async (product, template) =>{
 
     return {
       type: 'product',
-      product:JSON.parse(JSON.stringify(product)),
+      categories:JSON.parse(JSON.stringify(categories)),
       page: JSON.parse(JSON.stringify(page)),
       partners: partners && JSON.parse(JSON.stringify(partners)),
       template: template && JSON.parse(JSON.stringify(template)),
@@ -69,8 +69,9 @@ try{
       
 
        // produtos
-      const product = await ProductsDb.findOne({label:route}).lean();
-      if(product) return await routeProduct(product, template, route);
+       const categories = await CategoriesProducts.find({label:route}).lean();
+      // const product = await ProductsDb.findOne({label:route}).lean();
+      if(categories) return await routeProduct(categories, template, route);
      
   
       // rota inexistente

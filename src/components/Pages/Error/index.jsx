@@ -75,7 +75,6 @@ export default function index({content}) {
        {/* <ContentDescription content={description}/> */}
        {/* <Products baseUrl={`/${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title={'Produtos'} /> */}
        {/* <ContentImgDescription content={imgDescription}/> */}
-       {/* <Faq faq={faq}/> */}
     </Templates>
     </>
   )

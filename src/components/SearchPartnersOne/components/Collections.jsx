@@ -224,6 +224,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
         className='
         w-full
           flex
+          
           duration-500
           justify-center
           hover:bg-slate-200
@@ -276,7 +277,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
       w-full
           flex
           duration-500
-          justify-center
+                    justify-center
           hover:bg-slate-200
       '>
           Todas as cidades

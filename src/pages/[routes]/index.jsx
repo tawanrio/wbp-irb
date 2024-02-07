@@ -8,16 +8,18 @@ import QuemSomos from '@/components/Pages/QuemSomos'
 import Fabrica from '@/components/Pages/Fabrica'
 import Distribuidoras from '@/components/Pages/Distribuidoras'
 import Autopecas from '@/components/Pages/Autopecas'
-import AutocenterEMecanicas from '@/components/Pages/AutocenterEMecanicas'
+import AutocenterEMecanicas from '@/components/Pages/Mecanicas'
 import Parceiros from '@/components/Pages/Parceiros'
 import Produtos from '@/components/Pages/Produtos'
 import Produto from '@/components/Pages/Produto'
+import Categoria from '@/components/Pages/Categoria'
 import Error from '@/components/Pages/Error'
 
 import { getDataPage } from '@/service/model/routeOne'
 
 export default function index({content}) {
-  const page = content.page.label;
+  console.log(content);
+  const page = content?.page.label;
   return (
     <>
     {content?.type === 'page' && (
@@ -32,9 +34,9 @@ export default function index({content}) {
         {page === 'Produtos' && (<Produtos content={content}/>)}
       </>
       )}
- {content?.type === 'product' && (
+ {content?.type === 'category' && (
       <>
-        <Produto content={content}/>
+        <Categoria content={content}/>
       </>
       )}
       

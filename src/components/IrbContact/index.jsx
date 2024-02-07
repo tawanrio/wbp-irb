@@ -39,11 +39,11 @@ export default function ProductFaq({ logo, contentDescription, title, whatsapp, 
                     w-12/12
                     md:w-7/12
                     ">
-                        <SectionTitle title={title} className="mb-5" />
+                        <h2 className="text-2xl font-bold text-[#666] mb-5 uppercase">{title}</h2>
                         <Description content={contentDescription} />
                         <div className="flex md:flex-row flex-col gap-8 my-8">
-                            {phone && <Button  data={phone} />}
-                            {whatsapp && <Button  data={whatsapp} />}
+                            {whatsapp && <Button  whatsapp={whatsapp} />}
+                            {phone && <Button  phone={phone} />}
                         </div>
                     </div>
                 </div>

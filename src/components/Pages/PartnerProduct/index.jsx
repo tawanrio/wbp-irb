@@ -12,6 +12,7 @@ import Faq from '@/components/Faq';
 import Filter from '@/components/Filter';
 import FindPartners from '@/components/FindPartners';
 import Partners from '@/components/Partners';
+import Categories from '@/components/Categories';
 import SearchPartners from '@/components/SearchPartners';
 import Products from '@/components/Products';
 
@@ -29,16 +30,28 @@ import { useRouter } from 'next/router';
 import {getProductFromUrl,insertMenuInTemplate} from '@/utils/functions'
 
 export default function Produto({ content }) {
+
+  console.log(content);
   const route = useRouter()
   let pageUrl = route.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
  
   const [product, setProduct] = useState(content?.arrRoute)
   const [arrRoute, setArrRoute] = useState(content?.arrRoute)
+  switch (arrRoute[0]) {
+    case 'distribuidoras':
 
-console.log(content);
+    case 'mecanicas':
+    case 'autopecas':
+      
+      break;
+  
+    default:
+      break;
+  }
+
   useEffect(()=>{
-    setProduct(getProductFromUrl(content.products, pageUrl))
+    setProduct(content.categories)
     
   },[pageUrl])
 
@@ -101,6 +114,7 @@ menu:content?.menu,
 
   
   // (product.partner?.description) && (product.partner.description[0] = replaceShortcodeProduct(product?.partner?.description[0], `${content?.arrRoute[1]}s` ));
+
   let partnerName
   if(content?.arrRoute[0] !== 'fabrica'){
      partnerName = content?.partners.types.find(item => item.label == content?.arrRoute[0]);
@@ -108,28 +122,34 @@ menu:content?.menu,
     partnerName ={ title: 'Fábricas'}
 
   }
-  (product?.partner?.description) &&(product.partner.description[0] = replaceShortcodePartner( product?.partner?.description[0], `das nossas ${partnerName?.title}`));
+
+
+  // (content?.category.partner.description) && (content?.category.partner.description[0] = replaceShortcodePartner( content?.category.partner.description[0] , `das nossas ${partnerName?.title}`));
+
+  // content?.category.partner.description[0] = replaceShortcodePartner(content?.category.partner.description[0] , `das nossas ${partnerName?.title}`);
   
   
   return (
   <>
     <Head>
-       <title>{product?.metaTitle || product?.title}</title>
-       <meta name="description" content={product?.metaDescription || product?.contentDescription} />
+       <title>{content?.category?.metaTitle || content?.category?.title}</title>
+       <meta name="description" content={content?.category?.metaDescription || content?.category?.contentDescription} />
      </Head>
 
       <Templates template={content?.template} page={content?.page}>
-          <Banner banners={product?.banners} />
+          <Banner banners={content?.category.banners} />
           <BreadCrumb/>
-          <Title title={product?.partner?.title}/>
-          <ContentDescription content={product?.partner?.description}/>
+          <Title title={content?.category.title}/>
+          <ContentDescription content={content?.category.partner.description}/>
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
           {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners title={content?.partners?.title} product={product} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle /> */}
-          <SearchPartners collections={content?.collection} products={content?.products} hiddenProductSearch />
+          <SearchPartners title={`Encontre um(a) ${partnerName.title}`} arrRoute={content?.arrRoute} collections={content?.collection} products={content?.products} hiddenProductSearch />
           {/* <Faq faq={product?.faq}/> */}
           {/* <Products products={content?.products} colors={content?.page?.colors.products} title /> */}
-          <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`/${content?.arrRoute[0]}/`} title />
+          <Categories baseUrl={`/${content?.arrRoute[0]}/`} categories={content?.categories} colors={content?.page?.colors.products} title />
+
+          {/* <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`/${content?.arrRoute[0]}/`} title /> */}
         <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>
         </Templates>
     

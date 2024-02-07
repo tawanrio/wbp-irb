@@ -63,7 +63,7 @@ export default function Contato({content}) {
   const address = content?.address.address.find(address => address.label === 'default')
 
 
-   
+   console.log(content);
   return (
     <>
    <Head>
@@ -74,7 +74,7 @@ export default function Contato({content}) {
        <Banner banners={banners}/>
        <BreadCrumb/>
        <IrbContact  logo={logoContact?.logo} contentDescription={logoContact?.contentDescription} title={logoContact?.title} whatsapp={whatsappNumber} phone={phoneNumber}  />
-       <ServiceAddress products={content?.products} address={content?.address} />
+       <ServiceAddress products={content.categories} address={address} />
        </Templates>
    </>
   )

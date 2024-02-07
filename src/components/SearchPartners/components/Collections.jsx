@@ -15,8 +15,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
   let stateMatch = null
   let cityMatch = null
   collections.filter(collection =>{
-    const searchState = arrRoute
-      && collection.info.address.find(
+    arrRoute && collection.info.address.find(
           (address) => {
           if(address.label === 'default' && formatStrToUrl(address.state) === arrRoute[2]) {
             stateMatch = address.state
@@ -214,6 +213,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
     z-[99] 
     opacity-0 
     group-hover:opacity-100 
+    
     group-hover:h-max
     my-2
     h-0  
@@ -227,6 +227,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
         className='
         w-full
           flex
+          
           justify-center
         '>
           Todos os estados
@@ -238,6 +239,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
           className='
           w-full
           flex
+          
           justify-center
           '>
             {state}

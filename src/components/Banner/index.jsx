@@ -54,12 +54,11 @@ export default function Banner({banners, video}) {
               uppercase
               absolute
               text-center
-              md:w-[100%]
-              px-[175px]
+              md:px-[175px]
               text-[#fff]
               font-bold
               text-xl
-              z-20
+              z-10
               '>REFERÊNCIA EM PEÇAS AUTOMOTIVAS</h2>
         </div></>)
         }

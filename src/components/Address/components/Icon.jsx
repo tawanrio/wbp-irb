@@ -6,7 +6,6 @@ export default function icon({icon}) {
    <Link href={icon?.route}
    target="_blank"
    className="
-   dropShadown
    hover:scale-105
    duration-500
    relative

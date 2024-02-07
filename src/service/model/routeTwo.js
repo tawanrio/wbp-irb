@@ -10,6 +10,7 @@ import {Template} from '@/service/model/schemas/templateSchema'
 import {Categories} from '@/service/model/schemas/categoriesSchema'
 import {Collection} from '@/service/model/schemas/collectionsSchema'
 import {Geo} from '@/service/model/schemas/geoSchema'
+import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSchema'
 
 
 
@@ -20,6 +21,7 @@ import {Geo} from '@/service/model/schemas/geoSchema'
     if(page){
       const address = await Address.findOne({label:"info"})
       const products = await ProductsDb.find().lean().limit(9);
+      const categories = await CategoriesProducts.find().lean();
       const partners = await Categories.findOne({label:"partners"}).lean();
       const template = await Template.find();
       const menu = await Menu.findOne({label:"menu"}).lean();
@@ -29,6 +31,7 @@ import {Geo} from '@/service/model/schemas/geoSchema'
         type: arrRoute[0],
         page: JSON.parse(JSON.stringify(page)),
         address: address && JSON.parse(JSON.stringify(address)),
+        categories: categories && JSON.parse(JSON.stringify(categories)),
         products: products && JSON.parse(JSON.stringify(products)),
         template: template && JSON.parse(JSON.stringify(template)),
         menu: menu && JSON.parse(JSON.stringify(menu)),
@@ -42,10 +45,11 @@ import {Geo} from '@/service/model/schemas/geoSchema'
 
   
   
-  const routePartnerProduct = async (arrRoute) =>{
+  const routePartnerProduct = async (arrRoute,category) =>{
   
     const page = await Page.findOne({label:"produtos"}).lean();
     const products = await ProductsDb.find().lean();
+    const categories = await CategoriesProducts.find().lean();
     const template = await Template.find();
     // const collection = await Collection.find({"products.label": arrRoute[1]}).lean();
     const collection = await Collection.find({
@@ -61,6 +65,8 @@ import {Geo} from '@/service/model/schemas/geoSchema'
           arrRoute:JSON.parse(JSON.stringify(arrRoute)),
           partners: partners && JSON.parse(JSON.stringify(partners)),
           page: JSON.parse(JSON.stringify(page)),
+          category: category && JSON.parse(JSON.stringify(category)),
+          categories: categories && JSON.parse(JSON.stringify(categories)),
           template: template && JSON.parse(JSON.stringify(template)),
           menu: menu && JSON.parse(JSON.stringify(menu)),
           collection: collection && JSON.parse(JSON.stringify(collection)),
@@ -73,11 +79,12 @@ import {Geo} from '@/service/model/schemas/geoSchema'
 
     // se a rota encontrar um estado
   
-    const page = await Page.findOne({label:'autopecas'}).lean();
+    const page = await Page.findOne({label:arrRoute[0]}).lean();
     const template = await Template.find();
     const menu = await Menu.findOne({label:"menu"}).lean();
-    const products = await ProductsDb.find().lean();
+    // const products = await ProductsDb.find().lean();
     const partners = await Categories.findOne({label:"partners"}).lean();
+    const categories = await CategoriesProducts.find().lean();
 
     page.title = `${page.title} em ${geoName}`;
 return {
@@ -85,10 +92,11 @@ return {
   arrRoute:JSON.parse(JSON.stringify(arrRoute)),
  page: JSON.parse(JSON.stringify(page)),
  partners: partners && JSON.parse(JSON.stringify(partners)),
+ categories: categories && JSON.parse(JSON.stringify(categories)),
  template: template && JSON.parse(JSON.stringify(template)),
  collection: geo && JSON.parse(JSON.stringify(geo)),
  menu: menu && JSON.parse(JSON.stringify(menu)),
- products: products && JSON.parse(JSON.stringify(products)),
+//  products: products && JSON.parse(JSON.stringify(products)),
 }
   
 }
@@ -108,9 +116,12 @@ const routePartner = async (arrRoute) =>{
   const routeOne = formatStrToNoDash(arrRoute[0]);
   const routeTwo = formatStrToNoDash(arrRoute[1]);
 
-// rota produto
-const product = await ProductsDb.findOne({label:arrRoute[1]}).lean();
-if(product) return await routePartnerProduct(arrRoute)
+  if(arrRoute[0] !== 'mecanicas'){
+    // rota categoria
+    const categories = await CategoriesProducts.findOne({label:arrRoute[1]}).lean();
+    // const product = await ProductsDb.findOne({label:arrRoute[1]}).lean();
+    if(categories) return await routePartnerProduct(arrRoute, categories)
+  }
 
 
 // rota parceiro
@@ -137,7 +148,9 @@ if(collection) return await singlePartner(arrRoute,collection)
   
   const routeGeoName = formatStrToNoDash(arrRoute[1]);
 
-  const partners = await Collection.find().lean();
+  const partners = (arrRoute[0] === 'fabrica') 
+  ? await Collection.find().lean()
+  : await Collection.find({label: arrRoute[0]}).lean();
   let geoName = null
 
   const geo = partners.filter(partner => {
@@ -145,7 +158,10 @@ if(collection) return await singlePartner(arrRoute,collection)
     const cityDb = formatStrToNoDash(partner.info.address[0].city)
     if(stateDb === routeGeoName || cityDb === routeGeoName) {
       geoName = (stateDb === routeGeoName) ? partner.info.address[0].state : null
+
       if(!geoName) geoName = (cityDb === routeGeoName) ? partner.info.address[0].city : null
+
+    
       return partner
     }
   });
@@ -159,6 +175,24 @@ const  error = await Page.findOne({label:'error'}).lean();
 if(error) return await routeError(error);
 }
 
+const singleProduct = async (product, arrRoute) => {
+  const page = await Page.findOne({label:"produtos"}).lean();
+  const products = await ProductsDb.find().lean();
+  const partners = await Categories.findOne({label:"partners"}).lean();
+  const menu = await Menu.findOne({label:"menu"}).lean();
+  const template = await Template.find();
+
+return {
+ type: 'singleProduct',
+ product:JSON.parse(JSON.stringify(product)),
+ page: JSON.parse(JSON.stringify(page)),
+ partners: partners && JSON.parse(JSON.stringify(partners)),
+ template: template && JSON.parse(JSON.stringify(template)),
+ menu: menu && JSON.parse(JSON.stringify(menu)),
+ products: products && JSON.parse(JSON.stringify(products)),
+ arrRoute:JSON.parse(JSON.stringify(arrRoute)),
+}
+}
   
   const getDataPage = async (arrRoute) => {
       try{
@@ -177,11 +211,11 @@ if(error) return await routeError(error);
 
 
     // se a rota for um produto
-   const product = await ProductsDb.findOne({label:route[1]}).lean();
-   if(product){
-      const data = await singleProduct(product)
-      return data;
-   }
+     // categoria
+    //  const category = await CategoriesProducts.findOne({label:route}).lean();
+   const product = await ProductsDb.findOne({label:arrRoute[1],category:arrRoute[0]}).lean();
+   if(product) return await singleProduct(product,arrRoute)
+   
 
   // rota inexistente
     const  error = await Page.findOne({label:'error'}).lean();

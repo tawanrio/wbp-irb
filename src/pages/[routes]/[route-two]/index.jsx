@@ -7,7 +7,7 @@ import { getDataPage } from '@/service/model/routeTwo'
 // Pages
 import Contato from '@/components/Pages/Contato'
 import QuemSomos from '@/components/Pages/QuemSomos'
-import Fabrica from '@/components/Pages/Fabrica'
+import FabricaOne from '@/components/Pages/FabricaOne'
 import DistribuidorasOne from '@/components/Pages/DistribuidorasOne'
 import AutopecasOne from '@/components/Pages/AutopecasOne'
 import MecanicasOne from '@/components/Pages/MecanicasOne'
@@ -28,6 +28,8 @@ import {Collection} from '@/service/model/schemas/collectionsSchema'
 
 export default function Index({content}) {
   // const page = content.page.label;
+  console.log(content);
+
 
   return (
     <>
@@ -44,10 +46,16 @@ export default function Index({content}) {
       </>
       )}
 
-        {content?.type === 'geo-fabrica' && (<Fabrica content={content}/>)}
+        {content?.type === 'geo-fabrica' && (<FabricaOne content={content}/>)}
         {content?.type === 'geo-distribuidoras' && (<DistribuidorasOne content={content}/>)}
         {content?.type === 'geo-autopecas' && (<AutopecasOne content={content}/>)}
         {content?.type === 'geo-mecanicas' && (<MecanicasOne content={content}/>)}
+
+        {content?.type === 'singleProduct' && (
+      <>
+        <Produto content={content}/>
+      </>
+      )}
       
       {content?.type === 'error' && (
         <>

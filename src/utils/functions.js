@@ -39,3 +39,6 @@ export function insertMenuInTemplate({menu,menuName,template,templateName,itemTe
     return  str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
   }
  
+  export const formatPhoneNumber = (str) => {
+    return str.replace(/[^0-9]/g, '')
+  }

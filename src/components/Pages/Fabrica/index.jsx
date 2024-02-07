@@ -10,7 +10,7 @@ import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 import Page from '@/service/model/schemas/pageSchema'
 import {Menu} from '@/service/model/schemas/menuSchema'
 import {Template} from '@/service/model/schemas/templateSchema'
-import {Categories} from '@/service/model/schemas/categoriesSchema'
+import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 
 // Others
@@ -24,9 +24,11 @@ import BreadCrumb from '@/components/BreadCrumb';
 import CompanyValues from '@/components/CompanyValues';
 import ContentImgDescription from '@/components/ContentImgDescription';
 import Products from '@/components/Products';
+import Categories from '@/components/Categories';
 import Faq from '@/components/Faq';
 import Title from '@/components/Title';
 import InsertVideo from '@/components/InsertVideo';
+import Utilities from '@/components/Utilities';
 
 
 
@@ -88,7 +90,9 @@ export default function Fabrica({content}) {
        <ContentImgDescription content={imgDescription}/>
        <ContentDescription content={description}/>
         <InsertVideo content={video}/>
-       <Products baseUrl={`${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title/>
+        <Categories categories={content?.categories} colors={content?.page?.colors.products} title />
+       {/* <Products baseUrl={`${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title/> */}
+       <Utilities title={'Utilidades'}/>
     </Templates>
           
    </>

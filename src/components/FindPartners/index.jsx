@@ -6,7 +6,7 @@ export default function Parceiros({title, partners, colors, hiddenTitle, product
     // console.log("product",product);
     // console.log("partners",partners);
     const generatePartnerUrlByProduct = ({product, partner}) =>{
-        return `${partner}/${product}`;
+        return `/${partner}/${product}`;
     }
     return (
         <section className="flex flex-col items-center " id={`partners_`}>
@@ -24,7 +24,7 @@ export default function Parceiros({title, partners, colors, hiddenTitle, product
 
             {partners?.map((partner, pId)=>(
                 <Link key={pId} 
-                href={generatePartnerUrlByProduct({partner:partner.label, product:product.label})}
+                href={generatePartnerUrlByProduct({partner:partner?.label, product:product?.label})}
                 className="
                 flex
                 grayscale-[100%]

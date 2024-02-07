@@ -13,7 +13,7 @@ export default function MenuDesktop({content}) {
     // const dataHeader = layouts.header
     // const colors = layouts.header.colors
     const dataHeader = content
-    const colors = content.colors
+    const colors = content?.colors
 
     function handleSubmenu(event,key, submenu){
         submenu && event.preventDefault();
@@ -80,7 +80,7 @@ export default function MenuDesktop({content}) {
                     md:w-full
                     md:mt-0
                     
-                    z-0
+                    !z-[999]
                     right-0
                     w-[65%]
                     opacity-0
@@ -92,24 +92,24 @@ export default function MenuDesktop({content}) {
                     mt-10
                     flex-col
                 ">
-                    {dataHeader.nav[0].links?.map((page, lId) => (
+                    {dataHeader.nav[0].links?.map((link, lId) => (
                         <ul key={'l'+lId} className="
                         md:w-auto
                         md:inline-block
                         group
                         w-full
-                        z-20
+                        z-50
                         flex
                         flex-col
                         items-end
                       ">
-                            <Link href={page.route || "/#"} key={page.label}
+                            <Link target={link?.blank} href={link.route || "/#"} key={link.label}
                               onMouseEnter={() => setIsHovered('l'+lId)}
                               onMouseLeave={() => {
                                 
                                 setIsHovered(false)}}
-                              onClick={(event)=> handleSubmenu(event,'l'+lId, page.hasOwnProperty("submenu"))}
-                                style={{ ...(isHovered && !page.hasOwnProperty("submenu")) && isHovered === 'l'+lId? {background:colors.hoverbg, color: colors.hovertext} : ''}}
+                              onClick={(event)=> handleSubmenu(event,'l'+lId, link.hasOwnProperty("submenu"))}
+                                style={{ ...(isHovered && !link.hasOwnProperty("submenu")) && isHovered === 'l'+lId? {background:colors.hoverbg, color: colors.hovertext} : ''}}
                             className='
                             md:flex-row
                             md:text-xl
@@ -125,8 +125,8 @@ export default function MenuDesktop({content}) {
                             gap-3
                             '
                             >
-                                <span>{page.label}</span>
-                                {page.hasOwnProperty("submenu") && ( <Image
+                                <span>{link.label}</span>
+                                {link.hasOwnProperty("submenu") && ( <Image
                                                                         src={dataHeader.nav[0].icon}
                                                                         alt={dataHeader.logo.alt}
                                                                         width={15}
@@ -141,7 +141,7 @@ export default function MenuDesktop({content}) {
                                                                         '
                                                                     />)}
                             </Link>
-                            {page.hasOwnProperty("submenu") && (
+                            {link.hasOwnProperty("submenu") && (
                                 <div 
                                 style={{...(submenuOpen && submenuOpen === 'l'+lId) && {display:'block'}, background:colors.bg, color:colors.text}}
                                 className="
@@ -156,10 +156,10 @@ export default function MenuDesktop({content}) {
                                 md:overflow-hidden
                                 text-sm
                                 ">
-                                    {page.submenu.map((submenu, sId) => (
+                                    {link.submenu.map((submenu, sId) => (
                                         <ul key={submenu.label || 's'+sId}
                                         className='w-full'>
-                                            <Link href={submenu.route || "/#"}
+                                            <Link target={submenu?.blank} href={submenu.route || "/#"}
                                             onMouseEnter={() => setIsHovered('s'+sId)}
                                             onMouseLeave={() => setIsHovered(false)}
                                               style={{...isHovered && isHovered === 's'+sId? {background:colors.hoverbg, color: colors.hovertext} : ''}}
@@ -174,6 +174,7 @@ export default function MenuDesktop({content}) {
                                             px-5
                                             text-end
                                             duration-500
+                                            whitespace-nowrap
                                             
                                             '>
                                                 {submenu.label || "Submenu Item"}

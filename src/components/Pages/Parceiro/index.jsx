@@ -64,11 +64,24 @@ console.log(content);
     templateName: "footer"
   })
 
-  const whatsappNumber = partner.info.phone.find(number => number.label === 'Whatsapp')
-  const phoneNumber = partner.info.phone.find(number => number.label === 'Telefone')
+  let whatsappNumber = partner.info.phone.find(number => number.label === 'Whatsapp') || null
+  let phoneNumber = partner.info.phone.find(number => number.label === 'Telefone') || null
   const address = partner.info.address.find(address => address.label === 'default')
 
-   
+  if(phoneNumber){
+    if(!whatsappNumber){
+      whatsappNumber = phoneNumber
+    }
+  }
+  if(whatsappNumber){ 
+    if(!phoneNumber){
+      phoneNumber = whatsappNumber
+    }
+  }
+  if(!whatsappNumber) whatsappNumber = '11994412805'
+  if(!phoneNumber) phoneNumber = '11994412805'
+
+   const categoryAndProduct = [...content.categories, ...content.products]
   return (
     <>
    <Head>
@@ -79,7 +92,7 @@ console.log(content);
        <Banner banners={banners}/>
        <BreadCrumb/>
        <IrbContact layout={partner}  logo={partner.logo} contentDescription={partner.contentDescription} title={partner.name} whatsapp={whatsappNumber} phone={phoneNumber}  />
-       <ServiceAddress products={content?.products} address={address} />
+       <ServiceAddress products={content.categories} address={address} />
        </Templates>
    </>
   )

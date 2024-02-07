@@ -5,7 +5,6 @@ import Description from "../Description"
 
 export default function ContentImgDescription({video, description}) {
 
-    console.log(description);
     return (
         <>
          <article className="flex flex-col items-center " id={`content-img-description_`}>
