@@ -3,13 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react";
 
-import { useContext } from 'react';
-import { PageData } from '@/context/pageData';
+
 
 export default function BreadCrumb() {
 
     const router = useRouter()
-    const { icons } = useContext(PageData);
 
     let url = router.asPath.replace('/', '').split('/')
     const [pathname, setPathname] = useState(url)
@@ -64,7 +62,7 @@ export default function BreadCrumb() {
                                 {pathname.length - 1 !== index && (
                                     <Image
                                         alt="icon separate link"
-                                        src={icons.arrow}
+                                        src={'/images/arrow.svg'}
                                         width={12}
                                         height={12}
                                         className="

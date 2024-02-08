@@ -49,53 +49,56 @@ export default function index({content}) {
   )
 }
 
-// export async function getStaticPaths() {
-//   // Busque os caminhos possíveis para pré-renderizar
-//   // Por exemplo, de um banco de dados ou API
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { routes: 'distribuidoras' } },
+      { params: { routes: 'fabrica' } },
+      { params: { routes: 'mecanicas' } },
+      { params: { routes: 'autopecas' } },
+      { params: { routes: 'contato' } }
+    ],
+    fallback: false // ou 'blocking' se necessário
+  };
+}
 
-//   return {
-//     paths: [],
-//     fallback: false, // ou true ou 'blocking' se necessário
-//   };
-// }
 
+export async function getStaticProps({ params }) {
+// export const getStaticProps  = async (context) => {
+// export const getServerSideProps  = async (context) => {
 
-// export async function getStaticProps({ params }) {
-// // export const getStaticProps  = async (context) => {
-// // export const getServerSideProps  = async (context) => {
+  // const resolvedUrl = context.resolvedUrl;
+  const resolvedUrl = params.routes;
+  const content = await getDataPage(resolvedUrl);
+  // const content = await testeRoute(resolvedUrl)
 
-//   // const resolvedUrl = context.resolvedUrl;
-//   const resolvedUrl = params.routes;
-//   const content = await getDataPage(resolvedUrl);
-//   // const content = await testeRoute(resolvedUrl)
+  return {
+    props: {
+      content,
+      resolvedUrl
+    },
+    revalidate: 3600,
+  };
 
-//   return {
-//     props: {
-//       content,
-//       resolvedUrl
-//     },
-//     revalidate: 3600,
-//   };
-
-// };
-
-export const getServerSideProps  = async (context) => {
-  try {
-    const resolvedUrl = context.resolvedUrl;
-    const content = await getDataPage(resolvedUrl);
-
-    return {
-      props: {
-        content
-      }
-    };
-  } catch (error) {
-    console.error('Erro na página:', error);
-
-    return {
-      props: {
-        content: null
-      },
-    };
-  }
 };
+
+// export const getServerSideProps  = async (context) => {
+//   try {
+//     const resolvedUrl = context.resolvedUrl;
+//     const content = await getDataPage(resolvedUrl);
+
+//     return {
+//       props: {
+//         content
+//       }
+//     };
+//   } catch (error) {
+//     console.error('Erro na página:', error);
+
+//     return {
+//       props: {
+//         content: null
+//       },
+//     };
+//   }
+// };

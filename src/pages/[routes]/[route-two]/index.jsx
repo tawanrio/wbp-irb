@@ -89,56 +89,56 @@ export async function getStaticPaths() {
 }
 
 
-// export async function getStaticProps({ params }) {
-// // export const getStaticProps  = async (context) => {
-// // export const getServerSideProps  = async (context) => {
+export async function getStaticProps({ params }) {
+// export const getStaticProps  = async (context) => {
+// export const getServerSideProps  = async (context) => {
 
-//   // const resolvedUrl = context.resolvedUrl;
-//   try {
-
-//   const resolvedUrl = Object.values(params);
-
-//   const content = await getDataPage(resolvedUrl);
-
-//   return {
-//     props: {
-//       content,
-//       resolvedUrl
-//     },
-//     revalidate: 3600,
-//   };
-// } catch (error) {
-//   console.error('Erro na página:', error);
-
-//   return {
-//     props: {
-//       content: null,
-//       resolvedUrl
-//     },
-//   };
-// }
-
-// };
-
-export const getServerSideProps  = async (context) => {
+  // const resolvedUrl = context.resolvedUrl;
   try {
-    const arrRoute = context.resolvedUrl.replace('/', '').split('/');
-   
-    const content = await getDataPage(arrRoute);
 
-    return {
-      props: {
-        arrRoute,
-        content
-      }
-    };
-  } catch (error) {
-    console.error('Erro na página:', error);
+  const resolvedUrl = Object.values(params);
 
-    return {
-      props: {
-        content: null
-      },
-    };
-  }
+  const content = await getDataPage(resolvedUrl);
+
+  return {
+    props: {
+      content,
+      resolvedUrl
+    },
+    revalidate: 3600,
+  };
+} catch (error) {
+  console.error('Erro na página:', error);
+
+  return {
+    props: {
+      content: null,
+      resolvedUrl
+    },
+  };
+}
+
 };
+
+// export const getServerSideProps  = async (context) => {
+//   try {
+//     const arrRoute = context.resolvedUrl.replace('/', '').split('/');
+   
+//     const content = await getDataPage(arrRoute);
+
+//     return {
+//       props: {
+//         arrRoute,
+//         content
+//       }
+//     };
+  // } catch (error) {
+  //   console.error('Erro na página:', error);
+
+  //   return {
+  //     props: {
+  //       content: null
+  //     },
+  //   };
+  // }
+// };

@@ -1,14 +1,11 @@
 import Image from 'next/image'
-import { useContext, useState } from 'react';
-import { PageData } from '@/context/pageData';
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function MenuDesktop({content}) {
     const [isHovered, setIsHovered] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [submenuOpen, setSubmenuOpen] = useState(false);
-
-    const { layouts } = useContext(PageData);
 
     // const dataHeader = layouts.header
     // const colors = layouts.header.colors

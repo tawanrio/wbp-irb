@@ -1,7 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-import { base  } from './src/controller/base';
-
-
 
 
 module.exports = {
@@ -20,9 +17,6 @@ module.exports = {
         },
       fontFamily: {
         sans : ['Inter', 'arial', 'Times New Roman']
-      },
-      height: {
-        'banner-home-h': [base.banner.size.height],
       },
       animation: {
         fadeIn: 'fadeIn 1s',

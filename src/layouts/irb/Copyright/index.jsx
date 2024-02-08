@@ -1,16 +1,14 @@
-import { useContext } from 'react';
-import { PageData } from '@/context/pageData';
 
 export default function Copyright() {
 
-  const { layouts } = useContext(PageData);
-    const dataCopyright = layouts.copyright
-    const colors = layouts.copyright.colors
+
+  //   const dataCopyright = layouts.copyright
+  //   const colors = layouts.copyright.colors
     
   return (
     <>
         <section 
-        style={{background:colors.bg, color:colors.text}}
+        style={{background:'white', color:'black'}}
         className={`
         text-[.8rem]
         flex
@@ -18,7 +16,7 @@ export default function Copyright() {
         md:py-10
         py-5
         `}>
-                <span  className='text-center'>{dataCopyright.label} </span>
+                <span  className='text-center'>Copyright © 2024 - IRB Automotive. Todos os direitos reservados. | Desenvolvido por WBP </span>
         </section>
     </>
   )

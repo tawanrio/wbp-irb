@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import ContextPage from '@/context/pageData'
 
 export default function Document() {
  
@@ -13,7 +12,7 @@ export default function Document() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        <Main/>
+        <Main/>S
         <NextScript />
       </body>
     </Html>

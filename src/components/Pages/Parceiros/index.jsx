@@ -10,8 +10,8 @@ import PartnersType from '@/components/PartnersType';
 import ProductFaq from '@/components/ProductFaq';
 
 // Others
-import { useContext, useState} from 'react';
-import { PageData } from '@/context/pageData';
+import { useState} from 'react';
+
 import  {useRouter}  from 'next/router';
 
 // Database // Schema

@@ -156,25 +156,51 @@ async function getDataPage(){
   }
 }
 
-export const getServerSideProps  = async () => {
-  try {
-    const content = await getDataPage();
-    const response = await fetch('https://irbauto.com.br/wp-json/wp/v2/posts');
-    const data = await response.json();
-    return {
-      props: {
-        content,
-        data
-      }
-    };
+// export async function getStaticPaths() {
+//   // Busque os caminhos possíveis para pré-renderizar
+//   // Por exemplo, de um banco de dados ou API
 
-  } catch (error) {
-    console.error('Erro na página:', error);
+//   return {
+//     paths: [],
+//     fallback: false, // ou true ou 'blocking' se necessário
+//   };
+// }
 
-    return {
-      props: {
-        content: null
-      },
-    };
-  }
+
+export async function getStaticProps() {
+  const content = await getDataPage();
+  const response = await fetch('https://irbauto.com.br/wp-json/wp/v2/posts');
+  const data = await response.json();
+
+  return {
+    props: {
+      content,
+      data
+    },
+    revalidate: 3600,
+  };
+
 };
+
+// export const getServerSideProps  = async () => {
+//   try {
+//     const content = await getDataPage();
+//     const response = await fetch('https://irbauto.com.br/wp-json/wp/v2/posts');
+//     const data = await response.json();
+//     return {
+//       props: {
+//         content,
+//         data
+//       }
+//     };
+
+//   } catch (error) {
+//     console.error('Erro na página:', error);
+
+//     return {
+//       props: {
+//         content: null
+//       },
+//     };
+//   }
+// };

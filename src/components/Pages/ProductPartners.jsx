@@ -16,7 +16,6 @@ import ProductModels from '@/components/Products/ProductModels';
 
 // Others
 import { useEffect, useState } from 'react';
-import { PageData } from '@/context/pageData';
 import { useRouter } from 'next/router';
 
 export default function Products({ products, produto }) {
