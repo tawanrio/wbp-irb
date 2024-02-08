@@ -128,23 +128,39 @@ async function getDataPage(){
   }
 }
 
-export const getServerSideProps  = async () => {
-  try {
-    const content = await getDataPage();
-   
-    return {
-      props: {
-        content
-      }
-    };
 
-  } catch (error) {
-    console.error('Erro na página:', error);
 
-    return {
-      props: {
-        content: null
-      },
-    };
-  }
+export async function getStaticProps() {
+  
+  const content = await getDataPage();
+  // const content = await testeRoute(resolvedUrl)
+
+  return {
+    props: {
+      content
+    },
+    revalidate: 3600,
+  };
+
 };
+
+// export const getServerSideProps  = async () => {
+//   try {
+//     const content = await getDataPage();
+   
+//     return {
+//       props: {
+//         content
+//       }
+//     };
+
+//   } catch (error) {
+//     console.error('Erro na página:', error);
+
+//     return {
+//       props: {
+//         content: null
+//       },
+//     };
+//   }
+// };
