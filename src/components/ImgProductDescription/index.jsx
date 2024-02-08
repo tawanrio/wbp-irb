@@ -26,8 +26,8 @@ export default function ImgProductDescription({image, description, title, button
                 ">
                     <div
                     className="
-                    md:h-[400px]
-                    h-[100px]
+                    md:h-[800px]
+                    h-[150px]
                     relative
                     group
                     ">
@@ -35,7 +35,7 @@ export default function ImgProductDescription({image, description, title, button
                         style={{borderRadius: '20px'}}
                         className="
                          overflow-hidden
-                         md:min-w-[380px]
+                         md:min-w-[285px]
                          h-full
                          group-hover:scale-105
                          
@@ -66,12 +66,10 @@ export default function ImgProductDescription({image, description, title, button
                         alt={image.alt}
                         className="
                         h-full
-                        md:min-h-[400px]
-                        min-h-[100px]
-
+                        md:min-h-[600px]
+                        min-h-[100px] 
                         w-full
                         object-cover
-                        scale-110
                         z-20
                         group-hover:scale-100
                         duration-1000

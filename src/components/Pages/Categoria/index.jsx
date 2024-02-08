@@ -79,7 +79,7 @@ menu:content?.menu,
   })
   
   const imageProduct = {
-    imageUrl: '/images/partners/catalogo.png',
+    imageUrl: '/images/partners/bannerIRB.png',
     alt:"catalogo online"
   }
   const button = {
