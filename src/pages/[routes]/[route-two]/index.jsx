@@ -78,67 +78,67 @@ export default function Index({content,resolvedUrl}) {
 //   )
 // }
 
-export async function getStaticPaths() {
-  // Busque os caminhos possíveis para pré-renderizar
-  // Por exemplo, de um banco de dados ou API
+// export async function getStaticPaths() {
+//   // Busque os caminhos possíveis para pré-renderizar
+//   // Por exemplo, de um banco de dados ou API
 
-  return {
-    paths: [],
-    fallback: false, // ou true ou 'blocking' se necessário
-  };
-}
+//   return {
+//     paths: [],
+//     fallback: false, // ou true ou 'blocking' se necessário
+//   };
+// }
 
 
-export async function getStaticProps({ params }) {
-// export const getStaticProps  = async (context) => {
-// export const getServerSideProps  = async (context) => {
+// export async function getStaticProps({ params }) {
+// // export const getStaticProps  = async (context) => {
+// // export const getServerSideProps  = async (context) => {
 
-  // const resolvedUrl = context.resolvedUrl;
-  try {
-
-  const resolvedUrl = Object.values(params);
-
-  const content = await getDataPage(resolvedUrl);
-
-  return {
-    props: {
-      content,
-      resolvedUrl
-    },
-    revalidate: 3600,
-  };
-} catch (error) {
-  console.error('Erro na página:', error);
-
-  return {
-    props: {
-      content: null,
-      resolvedUrl
-    },
-  };
-}
-
-};
-
-// export const getServerSideProps  = async (context) => {
+//   // const resolvedUrl = context.resolvedUrl;
 //   try {
-//     const arrRoute = context.resolvedUrl.replace('/', '').split('/');
-   
-//     const content = await getDataPage(arrRoute);
 
-//     return {
-//       props: {
-//         arrRoute,
-//         content
-//       }
-//     };
-  // } catch (error) {
-  //   console.error('Erro na página:', error);
+//   const resolvedUrl = Object.values(params);
 
-  //   return {
-  //     props: {
-  //       content: null
-  //     },
-  //   };
-  // }
+//   const content = await getDataPage(resolvedUrl);
+
+//   return {
+//     props: {
+//       content,
+//       resolvedUrl
+//     },
+//     revalidate: 3600,
+//   };
+// } catch (error) {
+//   console.error('Erro na página:', error);
+
+//   return {
+//     props: {
+//       content: null,
+//       resolvedUrl
+//     },
+//   };
+// }
+
 // };
+
+export const getServerSideProps  = async (context) => {
+  try {
+    const arrRoute = context.resolvedUrl.replace('/', '').split('/');
+   
+    const content = await getDataPage(arrRoute);
+
+    return {
+      props: {
+        arrRoute,
+        content
+      }
+    };
+  } catch (error) {
+    console.error('Erro na página:', error);
+
+    return {
+      props: {
+        content: null
+      },
+    };
+  }
+};

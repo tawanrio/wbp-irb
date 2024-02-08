@@ -56,11 +56,12 @@ const routeCategory = async (category,route) =>{
 }
 
 
-const routeError = async (error) => {
+const routeError = async (error, route) => {
   const template = await Template.find();
   const menu = await Menu.findOne({label:"menu"}).lean();
   return {
     type: 'error',
+    route,
     page:JSON.parse(JSON.stringify(error)),
     template: template && JSON.parse(JSON.stringify(template)),
     menu: menu && JSON.parse(JSON.stringify(menu)),
@@ -90,7 +91,7 @@ try{
   
       // rota inexistente
       const  error = await Page.findOne({label:'error'}).lean();
-      if(error) return await routeError(error);
+      if(error) return await routeError(error, route);
   
 }finally{
   await disconnectMongoDB();
