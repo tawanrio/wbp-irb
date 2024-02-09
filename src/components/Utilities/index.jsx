@@ -7,8 +7,8 @@ import CardUtilsFour from './CardUtilsFour'
 
 export default function Utilities({title}) {
     const engraxamente = {
-        title: 'Engraxamente',
-        description: 'EngraxaMente é a plataforma de cursos online e gratuitos desenvolvida pela IRB Automotive. Em comemoração aos seus dois anos no ar, lançamos um novo curso sobre Mecânica Automotiva Básica P1 Cresça profissionalmente, agregue valor ao seu negócio!',
+        title: 'EngraxaMente',
+        description: 'EngraxaMente é a plataforma de cursos online e gratuitos desenvolvida pela IRB Automotive. Em comemoração aos seus dois anos no ar, lançamos um novo curso sobre Mecânica Automotiva Básica P1. Cresça profissionalmente, agregue valor ao seu negócio!',
         image: '/images/partners/engraxamente.jpeg',
         link: 'https://engraxamente.eadplataforma.app/',
         linkText: 'Saiba mais'
@@ -23,8 +23,8 @@ export default function Utilities({title}) {
     }
 
     const catalogo = {
-        title: 'Catalogo Online',
-        description: 'Catalogo Online é uma ferramenta desenvolvida pela IRB Automotive que auxilia nossos amigos parceiros no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
+        title: 'Catálogo eletrônico',
+        description: 'Consulte nosso catálogo eletrônico e saiba todas as aplicações dos nossos produtos.',
         image: '/images/partners/catalogo.png',
         link: 'https://c123.com.br/app/aplicativo/?n=IRB',
         linkText: 'Baixar catálogo'

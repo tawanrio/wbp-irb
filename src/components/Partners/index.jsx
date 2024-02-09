@@ -23,7 +23,7 @@ export default function Parceiros({title, partners, colors, hiddenTitle}) {
                 href={"/"+partner.label}
                 className="
                 flex
-                grayscale-[100%]
+                grayscale-[50%]
                 flex-1
                 md:min-w-[20%]
                 min-w-[40%]
@@ -34,7 +34,6 @@ export default function Parceiros({title, partners, colors, hiddenTitle}) {
                 h-40
                 items-center
                 
-                hover:grayscale-[0%]
                 justify-center
                 overflow-hidden
                 hover:scale-105
@@ -42,7 +41,7 @@ export default function Parceiros({title, partners, colors, hiddenTitle}) {
                 before:content-['']
                 before:block
                 before:absolute
-                before:bg-[#0a0a0aa3]
+                before:bg-[#464b91d5]
                 before:z-[2]
                 before:w-full
                 before:h-full

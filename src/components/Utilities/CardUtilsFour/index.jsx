@@ -38,14 +38,13 @@ export default function CardUtilsFour({content, blank}) {
                 rounded-3xl
                 items-center
                 
-                hover:grayscale-[100%]
                 justify-center
                 overflow-hidden
                 group
                 before:content-['']
                 before:block
                 before:absolute
-                before:bg-[#0a0a0acc]
+                before:bg-[#464b91d5]
                 before:z-[2]
                 before:w-full
                 before:h-full

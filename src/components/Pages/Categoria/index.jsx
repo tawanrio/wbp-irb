@@ -13,11 +13,12 @@ import Filter from '@/components/Filter';
 import FindPartners from '@/components/FindPartners';
 import Partners from '@/components/Partners';
 import Utilities from '@/components/Utilities';
-import SearchProducts from '@/components/SearchProducts';import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
 import Categories from '@/components/Categories';
-import ImgProductDescription from '@/components/ImgProductDescription';
+import ImgCatalogDescription from '@/components/ImgCatalogDescription';
+import SearchProducts from '@/components/SearchProducts';
 
 // Database // Schema
+import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 import Page from '@/service/model/schemas/pageSchema'
 import {Menu} from '@/service/model/schemas/menuSchema'
@@ -78,21 +79,35 @@ menu:content?.menu,
     templateName: "footer"
   })
   
-  const imageProduct = {
+  const catalogDescription = {
+   imageProduct : {
     imageUrl: '/images/partners/bannerIRB.png',
     alt:"catalogo online"
-  }
-  const button = {
-    title: 'Baixar catalogo',
-    link: 'https://c123.com.br/app/aplicativo/?n=IRB'
-  }
+  },
+  title: 'Baixe agora mesmo o catálogo eletrônico e consulte facilmente toda nossa linha de produtos.',
+  subtitle:'Acesse pelo celular',
+   button : [
+     {
+       title: '',
+       alt: 'appstore',
+       image: '/images/products/appstore.png',
+       link: 'https://apps.apple.com/br/app/irb-cat%C3%A1logo/id1169028455'
+      },
+      {
+        title: '',
+        alt: 'google-play',
+        image: '/images/products/google-play.png',
+       link: 'https://play.google.com/store/apps/details?id=br.com.ideia2001.CatalogoIRB'
+      },
+    ],
 
-  const textoArray = [
+   description : [
     "Baixe agora nosso catálogo online e tenha acesso a uma ampla seleção de produtos automotivos de alta qualidade.",
     "Explore nossa vasta gama de peças e componentes para atender às necessidades do seu veículo.",
     "Encontre tudo o que você precisa para manter seu carro funcionando perfeitamente, desde filtros de óleo até sistemas de freios.",
     "Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!"
-];
+]
+  }
   return (
   <>
     <Head>
@@ -105,7 +120,8 @@ menu:content?.menu,
           <BreadCrumb/>
           <Title title={category?.title}/>
           <ContentDescription content={category?.contentDescription}/>
-          <ImgProductDescription button={button} title={'Baixe agora mesmo o catálogo eletrônico e consulte facilmente toda nossa linha de produtos.'} description={textoArray} image={imageProduct}/>
+          <ImgCatalogDescription content={catalogDescription}/>
+
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
 
           <SearchProducts  title="Encontre seu produto" hiddenProductSearch  products={content?.products} />

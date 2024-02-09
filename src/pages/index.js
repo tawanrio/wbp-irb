@@ -87,8 +87,8 @@ export default function QuemSomos({content}) {
         <Banner banners={banners} video={video}/>
         {/* <BreadCrumb/> */}
         {/* <Title title={title}/> */}
-        <CompanyValues cards={cardsValues}/>
-        <TextVideo video={video} description={description} />
+        {/* <CompanyValues cards={cardsValues}/> */}
+        {/* <TextVideo video={video} description={description} /> */}
         {/* <InsertVideo content={video}/> */}
         {/* <ContentDescription content={description}/> */}
         <Categories categories={content?.categories} colors={content?.page?.colors.products} title />

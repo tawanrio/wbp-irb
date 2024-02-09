@@ -26,7 +26,7 @@ export default function ImgProductDescription({image, description, title, button
                 ">
                     <div
                     className="
-                    md:h-[800px]
+                    md:h-[400px]
                     h-[150px]
                     relative
                     group
@@ -35,29 +35,14 @@ export default function ImgProductDescription({image, description, title, button
                         style={{borderRadius: '20px'}}
                         className="
                          overflow-hidden
-                         md:min-w-[285px]
+                         md:min-w-[500px]
                          h-full
                          group-hover:scale-105
                          
                          duration-700
                         ">
                             <div className="relative">
-                            {/* <div className="
-                        z-90
-                        w-full 
-                        absolute 
-                        md:min-h-[400px] 
-                        min-h-[100px]
-                        bg-[#0a0a0aa3]
-                        flex
-                        z-[99]
-                        justify-center
-                        items-center
-                        uppercase
-                        text-white
-                        font-bold
-                        text-2xl
-                        ">{content?.titleImg}</div> */}
+                           
                         <Image
                         src={image.imageUrl}
                         fill
@@ -66,7 +51,7 @@ export default function ImgProductDescription({image, description, title, button
                         alt={image.alt}
                         className="
                         h-full
-                        md:min-h-[600px]
+                        md:min-h-[400px]
                         min-h-[100px] 
                         w-full
                         object-cover
@@ -79,29 +64,7 @@ export default function ImgProductDescription({image, description, title, button
                        
                         </div>
                         </div>
-                        {/* {content?.imageSobre && (
-                            <div className="relative">
-                            <Image
-                            alt="imagem description"
-                            src={content?.imageSobre}
-                            fill
-                            sizes="100vw"
-                            quality={100}
-                            className="
-                           absolute
-                           bottom-0
-                           left-0
-                           translate-x-[-50px]
-                          scale-[1.10]
-                          translate-y-[-23px]
-                          group-hover:scale-[1.25]
-                          group-hover:translate-y-[-43px]
-
-                           duration-700
-                            "
-                            />
-                            </div>
-                        )} */}
+                        
                     </div>
                     <div className="
                     md:w-2/3

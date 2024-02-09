@@ -33,7 +33,7 @@ export default function ProductsCard({colors, categories, textSize, baseUrl, lim
                 href={generateProductUrl({baseUrl:baseUrl,baseUrlGeo: baseUrlGeo ,category:category.label})}
                 className={`
                 flex
-                grayscale-[100%]
+                grayscale-[50%]
                 flex-1
                 md:min-w-[25%]
                 min-w-[48%]
@@ -48,7 +48,6 @@ export default function ProductsCard({colors, categories, textSize, baseUrl, lim
                 bg-center
                 items-center
                
-                hover:grayscale-[0%]
                 justify-center
                 overflow-hidden
                 duration-500
@@ -58,7 +57,7 @@ export default function ProductsCard({colors, categories, textSize, baseUrl, lim
                 before:content-['']
                 before:block
                 before:absolute
-                before:bg-[#0a0a0aa3]
+                before:bg-[#464b91d5]
                 before:z-[2]
                 before:w-full
                 before:h-full

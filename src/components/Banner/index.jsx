@@ -7,6 +7,7 @@ import Arrow from './components/Arrow';
 import InsertVideo from '@/components/InsertVideo';
 
 export default function Banner({banners, video}) {
+  console.log();
   const [activeBanner, setActiveBanner] = useState(0)
 
   const size = banners?.size.height
@@ -54,12 +55,12 @@ export default function Banner({banners, video}) {
               uppercase
               absolute
               text-center
-              md:px-[175px]
+              md:px-[245px]
               text-[#fff]
               font-bold
               text-xl
               z-10
-              '>REFERÊNCIA EM PEÇAS AUTOMOTIVAS</h2>
+              '>{banners.carousel[0].title}</h2>
         </div></>)
         }
         <Arrow controllerBanner={{banners,setActiveBanner, activeBanner, prevBanner, nextBanner,size}} />
