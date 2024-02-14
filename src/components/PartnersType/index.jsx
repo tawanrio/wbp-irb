@@ -37,7 +37,7 @@ export default function PartnersType({title, partners, colors}) {
                 href={'/'+partner.label}
                 className="
                 flex
-                grayscale-[50%]
+                grayscale-[80%]
                 w-full
                 duration-500
                 
@@ -56,7 +56,7 @@ export default function PartnersType({title, partners, colors}) {
                 before:content-['']
                 before:block
                 before:absolute
-                before:bg-[#0a0a0a3a]
+                before:bg-[#0a0a0a98]
                 before:z-[2]
                 before:w-full
                 before:h-full

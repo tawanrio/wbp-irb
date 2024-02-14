@@ -28,7 +28,7 @@ export default function CardUtilsFour({content, blank}) {
         <div
     className="
     flex
-                grayscale-[50%]
+                grayscale-[80%]
                 flex-1
                 min-w-[90%]
                 py-10
@@ -44,7 +44,7 @@ export default function CardUtilsFour({content, blank}) {
                 before:content-['']
                 before:block
                 before:absolute
-                before:bg-[#464b91d5]
+                before:bg-[#0a0a0acc]
                 before:z-[2]
                 before:w-full
                 before:h-full

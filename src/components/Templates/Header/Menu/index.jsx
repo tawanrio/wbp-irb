@@ -89,7 +89,7 @@ export default function MenuDesktop({content}) {
                     mt-10
                     flex-col
                 ">
-                    {dataHeader.nav[0].links?.map((link, lId) => (
+                    {dataHeader?.nav[0].links?.map((link, lId) => (
                         <ul key={'l'+lId} className="
                         md:w-auto
                         md:inline-block

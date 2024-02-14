@@ -33,7 +33,7 @@ export default function ProductsCard({colors, products, textSize, baseUrl, limit
                 href={generateProductUrl({baseUrl:baseUrl,baseUrlGeo: baseUrlGeo ,product:product.label})}
                 className={`
                 flex
-                grayscale-[50%]
+                grayscale-[80%]
                 flex-1
                 md:min-w-[25%]
                 min-w-[48%]
@@ -57,7 +57,7 @@ export default function ProductsCard({colors, products, textSize, baseUrl, limit
                 before:content-['']
                 before:block
                 before:absolute
-                before:bg-[#464b91d5]
+                before:bg-[#0a0a0ab4]
                 before:z-[2]
                 before:w-full
                 before:h-full

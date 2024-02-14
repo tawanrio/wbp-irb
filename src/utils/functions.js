@@ -15,6 +15,35 @@ export function insertMenuInTemplate({menu,menuName,template,templateName,itemTe
         return item
       }
     })
+  } 
+  //   insertMenuInTemplate({
+  //   menu:content?.menu,
+  //   template: content?.template,  
+  //   menuName: "header",
+  //   itemTemplateName:"default",
+  //   templateName: "header"
+  // })
+
+  export function insertMenuInTemplateNew({menus,menuName,template,templateName,itemTemplateName}){
+    let menu = menus?.find(menu => menu.label === menuName)
+
+    // console.log(menus);
+    // console.log(menuName);
+
+    template?.find(template => template.label === templateName).items.find(item => {
+      if(item.label === itemTemplateName){
+        if (!Array.isArray(item.nav)) {
+          item.nav = [];
+        }
+        // verificar se já existe menu no array item.nav
+        if (item.nav.find(item => item.label === menu.label)) {
+          return item
+        }
+        item.nav.push(menu);
+
+        return item
+      }
+    })
   }
 
   export function getProductFromUrl(products, pageUrl) {
