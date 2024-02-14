@@ -3,7 +3,7 @@ import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 
 // Schema
 import Page from '@/service/model/schemas/pageSchema'
-import {Menu} from '@/service/model/schemas/menuSchema'
+import {Menus} from '@/service/model/schemas/menusSchema'
 import {Template} from '@/service/model/schemas/templateSchema'
 
 export default function Index({content}) {
@@ -22,13 +22,13 @@ export default function Index({content}) {
 
 const routeError = async () => {
     const template = await Template.find();
-    const menu = await Menu.findOne({label:"menu"}).lean();
+    const menus = await Menus.find().lean();
     const  error = await Page.findOne({label:'error'}).lean();
     return {
       type: 'error',
       page:JSON.parse(JSON.stringify(error)),
       template: template && JSON.parse(JSON.stringify(template)),
-      menu: menu && JSON.parse(JSON.stringify(menu)),
+      menus: menus && JSON.parse(JSON.stringify(menus)),
     }
 }
 const getData404 = async () =>{
