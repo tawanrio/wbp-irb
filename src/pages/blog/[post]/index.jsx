@@ -6,7 +6,7 @@ import Banner from "@/components/Banner";
 
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 import Page from '@/service/model/schemas/pageSchema'
-import {Menu} from '@/service/model/schemas/menuSchema'
+import {Menus} from '@/service/model/schemas/menusSchema'
 import {Template} from '@/service/model/schemas/templateSchema'
 import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
 import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSchema'
@@ -55,7 +55,7 @@ async function getDataPage(){
   await connectMongoDB();
 
   const page = await Page.findOne({label:"blog"}).lean();
-  const menu = await Menu.findOne({label:"menu"}).lean();
+  const menus = await Menus.find().lean();
   const template = await Template.find();
   const partners = await SchemaCategories.findOne({label:"partners"}).lean();
   const categories = await CategoriesProducts.find().lean();
@@ -69,7 +69,7 @@ async function getDataPage(){
     categories:JSON.parse(JSON.stringify(categories)),
     form:JSON.parse(JSON.stringify(form)),
     template:JSON.parse(JSON.stringify(template)),
-    menu:JSON.parse(JSON.stringify(menu))
+    menus:JSON.parse(JSON.stringify(menus))
   }
   }
   finally{
