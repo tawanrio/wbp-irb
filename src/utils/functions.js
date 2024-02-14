@@ -1,4 +1,4 @@
-export function insertMenuInTemplate({menu,menuName,template,templateName,itemTemplateName}){
+export function insertMenuInTemplateOld({menu,menuName,template,templateName,itemTemplateName}){
     let menuHeader = menu?.menus.find(item => item.label === menuName)
 
     template?.find(template => template.label === templateName).items.find(item => {
@@ -24,7 +24,7 @@ export function insertMenuInTemplate({menu,menuName,template,templateName,itemTe
   //   templateName: "header"
   // })
 
-  export function insertMenuInTemplateNew({menus,menuName,template,templateName,itemTemplateName}){
+  export function insertMenuInTemplate({menus,menuName,template,templateName,itemTemplateName}){
     let menu = menus?.find(menu => menu.label === menuName)
 
     // console.log(menus);

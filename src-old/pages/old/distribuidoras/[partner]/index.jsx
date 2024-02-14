@@ -72,7 +72,7 @@ console.log(partner);
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
      </Head>
-     <Templates template={content?.template} page={content?.page}>
+      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>
        <BreadCrumb/>
        <IrbContact layout={partner}  logo={partner.logo} contentDescription={partner.contentDescription} title={partner.name} whatsapp={whatsappNumber} phone={phoneNumber}  />

@@ -29,34 +29,7 @@ export default function Contato({content}) {
   const [description] = useState(content?.page.contentDescription)
   const [logoContact] = useState(content?.page.logoContact)
 
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menuName: "header",
-    itemTemplateName:"default",
-    templateName: "header"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "partners",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "products",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "company",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
+   
   
   const whatsappNumber = logoContact.button.whatsapp
   const phoneNumber = logoContact.button.phone
@@ -70,7 +43,7 @@ export default function Contato({content}) {
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
      </Head>
-     <Templates template={content?.template} page={content?.page}>
+      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>
        <BreadCrumb/>
        <IrbContact  logo={logoContact?.logo} contentDescription={logoContact?.contentDescription} title={logoContact?.title} whatsapp={whatsappNumber} phone={phoneNumber}  />

@@ -18,7 +18,7 @@ import Error from '@/components/Pages/Error'
 import Page from '@/service/model/schemas/pageSchema'
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 import {Address} from '@/service/model/schemas/addressSchema'
-import {Menu} from '@/service/model/schemas/menuSchema'
+import {Menus} from '@/service/model/schemas/menusSchema'
 import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSchema'
 import {Template} from '@/service/model/schemas/templateSchema'
 import {Categories} from '@/service/model/schemas/categoriesSchema'
@@ -74,8 +74,8 @@ const singlePartner = async (route,collection)=>{
     const products = await ProductsDb.find().lean().limit(9);
     const partners = await Categories.findOne({label:"partners"}).lean();
     const template = await Template.find();
-    const menu = await Menu.findOne({label:"menu"}).lean();
-    
+    // const menu = await Menu.findOne({label:"menu"}).lean();
+    const menus = await Menus.find().lean();
   
     return {
       type: route[0],
@@ -83,7 +83,7 @@ const singlePartner = async (route,collection)=>{
       address: address && JSON.parse(JSON.stringify(address)),
       products: products && JSON.parse(JSON.stringify(products)),
       template: template && JSON.parse(JSON.stringify(template)),
-      menu: menu && JSON.parse(JSON.stringify(menu)),
+      menus: menus && JSON.parse(JSON.stringify(menus)),
       partners: partners && JSON.parse(JSON.stringify(partners)),
       collection: collection && JSON.parse(JSON.stringify(collection)),
     }
@@ -92,12 +92,13 @@ const singlePartner = async (route,collection)=>{
 
 const routeError = async (error) => {
   const template = await Template.find();
-  const menu = await Menu.findOne({label:"menu"}).lean();
+  // const menu = await Menu.findOne({label:"menu"}).lean();
+  const menus = await Menus.find().lean();
   return {
     type: 'error',
     page:JSON.parse(JSON.stringify(error)),
     template: template && JSON.parse(JSON.stringify(template)),
-    menu: menu && JSON.parse(JSON.stringify(menu)),
+    menus: menus && JSON.parse(JSON.stringify(menus)),
   }
 }
 
@@ -140,8 +141,9 @@ const singleProduct = async (category,arrRoute) =>{
   const products = await ProductsDb.find().lean();
   const template = await Template.find();
   const categories = await CategoriesProducts.find().lean();
-  const menu = await Menu.findOne({label:"menu"}).lean();
+  // const menu = await Menu.findOne({label:"menu"}).lean();
   const partners = await Categories.findOne({label:"partners"}).lean();
+  const menus = await Menus.find().lean();
     
   const geoDocument = await Geo.findOne().lean();
   const country = geoDocument.countries.find(country => country.name === 'brasil');
@@ -169,7 +171,7 @@ const singleProduct = async (category,arrRoute) =>{
         arrRoute:JSON.parse(JSON.stringify(arrRoute)),
         template: template && JSON.parse(JSON.stringify(template)),
         collection: collection && JSON.parse(JSON.stringify(collection)),
-        menu: menu && JSON.parse(JSON.stringify(menu)),
+        menus: menus && JSON.parse(JSON.stringify(menus)),
         partners: partners && JSON.parse(JSON.stringify(partners)),
         products: products && JSON.parse(JSON.stringify(products)),
       }
@@ -214,7 +216,7 @@ const singleProduct = async (category,arrRoute) =>{
         collection: collection && JSON.parse(JSON.stringify(collection)),
         // product:JSON.parse(JSON.stringify(product)),
         template: template && JSON.parse(JSON.stringify(template)),
-        menu: menu && JSON.parse(JSON.stringify(menu)),
+        menus: menus && JSON.parse(JSON.stringify(menus)),
         products: products && JSON.parse(JSON.stringify(products)),
   }
 }

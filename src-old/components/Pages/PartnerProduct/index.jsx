@@ -118,7 +118,7 @@ menu:content?.menu,
        <meta name="description" content={product?.metaDescription || product?.contentDescription} />
      </Head>
 
-      <Templates template={content?.template} page={content?.page}>
+       <Templates template={content?.template} page={content?.page} menus={content?.menus}>
           <Banner banners={product?.banners} />
           <BreadCrumb/>
           <Title title={product?.partner?.title}/>

@@ -73,7 +73,7 @@ export default function Parceiros({content}) {
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
      </Head>
-     <Templates template={content?.template} page={content?.page}>
+      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>
        <BreadCrumb/>
        <PartnersType partners={content?.partners} baseUrl={`/${pageUrl}/`}/>

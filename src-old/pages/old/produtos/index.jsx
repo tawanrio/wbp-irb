@@ -69,7 +69,7 @@ export default function Produtos({content}) {
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
      </Head>
-     <Templates template={content?.template} page={content?.page}>
+      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>
        <BreadCrumb/>
        <Products products={content?.products} colors={content?.page.colors} page />

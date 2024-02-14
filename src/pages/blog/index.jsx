@@ -93,7 +93,7 @@ export default function QuemSomos({content, data}) {
        <meta name="description" content={metaDescription || description} />
      </Head>
      
-    <Templates template={content?.template} page={content?.page}>
+     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
         <Banner banners={banners} />
         <div className="max-w-6xl mx-auto py-8">
       <h1 className="text-3xl font-bold mb-4">Catálogo</h1>

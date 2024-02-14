@@ -29,37 +29,10 @@ export default function Post({content,data}) {
     const [cardsValues] = useState(content?.page?.companyValues)
     const [description] = useState(content?.page?.contentDescription)
   
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "header",
-    itemTemplateName:"default",
-    templateName: "header"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "partners",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "products",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "company",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
+    
    
   return (
-    <Templates template={content?.template} page={content?.page}>
+     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
     <Banner banners={banners} />
     <div className="max-w-3xl mx-auto py-8">
     <h1 className="text-3xl font-bold mb-4">{data?.title.rendered}</h1>

@@ -44,40 +44,7 @@ export default function Categoria({ content }) {
 
   },[pageUrl])
 
-  insertMenuInTemplate({
-menu:content?.menu,
-    template: content?.template,  
-    menuName: "header",
-    itemTemplateName:"default",
-    templateName: "header"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "partners",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "products",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "company",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
+     
   
   const catalogDescription = {
    imageProduct : {
@@ -115,7 +82,7 @@ menu:content?.menu,
        <meta name="description" content={category?.metaDescription || category?.contentDescription} />
      </Head>
 
-      <Templates template={content?.template} page={content?.page}>
+       <Templates template={content?.template} page={content?.page} menus={content?.menus}>
           <Banner banners={content?.category?.banners} />
           <BreadCrumb/>
           <Title title={category?.title}/>

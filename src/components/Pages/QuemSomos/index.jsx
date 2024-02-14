@@ -77,7 +77,7 @@ export default function QuemSomos({content}) {
        <meta name="description" content={metaDescription || description} />
      </Head>
      
-    <Templates template={content?.template} page={content?.page}>
+     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
         <Banner banners={banners}/>
         <BreadCrumb/>
         <Title title={title}/>

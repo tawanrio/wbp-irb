@@ -36,34 +36,7 @@ export default function Parceiros({content}) {
   const [metaDescription] = useState(content?.page.metaDescription)
   const [faq] = useState(content?.page.faq)
 
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menuName: "header",
-    itemTemplateName:"default",
-    templateName: "header"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "partners",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "products",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "company",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
+   
   
 
 
@@ -73,7 +46,7 @@ export default function Parceiros({content}) {
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
      </Head>
-     <Templates template={content?.template} page={content?.page}>
+      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>
        <BreadCrumb/>
        <PartnersType partners={content?.partners} baseUrl={`/${pageUrl}/`}/>

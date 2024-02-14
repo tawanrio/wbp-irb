@@ -5,7 +5,7 @@ import { formatStrToUrl, formatStrToNoDash } from '@/utils/functions';
 import Page from '@/service/model/schemas/pageSchema'
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 import {Address} from '@/service/model/schemas/addressSchema'
-import {Menu} from '@/service/model/schemas/menuSchema'
+import {Menus} from '@/service/model/schemas/menusSchema'
 import {Template} from '@/service/model/schemas/templateSchema'
 import {Categories} from '@/service/model/schemas/categoriesSchema'
 import {Collection} from '@/service/model/schemas/collectionsSchema'
@@ -24,7 +24,8 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
       const categories = await CategoriesProducts.find().lean();
       const partners = await Categories.findOne({label:"partners"}).lean();
       const template = await Template.find();
-      const menu = await Menu.findOne({label:"menu"}).lean();
+      // const menu = await Menu.findOne({label:"menu"}).lean();
+      const menus = await Menus.find().lean();
       
     
       return {
@@ -34,7 +35,7 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
         categories: categories && JSON.parse(JSON.stringify(categories)),
         products: products && JSON.parse(JSON.stringify(products)),
         template: template && JSON.parse(JSON.stringify(template)),
-        menu: menu && JSON.parse(JSON.stringify(menu)),
+        menus: menus && JSON.parse(JSON.stringify(menus)),
         partners: partners && JSON.parse(JSON.stringify(partners)),
         collection: collection && JSON.parse(JSON.stringify(collection)),
         
@@ -58,7 +59,8 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
     }).lean();
     const partners = await Categories.findOne({label:"partners"}).lean();
   
-      const menu = await Menu.findOne({label:"menu"}).lean();
+      // const menu = await Menu.findOne({label:"menu"}).lean();
+      const menus = await Menus.find().lean();
      
         return {
           type: 'product',
@@ -68,7 +70,7 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
           category: category && JSON.parse(JSON.stringify(category)),
           categories: categories && JSON.parse(JSON.stringify(categories)),
           template: template && JSON.parse(JSON.stringify(template)),
-          menu: menu && JSON.parse(JSON.stringify(menu)),
+          menus: menus && JSON.parse(JSON.stringify(menus)),
           collection: collection && JSON.parse(JSON.stringify(collection)),
           products: products && JSON.parse(JSON.stringify(products)),
         }
@@ -81,10 +83,11 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
   
     const page = await Page.findOne({label:arrRoute[0]}).lean();
     const template = await Template.find();
-    const menu = await Menu.findOne({label:"menu"}).lean();
+    // const menu = await Menu.findOne({label:"menu"}).lean();
     // const products = await ProductsDb.find().lean();
     const partners = await Categories.findOne({label:"partners"}).lean();
     const categories = await CategoriesProducts.find().lean();
+    const menus = await Menus.find().lean();
 
     page.title = `${page.title} em ${geoName}`;
 return {
@@ -95,7 +98,7 @@ return {
  categories: categories && JSON.parse(JSON.stringify(categories)),
  template: template && JSON.parse(JSON.stringify(template)),
  collection: geo && JSON.parse(JSON.stringify(geo)),
- menu: menu && JSON.parse(JSON.stringify(menu)),
+ menus: menus && JSON.parse(JSON.stringify(menus)),
 //  products: products && JSON.parse(JSON.stringify(products)),
 }
   
@@ -103,12 +106,13 @@ return {
 
   const routeError = async (error) => {
     const template = await Template.find();
-    const menu = await Menu.findOne({label:"menu"}).lean();
+    // const menu = await Menu.findOne({label:"menu"}).lean();
+    const menus = await Menus.find().lean();
     return {
       type: 'error',
       page:JSON.parse(JSON.stringify(error)),
       template: template && JSON.parse(JSON.stringify(template)),
-      menu: menu && JSON.parse(JSON.stringify(menu)),
+      menus: menus && JSON.parse(JSON.stringify(menus)),
     }
 }
 
@@ -179,8 +183,9 @@ const singleProduct = async (product, arrRoute) => {
   const page = await Page.findOne({label:"produtos"}).lean();
   const products = await ProductsDb.find().lean();
   const partners = await Categories.findOne({label:"partners"}).lean();
-  const menu = await Menu.findOne({label:"menu"}).lean();
+  // const menu = await Menu.findOne({label:"menu"}).lean();
   const template = await Template.find();
+  const menus = await Menus.find().lean();
 
 return {
  type: 'singleProduct',
@@ -188,7 +193,7 @@ return {
  page: JSON.parse(JSON.stringify(page)),
  partners: partners && JSON.parse(JSON.stringify(partners)),
  template: template && JSON.parse(JSON.stringify(template)),
- menu: menu && JSON.parse(JSON.stringify(menu)),
+ menus: menus && JSON.parse(JSON.stringify(menus)),
  products: products && JSON.parse(JSON.stringify(products)),
  arrRoute:JSON.parse(JSON.stringify(arrRoute)),
 }

@@ -35,34 +35,7 @@ export default function Contato({content}) {
 
 console.log(content);
 
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menuName: "header",
-    itemTemplateName:"default",
-    templateName: "header"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "partners",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "products",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "company",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
+   
 
   let whatsappNumber = partner.info.phone.find(number => number.label === 'Whatsapp') || null
   let phoneNumber = partner.info.phone.find(number => number.label === 'Telefone') || null
@@ -88,7 +61,7 @@ console.log(content);
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
      </Head>
-     <Templates template={content?.template} page={content?.page}>
+      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>
        <BreadCrumb/>
        <IrbContact layout={partner}  logo={partner.logo} contentDescription={partner.contentDescription} title={partner.name} whatsapp={whatsappNumber} phone={phoneNumber}  />
