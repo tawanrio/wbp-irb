@@ -18,8 +18,8 @@ export default function Utilities({title}) {
         title: 'IRB Code',
         description: 'IRB Code é uma ferramenta desenvolvida pela IRB Automotive que auxilia nossos amigos reparadores no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
         image: '/images/partners/irbCode.jpeg',
-        link: '/irbcode',
-        linkText: 'Saiba mais'
+        link: '/autopecas',
+        linkText: 'Onde encontrar'
     }
 
     const catalogo = {
