@@ -35,16 +35,13 @@ export default function QuemSomos({content}) {
 
     const [metaTitle] = useState(content?.page?.metaTitle)
     const [metaDescription] = useState(content?.page?.metaDescription)
+    const [metaKeywords] = useState(content?.page?.metaKeywords)
     const [banners] = useState(content?.page?.banners)
     const [title] = useState(content?.page?.title)
     const [video] = useState(content?.page?.video)
     const [cardsValues] = useState(content?.page?.companyValues)
     const [description] = useState(content?.page?.contentDescription)
     const [formDefault] = useState(content?.form?.forms.find(item => item.label === "default"))
-
-    console.log(content);
-
- 
     
 
   return (
@@ -52,6 +49,7 @@ export default function QuemSomos({content}) {
      <Head>
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
+       <meta name="keywords" content={metaKeywords || ''}/>
      </Head>
      
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>

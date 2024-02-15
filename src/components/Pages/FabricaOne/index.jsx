@@ -43,6 +43,7 @@ export default function Fabrica({content}) {
   const [cardsValues] = useState(content?.page?.companyValues)
   const [metaDescription] = useState(content?.page.metaDescription)
   const [imgDescription] = useState(content?.page.imgDescription)
+  const [metaKeywords] = useState(content?.page?.metaKeywords)
   const [faq] = useState(content?.page.faq)
 
    
@@ -53,6 +54,7 @@ export default function Fabrica({content}) {
     <Head>
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
+       <meta name="keywords" content={metaKeywords || ''}/>
      </Head>
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
       <Banner banners={banners}/>

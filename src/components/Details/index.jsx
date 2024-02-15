@@ -13,6 +13,7 @@ export default function Description({ content, color,size, className}) {
             mb-2
             font-[400]
             text-justify
+            text-[#666]
             ${className && className} 
             `}
             style={{ color: color ? color : '#666', ...(size && { fontSize: size }) }}>

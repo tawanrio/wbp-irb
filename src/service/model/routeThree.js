@@ -15,7 +15,7 @@ import {Geo} from '@/service/model/schemas/geoSchema'
 import {Collection} from '@/service/model/schemas/collectionsSchema'
 
 // util
-import {formatStrToNoDash, replaceShortcodePartner} from '@/utils/functions'
+import {formatStrToNoDash, replaceShortcodePartner, updateMetatitleGeoRouteThree} from '@/utils/functions'
 
 const resolveRoute = async (resolvedUrl) =>{
   const splittedUrl = resolvedUrl.split('/');
@@ -29,7 +29,7 @@ const singlePartner = async (route,collection)=>{
 
   let page = await Page.findOne({label:'contato'}).lean();
   if(page){
-    console.log('page');
+    // console.log('page');
     
     const address = await Address.findOne({label:"info"})
     const products = await ProductsDb.find().lean().limit(9);
@@ -118,7 +118,14 @@ const routeGeo = async (hasPartner,arrRoute,category, countries, geoName)=>{
  let description = category.partner.description
  description = replaceShortcodePartner(description, partnerName.title )
 
+ let metaTitle = category?.partner.metaTitle
+ metaTitle = replaceShortcodePartner(metaTitle, partnerName.title)
+ metaTitle = updateMetatitleGeoRouteThree(metaTitle, ` em ${geoName} -`)
+
+ category.partner.metaTitle = category.partner.metaTitle ? metaTitle : category.partner.metaTitle
  category.partner.description = description
+ category.title = `${category.title} em ${geoName}`;
+
   
       return {
         type: 'product-geo',
@@ -169,6 +176,7 @@ const routeProduct = async (category,arrRoute) =>{
       countries = geo.countries.find(country => country.name.toLowerCase() === "brasil");
 
       countries.states.find(state => {
+        if(stateNameDb  || cityNameDb) return
         if(formatStrToNoDash(state.name) === routeGeoName){
           stateNameDb = state.name
         }

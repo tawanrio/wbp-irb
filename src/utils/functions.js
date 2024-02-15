@@ -73,7 +73,7 @@ export function insertMenuInTemplateOld({menu,menuName,template,templateName,ite
   }
   export const replaceShortcodePartner = (text, partner) => {
     const shortcode = '{{partner}}';
-    const replace = `das nossas ${partner}`;
+    const replace = `${partner}`;
     let newArray = text; // Definir newArray como o texto original por padrão
     if (Array.isArray(text)) {
         newArray = text.map(item => {
@@ -92,3 +92,26 @@ export function insertMenuInTemplateOld({menu,menuName,template,templateName,ite
     }
     return newArray;
 };
+
+export function updateMetatitleGeo(metatitle, geoName) {
+  return metatitle.replace('-',`em ${geoName} - `);
+}
+
+function getSecondOccurrenceIndex(str, char) {
+  let firstIndex = str.indexOf(char);
+  if (firstIndex !== -1) {
+    let secondIndex = str.indexOf(char, firstIndex + 1);
+    return secondIndex !== -1 ? secondIndex : -1;
+  }
+  return -1;
+}
+
+export function updateMetatitleGeoRouteThree(metatitle, geoName) {
+  const secondIndex = getSecondOccurrenceIndex(metatitle, '-');
+  if (secondIndex !== -1) {
+    const before = metatitle.substring(0, secondIndex).trim();
+    const after = metatitle.substring(secondIndex + 1).trim();
+    return `${before} ${geoName} ${after}`;
+  }
+  return metatitle;
+}

@@ -31,6 +31,8 @@ import {getProductFromUrl,insertMenuInTemplate} from '@/utils/functions'
 
 export default function Produto({ content }) {
 
+  console.log(content);
+
   const route = useRouter()
   let pageUrl = route.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
@@ -38,6 +40,8 @@ export default function Produto({ content }) {
   const [product, setProduct] = useState(content?.arrRoute)
   const [arrRoute, setArrRoute] = useState(content?.arrRoute)
   const [partnerDescription, setPartnerDescription] = useState(content?.category?.partner?.description)
+  const [metaTitle, setMetaTitle] = useState(content?.category?.partner?.metaTitle)
+  const [metaKeywords] = useState(content?.category?.metaKeywords)
 
   switch (arrRoute[0]) {
     case 'distribuidoras':
@@ -60,6 +64,7 @@ export default function Produto({ content }) {
   }
   useEffect(()=>{
     setProduct(content.categories)
+    setMetaTitle(content?.category?.partner?.metaTitle)
     // const replacedText = replaceShortcodePartner(partnerDescription,partnerName.title)
     // partnerDescription && setPartnerDescription(replacedText)
   },[pageUrl])
@@ -99,8 +104,9 @@ export default function Produto({ content }) {
   return (
   <>
     <Head>
-       <title>{content?.category?.metaTitle || content?.category?.title}</title>
+       <title>{metaTitle || content?.category?.title}</title>
        <meta name="description" content={content?.category?.metaDescription || content?.category?.contentDescription} />
+       <meta name="keywords" content={metaKeywords || ''}/>
      </Head>
 
        <Templates template={content?.template} page={content?.page} menus={content?.menus}>

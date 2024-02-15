@@ -36,23 +36,28 @@ export default function Distribuidoras({content}) {
   const router = useRouter()
   const pageUrl = router.asPath.replace('/','')
   const [banners] = useState(content?.page?.banners)
-  const [title, setTitle] = useState(content?.page?.title)
-  const [metaTitle] = useState(content?.page?.metaTitle)
-  const [metaDescription] = useState(content?.page?.metaDescription)
+  const [title, setTitle] = useState(content?.page.title)
+  const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
+  const [metaDescription, setMetaDescription] = useState(content?.page?.metaDescription)
   const [description] = useState(content?.page?.contentDescription)
   const [imgDescription] = useState(content?.page?.imgDescription)
+  const [metaKeywords] = useState(content?.page?.metaKeywords)
   const [faq] = useState(content?.page?.faq)
   
   console.log(content);
 
   useEffect(()=>{
-    setTitle(content?.page?.title)
-  },[content?.page?.title])
+    setTitle(content?.page.title)
+    setMetaTitle(content?.page.metaTitle)
+    setMetaDescription(content?.page.metaDescription)
+  },[content?.page.title, content?.page.metaTitle])
+
   return (
     <>
     <Head>
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
+       <meta name="keywords" content={metaKeywords || ''}/>
      </Head>
       <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>

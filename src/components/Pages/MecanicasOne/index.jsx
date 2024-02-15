@@ -24,7 +24,7 @@ import Title from '@/components/Title';
 import Partners from '@/components/Partners';
 
 // Others
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import  {useRouter}  from 'next/router';
 import SearchPartnersOne from '@/components/SearchPartnersOne';
 import { insertMenuInTemplate } from '@/utils/functions'
@@ -35,20 +35,26 @@ export default function AutocenterEMecanicas({content}) {
   const router = useRouter()
   const pageUrl = router.asPath.replace('/','')
   const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
+  const [title, setTitle] = useState(content?.page.title)
+  const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
+  const [metaDescription, setMetaDescription] = useState(content?.page.metaDescription)
   const [description] = useState(content?.page.contentDescription)
   const [imgDescription] = useState(content?.page.imgDescription)
+  const [metaKeywords] = useState(content?.page?.metaKeywords)
   const [faq] = useState(content?.page.faq)
 
-    
+  useEffect(()=>{
+    setTitle(content?.page.title)
+    setMetaTitle(content?.page.metaTitle)
+    setMetaDescription(content?.page.metaDescription)
+  },[content?.page.title, content?.page.metaTitle])
    
   return (
     <>
     <Head>
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
+       <meta name="keywords" content={metaKeywords || ''}/>
      </Head>
       <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>

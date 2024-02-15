@@ -3,13 +3,15 @@ import Link from "next/link"
 export default function ContactLine({content}) {
  
   return (
-    <section className="relative "  id={`contactLine`} >
+    <section className="flex justify-center  bg-[#22326e]"  id={`contactLine`} >
     {/* <section className="fixed w-[100vw] z-[99] "  id={`contactLine`} > */}
     <div 
     className="
     flex 
-    justify-center
-    bg-[#22326e]
+    justify-end
+    md:max-w-7xl 
+   flex-1
+   md:px-[52px]
     text-white  
     relative 
     " 
@@ -26,7 +28,7 @@ export default function ContactLine({content}) {
      duration-300
     hover:bg-[#586ab3]
     "
-    > <span>{item.label}</span></Link>
+    > <span className=" ">{item.label}</span></Link>
   ))}
       </div>
     {/* <div 

@@ -39,15 +39,18 @@ export default function Autoparts({content}) {
   const pageUrl = router.asPath.replace('/','')
   const [banners] = useState(content?.page.banners)
   const [title, setTitle] = useState(content?.page.title)
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
+  const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
+  const [metaDescription, setMetaDescription] = useState(content?.page.metaDescription)
   const [description] = useState(content?.page.contentDescription)
   const [imgDescription] = useState(content?.page.imgDescription)
   const [faq] = useState(content?.page.faq)
+  const [metaKeywords] = useState(content?.page?.metaKeywords)
 
   useEffect(()=>{
     setTitle(content?.page.title)
-  },[content?.page.title])
+    setMetaTitle(content?.page.metaTitle)
+    setMetaDescription(content?.page.metaDescription)
+  },[content?.page.title, content?.page.metaTitle,content?.page.metaDescription])
 
     
    
@@ -56,6 +59,7 @@ export default function Autoparts({content}) {
     <Head>
        <title>{metaTitle || title}</title>
        <meta name="description" content={metaDescription || description} />
+       <meta name="keywords" content={metaKeywords || ''}/>
      </Head>
       <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>

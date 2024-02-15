@@ -35,8 +35,9 @@ export default function Produto({ content }) {
   pageUrl = pageUrl[pageUrl.length - 1]
  
   const [product, setProduct] = useState(content?.product)
-
-  console.log(content);
+  const [partnerDescription, setPartnerDescription] = useState(content?.category?.partner?.description)
+  const [metaTitle, setMetaTitle] = useState(content?.category?.partner?.metaTitle)
+  const [metaKeywords] = useState(content?.category?.metaKeywords)
 
   useEffect(()=>{
     setProduct(getProductFromUrl(content.products, pageUrl))
@@ -57,16 +58,17 @@ export default function Produto({ content }) {
 
   return (
   <>
-    <Head>
-       <title>{content?.category?.metaTitle || content?.category?.title}</title>
+     <Head>
+       <title>{metaTitle || content?.category?.title}</title>
        <meta name="description" content={content?.category?.metaDescription || content?.category?.contentDescription} />
+       <meta name="keywords" content={metaKeywords || ''}/>
      </Head>
 
        <Templates template={content?.template} page={content?.page} menus={content?.menus}>
           <Banner banners={content?.category?.banners} />
           <BreadCrumb/>
           <Title title={content?.category?.title}/>
-          <ContentDescription content={content?.category?.partner.description}/>
+          <ContentDescription content={partnerDescription}/>
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
           {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners title={content?.partners?.title} product={product} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle /> */}

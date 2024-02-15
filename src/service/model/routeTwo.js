@@ -1,6 +1,10 @@
 
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
-import { replaceShortcodePartner, formatStrToNoDash } from '@/utils/functions';
+import { 
+  replaceShortcodePartner,
+  formatStrToNoDash,
+  updateMetatitleGeo
+ } from '@/utils/functions';
 // Schema
 import Page from '@/service/model/schemas/pageSchema'
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
@@ -74,9 +78,14 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
       }
 
      let description = category.partner.description
-     description = replaceShortcodePartner(description, partnerName.title )
+     description = replaceShortcodePartner(description, `das nossas ${partnerName.title}` )
 
+     let metaTitle = category?.partner.metaTitle
+     metaTitle = replaceShortcodePartner(metaTitle, partnerName.title)
+
+     category.partner.metaTitle = category.partner.metaTitle ? metaTitle : category.partner.metaTitle
      category.partner.description = description
+
      
         return {
           type: 'product',
@@ -109,6 +118,10 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
    
 
     page.title = `${page.title} em ${geoName}`;
+
+    
+    page.metaTitle = updateMetatitleGeo(page.metaTitle, geoName)
+    page.metaDescription[0] = updateMetatitleGeo(page.metaDescription[0], geoName)
 return {
   type: `geo-${arrRoute[0]}`,
   arrRoute:JSON.parse(JSON.stringify(arrRoute)),
@@ -150,10 +163,6 @@ const routePartner = async (arrRoute) =>{
 
 
 // rota parceiro
-  // const collection = await Collection.find().lean();
-  // collection.filter(partner => {
-  //   console.log(partner);
-  // })
 
   let collection = await Collection.findOne({
     label: { $regex: new RegExp(arrRoute[0], 'i') },
@@ -164,18 +173,13 @@ if(collection) return await singlePartner(arrRoute,collection)
 
 
 // rota geo
-// const geo = await Geo.findOne(
-  //   { 'countries.name': 'brasil', 'states.name':  { $regex: new RegExp(routeGeoName, 'i') } },
-  //   { 'states.$': 1 }
-  // ).lean();
-  
-  // const routeGeoName = formatStrToNoDash(arrRoute[1]);
-  
+
   const routeGeoName = formatStrToNoDash(arrRoute[1]);
 
-  const partners = (arrRoute[0] === 'fabrica') 
-  ? await Collection.find().lean()
-  : await Collection.find({label: arrRoute[0]}).lean();
+  // const partners = (arrRoute[0] === 'fabrica') 
+  // ? await Collection.find().lean()
+  // : await Collection.find({label: arrRoute[0]}).lean();
+  const partners = await Collection.find({label: arrRoute[0]}).lean();
 
   let stateName = null;
   let cityName = null;
@@ -184,9 +188,8 @@ if(collection) return await singlePartner(arrRoute,collection)
     if (geoDb) {
         // Encontrou o documento, agora vamos filtrar o array countries
         countries = geoDb.countries.find(country => country.name.toLowerCase() === "brasil");
-
-        
-        countries.states.find(state => {
+        countries?.states.find(state => {
+          if(stateName  || cityName) return
           if(formatStrToNoDash(state.name) === routeGeoName){
             stateName = state.name
           }
@@ -197,16 +200,14 @@ if(collection) return await singlePartner(arrRoute,collection)
               }
             })
           }
-          
-          // console.log(stateName);
-      })
+        })
+        
+        const hasPartner = partners.filter(partner => {
+          if(partner){
       
-      const hasPartner = partners.filter(partner => {
-    if(partner){
     let statesGeoDb = []
-    partner.geo.states.filter(states=>{
+    partner.geo?.states.filter(states=>{
        statesGeoDb.push(states.name);
-       console.log(statesGeoDb);
       })
 
       if (statesGeoDb.includes("*") || statesGeoDb.includes(stateName)) {
@@ -216,15 +217,13 @@ if(collection) return await singlePartner(arrRoute,collection)
 
     if(cityName){
     let citiesGeoDb = []
-    partner.geo.cities.filter(cities=>{
+    partner.geo?.cities.filter(cities=>{
        citiesGeoDb.push(cities.name);
       })
       if (citiesGeoDb.includes("*") || citiesGeoDb.includes(cityName)) {
         return partner
       }
     }
-    
-
 
   });
 
@@ -232,7 +231,9 @@ if(collection) return await singlePartner(arrRoute,collection)
   
   let geoName = stateName ? stateName : cityName ? cityName : null;
   if(geoName){
-    if(hasPartner.length > 0) return await routeGeo(arrRoute, hasPartner,countries, geoName)
+   
+      if(hasPartner.length > 0) return await routeGeo(arrRoute, hasPartner,countries, geoName)
+    
   }
 }
 

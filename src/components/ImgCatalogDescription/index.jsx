@@ -21,7 +21,8 @@ export default function imgCatalogDescription({content}) {
                 justify-start
                 md:gap-14
                 gap-8
-                md:my-6
+                md:mb-6
+                md:mt-0
                 mt-8
                 ">
                     <div
@@ -74,7 +75,7 @@ export default function imgCatalogDescription({content}) {
                     
                    gap-3
                     ">
-                        <h3 className="text-2xl font-semibold">{content?.subtitle}</h3>
+                        <h3 className="text-2xl font-semibold text-[#666]">{content?.subtitle}</h3>
                         <Details content={content?.description} datetime="2016-10-25" suppressHydrationWarning />
                         <div className="flex gap-5">
                         <Link target="_blank" href={content?.button[0].link} className="rounded-xl text-white font-semibold w-[200px] text-center mt-4   ">

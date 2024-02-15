@@ -29,7 +29,6 @@ import {Collection} from '@/service/model/schemas/collectionsSchema'
 export default function Index({content}) {
   // const page = content.page.label;
 
-  console.log(content);
 
   return (
     <>
