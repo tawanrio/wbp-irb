@@ -11,7 +11,7 @@ export default function imgCatalogDescription({content}) {
     return (
         <>
          <article className="flex flex-col items-center " id={`content-img-description_`}>
-            <div className="w-full max-w-7xl md:px-14 px-6 md:my-0 my-4 flex flex-col md:justify-between md:gap-10">
+            <div className="w-full max-w-7xl md:px-14 px-6 md:my-0 my-4 flex flex-col md:justify-between md:gap-6">
             {content?.title && <SectionTitle title={content?.title} />}
                 <div
                 className="
@@ -21,7 +21,7 @@ export default function imgCatalogDescription({content}) {
                 justify-start
                 md:gap-14
                 gap-8
-                md:mb-6
+                md:mb-4
                 md:mt-0
                 mt-8
                 ">

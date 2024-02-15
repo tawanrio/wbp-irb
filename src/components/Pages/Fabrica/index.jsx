@@ -62,7 +62,7 @@ export default function Fabrica({content}) {
        <ContentImgDescription content={imgDescription}/>
        <ContentDescription content={description}/>
         <InsertVideo content={video}/>
-        <Categories categories={content?.categories} colors={content?.page?.colors.products} title />
+        <Categories baseUrl={`${pageUrl}/`} categories={content?.categories} colors={content?.page?.colors.products} title />
        {/* <Products baseUrl={`${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title/> */}
        <Utilities title={'Utilidades'}/>
     </Templates>

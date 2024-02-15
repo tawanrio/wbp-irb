@@ -74,7 +74,7 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
       if(arrRoute[0] !== 'fabrica'){
        partnerName = partners.types.find(item => item.label == arrRoute[0]);
       }else{
-        partnerName ={ title: 'Fábricas'}
+        partnerName ={ title: 'Fábrica'}
       }
 
      let description = category.partner.description

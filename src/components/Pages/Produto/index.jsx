@@ -30,14 +30,14 @@ import {getProductFromUrl,insertMenuInTemplate} from '@/utils/functions'
 
 export default function Produto({ content }) {
   const route = useRouter()
-  let pageUrl = route.asPath.split('/')
-  pageUrl = pageUrl[pageUrl.length - 1]
-  console.log(content);
- 
+  let pageUrl = route.asPath.replace('/','').split('/')
+  
+  console.log(content?.partners?.types);
   const [product, setProduct] = useState(content?.product)
+  const [partnerTypes, setPartnerTypes] = useState(content?.partners?.types.filter(item => item.label !== 'mecanicas'))
 
   useEffect(()=>{
-    setProduct(getProductFromUrl(content.products, pageUrl))
+    setProduct(getProductFromUrl(content.products, pageUrl[1]))
     
 
   },[pageUrl])
@@ -62,7 +62,7 @@ export default function Produto({ content }) {
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
           {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners partners={content?.partners} /> */}
-          <FindPartners title={content?.partners?.title} product={product} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle />
+          <FindPartners category title={content?.partners?.title} product={product} partners={partnerTypes}  colors={content?.partners?.colors} hiddenTitle />
           <Utilities title={'Utilidades'}/>
           {/* <Faq faq={product?.faq}/> */}
         </Templates>

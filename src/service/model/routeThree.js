@@ -112,7 +112,7 @@ const routeGeo = async (hasPartner,arrRoute,category, countries, geoName)=>{
   if(arrRoute[0] !== 'fabrica'){
    partnerName = partners.types.find(item => item.label == arrRoute[0]);
   }else{
-    partnerName ={ title: 'Fábricas'}
+    partnerName ={ title: 'Fábrica'}
   }
 
  let description = category.partner.description
@@ -198,7 +198,7 @@ const routeProduct = async (category,arrRoute) =>{
     const hasPartner = collection.filter(partner => {
       if(partner){
       let statesGeoDb = []
-      partner.geo.states.filter(states=>{
+      partner.geo?.states.filter(states=>{
          statesGeoDb.push(states.name);
         })
   
@@ -209,7 +209,7 @@ const routeProduct = async (category,arrRoute) =>{
   
       if(cityNameDb){
       let citiesGeoDb = []
-      partner.geo.cities.filter(cities=>{
+      partner.geo?.cities.filter(cities=>{
          citiesGeoDb.push(cities.name);
         })
         if (citiesGeoDb.includes("*") || citiesGeoDb.includes(cityNameDb)) {

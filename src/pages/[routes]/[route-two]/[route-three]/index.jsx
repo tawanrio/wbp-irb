@@ -18,7 +18,7 @@ import Error from '@/components/Pages/Error'
 
 export default function index({content}) {
   // const page = content.page.label;
-  // console.log(content);
+  console.log(content);
   return (
     <>
     {content?.type === 'product-geo' && (
@@ -27,7 +27,7 @@ export default function index({content}) {
 
       </>
       )}
- {(content?.type === 'distribuidoras' || content?.type === 'autopecas' || content?.type === 'autocenter-e-mecanicas') && (
+ {(content?.type === 'distribuidoras' || content?.type === 'autopecas' || content?.type === 'mecanicas') && (
    <>
         <Parceiro content={content}/>
       </>

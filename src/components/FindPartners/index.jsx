@@ -2,10 +2,11 @@ import Image from "next/image"
 import SectionTitle from "../SectionTitle"
 import Link from "next/link"
 
-export default function Parceiros({title, partners, colors, hiddenTitle, product}) {
+export default function Parceiros({title, partners, colors, hiddenTitle, product, category}) {
     // console.log("product",product);
     // console.log("partners",partners);
-    const generatePartnerUrlByProduct = ({product, partner}) =>{
+    const generatePartnerUrlByProduct = ({product, partner, category}) =>{
+        if(category) return `/${partner}/${category}`;
         return `/${partner}/${product}`;
     }
     return (
@@ -24,7 +25,11 @@ export default function Parceiros({title, partners, colors, hiddenTitle, product
 
             {partners?.map((partner, pId)=>(
                 <Link key={pId} 
-                href={generatePartnerUrlByProduct({partner:partner?.label, product:product?.label})}
+                href={generatePartnerUrlByProduct({
+                    partner:partner?.label,
+                     product:product?.label,
+                     category:category ? product?.category : null,
+                    } )}
                 className="
                 flex
                 grayscale-[100%]
