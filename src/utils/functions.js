@@ -71,3 +71,24 @@ export function insertMenuInTemplateOld({menu,menuName,template,templateName,ite
   export const formatPhoneNumber = (str) => {
     return str.replace(/[^0-9]/g, '')
   }
+  export const replaceShortcodePartner = (text, partner) => {
+    const shortcode = '{{partner}}';
+    const replace = `das nossas ${partner}`;
+    let newArray = text; // Definir newArray como o texto original por padrão
+    if (Array.isArray(text)) {
+        newArray = text.map(item => {
+            const hasShortcode = item.includes(shortcode);
+            if (hasShortcode) {
+                return item.replace(new RegExp(shortcode, 'g'), replace);
+            } else {
+                return item; // Retorna o item original se não houver shortcode
+            }
+        });
+    } else if (typeof text === 'string') {
+        const hasShortcode = text.includes(shortcode);
+        if (hasShortcode) {
+            newArray = text.replace(new RegExp(shortcode, 'g'), replace);
+        }
+    }
+    return newArray;
+};

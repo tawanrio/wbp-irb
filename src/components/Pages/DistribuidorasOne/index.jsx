@@ -27,7 +27,7 @@ import Partners from '@/components/Partners';
 import SearchPartnersOne from '@/components/SearchPartnersOne';
 
 // Others
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import  {useRouter}  from 'next/router';
 
 
@@ -36,14 +36,18 @@ export default function Distribuidoras({content}) {
   const router = useRouter()
   const pageUrl = router.asPath.replace('/','')
   const [banners] = useState(content?.page?.banners)
-  const [title] = useState(content?.page?.title)
+  const [title, setTitle] = useState(content?.page?.title)
   const [metaTitle] = useState(content?.page?.metaTitle)
   const [metaDescription] = useState(content?.page?.metaDescription)
   const [description] = useState(content?.page?.contentDescription)
   const [imgDescription] = useState(content?.page?.imgDescription)
   const [faq] = useState(content?.page?.faq)
+  
+  console.log(content);
 
-   
+  useEffect(()=>{
+    setTitle(content?.page?.title)
+  },[content?.page?.title])
   return (
     <>
     <Head>
@@ -58,7 +62,7 @@ export default function Distribuidoras({content}) {
 
        {/* <SearchPartners title="Encontre um distribuidor" collections={content?.collection} hiddenProductSearch  products={content?.products} /> */}
 
-       <SearchPartnersOne partnerType='distribuidor' arrRoute={content?.arrRoute} hiddenProductSearch title="Encontre um distribuidor" collections={content?.collection} products={content?.products}/>
+       <SearchPartnersOne geo={content?.geo} partnerType='distribuidor' arrRoute={content?.arrRoute} hiddenProductSearch title="Encontre um distribuidor" collections={content?.collection} products={content?.products}/>
 
        <ContentImgDescription content={imgDescription}/>
        {/* <ProductFaq products={content?.products} faq={faq} baseUrl={`/${pageUrl}/`}/>  */}

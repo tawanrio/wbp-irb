@@ -58,7 +58,7 @@ export default function Autoparts({content}) {
        <BreadCrumb/>
        <Title title={title}/>
        <ContentDescription content={description}/>
-       <SearchPartners partnerType='autopeça' hiddenProductSearch title="Encontre uma autopeça" collections={content?.collection} products={content?.products}/>
+       <SearchPartners geo={content?.geo} partnerType='autopeça' hiddenProductSearch title="Encontre uma autopeça" collections={content?.collection} products={content?.products}/>
        <ContentImgDescription content={imgDescription}/>
        <Categories baseUrl={`${pageUrl}/`} categories={content?.categories} colors={content?.page?.colors.products} title />
        {/* <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`${pageUrl}/`} title /> */}

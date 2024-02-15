@@ -9,6 +9,8 @@ import {Menus} from '@/service/model/schemas/menusSchema'
 import {Template} from '@/service/model/schemas/templateSchema'
 import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
 import {Collection} from '@/service/model/schemas/collectionsSchema'
+import {Geo} from '@/service/model/schemas/geoSchema'
+
 import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSchema'
 
 const routePage = async (page, route) => {
@@ -21,7 +23,12 @@ const routePage = async (page, route) => {
      const collection = await Collection.find({label:route}).lean();
      const categories = await CategoriesProducts.find().lean();
      const menus = await Menus.find().lean();
-
+     const geo = await Geo.findOne({"countries.name": "brasil"});
+      let countries;
+      if (geo) {
+          // Encontrou o documento, agora vamos filtrar o array countries
+          countries = geo.countries.find(country => country.name.toLowerCase() === "brasil");
+        }
 
     
      return {
@@ -31,6 +38,7 @@ const routePage = async (page, route) => {
        categories: categories && JSON.parse(JSON.stringify(categories)),
       //  products: products && JSON.parse(JSON.stringify(products)),
        template: template && JSON.parse(JSON.stringify(template)),
+       geo: geo && JSON.parse(JSON.stringify(countries)),
        menus: menus && JSON.parse(JSON.stringify(menus)),
        partners: partners && JSON.parse(JSON.stringify(partners)),
        collection: collection && JSON.parse(JSON.stringify(collection)),
@@ -43,6 +51,7 @@ const routeCategory = async (category,route) =>{
        const partners = await SchemaCategories.findOne({label:"partners"}).lean();
       //  const menu = await Menu.findOne({label:"menu"}).lean();
        const template = await Template.find();
+      
        const menus = await Menus.find().lean();
 
     return {
@@ -52,7 +61,6 @@ const routeCategory = async (category,route) =>{
       category: category && JSON.parse(JSON.stringify(category)),
       partners: partners && JSON.parse(JSON.stringify(partners)),
       template: template && JSON.parse(JSON.stringify(template)),
-      
       menus: menus && JSON.parse(JSON.stringify(menus)),
       products: products && JSON.parse(JSON.stringify(products)),
     }

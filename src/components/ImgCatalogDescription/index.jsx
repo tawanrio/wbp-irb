@@ -11,14 +11,14 @@ export default function imgCatalogDescription({content}) {
     return (
         <>
          <article className="flex flex-col items-center " id={`content-img-description_`}>
-            <div className="w-full max-w-7xl md:px-14 px-6 md:my-10 my-4 flex flex-col md:justify-between md:gap-10">
+            <div className="w-full max-w-7xl md:px-14 px-6 md:my-0 my-4 flex flex-col md:justify-between md:gap-10">
             {content?.title && <SectionTitle title={content?.title} />}
                 <div
                 className="
                 md:flex-row
                 flex-col
                 flex
-                justify-between
+                justify-start
                 md:gap-14
                 gap-8
                 md:my-6
@@ -26,7 +26,6 @@ export default function imgCatalogDescription({content}) {
                 ">
                     <div
                     className="
-                    md:h-[800px]
                   
                     relative
                     group
@@ -35,14 +34,18 @@ export default function imgCatalogDescription({content}) {
                         style={{borderRadius: '20px'}}
                         className="
                          overflow-hidden
-                         md:min-w-[285px]
-                         h-full
+                         md:min-w-[255px]
+                         min-h-[100px]
+                         h-[400px]
+                         md:h-full
                          group-hover:scale-105
                         
                          duration-700
                         ">
-                            <div className=" relative  md:min-h-[500px]
-                        min-h-[400px] ">
+                            <div className=" 
+                            relative  
+                            h-full
+                        ">
                         
                         <Image
                         src={content?.imageProduct.imageUrl}

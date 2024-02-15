@@ -11,30 +11,57 @@ import {formatStrToUrl} from '@/utils/functions'
 import { logging } from '../../../../next.config';
 import Link from 'next/link';
 
-const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => {
+const Collection = ({ collections, products, hiddenProductSearch, arrRoute, geo}) => {
   let stateMatch = null
   let cityMatch = null
 
-  collections.filter(collection =>{
-     arrRoute && collection.info.address.find(
-          (address) => {
-          if(address.label === 'default' && formatStrToUrl(address.state) === arrRoute[1]) {
-            stateMatch = address.state
-          }
-          }
-        ) !== undefined
-        if(!stateMatch){
 
-         arrRoute && collection.info.address.filter(
-            (address) => {
-              if(address.label === 'default' && formatStrToUrl(address.city) === arrRoute[1]) {
-                stateMatch = address.state
-                cityMatch = address.city
-              }
+geo.states.filter(state => {
+  if(stateMatch || cityMatch) return
+  
+  if(formatStrToUrl(state.name) === arrRoute[1]){
+          stateMatch = state.name
+        }
+        if(!stateMatch){
+           state.cities.find(city => {
+             if(formatStrToUrl(city) === arrRoute[1]){
+              stateMatch = state.name
+              cityMatch = city
             }
-            ) !== undefined
-          }
-  })
+           })
+        }
+      })
+      
+  // collections.filter(collection =>{
+  //    arrRoute && collection.geo.states.find(state =>{
+  //     console.log(state);
+  //     if(formatStrToUrl(state.name) === arrRoute[1]){
+  //       stateMatch = address.state
+  //     }
+  //    }
+  //       ) !== undefined
+
+    //  arrRoute && collection.info.address.find(
+    //       (address) => {
+    //       if(address.label === 'default' && formatStrToUrl(address.state) === arrRoute[1]) {
+    //         stateMatch = address.state
+    //       }
+    //       }
+    //     ) !== undefined
+
+    //     if(!stateMatch){
+
+    //      arrRoute && collection.info.address.filter(
+    //         (address) => {
+    //           if(address.label === 'default' && formatStrToUrl(address.city) === arrRoute[1]) {
+    //             stateMatch = address.state
+    //             cityMatch = address.city
+    //           }
+    //         }
+    //         ) !== undefined
+    //       }
+  // }
+  // )
 
 
   const itemsPerPage = 6;
@@ -54,68 +81,136 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
   }, [stateMatch,cityMatch]);
 
   // Filtrar coleções com base no termo de pesquisa, estado e cidade
-  const filteredCollections = collections?.filter((collection) => {
-    const searchTermMatch = collection.name.toLowerCase().includes(searchTerm.toLowerCase());
+  // const filteredCollections = collections?.filter((collection) => {
+  //   const searchTermMatch = collection.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const stateMatch = selectedState
-      ? collection.info.address.find(
-          (address) => address.label === 'default' && address.state.toLowerCase() === selectedState.toLowerCase()
-        ) !== undefined
-      : true;
+  //   // const stateMatch = selectedState
+  //   //   ? collection.info.address.find(
+  //   //       (address) => address.label === 'default' && address.state.toLowerCase() === selectedState.toLowerCase()
+  //   //     ) !== undefined
+  //   //   : true;
 
-      const productMatch = selectedProduct 
-      ? collection.products.find(product => product.label.toLowerCase() === selectedProduct.toLowerCase()) !== undefined : true;
+  //   const stateMatch = selectedState
+  //   ? collection.geo.states.find( state => {
+  //       // console.log(state)
+  //      if( state.name === '*') return true
+  //      if( state.name === selectedState) return true
+  //     }
+  //      )
+  //     : true;
 
-    const cityMatch = selectedCity
-      ? collection.info.address.find(
-          (address) =>
-            address.label === 'default' &&
-            address.state.toLowerCase() === selectedState.toLowerCase() &&
-            address.city.toLowerCase() === selectedCity.toLowerCase()
-        ) !== undefined
-      : true;
+  //     const productMatch = selectedProduct 
+  //     ? collection.products.find(product => product.label.toLowerCase() === selectedProduct.toLowerCase()) !== undefined : true;
 
-    return productMatch && stateMatch && cityMatch;
-  });
+  //   // const cityMatch = selectedCity
+  //   //   ? collection.info.address.find(
+  //   //       (address) =>
+  //   //         address.label === 'default' &&
+  //   //         address.state.toLowerCase() === selectedState.toLowerCase() &&
+  //   //         address.city.toLowerCase() === selectedCity.toLowerCase()
+  //   //     ) !== undefined
+  //   //   : true;
+
+  //     return productMatch && stateMatch ;
+  //     // return productMatch && stateMatch && cityMatch;
+  // });
 
   // Filtrar estados únicos para a lista de seleção de estado
-  const uniqueStates = useMemo(() => {
-    return [
-      ...new Set(
-        collections?.flatMap((collection) =>
-            collection.info.address
-              .filter((address) => address.label === 'default')
-              .map((address) => address.state)
-          )
-      ),
-    ].sort();
-  }, [collections]);
+  let uniqueStates = useMemo(() => {
+    let states = [];
+    collections && collections?.map(partner => {
+      partner.geo?.states.find(state => {
+        if(state.name === "*"){
+          states = geo.states.map(state => state.name);
+        }else{
+          states.push(state.name)
+        }
+      })
+    })
+
+    return [...new Set(states)].sort();
+}, [collections, geo.states]);
+
+
 
   // Filtrar cidades únicas para a lista de seleção de cidade, baseado no estado selecionado
-  const uniqueCities = useMemo(() => {
-    return [
-      ...new Set(
-        collections
-          .flatMap((collection) =>
-            collection.info.address
-              .filter((address) => 
-                address.label === 'default' && 
-                (selectedState ? address.state.toLowerCase() === selectedState.toLowerCase() : true)
-              )
-              .map((address) => address.city)
-          )
-      )
-    ].sort();
-  }, [collections, selectedState]);
+//   let uniqueCities = useMemo(() => {
+//     let cities = [];
+//     if (collections && collections[0]?.geo?.cities.find(city => city.name === "*")) {
+//         let stateMatch = selectedState?.toLowerCase(); // presumindo que stateMatch esteja definido
+//         geo.states.forEach(state => {
+//             if (formatStrToUrl(state.name) === formatStrToUrl(stateMatch)) {
+//                 state.cities.forEach(city => {
+//                     cities.push(city);
+//                 });
+//             }
+//         });
+//     } else {
+//         cities = collections?.flatMap(collection =>
+//             collection.info.address
+//                 .filter(address => 
+//                     address.label === 'default' && 
+//                     (selectedState ? address.state.toLowerCase() === selectedState.toLowerCase() : true)
+//                 )
+//                 .map(address => address.city)
+//         ) ?? [];
+//     }
+//     return [...new Set(cities)].sort();
+// }, [collections, selectedState, geo.states]);
+
+let uniqueCities = useMemo(() => {
+  let cities = [];
+  // collections && collections[0]?.geo?.cities.find(city => city.name === "*") 
+  collections && collections?.map(partner => {
+      partner.geo?.states.find(state => {
+        geo.states.map(state => {
+          if(selectedState === state.name){
+            cities = state.cities.map(city => city);
+          }
+        });
+        });
+
+      });
+  
+  return [...new Set(cities)].sort();
+}, [collections, selectedState, geo.states]);
+
+
+
+
+  // if(collections[0].geo.states.find(state => state.name === "*")){
+    
+  //   uniqueStates = []
+  //   geo.states.map(state=>{
+  //     uniqueStates.push(state.name)
+  //   })
+  // }
+
+  // if(collections[0].geo.cities.find(city => city.name === "*")){
+  //   uniqueCities = []
+  //   geo.states.map(state=>{
+  //     if(formatStrToUrl(state.name) === formatStrToUrl(stateMatch)){
+  //       state.cities.map(city => {
+  //         uniqueCities.push(city)
+
+  //       });
+  //     }
+  //   })
+  // }
+
+  // console.log(uniqueStates);
+  // console.log(uniqueCities);
+
   
 
 
   // Lógica de paginação
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredCollections?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = collections?.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(filteredCollections?.length / itemsPerPage);
+
+  const totalPages = Math.ceil(collections?.length / itemsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);

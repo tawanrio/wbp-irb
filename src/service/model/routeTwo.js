@@ -1,6 +1,6 @@
 
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
-import { formatStrToUrl, formatStrToNoDash } from '@/utils/functions';
+import { replaceShortcodePartner, formatStrToNoDash } from '@/utils/functions';
 // Schema
 import Page from '@/service/model/schemas/pageSchema'
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
@@ -61,12 +61,29 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
   
       // const menu = await Menu.findOne({label:"menu"}).lean();
       const menus = await Menus.find().lean();
+      const geoDb = await Geo.findOne({"countries.name": "brasil"});
+      const geo = geoDb.countries.find(country => country.name.toLowerCase() === "brasil");
+  
+          // Encontrou o documento, agora vamos filtrar o array countries
+          
+          let partnerName
+      if(arrRoute[0] !== 'fabrica'){
+       partnerName = partners.types.find(item => item.label == arrRoute[0]);
+      }else{
+        partnerName ={ title: 'Fábricas'}
+      }
+
+     let description = category.partner.description
+     description = replaceShortcodePartner(description, partnerName.title )
+
+     category.partner.description = description
      
         return {
           type: 'product',
           arrRoute:JSON.parse(JSON.stringify(arrRoute)),
           partners: partners && JSON.parse(JSON.stringify(partners)),
           page: JSON.parse(JSON.stringify(page)),
+          geo: geo && JSON.parse(JSON.stringify(geo)),
           category: category && JSON.parse(JSON.stringify(category)),
           categories: categories && JSON.parse(JSON.stringify(categories)),
           template: template && JSON.parse(JSON.stringify(template)),
@@ -76,11 +93,11 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
         }
   }
 
-  const routeGeo = async (arrRoute,geo, geoName) => {
-
+  const routeGeo = async (arrRoute,hasPartner,geo, geoName) => {
 
     // se a rota encontrar um estado
-  
+    const routeGeoName = formatStrToNoDash(arrRoute[1]);
+
     const page = await Page.findOne({label:arrRoute[0]}).lean();
     const template = await Template.find();
     // const menu = await Menu.findOne({label:"menu"}).lean();
@@ -89,15 +106,19 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
     const categories = await CategoriesProducts.find().lean();
     const menus = await Menus.find().lean();
 
+   
+
     page.title = `${page.title} em ${geoName}`;
 return {
   type: `geo-${arrRoute[0]}`,
   arrRoute:JSON.parse(JSON.stringify(arrRoute)),
  page: JSON.parse(JSON.stringify(page)),
+ geo: geo && JSON.parse(JSON.stringify(geo)),
+ geoName,
  partners: partners && JSON.parse(JSON.stringify(partners)),
  categories: categories && JSON.parse(JSON.stringify(categories)),
  template: template && JSON.parse(JSON.stringify(template)),
- collection: geo && JSON.parse(JSON.stringify(geo)),
+ collection: hasPartner && JSON.parse(JSON.stringify(hasPartner)),
  menus: menus && JSON.parse(JSON.stringify(menus)),
 //  products: products && JSON.parse(JSON.stringify(products)),
 }
@@ -155,22 +176,66 @@ if(collection) return await singlePartner(arrRoute,collection)
   const partners = (arrRoute[0] === 'fabrica') 
   ? await Collection.find().lean()
   : await Collection.find({label: arrRoute[0]}).lean();
-  let geoName = null
 
-  const geo = partners.filter(partner => {
-    const stateDb = formatStrToNoDash(partner.info.address[0].state)
-    const cityDb = formatStrToNoDash(partner.info.address[0].city)
-    if(stateDb === routeGeoName || cityDb === routeGeoName) {
-      geoName = (stateDb === routeGeoName) ? partner.info.address[0].state : null
+  let stateName = null;
+  let cityName = null;
+  const geoDb = await Geo.findOne({"countries.name": "brasil"});
+    let countries;
+    if (geoDb) {
+        // Encontrou o documento, agora vamos filtrar o array countries
+        countries = geoDb.countries.find(country => country.name.toLowerCase() === "brasil");
 
-      if(!geoName) geoName = (cityDb === routeGeoName) ? partner.info.address[0].city : null
+        
+        countries.states.find(state => {
+          if(formatStrToNoDash(state.name) === routeGeoName){
+            stateName = state.name
+          }
+          if(!stateName){
+            state.cities.find(city =>{
+              if(formatStrToNoDash(city) === routeGeoName){
+                cityName = city
+              }
+            })
+          }
+          
+          // console.log(stateName);
+      })
+      
+      const hasPartner = partners.filter(partner => {
+    if(partner){
+    let statesGeoDb = []
+    partner.geo.states.filter(states=>{
+       statesGeoDb.push(states.name);
+       console.log(statesGeoDb);
+      })
 
-    
-      return partner
+      if (statesGeoDb.includes("*") || statesGeoDb.includes(stateName)) {
+        return partner
+      }
     }
+
+    if(cityName){
+    let citiesGeoDb = []
+    partner.geo.cities.filter(cities=>{
+       citiesGeoDb.push(cities.name);
+      })
+      if (citiesGeoDb.includes("*") || citiesGeoDb.includes(cityName)) {
+        return partner
+      }
+    }
+    
+
+
   });
 
-  if(geo.length > 0) return await routeGeo(arrRoute, geo, geoName)
+  // console.log(hasPartner);
+  
+  let geoName = stateName ? stateName : cityName ? cityName : null;
+  if(geoName){
+    if(hasPartner.length > 0) return await routeGeo(arrRoute, hasPartner,countries, geoName)
+  }
+}
+
 
 // name: { $regex: new RegExp(routeTwo, 'i') }
 

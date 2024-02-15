@@ -14,6 +14,8 @@ import Link from 'next/link';
 const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => {
   let stateMatch = null
   let cityMatch = null
+
+  
   // products.filter(product =>{
   //   arrRoute && product.info.address.find(
   //         (address) => {

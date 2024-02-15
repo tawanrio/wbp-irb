@@ -11,30 +11,49 @@ import {formatStrToUrl} from '@/utils/functions'
 import { logging } from '../../../../next.config';
 import Link from 'next/link';
 
-const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => {
+const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo}) => {
   let stateMatch = null
   let cityMatch = null
-  collections.filter(collection =>{
-    arrRoute && collection.info.address.find(
-          (address) => {
-          if(address.label === 'default' && formatStrToUrl(address.state) === arrRoute[2]) {
-            stateMatch = address.state
-          }
-          }
-        ) !== undefined
-        if(!stateMatch){
 
-          const searchCity = arrRoute
-          && collection.info.address.filter(
-            (address) => {
-              if(address.label === 'default' && formatStrToUrl(address.city) === arrRoute[2]) {
-                stateMatch = address.state
-                cityMatch = address.city
-              }
-            }
-            ) !== undefined
+  arrRoute && geo.states.filter(state => {
+    if(stateMatch || cityMatch) return
+    
+    if(formatStrToUrl(state.name) === arrRoute[1] 
+    || formatStrToUrl(state.name) === arrRoute[2]){
+            stateMatch = state.name
           }
-  })
+          if(!stateMatch){
+             state.cities.find(city => {
+               if(formatStrToUrl(city) === arrRoute[1] 
+               || formatStrToUrl(city) === arrRoute[2]){
+                stateMatch = state.name
+                cityMatch = city
+              }
+             })
+          }
+        })
+  
+  // collections.filter(collection =>{
+  //   arrRoute && collection.info.address.find(
+  //         (address) => {
+  //         if(address.label === 'default' && formatStrToUrl(address.state) === arrRoute[2]) {
+  //           stateMatch = address.state
+  //         }
+  //         }
+  //       ) !== undefined
+  //       if(!stateMatch){
+
+  //         const searchCity = arrRoute
+  //         && collection.info.address.filter(
+  //           (address) => {
+  //             if(address.label === 'default' && formatStrToUrl(address.city) === arrRoute[2]) {
+  //               stateMatch = address.state
+  //               cityMatch = address.city
+  //             }
+  //           }
+  //           ) !== undefined
+  //         }
+  // })
 
 
   const itemsPerPage = 6;
@@ -54,68 +73,94 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
   }, [stateMatch,cityMatch]);
 
   // Filtrar coleções com base no termo de pesquisa, estado e cidade
-  const filteredCollections = collections?.filter((collection) => {
-    const searchTermMatch = collection.name.toLowerCase().includes(searchTerm.toLowerCase());
+  // const filteredCollections = collections?.filter((collection) => {
+  //   const searchTermMatch = collection.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const stateMatch = selectedState
-      ? collection.info.address.find(
-          (address) => address.label === 'default' && address.state.toLowerCase() === selectedState.toLowerCase()
-        ) !== undefined
-      : true;
+  //   // const stateMatch = selectedState
+  //   //   ? collection.info.address.find(
+  //   //       (address) => address.label === 'default' && address.state.toLowerCase() === selectedState.toLowerCase()
+  //   //     ) !== undefined
+  //   //   : true;
+    
+  //   const stateMatch = selectedState
+  //     ? collection.info.address.find(
+  //         (address) => address.label === 'default' && address.state.toLowerCase() === selectedState.toLowerCase()
+  //       ) !== undefined
+  //     : true;
 
-      const productMatch = selectedProduct 
-      ? collection.products.find(product => product.label.toLowerCase() === selectedProduct.toLowerCase()) !== undefined : true;
+  //     // console.log(stateMatch);
+  //     const productMatch = selectedProduct 
+  //     ? collection.products.find(product => product.label.toLowerCase() === selectedProduct.toLowerCase()) !== undefined : true;
 
-    const cityMatch = selectedCity
-      ? collection.info.address.find(
-          (address) =>
-            address.label === 'default' &&
-            address.state.toLowerCase() === selectedState.toLowerCase() &&
-            address.city.toLowerCase() === selectedCity.toLowerCase()
-        ) !== undefined
-      : true;
+  //   // const cityMatch = selectedCity
+  //   //   ? collection.info.address.find(
+  //   //       (address) =>
+  //   //         address.label === 'default' &&
+  //   //         address.state.toLowerCase() === selectedState.toLowerCase() &&
+  //   //         address.city.toLowerCase() === selectedCity.toLowerCase()
+  //   //     ) !== undefined
+  //   //   : true;
 
-    return productMatch && stateMatch && cityMatch;
-  });
+  //   return productMatch && stateMatch ;
+  //   // return productMatch && stateMatch && cityMatch;
+  // });
 
   // Filtrar estados únicos para a lista de seleção de estado
+  // let uniqueStates = useMemo(() => {
+  //   return [
+  //     ...new Set(
+  //       collections?.flatMap((collection) =>
+  //           collection.info.address
+  //             .filter((address) => address.label === 'default')
+  //             .map((address) => address.state)
+  //         )
+  //     ),
+  //   ].sort();
+  // }, [collections]);
+
   const uniqueStates = useMemo(() => {
-    return [
-      ...new Set(
-        collections?.flatMap((collection) =>
-            collection.info.address
-              .filter((address) => address.label === 'default')
-              .map((address) => address.state)
-          )
-      ),
-    ].sort();
-  }, [collections]);
+    let states = [];
+    // collections && collections?.geo?.states.find(state => state.name === "*") 
+    collections && collections?.map(partner => {
+      partner.geo?.states.find(state => {
+        if(state.name === "*"){
+          states = geo.states.map(state => state.name);
+        }else{
+          states.push(state.name)
+        }
+      })
+    })
+
+    return [...new Set(states)].sort();
+}, [collections, geo.states]);
+
+  
 
   // Filtrar cidades únicas para a lista de seleção de cidade, baseado no estado selecionado
   const uniqueCities = useMemo(() => {
-    return [
-      ...new Set(
-        collections
-          .flatMap((collection) =>
-            collection.info.address
-              .filter((address) => 
-                address.label === 'default' && 
-                (selectedState ? address.state.toLowerCase() === selectedState.toLowerCase() : true)
-              )
-              .map((address) => address.city)
-          )
-      )
-    ].sort();
-  }, [collections, selectedState]);
+    let cities = [];
+    // collections && collections[0]?.geo?.cities.find(city => city.name === "*") 
+    collections && collections?.map(partner => {
+        partner.geo?.states.find(state => {
+          geo.states.map(state => {
+            if(selectedState === state.name){
+              cities = state.cities.map(city => city);
+            }
+          });
+          });
   
+        });
+    
+    return [...new Set(cities)].sort();
+  }, [collections, selectedState, geo.states]);
 
 
   // Lógica de paginação
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredCollections?.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = collections?.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(filteredCollections?.length / itemsPerPage);
+  const totalPages = Math.ceil(collections?.length / itemsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -169,6 +214,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
       return `/${arrUrl[0]}`
   }
 
+  
   return (
     <div>
       {/* Campos de filtro */}
@@ -217,7 +263,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
     group-hover:h-max
     my-2
     h-0  
-    max-h-[120px]
+    max-h-[170px]
     duration-500
     overflow-scroll
     overflow-x-hidden
@@ -239,7 +285,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
           className='
           w-full
           flex
-          
+          hover:bg-slate-100
           justify-center
           '>
             {state}
@@ -266,11 +312,10 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
     group-hover:h-max
     my-2
     h-0  
-    max-h-[120px]
+    max-h-[170px]
     duration-500
     overflow-scroll
     overflow-x-hidden
-    my-2
     ">
       <li>
       <Link href={generateUrlGeo(stateMatch ? stateMatch : '')} onClick={() => handleCityChange('')}
@@ -289,6 +334,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute}) => 
           w-full
           flex
           justify-center
+          hover:bg-slate-100
           '>
             {city}
           </Link>

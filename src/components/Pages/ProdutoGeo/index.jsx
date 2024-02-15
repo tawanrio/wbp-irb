@@ -42,37 +42,7 @@ export default function Produto({ content }) {
     setProduct(getProductFromUrl(content.products, pageUrl))
   },[pageUrl])
 
-  insertMenuInTemplate({
-menu:content?.menu,
-    template: content?.template,  
-    menuName: "header",
-    itemTemplateName:"default",
-    templateName: "header"
-  })
-  insertMenuInTemplate({
 
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "partners",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "products",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "company",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
   
   let partnerName
   if(content?.arrRoute[0] !== 'fabrica'){
@@ -100,7 +70,7 @@ menu:content?.menu,
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
           {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners title={content?.partners?.title} product={product} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle /> */}
-          <SearchPartners title={`Encontre um(a) ${partnerName.title}`} collections={content?.collection} products={content?.products} arrRoute={content?.arrRoute} hiddenProductSearch />
+          <SearchPartners geo={content?.geo} title={`Encontre um(a) ${partnerName.title}`} collections={content?.collection} products={content?.products} arrRoute={content?.arrRoute} hiddenProductSearch />
           {/* <Faq faq={product?.faq}/> */}
           {/* <Products products={content?.products} colors={content?.page?.colors.products} title /> */}
           <Categories baseUrl={`/${content?.arrRoute[0]}/`} categories={content?.categories} colors={content?.page?.colors.products} title />

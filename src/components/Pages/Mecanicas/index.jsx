@@ -55,7 +55,7 @@ export default function AutocenterEMecanicas({content}) {
        <BreadCrumb/>
        <Title title={title}/>
        <ContentDescription content={description}/>
-       <SearchPartners partnerType='mecanica' hiddenProductSearch title="Encontre uma mecânica" collections={content?.collection} products={content?.products} />
+       <SearchPartners geo={content?.geo} partnerType='mecanica' hiddenProductSearch title="Encontre uma mecânica" collections={content?.collection} products={content?.products} />
        <ContentImgDescription content={imgDescription}/>
        {/* <ProductFaq products={content?.products} faq={faq} baseUrl={`/${pageUrl}/`}/>  */}
        <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>

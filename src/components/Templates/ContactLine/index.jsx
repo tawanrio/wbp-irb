@@ -14,8 +14,9 @@ export default function ContactLine({content}) {
     relative 
     " 
     id='containerBanner'>
-      {content.nav[0].links.map(item => (
+      {content.nav[0].links.map((item,i) => (
     <Link 
+    key={i+"contactLine"}
     href={item.route}
     className="
     mx-2

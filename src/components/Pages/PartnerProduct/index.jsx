@@ -31,13 +31,14 @@ import {getProductFromUrl,insertMenuInTemplate} from '@/utils/functions'
 
 export default function Produto({ content }) {
 
-  console.log(content);
   const route = useRouter()
   let pageUrl = route.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
  
   const [product, setProduct] = useState(content?.arrRoute)
   const [arrRoute, setArrRoute] = useState(content?.arrRoute)
+  const [partnerDescription, setPartnerDescription] = useState(content?.category?.partner?.description)
+
   switch (arrRoute[0]) {
     case 'distribuidoras':
 
@@ -50,47 +51,20 @@ export default function Produto({ content }) {
       break;
   }
 
+  let partnerName
+  if(content?.arrRoute[0] !== 'fabrica'){
+     partnerName = content?.partners.types.find(item => item.label == content?.arrRoute[0]);
+  }else{
+    partnerName ={ title: 'Fábricas'}
+
+  }
   useEffect(()=>{
     setProduct(content.categories)
-    
+    // const replacedText = replaceShortcodePartner(partnerDescription,partnerName.title)
+    // partnerDescription && setPartnerDescription(replacedText)
   },[pageUrl])
 
-  insertMenuInTemplate({
-menu:content?.menu,
-    template: content?.template, 
-menu:content?.menu,
-    template: content?.template,  
-    menuName: "header",
-    itemTemplateName:"default",
-    templateName: "header"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "partners",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "products",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
-  insertMenuInTemplate({
-    menu:content?.menu,
-    template: content?.template, 
-    menu:content?.menu,
-    template: content?.template,  
-    menuName: "company",
-    itemTemplateName:"default",
-    templateName: "footer"
-  })
+
 
 
 
@@ -103,28 +77,21 @@ menu:content?.menu,
     return text;
   };
   
-  const replaceShortcodePartner = (text, partner) => {
-    const shortcode = '{{partner}}';
-    const hasShortcode = text.includes(shortcode);
-    if (hasShortcode) {
-      return text.replaceAll(shortcode, partner);
-    }
-    return text;
-  };
+ 
 
   
   // (product.partner?.description) && (product.partner.description[0] = replaceShortcodeProduct(product?.partner?.description[0], `${content?.arrRoute[1]}s` ));
 
-  let partnerName
-  if(content?.arrRoute[0] !== 'fabrica'){
-     partnerName = content?.partners.types.find(item => item.label == content?.arrRoute[0]);
-  }else{
-    partnerName ={ title: 'Fábricas'}
-
-  }
+  
 
 
-  // (content?.category.partner.description) && (content?.category.partner.description[0] = replaceShortcodePartner( content?.category.partner.description[0] , `das nossas ${partnerName?.title}`));
+  // console.log(partnerName.title);
+  // (content?.category.partner.description) && (content?.category?.partner.description[0] = replaceShortcodePartner( content?.category.partner.description[0] , `das nossas ${partnerName?.title}`));
+
+  // content?.category?.partner?.description = ['teste'];
+
+  
+
 
   // content?.category.partner.description[0] = replaceShortcodePartner(content?.category.partner.description[0] , `das nossas ${partnerName?.title}`);
   
@@ -140,11 +107,11 @@ menu:content?.menu,
           <Banner banners={content?.category.banners} />
           <BreadCrumb/>
           <Title title={content?.category.title}/>
-          <ContentDescription content={content?.category.partner.description}/>
+          <ContentDescription content={partnerDescription}/>
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
           {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners title={content?.partners?.title} product={product} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle /> */}
-          <SearchPartners title={`Encontre um(a) ${partnerName.title}`} arrRoute={content?.arrRoute} collections={content?.collection} products={content?.products} hiddenProductSearch />
+          <SearchPartners geo={content?.geo} title={`Encontre um(a) ${partnerName.title}`} arrRoute={content?.arrRoute} collections={content?.collection} products={content?.products} hiddenProductSearch />
           {/* <Faq faq={product?.faq}/> */}
           {/* <Products products={content?.products} colors={content?.page?.colors.products} title /> */}
           <Categories baseUrl={`/${content?.arrRoute[0]}/`} categories={content?.categories} colors={content?.page?.colors.products} title />

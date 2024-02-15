@@ -26,10 +26,10 @@ import {Template} from '@/service/model/schemas/templateSchema'
 import {Categories} from '@/service/model/schemas/categoriesSchema'
 import {Collection} from '@/service/model/schemas/collectionsSchema'
 
-export default function Index({content,resolvedUrl}) {
+export default function Index({content}) {
   // const page = content.page.label;
-  console.log(resolvedUrl);
 
+  console.log(content);
 
   return (
     <>

@@ -33,6 +33,8 @@ import  {useRouter}  from 'next/router';
 
 export default function Distribuidoras({content}) {
 
+  console.log(content);
+
   const router = useRouter()
   const pageUrl = router.asPath.replace('/','')
   const [banners] = useState(content?.page?.banners)
@@ -56,7 +58,7 @@ export default function Distribuidoras({content}) {
        <BreadCrumb/>
        <Title title={title}/>
        <ContentDescription content={description}/>
-       <SearchPartners partnerType='distribuidor' title="Encontre um distribuidor" collections={content?.collection} hiddenProductSearch  products={content?.products} />
+       <SearchPartners partnerType='distribuidor' title="Encontre um distribuidor" collections={content?.collection} hiddenProductSearch  products={content?.products} geo={content?.geo}/>
        <ContentImgDescription content={imgDescription}/>
        {/* <ProductFaq products={content?.products} faq={faq} baseUrl={`/${pageUrl}/`}/>  */}
        <Categories baseUrl={`${pageUrl}/`} categories={content?.categories} colors={content?.page?.colors.products} title />
