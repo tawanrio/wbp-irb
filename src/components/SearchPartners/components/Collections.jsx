@@ -218,7 +218,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo})
   return (
     <div>
       {/* Campos de filtro */}
-      <div className="mb-4 flex justify-center">
+      <div className="mb-4 flex justify-center md:flex-row flex-col md:gap-0 gap-4">
         {/* Campo de pesquisa
         <input
           type="text"
@@ -247,7 +247,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo})
 
         {/* Campo de seleção de estado */}
         <div className="rounded-lg border mx-4 py-2 w-64 text-center bg-white group ">
-    <span className=" relative h-full py-2 ">{stateMatch ? stateMatch : 'Selecione o Estado'}</span>
+    <span className=" relative h-full py-2 md:text-base text-sm">{stateMatch ? stateMatch : 'Selecione o Estado'}</span>
     <ul className="
     list-none
     w-64
@@ -297,7 +297,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo})
 
   {/* Campo de seleção de cidade */}
   <div className='rounded-lg hover:rounded-b-none border mx-4 py-2 w-64 text-center bg-white group '>
-    <span className="relative py-2">{cityMatch ? cityMatch : 'Selecione a Cidade'}</span>
+    <span className="relative py-2 md:text-base text-sm ">{cityMatch ? cityMatch : 'Selecione a Cidade'}</span>
     <ul className="
     list-none
     absolute 

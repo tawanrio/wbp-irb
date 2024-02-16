@@ -265,7 +265,7 @@ let uniqueCities = useMemo(() => {
   return (
     <div>
       {/* Campos de filtro */}
-      <div className="mb-4 flex justify-center">
+      <div className="mb-4 flex justify-center md:flex-row flex-col md:gap-0 gap-4">
         {/* Campo de pesquisa
         <input
           type="text"

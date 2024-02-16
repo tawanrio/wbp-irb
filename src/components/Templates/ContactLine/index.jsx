@@ -8,7 +8,8 @@ export default function ContactLine({content}) {
     <div 
     className="
     flex 
-    justify-end
+    md:justify-end
+    justify-center
     md:max-w-7xl 
    flex-1
    md:px-[52px]
@@ -21,7 +22,8 @@ export default function ContactLine({content}) {
     key={i+"contactLine"}
     href={item.route}
     className="
-    mx-2
+    md:mx-2
+    mx-0
     text-sm
     px-4
     py-1

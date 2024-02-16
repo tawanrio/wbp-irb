@@ -65,9 +65,9 @@ export default function QuemSomos({content, data}) {
      
      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
         <Banner banners={banners} />
-        <div className="max-w-6xl mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-4">Catálogo</h1>
-      <div className="grid grid-cols-3 gap-4">
+        <div className="max-w-6xl md:mx-auto mx-2 py-8">
+      <h1 className="text-3xl font-bold mb-4">Publicações</h1>
+      <div className="md:grid md:grid-cols-3 gap-4 flex flex-wrap">
         {currentPosts.map(post => (
           <Link key={post.id} href={`/blog/${post.id}`}>
             <div className=" border p-4 hover:bg-gray-100 cursor-pointer h-full flex flex-col justify-between">

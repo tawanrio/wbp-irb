@@ -34,11 +34,11 @@ export default function Post({content,data}) {
   return (
      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
     <Banner banners={banners} />
-    <div className="max-w-3xl mx-auto py-8">
+    <div className="max-w-3xl md:mx-auto mx-2 py-8 ">
     <h1 className="text-3xl font-bold mb-4">{data?.title.rendered}</h1>
     <p className="text-gray-600 mb-4">{data?.date}</p>
     <img src={data?.yoast_head_json.og_image[0].url} alt={NextDataPathnameNormalizer.image?.alt} className="mb-2" />
-    <div className="prose">
+    <div className="prose overflow-hidden">
       {/* Conteúdo do post em formato de Markdown */}
       {data?.content.rendered}
     </div>
