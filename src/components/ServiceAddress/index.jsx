@@ -22,7 +22,7 @@ export default function ServiceAddress({products, address}) {
                     flex-wrap
                     ">
                          <SectionTitle title={'Serviço / Produtos'} className="md:mb-5"/>
-                         <div className=" my-1 ">
+                         <div className=" my-1 md:h-max h-[350px] ">
                             <ProductsCard products={products} limit={9} cards={products?.collection} textSize={'md:text-[1.2rem'}  heightCard={'!h-[95px]'}/>
                          </div>
                     </div>
