@@ -83,7 +83,7 @@ export const getServerSideProps  = async (context) => {
   try {
     const postId = context.resolvedUrl.split('/')
     const content = await getDataPage();
-    const response = await fetch(`https://irbauto.com.br/wp-json/wp/v2/posts/${postId[2]}`);
+    const response = await fetch(`https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts/${postId[2]}`);
     const data = await response.json();
     return {
       props: {
