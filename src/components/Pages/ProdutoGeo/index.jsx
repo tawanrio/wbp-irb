@@ -62,6 +62,7 @@ export default function Produto({ content }) {
        <title>{metaTitle || content?.category?.title}</title>
        <meta name="description" content={content?.category?.metaDescription || content?.category?.contentDescription} />
        <meta name="keywords" content={metaKeywords || ''}/>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
      </Head>
 
        <Templates template={content?.template} page={content?.page} menus={content?.menus}>
