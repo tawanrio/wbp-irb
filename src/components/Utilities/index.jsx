@@ -8,7 +8,7 @@ import CardUtilsFour from './CardUtilsFour'
 export default function Utilities({title}) {
     const engraxamente = {
         title: 'EngraxaMente',
-        description: 'EngraxaMente é a plataforma de cursos online e gratuitos desenvolvida pela IRB Automotive. Em comemoração aos seus dois anos no ar, lançamos um novo curso sobre Mecânica Automotiva Básica P1. Cresça profissionalmente, agregue valor ao seu negócio!',
+        description: 'EngraxaMente é a plataforma de cursos online e gratuitos desenvolvida pela IRB Automotive. Em comemoração aos seus dois anos no ar, lançamos um novo curso sobre Mecânica Automotiva Básica P1. Cresça profissionalmente e agregue valor ao seu negócio!',
         image: '/images/partners/engraxamente.jpeg',
         link: 'https://engraxamente.eadplataforma.app/',
         linkText: 'Saiba mais'
@@ -16,7 +16,7 @@ export default function Utilities({title}) {
 
     const irbCode = {
         title: 'IRB Code',
-        description: 'IRB Code é uma ferramenta desenvolvida pela IRB Automotive que auxilia nossos amigos reparadores no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
+        description: 'IRB Code é uma ferramenta desenvolvida pela IRB Automotive, que auxilia nossos amigos reparadores no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
         image: '/images/partners/irbCode.jpeg',
         link: '/autopecas',
         linkText: 'Onde encontrar'
