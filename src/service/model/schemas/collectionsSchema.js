@@ -12,4 +12,4 @@ const collectionsSchema = new mongoose.Schema({
   contentDescription: Array
   });
   
-export const Collection = mongoose.models?.categories_collection || mongoose?.model('categories_collection', collectionsSchema,'categories_collection');
+export const Collection = mongoose.models?.categories_collections || mongoose?.model('categories_collections', collectionsSchema);
