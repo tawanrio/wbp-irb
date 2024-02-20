@@ -4,7 +4,7 @@ import { Config } from "@/service/model/schemas/configSchema";
 
 export default async function forms(req, res) {
     if (req.method === "GET") {
-        es.status(200).json({ message: "Ok" });
+        res.status(200).json({ message: "Ok" });
     }
     if (req.method === "POST") {
         const {name, email, tel, subject, message} = req.body;
