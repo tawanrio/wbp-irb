@@ -29,7 +29,7 @@ export default function Form({ inputs, colors }) {
       setSuccessMessage('');
       setErrorMessage('');
 
-      const response = await fetch('http://irbauto.com.br/api/forms', {
+      const response = await fetch('https://irbauto.com.br/api/forms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
