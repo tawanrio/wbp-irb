@@ -7,4 +7,4 @@ const configSchema = new mongoose.Schema({
 
   });
   
-  export const Config = mongoose?.models?.configs || mongoose?.model('configs', configSchema);
+  export const Config = mongoose?.models?.config || mongoose?.model('config', configSchema, "config");
