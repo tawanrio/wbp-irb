@@ -4,7 +4,7 @@ import Templates from '@/components/Templates'
 
 // Components
 import BreadCrumb from '@/components/BreadCrumb';
-import IrbContact from '@/components/IrbContact'
+import LogoContact from '@/components/LogoContact'
 import Banner from "@/components/Banner";
 
 // Database // Schema
@@ -28,11 +28,10 @@ export default function Contato({content}) {
   const [title] = useState(content?.page.title)
   const [description] = useState(content?.page.contentDescription)
   const [logoContact] = useState(content?.page.logoContact)
-
-   
+  const [arrButton] = useState(logoContact?.arrButton)
   
-  const whatsappNumber = logoContact.button.whatsapp
-  const phoneNumber = logoContact.button.phone
+  // const whatsappNumber = logoContact.button.whatsapp
+  // const phoneNumber = logoContact.button.phone
   const address = content?.address.address.find(address => address.label === 'default')
 
 
@@ -47,7 +46,7 @@ export default function Contato({content}) {
       <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>
        <BreadCrumb/>
-       <IrbContact  logo={logoContact?.logo} contentDescription={logoContact?.contentDescription} title={logoContact?.title} whatsapp={whatsappNumber} phone={phoneNumber}  />
+       <LogoContact  logo={logoContact?.logo} contentDescription={logoContact?.contentDescription} title={logoContact?.title} arrButton={arrButton}  />
        <ServiceAddress products={content.categories} address={address} />
        </Templates>
    </>

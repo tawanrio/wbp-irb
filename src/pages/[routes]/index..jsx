@@ -4,7 +4,7 @@ import { formatStrToUrl } from '@/utils/functions';
 
 // Pages
 import Contato from '@/components/Pages/Contato'
-import QuemSomos from '@/components/Pages/QuemSomos'
+import TrabalheConosco from '@/components/Pages/TrabalheConosco'
 import Fabrica from '@/components/Pages/Fabrica'
 import Distribuidoras from '@/components/Pages/Distribuidoras'
 import Autopecas from '@/components/Pages/Autopecas'
@@ -19,12 +19,13 @@ import { getDataPage } from '@/service/model/routeOne'
 
 export default function index({content}) {
   const page = content?.page.label;
+  console.log(content);
   return (
     <>
     {content?.type === 'page' && (
       <>
         {page === 'contato' && (<Contato content={content}/>)}
-        {page === 'quem-somos' && (<QuemSomos content={content}/>)}
+        {page === 'trabalhe-conosco' && (<TrabalheConosco content={content}/>)}
         {page === 'fabrica' && (<Fabrica content={content}/>)}
         {page === 'distribuidoras' && (<Distribuidoras content={content}/>)}
         {page === 'autopecas' && (<Autopecas content={content}/>)}

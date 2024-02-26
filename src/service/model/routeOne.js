@@ -10,7 +10,7 @@ import {Template} from '@/service/model/schemas/templateSchema'
 import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
 import {Collection} from '@/service/model/schemas/collectionsSchema'
 import {Geo} from '@/service/model/schemas/geoSchema'
-
+import {Form as FormDb} from '@/service/model/schemas/formsSchema'
 import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSchema'
 
 const routePage = async (page, route) => {
@@ -30,11 +30,17 @@ const routePage = async (page, route) => {
           countries = geo.countries.find(country => country.name.toLowerCase() === "brasil");
         }
 
+      let form
+      if(route === 'trabalhe-conosco' || route === 'contato'){
+         form = await FormDb.findOne({label: "form"}).lean();
+      }
+
     
      return {
        type: 'page',
        page: JSON.parse(JSON.stringify(page)),
        address: address && JSON.parse(JSON.stringify(address)),
+       form: form && JSON.parse(JSON.stringify(form)),
        categories: categories && JSON.parse(JSON.stringify(categories)),
       //  products: products && JSON.parse(JSON.stringify(products)),
        template: template && JSON.parse(JSON.stringify(template)),
