@@ -38,7 +38,7 @@ export default function Form({ inputs, colors }) {
           name,
           email,
           tel: phone,
-          subject:'teste',
+          subject:subject ? subject :'Novo Contato',
           message,
         }),
       });
