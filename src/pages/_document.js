@@ -9,6 +9,10 @@ export default function Document() {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></link>
       <link rel="icon" href="/favicon.ico" />
+      {/* Search Console */}
+      <meta name="google-site-verification" content="NFE6O1WGcagwk4CALA-C6sP-QprTodIM_d8eOryFcU0" />
+      {/* End Search Console */}
+
       {/*  Google Tag Manager  */}
       <script
     dangerouslySetInnerHTML={{

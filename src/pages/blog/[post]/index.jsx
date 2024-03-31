@@ -18,6 +18,7 @@ import Link from 'next/link';
 
 import { insertMenuInTemplate } from '@/utils/functions'
 import { NextDataPathnameNormalizer } from 'next/dist/server/future/normalizers/request/next-data';
+import BreadCrumb from '@/components/BreadCrumb';
 export default function Post({content,data}) {
   console.log(data);
   console.log(content);
@@ -34,16 +35,17 @@ export default function Post({content,data}) {
   return (
      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
     <Banner banners={banners} />
-    <div className="max-w-3xl md:mx-auto mx-2 py-8 ">
+    <BreadCrumb/>
+    <div className="max-w-7xl md:mx-auto mx-2 py-8 ">
     <h1 className="text-3xl font-bold mb-4">{data?.title.rendered}</h1>
     <p className="text-gray-600 mb-4">{data?.date}</p>
-    <img src={data?.yoast_head_json.og_image[0].url} alt={NextDataPathnameNormalizer.image?.alt} className="mb-2" />
-    <div className="prose overflow-hidden">
+    <img src={data?.yoast_head_json.og_image[0].url} alt={NextDataPathnameNormalizer.image?.alt} className="mb-2 m-auto w-3/4 h-[500px] object-cover" />
+    <div className="prose overflow-hidden" dangerouslySetInnerHTML={{ __html: data.content.rendered}}>
       {/* Conteúdo do post em formato de Markdown */}
-      {data?.content.rendered}
+      {/* {data?.content.rendered} */}
     </div>
     <div className="mt-8">
-      <Link href="/" className="text-blue-500 hover:underline">Voltar para a página inicial</Link>
+      <Link href="/blog" className="text-blue-500 hover:underline">Voltar para Blog</Link>
     </div>
   </div>
   </Templates>

@@ -65,6 +65,7 @@ export default function QuemSomos({content, data}) {
      
      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
         <Banner banners={banners} />
+        <BreadCrumb/>
         <div className="max-w-6xl md:mx-auto mx-2 py-8">
       <h1 className="text-3xl font-bold mb-4">Publicações</h1>
       <div className="md:grid md:grid-cols-3 gap-4 flex flex-wrap">
@@ -72,9 +73,14 @@ export default function QuemSomos({content, data}) {
           <Link key={post.id} href={`/blog/${post.id}`}>
             <div className=" border p-4 hover:bg-gray-100 cursor-pointer h-full flex flex-col justify-between">
               <div>
-                <h2 className="text-xl font-semibold mb-2">{post.title.rendered}</h2>
-                <img src={post?.yoast_head_json.og_image[0].url} alt={post.image?.alt} className="mb-2" />
-                <p className="text-gray-700">{post.content.rendered.slice(0, 100)}...</p>
+                <h2 className="text-xl font-semibold mb-2 h-20 overflow-hidden" 
+                
+                >{post.title.rendered}</h2>
+                <img src={post?.yoast_head_json.og_image[0].url} alt={post.image?.alt} className="mb-2 w-full h-52 object-cover" />
+                <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: `${post.content.rendered.slice(0, 120)}...`}}
+               
+                ></p>
+                {/* <p className="text-gray-700">{post.content.rendered.slice(0, 100)}...</p> */}
               </div>
               <div className="mt-auto">
                 <Link className="text-blue-500 hover:underline" href={`/blog/${post.id}`}>
