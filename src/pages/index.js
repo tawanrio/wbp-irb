@@ -39,12 +39,11 @@ export default function QuemSomos({content}) {
     const [banners] = useState(content?.page?.banners)
     const [title] = useState(content?.page?.title)
     const [video] = useState(content?.page?.video)
-    const [bannerVideo] = useState(content?.page?.banners[0])
+    const [bannerVideo] = useState(content?.page?.banners.carousel[0])
     const [cardsValues] = useState(content?.page?.companyValues)
     const [description] = useState(content?.page?.contentDescription)
     const [formDefault] = useState(content?.form?.forms.find(item => item.label === "default"))
     
-
   return (
     <>
      <Head>
