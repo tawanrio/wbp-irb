@@ -92,7 +92,7 @@ export default function Categoria({ content }) {
 
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
 
-          <SearchProducts  title="Encontre seu produto" hiddenProductSearch  products={content?.products} />
+          {/* <SearchProducts  title="Encontre seu produto" hiddenProductSearch  products={content?.products} /> */}
 
           {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners partners={content?.partners} /> */}
