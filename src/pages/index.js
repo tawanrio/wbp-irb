@@ -39,6 +39,7 @@ export default function QuemSomos({content}) {
     const [banners] = useState(content?.page?.banners)
     const [title] = useState(content?.page?.title)
     const [video] = useState(content?.page?.video)
+    const [bannerVideo] = useState(content?.page?.banners[0])
     const [cardsValues] = useState(content?.page?.companyValues)
     const [description] = useState(content?.page?.contentDescription)
     const [formDefault] = useState(content?.form?.forms.find(item => item.label === "default"))
@@ -54,7 +55,7 @@ export default function QuemSomos({content}) {
      </Head>
      
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
-        <Banner banners={banners} video={video}/>
+        <Banner banners={banners} video={bannerVideo}/>
         {/* <BreadCrumb/> */}
         {/* <Title title={title}/> */}
         <CompanyValues cards={cardsValues}/>
