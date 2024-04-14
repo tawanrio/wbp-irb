@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://irbauto.com.br/
+Sitemap: https://irbauto.com.br/sitemap.xml
