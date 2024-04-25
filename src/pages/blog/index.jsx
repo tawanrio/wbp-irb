@@ -53,8 +53,13 @@ export default function QuemSomos({content, data}) {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  
-    
+ const getUrlImage = (post) => {
+   let urlImageDest = '/images/components/others/not-found.jpg';
+   if(post?.yoast_head_json?.og_image){
+     urlImageDest = post?.yoast_head_json.og_image[0]?.url;
+    }
+    return urlImageDest;
+  } 
 
   return (
     <>
@@ -74,11 +79,11 @@ export default function QuemSomos({content, data}) {
             <div className=" border p-4 hover:bg-gray-100 cursor-pointer h-full flex flex-col justify-between">
               <div>
                 <h2 className="text-xl font-semibold mb-2 h-20 overflow-hidden" 
-                
                 >{post.title.rendered}</h2>
-                <img src={post?.yoast_head_json.og_image[0].url} alt={post.image?.alt} className="mb-2 w-full h-52 object-cover" />
+             
+                <img src={getUrlImage(post)} alt={post.image?.alt} className="mb-2 w-full h-52 object-cover" />
                 <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: `${post.content.rendered.slice(0, 120)}...`}}
-               
+  
                 ></p>
                 {/* <p className="text-gray-700">{post.content.rendered.slice(0, 100)}...</p> */}
               </div>
