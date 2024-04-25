@@ -153,7 +153,7 @@ export async function getStaticProps() {
       content,
       data
     },
-    revalidate: 5,
+    revalidate: 2,
   };
 
 };
