@@ -45,7 +45,7 @@ export default function Post({content,data}) {
     <div className="max-w-7xl md:mx-auto mx-2 py-8 ">
     <h1 className="text-3xl font-bold mb-4">{data?.title.rendered}</h1>
     <p className="text-gray-600 mb-4">{data?.date}</p>
-    <img src={getUrlImage(data)} alt={NextDataPathnameNormalizer.image?.alt} className="mb-2 m-auto w-3/4 h-[500px] object-cover" />
+    {/* <img src={getUrlImage(data)} alt={NextDataPathnameNormalizer.image?.alt} className="mb-2 m-auto w-3/4 h-[500px] object-cover" /> */}
     <div className="prose overflow-hidden" dangerouslySetInnerHTML={{ __html: data.content.rendered}}>
       {/* Conteúdo do post em formato de Markdown */}
       {/* {data?.content.rendered} */}

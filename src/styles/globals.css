@@ -28,3 +28,25 @@ main{
 .dropShadown:hover{
     filter: drop-shadow(0px 0px 5px #222);
 }
+
+h2.wp-block-heading {
+    font-size: 35px;
+}
+
+h6.wp-block-heading {
+    font-size: 22px;
+}
+
+p {
+    margin: 15px 0px;
+}
+
+img.wp-image-5236 {}
+
+strong.schema-faq-question {
+    font-size: 24px;
+}
+figure.wp-block-image {
+    margin: 25px 0;
+    margin-bottom: 35px;
+}
