@@ -15,40 +15,44 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
 
 const routePage = async (page, route) => {
     
-    //  const menu = await Menu.findOne({label:"menu"}).lean();
-     const address = await Address.findOne({label:"info"})
-    //  const products = await ProductsDb.find().lean().limit(9);
-     const partners = await SchemaCategories.findOne({label:"partners"}).lean();
-     const template = await Template.find();
-     const collection = await Collection.find({label:route}).lean();
-     const categories = await CategoriesProducts.find().lean();
-     const menus = await Menus.find().lean();
-     const geo = await Geo.findOne({"countries.name": "brasil"});
-      let countries;
-      if (geo) {
-          // Encontrou o documento, agora vamos filtrar o array countries
-          countries = geo.countries.find(country => country.name.toLowerCase() === "brasil");
-        }
+  const data = { type: 'page' }
 
+  //  const menu = await Menu.findOne({label:"menu"}).lean();
+  const address = await Address.findOne({label:"info"})
+  //  const products = await ProductsDb.find().lean().limit(9);
+  const partners = await SchemaCategories.findOne({label:"partners"}).lean();
+  const template = await Template.find();
+  const collection = await Collection.find({label:route}).lean();
+  const categories = await CategoriesProducts.find().lean();
+  const menus = await Menus.find().lean();
+  const geo = await Geo.findOne({"countries.name": "brasil"});
+  let countries;
+
+  if (geo) {
+        // Encontrou o documento, agora vamos filtrar o array countries
+        countries = geo.countries.find(country => country.name.toLowerCase() === "brasil");
+      }
+      
+      
+      
       let form
       if(route === 'trabalhe-conosco' || route === 'contato'){
-         form = await FormDb.findOne({label: "form"}).lean();
+          form = await FormDb.findOne({label: "form"}).lean();
       }
 
-    
-     return {
-       type: 'page',
-       page: JSON.parse(JSON.stringify(page)),
-       address: address && JSON.parse(JSON.stringify(address)),
-       form: form && JSON.parse(JSON.stringify(form)),
-       categories: categories && JSON.parse(JSON.stringify(categories)),
-      //  products: products && JSON.parse(JSON.stringify(products)),
-       template: template && JSON.parse(JSON.stringify(template)),
-       geo: geo && JSON.parse(JSON.stringify(countries)),
-       menus: menus && JSON.parse(JSON.stringify(menus)),
-       partners: partners && JSON.parse(JSON.stringify(partners)),
-       collection: collection && JSON.parse(JSON.stringify(collection)),
-     }
+
+      page ? data.page = JSON.parse(JSON.stringify(page)) : null;
+      address ? data.address = JSON.parse(JSON.stringify(address)) : null;
+      address ? data.address = JSON.parse(JSON.stringify(address)) : null;
+      form ? data.form = JSON.parse(JSON.stringify(form)) : null;
+      categories ? data.categories = JSON.parse(JSON.stringify(categories)) : null;
+      template ? data.template = JSON.parse(JSON.stringify(template)) : null;
+      geo ? data.geo = JSON.parse(JSON.stringify(countries)) : null;
+      menus ? data.menus = JSON.parse(JSON.stringify(menus)) : null;
+      partners ? data.partners = JSON.parse(JSON.stringify(partners)) : null;
+      collection ? data.collection = JSON.parse(JSON.stringify(collection)) : null;
+  
+   return data
 }
 
 const routeCategory = async (category,route) =>{

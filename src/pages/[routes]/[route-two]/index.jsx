@@ -2,6 +2,7 @@ import React from 'react'
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 import { formatString } from '@/utils/functions';
 
+
 import { getDataPage } from '@/service/model/routeTwo'
 
 // Pages
@@ -32,6 +33,7 @@ export default function Index({content}) {
 
   return (
     <>
+  
     {content?.type === 'product' && (
       <>
         {/* <Produto content={content}/> */}

@@ -15,6 +15,8 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo})
   let stateMatch = null
   let cityMatch = null
 
+  console.log(geo);
+
   arrRoute && geo.states.filter(state => {
     if(stateMatch || cityMatch) return
     
@@ -124,15 +126,15 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo})
     collections && collections?.map(partner => {
       partner.geo?.states.find(state => {
         if(state.name === "*"){
-          states = geo.states.map(state => state.name);
+          states = geo?.states.map(state => state.name);
         }else{
-          states.push(state.name)
+          states?.push(state.name)
         }
       })
     })
 
     return [...new Set(states)].sort();
-}, [collections, geo.states]);
+}, [collections, geo?.states]);
 
   
 

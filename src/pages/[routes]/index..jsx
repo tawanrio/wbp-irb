@@ -11,17 +11,20 @@ import Autopecas from '@/components/Pages/Autopecas'
 import AutocenterEMecanicas from '@/components/Pages/Mecanicas'
 import Parceiros from '@/components/Pages/Parceiros'
 import Produtos from '@/components/Pages/Produtos'
-import Produto from '@/components/Pages/Produto'
+import Register from '@/components/Pages/Register'
 import Categoria from '@/components/Pages/Categoria'
 import Error from '@/components/Pages/Error'
+
+// Components
+import CookiePopup from '@/components/CookiePopup';
 
 import { getDataPage } from '@/service/model/routeOne'
 
 export default function index({content}) {
   const page = content?.page.label;
-  console.log(content);
   return (
     <>
+    
     {content?.type === 'page' && (
       <>
         {page === 'contato' && (<Contato content={content}/>)}
@@ -32,6 +35,7 @@ export default function index({content}) {
         {page === 'mecanicas' && (<AutocenterEMecanicas content={content}/>)}
         {page === 'parceiros' && (<Parceiros content={content}/>)}
         {page === 'Produtos' && (<Produtos content={content}/>)}
+        {page === 'register' && (<Register content={content}/>)}
       </>
       )}
  {content?.type === 'category' && (

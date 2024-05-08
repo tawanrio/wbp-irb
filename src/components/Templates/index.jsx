@@ -4,6 +4,7 @@ import Header from "./Header";
 import ContactLine from "./ContactLine";
 
 import { insertMenuInTemplate } from '@/utils/functions'
+import CookiePopup from "../CookiePopup";
 
 export default function Templates({style, children, template, page, menus}) {
   style = style || 'default'
@@ -57,7 +58,7 @@ export default function Templates({style, children, template, page, menus}) {
     <>    
     <ContactLine content={contactLine} />
       <Header content={header} page={page} />
-   
+      <CookiePopup />
     <main>
       {children}
     </main>

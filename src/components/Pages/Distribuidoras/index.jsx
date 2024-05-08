@@ -61,7 +61,7 @@ export default function Distribuidoras({content}) {
        <BreadCrumb/>
        <Title title={title}/>
        <ContentDescription content={description}/>
-       <SearchPartners partnerType='distribuidor' title="Encontre um distribuidor" collections={content?.collection} hiddenProductSearch  products={content?.products} geo={content?.geo}/>
+       {/* <SearchPartners partnerType='distribuidor' title="Encontre um distribuidor" collections={content?.collection} hiddenProductSearch  products={content?.products} geo={content?.geo}/> */}
        <ContentImgDescription content={imgDescription}/>
        {/* <ProductFaq products={content?.products} faq={faq} baseUrl={`/${pageUrl}/`}/>  */}
        <Categories baseUrl={`${pageUrl}/`} categories={content?.categories} colors={content?.page?.colors.products} title />

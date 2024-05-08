@@ -11,7 +11,6 @@ export default function BreadCrumb() {
 
     let url = router.asPath.replace('/', '').split('/')
     const [pathname, setPathname] = useState(url)
-
     const [hostname, setHostname] = useState(router.hostname || '')
 
     useEffect(() => {
@@ -30,6 +29,7 @@ export default function BreadCrumb() {
                 gap-2
                 animate-fadeOut
                 md:gap-4
+                overflow-auto
                 
                 ">
                     {pathname.map((page, index) => {
@@ -38,6 +38,11 @@ export default function BreadCrumb() {
                             currentPage +=  pathname[i] + '/';
                         }
                         const dynamicUrl = hostname + currentPage
+
+                        let pageName = page.replaceAll('-', ' ');
+                        if (pageName.includes('?')) {
+                            pageName = pageName.split('?')[0];
+                        }
 
                         return (
                             <div key={'p' + index} className="
@@ -56,7 +61,7 @@ export default function BreadCrumb() {
                                     duration-500
                                     `}
                                     >
-                                    {index === 0 ? (`home${page}`.replaceAll('-', ' ')) : (`${page.replaceAll('-', ' ')}`)}
+                                    {index === 0 ? (`home`) : (`${pageName}`)}
 
                                 </Link>
                                 {pathname.length - 1 !== index && (
