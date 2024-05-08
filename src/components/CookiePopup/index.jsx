@@ -23,7 +23,7 @@ const CookiePopup = () => {
     <>
       {showPopup && (
         <div className="cookie-popup">
-          <div className="cookie-popup-content gap-5 text-lg flex items-center  flex-col">
+          <div className="cookie-popup-content gap-5 flex items-center  flex-col">
             <p>Este site utiliza cookies para oferecer uma melhor experiência de navegação. Ao continuar, você concorda com o uso de cookies e aceita o armazenamento dos seus dados de acordo com a LGPD (Lei Geral de Proteção de Dados).</p>
             <button className="accept-btn w-1/2" onClick={acceptCookies}>
               Aceitar
