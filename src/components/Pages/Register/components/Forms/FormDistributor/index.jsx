@@ -77,7 +77,8 @@ export default function FormDistributor({ inputs, colors, partnerType }) {
       // await connectMongoDB();
 
       const response = await fetch(
-        "http://localhost:3000/api/registerPartner",
+        // "http://localhost:3000/api/registerPartner",
+        "https://irbauto.com.br/api/registerPartner",
         {
           method: "POST",
           headers: {
@@ -122,6 +123,7 @@ export default function FormDistributor({ inputs, colors, partnerType }) {
       });
 
       // const response = await fetch('http://localhost:3000/api/sendemailregisterpartner', {
+      // const response = await fetch('https://irbauto.com.br/api/sendemailregisterpartner', {
       //   method: 'POST',
       //   headers: {
       //     'Content-Type': 'application/json',
