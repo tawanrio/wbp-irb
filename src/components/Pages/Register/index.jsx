@@ -13,7 +13,8 @@ import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 // Others
 import { useState} from 'react';
 import  {useRouter}  from 'next/router';
-import FormDistributor from './components/Forms/FormDistributor';
+// import FormDistributor from './components/Forms/FormDistributor';
+import RegisterForm from './components/Forms';
 
 // Components
 
@@ -48,7 +49,7 @@ export default function Register({content}) {
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
       <Banner banners={banners}/>
        <BreadCrumb/>
-        <FormDistributor inputs={inputs}/>
+        <RegisterForm inputs={inputs}/>
     </Templates>
           
    </>

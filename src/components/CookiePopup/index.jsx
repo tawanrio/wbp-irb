@@ -47,7 +47,7 @@ const CookiePopup = () => {
           text-align: center;
         }
         .accept-btn {
-          background-color: #007bff;
+          background-color: rgb(34, 50, 110);
           color: white;
           border: none;
           padding: 8px 16px;

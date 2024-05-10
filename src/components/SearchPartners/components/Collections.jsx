@@ -15,7 +15,6 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo})
   let stateMatch = null
   let cityMatch = null
 
-  console.log(geo);
 
   arrRoute && geo.states.filter(state => {
     if(stateMatch || cityMatch) return
