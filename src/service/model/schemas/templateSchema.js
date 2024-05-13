@@ -5,6 +5,8 @@ const templateSchema = new mongoose.Schema({
     label: String,
     items: Array
  
+  }, {
+    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
   });
   
   export const Template = mongoose?.models?.templates || mongoose?.model('templates', templateSchema);

@@ -7,6 +7,8 @@ const addressSchema = new mongoose.Schema({
   phone: Array,
   addresses: Array,
   colors: Object
+  }, {
+    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
   });
   
 export const Address = mongoose?.models?.components || mongoose?.model('components', addressSchema);

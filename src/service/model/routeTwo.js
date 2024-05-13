@@ -20,6 +20,8 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
 
   
   const singlePartner = async (arrRoute,collection)=>{
+
+    
   
     let page = await Page.findOne({label:'contato'}).lean();
     if(page){
@@ -59,7 +61,8 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
     // const collection = await Collection.find({"products.label": arrRoute[1]}).lean();
     const collection = await Collection.find({
       label: { $regex: new RegExp(arrRoute[0], 'i') },
-      "products.label": arrRoute[1]
+      "products.label": arrRoute[1], 
+      enabled:true
     }).lean();
     const partners = await Categories.findOne({label:"partners"}).lean();
   
@@ -166,8 +169,11 @@ const routePartner = async (arrRoute) =>{
 
   let collection = await Collection.findOne({
     label: { $regex: new RegExp(arrRoute[0], 'i') },
-    name: { $regex: new RegExp(`^${routeTwo}$`, 'i') }
+    tradingName: { $regex: new RegExp(`^${routeTwo}$`, 'i') }, 
+    enabled:true
   }).lean();
+
+  console.log(routeTwo);
 
 if(collection) return await singlePartner(arrRoute,collection)
 
@@ -179,7 +185,7 @@ if(collection) return await singlePartner(arrRoute,collection)
   // const partners = (arrRoute[0] === 'fabrica') 
   // ? await Collection.find().lean()
   // : await Collection.find({label: arrRoute[0]}).lean();
-  const partners = await Collection.find({label: arrRoute[0]}).lean();
+  const partners = await Collection.find({label: arrRoute[0], enabled:true}).lean();
 
   let stateName = null;
   let cityName = null;

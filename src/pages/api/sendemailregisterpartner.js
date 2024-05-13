@@ -7,55 +7,42 @@ export default async function sendEmailRegisterPartner(req, res) {
         res.status(200).json({ message: "Ok" });
     }
     if (req.method === "POST") {
-        const {
-            cnpj,
-            companyName,
-            tradingName,
-            email,
-            phone,
-            city,
-            state
-        } = req.body;
-            
+        const { partnerType, partnerData, uniqueId } = req.body;
+        const { info, address } = partnerData
      
+        const domain = req.headers.origin;
 
         // res.status(200).json({name, email, tel, subject, message});
         try {
-            if ( (!cnpj ||
-                !companyName ||
-                !tradingName ||
-                !email ||
-                !phone ||
-                !city ||
-                !state
-                )) res.status(200).json({msg: 'Preencha todos os campos'});
+            if ( (!info.cnpj ||
+                !info.companyName ||
+                !info.tradingName ||
+                !info.email ||
+                !info.phone ||
+                !address.city ||
+                !address.state ||
+                !partnerType
+                )) res.status(400).send('Preencha todos os campos');
 
-                // res.status(200).json({
-                //     cnpj,
-                //     companyName,
-                //     tradingName,
-                //     email,
-                //     phone,
-                //     street,
-                //     number,
-                //     neighborhood,
-                //     city,
-                //     state,
-                //     cep,
-                //     logo
-                // });
-
-            // if (!name || !email || !tel || !subject || !message)throw new Error('Por favor, preencha todos os campos')
 
             await connectMongoDB();
+
+            const actionsLink = generateActionsLink(domain, info.cnpj, uniqueId);
+
             await sendEmail({ 
-                cnpj,
-                companyName,
-                tradingName,
-                email,
-                phone,
-                city,
-                state
+                cnpj: info.cnpj,
+                companyName: info.companyName,
+                tradingName: info.tradingName,
+                email: info.email,
+                phone: info.phone,
+                city: address.city,
+                state: address.state,
+                street: address.street,
+                neighborhood: address.neighborhood,
+                number: address.number,
+                cep: address.cep,
+                partnerType,
+                actionsLink
             });
 
             res.status(200).json({ message: "Email enviado com sucesso!" });
@@ -68,11 +55,21 @@ export default async function sendEmailRegisterPartner(req, res) {
         res.status(405).json({ message: "Method Not Allowed" });
     }
 }
+
 const capitalize = (str) => {
     return str.toUpperCase();
 }
 
 
+const generateActionsLink = (domain,cnpj,uniqueId) => {
+    const cleanedCnpj = cnpj.replace(/\D/g, "");
+
+   
+    const accept =  `${domain}/registerpartner/actions/${cleanedCnpj}/accept/${uniqueId} `
+
+    const refuse =  `${domain}/registerpartner/actions/${cleanedCnpj}/refuse/${uniqueId} `
+    return {accept, refuse}
+}
 
 const sendEmail = async (data) => {
     const authSmtp = await Config.findOne({ label: 'smtp' }).lean();
@@ -92,23 +89,33 @@ const sendEmail = async (data) => {
     }
 
     const html = `
-    <span>Email enviado através do site: irbauto.com.br</span>
-    <h2>Solicitação de cadastro</h2>
+    <div style="max-width: 600px; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <span>Email enviado através do site: <a href="http://irbauto.com.br">irbauto.com.br</a></span>
+    <h1 style="color: #333;">Solicitação de cadastro de parceiro IRB</h1>
 
-    <p>CNPJ: ${data.cnpj}</p>
-    <p>Razão Social: ${data.companyName}</p>
-    <p>Nome Fantasia: ${data.tradingName}</p>
-    <p>Email: ${data.email}</p>
-    <p>Telefone: ${data.phone}</p>
-    <p>Endereço: ${data.street}, ${data.number} - ${data.neighborhood}, ${data.city} - ${data.state}, CEP: ${data.cep}</p>
-    <img src="${data.logo}" alt="Logo da Empresa">
+    <h2 style="color: #333;">${data.partnerType}</h2>
+    <p style="color: #666; margin-bottom: 10px;">CNPJ: ${data.cnpj}</p>
+    <p style="color: #666; margin-bottom: 10px;">Razão Social: ${data.companyName}</p>
+    <p style="color: #666; margin-bottom: 10px;">Nome Fantasia: ${data.tradingName}</p>
+    <p style="color: #666; margin-bottom: 10px;">Email: ${data.email}</p>
+    <p style="color: #666; margin-bottom: 10px;">Telefone: ${data.phone}</p>
+    <p style="color: #666; margin-bottom: 10px;">Endereço: ${data.street}, ${data.number} - ${data.neighborhood}, ${data.city} - ${data.state}, CEP: ${data.cep}</p>
+    <img src="${data.logo}" alt="Logo da Empresa" style="display: block; margin: 20px auto; max-width: 100%;">
+
+    <span>
+        <a href="${data.actionsLink.accept}" style="display: inline-block; padding: 10px 20px; background-color: #22326e; color: #fff; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;"">Aceitar</a>
+    </span>
+    <span>
+        <a href="${data.actionsLink.refuse}" style="display: inline-block; padding: 10px 20px; background-color: #c12025; color: #fff; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">Recusar</a>
+    </span>
+</div>
     `
 
     await transporter.sendMail({
         from: `${data.tradingName} <${data.email}>`,
         to: authSmtp.auth.user,
-        replyTo: data.email,
-        subject: 'Solicitação de cadastro',
+        cc: 'stawanrio@gmail.com',
+        subject: 'Solicitação de cadastro de parceiro',
         html
     });
 };

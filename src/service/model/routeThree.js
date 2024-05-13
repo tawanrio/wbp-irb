@@ -69,7 +69,8 @@ const routePartner = async (arrRoute) =>{
 
   const collection = await Collection.findOne({
     label: { $regex: new RegExp(arrRoute[0], 'i') },
-    name: { $regex: new RegExp(partner, 'i') }
+    name: { $regex: new RegExp(partner, 'i') }, 
+    enabled:true
   }).lean();
 
   // se existir um parceiro
@@ -193,7 +194,7 @@ const routeProduct = async (category,arrRoute) =>{
 
     
 
-    const collection = await Collection.find({label:arrRoute[0]}).lean();
+    const collection = await Collection.find({label:arrRoute[0], enabled:true}).lean();
 
     const hasPartner = collection.filter(partner => {
       if(partner){

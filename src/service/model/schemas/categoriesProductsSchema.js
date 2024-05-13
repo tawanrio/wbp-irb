@@ -14,6 +14,8 @@ const categoriesProductsSchema = new mongoose.Schema({
     models: Array,
     faq: Object
 
+  }, {
+    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
   });
   
   export const CategoriesProducts = mongoose?.models?.categories_products || mongoose?.model('categories_products', categoriesProductsSchema);

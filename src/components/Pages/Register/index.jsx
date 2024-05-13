@@ -9,16 +9,13 @@ import BreadCrumb from '@/components/BreadCrumb';
 // Database // Schema
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 
-
 // Others
 import { useState} from 'react';
 import  {useRouter}  from 'next/router';
 // import FormDistributor from './components/Forms/FormDistributor';
-import RegisterForm from './components/Forms';
+import RegisterForm from './Forms';
 
 // Components
-
-
 
 export default function Register({content}) {
 

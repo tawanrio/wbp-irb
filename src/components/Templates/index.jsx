@@ -2,6 +2,7 @@ import Copyright from "./Copyright";
 import Footer from "./Footer";
 import Header from "./Header";
 import ContactLine from "./ContactLine";
+import { ToastContainer } from "react-toastify";
 
 import { insertMenuInTemplate } from '@/utils/functions'
 import CookiePopup from "../CookiePopup";
@@ -59,6 +60,7 @@ export default function Templates({style, children, template, page, menus}) {
     <ContactLine content={contactLine} />
       <Header content={header} page={page} />
       <CookiePopup />
+      <ToastContainer/>
     <main>
       {children}
     </main>

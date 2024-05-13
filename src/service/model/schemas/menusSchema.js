@@ -8,6 +8,8 @@ const menusSchema = new mongoose.Schema({
     icon: String,
     title: String,
     separateIcon: String,
+  }, {
+    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
   });
   
 export const Menus = mongoose?.models?.menus || mongoose?.model('menus', menusSchema);

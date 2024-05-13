@@ -65,7 +65,7 @@ console.log(content);
       <Templates template={content?.template} page={content?.page} menus={content?.menus}>
        <Banner banners={banners}/>
        <BreadCrumb/>
-       <IrbContact layout={partner}  logo={partner.logo} contentDescription={partner.contentDescription} title={partner.name} whatsapp={whatsappNumber} phone={phoneNumber}  />
+       <IrbContact layout={partner}  logo={partner.logo} contentDescription={partner.contentDescription} title={partner.tradingName} whatsapp={whatsappNumber} phone={phoneNumber}  />
        <ServiceAddress products={content.categories} address={address} />
        </Templates>
    </>

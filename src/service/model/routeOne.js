@@ -22,7 +22,7 @@ const routePage = async (page, route) => {
   //  const products = await ProductsDb.find().lean().limit(9);
   const partners = await SchemaCategories.findOne({label:"partners"}).lean();
   const template = await Template.find();
-  const collection = await Collection.find({label:route}).lean();
+  const collection = await Collection.find({label:route, enabled:true}).lean();
   const categories = await CategoriesProducts.find().lean();
   const menus = await Menus.find().lean();
   const geo = await Geo.findOne({"countries.name": "brasil"});

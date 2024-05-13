@@ -5,6 +5,8 @@ const configSchema = new mongoose.Schema({
     label: String,
     auth: Object,
 
+  }, {
+    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
   });
   
   export const Config = mongoose?.models?.config || mongoose?.model('config', configSchema, "config");

@@ -10,47 +10,25 @@ export default async function registerPartner(req, res) {
         res.status(200).json({ message: "Ok" });
     } else if (req.method === "POST") {
         const {
-            cnpj,
-            companyName,
-            tradingName,
-            partnerType,
-            email,
-            phone,
-            street,
-            number,
-            neighborhood,
-            city,
-            state,
-            logo
+          partnerType,
+          partnerData,
+          uniqueId
         } = req.body;
 
+        
+
         try {
-            await insertDataIntoDB({
-                cnpj,
-                companyName,
-                tradingName,
-                partnerType,
-                phone,
-                street,
-                city,
-                state,
-                logo,
-                email
-                
-            });
-            // await insertDataIntoDB({
-            //     cnpj,
-            //     companyName,
-            //     tradingName,
-            //     email,
-            //     phone,
-            //     street,
-            //     number,
-            //     neighborhood,
-            //     city,
-            //     state,
-            //     logo
-            // });
+          const data = {
+            partnerType,
+            info: partnerData.info,
+            address: partnerData.address,
+            uniqueId
+        }
+        partnerData.requirements ? data.requirements = partnerData.requirements : null;
+
+        console.log(data);
+            await insertDataIntoDB(data);
+
 
             res.status(200).json({ message: "Dados salvos com sucesso" });
         } catch (error) {
@@ -60,67 +38,50 @@ export default async function registerPartner(req, res) {
     }
 }
 
+function getCurrentDateFormatted() {
+  const currentDate = new Date();
+  
+  // Extract year, month, day, hour, and minutes from the current date
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Add leading zero if necessary
+  const day = String(currentDate.getDate()).padStart(2, '0'); // Add leading zero if necessary
+  const hour = String(currentDate.getHours()).padStart(2, '0'); // Add leading zero if necessary
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0'); // Add leading zero if necessary
+  
+  // Format the date in 'yyyy/mm/dd-hh-mm' format
+  const formattedDate = `${year}/${month}/${day}-${hour}:${minutes}`;
+  
+  return formattedDate;
+}
+
 const insertDataIntoDB = async (data) => {
+  const { info, address, partnerType, uniqueId, requirements } = data
+
     try {
         // Conectar-se ao banco de dados
         await connectMongoDB();
         console.log(data);
-  
+      
         // Inserir os dados na coleção
         
-        // const userSchema = new Schema({
-        //     "cnpj": String,
-        //     "tradingName": String,
-        //     "companyName": String,
-        //     "phone": String,
-        //     "address":{
-        //         "street": String,
-        //         "city": String,
-        //         "state": String
-        //     }
-        // })
+        const currentDateFormatted = getCurrentDateFormatted();
 
-        // const userSchema = new Schema(  )
-
-        // const UsersModel = mongoose.model('Users', empresaSchema);
-        // Criar uma instância do modelo com os dados a serem salvos
-
-
-    //  const novoItem = new UsersModel({
-    //     cnpj: "45.465.456/4645-56",
-    //     tradingName: "taasd",
-    //     companyName: "Tawan rio",
-    //     phone: "11985373835",
-    //     address: {
-    //         street: "Avenida Francisco Monteiro",
-    //         city: "Ribeirao pires",
-    //         state: "são paulo"
-    //     }
-       
-    // });
-        // const novoItem = new UsersModel({
-        //     cnpj: data.cnpj,
-        //     tradingName: data.tradingName,
-        //     companyName: data.companyName,
-        //     phone: data.phone,
-        //     address: {
-        //         street: data.street,
-        //         city: data.city,
-        //         state: data.state
-        //     }
-           
-        // });
         const novoItem = new Collection({
-        label: data.partnerType,
+        label: partnerType,
         enabled: false,
-        cnpj: data.cnpj,
-        title: data.companyName,
-        metaTitle: `IRB Automotive - Distribuidor - ${data.companyName}`,
+        idToValidationRegister: uniqueId,
+        _createdAt: currentDateFormatted,
+        _updatedAt: currentDateFormatted,
+        requirements: requirements || null,
+        cnpj: info.cnpj.replace(/\D/g, ""),
+        tradingName: info.tradingName.toLowerCase().trim(),
+        companyName: info.companyName,
+        metaTitle: `IRB Automotive - Distribuidor - ${info.companyName}`,
         metaDescription: [
-          data.companyName,
-          data.tradingName,
-          data.phone,
-          `${data.street} - ${data.city} - ${data.state}`
+          info.companyName,
+          info.tradingName,
+          info.phone,
+          `${address.street} - ${address.city} - ${address.state}`
         ],
         category: "partners",
         geo: {
@@ -135,12 +96,11 @@ const insertDataIntoDB = async (data) => {
             }
           ]
         },
-        name: data.tradingName,
         info: {
           phone: [
             {
               label: "Telefone",
-              number: `${data.phone}`,
+              number: `${info.phone.replace(/\D/g, "")}`,
               layout: {
                 width: "100%",
                 height: "70px",
@@ -157,15 +117,15 @@ const insertDataIntoDB = async (data) => {
             },
             {
               label: "Email",
-              email: data.email
+              email: info.email
             }
           ],
           address: [
             {
-              street: data.street,
-              number: data.number,
-              city: data.city,
-              state: data.state,
+              street: address.street,
+              number: address.number,
+              city: address.city,
+              state: address.state,
               countryCode: "BR",
               country: "Brasil",
               label: "default",
@@ -272,21 +232,6 @@ const insertDataIntoDB = async (data) => {
           }
         ]
       });
-
-    // const novoItem = new Collection({
-    //     title: 'data.companyName',
-    //     category: 'teste',
-    //     gallery: [
-    //               {
-    //                 name: "Imagem 1",
-    //                 url: "/caminho/da/imagem.png"
-    //               },
-    //               {
-    //                 name: "Imagem 2",
-    //                 url: "/caminho/da/imagem.png"
-    //               }
-    //             ],
-    //   });
 
         // Salvar o novo item no banco de dados
         await novoItem.save();
