@@ -60,7 +60,7 @@ export default function Requirements({setRequiments, resetInputs }) {
     <SectionTitle title={"Pré Requisitos"} line={true} />
     <div className="flex w-full flex-row justify-between flex-wrap gap-5">
       <div className="flex w-[48%] flex-col">
-        <label className="font-bold capitalize text-lg" htmlFor="logo">
+        <label className="font-bold  text-lg" htmlFor="logo">
           Anexar formação profissional *
         </label>
         <input
@@ -73,7 +73,7 @@ export default function Requirements({setRequiments, resetInputs }) {
           />
       </div>
       <div className="flex w-[48%] flex-col">
-        <label className="font-bold capitalize text-lg" htmlFor="logo">
+        <label className="font-bold  text-lg" htmlFor="logo">
           Equipamento: Elevador *
         </label>
         <input
@@ -86,7 +86,7 @@ export default function Requirements({setRequiments, resetInputs }) {
       </div>
       
       <div className="flex w-full flex-col">
-        <label className="font-bold capitalize text-lg">Equipamentos:</label>
+        <label className="font-bold  text-lg">Equipamentos:</label>
         <div className="flex flex-wrap justify-between gap-2 mt-2">
           {equipments.map((equipment, index) => (
             <label key={index} className="flex items-center w-[48%] mr-4 cap">
@@ -95,7 +95,7 @@ export default function Requirements({setRequiments, resetInputs }) {
                 value={equipment}
                 onChange={handleCheckboxChange}
               />
-              <span className="ml-2 capitalize">{equipment}</span>
+              <span className="ml-2 ">{equipment}</span>
             </label>
           ))}
         </div>
