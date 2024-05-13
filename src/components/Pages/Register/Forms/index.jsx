@@ -117,7 +117,7 @@ useEffect(()=>{
               className="font-bold capitalize text-lg"
               htmlFor="partnerType"
             >
-              Tipo de Parceiro
+              Tipo de parceiro
             </label>
             <select
               id="partnerType"

@@ -70,7 +70,7 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                   className="font-bold capitalize text-lg"
                   htmlFor="companyName"
                 >
-                  Razão Social
+                  Razão social
                 </label>
                 <input
                   type="text"
@@ -87,7 +87,7 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                   className="font-bold capitalize text-lg"
                   htmlFor="tradingName"
                 >
-                  Nome Fantasia
+                  Nome fantasia
                 </label>
                 <input
                   type="text"
@@ -146,7 +146,7 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
 
               <div className="flex w-[48%] flex-col">
                 <label className="font-bold capitalize text-lg" htmlFor="logo">
-                  Anexar Logomarca
+                  Anexar logomarca
                 </label>
                 <input
                   type="file"

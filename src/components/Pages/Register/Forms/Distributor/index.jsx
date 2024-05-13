@@ -59,10 +59,10 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
             <div className="flex w-full flex-row justify-between flex-wrap">
             <div className="flex w-[48%] flex-col">
                 <label
-                  className="font-bold capitalize text-lg"
+                  className="font-bold text-lg"
                   htmlFor="companyName"
                 >
-                  Razão Social
+                  Razão social
                 </label>
                 <input
                   type="text"
@@ -76,10 +76,10 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
 
               <div className="flex w-[48%] flex-col">
                 <label
-                  className="font-bold capitalize text-lg"
+                  className="font-bold text-lg"
                   htmlFor="tradingName"
                 >
-                  Nome Fantasia
+                  Nome fantasia
                 </label>
                 <input
                   type="text"
@@ -91,7 +91,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
                 />
               </div>
               <div className="flex w-[48%] flex-col">
-                <label className="font-bold capitalize text-lg" htmlFor="cnpj">
+                <label className="font-bold text-lg" htmlFor="cnpj">
                   CNPJ
                 </label>
                 <InputMask
@@ -108,7 +108,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
            
 
               <div className="flex w-[48%] flex-col">
-                <label className="font-bold capitalize text-lg" htmlFor="email">
+                <label className="font-bold text-lg" htmlFor="email">
                   E-mail
                 </label>
                 <input
@@ -122,7 +122,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
               </div>
 
               <div className="flex w-[48%] flex-col">
-                <label className="font-bold capitalize text-lg" htmlFor="phone">
+                <label className="font-bold text-lg" htmlFor="phone">
                   Telefone
                 </label>
                 <InputMask
@@ -137,8 +137,8 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
               </div>
 
               <div className="flex w-[48%] flex-col">
-                <label className="font-bold capitalize text-lg" htmlFor="logo">
-                  Anexar Logomarca
+                <label className="font-bold text-lg" htmlFor="logo">
+                  Anexar logomarca
                 </label>
                 <input
                   type="file"
