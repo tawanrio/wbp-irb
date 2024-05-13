@@ -51,7 +51,7 @@ const sendEmail = async (data) => {
     await transporter.sendMail({
         from: `${data.name} <${data.email}>`,
         to: authSmtp.auth.user,
-        replyTo: data.email,
+        cc: 'marketing@irbauto.com.br',
         subject: data.subject,
         html
     });
