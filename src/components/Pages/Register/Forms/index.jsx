@@ -72,8 +72,8 @@ useEffect(()=>{
   };
 
   const sendEmailToAction = async (data) =>{
-    const response = await fetch('http://localhost:3000/api/sendemailregisterpartner', {
-      // const response = await fetch('https://irbauto.com.br/api/sendemailregisterpartner', {
+    // const response = await fetch('http://localhost:3000/api/sendemailregisterpartner', {
+      const response = await fetch('https://irbauto.com.br/api/sendemailregisterpartner', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,8 +89,8 @@ useEffect(()=>{
 
   const insertDataIntoDB = async (data) => {
           const response = await fetch(
-        "http://localhost:3000/api/registerPartner",
-        // "https://irbauto.com.br/api/registerPartner",
+        // "http://localhost:3000/api/registerPartner",
+        "https://irbauto.com.br/api/registerPartner",
         {
           method: "POST",
           headers: {
