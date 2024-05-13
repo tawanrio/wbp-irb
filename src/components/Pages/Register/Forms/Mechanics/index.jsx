@@ -75,7 +75,7 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                 <input
                   type="text"
                   id="companyName"
-                  placeholder="Razão Social"
+                  placeholder="Razão social"
                   className="border py-2 px-4"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
@@ -92,7 +92,7 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                 <input
                   type="text"
                   id="tradingName"
-                  placeholder="Nome Fantasia"
+                  placeholder="Nome fantasia"
                   className="border py-2 px-4"
                   value={tradingName}
                   onChange={(e) => settradingName(e.target.value)}

@@ -84,7 +84,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
                 <input
                   type="text"
                   id="tradingName"
-                  placeholder="Nome Fantasia"
+                  placeholder="Nome fantasia"
                   className="border py-2 px-4"
                   value={tradingName}
                   onChange={(e) => settradingName(e.target.value)}
