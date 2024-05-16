@@ -217,7 +217,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo})
 
   
   return (
-    <div>
+    <div className='flex flex-col gap-10'>
       {/* Campos de filtro */}
       <div className="mb-4 flex justify-center md:flex-row flex-col md:gap-0 gap-4">
         {/* Campo de pesquisa
@@ -362,7 +362,7 @@ const Collection = ({ collections, products, hiddenProductSearch, arrRoute,geo})
      {/* Itens exibidos com base na pesquisa e paginação */}
      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {currentItems?.map((collection, index) => (
-          <div className="h-[200px]" key={index}>
+          <div className="" key={index}>
             <Card collection={collection} />
           </div>
         ))}

@@ -67,7 +67,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                 className="font-bold  text-lg"
                 htmlFor="partnerType"
               >
-                Onde adquiri os produtos
+                Em qual Distribuidor você adquiri os produtos IRB
               </label>
               <input
                   type="text"
@@ -178,6 +178,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                   accept="image/png, image/jpeg"
                   onChange={(e) => handleImg(e, setLogo)}
                 />
+                <span className="text-slate-400">Formatos: jpeg, png. Tamanho máximo: 3mb</span>
               </div>
             </div>
 
