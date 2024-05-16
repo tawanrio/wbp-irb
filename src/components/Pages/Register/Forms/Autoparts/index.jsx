@@ -67,7 +67,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                 className="font-bold  text-lg"
                 htmlFor="partnerType"
               >
-                Em qual Distribuidor você adquiri os produtos IRB
+                Em qual distribuidor você adquiri os produtos IRB
               </label>
               <input
                   type="text"
