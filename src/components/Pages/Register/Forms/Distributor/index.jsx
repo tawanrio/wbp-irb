@@ -54,10 +54,10 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
 
 
   return (
-          <div className="w-full flex flex-col justify-between md:px-0 md:gap-10 md:my-0 gap-4">
+          <div className="w-full flex flex-col justify-between md:px-0 md:gap-2 md:my-0 gap-2">
             
             <div className="flex w-full flex-row justify-between flex-wrap">
-            <div className="flex w-[48%] flex-col">
+            <div className="flex w-[48%] mt-2 flex-col">
                 <label
                   className="font-bold text-lg"
                   htmlFor="companyName"
@@ -74,7 +74,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label
                   className="font-bold text-lg"
                   htmlFor="tradingName"
@@ -90,7 +90,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
                   onChange={(e) => settradingName(e.target.value)}
                 />
               </div>
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold text-lg" htmlFor="cnpj">
                   CNPJ
                 </label>
@@ -107,7 +107,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
 
            
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold text-lg" htmlFor="email">
                   E-mail
                 </label>
@@ -121,7 +121,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold text-lg" htmlFor="phone">
                   Telefone
                 </label>
@@ -136,7 +136,7 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold text-lg" htmlFor="logo">
                   Anexar logomarca
                 </label>
@@ -146,6 +146,9 @@ export default function FormDistributor({ setPartnerData, resetInputs }) {
                   accept="image/png, image/jpeg"
                   onChange={(e) => handleImg(e, setLogo)}
                 />
+                <span className="text-slate-400 text-sm">
+                Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho máximo do arquivo: 3MB.
+              </span>
               </div>
             </div>
 

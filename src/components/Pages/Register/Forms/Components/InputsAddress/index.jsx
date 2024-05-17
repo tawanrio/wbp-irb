@@ -72,7 +72,7 @@ export default function InputsAddress({setAddress, resetInputs}) {
 
   return (
     <div className="flex w-full flex-row justify-between flex-wrap">
-    <div className="flex w-[48%] flex-col">
+    <div className="flex w-[48%] mt-2 flex-col">
       <label className="font-bold capitalize text-lg" htmlFor="cep">
         CEP
       </label>
@@ -87,7 +87,7 @@ export default function InputsAddress({setAddress, resetInputs}) {
         onBlur={handleBlur}
       />
     </div>
-    <div className="flex w-[48%] flex-col">
+    <div className="flex w-[48%] mt-2 flex-col">
       <label
         className="font-bold capitalize text-lg"
         htmlFor="street"
@@ -103,7 +103,7 @@ export default function InputsAddress({setAddress, resetInputs}) {
       />
     </div>
 
-    <div className="flex w-[48%] flex-col">
+    <div className="flex w-[48%] mt-2 flex-col">
       <label
         className="font-bold capitalize text-lg"
         htmlFor="number"
@@ -120,7 +120,7 @@ export default function InputsAddress({setAddress, resetInputs}) {
       />
     </div>
 
-    <div className="flex w-[48%] flex-col">
+    <div className="flex w-[48%] mt-2 flex-col">
       <label
         className="font-bold capitalize text-lg"
         htmlFor="neighborhood"
@@ -137,7 +137,7 @@ export default function InputsAddress({setAddress, resetInputs}) {
       />
     </div>
 
-    <div className="flex w-[48%] flex-col">
+    <div className="flex w-[48%] mt-2 flex-col">
       <label className="font-bold capitalize text-lg" htmlFor="city">
         Cidade
       </label>
@@ -151,7 +151,7 @@ export default function InputsAddress({setAddress, resetInputs}) {
       />
     </div>
 
-    <div className="flex w-[48%] flex-col">
+    <div className="flex w-[48%] mt-2 flex-col">
       <label className="font-bold capitalize text-lg" htmlFor="state">
         Estado
       </label>

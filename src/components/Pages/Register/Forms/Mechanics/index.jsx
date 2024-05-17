@@ -62,12 +62,12 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
           onSubmit={(e) => handleSubmitForm(e)}
           className="flex flex-col items-center gap-10"
         >
-          <div className="w-full flex flex-col justify-between md:px-0 md:gap-10 md:my-0 gap-4">
+          <div className="w-full flex flex-col justify-between md:px-0 md:gap-2 md:my-0 gap-4">
             
             <div className="flex w-full flex-row justify-between flex-wrap">
-            <div className="flex w-[48%] flex-col">
+            <div className="flex w-[48%] mt-2 flex-col">
                 <label
-                  className="font-bold capitalize text-lg"
+                  className="font-bold  text-lg"
                   htmlFor="companyName"
                 >
                   Razão social
@@ -82,9 +82,9 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label
-                  className="font-bold capitalize text-lg"
+                  className="font-bold  text-lg"
                   htmlFor="tradingName"
                 >
                   Nome fantasia
@@ -98,8 +98,8 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                   onChange={(e) => settradingName(e.target.value)}
                 />
               </div>
-              <div className="flex w-[48%] flex-col">
-                <label className="font-bold capitalize text-lg" htmlFor="cnpj">
+              <div className="flex w-[48%] mt-2 flex-col">
+                <label className="font-bold  text-lg" htmlFor="cnpj">
                   CNPJ
                 </label>
                 <InputMask
@@ -115,8 +115,8 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
 
            
 
-              <div className="flex w-[48%] flex-col">
-                <label className="font-bold capitalize text-lg" htmlFor="email">
+              <div className="flex w-[48%] mt-2 flex-col">
+                <label className="font-bold  text-lg" htmlFor="email">
                   E-mail
                 </label>
                 <input
@@ -129,8 +129,8 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
-                <label className="font-bold capitalize text-lg" htmlFor="phone">
+              <div className="flex w-[48%] mt-2 flex-col">
+                <label className="font-bold  text-lg" htmlFor="phone">
                   Telefone
                 </label>
                 <InputMask
@@ -144,8 +144,8 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
-                <label className="font-bold capitalize text-lg" htmlFor="logo">
+              <div className="flex w-[48%] mt-2 flex-col">
+                <label className="font-bold  text-lg" htmlFor="logo">
                   Anexar logomarca
                 </label>
                 <input
@@ -154,6 +154,9 @@ export default function FormMechanics({ setPartnerData, resetInputs }) {
                   accept="image/png, image/jpeg"
                   onChange={(e) => handleImg(e, setLogo)}
                 />
+                <span className="text-slate-400 text-sm">
+                Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho máximo do arquivo: 3MB.
+              </span>
               </div>
             </div>
             <InputsAddress setAddress={setAddress} resetInputs={resetInputs}/>

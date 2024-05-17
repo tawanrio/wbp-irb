@@ -59,10 +59,10 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
   return (
    
         
-          <div className="w-full flex flex-col justify-between md:px-0 md:gap-10 md:my-0 gap-4">
+          <div className="w-full flex flex-col justify-between md:px-0 md:gap-2 md:my-0 gap-4">
             
             <div className="flex w-full flex-row justify-between flex-wrap">
-            <div className="flex w-[48%] flex-col">
+            <div className="flex w-[48%] mt-2 flex-col">
               <label
                 className="font-bold  text-lg"
                 htmlFor="partnerType"
@@ -72,7 +72,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
               <input
                   type="text"
                   id="whereToBuy"
-                  placeholder="Onde adquiri os produtos"
+                  placeholder="Em qual distribuidor você adquiri os produtos IRB"
                   className="border py-2 px-4"
                   value={whereToBuy}
                   onChange={(e) => setWhereToBuy(e.target.value)}
@@ -89,7 +89,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                 <option value="autopecas">Autopeças</option>
               </select> */}
             </div>
-            <div className="flex w-[48%] flex-col">
+            <div className="flex w-[48%] mt-2 flex-col">
                 <label
                   className="font-bold  text-lg"
                   htmlFor="companyName"
@@ -106,7 +106,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label
                   className="font-bold  text-lg"
                   htmlFor="tradingName"
@@ -122,7 +122,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                   onChange={(e) => settradingName(e.target.value)}
                 />
               </div>
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold  text-lg" htmlFor="cnpj">
                   CNPJ
                 </label>
@@ -139,7 +139,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
 
              
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold  text-lg" htmlFor="email">
                   E-mail
                 </label>
@@ -153,7 +153,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold  text-lg" htmlFor="phone">
                   Telefone
                 </label>
@@ -168,7 +168,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                 />
               </div>
 
-              <div className="flex w-[48%] flex-col">
+              <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold capitalize text-lg" htmlFor="logo">
                   Anexar logomarca
                 </label>
@@ -178,7 +178,9 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                   accept="image/png, image/jpeg"
                   onChange={(e) => handleImg(e, setLogo)}
                 />
-                <span className="text-slate-400">Formatos: jpeg, png. Tamanho máximo: 3mb</span>
+              <span className="text-slate-400 text-sm">
+                Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho máximo do arquivo: 3MB.
+              </span>
               </div>
             </div>
 

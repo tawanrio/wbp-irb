@@ -8,20 +8,20 @@ export default function Requirements({setRequiments, resetInputs }) {
   const [selectedEquipments, setSelectedEquipments] = useState([]);
 
   const equipments = [
-    "torquímetro",
-    "paquímetro",
-    "micrometro",
-    "relógio comparador centesimal",
-    "base magnética",
-    "refratometro",
-    "balança de precisão",
-    "kit de teste de estanqueidade do sistema de arrefecimento",
-    "scanner automotivo",
-    "multímetro - alicate amperímetro",
-    "acesso aos manuais técnicos de manutenção",
-    "ferramentas manuais",
-    "macaco jacaré hidráulico",
-    "cavaletes"
+    "Torquímetro",
+    "Paquímetro",
+    "Micrometro",
+    "Relógio comparador centesimal",
+    "Base magnética",
+    "Refratometro",
+    "Balança de precisão",
+    "Kit de teste de estanqueidade do sistema de arrefecimento",
+    "Scanner automotivo",
+    "Multímetro - alicate amperímetro",
+    "Acesso aos manuais técnicos de manutenção",
+    "Ferramentas manuais",
+    "Macaco jacaré hidráulico",
+    "Cavaletes"
   ];
 
   useEffect(()=>{
@@ -56,26 +56,35 @@ export default function Requirements({setRequiments, resetInputs }) {
  
 
   return (
-    <>
-    <SectionTitle title={"Pré Requisitos"} line={true} />
-    <div className="flex w-full flex-row justify-between flex-wrap gap-5">
+    <div className="mt-10">
+    <SectionTitle title={"Pré-Requisitos"} line={true} />
+    <div className="flex w-full flex-row justify-between flex-wrap mt-5 gap-5">
       <div className="flex w-[48%] flex-col">
         <label className="font-bold  text-lg" htmlFor="logo">
-          Anexar formação profissional *
+          Certificação Profissional *
         </label>
+        <span className="text-slate-400 text-sm">
+        Anexar o seu certificado               </span>
         <input
           type="file"
           id="logo"
           className="mt-2"
-          accept="image/png, image/jpeg"
+          accept="image/png, image/jpeg, application/pdf"
           onChange={(event) => handleImg(event, setCertificateImg)}
 
           />
+          <span className="text-slate-400 text-sm">
+                Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.
+              </span>
+              
       </div>
       <div className="flex w-[48%] flex-col">
         <label className="font-bold  text-lg" htmlFor="logo">
-          Equipamento: Elevador *
+        Equipamento: Elevador *
         </label>
+        <span className="text-slate-400 text-sm">
+        Anexar uma foto do seu elevador
+                     </span>
         <input
           type="file"
           id="logo"
@@ -83,10 +92,16 @@ export default function Requirements({setRequiments, resetInputs }) {
           accept="image/png, image/jpeg"
           onChange={(event) => handleImg(event, setElevatorImg)}
           />
+           <span className="text-slate-400 text-sm">
+                Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.
+              </span>
       </div>
       
       <div className="flex w-full flex-col">
-        <label className="font-bold  text-lg">Equipamentos:</label>
+        <label className="font-bold  text-lg">Ferramentas:</label>
+        <span className="text-slate-400 text-sm">
+        Preencher quais ferramentas você possui
+        </span>
         <div className="flex flex-wrap justify-between gap-2 mt-2">
           {equipments.map((equipment, index) => (
             <label key={index} className="flex items-center w-[48%] mr-4 cap">
@@ -102,6 +117,6 @@ export default function Requirements({setRequiments, resetInputs }) {
       </div>
       
     </div>
-    </>
+    </div>
   )
 }
