@@ -57,7 +57,7 @@ export default function Templates({style, children, template, page, menus}) {
 
   return (
     <>    
-    <ContactLine content={contactLine} />
+    {/* <ContactLine content={contactLine} /> */}
       <Header content={header} page={page} />
       <CookiePopup />
       <ToastContainer/>

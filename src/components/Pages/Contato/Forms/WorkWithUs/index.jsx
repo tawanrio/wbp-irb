@@ -1,35 +1,49 @@
 import { useEffect, useState } from "react";
 import InputMask from "react-input-mask";
 import InputsAddress from "./../Components/InputsAddress";
+import TemplateMailWorkWithUs from "./TemplateMail";
+import ReactDOMServer from 'react-dom/server';
 
-export default function FormDistributor({ setInputs, resetInputs, partnerType }) {
+export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
 
   const [cnpj, setCnpj] = useState('');
-  const [companyName, setCompanyName] = useState('');
-  const [tradingName, settradingName] = useState('');
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [logo, setLogo] = useState('');
+  const [curriculum, setCurriculum] = useState('');
+  const [structureMail, setStructureMail] = useState({})
+  const [html, setHtml] = useState("");
+
 
   const [address, setAddress] = useState({});
 
 
   useEffect(()=>{
-    setInputs({
-      info:{
-        partnerType,
-        cnpj,
-        companyName,
-        tradingName,
-        email,
-        phone,
-        logo
-    },
-      address
+
+    setHtml(ReactDOMServer.renderToString(<TemplateMailWorkWithUs data={formData}/>))
+
+    setStructureMail({
+      html,
+      to: 'tawan.rio@webfoco.com',
+      from: 'Trabalhe conosco - IRB',
+      subject: 'Trabalhe conosco',
+    });
+
+    setFormData({
+      inputs:{
+        info:{
+          cnpj,
+          fullName,
+          email,
+          phone,
+          curriculum
+        },
+        address
+      },
+      structureMail
     })
 
-
-  },[cnpj,companyName,tradingName,email,phone,logo,address])
+  },[cnpj, fullName, email, phone, curriculum, address])
 
   useEffect(()=>{
   resetForm()
@@ -39,9 +53,8 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
     setCnpj('');
     setEmail('');
     setPhone('');
-    setCompanyName('');
-    settradingName('');
-    setLogo('');
+    setFullName('');
+    setCurriculum('');
     setAddress({});
   };
 
@@ -61,55 +74,20 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
             <div className="flex w-[48%] mt-2 flex-col">
                 <label
                   className="font-bold text-lg"
-                  htmlFor="companyName"
+                  htmlFor="fullName"
                 >
-                  Razão social
+                  Nome completo
                 </label>
                 <input
                   type="text"
-                  id="companyName"
-                  placeholder="Razão social"
-                  required
+                  id="fullName"
+                  placeholder="Nome completo"
                   className="border py-2 px-4"
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                 />
               </div>
 
-              <div className="flex w-[48%] mt-2 flex-col">
-                <label
-                  className="font-bold text-lg"
-                  htmlFor="tradingName"
-                >
-                  Nome fantasia
-                </label>
-                <input
-                  type="text"
-                  id="tradingName"
-                  required
-                  placeholder="Nome fantasia"
-                  className="border py-2 px-4"
-                  value={tradingName}
-                  onChange={(e) => settradingName(e.target.value)}
-                />
-              </div>
-              <div className="flex w-[48%] mt-2 flex-col">
-                <label className="font-bold text-lg" htmlFor="cnpj">
-                  CNPJ
-                </label>
-                <InputMask
-                  mask="99.999.999/9999-99"
-                  maskPlaceholder=""
-                  id="cnpj"
-                  required
-                  placeholder="CNPJ"
-                  className="border py-2 px-4"
-                  value={cnpj}
-                  onChange={(e) => setCnpj(e.target.value)}
-                />
-              </div>
-
-           
 
               <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold text-lg" htmlFor="email">
@@ -118,7 +96,6 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
                 <input
                   type="email"
                   id="email"
-                  required
                   placeholder="E-mail"
                   className="border py-2 px-4"
                   value={email}
@@ -134,7 +111,6 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
                   id="phone"
                   mask="(99) 99999-9999"
                   maskPlaceholder=""
-                  required
                   placeholder="Telefone"
                   className="border py-2 px-4"
                   value={phone}
@@ -144,16 +120,16 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
 
               <div className="flex w-[48%] mt-2 flex-col">
                 <label className="font-bold text-lg" htmlFor="logo">
-                  Anexar logomarca
+                  Anexar currículo
                 </label>
                 <input
                   type="file"
                   id="logo"
-                  accept="image/png, image/jpeg"
-                  onChange={(e) => handleImg(e, setLogo)}
+                  accept="image/png, image/jpeg, application/pdf"
+                  onChange={(e) => handleImg(e, setCurriculum)}
                 />
                 <span className="text-slate-400 text-sm">
-                Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho máximo do arquivo: 3MB.
+                Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 3MB.
               </span>
               </div>
             </div>

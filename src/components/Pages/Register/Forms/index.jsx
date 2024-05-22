@@ -4,12 +4,33 @@ import FormDistributor from "./Distributor";
 import FormAutoparts from "./Autoparts";
 import FormMechanics from "./Mechanics";
 import { toast } from "react-toastify";
+import ReactDOMServer from 'react-dom/server';
+import TemplateMailPartner from "../../Contato/Forms/Partner/TemplateMail";
 import "react-toastify/dist/ReactToastify.css";
+import {generateUniqueIdByCnpj, generateActionsLink} from "@/utils/functions"
+
 
 
 export default function RegisterForm() {
   const [partnerType, setPartnerType] = useState('');
-  const [partnerData, setPartnerData] = useState({})
+  const [inputs, setInputs] = useState(null)
+  const [uniqueId, setUniqueId] = useState('')
+  const [structureMail, setStructureMail] = useState({})
+
+  const [html, setHtml] = useState('')
+  const [actionsLink, setActionsLink] = useState('')
+  const [responseMessage, setResponseMessage] = useState({
+    success: '',
+    error: ''
+  })
+  const [formData, setFormData] = useState({
+    inputs: {
+     info: {},
+     address: {},
+    },
+     actionsLink: {},
+     html: ''
+   });
   const [resetInputs, setResetInputs] = useState(false) 
   const [sending, setSending] = useState(null)
 
@@ -17,71 +38,67 @@ export default function RegisterForm() {
     setPartnerType(value);
   };
 
-useEffect(()=>{
-  console.log(partnerData);
-},[partnerData])
-  function generateUniqueIdByCnpj(cnpj) {
-    const firstFour = cnpj.replace(/\D/g, "").substring(0, 4).toString();
-  
-    const fourRandomNumbers = Math.floor(Math.random() * 1000000).toString().padStart(4, '0');
-    const twoRandomNumbers = Math.floor(Math.random() * 1000000).toString().padStart(2, '0');
-  
-    const uniqueId = fourRandomNumbers + firstFour + twoRandomNumbers;
-    
-    return uniqueId;
-}
-  const handleSubmitForm = async (e) => {
-    e.preventDefault();
-
-    try {
-      setSending(true);
-      const uniqueId = generateUniqueIdByCnpj(partnerData.info.cnpj);
-
-      if ( (!partnerData.info.cnpj ||
-        !partnerData.info.companyName ||
-        !partnerData.info.tradingName ||
-        !partnerData.info.email ||
-        !partnerData.info.phone ||
-        !partnerData.address.city ||
-        !partnerData.address.state ||
-        !partnerType
-        )) throw Error('Preencha todos os campos');
-
-      const responseInserDB = await insertDataIntoDB({
-        partnerType,
-        partnerData,
-        uniqueId
-      });
-
-      if(!responseInserDB) throw new Error('Database');
-      
-      const responseSendEmail = await sendEmailToAction({
-        partnerType,
-        partnerData,
-        uniqueId
-      })
-      if(!responseSendEmail) throw new Error('Enviar email');
-
-        toast.success("Cadastro Realizado, Aguarde aprovação")
-        setResetInputs(!(resetInputs))
-    } catch (error) {
-      toast.error(`Erro ao realizar o cadastro - ${error.message}`);
-    } finally {
-      setSending(false);
+  useEffect(()=>{
+    if(formData.inputs?.info.cnpj){
+      setUniqueId(generateUniqueIdByCnpj(formData.inputs?.info?.cnpj));
+      setActionsLink(generateActionsLink(formData.inputs?.info?.cnpj, uniqueId));
     }
-  };
+    setHtml(ReactDOMServer.renderToString(<TemplateMailPartner data={formData} uniqueId={uniqueId} actionsLink={actionsLink} />))
+
+    setStructureMail({
+      html,
+      to: 'tawan.rio@webfoco.com',
+      from: 'formData.inputs.info.tradingName',
+      subject: 'Solicitação de cadastro de parceiro',
+    });
+
+    setFormData({
+      inputs,
+      structureMail,
+      uniqueId
+    })
+    
+  },[inputs])
+  
+
+
+const handleSubmitForm = async (e) => {
+  e.preventDefault();
+
+  try {
+    setSending(true);
+    
+    const responseSendEmail = await sendEmailToAction(formData)
+    
+    if(!responseSendEmail) throw new Error('Enviar email');
+
+    if(formData.inputs.info.partnerType){
+      const responseInserDB = await insertDataIntoDB({
+        formData
+      });
+      if(!responseInserDB) throw new Error('Database');
+    }
+
+    toast.success(responseMessage.success)
+    setResetInputs(!(resetInputs))
+} catch (error) {
+  toast.error(`${responseMessage.error} - ${error.message}`);
+} finally {
+  setSending(false);
+}
+};
 
   const sendEmailToAction = async (data) =>{
+    // const response = await fetch('http://localhost:3000/api/handlemail/sendmail', {
+      const response = await fetch('https://irbauto.com.br/api/handlemail/sendmail', {
     // const response = await fetch('http://localhost:3000/api/sendemailregisterpartner', {
-      const response = await fetch('https://irbauto.com.br/api/sendemailregisterpartner', {
+      // const response = await fetch('https://irbauto.com.br/api/sendemailregisterpartner', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          partnerType: data.partnerType,
-          partnerData: data.partnerData,
-          uniqueId: data.uniqueId
+          formData
         }),
       });
       return response.ok
@@ -89,8 +106,9 @@ useEffect(()=>{
 
   const insertDataIntoDB = async (data) => {
           const response = await fetch(
-        // "http://localhost:3000/api/registerPartner",
-        "https://irbauto.com.br/api/registerPartner",
+        // "http://localhost:3000/api/handlemail/insertdb",
+        "https://irbauto.com.br/api/handlemail/insertdb",
+        // "https://irbauto.com.br/api/registerPartner",
         {
           method: "POST",
           headers: {
@@ -133,13 +151,13 @@ useEffect(()=>{
           </div>
 
           {partnerType === "distribuidoras" && (
-            <FormDistributor setPartnerData={setPartnerData} resetInputs={resetInputs}   />
+            <FormDistributor setInputs={setInputs} resetInputs={resetInputs} partnerType={partnerType}   />
           )}
           {partnerType === "mecanicas" && (
-            <FormMechanics setPartnerData={setPartnerData} resetInputs={resetInputs}   />
+            <FormMechanics setInputs={setInputs} resetInputs={resetInputs} partnerType={partnerType}   />
           )}
           {partnerType === "autopecas" && (
-            <FormAutoparts setPartnerData={setPartnerData} resetInputs={resetInputs}   />
+            <FormAutoparts setInputs={setInputs} resetInputs={resetInputs} partnerType={partnerType}   />
           )}
 
           { !(partnerType === '') && (

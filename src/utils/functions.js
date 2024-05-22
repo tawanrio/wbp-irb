@@ -74,8 +74,16 @@ export function insertMenuInTemplateOld({menu,menuName,template,templateName,ite
   }
  
   export const formatPhoneNumber = (str) => {
-    return str.replace(/[^0-9]/g, '')
-  }
+    let cleaned = str.replace(/[^0-9]/g, '');
+    if (cleaned.startsWith('55')) {
+      cleaned = cleaned.slice(2);
+    }
+    if (cleaned.length === 11) {
+      const formatted = `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7)}`;
+      return formatted;
+    }
+    return str;
+  };
   export const replaceShortcodePartner = (text, partner) => {
     const shortcode = '{{partner}}';
     const replace = `${partner}`;
@@ -119,4 +127,60 @@ export function updateMetatitleGeoRouteThree(metatitle, geoName) {
     return `${before} ${geoName} ${after}`;
   }
   return metatitle;
+}
+
+export const generateActionsLink = (cnpj,uniqueId) => {
+  const cleanedCnpj = cnpj.replace(/\D/g, "");
+console.log(uniqueId);
+  const domain = window.location.origin;
+  
+  const accept =  `${domain}/registerpartner/actions/${cleanedCnpj}/accept/${uniqueId} `
+
+  const refuse =  `${domain}/registerpartner/actions/${cleanedCnpj}/refuse/${uniqueId} `
+  return {accept, refuse}
+}
+
+
+export function generateUniqueIdByCnpj(cnpj) {
+  
+  // const firstFour = cnpj.replace(/\D/g, "").substring(0, 4).toString();
+
+  // const fourRandomNumbers = Math.floor(Math.random() * 1000000).toString().padStart(4, '0');
+  // const twoRandomNumbers = Math.floor(Math.random() * 1000000).toString().padStart(2, '0');
+
+  // const uniqueId = fourRandomNumbers + firstFour + twoRandomNumbers;
+  
+  // return uniqueId;
+
+   // Remover todos os caracteres não numéricos do CNPJ
+   const cleanedCnpj = cnpj.replace(/\D/g, "");
+
+   // Garantir que o CNPJ tenha pelo menos 12 dígitos
+   const paddedCnpj = cleanedCnpj.padEnd(12, '0');
+ 
+   // Obter a hora atual no formato HHMMSS
+   const now = new Date();
+   const hours = now.getHours().toString().padStart(2, '0');
+   const minutes = now.getMinutes().toString().padStart(2, '0');
+   const seconds = now.getSeconds().toString().padStart(2, '0');
+ 
+   // Construir o ID único no formato "HHxxxxxxMMxxxxxSS"
+   const uniqueId = `${hours}${paddedCnpj.substring(0, 6)}${minutes}${paddedCnpj.substring(6, 12)}`;
+ 
+   return uniqueId;
+}
+export function getCurrentDateFormatted() {
+  const currentDate = new Date();
+  
+  // Extract year, month, day, hour, and minutes from the current date
+  const year = currentDate.getFullYear();
+  const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Add leading zero if necessary
+  const day = String(currentDate.getDate()).padStart(2, '0'); // Add leading zero if necessary
+  const hour = String(currentDate.getHours()).padStart(2, '0'); // Add leading zero if necessary
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0'); // Add leading zero if necessary
+  
+  // Format the date in 'yyyy/mm/dd-hh-mm' format
+  const formattedDate = `${year}/${month}/${day}-${hour}:${minutes}`;
+  
+  return formattedDate;
 }

@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import InputMask from "react-input-mask";
 import InputsAddress from "./../Components/InputsAddress";
-import Requirements from "./Requirements";
 
-export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
+export default function FormDistributor({ setFormData, resetInputs }) {
 
   const [cnpj, setCnpj] = useState('');
   const [companyName, setCompanyName] = useState('');
@@ -13,15 +10,13 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [logo, setLogo] = useState('');
-  
-  const [requirements, setRequiments] = useState({})
+
   const [address, setAddress] = useState({});
 
 
   useEffect(()=>{
-    setInputs({
+    setFormData({
       info:{
-        partnerType,
         cnpj,
         companyName,
         tradingName,
@@ -29,46 +24,42 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
         phone,
         logo
     },
-      address,
-      requirements
-    }) 
-  },[cnpj,companyName,tradingName,email,phone,logo,address, requirements])
+      address
+    })
+
+
+  },[cnpj,companyName,tradingName,email,phone,logo,address])
 
   useEffect(()=>{
-    resetForm()
-    },[resetInputs])
-  
-    const resetForm = () => {
-      setCnpj('');
-      setEmail('');
-      setPhone('');
-      setCompanyName('');
-      settradingName('');
-      setLogo('');
-      setAddress({});
-      setRequiments({});
-    };
-  
+  resetForm()
+  },[resetInputs])
 
-    const handleImg = (event, setState) => {
-      // Handle file upload for logo here
-      const file = event.target.files[0];
-      setState(file);
-    };
-  
+  const resetForm = () => {
+    setCnpj('');
+    setEmail('');
+    setPhone('');
+    setCompanyName('');
+    settradingName('');
+    setLogo('');
+    setAddress({});
+  };
+
+  const handleImg = (event, setState) => {
+    // Handle file upload for logo here
+    const file = event.target.files[0];
+    setState(file);
+  };
+
+
+
 
   return (
-   
-        <form
-          onSubmit={(e) => handleSubmitForm(e)}
-          className="flex flex-col items-center gap-10"
-        >
-          <div className="w-full flex flex-col justify-between md:px-0 md:gap-2 md:my-0 gap-4">
+          <div className="w-full flex flex-col justify-between md:px-0 md:gap-2 md:my-0 gap-2">
             
             <div className="flex w-full flex-row justify-between flex-wrap">
             <div className="flex w-[48%] mt-2 flex-col">
                 <label
-                  className="font-bold  text-lg"
+                  className="font-bold text-lg"
                   htmlFor="companyName"
                 >
                   Razão social
@@ -76,8 +67,7 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                 <input
                   type="text"
                   id="companyName"
-                  required
-                  placeholder="Razão social"
+                  placeholder="Razão Social"
                   className="border py-2 px-4"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
@@ -86,7 +76,7 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
 
               <div className="flex w-[48%] mt-2 flex-col">
                 <label
-                  className="font-bold  text-lg"
+                  className="font-bold text-lg"
                   htmlFor="tradingName"
                 >
                   Nome fantasia
@@ -94,7 +84,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                 <input
                   type="text"
                   id="tradingName"
-                  required
                   placeholder="Nome fantasia"
                   className="border py-2 px-4"
                   value={tradingName}
@@ -102,14 +91,13 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                 />
               </div>
               <div className="flex w-[48%] mt-2 flex-col">
-                <label className="font-bold  text-lg" htmlFor="cnpj">
+                <label className="font-bold text-lg" htmlFor="cnpj">
                   CNPJ
                 </label>
                 <InputMask
                   mask="99.999.999/9999-99"
                   maskPlaceholder=""
                   id="cnpj"
-                  required
                   placeholder="CNPJ"
                   className="border py-2 px-4"
                   value={cnpj}
@@ -120,13 +108,12 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
            
 
               <div className="flex w-[48%] mt-2 flex-col">
-                <label className="font-bold  text-lg" htmlFor="email">
+                <label className="font-bold text-lg" htmlFor="email">
                   E-mail
                 </label>
                 <input
                   type="email"
                   id="email"
-                  required
                   placeholder="E-mail"
                   className="border py-2 px-4"
                   value={email}
@@ -135,14 +122,13 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
               </div>
 
               <div className="flex w-[48%] mt-2 flex-col">
-                <label className="font-bold  text-lg" htmlFor="phone">
+                <label className="font-bold text-lg" htmlFor="phone">
                   Telefone
                 </label>
                 <InputMask
                   id="phone"
                   mask="(99) 99999-9999"
                   maskPlaceholder=""
-                  required
                   placeholder="Telefone"
                   className="border py-2 px-4"
                   value={phone}
@@ -151,7 +137,7 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
               </div>
 
               <div className="flex w-[48%] mt-2 flex-col">
-                <label className="font-bold  text-lg" htmlFor="logo">
+                <label className="font-bold text-lg" htmlFor="logo">
                   Anexar logomarca
                 </label>
                 <input
@@ -165,10 +151,9 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
               </span>
               </div>
             </div>
+
             <InputsAddress setAddress={setAddress} resetInputs={resetInputs}/>
-           <Requirements setRequiments={setRequiments} resetInputs={resetInputs}/>
           </div>
-        </form>
      
   );
 }

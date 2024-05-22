@@ -5,7 +5,6 @@ import Button from "./Button"
 
 export default function ProductFaq({ logo, contentDescription, title, arrButton }) {
    
-// console.log(arrButton);
 
     return (
         <section className="flex flex-col items-center " id={`irb-contact_`}>

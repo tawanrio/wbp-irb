@@ -95,7 +95,6 @@ export default function InputsAddress({setAddress, resetInputs}) {
       </label>
       <input
         type="text"
-        required
         id="street"
         placeholder="Rua/Avenida"
         className="border py-2 px-4"
@@ -113,7 +112,6 @@ export default function InputsAddress({setAddress, resetInputs}) {
       </label>
       <input
         type="text"
-        required
         id="number"
         placeholder="Número"
         className="border py-2 px-4"
@@ -145,7 +143,6 @@ export default function InputsAddress({setAddress, resetInputs}) {
       </label>
       <input
         type="text"
-        required
         id="city"
         placeholder="Cidade"
         className="border py-2 px-4"
@@ -161,7 +158,6 @@ export default function InputsAddress({setAddress, resetInputs}) {
       <input
         type="text"
         id="state"
-        required
         placeholder="Estado"
         className="border py-2 px-4"
         value={state}

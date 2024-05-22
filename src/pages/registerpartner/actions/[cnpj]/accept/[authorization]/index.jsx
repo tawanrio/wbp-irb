@@ -21,11 +21,12 @@ const acceptPartner = async (cnpj,authorization) =>{
       { new: true } // Isso garante que o documento retornado seja o atualizado
     );
 
-    console.log(partner);
     const data = {
       tradingName: formatStrToDash(partner.tradingName),
       type: partner.label
     }
+
+    console.log(data);
    return data;
 
   }catch{
@@ -38,8 +39,6 @@ export const getServerSideProps  = async (context) => {
     const {params, req, res} = context;
     const {cnpj, authorization} = params;
     
-    console.log('test');
-    console.log(res);
 
     const protocol = req[Symbol.for('NextInternalRequestMeta')].initProtocol
     const partner =  await acceptPartner(cnpj, authorization)

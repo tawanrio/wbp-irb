@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import InputMask from "react-input-mask";
 import InputsAddress from "./../Components/InputsAddress";
 
-export default function FormAutoparts({ setPartnerData, resetInputs }) {
+export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
 
   const [cnpj, setCnpj] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -17,22 +17,20 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
   const [address, setAddress] = useState({})
 
   useEffect(()=>{
-    setPartnerData({
+    setInputs({
       info:{
+        partnerType,
         cnpj,
         companyName,
         tradingName,
         email,
         phone,
-        logo
-    },
-      address,
-      requirements: {
+        logo,
         whereToBuy
-      }
+    },
+      address
     })
-
-  },[cnpj,companyName,tradingName,email,phone,logo,address])
+  },[cnpj,companyName,tradingName,email,phone,logo,address,whereToBuy])
 
   useEffect(()=>{
     resetForm()
@@ -74,6 +72,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                   id="whereToBuy"
                   placeholder="Em qual distribuidor você adquiri os produtos IRB"
                   className="border py-2 px-4"
+                  required
                   value={whereToBuy}
                   onChange={(e) => setWhereToBuy(e.target.value)}
                   />
@@ -101,6 +100,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                   id="companyName"
                   placeholder="Razão Social"
                   className="border py-2 px-4"
+                  required
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                 />
@@ -118,6 +118,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                   id="tradingName"
                   placeholder="Nome fantasia"
                   className="border py-2 px-4"
+                  required
                   value={tradingName}
                   onChange={(e) => settradingName(e.target.value)}
                 />
@@ -130,6 +131,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                   mask="99.999.999/9999-99"
                   maskPlaceholder=""
                   id="cnpj"
+                  required
                   placeholder="CNPJ"
                   className="border py-2 px-4"
                   value={cnpj}
@@ -146,6 +148,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                 <input
                   type="email"
                   id="email"
+                  required
                   placeholder="E-mail"
                   className="border py-2 px-4"
                   value={email}
@@ -161,6 +164,7 @@ export default function FormAutoparts({ setPartnerData, resetInputs }) {
                   id="phone"
                   mask="(99) 99999-9999"
                   maskPlaceholder=""
+                  required
                   placeholder="Telefone"
                   className="border py-2 px-4"
                   value={phone}

@@ -5,7 +5,7 @@ import InputMask from "react-input-mask";
 import InputsAddress from "./../Components/InputsAddress";
 import Requirements from "./Requirements";
 
-export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
+export default function FormMechanics({ setFormData, resetInputs }) {
 
   const [cnpj, setCnpj] = useState('');
   const [companyName, setCompanyName] = useState('');
@@ -19,9 +19,8 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
 
 
   useEffect(()=>{
-    setInputs({
+    setFormData({
       info:{
-        partnerType,
         cnpj,
         companyName,
         tradingName,
@@ -76,7 +75,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                 <input
                   type="text"
                   id="companyName"
-                  required
                   placeholder="Razão social"
                   className="border py-2 px-4"
                   value={companyName}
@@ -94,7 +92,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                 <input
                   type="text"
                   id="tradingName"
-                  required
                   placeholder="Nome fantasia"
                   className="border py-2 px-4"
                   value={tradingName}
@@ -109,7 +106,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                   mask="99.999.999/9999-99"
                   maskPlaceholder=""
                   id="cnpj"
-                  required
                   placeholder="CNPJ"
                   className="border py-2 px-4"
                   value={cnpj}
@@ -126,7 +122,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                 <input
                   type="email"
                   id="email"
-                  required
                   placeholder="E-mail"
                   className="border py-2 px-4"
                   value={email}
@@ -142,7 +137,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                   id="phone"
                   mask="(99) 99999-9999"
                   maskPlaceholder=""
-                  required
                   placeholder="Telefone"
                   className="border py-2 px-4"
                   value={phone}

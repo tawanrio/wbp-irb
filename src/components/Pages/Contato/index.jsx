@@ -18,6 +18,7 @@ import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 // Context Api
 import { useState } from 'react';
 import ServiceAddress from '@/components/ServiceAddress';
+import ContactForm from './Forms';
 
 
 export default function Contato({content}) {
@@ -35,7 +36,7 @@ export default function Contato({content}) {
   const address = content?.address.address.find(address => address.label === 'default')
 
 
-   console.log(content);
+   console.log(content.categories);
   return (
     <>
    <Head>
@@ -48,6 +49,7 @@ export default function Contato({content}) {
        <BreadCrumb/>
        <LogoContact  logo={logoContact?.logo} contentDescription={logoContact?.contentDescription} title={logoContact?.title} arrButton={arrButton}  />
        <ServiceAddress products={content.categories} address={address} />
+       <ContactForm categories={content.categories} />
        </Templates>
    </>
   )

@@ -8,6 +8,7 @@ const collectionsSchema = new mongoose.Schema({
   tradingName: String,
   gallery: Array,
   logo: Object,
+  whereToBuy: String,
   enabled: Boolean,
   cnpj: String,
   info: Object,
@@ -18,7 +19,7 @@ const collectionsSchema = new mongoose.Schema({
   metaTitle: String,
   products: Array,
   catalog: Array,
-  idToValidationRegister: Number,
+  idToValidationRegister: String,
   _createdAt: String,
   _updatedAt: String,
   contentDescription: Array

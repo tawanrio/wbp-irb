@@ -114,7 +114,7 @@ const sendEmail = async (data) => {
     await transporter.sendMail({
         from: `${data.tradingName} <${data.email}>`,
         to: authSmtp.auth.user,
-        cc: 'marketing@irbauto.com.br',
+        // cc: 'marketing@irbauto.com.br',
         subject: 'Solicitação de cadastro de parceiro',
         html
     });
