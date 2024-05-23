@@ -3,8 +3,6 @@ import SectionTitle from "../SectionTitle"
 import Link from "next/link"
 
 export default function Parceiros({title, partners, colors, hiddenTitle, product, category}) {
-    // console.log("product",product);
-    // console.log("partners",partners);
     const generatePartnerUrlByProduct = ({product, partner, category}) =>{
         if(category) return `/${partner}/${category}`;
         return `/${partner}/${product}`;

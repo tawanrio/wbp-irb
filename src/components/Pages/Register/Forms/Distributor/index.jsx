@@ -13,7 +13,6 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
 
   const [address, setAddress] = useState({});
 
-
   useEffect(()=>{
     setInputs({
       info:{
@@ -56,7 +55,6 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
 
   return (
           <div className="w-full flex flex-col justify-between md:px-0 md:gap-2 md:my-0 gap-2">
-            
             <div className="flex w-full flex-row justify-between flex-wrap">
             <div className="flex w-[48%] mt-2 flex-col">
                 <label

@@ -7,7 +7,6 @@ import Arrow from './components/Arrow';
 import InsertVideo from '@/components/InsertVideo';
 
 export default function Banner({banners, video}) {
-  console.log();
   const [activeBanner, setActiveBanner] = useState(0)
 
   const size = banners?.size.height

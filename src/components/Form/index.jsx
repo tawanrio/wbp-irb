@@ -17,7 +17,7 @@ export default function Form({ inputs, colors }) {
     setName('');
     setEmail('');
     setPhone('');
-    setSubject('');
+    setSubject(''); 
     setMessage('');
   }
 
@@ -29,7 +29,7 @@ export default function Form({ inputs, colors }) {
       setSuccessMessage('');
       setErrorMessage('');
 
-      const response = await fetch('https://irbauto.com.br/api/forms', {
+      const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/forms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,6 @@ export default function Form({ inputs, colors }) {
 
       if (response.ok) {
         const responseData = await response.json();
-        // console.log('Response:', responseData);
         setSuccessMessage('Email enviado com sucesso!');
         resetForm()
       } else {

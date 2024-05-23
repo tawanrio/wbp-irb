@@ -14,6 +14,7 @@ export default function ContactForm({categories}) {
     success: '',
     error: ''
   })
+
   const [formData, setFormData] = useState({
    inputs: {
     info: {},
@@ -59,10 +60,7 @@ export default function ContactForm({categories}) {
   };
 
   const sendEmailToAction = async (formData) =>{
-    // const response = await fetch('http://localhost:3000/api/handlemail/sendmail', {
-      const response = await fetch('https://irbauto.com.br/api/handlemail/sendmail', {
-    // const response = await fetch('http://localhost:3000/api/sendemailregisterpartner', {
-      // const response = await fetch('https://irbauto.com.br/api/sendemailregisterpartner', {
+      const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,10 +73,7 @@ export default function ContactForm({categories}) {
   }
 
   const insertDataIntoDB = async (data) => {
-          const response = await fetch(
-        // "http://localhost:3000/api/handlemail/insertdb",
-        "https://irbauto.com.br/api/handlemail/insertdb",
-        // "https://irbauto.com.br/api/registerPartner",
+          const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + "/api/handlemail/insertdb",
         {
           method: "POST",
           headers: {
