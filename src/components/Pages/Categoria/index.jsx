@@ -30,6 +30,7 @@ import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {getProductFromUrl,insertMenuInTemplate} from '@/utils/functions'
+import Ebooks from './components/Ebooks';
 
 export default function Categoria({ content }) {
   const route = useRouter()
@@ -44,7 +45,7 @@ export default function Categoria({ content }) {
 
   },[pageUrl])
 
-     
+    //  console.log(content);
   
   const catalogDescription = {
    imageProduct : {
@@ -89,7 +90,7 @@ export default function Categoria({ content }) {
           <Title title={category?.title}/>
           <ContentDescription content={category?.contentDescription}/>
           <ImgCatalogDescription content={catalogDescription}/>
-
+          {content.category.ebook && <Ebooks ebooks={content.category.ebook} />}
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
 
           {/* <SearchProducts  title="Encontre seu produto" hiddenProductSearch  products={content?.products} /> */}

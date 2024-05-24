@@ -96,6 +96,7 @@ export default function MenuDesktop({content}) {
                         group
                         w-full
                         z-50
+                        uppercase
                         flex
                         flex-col
                         items-end
@@ -109,7 +110,7 @@ export default function MenuDesktop({content}) {
                                 style={{ ...(isHovered && !link.hasOwnProperty("submenu")) && isHovered === 'l'+lId? {background:colors.hoverbg, color: colors.hovertext} : ''}}
                             className='
                             md:flex-row
-                            md:text-xl
+                            md:text-base
                             px-4
                             py-2
                             justify-start
@@ -162,7 +163,7 @@ export default function MenuDesktop({content}) {
                                               style={{...isHovered && isHovered === 's'+sId? {background:colors.hoverbg, color: colors.hovertext} : ''}}
                                             className='
                                             md:text-start
-                                            md:text-xl
+                                            md:text-base
                                             w-full 
                                             py-1
                                             flex

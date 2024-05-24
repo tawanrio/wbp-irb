@@ -14,6 +14,7 @@ import Produtos from '@/components/Pages/Produtos'
 import Register from '@/components/Pages/Register'
 import Categoria from '@/components/Pages/Categoria'
 import Error from '@/components/Pages/Error'
+import BaixeNossoApp from '@/components/Pages/Baixe-nosso-app';
 
 // Components
 import CookiePopup from '@/components/CookiePopup';
@@ -35,7 +36,8 @@ export default function index({content}) {
         {page === 'mecanicas' && (<AutocenterEMecanicas content={content}/>)}
         {page === 'parceiros' && (<Parceiros content={content}/>)}
         {page === 'Produtos' && (<Produtos content={content}/>)}
-        {page === 'register' && (<Register content={content}/>)}
+        {page === 'registre-se' && (<Register content={content}/>)}
+        {page === 'baixe-nosso-app' && (<BaixeNossoApp content={content}/>)}
       </>
       )}
  {content?.type === 'category' && (

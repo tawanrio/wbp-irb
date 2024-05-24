@@ -7,10 +7,10 @@ import Link from "next/link"
  
 // const InsertText = dynamic(() => import('@/components/InserText'), { ssr: false })
 
-export default function imgCatalogDescription({content}) {
+export default function imgCatalogDescription({content, className}) {
     return (
         <>
-         <article className="flex flex-col items-center " id={`content-img-description_`}>
+         <article className={`flex flex-col items-center ${className}`} id={`content-img-description_`}>
             <div className="w-full max-w-7xl md:px-14 px-6 md:my-0 my-4 flex flex-col md:justify-between md:gap-6">
             {content?.title && <SectionTitle title={content?.title} />}
                 <div

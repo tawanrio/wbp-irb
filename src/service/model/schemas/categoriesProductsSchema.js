@@ -12,6 +12,7 @@ const categoriesProductsSchema = new mongoose.Schema({
     thumbnail: Object,
     gallery: Array,
     models: Array,
+    ebook: Array,
     faq: Object
 
   }, {

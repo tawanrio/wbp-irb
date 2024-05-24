@@ -31,7 +31,7 @@ export default function Utilities({title}) {
     }
 
     const ebook = {
-        title: 'E-book',
+        title: 'eBooks',
         description: 'Na aba “Conteúdo” você vai encontrar eBooks disponíveis para download gratuitamente! Neles você irá conhecer um pouco mais sobre nossas linhas de produto e suas especificações, além de dicas técnicas!',
         image: '/images/partners/ebook.jpeg',
         link: 'https://irbauto.rds.land/material-rico',
