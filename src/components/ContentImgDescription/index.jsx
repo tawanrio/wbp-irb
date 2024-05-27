@@ -9,9 +9,9 @@ import dynamic from 'next/dynamic'
 export default function ContentImgDescription({content}) {
     return (
         <>
-         <article className="flex flex-col items-center " id={`content-img-description_`}>
+         <article className="flex flex-col items-center mb-[-30px] " id={`content-img-description_`}>
             <div className="w-full max-w-7xl md:px-14 px-6 md:my-10 my-4 flex flex-col md:justify-between md:gap-10">
-                <SectionTitle title={content?.title} line/>
+               {content?.title && <SectionTitle title={content?.title} /> }
                 <div
                 className="
                 md:flex-row
@@ -26,7 +26,7 @@ export default function ContentImgDescription({content}) {
                     <div
                     className="
                     md:h-[400px]
-                    h-[100px]
+                    h-[200px]
                     relative
                     group
                     ">
@@ -46,7 +46,7 @@ export default function ContentImgDescription({content}) {
                         w-full 
                         absolute 
                         md:min-h-[400px] 
-                        min-h-[100px]
+                        min-h-[200px]
                         bg-[#0a0a0aa3]
                         flex
                         z-[99]
@@ -66,7 +66,7 @@ export default function ContentImgDescription({content}) {
                         className="
                         h-full
                         md:min-h-[400px]
-                        min-h-[100px]
+                        min-h-[200px]
 
                         w-full
                         object-cover

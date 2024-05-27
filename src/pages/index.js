@@ -1,20 +1,4 @@
-// SEO
-import Head from 'next/head'
-
-// Template / Layout
-import Templates from '@/components/Templates'
-import Title from '@/components/Title';
-
-// Components
-import Banner from "@/components/Banner";
-import ContentDescription from '@/components/ContentDescription';
-import InsertVideo from '@/components/InsertVideo';
-import Partners from '@/components/Partners';
-import Form from '@/components/Form';
-import CompanyValues from '@/components/CompanyValues';
-import Categories from '@/components/Categories';
-import BreadCrumb from '@/components/BreadCrumb';
-import TextVideo from '@/components/TextVideo';
+import Home from "@/components/Pages/Home"
 
 // Database // Schema
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
@@ -26,48 +10,9 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 import {Form as FormDb} from '@/service/model/schemas/formsSchema'
 
-// Others || functions
-import { useState } from 'react';
-
-import Utilities from '@/components/Utilities';
-
-export default function QuemSomos({content}) {
-
-    const [metaTitle] = useState(content?.page?.metaTitle)
-    const [metaDescription] = useState(content?.page?.metaDescription)
-    const [metaKeywords] = useState(content?.page?.metaKeywords)
-    const [banners] = useState(content?.page?.banners)
-    const [title] = useState(content?.page?.title)
-    const [video] = useState(content?.page?.video)
-    const [bannerVideo] = useState(content?.page?.banners.carousel[0])
-    const [cardsValues] = useState(content?.page?.companyValues)
-    const [description] = useState(content?.page?.contentDescription)
-    const [formDefault] = useState(content?.form?.forms.find(item => item.label === "default"))
-    
+export default function index({content}) {
   return (
-    <>
-     <Head>
-       <title>{metaTitle || title}</title>
-       <meta name="description" content={metaDescription || description} />
-       <meta name="keywords" content={metaKeywords || ''}/>
-       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-     </Head>
-     
-    <Templates template={content?.template} page={content?.page} menus={content?.menus}>
-        <Banner banners={banners} video={bannerVideo}/>
-        {/* <BreadCrumb/> */}
-        {/* <Title title={title}/> */}
-        <CompanyValues cards={cardsValues}/>
-        <TextVideo video={video} description={description} />
-        {/* <InsertVideo content={video}/> */}
-        {/* <ContentDescription content={description}/> */}
-        <Categories categories={content?.categories} colors={content?.page?.colors.products} title />
-        <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>
-        <Utilities title={'Utilidades'}/>
-        <Form inputs={formDefault} colors={content?.form?.colors}/>
-      </Templates>
- 
-    </>
+   <Home content={content}/>
   )
 }
 
@@ -115,24 +60,3 @@ export async function getStaticProps() {
   };
 
 };
-
-// export const getServerSideProps  = async () => {
-//   try {
-//     const content = await getDataPage();
-   
-//     return {
-//       props: {
-//         content
-//       }
-//     };
-
-//   } catch (error) {
-//     console.error('Erro na página:', error);
-
-//     return {
-//       props: {
-//         content: null
-//       },
-//     };
-//   }
-// };

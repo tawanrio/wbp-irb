@@ -184,3 +184,30 @@ export function getCurrentDateFormatted() {
   
   return formattedDate;
 }
+
+export function sortByKey(array) {
+  return array.sort((a, b) => {
+    // Itens com prioridade vêm primeiro
+    if (a.priority !== undefined && b.priority !== undefined) {
+      // Se ambos têm prioridade, ordene por prioridade
+      if (a.priority !== b.priority) {
+        return a.priority - b.priority;
+      }
+    } else if (a.priority !== undefined) {
+      // Se só 'a' tem prioridade, 'a' vem primeiro
+      return a.priority === -1 ? 1 : -1;
+    } else if (b.priority !== undefined) {
+      // Se só 'b' tem prioridade, 'b' vem primeiro
+      return b.priority === -1 ? -1 : 1;
+    }
+
+    // Itens sem prioridade são ordenados alfabeticamente
+    if (a.label < b.label) {
+      return -1;
+    }
+    if (a.label > b.label) {
+      return 1;
+    }
+    return 0;
+  });
+}

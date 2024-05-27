@@ -50,10 +50,12 @@ export default function ContactForm({categories}) {
         if(!responseInserDB) throw new Error('Database');
       }
 
-        toast.success(responseMessage.success)
+        toast.success("Email enviado com sucesso")
+        // toast.success(responseMessage.success)
         setResetInputs(!(resetInputs))
     } catch (error) {
-      toast.error(`${responseMessage.error} - ${error.message}`);
+      // toast.error(`${responseMessage.error} - ${error.message}`);
+      toast.error(`Error ao enviar seu email, tente novamente mais tarde`);
     } finally {
       setSending(false);
     }

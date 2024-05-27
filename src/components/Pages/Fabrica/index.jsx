@@ -5,22 +5,16 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 import Banner from "@/components/Banner";
 
-// Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db';
-import Page from '@/service/model/schemas/pageSchema'
-import {Menu} from '@/service/model/schemas/menuSchema'
-import {Template} from '@/service/model/schemas/templateSchema'
-import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
-import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 
 // Others
 import { useState} from 'react';
 import  {useRouter}  from 'next/router';
+import { sortByKey } from '@/utils/functions';
 
 // Components
 import ContentDescription from '@/components/ContentDescription';
 import BreadCrumb from '@/components/BreadCrumb';
-import CompanyValues from '@/components/CompanyValues';
+import CompanyValues from './components/CompanyValues';
 import ContentImgDescription from '@/components/ContentImgDescription';
 import Products from '@/components/Products';
 import Categories from '@/components/Categories';
@@ -28,7 +22,9 @@ import Faq from '@/components/Faq';
 import Title from '@/components/Title';
 import InsertVideo from '@/components/InsertVideo';
 import Utilities from '@/components/Utilities';
-
+import TimeLine from './components/TimeLine';
+import CarouselEvent from './components/CarouselEvents';
+import CategoryGrid from '@/components/CategoryGrid';
 
 
 export default function Fabrica({content}) {
@@ -44,8 +40,10 @@ export default function Fabrica({content}) {
   const [metaDescription] = useState(content?.page.metaDescription)
   const [imgDescription] = useState(content?.page.imgDescription)
   const [metaKeywords] = useState(content?.page?.metaKeywords)
-  const [faq] = useState(content?.page.faq)
+  const [events] = useState(content?.page?.events)
 
+  const sortedCategories = sortByKey(content.categories,'label')
+  console.log(content);
 
   return (
     <>
@@ -59,13 +57,16 @@ export default function Fabrica({content}) {
       <Banner banners={banners}/>
        <BreadCrumb/>
        <Title title={title}/>
-       <CompanyValues cards={cardsValues}/>
        <ContentImgDescription content={imgDescription}/>
        <ContentDescription content={description}/>
-        <InsertVideo content={video}/>
-        <Categories baseUrl={`${pageUrl}/`} categories={content?.categories} colors={content?.page?.colors.products} title />
+       <TimeLine />
+       <CompanyValues cards={cardsValues}/>
+       <CategoryGrid categories={sortedCategories} title />
+        {/* <Categories baseUrl={`/`} categories={content?.categories} colors={content?.page?.colors.products} title /> */}
+       <CarouselEvent events={events}/>
+        {/* <InsertVideo content={video}/> */}
        {/* <Products baseUrl={`${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title/> */}
-       <Utilities title={'Utilidades'}/>
+       {/* <Utilities title={'Utilidades'}/> */}
     </Templates>
           
    </>
