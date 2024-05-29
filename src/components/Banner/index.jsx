@@ -32,7 +32,7 @@ export default function Banner({ banners, video }) {
     <section className="relative" id={`description_`}>
       <div 
         style={{ height: size }} 
-        className="flex justify-center md:mb-10 mb-3 relative" 
+        className="flex justify-center md:mb-10 mb-4 relative" 
         id='containerBanner'
       >
         <Dots controllerBanner={{ banners, setActiveBanner, activeBanner, size }} />
@@ -42,8 +42,8 @@ export default function Banner({ banners, video }) {
           ) : (
             <>
               <InsertVideo content={video} home />
-              <div className='w-full md:h-full mt-10 md:mt-0 absolute flex items-center flex-col justify-center'>
-                <h2 className='w-full md:text-5xl uppercase text-center text-[#fff] font-bold text-x z-10'>
+              <div className='w-full md:h-full mt-14 md:mt-[-30px] absolute flex items-center flex-col justify-center'>
+                <h2 className='w-full md:text-5xl  text-xl uppercase text-center text-[#fff] font-bold text-x z-10'>
                   {banners.carousel[0].title}
                 </h2>
                 <div className='flex flex-col mb-[-70px] md:w-[65%] w-[85%] md:max-w-5xl gap-5'>
@@ -53,7 +53,7 @@ export default function Banner({ banners, video }) {
                         <li 
                           key={tId} 
                           id={`description_`}
-                          className='md:text-lg text-sm text-white m-0'
+                          className='md:text-lg text-xs text-white m-0'
                         >
                           {text}
                         </li>
