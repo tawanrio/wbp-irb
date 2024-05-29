@@ -24,6 +24,9 @@ import { sortByKey } from '@/utils/functions';
 import Utilities from '@/components/Utilities';
 import DiffCarousel from './components/DiffCarousel';
 import CategoryGrid from '@/components/CategoryGrid';
+import PartnersButton from './components/PartnersButton';
+import UtilityCards from './components/UtilityCards';
+import BlogCarousel from './components/BlogCarousel';
 
 export default function Home({content}) {
 
@@ -39,6 +42,7 @@ export default function Home({content}) {
     const [bannerVideo] = useState(content?.page?.banners.carousel[0])
     const [cardsValues] = useState(content?.page?.companyValues)
     const [formDefault] = useState(content?.form?.forms.find(item => item.label === "default"))
+    const [posts] = useState(content.blogData)
 
     const sortedCategories = sortByKey(content.categories,'label')
     content.menus[2].links = sortByKey(content.menus[2].links,'label')
@@ -46,7 +50,6 @@ export default function Home({content}) {
 
 
    
-    
     
   return (
     <>
@@ -64,8 +67,11 @@ export default function Home({content}) {
         {/* <TextVideo video={video} description={description} /> */}
         <CategoryGrid categories={sortedCategories} title />
         {/* <Categories categories={sortedCategories} colors={content?.page?.colors.products} title /> */}
-        <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>
-        <Utilities title={'Utilidades'}/>
+        <PartnersButton partners={content?.partners?.types} />
+        {/* <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/> */}
+        <UtilityCards />
+        {/* <Utilities title={'Utilidades'}/> */}
+        <BlogCarousel posts={posts}/>
         <Form inputs={formDefault} colors={content?.form?.colors}/>
       </Templates>
  

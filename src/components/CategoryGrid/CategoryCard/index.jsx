@@ -14,8 +14,8 @@ const CategoryCard = ({ category }) => {
       </div>
       <div className="p-4 flex flex-col justify-between flex-grow">
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">{category.title}</h2>
-          <p className="text-gray-600 mt-2 line-clamp-3">{category.contentDescription[0]}</p>
+          <h2 className="text-2xl font-bold text-[#666]">{category.title}</h2>
+          <p className="text-[#666] mt-2 line-clamp-3">{category.contentDescription[0]}</p>
         </div>
         <div className="mt-4">
           <a

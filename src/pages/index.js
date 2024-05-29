@@ -50,6 +50,8 @@ async function getDataPage(){
 export async function getStaticProps() {
   
   const content = await getDataPage();
+  const response = await fetch('https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts');
+  content.blogData = await response.json();
   // const content = await testeRoute(resolvedUrl)
 
   return {
