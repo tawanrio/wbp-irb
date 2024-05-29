@@ -4,17 +4,17 @@ import SinglePartner from './SinglePartner';
 const PartnersButton = ({ partners, title }) => {
     const partnerTypes = [ 
         {
-            image: "/images/components/icons/autoparts2.png",
+            image: "/images/components/icons/autoparts2-white.png",
             title: "Autopeças",
             link: "/autopecas"
         },
         {
-            image: "/images/components/icons/distributors.png",
+            image: "/images/components/icons/distributors-white.png",
             title: "Distribuidoras",
             link: "/distribuidoras"
         },
         {
-            image: "/images/components/icons/mechanic.png",
+            image: "/images/components/icons/mechanic-white.png",
             title: "Mecânicas",
             link: "/mecanicas"
         },
