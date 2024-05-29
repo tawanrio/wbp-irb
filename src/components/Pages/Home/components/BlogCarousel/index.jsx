@@ -3,7 +3,6 @@ import SectionTitle from '@/components/SectionTitle';
 import BlogCard from './BlogCard';
 
 const BlogCarousel = ({posts}) => {
-  console.log(posts);
   const blogs = [
     {
       image: "/images/partners/irbCode.jpeg",
@@ -106,13 +105,13 @@ const BlogCarousel = ({posts}) => {
             <>
               <button
                 onClick={prevSlide}
-                className="absolute hover:bg-[#999] hover:opacity-100 opacity-70 duration-500 left-0 top-1/2 transform -translate-y-1/2 bg-[#22326e] text-white p-3 shadow-md"
+                className="absolute hover:bg-[#999] hover:opacity-100 opacity-70 duration-500 left-0 top-1/2 transform -translate-y-1/2 bg-[#22326e] text-white  p-3 shadow-md"
               >
                 {'<'}
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute hover:bg-[#999] hover:opacity-100 opacity-70 duration-500 right-0 top-1/2 transform -translate-y-1/2 bg-[#22326e] text-white p-3 shadow-md"
+                className="absolute hover:bg-[#999] hover:opacity-100 opacity-70 duration-500 right-0 top-1/2 transform -translate-y-1/2 bg-[#22326e] text-white  p-3 shadow-md"
               >
                 {'>'}
               </button>

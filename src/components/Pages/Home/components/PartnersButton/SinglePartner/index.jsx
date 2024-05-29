@@ -4,7 +4,7 @@ const SinglePartner = ({ partner }) => {
 
   return (
     <div className="bg-white group hover:bg-slate-50 duration-500  shadow-md py-4 group rounded-md overflow-hidden flex   items-center justify-center">
-      <div className="relative border-4 group-hover:bg-white   border-[#000] rounded-full w-32 h-32  ">
+      <div className="relative md:border-4 border-2 group-hover:bg-white   border-[#000] rounded-full md:w-32 md:h-32 w-24 h-24 ">
 
         <Image
           src={partner.image}
@@ -15,7 +15,7 @@ const SinglePartner = ({ partner }) => {
           className=" p-4 m-auto group-hover:scale-105 duration-500"
           />
       </div>
-      <div className="p-4 flex flex-col justify-between items-start ">
+      <div className="p-4 flex flex-col justify-between items-start w-[200px]">
         <div>
           <h2 className="text-2xl font-bold text-[#222]">{partner.title}</h2>
         </div>

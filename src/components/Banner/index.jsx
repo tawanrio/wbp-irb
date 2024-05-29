@@ -42,7 +42,7 @@ export default function Banner({ banners, video }) {
           ) : (
             <>
               <InsertVideo content={video} home />
-              <div className='w-full md:h-full mt-16 md:mt-0 absolute flex items-center flex-col justify-center'>
+              <div className='w-full md:h-full mt-10 md:mt-0 absolute flex items-center flex-col justify-center'>
                 <h2 className='w-full md:text-5xl uppercase text-center text-[#fff] font-bold text-x z-10'>
                   {banners.carousel[0].title}
                 </h2>
@@ -60,7 +60,7 @@ export default function Banner({ banners, video }) {
                       ))}
                     </ul>
                   )}
-                  <div className='flex w-full justify-center md:gap-10 md:mb-10'>
+                  <div className='flex w-full justify-center md:gap-10 m:mb-16'>
                     <Image
                       quality={100}
                       width={200}

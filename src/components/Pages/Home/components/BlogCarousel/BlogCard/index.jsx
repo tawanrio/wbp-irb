@@ -16,7 +16,7 @@ const BlogCard = ({ post }) => {
       </div>
       <div className="p-4 flex flex-col justify-between items-start flex-grow"> {/* Usando flex-grow para garantir que este div ocupe o espaço restante */}
         <div>
-          <h2 className="text-xl font-semibold text-[#222] line-clamp-2 h-16">{post?.title.rendered}</h2>
+          <h2 className="text-xl font-semibold text-[#222] line-clamp-2 md:h-16 h-14">{post?.title.rendered}</h2>
           <p className="text-[#222] line-clamp-5 " dangerouslySetInnerHTML={{ __html: post?.excerpt.rendered}}></p>
         </div>
         <div>

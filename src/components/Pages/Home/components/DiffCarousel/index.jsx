@@ -21,7 +21,7 @@ const DiffCarousel = ({ content }) => {
 
   return (
     <section className="relative flex flex-col items-center" id="blog-carousel">
-      <div className="w-full relative md:max-w-7xl md:px-14  my-4 px-6 flex max-w-lg">
+      <div className="w-full relative md:max-w-7xl md:px-14  mt-4 px-6 flex max-w-lg">
         <div className="relative w-full overflow-hidden">
           <div
             className="flex transition-transform duration-1000 ease-in-out"

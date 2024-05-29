@@ -52,7 +52,7 @@ const UtilityCards = ({ title }) => {
   }, []);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % (partnerTypes.length -1));
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % (isMobile ? (partnerTypes.length) : (partnerTypes.length -1)));
   };
 
   const prevSlide = () => {
@@ -67,20 +67,20 @@ const UtilityCards = ({ title }) => {
 
   return (
     <section className="relative flex flex-col items-center mt-14" id="blog-carousel">
-      <div className="w-full relative md:max-w-7xl flex-col md:px-14 md:mb-10 my-4 px-6 flex max-w-lg">
+      <div className="w-full relative md:max-w-7xl flex-col md:px-14 md:mb-0 my-4 px-6 flex max-w-lg">
         <SectionTitle title={'Utilidades'} line />
         <div className="container mx-auto py-10 my-5">
           <div className="relative flex overflow-hidden">
             <button
               onClick={prevSlide}
-              className="absolute left-0 z-10 bg-[#22326e] font-semibold text-white text-center hover:bg-[#22326e] duration-500 hover:opacity-100 hover:border-white hover:text-white px-4 py-2 opacity-70 transform -translate-y-1/2 top-1/2"
+              className="absolute left-0 z-10 bg-[#22326e] font-semibold text-white text-center hover:bg-[#22326e] duration-500 hover:opacity-100 hover:border-white hover:text-white p-3 opacity-70 transform -translate-y-1/2 top-1/2"
             >
               {'<'}
             </button>
             <div
               className="flex transition-transform duration-500 gap-5"
               style={{
-                transform: `translateX(-${currentIndex * (isMobile ? '14.4' : '50')}%)`,
+                transform: `translateX(-${currentIndex * (isMobile ? '25' : '50')}%)`,
               }}
             >
               {partnerTypes.map((utilities, index) => (
@@ -95,7 +95,7 @@ const UtilityCards = ({ title }) => {
             </div>
             <button
               onClick={nextSlide}
-              className="absolute right-0 z-10 bg-[#22326e] font-semibold text-white text-center hover:bg-[#22326e] duration-500 hover:opacity-100 hover:border-white hover:text-white px-4 py-2 opacity-70 transform -translate-y-1/2 top-1/2"
+              className="absolute right-0 z-10 bg-[#22326e] font-semibold text-white text-center hover:bg-[#22326e] duration-500 hover:opacity-100 hover:border-white hover:text-white p-3 opacity-70 transform -translate-y-1/2 top-1/2"
             >
               {'>'}
             </button>
