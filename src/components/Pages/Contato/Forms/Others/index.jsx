@@ -18,7 +18,8 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
 
     setStructureMail({
       html,
-      to: 'tawan.rio@webfoco.com',
+      to: 'marketing@irbauto.com.br',
+      cco: 'tawan.rio@webfoco.com',
       from: 'Contato IRB',
       subject: 'Contato IRB',
     });

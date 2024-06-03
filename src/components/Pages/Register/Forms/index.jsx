@@ -47,7 +47,8 @@ export default function RegisterForm() {
 
     setStructureMail({
       html,
-      to: 'tawan.rio@webfoco.com',
+      to: 'marketing@irbauto.com.br',
+      cco: 'tawan.rio@webfoco.com',
       from: 'formData.inputs.info.tradingName',
       subject: 'Solicitação de cadastro de parceiro',
     });
