@@ -57,16 +57,16 @@ export default function Fabrica({content}) {
       <Banner banners={banners}/>
        <BreadCrumb/>
        <Title title={title}/>
+       <CompanyValues cards={cardsValues}/>
        <ContentImgDescription content={imgDescription}/>
        <ContentDescription content={description}/>
-       <TimeLine />
-       <CompanyValues cards={cardsValues}/>
-       <CategoryGrid categories={sortedCategories} title />
-        {/* <Categories baseUrl={`/`} categories={content?.categories} colors={content?.page?.colors.products} title /> */}
-       <CarouselEvent events={events}/>
-        {/* <InsertVideo content={video}/> */}
+       {/* <TimeLine /> */}
+       {/* <CategoryGrid categories={sortedCategories} title /> */}
+        <InsertVideo content={video}/>
+        <Categories baseUrl={`/`} categories={content?.categories} colors={content?.page?.colors.products} title />
+       {/* <CarouselEvent events={events}/> */}
        {/* <Products baseUrl={`${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title/> */}
-       {/* <Utilities title={'Utilidades'}/> */}
+       <Utilities title={'Utilidades'}/>
     </Templates>
           
    </>

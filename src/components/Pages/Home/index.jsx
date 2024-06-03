@@ -62,16 +62,16 @@ export default function Home({content}) {
      
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
         <Banner banners={banners} video={bannerVideo}/>
-        <DiffCarousel content={diffCarousel}/>
-        {/* <CompanyValues cards={cardsValues}/> */}
-        {/* <TextVideo video={video} description={description} /> */}
-        <CategoryGrid categories={sortedCategories} title />
-        {/* <Categories categories={sortedCategories} colors={content?.page?.colors.products} title /> */}
-        <PartnersButton partners={content?.partners?.types} />
-        {/* <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/> */}
-        <UtilityCards />
-        {/* <Utilities title={'Utilidades'}/> */}
-        <BlogCarousel posts={posts}/>
+        {/* <DiffCarousel content={diffCarousel}/> */}
+        <CompanyValues cards={cardsValues}/>
+        <TextVideo video={video} description={description} />
+        {/* <CategoryGrid categories={sortedCategories} title /> */}
+        <Categories categories={sortedCategories} colors={content?.page?.colors.products} title />
+        {/* <PartnersButton partners={content?.partners?.types} /> */}
+        <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>
+        {/* <UtilityCards /> */}
+        <Utilities title={'Utilidades'}/>
+        {/* <BlogCarousel posts={posts}/> */}
         <Form inputs={formDefault} colors={content?.form?.colors}/>
       </Templates>
  
