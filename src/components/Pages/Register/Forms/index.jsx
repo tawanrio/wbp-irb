@@ -90,7 +90,7 @@ const handleSubmitForm = async (e) => {
 
   const sendEmailToAction = async (data) =>{
     // const response = await fetch('http://localhost:3000/api/handlemail/sendmail', {
-      const response = await fetch(process.env.DOMAIN + '/api/handlemail/sendmail',
+      const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail',
       {
         method: 'POST',
         headers: {
@@ -104,7 +104,7 @@ const handleSubmitForm = async (e) => {
   }
 
   const insertDataIntoDB = async (data) => {
-          const response = await fetch(process.env.DOMAIN + "/api/handlemail/insertdb",
+          const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + "/api/handlemail/insertdb",
         {
           method: "POST",
           headers: {
