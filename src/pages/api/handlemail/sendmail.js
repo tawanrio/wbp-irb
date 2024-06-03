@@ -44,12 +44,17 @@ const sendEmail = async ({formData, user}) => {
             pass: user.pass,
         },
     });
-
-    await transporter.sendMail({
+    
+    const structurmail = {
         from: formData.structureMail.from,
         to: formData.structureMail.to,
         subject: formData.structureMail.subject,
         html: formData.structureMail.html
-    });
+    }
+    if (formData.structureMail.cco) {
+        structurmail.bcc = formData.structureMail.cco;
+    }
+
+    await transporter.sendMail(structurmail);
 
 };
