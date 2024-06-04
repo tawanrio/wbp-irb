@@ -72,7 +72,6 @@ export default function Categoria({ content }) {
    description : [
     "Baixe agora nosso catálogo online e tenha acesso a uma ampla seleção de produtos automotivos de alta qualidade.",
     "Explore nossa vasta gama de peças e componentes para atender às necessidades do seu veículo.",
-    "Encontre tudo o que você precisa para manter seu carro funcionando perfeitamente, desde filtros de óleo até sistemas de freios.",
     "Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!"
 ]
   }
