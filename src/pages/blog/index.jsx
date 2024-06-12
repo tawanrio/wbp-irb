@@ -86,7 +86,7 @@ export default function QuemSomos({content, data}) {
                 {/* <p className="text-gray-700">{post.content.rendered.slice(0, 100)}...</p> */}
               </div>
               <div className="mt-auto">
-                <Link className="text-blue-500 hover:underline" href={`/blog/${post.permalink}`}>
+                <Link className="text-blue-500 hover:underline" href={`/blog/${post.permaLink}`}>
                   Leia mais
                 </Link>
               </div>
