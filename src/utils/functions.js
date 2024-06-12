@@ -66,11 +66,15 @@ export function insertMenuInTemplateOld({menu,menuName,template,templateName,ite
   }
   export const formatStrToDash = (str) => {
     let formatedString = formatStrToNoAccent(str)
+    formatedString = formatStrToNoSpecialChars(formatedString)
     formatedString = formatedString.trim().replaceAll(' ', '-').toLowerCase()
     return formatedString
   }
   export const formatStrToNoAccent = (str) => {
     return  str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+  }
+  export const formatStrToNoSpecialChars = (str) => {
+    return str.replace(/[^\w\s]/gi, '');
   }
  
   export const formatPhoneNumber = (str) => {

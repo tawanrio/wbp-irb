@@ -12,11 +12,6 @@ import {Categories as SchemaCategories} from '@/service/model/schemas/categories
 import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSchema'
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 import {Form as FormDb} from '@/service/model/schemas/formsSchema'
-import { Posts } from '@/service/model/schemas/postsSchema';
-
-// pages
-import Error from '@/components/Pages/Error'
-import Singlepost from '@/components/Pages/Singlepost'
 
 import { useState } from 'react'
 import Link from 'next/link';
@@ -24,50 +19,49 @@ import Link from 'next/link';
 import { insertMenuInTemplate } from '@/utils/functions'
 import { NextDataPathnameNormalizer } from 'next/dist/server/future/normalizers/request/next-data';
 import BreadCrumb from '@/components/BreadCrumb';
-
-export default function Post({content}) {
-    const [metaTitle] = useState(content?.page?.metaTitle)
+export default function Post({content,data}) {
+  console.log(data);
+  console.log(content);
+  const [metaTitle] = useState(content?.page?.metaTitle)
     const [metaDescription] = useState(content?.page?.metaDescription)
     const [banners] = useState(content?.page?.banners)
     const [title] = useState(content?.page?.title)
     const [video] = useState(content?.page?.video)
     const [cardsValues] = useState(content?.page?.companyValues)
     const [description] = useState(content?.page?.contentDescription)
-    const [posts, setPosts] = useState(content?.posts);
   
- 
+    const getUrlImage = (post) => {
+      let urlImageDest = '/images/components/others/not-found.jpg';
+      if(post?.yoast_head_json?.og_image){
+        urlImageDest = post?.yoast_head_json.og_image[0]?.url;
+       }
+       return urlImageDest;
+     } 
+   
   return (
-    <>
-       {content?.type === 'singlepost' && (
-        <>
-          <Singlepost content={content}/>
-   
-        </>
-        )}
-
-       {content?.type === 'error' && (
-        <>
-          <Error content={content}/>
-   
-        </>
-        )}
-    </>
+     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
+    <Banner banners={banners} />
+    <BreadCrumb/>
+    <div className="max-w-7xl md:mx-auto mx-2 py-8 ">
+    <h1 className="text-3xl font-bold mb-4">{data?.title.rendered}</h1>
+    <p className="text-gray-600 mb-4">{data?.date}</p>
+    {/* <img src={getUrlImage(data)} alt={NextDataPathnameNormalizer.image?.alt} className="mb-2 m-auto w-3/4 h-[500px] object-cover" /> */}
+    <div className="prose overflow-hidden" dangerouslySetInnerHTML={{ __html: data.content.rendered}}>
+      {/* Conteúdo do post em formato de Markdown */}
+      {/* {data?.content.rendered} */}
+    </div>
+    <div className="mt-8">
+      <Link href="/blog" className="text-blue-500 hover:underline">Voltar para Blog</Link>
+    </div>
+  </div>
+  </Templates>
   )
 }
 
-const routeError = async (error) => {
-  const template = await Template.find();
-  // const menu = await Menu.findOne({label:"menu"}).lean();
-  const menus = await Menus.find().lean();
-  return {
-    type: 'error',
-    page:JSON.parse(JSON.stringify(error)),
-    template: template && JSON.parse(JSON.stringify(template)),
-    menus: menus && JSON.parse(JSON.stringify(menus)),
-  }
-}
+async function getDataPage(){
+  try{
+  await connectMongoDB();
 
-const singlePost = async (posts) => {
   const page = await Page.findOne({label:"blog"}).lean();
   const menus = await Menus.find().lean();
   const template = await Template.find();
@@ -75,32 +69,16 @@ const singlePost = async (posts) => {
   const categories = await CategoriesProducts.find().lean();
   // const products = await ProductsDb.find().lean().limit(6);
   const form = await FormDb.findOne({label: "form"}).lean();
-  
 
 
   return {
-    type: "singlepost",
     page:JSON.parse(JSON.stringify(page)),
     partners:JSON.parse(JSON.stringify(partners)),
     categories:JSON.parse(JSON.stringify(categories)),
     form:JSON.parse(JSON.stringify(form)),
     template:JSON.parse(JSON.stringify(template)),
-    menus:JSON.parse(JSON.stringify(menus)),
-    posts:JSON.parse(JSON.stringify(posts))
+    menus:JSON.parse(JSON.stringify(menus))
   }
-}
-
-async function getDataPage(arrRoute){
-  try{
-  await connectMongoDB();
-
-  const posts = await Posts.findOne({permaLink:arrRoute[1]}).lean()
-  if(posts) return await singlePost(posts)
-
-  const  error = await Page.findOne({label:'error'}).lean();
-  if(error) return await routeError(error);
-
-
   }
   finally{
     disconnectMongoDB();
@@ -111,13 +89,14 @@ async function getDataPage(arrRoute){
 
 export const getServerSideProps  = async (context) => {
   try {
-    const arrRoute = context.resolvedUrl.replace('/', '').split('/');
-    const content = await getDataPage(arrRoute);
-    // const response = await fetch(`https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts/${postId[2]}`);
-    // const data = await response.json();
+    const postId = context.resolvedUrl.split('/')
+    const content = await getDataPage();
+    const response = await fetch(`https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts/${postId[2]}`);
+    const data = await response.json();
     return {
       props: {
-        content
+        content,
+        data
       }
     };
 

@@ -13,7 +13,7 @@
         - sudo ufw allow "Nginx HTTPS"
         - sudo ufw delete allow "Nginx Full"
         - sudo ufw app list
-        - sudo ufw allow porta/protocolo ex: sudo allow 5050/tcp
+        - sudo ufw allow porta/protocolo ex: sudo ufw allow 5050/tcp
 
 # FAZER O CLONE DO GITHUB PARA O SERVIDOR
 
