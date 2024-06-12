@@ -34,7 +34,7 @@ export default function singlePost({content}) {
     <BreadCrumb/>
     <div className="max-w-7xl md:mx-auto mx-2 py-8 ">
     <h1 className="text-3xl font-bold mb-4">{posts?.title}</h1>
-    <p className="text-gray-600 mb-4">{posts?._createdAt}</p>
+    <p className="text-gray-600 mb-4">{posts?._createdAt.split('T')[0]}</p>
     {/* <img src={posts?.featuredImg?.url} alt={posts?.featuredImg?.alt} className="mb-2 m-auto w-3/4 h-[500px] object-cover" /> */}
     <div className="prose overflow-hidden" dangerouslySetInnerHTML={{ __html: posts.contentHTML}}>
       {/* Conteúdo do post em formato de Markdown */}
