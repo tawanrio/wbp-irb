@@ -50,15 +50,16 @@ export default function InputsAddress({setAddress, resetInputs}) {
     };
 
     const insertAddress = (fullAddress) => {
-      setStreet(fullAddress.logradouro);
-      setNeighborhood(fullAddress.bairro);
-      setCity(fullAddress.localidade);
-      setState(fullAddress.uf);
+      setStreet(fullAddress.result.street);
+      setNeighborhood(fullAddress.result.district);
+      setCity(fullAddress.result.city);
+      setState(fullAddress.result.state);
     };
 
     const fetchAddress = async (cleanedValue) => {
       try {
-        const url = `https://viacep.com.br/ws/${cleanedValue}/json/`;
+        // const url = `https://viacep.com.br/ws/${cleanedValue}/json/`;
+        const url = `https://api.brasilaberto.com/v1/zipcode/${cleanedValue}`;
         const returnAddress = await fetch(url).then((response) => {
           return response.json();
         });
