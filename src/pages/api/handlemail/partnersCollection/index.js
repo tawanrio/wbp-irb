@@ -23,12 +23,12 @@ export const partnerCollection = ({uniqueId, inputs, currentDateFormatted}) => {
     geo: {
       states: [
         {
-          name: "São Paulo"
+          name: address.state
         }
       ],
       cities: [
         {
-          name: "Jardim São Pedro"
+          name: address.city
         }
       ]
     },
