@@ -184,11 +184,11 @@ const insertDataIntoDB = async (data) => {
         gallery: [
           {
             name: "Imagem 1",
-            url: "/caminho/da/imagem.png"
+            url: "/images/components/others/image-not-found.jpg"
           },
           {
             name: "Imagem 2",
-            url: "/caminho/da/imagem.png"
+            url: "/images/components/others/image-not-found.jpg"
           }
         ],
         logo: {
