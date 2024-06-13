@@ -30,7 +30,7 @@ export default function Card({collection}) {
             quality={80}
             alt={collection?.gallery.find(image => !image.thumbnail).alt ||'Imagem'}
             sizes='100%'
-            className='object-cover !h-4/5 m-auto'
+            className='object-cover !h-full m-auto'
             />
         </div>
         </div>

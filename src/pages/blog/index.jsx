@@ -57,55 +57,83 @@ export default function Blog({ content, data }) {
 
   const totalPages = Math.ceil(posts.length / postsPerPage);
 
-  const paginate = (pageNumber) => {
-    router.push(`/blog?page=${pageNumber}`);
-  };
+const paginate = (pageNumber) => {
+  router.push(`/blog?page=${pageNumber}`);
+};
 
-  return (
-    <>
-      <Head>
-        <title>{metaTitle || title}</title>
-        <meta name="description" content={metaDescription || description} />
-      </Head>
+const getPaginationGroup = () => {
+  if (totalPages <= 3) {
+    return new Array(totalPages).fill().map((_, idx) => idx + 1);
+  }
 
-      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <div className="max-w-6xl md:mx-auto mx-2 py-8">
-          <h1 className="text-3xl font-bold mb-4">Publicações</h1>
-          <div className="md:grid md:grid-cols-3 gap-4 flex flex-wrap">
-            {currentPosts.map((post, key) => (
-              <Link key={key} href={`/blog/${post.permaLink || formatStrToDash(post.title)}`}>
-                <div className="border p-4 hover:bg-gray-100 cursor-pointer h-full flex flex-col justify-between">
-                  <div>
-                    <h2 className="text-xl font-semibold mb-2 h-20 overflow-hidden">{post.title}</h2>
-                    <img src={post.featuredImg?.url} alt={post.featuredImg?.alt} className="mb-2 w-full h-52 object-cover" />
-                    <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: `${post.contentHTML.slice(0, 120)}...` }}></p>
-                  </div>
-                  <div className="mt-auto">
-                    <Link className="text-blue-500 hover:underline" href={`/blog/${post.permaLink}`}>
-                      Leia mais
-                    </Link>
-                  </div>
+  if (currentPage === 1) {
+    return [1, 2, 3];
+  }
+
+  if (currentPage === totalPages) {
+    return [totalPages - 2, totalPages - 1, totalPages];
+  }
+
+  return [currentPage - 1, currentPage, currentPage + 1];
+};
+return (
+   <>
+    <Head>
+      <title>{metaTitle || title}</title>
+      <meta name="description" content={metaDescription || description} />
+    </Head>
+
+    <Templates template={content?.template} page={content?.page} menus={content?.menus}>
+      <Banner banners={banners} />
+      <BreadCrumb />
+      <div className="max-w-6xl md:mx-auto mx-2 py-8">
+        <h1 className="text-3xl font-bold mb-4">Publicações</h1>
+        <div className="md:grid md:grid-cols-3 gap-4 flex flex-wrap">
+          {currentPosts.map((post, key) => (
+            <Link key={key} href={`/blog/${post.permaLink || formatStrToDash(post.title)}`}>
+              <div className="border p-4 hover:bg-gray-100 cursor-pointer h-full flex flex-col justify-between">
+                <div>
+                  <h2 className="text-xl font-semibold mb-2 h-20 overflow-hidden">{post.title}</h2>
+                  <img src={post.featuredImg?.url} alt={post.featuredImg?.alt} className="mb-2 w-full h-52 object-cover" />
+                  <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: `${post.contentHTML.slice(0, 120)}...` }}></p>
                 </div>
-              </Link>
-            ))}
-          </div>
-          <ul className="flex justify-center mt-4">
-            {[...Array(totalPages).keys()].map(number => (
-              <li key={number}>
-                <button onClick={() => paginate(number + 1)} className={`mx-1 px-3 py-1 rounded ${currentPage === number + 1 ? 'bg-blue-950' : 'bg-blue-500'} text-white`}>
-                  {number + 1}
-                </button>
-              </li>
-            ))}
-          </ul>
+                <div className="mt-auto">
+                  <Link className="text-blue-500 hover:underline" href={`/blog/${post.permaLink}`}>
+                    Leia mais
+                  </Link>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
-      </Templates>
-    </>
-  );
+        <ul className="flex justify-center mt-4">
+          {currentPage > 3 && (
+            <li>
+              <button onClick={() => paginate(currentPage - 3)} className="mx-1 px-3 py-1 rounded bg-blue-500 text-white">
+                &lt;
+              </button>
+            </li>
+          )}
+          {getPaginationGroup().map((pageNumber) => (
+            <li key={pageNumber}>
+              <button onClick={() => paginate(pageNumber)} className={`mx-1 px-3 py-1 rounded ${currentPage === pageNumber ? 'bg-blue-950' : 'bg-blue-500'} text-white`}>
+                {pageNumber}
+              </button>
+            </li>
+          ))}
+          {currentPage + 3 <= totalPages && (
+            <li>
+              <button onClick={() => paginate(currentPage + 3)} className="mx-1 px-3 py-1 rounded bg-blue-500 text-white">
+                &gt;
+              </button>
+            </li>
+          )}
+        </ul>
+      </div>
+    </Templates>
+  </>
+);
 }
-
 async function getDataPage() {
   try {
     await connectMongoDB();

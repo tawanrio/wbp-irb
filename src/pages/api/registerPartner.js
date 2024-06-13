@@ -87,12 +87,12 @@ const insertDataIntoDB = async (data) => {
         geo: {
           states: [
             {
-              name: "São Paulo"
+              name: address.state
             }
           ],
           cities: [
             {
-              name: "Jardim São Pedro"
+              name: address.city
             }
           ]
         },
@@ -189,15 +189,15 @@ const insertDataIntoDB = async (data) => {
         gallery: [
           {
             name: "Imagem 1",
-            url: "/caminho/da/imagem.png"
+            url: "/images/components/others/image-not-found.jpg"
           },
           {
             name: "Imagem 2",
-            url: "/caminho/da/imagem.png"
+            url: "/images/components/others/image-not-found.jpg"
           }
         ],
         logo: {
-          url: "/images/templates/header/logo.svg",
+          url: "/images/components/others/image-not-found.jpg",
           alt: "LOGO IRB automotive"
         },
         contentDescription: [
