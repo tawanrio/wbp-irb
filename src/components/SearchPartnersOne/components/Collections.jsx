@@ -14,23 +14,27 @@ import Link from 'next/link';
 const Collection = ({ collections, products, hiddenProductSearch, arrRoute, geo}) => {
   let stateMatch = null
   let cityMatch = null
-
+console.log(collections);
 
 geo.states.filter(state => {
   if(stateMatch || cityMatch) return
   
   if(formatStrToUrl(state.name) === arrRoute[1]){
-          stateMatch = state.name
-        }
-        if(!stateMatch){
-           state.cities.find(city => {
-             if(formatStrToUrl(city) === arrRoute[1]){
-              stateMatch = state.name
-              cityMatch = city
-            }
-           })
-        }
-      })
+    stateMatch = state.name
+  }
+  
+  if(stateMatch){
+  }
+  if(!stateMatch){
+    state.cities.find(city => {
+      if(formatStrToUrl(city) === arrRoute[1]){
+        stateMatch = state.name
+        cityMatch = city
+      }
+    })
+  }
+})
+
       
   // collections.filter(collection =>{
   //    arrRoute && collection.geo.states.find(state =>{
@@ -123,6 +127,7 @@ geo.states.filter(state => {
         if(state.name === "*"){
           states = geo.states.map(state => state.name);
         }else{
+
           states.push(state.name)
         }
       })
@@ -413,7 +418,7 @@ let uniqueCities = useMemo(() => {
      {/* Itens exibidos com base na pesquisa e paginação */}
      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {currentItems?.map((collection, index) => (
-          <div className="h-[200px]" key={index}>
+          <div className="" key={index}>
             <Card collection={collection} />
           </div>
         ))}

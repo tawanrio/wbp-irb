@@ -173,7 +173,7 @@ const routePartner = async (arrRoute) =>{
     enabled:true
   }).lean();
 
-  console.log(routeTwo);
+  console.log(collection);
 
 if(collection) return await singlePartner(arrRoute,collection)
 
