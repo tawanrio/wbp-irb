@@ -125,16 +125,12 @@ export const partnerCollection = ({uniqueId, inputs, currentDateFormatted}) => {
     gallery: [
       {
         name: "Imagem 1",
-        url: "/images/components/others/image-not-found.jpg"
-      },
-      {
-        name: "Imagem 2",
-        url: "/images/components/others/image-not-found.jpg"
+        url: info.logo
       }
     ],
     logo: {
-      url: "/images/templates/header/logo.svg",
-      alt: "LOGO IRB automotive"
+      url: info.logo,
+      alt: "imagem"
     },
     contentDescription: [
       "A IRB Automotive é uma empresa, de marca própria, que fornece peças automotivas para todo o Brasil. Com mais de 22 anos de atuação no segmento de reposição automotiva"

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import InputMask from "react-input-mask";
+import { createModifiedFile } from '@/utils/functions';
 import InputsAddress from "./../Components/InputsAddress";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function FormDistributor({ setInputs, resetInputs, partnerType }) {
 
@@ -44,9 +46,22 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
     setAddress({});
   };
 
+
+
   const handleImg = (event, setState) => {
     // Handle file upload for logo here
-    const file = event.target.files[0];
+    const file = createModifiedFile(event.target.files[0]);
+
+    if (!file) {
+      return;
+    }
+    console.log(file);
+     // Verificar o tipo de arquivo
+     const validImageTypes = ['image/jpeg', 'image/png', 'image/heic'];
+     if (!validImageTypes.includes(file.type)) {
+       toast.error('Por favor selecione uma imagem válida.')
+       return;
+     }
     setState(file);
   };
 
@@ -146,6 +161,7 @@ export default function FormDistributor({ setInputs, resetInputs, partnerType })
                 </label>
                 <input
                   type="file"
+                  required
                   id="logo"
                   accept="image/png, image/jpeg"
                   onChange={(e) => handleImg(e, setLogo)}

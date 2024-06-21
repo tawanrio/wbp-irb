@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import InputMask from "react-input-mask";
 import InputsAddress from "./../Components/InputsAddress";
 import Requirements from "./Requirements";
+import { createModifiedFile } from '@/utils/functions';
 
 export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
 
@@ -49,13 +50,11 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
       setRequiments({});
     };
   
-
     const handleImg = (event, setState) => {
       // Handle file upload for logo here
-      const file = event.target.files[0];
+      const file = createModifiedFile(event.target.files[0]);
       setState(file);
     };
-  
 
   return (
    

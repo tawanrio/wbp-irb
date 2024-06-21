@@ -76,6 +76,31 @@ export function insertMenuInTemplateOld({menu,menuName,template,templateName,ite
   export const formatStrToNoSpecialChars = (str) => {
     return str.replace(/[^\w\s]/gi, '');
   }
+
+  export const createModifiedFile = (file) => {
+    // Obter o nome original do arquivo e seu tipo
+
+    const originalName = file.name;
+    const fileType = file.type ? file.type : 'image/heic' ;
+  
+    // Formatando e truncando o nome do arquivo
+    let modifiedName = truncateFileName(originalName);
+  
+    // Criar um novo arquivo com o nome modificado
+    return new File([file], modifiedName, { type: fileType });
+  };
+
+  export const truncateFileName = (filename, maxLength = 25) => {
+    if (filename.length <= maxLength) return filename;
+  
+    const ext = filename.slice(filename.lastIndexOf('.'));
+    const nameWithoutExt = filename.slice(0, filename.lastIndexOf('.'));
+    const truncatedName = nameWithoutExt.slice(0, maxLength - ext.length);
+  
+    return truncatedName + ext;
+  };
+
+ 
  
   export const formatPhoneNumber = (str) => {
     let cleaned = str.replace(/[^0-9]/g, '');

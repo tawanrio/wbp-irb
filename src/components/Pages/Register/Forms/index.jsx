@@ -8,6 +8,7 @@ import ReactDOMServer from 'react-dom/server';
 import TemplateMailPartner from "../../Contato/Forms/Partner/TemplateMail";
 import "react-toastify/dist/ReactToastify.css";
 import {generateUniqueIdByCnpj, generateActionsLink} from "@/utils/functions"
+import { stringify } from "postcss";
 
 
 
@@ -69,25 +70,45 @@ const handleSubmitForm = async (e) => {
   try {
     setSending(true);
     
-    const responseSendEmail = await sendEmailToAction(formData)
-    
-    if(!responseSendEmail) throw new Error('Enviar email');
-
     if(formData.inputs.info.partnerType){
+      console.log(formData.inputs.info);
+      const responseInsertImgDb = await insertImgDatabase(formData.inputs.info.logo,formData.inputs.info.cnpj)
+      
+      if(!(responseInsertImgDb.status === 200))throw new Error('Database');
+      formData.inputs.info.logo = responseInsertImgDb.path
+      
       const responseInserDB = await insertDataIntoDB({
         formData
       });
       if(!responseInserDB) throw new Error('Database');
-    }
 
+
+      const responseSendEmail = await sendEmailToAction(formData)
+      if(!responseSendEmail) throw new Error('Enviar email');
+    }
+    
     toast.success(responseMessage.success)
-    setResetInputs(!(resetInputs))
+    // setResetInputs(!(resetInputs))
 } catch (error) {
   toast.error(`${responseMessage.error} - ${error.message}`);
 } finally {
   setSending(false);
 }
 };
+
+const insertImgDatabase = async (img,cnpj) => {
+  const data = new FormData();
+    data.append('file', img);
+    data.append('origin', 'register')
+    data.append('id', cnpj)
+const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/communication/images/upload', {
+  method: 'POST',
+  body:data
+ 
+})
+const result = await response.json();
+return result
+}
 
   const sendEmailToAction = async (data) =>{
     // const response = await fetch('http://localhost:3000/api/handlemail/sendmail', {
@@ -126,6 +147,7 @@ const handleSubmitForm = async (e) => {
         <form
           onSubmit={(e) => handleSubmitForm(e)}
           className="flex flex-col items-center gap-10"
+          enctype =" multipart/form-data "
         >
           <div className="flex w-full flex-col">
             <label

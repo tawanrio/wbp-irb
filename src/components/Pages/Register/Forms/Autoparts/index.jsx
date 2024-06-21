@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import InputMask from "react-input-mask";
+import { createModifiedFile } from '@/utils/functions';
 import InputsAddress from "./../Components/InputsAddress";
 
 export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
@@ -30,6 +31,8 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
     },
       address
     })
+
+    console.log(logo);
   },[cnpj,companyName,tradingName,email,phone,logo,address,whereToBuy])
 
   useEffect(()=>{
@@ -49,7 +52,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
 
   const handleImg = (event, setState) => {
     // Handle file upload for logo here
-    const file = event.target.files[0];
+    const file = createModifiedFile(event.target.files[0]);
     setState(file);
   };
 

@@ -72,11 +72,13 @@ const insertDataIntoDB = async (data) => {
         console.log("Dados inseridos na coleção com sucesso!");
 
         // Desconectar-se do banco de dados
-        await disconnectMongoDB();
-
+        
     } catch (error) {
         console.error("Erro ao inserir dados na coleção:", error);
         throw error; // Rejeitar o erro para que possa ser capturado pelo código chamador
+    }finally{
+        
+        await disconnectMongoDB();
     }
 }
 
