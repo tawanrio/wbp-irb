@@ -48,6 +48,7 @@ export default function RegisterForm() {
 
     setStructureMail({
       html,
+      // to: process.env.EMAIL_TO_SEND,
       to: 'marketing@irbauto.com.br',
       cco: 'tawan.rio@webfoco.com',
       from: 'formData.inputs.info.tradingName',
@@ -71,22 +72,40 @@ const handleSubmitForm = async (e) => {
     setSending(true);
     
     if(formData.inputs.info.partnerType){
-      console.log(formData.inputs.info);
-      const responseInsertImgDb = await insertImgDatabase(formData.inputs.info.logo,formData.inputs.info.cnpj)
-      console.log(responseInsertImgDb);
+      console.log(formData);
+
+      let responseCertificate
+      let responseElevatorImg
       
-      if(!(responseInsertImgDb.status === 200))throw new Error( 'Database');
-      formData.inputs.info.logo = process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseInsertImgDb.path
-      // console.log(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseInsertImgDb.path);
+      if(formData.inputs.requirements){
+        responseCertificate = formData.inputs.requirements.certificateImg ?  await insertImgDatabase(formData.inputs.requirements.certificateImg,formData.inputs.info.cnpj) : '';
+
+        responseElevatorImg = formData.inputs.requirements.elevatorImg ? await insertImgDatabase(formData.inputs.requirements.elevatorImg,formData.inputs.info.cnpj) : '';
+      }
+
+      const responseLogo = await insertImgDatabase(formData.inputs.info.logo,formData.inputs.info.cnpj)
+
+      
+      console.log(responseLogo);
+      console.log(responseCertificate);
+      console.log(responseElevatorImg);
+      
+      if(!(responseLogo.status === 200))throw new Error( 'Database');
+      formData.inputs.info.logo = process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseLogo.path
+      formData.inputs.requirements.certificateImg = process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseCertificate.path
+      formData.inputs.requirements.elevatorImg = process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseElevatorImg.path
+
+      // // console.log(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseLogo.path);
       
       const responseInserDB = await insertDataIntoDB({
         formData
       });
+
       if(!responseInserDB) throw new Error('Database');
 
 
-      const responseSendEmail = await sendEmailToAction(formData)
-      if(!responseSendEmail) throw new Error('Enviar email');
+      // const responseSendEmail = await sendEmailToAction(formData)
+      // if(!responseSendEmail) throw new Error('Enviar email');
     }
     
     toast.success(responseMessage.success)
@@ -106,7 +125,7 @@ const insertImgDatabase = async (img,cnpj) => {
 const response = await fetch(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + '/communication/files/upload', {
   method: 'POST',
   body:data
- 
+
 })
 const result = await response.json();
 return result
