@@ -73,9 +73,11 @@ const handleSubmitForm = async (e) => {
     if(formData.inputs.info.partnerType){
       console.log(formData.inputs.info);
       const responseInsertImgDb = await insertImgDatabase(formData.inputs.info.logo,formData.inputs.info.cnpj)
+      console.log(responseInsertImgDb);
       
-      if(!(responseInsertImgDb.status === 200))throw new Error('Database');
-      formData.inputs.info.logo = responseInsertImgDb.path
+      if(!(responseInsertImgDb.status === 200))throw new Error( 'Database');
+      formData.inputs.info.logo = process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseInsertImgDb.path
+      // console.log(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseInsertImgDb.path);
       
       const responseInserDB = await insertDataIntoDB({
         formData
@@ -101,7 +103,7 @@ const insertImgDatabase = async (img,cnpj) => {
     data.append('file', img);
     data.append('origin', 'register')
     data.append('id', cnpj)
-const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/communication/images/upload', {
+const response = await fetch(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + '/communication/files/upload', {
   method: 'POST',
   body:data
  

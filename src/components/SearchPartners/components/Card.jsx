@@ -24,14 +24,15 @@ export default function Card({collection}) {
         {/* <h3 className='capitalize font-bold text-xl flex flex-grow items-center h-16'>{collection?.tradingName}</h3> */}
         <div className='w-full border flex justify-center items-center rounded-lg h-[220px]'>
         <div className='w-full h-full relative  '>
-            <Image 
+            {/* <Image 
             src={collection?.gallery.find(image => !image.thumbnail).url}
             fill
             quality={80}
             alt={collection?.gallery.find(image => !image.thumbnail).alt ||'Imagem'}
             sizes='100%'
             className='object-cover !h-full m-auto'
-            />
+            /> */}
+            <img src={collection?.logo.url} alt={collection?.logo.alt} className='object-cover !h-full m-auto'/>
         </div>
         </div>
     </Link>

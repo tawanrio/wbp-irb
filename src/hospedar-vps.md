@@ -40,4 +40,4 @@
         - sudo npm i pm2 -g
         
     # npm run build
-    # pm2 start npm -- start --watch
+    # pm2 start npm --name "name" -- start --watch
