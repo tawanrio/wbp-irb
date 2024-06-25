@@ -35,6 +35,7 @@ export default async function sendEmailRegisterPartner(req, res) {
                 tradingName: info.tradingName,
                 email: info.email,
                 phone: info.phone,
+                logo: info.logo,
                 city: address.city,
                 state: address.state,
                 street: address.street,
@@ -45,6 +46,7 @@ export default async function sendEmailRegisterPartner(req, res) {
                 actionsLink
             });
 
+            console.log(info.logo);
             res.status(200).json({ message: "Email enviado com sucesso!" });
         } catch (error) {
             res.status(500).json({ message: "Falha ao enviar email, " + error.message });
@@ -52,7 +54,7 @@ export default async function sendEmailRegisterPartner(req, res) {
             await disconnectMongoDB();
         }
     } else {
-        res.status(405).json({ message: "Method Not Allowed" });
+        res.status(405).json({ message: "Método não permitido" });
     }
 }
 
@@ -100,7 +102,7 @@ const sendEmail = async (data) => {
     <p style="color: #666; margin-bottom: 10px;">Email: ${data.email}</p>
     <p style="color: #666; margin-bottom: 10px;">Telefone: ${data.phone}</p>
     <p style="color: #666; margin-bottom: 10px;">Endereço: ${data.street}, ${data.number} - ${data.neighborhood}, ${data.city} - ${data.state}, CEP: ${data.cep}</p>
-    <img src="${data.logo}" alt="Logo da Empresa" style="display: block; margin: 20px auto; max-width: 100%;">
+    <img src="${data.logo.url}" alt="Logo da Empresa" style="display: block; margin: 20px auto; max-width: 100%;">
 
     <span>
         <a href="${data.actionsLink.accept}" style="display: inline-block; padding: 10px 20px; background-color: #22326e; color: #fff; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;"">Aceitar</a>

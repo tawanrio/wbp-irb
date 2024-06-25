@@ -19,11 +19,11 @@ export default async function sendEmailRegisterPartner(req, res) {
 
             await sendEmail({formData, user: userMail.auth});
 
-            res.status(200).json({ message: "Email successfully sent!", formData, userMail:userMail.auth });
+            res.status(200).json({ message: "Email enviado com sucesso!" });
 
         } catch (error) {
 
-            res.status(500).json({ message: "Failed to send email, " + error.message, formData:'teste' });
+            res.status(500).json({ message: "Falha ao enviar email, " + error.message });
 
         } finally {
             await disconnectMongoDB();
