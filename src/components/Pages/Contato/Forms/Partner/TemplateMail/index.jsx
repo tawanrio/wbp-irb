@@ -43,11 +43,7 @@ export default function TemplateMailPartner({ data, actionsLink}) {
     {data.inputs?.requeriments && (
             <h2 style={{ color: '#333' }}>Pré-requisistos</h2>
           )}
-          {data.inputs?.address.street && data.inputs?.address.number && data.inputs?.address.neighborhood && data.inputs?.address.city && data.inputs?.address.state && data.inputs?.address.cep && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Endereço: {data.inputs?.address.street}, {data.inputs?.address.number} - {data.inputs?.address.neighborhood}, {data.inputs?.address.city} - {data.inputs?.address.state}, CEP: {data.inputs?.address.cep}
-        </p>
-      )}
+       
 
       {actionsLink && (
         <>
