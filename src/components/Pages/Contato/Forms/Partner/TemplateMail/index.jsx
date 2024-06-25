@@ -35,7 +35,7 @@ export default function TemplateMailPartner({ data, actionsLink}) {
       )}
       {data.inputs?.info.logo && (
         <img
-          src={data.inputs?.info.logo.url}
+          src={data.inputs?.info?.logo?.url}
           alt="Logo da Empresa"
           style={{ display: 'block', margin: '20px auto', maxWidth: '100%' }}
         />
