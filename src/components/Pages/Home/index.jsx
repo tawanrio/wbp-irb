@@ -62,9 +62,9 @@ export default function Home({content}) {
      
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
         <Banner banners={banners} video={bannerVideo}/>
-        {/* <DiffCarousel content={diffCarousel}/> */}
-        <CompanyValues cards={cardsValues}/>
-        <TextVideo video={video} description={description} />
+        <DiffCarousel content={diffCarousel}/>
+        {/* <CompanyValues cards={cardsValues}/> */}
+        {/* <TextVideo video={video} description={description} /> */}
         <CategoryGrid categories={sortedCategories} title />
         {/* <Categories categories={sortedCategories} colors={content?.page?.colors.products} title /> */}
         <PartnersButton partners={content?.partners?.types} />
