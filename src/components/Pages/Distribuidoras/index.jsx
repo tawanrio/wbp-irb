@@ -25,10 +25,12 @@ import Products from '@/components/Products';
 import Title from '@/components/Title';
 import Partners from '@/components/Partners';
 import SearchPartners from '@/components/SearchPartners';
+import CategoryGrid from '@/components/CategoryGrid';
 
 // Others
 import { useState} from 'react';
 import  {useRouter}  from 'next/router';
+import { sortByKey } from '@/utils/functions';
 
 
 export default function Distribuidoras({content}) {
@@ -45,7 +47,7 @@ export default function Distribuidoras({content}) {
   const [imgDescription] = useState(content?.page?.imgDescription)
   const [metaKeywords] = useState(content?.page?.metaKeywords)
   const [faq] = useState(content?.page?.faq)
-
+  const sortedCategories = sortByKey(content.categories,'label')
   
    
   return (
@@ -64,6 +66,8 @@ export default function Distribuidoras({content}) {
        <SearchPartners partnerType='distribuidor' title="Encontre um distribuidor" collections={content?.collection} hiddenProductSearch  products={content?.products} geo={content?.geo}/>
        <ContentImgDescription content={imgDescription}/>
        {/* <ProductFaq products={content?.products} faq={faq} baseUrl={`/${pageUrl}/`}/>  */}
+       {/* <CategoryGrid baseUrl={`${pageUrl}/`} categories={sortedCategories} title /> */}
+
        <Categories baseUrl={`${pageUrl}/`} categories={content?.categories} colors={content?.page?.colors.products} title />
        {/* <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`${pageUrl}/`} title /> */}
        <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/>

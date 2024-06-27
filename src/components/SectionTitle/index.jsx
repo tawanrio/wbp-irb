@@ -10,7 +10,7 @@ export default function SectionTitle({ title, line, className }) {
         gap-2
         `}>
         
-        <h2 className="lowercase first-letter:uppercase  font-bold md:text-2xl text-[20px]" style={{color:'#666'}}>{title}</h2>
+        <h2 className="lowercase first-letter:uppercase  font-bold md:text-2xl text-[20px]" style={{color:'#c12025'}}>{title}</h2>
         {line === true && (
 
             <hr 
