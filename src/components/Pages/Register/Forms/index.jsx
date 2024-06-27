@@ -20,10 +20,10 @@ export default function RegisterForm() {
 
   const [html, setHtml] = useState('')
   const [actionsLink, setActionsLink] = useState('')
-  const [responseMessage, setResponseMessage] = useState({
-    success: '',
-    error: ''
-  })
+  const [responseMessage] = useState({
+    success: 'Cadastro enviado com sucesso, aguarde aprovação.',
+    error: 'Erro ao enviar cadastro.'
+  });
   const [formData, setFormData] = useState({
     inputs: {
      info: {},
@@ -35,9 +35,8 @@ export default function RegisterForm() {
   const [resetInputs, setResetInputs] = useState(false) 
   const [sending, setSending] = useState(null)
 
-  const handlePartnerType = (value) => {
-    setPartnerType(value);
-  };
+  const handlePartnerType = (value) => setPartnerType(value);
+
 
   useEffect(()=>{
     if(formData.inputs?.info.cnpj){
@@ -68,12 +67,11 @@ export default function RegisterForm() {
 const handleSubmitForm = async (e) => {
   e.preventDefault();
 
+  
+  if(! formData.inputs.info.partnerType) return
+  setSending(true);
+  
   try {
-    setSending(true);
-    
-    if(formData.inputs.info.partnerType){
-      console.log(formData);
-
       let responseCertificate = ''
       let responseElevatorImg = ''
       
@@ -86,8 +84,6 @@ const handleSubmitForm = async (e) => {
       const responseLogo = await insertImgDatabase(formData.inputs.info.logo,formData.inputs.info.cnpj)
 
       
-      // console.log(responseCertificate);
-      // console.log(responseElevatorImg);
       
       if(!(responseLogo.status === 200))throw new Error( 'Database');
       console.log(responseLogo);
@@ -110,10 +106,11 @@ const handleSubmitForm = async (e) => {
 
       const responseSendEmail = await sendEmailToAction(formData)
       if(!responseSendEmail) throw new Error('Enviar email');
-    }
+
+
+      toast.success(responseMessage.success)
     
-    toast.success(responseMessage.success)
-    // setResetInputs(!(resetInputs))
+    setResetInputs(!(resetInputs))
 } catch (error) {
   toast.error(`${responseMessage.error} - ${error.message}`);
 } finally {
@@ -126,6 +123,7 @@ const insertImgDatabase = async (img,cnpj) => {
     data.append('file', img);
     data.append('origin', 'register')
     data.append('id', cnpj)
+
 const response = await fetch(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + '/communication/files/upload', {
   method: 'POST',
   body:data
@@ -160,7 +158,6 @@ return result
           body: JSON.stringify(data),
         }
       );
-      response.ok && console.log('dbOk');
       return response.ok
   };
 

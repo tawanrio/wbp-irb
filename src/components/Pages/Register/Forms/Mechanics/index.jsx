@@ -58,10 +58,7 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
 
   return (
    
-        <form
-          onSubmit={(e) => handleSubmitForm(e)}
-          className="flex flex-col items-center gap-10"
-        >
+       
           <div className="w-full flex flex-col justify-between md:px-0 md:gap-2 md:my-0 gap-4">
             
             <div className="flex w-full flex-row justify-between flex-wrap">
@@ -156,6 +153,7 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
                 <input
                   type="file"
                   id="logo"
+                  required
                   accept="image/png, image/jpeg"
                   onChange={(e) => handleImg(e, setLogo)}
                 />
@@ -167,7 +165,7 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
             <InputsAddress setAddress={setAddress} resetInputs={resetInputs}/>
            <Requirements setRequiments={setRequiments} resetInputs={resetInputs}/>
           </div>
-        </form>
+      
      
   );
 }

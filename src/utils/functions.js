@@ -113,6 +113,23 @@ export function insertMenuInTemplateOld({menu,menuName,template,templateName,ite
     }
     return str;
   };
+
+  export function formatToViewPhone(numero) {
+    // Remove todos os caracteres que não são dígitos
+    numero = numero.replace(/\D/g, '');
+
+    // Verifica o tamanho do número e aplica a formatação apropriada
+    if (numero.length === 10) {
+        // Formato (xx) xxxx-xxxx
+        return `(${numero.slice(0, 2)}) ${numero.slice(2, 6)}-${numero.slice(6)}`;
+    } else if (numero.length === 11) {
+        // Formato (xx) x-xxxx-xxxx
+        return `(${numero.slice(0, 2)}) ${numero.slice(2, 3)}-${numero.slice(3, 7)}-${numero.slice(7)}`;
+    } else {
+        // Retorna o número original se ele não tiver 10 ou 11 dígitos
+        return numero;
+    }
+}
   export const replaceShortcodePartner = (text, partner) => {
     const shortcode = '{{partner}}';
     const replace = `${partner}`;

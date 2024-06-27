@@ -25,14 +25,15 @@ export default function ProductFaq({ logo, contentDescription, title, whatsapp, 
                     flex-wrap
                     justify-center
                     ">
-                        <div className=" hidden md:block relative items-center h-2/3">
-                            <Image
+                        <div className=" hidden md:block relative items-center ">
+                            {/* <Image
                                 src={logo?.url}
                                 alt={logo?.alt}
                                 sizes="100vw"
                                 quality={80}
                                 fill
-                            />
+                            /> */}
+                            <img src={logo?.url} alt={logo.alt} className="w-full" />
                         </div>
                     </div>
                     <div className="

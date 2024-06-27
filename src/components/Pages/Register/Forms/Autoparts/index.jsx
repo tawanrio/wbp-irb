@@ -182,6 +182,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
                 <input
                   type="file"
                   id="logo"
+                  required
                   accept="image/png, image/jpeg"
                   onChange={(e) => handleImg(e, setLogo)}
                 />

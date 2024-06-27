@@ -49,7 +49,8 @@ export default function Button({content}) {
           ${number && 'group-hover:opacity-0'}
           `}
         >
-          {title}
+          {formattedNumber}
+          {/* {title} */}
         </span>
         {number && (
           <span

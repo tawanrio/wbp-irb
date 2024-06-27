@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import {formatPhoneNumber} from "@/utils/functions"
+import {formatPhoneNumber, formatToViewPhone} from "@/utils/functions"
 
 export default function ButtonTell({phone, whatsapp}) {
 
@@ -47,7 +47,7 @@ export default function ButtonTell({phone, whatsapp}) {
         duration-500
         ${phone?.icon.url && 'ml-2'}
         `}>
-          {phone?.label}
+          {formatToViewPhone(phone?.number)}
           </span>
           {phone?.number && (
             <span 
@@ -65,7 +65,7 @@ export default function ButtonTell({phone, whatsapp}) {
               duration-700
               ${phone?.icon.url && 'ml-2'}
               `}>
-                {phone?.number}
+               {formatToViewPhone(phoneNumber)}
             </span>
           )}
       </div>
@@ -108,7 +108,7 @@ export default function ButtonTell({phone, whatsapp}) {
           duration-500
           ${whatsapp?.icon.url && 'ml-2'}
           `}>
-            WHATSAPP
+            {formatToViewPhone(whatsapp?.number)}
             </span>
             {whatsapp?.number && (
               <span 
@@ -126,7 +126,7 @@ export default function ButtonTell({phone, whatsapp}) {
                 duration-700
                 ${whatsapp?.icon.url && 'ml-2'}
                 `}>
-                  {whatsapp?.number}
+                  {formatToViewPhone(whatsapp?.number)}
               </span>
             )}
         </div>
