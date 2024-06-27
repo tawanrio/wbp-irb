@@ -52,7 +52,7 @@ export default function RegisterForm() {
       // to: 'marketing@irbauto.com.br',
       cco: 'tawan.rio@webfoco.com',
       from: 'formData.inputs.info.tradingName',
-      subject: 'Cadastro Recebido: Aguardando Aprovação',
+      subject: 'Solicitação de cadastro de parceiro',
     });
 
     setFormData({
@@ -126,7 +126,7 @@ const sendEmailToPartner = async (data) => {
     to: data.inputs.info.email,
     cco: 'tawan.rio@webfoco.com',
     from: 'formData.inputs.info.tradingName',
-    subject: 'Solicitação de cadastro de parceiro',
+    subject: 'Cadastro Recebido: Aguardando Aprovação',
   };
 
   const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail', {
