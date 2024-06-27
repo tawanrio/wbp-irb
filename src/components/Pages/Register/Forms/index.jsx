@@ -6,6 +6,7 @@ import FormMechanics from "./Mechanics";
 import { toast } from "react-toastify";
 import ReactDOMServer from 'react-dom/server';
 import TemplateMailPartner from "../../Contato/Forms/Partner/TemplateMail";
+import TemplateMailSuccessRegister from "./Components/TemplateMailSuccessRegister";
 import "react-toastify/dist/ReactToastify.css";
 import {generateUniqueIdByCnpj, generateActionsLink} from "@/utils/functions"
 import { stringify } from "postcss";
@@ -51,7 +52,7 @@ export default function RegisterForm() {
       // to: 'marketing@irbauto.com.br',
       cco: 'tawan.rio@webfoco.com',
       from: 'formData.inputs.info.tradingName',
-      subject: 'Solicitação de cadastro de parceiro',
+      subject: 'Cadastro Recebido: Aguardando Aprovação',
     });
 
     setFormData({
@@ -66,7 +67,6 @@ export default function RegisterForm() {
 
 const handleSubmitForm = async (e) => {
   e.preventDefault();
-
   
   if(! formData.inputs.info.partnerType) return
   setSending(true);
@@ -82,7 +82,6 @@ const handleSubmitForm = async (e) => {
       }
 
       const responseLogo = await insertImgDatabase(formData.inputs.info.logo,formData.inputs.info.cnpj)
-
       
       
       if(!(responseLogo.status === 200))throw new Error( 'Database');
@@ -103,10 +102,11 @@ const handleSubmitForm = async (e) => {
 
       if(!responseInserDB) throw new Error('Database');
 
+      const responseSendEmailAdm = await sendEmailToAction(formData)
+      if(!responseSendEmailAdm) throw new Error('Envio de email');
 
-      const responseSendEmail = await sendEmailToAction(formData)
-      if(!responseSendEmail) throw new Error('Enviar email');
-
+      const responseSendEmailPartner = await sendEmailToPartner(formData)
+      if(!responseSendEmailPartner) throw new Error('Envio de email');
 
       toast.success(responseMessage.success)
     
@@ -116,6 +116,30 @@ const handleSubmitForm = async (e) => {
 } finally {
   setSending(false);
 }
+};
+
+const sendEmailToPartner = async (data) => {
+  const structureHtml = ReactDOMServer.renderToString(<TemplateMailSuccessRegister data={data.inputs} />);
+
+  data.structureMail = {
+    html: structureHtml,
+    to: data.inputs.info.email,
+    cco: 'tawan.rio@webfoco.com',
+    from: 'formData.inputs.info.tradingName',
+    subject: 'Solicitação de cadastro de parceiro',
+  };
+
+  const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      formData: data,
+    }),
+  });
+
+  return response.ok;
 };
 
 const insertImgDatabase = async (img,cnpj) => {
@@ -129,11 +153,13 @@ const response = await fetch(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + '/communica
   body:data
 
 })
+
 const result = await response.json();
 return result
 }
 
   const sendEmailToAction = async (data) =>{
+   
     // const response = await fetch('http://localhost:3000/api/handlemail/sendmail', {
       const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail',
       {
