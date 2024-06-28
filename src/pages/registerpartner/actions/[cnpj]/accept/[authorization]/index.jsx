@@ -4,8 +4,9 @@ import {
   formatStrToDash
  } from '@/utils/functions';
  import  TemplateMailAcceptRegister  from "@/components/Templates/Email/AcceptRegister"
-
+ import ReactDOMServer from 'react-dom/server';
 export default function AcceptRegisterPartner() {
+
   return (
     <>
     </>
@@ -15,7 +16,6 @@ export default function AcceptRegisterPartner() {
 const acceptPartner = async (cnpj,authorization) =>{
   try{
     await connectMongoDB();
-
     const partner = await Collection.findOneAndUpdate(
       { cnpj: cnpj, idToValidationRegister: authorization },
       { $set: { enabled: true }},
@@ -40,10 +40,10 @@ const acceptPartner = async (cnpj,authorization) =>{
 
 const sendEmailToPartner = async (data) => {
   const structureHtml = ReactDOMServer.renderToString(<TemplateMailAcceptRegister data={data} />);
-
+  console.log(structureHtml);
   data.structureMail = {
     html: structureHtml,
-    to: data.info.email,
+    to: data.email,
     cco: 'tawan.rio@webfoco.com',
     from: 'formData.inputs.info.tradingName',
     subject: 'Cadastro Aprovado!',
@@ -68,19 +68,20 @@ export const getServerSideProps  = async (context) => {
     const {params, req, res} = context;
     const {cnpj, authorization} = params;
     
-
     const protocol = req[Symbol.for('NextInternalRequestMeta')].initProtocol
     const partner =  await acceptPartner(cnpj, authorization)
-
+    
     if(!partner){
-      res.writeHead(302, { Location: `${protocol}://${req.headers.host}` });
-      res.end();
-    }
+        res.writeHead(302, { Location: `${protocol}://${req.headers.host}` });
+        res.end();
+      }
+
     const responseAcceptMail = await sendEmailToPartner(partner)
     
     const fullDomain = `${protocol}://${req.headers.host}/${partner.type}/${partner?.tradingName}`;
+    console.log(fullDomain);
 
-   res.writeHead(302, { Location: fullDomain });
+    res.writeHead(302, { Location: fullDomain });
     res.end();
 
     return {
@@ -88,6 +89,7 @@ export const getServerSideProps  = async (context) => {
         cnpj
       }
     };
+
   } catch (error) {
     console.error('Erro na página:', error);
 

@@ -4,7 +4,7 @@ export default function TemplateMailSuccessRegister({ data }) {
   return (
     <div style={{ maxWidth: '600px', margin: '20px auto', backgroundColor: '#ffffff', padding: '20px', border: '1px solid #dddddd', borderRadius: '5px' }}>
       <div style={{ textAlign: 'center', paddingBottom: '20px' }}>
-        <h1 style={{ margin: 0, fontSize: '24px', color: '#4CAF50' }}>Cadastro Realizado</h1>
+        <h1 style={{ margin: 0, fontSize: '24px', color: '#22326e' }}>Cadastro Realizado</h1>
       </div>
       <div style={{ lineHeight: '1.6' }}>
         <p>Olá, {data.info.companyName}</p>
