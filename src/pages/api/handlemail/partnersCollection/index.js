@@ -50,12 +50,9 @@ export const partnerCollection = ({uniqueId, inputs, currentDateFormatted}) => {
           alt: "Icone Telefone",
           route: "/",
           icon: "/images/components/button/phone.png"
-        },
-        {
-          label: "Email",
-          email: info.email
         }
       ],
+      email: info.email,
       address: [
         {
           street: address.street,

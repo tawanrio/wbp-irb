@@ -48,7 +48,7 @@ export default function RegisterForm() {
 
     setStructureMail({
       html,
-      to: process.env.EMAIL_TO_SEND,
+      to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
       // to: 'marketing@irbauto.com.br',
       cco: 'tawan.rio@webfoco.com',
       from: 'formData.inputs.info.tradingName',
@@ -60,6 +60,8 @@ export default function RegisterForm() {
       structureMail,
       uniqueId
     })
+
+    console.log(process.env.NEXT_PUBLIC_EMAIL_TO_SEND);
     
   },[inputs])
   
@@ -72,30 +74,10 @@ const handleSubmitForm = async (e) => {
   setSending(true);
   
   try {
-      let responseCertificate = ''
-      let responseElevatorImg = ''
-      
-      if(formData.inputs.requirements){
-        responseCertificate = formData.inputs.requirements?.certificateImg ?  await insertImgDatabase(formData.inputs.requirements?.certificateImg,formData.inputs.info.cnpj) : '';
+    
+      const responseUploadImages = await uploadImagesToDB(formData)
+      if(!responseUploadImages) throw new Error('Upload Images');
 
-        responseElevatorImg = formData.inputs.requirements?.elevatorImg ? await insertImgDatabase(formData.inputs.requirements?.elevatorImg,formData.inputs.info.cnpj) : '';
-      }
-
-      const responseLogo = await insertImgDatabase(formData.inputs.info.logo,formData.inputs.info.cnpj)
-      
-      
-      if(!(responseLogo.status === 200))throw new Error( 'Database');
-      console.log(responseLogo);
-
-      formData.inputs.info.logo = process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseLogo.path
-      
-      if(formData.inputs.requirements){
-      formData.inputs.requirements.certificateImg = responseCertificate.path ? process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseCertificate.path : '';
-
-      formData.inputs.requirements.elevatorImg = responseElevatorImg.path ? process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseElevatorImg.path : '';
-      }
-      // console.log(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + responseLogo.path);
-      
       const responseInserDB = await insertDataIntoDB({
         formData
       });
@@ -110,13 +92,40 @@ const handleSubmitForm = async (e) => {
 
       toast.success(responseMessage.success)
     
-    setResetInputs(!(resetInputs))
+    // setResetInputs(!(resetInputs))
 } catch (error) {
   toast.error(`${responseMessage.error} - ${error.message}`);
 } finally {
   setSending(false);
 }
 };
+
+const uploadImagesToDB = async (data) => {
+  // Inserir logo no banco de dados
+  const responseLogo = await insertImgDatabase(data.inputs.info.logo, data.inputs.info.cnpj);
+  if (responseLogo.status !== 200) throw new Error('Database');
+
+  data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`;
+
+  // Inserir imagens de requisitos no banco de dados, se existirem
+  if (data.inputs.requirements) {
+      const { certificateImg, elevatorImg } = data.inputs.requirements;
+      const { cnpj } = data.inputs.info;
+
+      const responseCertificate = certificateImg ? await insertImgDatabase(certificateImg, cnpj) : '';
+      const responseElevatorImg = elevatorImg ? await insertImgDatabase(elevatorImg, cnpj) : '';
+
+      data.inputs.requirements.certificateImg = responseCertificate?.path 
+          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}` 
+          : '';
+      data.inputs.requirements.elevatorImg = responseElevatorImg?.path 
+          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}` 
+          : '';
+  }
+
+  return responseLogo;
+}
+
 
 const sendEmailToPartner = async (data) => {
   const structureHtml = ReactDOMServer.renderToString(<TemplateMailSuccessRegister data={data.inputs} />);

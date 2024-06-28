@@ -3,6 +3,7 @@ import { Collection } from '@/service/model/schemas/collectionsSchema';
 import { 
   formatStrToDash
  } from '@/utils/functions';
+ import  TemplateMailAcceptRegister  from "@/components/Templates/Email/AcceptRegister"
 
 export default function AcceptRegisterPartner() {
   return (
@@ -23,7 +24,9 @@ const acceptPartner = async (cnpj,authorization) =>{
 
     const data = {
       tradingName: formatStrToDash(partner.tradingName),
-      type: partner.label
+      type: partner.label,
+      companyName: partner.companyName,
+      email: partner.info.email
     }
 
     console.log(data);
@@ -34,6 +37,32 @@ const acceptPartner = async (cnpj,authorization) =>{
     await disconnectMongoDB();
   }
 }
+
+const sendEmailToPartner = async (data) => {
+  const structureHtml = ReactDOMServer.renderToString(<TemplateMailAcceptRegister data={data} />);
+
+  data.structureMail = {
+    html: structureHtml,
+    to: data.info.email,
+    cco: 'tawan.rio@webfoco.com',
+    from: 'formData.inputs.info.tradingName',
+    subject: 'Cadastro Aprovado!',
+  };
+
+  const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      formData: data,
+    }),
+  });
+
+  return response.ok;
+};
+
+
 export const getServerSideProps  = async (context) => {
   try {
     const {params, req, res} = context;
@@ -47,6 +76,8 @@ export const getServerSideProps  = async (context) => {
       res.writeHead(302, { Location: `${protocol}://${req.headers.host}` });
       res.end();
     }
+    const responseAcceptMail = await sendEmailToPartner(partner)
+    
     const fullDomain = `${protocol}://${req.headers.host}/${partner.type}/${partner?.tradingName}`;
 
    res.writeHead(302, { Location: fullDomain });

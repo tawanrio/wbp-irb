@@ -3,7 +3,6 @@ import mongoose, { Schema } from 'mongoose'; // Importar Schema de mongoose
 import { getCurrentDateFormatted } from '@/utils/functions'
 import { Collection } from '@/service/model/schemas/collectionsSchema';
 import { partnerCollection } from './partnersCollection';
-
 import { UsersModel } from '@/service/model/schemas/userSchema';
 
 export default async function insertDb(req, res) {
