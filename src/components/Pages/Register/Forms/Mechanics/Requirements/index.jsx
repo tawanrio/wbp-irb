@@ -89,7 +89,7 @@ export default function Requirements({setRequiments, resetInputs }) {
           type="file"
           id="logo"
           className="mt-2"
-          accept="image/png, image/jpeg"
+          accept="image/png, image/jpeg, application/pdf"
           onChange={(event) => handleImg(event, setElevatorImg)}
           />
            <span className="text-slate-400 text-sm">

@@ -53,7 +53,7 @@ export default function Categoria({ content }) {
     alt:"catalogo online"
   },
   title: 'Baixe agora mesmo o catálogo eletrônico e consulte facilmente toda nossa linha de produtos.',
-  subtitle:'Acesse pelo celular',
+  subtitle:'Acesse pelo computador ou celular',
    button : [
      {
        title: '',
@@ -70,8 +70,8 @@ export default function Categoria({ content }) {
     ],
 
    description : [
-    "Baixe agora nosso catálogo online e tenha acesso a uma ampla seleção de produtos automotivos de alta qualidade.",
-    "Explore nossa vasta gama de peças e componentes para atender às necessidades do seu veículo.",
+    "Tenha acesso a nossa ampla gama de peças automotivas de alta qualidade para atender as necessidades do seu veículo.",
+    "Encontre tudo o que você precisa para manter o seu carro funcionando perfeitamente: rolamentos de roda, cubos de roda, trizetas, radiadores, intercoolers e eletroventiladores.",
     "Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!"
 ]
   }

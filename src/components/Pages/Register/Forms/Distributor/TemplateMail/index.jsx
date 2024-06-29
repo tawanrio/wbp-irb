@@ -37,11 +37,19 @@ export default function TemplateMailPartner({ data }) {
       {data.inputs?.info.phone && (
         <p style={{ color: '#666', marginBottom: '10px' }}>Telefone: {data.inputs?.info.phone}</p>
       )}
-      {data.inputs?.address.street && data.inputs?.address.number && data.inputs?.address.neighborhood && data.inputs?.address.city && data.inputs?.address.state && data.inputs?.address.cep && (
+      
+      {data.inputs?.address && (
         <p style={{ color: '#666', marginBottom: '10px' }}>
-          Endereço: {data.inputs?.address.street}, {data.inputs?.address.number} - {data.inputs?.address.neighborhood}, {data.inputs?.address.city} - {data.inputs?.address.state}, CEP: {data.inputs?.address.cep}
+          Endereço:
+          {data.inputs?.address.street && ` ${data.inputs?.address.street},`}
+          {data.inputs?.address.number && ` ${data.inputs?.address.number} -`}
+          {data.inputs?.address.neighborhood && ` ${data.inputs?.address.neighborhood},`}
+          {data.inputs?.address.city && ` ${data.inputs?.address.city} -`}
+          {data.inputs?.address.state && ` ${data.inputs?.address.state},`}
+          {data.inputs?.address.cep && ` CEP: ${data.inputs?.address.cep}`}
         </p>
       )}
+
       {data.inputs?.info.logo && (
         <img
           src={data.inputs?.info.logo}

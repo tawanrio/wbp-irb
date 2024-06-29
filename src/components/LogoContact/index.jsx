@@ -35,12 +35,14 @@ export default function ProductFaq({ logo, contentDescription, title, arrButton 
                         </div>
                     </div>
                     <div className="
-                    w-12/12
-                    md:w-7/12
+                        w-12/12
+                        md:w-7/12
                     ">
                         <h2 className="text-2xl font-bold text-[#666] mb-5 uppercase">{title}</h2>
-                        <Description content={contentDescription} />
-                        <div className="flex md:flex-row flex-col gap-8 my-8">
+                        <div className="flex flex-col gap-4">
+                            <Description content={contentDescription} />
+                        </div>
+                        <div className="flex md:flex-row flex-col gap-8 mt-8">
                            {arrButton && arrButton.map((button, i) => {
                             if(button.status === true) return  (
                             <Button key={`btnContact${i}`} content={button}></Button>

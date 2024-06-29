@@ -14,17 +14,17 @@ export default function imgCatalogDescription({content, className}) {
             <div className="w-full max-w-7xl md:px-14 px-6 md:my-0 my-4 flex flex-col md:justify-between md:gap-6">
             {content?.title && <SectionTitle title={content?.title} />}
                 <div
-                className="
-                md:flex-row
-                flex-col
-                flex
-                justify-start
-                md:gap-14
-                gap-8
-                md:mb-4
-                md:mt-0
-                mt-8
-                ">
+                    className="
+                    md:flex-row
+                    flex-col
+                    flex
+                    justify-start
+                    md:gap-14
+                    gap-8
+                    md:mb-4
+                    md:mt-0
+                    mt-8
+                    ">
                     <div
                     className="
                   
@@ -37,31 +37,29 @@ export default function imgCatalogDescription({content, className}) {
                          overflow-hidden
                          md:min-w-[255px]
                          min-h-[100px]
-                         h-[400px]
+                         h-[500px]
                          md:h-full
                          group-hover:scale-105
-                        
                          duration-700
                         ">
                             <div className=" 
                             relative  
                             h-full
-                        ">
+                            ">
                         
-                        <Image
+                        {/* <Image
                         src={content?.imageProduct.imageUrl}
                         fill
                         sizes="100vw"
                         quality={100}
                         alt={content?.imageProduct.alt}
                         className="
-                        
-                        z-20
-                        group-hover:scale-100
-                        duration-1000
-                        
-                        "
-                        />
+                            z-20
+                            group-hover:scale-100
+                            duration-1000
+                        "/> */}
+
+                        <img src={content?.imageProduct.imageUrl} alt={content?.imageProduct.alt} className="h-[500px] w-64" />
                        
                         </div>
                         </div>

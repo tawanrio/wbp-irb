@@ -43,7 +43,7 @@ export default function Fabrica({content}) {
   const [events] = useState(content?.page?.events)
 
   const sortedCategories = sortByKey(content.categories,'label')
-  console.log(content);
+  console.log(banners);
 
   return (
     <>
@@ -54,7 +54,7 @@ export default function Fabrica({content}) {
        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
      </Head>
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
-      <Banner banners={banners}/>
+      <Banner banners={banners} />
        <BreadCrumb/>
        <Title title={title}/>
        <ContentImgDescription content={imgDescription}/>

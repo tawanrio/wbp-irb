@@ -11,24 +11,11 @@ export default function ServiceAddress({products, address}) {
             <div className="w-full max-w-7xl  my-4 md:mb-10 mb-14 flex flex-col md:gap-10">
                 <div className="
                 flex
-                md:flex-col
-                flex-row
+                flex-col
                 md:gap-10
                 gap-0
                 ">
-                    <div className="
-                    flex
-                    flex-col
-                    flex-1
-                    ">
-                         {/* <SectionTitle title={'Serviço / Produtos'} className="md:mb-5"/> */}
-                         <div className=" my-1 md:h-max h-[350px] ">
-                            {/* <ProductsCard products={products} limit={9} cards={products?.collection} textSize={'md:text-[1.2rem'}  heightCard={'!h-[95px]'}/> */}
-                            <CategoryGrid categories={sortedCategories} title />
-
-                         </div>
-                    </div>
-                    <div className="
+                     <div className="
                     w-12/12
                     md:px-14 px-6 
                     ">
@@ -43,6 +30,19 @@ export default function ServiceAddress({products, address}) {
                             <Address address={address}/>
                         </div>
                     </div>
+                    <div className="
+                    flex
+                    flex-col
+                    flex-1
+                    ">
+                         {/* <SectionTitle title={'Serviço / Produtos'} className="md:mb-5"/> */}
+                         <div className=" my-1 md:h-max  ">
+                            {/* <ProductsCard products={products} limit={9} cards={products?.collection} textSize={'md:text-[1.2rem'}  heightCard={'!h-[95px]'}/> */}
+                            <CategoryGrid categories={sortedCategories} title />
+
+                         </div>
+                    </div>
+                   
                 </div>
             </div>
         </section>
