@@ -44,6 +44,25 @@ export default function Fabrica({content}) {
 
   const sortedCategories = sortByKey(content.categories,'label')
   console.log(banners);
+  const bannerTeste = {
+    "colors": {
+        "bg": "#fff",
+        "text": "#fff",
+        "controllers": "#fff"
+    },
+    "size": {
+        "height": 330
+    },
+    "carousel": [
+        {
+            "title": "CENTRO LOGÍSTICO IRB",
+            "description": "",
+            "url": "/images/pages/banners/distributors.jpg",
+            "alt": "banner dois",
+            "position": "start"
+        }
+    ]
+}
 
   return (
     <>
