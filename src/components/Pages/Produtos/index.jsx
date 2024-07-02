@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 import BreadCrumb from '@/components/BreadCrumb';
 import Products from '@/components/Products';
 import Faq from '@/components/Faq';

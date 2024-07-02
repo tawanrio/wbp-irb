@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 import BreadCrumb from '@/components/BreadCrumb';
 
 // Database // Schema

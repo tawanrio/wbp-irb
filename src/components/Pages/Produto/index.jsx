@@ -5,7 +5,7 @@ import Templates from '@/components/Templates'
 // Components
 import ContentDescription from '@/components/ContentDescription';
 import Title from '@/components/Title';
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 import BreadCrumb from '@/components/BreadCrumb';
 import ProductModels from '@/components/Products/ProductModels';
 import Faq from '@/components/Faq';

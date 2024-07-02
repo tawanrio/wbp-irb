@@ -1,6 +1,6 @@
 import Templates from '@/components/Templates'
 import Title from '@/components/Title';
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
 import Page from '@/service/model/schemas/pageSchema'

@@ -6,7 +6,7 @@ import Templates from '@/components/Templates'
 import Title from '@/components/Title';
 
 // Components
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 import ContentDescription from '@/components/ContentDescription';
 import InsertVideo from '@/components/InsertVideo';
 import Partners from '@/components/Partners';

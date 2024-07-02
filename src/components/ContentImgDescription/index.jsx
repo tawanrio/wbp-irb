@@ -61,8 +61,8 @@ export default function ContentImgDescription({content}) {
                         src={content?.image}
                         fill
                         sizes="100vw"
+                        alt="imagem"
                         quality={100}
-                        alt="image"
                         className="
                         h-full
                         md:min-h-[400px]

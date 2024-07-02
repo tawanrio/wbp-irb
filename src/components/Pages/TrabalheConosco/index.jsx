@@ -5,7 +5,7 @@ import Templates from '@/components/Templates'
 // Components
 import BreadCrumb from '@/components/BreadCrumb';
 import LogoContact from '@/components/LogoContact'
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 import Form from '@/components/Form';
 
 // Database // Schema

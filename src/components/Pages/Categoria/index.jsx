@@ -5,7 +5,7 @@ import Templates from '@/components/Templates'
 // Components
 import ContentDescription from '@/components/ContentDescription';
 import Title from '@/components/Title';
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 import BreadCrumb from '@/components/BreadCrumb';
 import ProductModels from '@/components/Products/ProductModels';
 import Faq from '@/components/Faq';
@@ -31,6 +31,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {getProductFromUrl,insertMenuInTemplate} from '@/utils/functions'
 import Ebooks from './components/Ebooks';
+import ContentImgDescription from '@/components/ContentImgDescription';
+import ContentImgHTMLDesc from './components/ContentImgHTMLDesc';
 
 export default function Categoria({ content }) {
   const route = useRouter()
@@ -39,12 +41,14 @@ export default function Categoria({ content }) {
  
   const [category, setCategory] = useState(content?.category)
 
+  
   useEffect(()=>{
     setCategory(content.category)
     
-
+    
   },[pageUrl])
-
+  
+  console.log(content);
     //  console.log(content);
   
   const catalogDescription = {
@@ -75,6 +79,18 @@ export default function Categoria({ content }) {
     "Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!"
 ]
   }
+
+  const ImgDescription = {
+    "title": "Compromisso com a Qualidade",
+    "description":"<span><h3>teste</h3><p>aqui vai qualquer coisa </p></span>",
+    "image": {
+      "borderRadius": "20%",
+      "url":"/images/partners/irb-selo.jpeg",
+      "title": "",
+      "alt":"Imagem do produto"
+    },
+  }
+
   return (
   <>
     <Head>
@@ -87,7 +103,8 @@ export default function Categoria({ content }) {
           <Banner banners={content?.category?.banners} />
           <BreadCrumb/>
           <Title title={category?.title}/>
-          <ContentDescription content={category?.contentDescription}/>
+          {/* <ContentDescription content={category?.contentDescription}/> */}
+          <ContentImgHTMLDesc textHTML={category.description} image={category.thumbnail}/>
           <ImgCatalogDescription content={catalogDescription}/>
           {content.category.ebook && <Ebooks ebooks={content.category.ebook} />}
           {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}

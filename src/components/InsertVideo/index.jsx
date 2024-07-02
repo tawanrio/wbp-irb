@@ -2,16 +2,7 @@ export default function InsertVideo({content, home}) {
 
     return (
       <>
-      {! home ? (
-        <div className="flex flex-col items-center " id={`video_`}>
-        <div className="w-full max-w-7xl md:px-14 md:my-10 my-4 mb-6 px-6 flex justify-between">
-
-        
-        <video className="w-full shadow-[-20px_35px_90px_-30px_rgba(0,0,0,.8)]"  src={content?.url} controls width={1080} height={500}/>
-        
-        </div>
-        </div>
-        ):(
+   
           <div className="w-full z-2 overflow-hidden flex flex-col items-center bg-[#152049] " id='imagesBanners'>
              <div className=" w-full flex items-center md:h-[50px] h-[800px] md:translate-y-[-80px] relative ">
             <video id="video_banner" muted autoPlay loop src={content?.url}  className="
@@ -28,8 +19,8 @@ export default function InsertVideo({content, home}) {
               <div className="absolute bg-[#1a1b4925] w-full h-full z-10"></div>
              </div>
           </div> 
-        )
-        }
+      
+        
         </>
     )
   }

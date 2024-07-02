@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 
 // Components
 import ContentDescription from '@/components/ContentDescription';

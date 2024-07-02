@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 
 
 // Others
@@ -43,7 +43,7 @@ export default function Fabrica({content}) {
   const [events] = useState(content?.page?.events)
 
   const sortedCategories = sortByKey(content.categories,'label')
-  console.log(banners);
+
   const bannerTeste = {
     "colors": {
         "bg": "#fff",
@@ -57,12 +57,14 @@ export default function Fabrica({content}) {
         {
             "title": "CENTRO LOGÍSTICO IRB",
             "description": "",
-            "url": "/images/pages/banners/distributors.jpg",
+            "url": "/video/sobre.mp4",
             "alt": "banner dois",
             "position": "start"
         }
     ]
 }
+
+console.log(bannerTeste);
 
   return (
     <>
@@ -73,7 +75,7 @@ export default function Fabrica({content}) {
        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
      </Head>
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
-      <Banner banners={banners} />
+      <Banner banners={bannerTeste} />
        <BreadCrumb/>
        <Title title={title}/>
        <ContentImgDescription content={imgDescription}/>

@@ -5,7 +5,7 @@ import Templates from '@/components/Templates'
 // Components
 import BreadCrumb from '@/components/BreadCrumb';
 import LogoContact from '@/components/LogoContact'
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner/index";
 
 // Database // Schema
 import { connectMongoDB, disconnectMongoDB } from '@/service/db';
