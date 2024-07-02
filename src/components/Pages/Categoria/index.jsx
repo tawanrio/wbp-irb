@@ -33,6 +33,8 @@ import {getProductFromUrl,insertMenuInTemplate} from '@/utils/functions'
 import Ebooks from './components/Ebooks';
 import ContentImgDescription from '@/components/ContentImgDescription';
 import ContentImgHTMLDesc from './components/ContentImgHTMLDesc';
+import PartnersButton from '../Home/components/PartnersButton';
+import UtilityCards from '../Home/components/UtilityCards';
 
 export default function Categoria({ content }) {
   const route = useRouter()
@@ -113,8 +115,11 @@ export default function Categoria({ content }) {
 
           {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
           {/* <FindPartners partners={content?.partners} /> */}
-          <FindPartners title={content?.partners?.title} product={category} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle />
-          <Utilities title={'Utilidades'}/>
+          <PartnersButton partners={content?.partners?.types} />
+
+        <UtilityCards />
+          {/* <FindPartners title={content?.partners?.title} product={category} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle /> */}
+          {/* <Utilities title={'Utilidades'}/> */}
         </Templates>
     
    </>
