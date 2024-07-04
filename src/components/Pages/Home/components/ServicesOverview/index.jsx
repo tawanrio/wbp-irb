@@ -65,7 +65,10 @@ export default function ServicesOverview() {
 
 
   return (
-    <section className="w-full max-w-7xl px-6 my-4 flex flex-col justify-between gap-4 md:px-14 md:my-7 md:gap-10" id="blog-carousel">
+    <section className="relative flex flex-col items-center" id="blog-carousel">
+      <div className="w-full max-w-7xl px-6 my-4 flex flex-col justify-between gap-4 md:px-14 md:my-7 md:gap-10">
+
+      
     <div className="flex flex-col gap-4 md:flex-row md:gap-10">
       {cards.map((card, index) => (
         <div key={index} className="w-full flex flex-col gap-4 md:w-1/3">
@@ -92,6 +95,7 @@ export default function ServicesOverview() {
           />
         </div>
       ))}
+    </div>
     </div>
   </section>
   
