@@ -59,3 +59,25 @@ figure.wp-block-image {
 section#register_ label{
     color: #666 !important;
 }
+
+.text-outline {
+    position: relative;
+    display: inline-block;
+    color: #273546; /* Cor de fundo das letras */
+    font-weight: bold;
+  }
+  
+  .text-outline::before {
+    content: attr(data-text);
+    position: absolute;
+    z-index: -1;
+    color: white; /* Cor do contorno */
+    -webkit-text-stroke: 2px white; /* Espessura do contorno */
+    -webkit-text-fill-color: transparent; /* Torna o texto transparente */
+  }
+
+  .borda_texto{
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #000;
+    font-size: 3em; color: #fffdd9;
+    }

@@ -27,6 +27,7 @@ import CategoryGrid from '@/components/CategoryGrid';
 import PartnersButton from './components/PartnersButton';
 import UtilityCards from './components/UtilityCards';
 import BlogCarousel from './components/BlogCarousel';
+import ServicesOverview from './components/ServicesOverview';
 
 export default function Home({content}) {
 
@@ -62,6 +63,7 @@ export default function Home({content}) {
      
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
         <Banner banners={banners} video={bannerVideo}/>
+        <ServicesOverview />
         <DiffCarousel content={diffCarousel}/>
         {/* <CompanyValues cards={cardsValues}/> */}
         {/* <TextVideo video={video} description={description} /> */}

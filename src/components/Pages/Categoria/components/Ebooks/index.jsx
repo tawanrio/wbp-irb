@@ -3,7 +3,6 @@ import Link from 'next/link';
 import SectionTitle from '@/components/SectionTitle';
 
 export default function Ebooks({ebooks}) {
-    console.log(ebooks);
 
     const [translateX, setTranslateX] = useState(0);
 

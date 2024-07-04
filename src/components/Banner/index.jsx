@@ -33,7 +33,15 @@ export default function Banner({ banners, video }) {
     <section className="relative" id={`description_`}>
       <div 
         style={{ height: size }} 
-        className="flex justify-center md:mb-10 mb-4 relative" 
+        className={`flex justify-center md:mb-10 mb-4 relative bg-[#03050ede]   ${video && (`
+          before:content-['']
+          before:block
+          before:absolute
+          before:bg-[#3338579e]
+          before:z-[2]
+          before:w-full
+          before:h-full 
+          `)}`}
         id='containerBanner'
       >
         <Dots controllerBanner={{ banners, setActiveBanner, activeBanner, size }} />
@@ -43,43 +51,12 @@ export default function Banner({ banners, video }) {
           ) : (
             <>
               <InsertVideo content={video} home />
-              <div className='w-full md:h-full mt-14 md:mt-[-30px] absolute flex items-center flex-col justify-center'>
-                <h2 className='w-full md:text-5xl  text-xl uppercase text-center text-[#fff] font-bold text-x z-10'>
-                  {banners.carousel[0].title}
-                </h2>
-                <div className='flex flex-col mb-[-70px] md:w-[65%] w-[85%] md:max-w-5xl gap-5'>
-                  {banners.carousel[0].description && (
-                    <ul className='mt-5 flex flex-col list-disc gap-2 '>
-                      {banners.carousel[0].description.map((text, tId) => (
-                        <li 
-                          key={tId} 
-                          id={`description_`}
-                          className='md:text-lg text-xs text-white m-0'
-                        >
-                          {text}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  <div className='flex w-full justify-center md:gap-10 m:mb-16'>
-                    <Image
-                      quality={100}
-                      width={200}
-                      height={50}
-                      className="w-[100px] md:w-[200px]"  // Add this line to adjust width on mobile
-                      alt={'banner.url'}
-                      src={'/images/certificados/iso-9001.png'}
-                    />
-                    <Image
-                      quality={100}
-                      width={200}
-                      height={50}
-                      className="w-[100px] md:w-[200px]"  // Add this line to adjust width on mobile
-                      alt={'banner.url'}
-                      src={'/images/certificados/iso-16949.png'}
-                    />
-                  </div>
-                </div>
+              <div className='w-full md:h-full mt-14 md:mt-[10px] absolute flex items-center flex-col justify-center gap-[60px]'>
+              <h2 className="w-full md:text-[6rem] text-xl uppercase text-center font-semibold z-10 text-outline" data-text="REVOLUCIONANDO">
+                REVOLUCIONANDO
+              </h2>
+              <h3 className="w-full md:text-[3rem] text-white text-xl uppercase text-center font-extrabold z-10 " >O MERCADO DE AUTOPEÇAS!</h3>
+              
               </div>
             </>
           )
