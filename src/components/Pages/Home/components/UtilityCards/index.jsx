@@ -7,7 +7,7 @@ const UtilityCards = ({ title }) => {
     {
       title: 'EngraxaMente',
       description: 'EngraxaMente é a plataforma de cursos online e gratuitos desenvolvida pela IRB Automotive. Em comemoração aos seus dois anos no ar, lançamos um novo curso sobre Mecânica Automotiva Básica P1. Cresça profissionalmente e agregue valor ao seu negócio!',
-      image: '/images/partners/engraxamente.jpeg',
+      image: '/images/partners/engraxamente.jpg',
       link: 'https://engraxamente.eadplataforma.app/',
       linkText: 'Saiba mais'
     },

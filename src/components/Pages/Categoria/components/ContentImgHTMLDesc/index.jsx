@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 // const InsertText = dynamic(() => import('@/components/InserText'), { ssr: false });
 
 export default function ContentImgHTMLDesc({ textHTML, image }) {
+    console.log(image);
     return (
         <>
             <article className="flex flex-col items-center " id={`content-img-description_`}>
@@ -17,7 +18,7 @@ export default function ContentImgHTMLDesc({ textHTML, image }) {
                                 className="overflow-hidden md:min-w-[380px] h-full group-hover:scale-105 duration-700"
                             >
                                 <div className="relative">
-                                    {image.title && (<div className="
+                                    {image?.title && (<div className="
                                         z-90
                                         w-full 
                                         absolute 
@@ -32,12 +33,12 @@ export default function ContentImgHTMLDesc({ textHTML, image }) {
                                         text-white
                                         font-bold
                                         text-2xl
-                                    ">{image.title}</div>)}
+                                    ">{image?.title}</div>)}
                                     <Image
-                                        src={image.imageUrl}
+                                        src={image?.imageUrl}
                                         fill
                                         sizes="100vw"
-                                        alt={image.alt}
+                                        alt={image?.alt}
                                         quality={100}
                                         className="
                                             h-full

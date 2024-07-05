@@ -15,6 +15,7 @@ import Register from '@/components/Pages/Register'
 import Categoria from '@/components/Pages/Categoria'
 import Error from '@/components/Pages/Error'
 import BaixeNossoApp from '@/components/Pages/Baixe-nosso-app';
+import Service from '@/components/Pages/Service';
 
 // Components
 import CookiePopup from '@/components/CookiePopup';
@@ -38,6 +39,11 @@ export default function index({content}) {
         {page === 'Produtos' && (<Produtos content={content}/>)}
         {page === 'registre-se' && (<Register content={content}/>)}
         {page === 'baixe-nosso-app' && (<BaixeNossoApp content={content}/>)}
+        {(page === 'engraxamente-ead'  ||
+        page === 'engraxamente-day'  ||
+        page === 'conecta-irb'  ||
+        page === 'ecossistema-irb'
+         ) && (<Service content={content}/>)}
       </>
       )}
  {content?.type === 'category' && (

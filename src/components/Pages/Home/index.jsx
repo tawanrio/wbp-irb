@@ -23,6 +23,7 @@ import { sortByKey } from '@/utils/functions';
 
 import Utilities from '@/components/Utilities';
 import DiffCarousel from './components/DiffCarousel';
+import DiffCarouselTwo from './components/DiffCarouselTwo';
 import CategoryGrid from '@/components/CategoryGrid';
 import PartnersButton from './components/PartnersButton';
 import UtilityCards from './components/UtilityCards';
@@ -64,7 +65,8 @@ export default function Home({content}) {
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
         <Banner banners={banners} video={bannerVideo}/>
         <ServicesOverview />
-        <DiffCarousel content={diffCarousel}/>
+        {/* <DiffCarousel content={diffCarousel}/> */}
+        <DiffCarouselTwo content={diffCarousel}/>
         {/* <CompanyValues cards={cardsValues}/> */}
         {/* <TextVideo video={video} description={description} /> */}
         <CategoryGrid categories={sortedCategories} title />
