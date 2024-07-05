@@ -18,17 +18,16 @@ export default function index({content}) {
 
 async function getDataPage(){
   try{
-  await connectMongoDB();
+    await connectMongoDB();
 
-  const page = await Page.findOne({label:"home"}).lean();
-  // const menu = await Menu.findOne({label:"menu"}).lean();
-  const menus = await Menus.find().lean();
-  const template = await Template.find();
-  const partners = await SchemaCategories.findOne({label:"partners"}).lean();
-  const categories = await CategoriesProducts.find().lean();
-  // const products = await ProductsDb.find().lean().limit(6);
-  const form = await FormDb.findOne({label: "form"}).lean();
-
+    const page = await Page.findOne({label:"home"}).lean();
+    // const menu = await Menu.findOne({label:"menu"}).lean();
+    const menus = await Menus.find().lean();
+    const template = await Template.find();
+    const partners = await SchemaCategories.findOne({label:"partners"}).lean();
+    const categories = await CategoriesProducts.find().lean();
+    // const products = await ProductsDb.find().lean().limit(6);
+    const form = await FormDb.findOne({label: "form"}).lean();
 
   return {
     page:JSON.parse(JSON.stringify(page)),
@@ -44,8 +43,6 @@ async function getDataPage(){
     disconnectMongoDB();
   }
 }
-
-
 
 export async function getStaticProps() {
   

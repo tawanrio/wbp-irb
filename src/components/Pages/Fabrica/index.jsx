@@ -64,8 +64,6 @@ export default function Fabrica({content}) {
     ]
 }
 
-console.log(bannerTeste);
-
   return (
     <>
     <Head>
@@ -75,11 +73,10 @@ console.log(bannerTeste);
        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
      </Head>
     <Templates template={content?.template} page={content?.page} menus={content?.menus}>
-      <Banner banners={bannerTeste} />
+      <Banner banners={bannerTeste} stlyeText={true}/>
        <BreadCrumb/>
-       <Title title={title}/>
-       <ContentImgDescription content={imgDescription}/>
-       <ContentDescription content={description}/>
+       <Title title={title} className={'mt-5'}/>
+       <ContentDescription content={description}  className={'mt-5'}/>
        <TimeLine />
        <CompanyValues cards={cardsValues}/>
        <CategoryGrid categories={sortedCategories} title />

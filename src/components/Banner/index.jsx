@@ -5,7 +5,7 @@ import ContentBanner from './components/ContentBanner';
 import Arrow from './components/Arrow';
 import InsertVideo from '@/components/InsertVideo';
 
-export default function Banner({ banners, video }) {
+export default function Banner({ banners, video, stlyeText }) {
   const [activeBanner, setActiveBanner] = useState(0);
 
   const size = banners?.size.height;
@@ -47,17 +47,22 @@ export default function Banner({ banners, video }) {
         <Dots controllerBanner={{ banners, setActiveBanner, activeBanner, size }} />
         {!video 
           ? (
-            <ContentBanner controllerBanner={{ banners, setActiveBanner, activeBanner, size }} />
+            <ContentBanner controllerBanner={{ 
+                banners, 
+                setActiveBanner, 
+                activeBanner, 
+                size 
+              }} stlyeText={stlyeText} />
           ) : (
             <>
               <InsertVideo content={video} home />
-              <div className='w-full md:h-full mt-14 md:mt-[10px] absolute flex items-center flex-col justify-center gap-[60px]'>
-              <h2 className="w-full md:text-[6rem] text-xl uppercase text-center font-semibold z-10 text-outline" data-text="REVOLUCIONANDO">
-                REVOLUCIONANDO
-              </h2>
-              <h3 className="w-full md:text-[3rem] text-white text-xl uppercase text-center font-extrabold z-10 " >O MERCADO DE AUTOPEÇAS!</h3>
-              
-              </div>
+
+                <div className='w-full md:h-full mt-14 md:mt-[10px] absolute flex items-center flex-col justify-center gap-[60px]'>
+                  <h2 className="w-full md:text-[6rem] text-xl uppercase text-center font-semibold z-10 text-outline" data-text="REVOLUCIONANDO">
+                    REVOLUCIONANDO
+                  </h2>
+                  <h3 className="w-full md:text-[3rem] text-white text-xl uppercase text-center font-extrabold z-10 " >O MERCADO DE AUTOPEÇAS!</h3>
+                </div>
             </>
           )
         }

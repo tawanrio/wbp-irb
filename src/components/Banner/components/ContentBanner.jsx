@@ -2,7 +2,7 @@
 import ImageBanner from './ImageBanner';
 import VideoBanner from './VideoBanner';
 
-export default function ContentBanner({controllerBanner, backdrop}) {
+export default function ContentBanner({controllerBanner, backdrop, stlyeText}) {
     const {activeBanner, setActiveBanner, banners} = controllerBanner
 
     const renderBanners = banners?.carousel.map((banner, index) => {
@@ -42,11 +42,11 @@ export default function ContentBanner({controllerBanner, backdrop}) {
        (<ImageBanner banner={banner} controllerBanner={controllerBanner} /> ):
         (<VideoBanner banner={banner} controllerBanner={controllerBanner} />)}
 
-            <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners?.colors.text,height:controllerBanner.size }}
-             className="
-              
-              md:px-14
-              md:max-w-7xl 
+            {!stlyeText ? (
+              <div style={{alignItems: banner.position, textAlign: banner.position,  color:banners?.colors.text,height:controllerBanner.size }}
+              className={`
+                md:px-14
+                md:max-w-7xl 
               px-16
               absolute
               top-0
@@ -54,19 +54,18 @@ export default function ContentBanner({controllerBanner, backdrop}) {
               justify-center
               flex-col
               w-full
-              ">
+              `}
+              >
               <h2 
               style={{width: `${banner?.textWidth}%`}}
               className='
-              md:text-5xl
-              md:w-[60%]
-              dropShadownBanner
-              w-2/3
-              
-             
-              font-bold
-              text-xl
-              z-10
+                md:text-5xl
+                md:w-[60%]
+                dropShadownBanner
+                w-2/3
+                font-bold
+                text-xl
+                z-10
               '>{banner.title}</h2>
               <p className='
               md:text-2xl
@@ -78,7 +77,19 @@ export default function ContentBanner({controllerBanner, backdrop}) {
               font-normal
               text-xl
               z-10 '>{banner.description}</p>
-            </div>
+              </div>
+            ) : (
+              <div
+              className='w-full md:h-full mt-14 md:mt-[30px] absolute flex items-center flex-col justify-center gap-[60px]'>
+                  <h2 className="w-full md:text-[6rem] text-xl uppercase text-center font-semibold z-10 text-outline" data-text={banner.title}>
+                    {banner.title}
+                  </h2>
+                  <h3 className="w-full md:text-[3rem] text-white text-xl uppercase text-center font-extrabold z-10 ">
+                    {banner.description}
+                    </h3>
+                </div>
+            )}
+
             </div>
         )
       
