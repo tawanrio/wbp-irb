@@ -23,6 +23,7 @@ import Title from '@/components/Title';
 import InsertVideo from '@/components/InsertVideo';
 import Utilities from '@/components/Utilities';
 import TimeLine from './components/TimeLine';
+import TimeLineNew from './components/TimeLineNew';
 import CarouselEvent from './components/CarouselEvents';
 import CategoryGrid from '@/components/CategoryGrid';
 
@@ -77,7 +78,7 @@ export default function Fabrica({content}) {
        <BreadCrumb/>
        <Title title={title} className={'mt-5'}/>
        <ContentDescription content={description}  className={'mt-5'}/>
-       <TimeLine />
+       <TimeLineNew />
        <CompanyValues cards={cardsValues}/>
        <CategoryGrid categories={sortedCategories} title />
         {/* <InsertVideo content={video}/> */}
