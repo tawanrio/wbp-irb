@@ -4,11 +4,11 @@ import {formatPhoneNumber, formatToViewPhone} from "@/utils/functions"
 
 export default function ButtonTell({phone, whatsapp}) {
 
-  const whatsnumber = whatsapp && formatPhoneNumber(whatsapp?.number)
-  const apiWhats = `https://api.whatsapp.com/send?phone=55${whatsnumber}`
+  const formatedWhatsappNumber = whatsapp && formatToViewPhone(whatsapp?.number)
+  const apiWhats = `https://api.whatsapp.com/send?phone=55${whatsapp?.number}`
 
-  const phoneNumber = phone && formatPhoneNumber(phone?.number)
-  const actionPhone = `tel:+55${phoneNumber}`
+  const formatedPhoneNumber = phone && formatToViewPhone(phone?.number)
+  const actionPhone = `tel:+55${phone?.number}`
   return (
     <>
     {phone && (
@@ -37,8 +37,7 @@ export default function ButtonTell({phone, whatsapp}) {
         className={`
         md:text-2xl
         text-lg
-        absolute 
-        w-full 
+         ml-2
         text-center
         uppercase
         opacity-100
@@ -47,7 +46,7 @@ export default function ButtonTell({phone, whatsapp}) {
         duration-500
         ${phone?.icon.url && 'ml-2'}
         `}>
-          {formatToViewPhone(phone?.number)}
+          {(formatedPhoneNumber)}
           </span>
           {phone?.number && (
             <span 
@@ -65,7 +64,7 @@ export default function ButtonTell({phone, whatsapp}) {
               duration-700
               ${phone?.icon.url && 'ml-2'}
               `}>
-               {formatToViewPhone(phoneNumber)}
+               {(formatedPhoneNumber)}
             </span>
           )}
       </div>
@@ -98,8 +97,7 @@ export default function ButtonTell({phone, whatsapp}) {
           className={`
           md:text-2xl
           text-lg
-          absolute 
-          w-full 
+          ml-2
           text-center
           uppercase
           opacity-100
@@ -108,7 +106,7 @@ export default function ButtonTell({phone, whatsapp}) {
           duration-500
           ${whatsapp?.icon.url && 'ml-2'}
           `}>
-            {formatToViewPhone(whatsapp?.number)}
+            {formatedWhatsappNumber}
             </span>
             {whatsapp?.number && (
               <span 
@@ -126,7 +124,7 @@ export default function ButtonTell({phone, whatsapp}) {
                 duration-700
                 ${whatsapp?.icon.url && 'ml-2'}
                 `}>
-                  {formatToViewPhone(whatsapp?.number)}
+                  {formatedWhatsappNumber}
               </span>
             )}
         </div>

@@ -14,7 +14,7 @@ import { sortByKey } from '@/utils/functions';
 // Components
 import ContentDescription from '@/components/ContentDescription';
 import BreadCrumb from '@/components/BreadCrumb';
-import CompanyValues from './components/CompanyValues';
+import CompanyValuesNew from './components/CompanyValuesNew';
 import ContentImgDescription from '@/components/ContentImgDescription';
 import Products from '@/components/Products';
 import Categories from '@/components/Categories';
@@ -79,7 +79,7 @@ export default function Fabrica({content}) {
        <Title title={title} className={'mt-5'}/>
        <ContentDescription content={description}  className={'mt-5'}/>
        <TimeLineNew />
-       <CompanyValues cards={cardsValues}/>
+       <CompanyValuesNew cards={cardsValues}/>
        <CategoryGrid categories={sortedCategories} title />
         {/* <InsertVideo content={video}/> */}
         {/* <Categories baseUrl={`/`} categories={content?.categories} colors={content?.page?.colors.products} title /> */}

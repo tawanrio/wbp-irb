@@ -14,7 +14,6 @@ export default function Card({collection}) {
     
         return (`/${baseUrl[1]}/${name}`)
       }
-
       const collectionUrl = generateProductUrl(baseUrl,formatStrToUrl(collection.tradingName))
   return (
     <Link href={collectionUrl} className=' w-full h-full   flex  items-center flex-col hover:scale-95 duration-500'>
@@ -32,7 +31,7 @@ export default function Card({collection}) {
             sizes='100%'
             className='object-cover !h-full m-auto'
             /> */}
-            <img src={collection?.logo.url} alt={collection?.logo.alt} className='object-cover !h-full m-auto'/>
+            <img src={collection?.logo.url} alt={collection?.logo.alt} className='object-fill !h-full m-auto'/>
         </div>
         </div>
     </Link>

@@ -15,7 +15,8 @@ export default function Card({collection}) {
         return (`/${baseUrl[1]}/${name}`)
       }
 
-      const collectionUrl = generateProductUrl(baseUrl,formatStrToUrl(collection.name))
+      const collectionUrl = generateProductUrl(baseUrl,formatStrToUrl(collection.tradingName))
+      console.log(collectionUrl);
   return (
     // <Link href={collectionUrl} className=' w-full h-full   flex  items-center flex-col hover:scale-95 duration-500'>
     //     <h3 className='capitalize font-medium text-xl'>{collection?.name}</h3>
@@ -38,14 +39,15 @@ export default function Card({collection}) {
       {/* <h3 className='capitalize font-bold text-xl flex flex-grow items-center h-16'>{collection?.tradingName}</h3> */}
       <div className='w-full border flex justify-center items-center rounded-lg h-[220px]'>
       <div className='w-full h-full relative  '>
-          <Image 
+          {/* <Image 
           src={collection?.gallery.find(image => !image.thumbnail).url}
           fill
           quality={80}
           alt={collection?.gallery.find(image => !image.thumbnail).alt ||'Imagem'}
           sizes='100%'
           className='object-cover !h-full m-auto'
-          />
+          /> */}
+           <img src={collection?.logo.url} alt={collection?.logo.alt} className='object-fill !h-full m-auto'/>
       </div>
       </div>
   </Link>

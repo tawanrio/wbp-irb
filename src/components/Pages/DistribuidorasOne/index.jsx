@@ -44,7 +44,7 @@ export default function Distribuidoras({content}) {
   const [metaKeywords] = useState(content?.page?.metaKeywords)
   const [faq] = useState(content?.page?.faq)
   
-  console.log(content);
+  // console.log(content);
 
   useEffect(()=>{
     setTitle(content?.page.title)

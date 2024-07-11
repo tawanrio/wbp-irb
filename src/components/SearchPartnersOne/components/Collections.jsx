@@ -14,7 +14,7 @@ import Link from 'next/link';
 const Collection = ({ collections, products, hiddenProductSearch, arrRoute, geo}) => {
   let stateMatch = null
   let cityMatch = null
-console.log(collections);
+// console.log(collections);
 
 geo.states.filter(state => {
   if(stateMatch || cityMatch) return
