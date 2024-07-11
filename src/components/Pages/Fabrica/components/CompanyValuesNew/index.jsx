@@ -163,9 +163,11 @@ export default function CompanyValuesNew({ cards }) {
                     "
                   >
                     <div className="
-                    relative  
-                    hidden
-                    group-hover:block
+                    relative
+                    opacity-0  
+                    group-hover:opacity-100
+                    duration-1000
+                    
                     ">
                    
                       <hr
@@ -208,7 +210,9 @@ export default function CompanyValuesNew({ cards }) {
                         color: card.colors.text,
                       }}
                     >
-                      <ul className="list-inside" style={{ listStyle: card.content?.listStyle }}>
+                      <ul className="list-inside  opacity-0  
+                    group-hover:opacity-100
+                    duration-500" style={{ listStyle: card.content?.listStyle }}>
                         {card.content.description?.map((text, tId) => (
                           <li
                             key={tId}
