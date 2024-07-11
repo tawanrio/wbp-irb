@@ -87,7 +87,7 @@ export default function CompanyValuesNew({ cards }) {
             p-5
           "
         >
-          <div className="w-full flex md:gap-5 ">
+          <div className="w-full flex gap-5 flex-col md:flex-row ">
             {companyValues.map((card, index) => (
               <div
                 key={index}
@@ -115,7 +115,7 @@ export default function CompanyValuesNew({ cards }) {
                   transition-all
                   duration-500
                   ease-in-out
-                  ${expandedCard === index ? "!max-h-[500px]" : "max-h-[100px]"}
+                  ${expandedCard === index ? "!max-h-[500px]" : "md:max-h-[100px] max-h-[75px]"}
                 `}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
