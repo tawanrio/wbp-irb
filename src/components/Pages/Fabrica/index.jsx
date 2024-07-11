@@ -5,7 +5,6 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 import Banner from "@/components/Banner/index";
 
-
 // Others
 import { useState} from 'react';
 import  {useRouter}  from 'next/router';

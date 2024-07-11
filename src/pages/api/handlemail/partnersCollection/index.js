@@ -1,3 +1,18 @@
+import unorm from 'unorm';
+
+function normalizeString(str) {
+    // Converte para minúsculas
+    str = str.toLowerCase();
+    
+    // Remove acentuação e caracteres especiais
+    str = unorm.nfd(str).replace(/[\u0300-\u036f]/g, "");
+    
+    // Remove espaços extras
+    str = str.trim();
+    
+    return str;
+}
+
 export const partnerCollection = ({uniqueId, inputs, currentDateFormatted}) => {
   const { info, address, requirements } = inputs
 
@@ -10,7 +25,7 @@ export const partnerCollection = ({uniqueId, inputs, currentDateFormatted}) => {
     requirements: requirements || null,
     whereToBuy: info.whereToBuy || null,
     cnpj: info.cnpj.replace(/\D/g, ""),
-    tradingName: info.tradingName.toLowerCase().trim(),
+    tradingName: normalizeString(info.tradingName),
     companyName: info.companyName,
     metaTitle: `IRB Automotive - Distribuidor - ${info.companyName}`,
     metaDescription: [

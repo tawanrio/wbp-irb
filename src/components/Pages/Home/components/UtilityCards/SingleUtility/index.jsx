@@ -4,7 +4,7 @@ const SingleUtility = ({ utilities }) => {
   return (
     <div className="bg-white shadow-md rounded-md overflow-hidden h-96 justify-between flex flex-col items-start">
       <div>
-      <div className="relative w-full h-48">
+      <div className="relative w-full h-[200px]">
         <Image
           src={utilities.image}
           alt={utilities.title}
