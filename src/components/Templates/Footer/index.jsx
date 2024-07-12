@@ -8,7 +8,9 @@ export default function Footer({content}) {
 
   const dataFooter = content?.items.find(item => item.label === 'default')
   const colors = dataFooter?.colors
-  const certificado = dataFooter?.certificado
+  const certificates = dataFooter?.certificates
+
+  console.log(certificates);
 
   return (
     <footer
@@ -43,12 +45,18 @@ export default function Footer({content}) {
           <ul className='list-ul flex flex-col md:items-start items-center'>
               <li className='font-light md:text-start text-center md:text-lg text-base'>{dataFooter?.address}</li>
               <li className='mb-3 mt-4'>
-                <Image
-                src={certificado?.url}
-                alt={certificado?.alt}
-                width={180}
-                height={110}
-              />
+                <div className='flex'>
+                {certificates?.map((certificate, index) => (
+                  <Image
+                  src={certificate?.url}
+                  alt={certificate?.alt}
+                  width={180}
+                  height={110}
+                  className='w-1/2'
+                  key={index}
+                  />
+                ))}
+                </div>
               </li>
             </ul>
             

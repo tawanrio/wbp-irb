@@ -12,7 +12,6 @@ import {generateUniqueIdByCnpj, generateActionsLink} from "@/utils/functions"
 import { stringify } from "postcss";
 
 
-
 export default function RegisterForm() {
   const [partnerType, setPartnerType] = useState('');
   const [inputs, setInputs] = useState(null)
@@ -21,10 +20,12 @@ export default function RegisterForm() {
 
   const [html, setHtml] = useState('')
   const [actionsLink, setActionsLink] = useState('')
+
   const [responseMessage] = useState({
     success: 'Cadastro enviado com sucesso, aguarde aprovação.',
     error: 'Erro ao enviar cadastro.'
   });
+
   const [formData, setFormData] = useState({
     inputs: {
      info: {},
@@ -33,6 +34,7 @@ export default function RegisterForm() {
      actionsLink: {},
      html: ''
    });
+
   const [resetInputs, setResetInputs] = useState(false) 
   const [sending, setSending] = useState(null)
 
@@ -239,7 +241,6 @@ return result
           { !(partnerType === '') && (
             <>
            
-
               <div>
                 <button
                   // disabled={sending}

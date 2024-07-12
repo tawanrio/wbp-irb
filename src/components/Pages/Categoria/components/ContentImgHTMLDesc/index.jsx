@@ -46,9 +46,7 @@ export default function ContentImgHTMLDesc({ textHTML, image }) {
                                             min-h-[300px]
                                             w-full
                                             object-cover
-                                            scale-110
                                             z-20
-                                            group-hover:scale-100
                                             duration-1000
                                         "
                                     />

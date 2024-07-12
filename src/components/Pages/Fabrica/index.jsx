@@ -82,7 +82,7 @@ export default function Fabrica({content}) {
        <CategoryGrid categories={sortedCategories} title />
         {/* <InsertVideo content={video}/> */}
         {/* <Categories baseUrl={`/`} categories={content?.categories} colors={content?.page?.colors.products} title /> */}
-       <CarouselEvent events={events}/>
+       {/* <CarouselEvent events={events}/> */}
        {/* <Products baseUrl={`${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title/> */}
        {/* <Utilities title={'Utilidades'}/> */}
     </Templates>
