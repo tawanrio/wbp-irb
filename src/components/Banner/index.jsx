@@ -59,7 +59,7 @@ export default function Banner({ banners, video, stlyeText }) {
 
                 <div className='w-full md:h-full mt-14 md:mt-[10px] absolute flex items-center flex-col justify-center gap-[60px]'>
                   <h2 className="w-full md:text-[6rem] text-xl uppercase text-center font-semibold z-10 text-outline" data-text="REVOLUCIONANDO">
-                    REVOLUCIONANDOa
+                    REVOLUCIONAND
                   </h2>
                   <h3 className="w-full md:text-[3rem] text-white text-xl uppercase text-center font-extrabold z-10 " >O MERCADO DE AUTOPEÇAS!</h3>
                 </div>
