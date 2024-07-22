@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
-import { connectMongoDB, disconnectMongoDB } from '@/service/db';
-import { formatStrToUrl } from '@/utils/functions';
+import { connectMongoDB, disconnectMongoDB } from '@/service/db'
+import { formatStrToUrl } from '@/utils/functions'
 
 // Pages
 import Contato from '@/components/Pages/Contato'
@@ -14,50 +15,47 @@ import Produtos from '@/components/Pages/Produtos'
 import Register from '@/components/Pages/Register'
 import Categoria from '@/components/Pages/Categoria'
 import Error from '@/components/Pages/Error'
-import BaixeNossoApp from '@/components/Pages/Baixe-nosso-app';
-import Service from '@/components/Pages/Service';
+import BaixeNossoApp from '@/components/Pages/Baixe-nosso-app'
+import Service from '@/components/Pages/Service'
 
 // Components
-import CookiePopup from '@/components/CookiePopup';
+import CookiePopup from '@/components/CookiePopup'
 
 import { getDataPage } from '@/service/model/routeOne'
 
-export default function index({content}) {
-  const page = content?.page.label;
+export default function index({ content }) {
+  const page = content?.page.label
   return (
     <>
-    
-    {content?.type === 'page' && (
-      <>
-        {page === 'contato' && (<Contato content={content}/>)}
-        {page === 'trabalhe-conosco' && (<TrabalheConosco content={content}/>)}
-        {page === 'fabrica' && (<Fabrica content={content}/>)}
-        {page === 'distribuidoras' && (<Distribuidoras content={content}/>)}
-        {page === 'autopecas' && (<Autopecas content={content}/>)}
-        {page === 'mecanicas' && (<AutocenterEMecanicas content={content}/>)}
-        {page === 'parceiros' && (<Parceiros content={content}/>)}
-        {page === 'Produtos' && (<Produtos content={content}/>)}
-        {page === 'registre-se' && (<Register content={content}/>)}
-        {page === 'baixe-nosso-app' && (<BaixeNossoApp content={content}/>)}
-        {(page === 'engraxamente-ead'  ||
-        page === 'engraxamente-day'  ||
-        page === 'conecta-irb'  ||
-        page === 'ecossistema-irb'
-         ) && (<Service content={content}/>)}
-      </>
+      {content?.type === 'page' && (
+        <>
+          {page === 'contato' && <Contato content={content} />}
+          {page === 'trabalhe-conosco' && <TrabalheConosco content={content} />}
+          {page === 'fabrica' && <Fabrica content={content} />}
+          {page === 'distribuidoras' && <Distribuidoras content={content} />}
+          {page === 'autopecas' && <Autopecas content={content} />}
+          {page === 'mecanicas' && <AutocenterEMecanicas content={content} />}
+          {page === 'parceiros' && <Parceiros content={content} />}
+          {page === 'Produtos' && <Produtos content={content} />}
+          {page === 'registre-se' && <Register content={content} />}
+          {page === 'baixe-nosso-app' && <BaixeNossoApp content={content} />}
+          {(page === 'engraxamente-ead' ||
+            page === 'engraxamente-day' ||
+            page === 'conecta-irb' ||
+            page === 'ecossistema-irb') && <Service content={content} />}
+        </>
       )}
- {content?.type === 'category' && (
-      <>
-        <Categoria content={content}/>
-      </>
+      {content?.type === 'category' && (
+        <>
+          <Categoria content={content} />
+        </>
       )}
-      
+
       {content?.type === 'error' && (
         <>
-          <Error content={content}/>
-   
+          <Error content={content} />
         </>
-        )}
+      )}
     </>
   )
 }
@@ -75,7 +73,6 @@ export default function index({content}) {
 //     fallback: false // ou 'blocking' se necessário
 //   };
 // }
-
 
 // export async function getStaticProps({ params }) {
 // // export const getStaticProps  = async (context) => {
@@ -96,23 +93,23 @@ export default function index({content}) {
 
 // };
 
-export const getServerSideProps  = async (context) => {
+export const getServerSideProps = async (context) => {
   try {
-    const resolvedUrl = context.resolvedUrl;
-    const content = await getDataPage(resolvedUrl);
+    const resolvedUrl = context.resolvedUrl
+    const content = await getDataPage(resolvedUrl)
 
     return {
       props: {
-        content
-      }
-    };
-  } catch (error) {
-    console.error('Erro na página:', error);
-
-    return {
-      props: {
-        content: null
+        content,
       },
-    };
+    }
+  } catch (error) {
+    console.error('Erro na página:', error)
+
+    return {
+      props: {
+        content: null,
+      },
+    }
   }
-};
+}

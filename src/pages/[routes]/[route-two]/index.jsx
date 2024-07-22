@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
-import { connectMongoDB, disconnectMongoDB } from '@/service/db';
-import { formatString } from '@/utils/functions';
-
+import { connectMongoDB, disconnectMongoDB } from '@/service/db'
+import { formatString } from '@/utils/functions'
 
 import { getDataPage } from '@/service/model/routeTwo'
 
@@ -20,51 +20,52 @@ import Error from '@/components/Pages/Error'
 
 // Schema
 import Page from '@/service/model/schemas/pageSchema'
-import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
-import {Address} from '@/service/model/schemas/addressSchema'
-import {Menu} from '@/service/model/schemas/menuSchema'
-import {Template} from '@/service/model/schemas/templateSchema'
-import {Categories} from '@/service/model/schemas/categoriesSchema'
-import {Collection} from '@/service/model/schemas/collectionsSchema'
+import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
+import { Address } from '@/service/model/schemas/addressSchema'
+import { Menu } from '@/service/model/schemas/menuSchema'
+import { Template } from '@/service/model/schemas/templateSchema'
+import { Categories } from '@/service/model/schemas/categoriesSchema'
+import { Collection } from '@/service/model/schemas/collectionsSchema'
 
-export default function Index({content}) {
+export default function Index({ content }) {
   // const page = content.page.label;
   // console.log(content);
 
   return (
     <>
-  
-    {content?.type === 'product' && (
-      <>
-        {/* <Produto content={content}/> */}
-        <PartnerProduct content={content}/>
-      </>
+      {content?.type === 'product' && (
+        <>
+          {/* <Produto content={content}/> */}
+          <PartnerProduct content={content} />
+        </>
       )}
- {(content?.type === 'distribuidoras' || content?.type === 'autopecas' || content?.type === 'mecanicas' || content?.type === 'fabrica') && (
-      <>
-      
-        <Parceiro content={content}/>
-      </>
+      {(content?.type === 'distribuidoras' ||
+        content?.type === 'autopecas' ||
+        content?.type === 'mecanicas' ||
+        content?.type === 'fabrica') && (
+        <>
+          <Parceiro content={content} />
+        </>
       )}
 
-        {content?.type === 'geo-fabrica' && (<FabricaOne content={content}/>)}
-        {content?.type === 'geo-distribuidoras' && (<DistribuidorasOne content={content}/>)}
-        {content?.type === 'geo-autopecas' && (<AutopecasOne content={content}/>)}
-        {content?.type === 'geo-mecanicas' && (<MecanicasOne content={content}/>)}
-
-        {content?.type === 'singleProduct' && (
-      <>
-        <Produto content={content}/>
-      </>
+      {content?.type === 'geo-fabrica' && <FabricaOne content={content} />}
+      {content?.type === 'geo-distribuidoras' && (
+        <DistribuidorasOne content={content} />
       )}
-      
+      {content?.type === 'geo-autopecas' && <AutopecasOne content={content} />}
+      {content?.type === 'geo-mecanicas' && <MecanicasOne content={content} />}
+
+      {content?.type === 'singleProduct' && (
+        <>
+          <Produto content={content} />
+        </>
+      )}
+
       {content?.type === 'error' && (
         <>
-          <Error content={content}/>
-   
+          <Error content={content} />
         </>
-        )}
-
+      )}
     </>
   )
 }
@@ -88,7 +89,6 @@ export default function Index({content}) {
 //     fallback: false, // ou true ou 'blocking' se necessário
 //   };
 // }
-
 
 // export async function getStaticProps({ params }) {
 // // export const getStaticProps  = async (context) => {
@@ -121,25 +121,25 @@ export default function Index({content}) {
 
 // };
 
-export const getServerSideProps  = async (context) => {
+export const getServerSideProps = async (context) => {
   try {
-    const arrRoute = context.resolvedUrl.replace('/', '').split('/');
-   
-    const content = await getDataPage(arrRoute);
+    const arrRoute = context.resolvedUrl.replace('/', '').split('/')
+
+    const content = await getDataPage(arrRoute)
 
     return {
       props: {
         arrRoute,
-        content
-      }
-    };
+        content,
+      },
+    }
   } catch (error) {
-    console.error('Erro na página:', error);
+    console.error('Erro na página:', error)
 
     return {
       props: {
-        content: null
+        content: null,
       },
-    };
+    }
   }
-};
+}
