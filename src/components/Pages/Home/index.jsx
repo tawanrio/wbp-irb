@@ -32,7 +32,6 @@ import ServicesOverview from './components/ServicesOverview';
 
 export default function Home({content}) {
 
-    console.log(content);
     const [metaTitle] = useState(content?.page?.metaTitle)
     const [title] = useState(content?.page?.title)
     const [metaDescription] = useState(content?.page?.metaDescription)
