@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from 'next/link'
+import { useState } from 'react'
 
-export  function RenderListItem({content, liId, colors}) {
-  const [isHovered, setIsHovered] = useState(false);
+export function RenderListItem({ content, liId, colors }) {
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
     <>
@@ -10,22 +10,23 @@ export  function RenderListItem({content, liId, colors}) {
         onMouseEnter={() => setIsHovered(liId)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
-          ...(isHovered && isHovered === liId && {
-            background: colors.hoverbg,
-            color: colors.hovertext,
+          ...(isHovered &&
+            isHovered === liId && {
+              background: colors.hoverbg,
+              color: colors.hovertext,
+            }),
+          ...(content?.title && {
+            textTransform: 'uppercase',
+            fontWeight: 'bold',
+            marginTop: '10px',
           }),
-          ...(content?.title && { textTransform: 'uppercase', fontWeight: 'bold', marginTop: '10px'}),
         }}
-        className="
-        w-full
-        flex
-        rounded-md
-        px-2
-        " ><Link
-      href={content.route.toLowerCase()}
-      className="
-      "
-      >{content.label}</Link></li>
+        className="flex w-full rounded-md px-2"
+      >
+        <Link href={content.route.toLowerCase()} className=" ">
+          {content.label}
+        </Link>
+      </li>
     </>
   )
 }
