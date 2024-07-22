@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function ServicesOverview() {
     const cards = [
     {
-      "title": "Portfolio",
+      "title": "Portfólio",
       "description": "Cobertura de 99% da frota circulante.",
       "icons": [
         {
