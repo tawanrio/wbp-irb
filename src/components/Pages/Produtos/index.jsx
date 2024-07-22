@@ -1,29 +1,29 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Template / Layout
 import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import Banner from "@/components/Banner/index";
-import BreadCrumb from '@/components/BreadCrumb';
-import Products from '@/components/Products';
-import Faq from '@/components/Faq';
+import Banner from '@/components/Banner/index'
+import BreadCrumb from '@/components/BreadCrumb'
+import Products from '@/components/Products'
+import Faq from '@/components/Faq'
 
 // Others
-import { useState} from 'react';
-import  {useRouter}  from 'next/router';
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 // Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db';
+import { connectMongoDB, disconnectMongoDB } from '@/service/db'
 import Page from '@/service/model/schemas/pageSchema'
-import {Menu} from '@/service/model/schemas/menuSchema'
-import {Template} from '@/service/model/schemas/templateSchema'
-import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
+import { Menu } from '@/service/model/schemas/menuSchema'
+import { Template } from '@/service/model/schemas/templateSchema'
+import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
 
 // Util
 import { insertMenuInTemplate } from '@/utils/functions'
 
-export default function Produtos({content}) {
-
+export default function Produtos({ content }) {
   const router = useRouter()
   const [banners] = useState(content?.page.banners)
   const [title] = useState(content?.page.title)
@@ -32,27 +32,33 @@ export default function Produtos({content}) {
   const [metaDescription] = useState(content?.page.metaDescription)
   const [faq] = useState(content?.page.faq)
 
-
-   
-  
-
   return (
     <>
-    <Head>
-       <title>{metaTitle || title}</title>
-       <meta name="description" content={metaDescription || description} />
-       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-     </Head>
-      <Templates template={content?.template} page={content?.page} menus={content?.menus}>
-       <Banner banners={banners}/>
-       <BreadCrumb/>
-       <Products products={content?.products} colors={content?.page.colors} page />
+      <Head>
+        <title>{metaTitle || title}</title>
+        <meta name="description" content={metaDescription || description} />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+      </Head>
+      <Templates
+        template={content?.template}
+        page={content?.page}
+        menus={content?.menus}
+      >
+        <Banner banners={banners} />
+        <BreadCrumb />
+        <Products
+          products={content?.products}
+          colors={content?.page.colors}
+          page
+        />
         {/* <Faq faq={faq}/> */}
-       </Templates>
-   </>
+      </Templates>
+    </>
   )
 }
-
 
 // async function getDataPage(){
 //   try{
@@ -62,7 +68,6 @@ export default function Produtos({content}) {
 //   const menu = await Menu.findOne({label:"menu"}).lean();
 //   const template = await Template.find();
 //   const products = await ProductsDb.find().lean().limit(6);
-
 
 //   return {
 //     page:JSON.parse(JSON.stringify(page)),
@@ -79,7 +84,7 @@ export default function Produtos({content}) {
 // export const getServerSideProps  = async () => {
 //   try {
 //     const content = await getDataPage();
-  
+
 //     return {
 //       props: {
 //         content

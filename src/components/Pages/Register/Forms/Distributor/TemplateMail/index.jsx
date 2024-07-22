@@ -1,21 +1,34 @@
-import React from "react";
-import {generateUniqueIdByCnpj, generateActionsLink} from "@/utils/functions"
+/* eslint-disable @next/next/no-img-element */
+import React from 'react'
+import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
 
 export default function TemplateMailPartner({ data }) {
   let uniqueId = ''
   let actionsLink = ''
 
-    if(data.inputs?.info.cnpj){
-       uniqueId = data.inputs?.info.cnpj ? generateUniqueIdByCnpj(data.inputs?.info?.cnpj) : ''
+  if (data.inputs?.info.cnpj) {
+    uniqueId = data.inputs?.info.cnpj
+      ? generateUniqueIdByCnpj(data.inputs?.info?.cnpj)
+      : ''
 
-       actionsLink = data.inputs?.info.cnpj ? generateActionsLink(data.inputs?.info?.cnpj, uniqueId) : ''
-    }
+    actionsLink = data.inputs?.info.cnpj
+      ? generateActionsLink(data.inputs?.info?.cnpj, uniqueId)
+      : ''
+  }
 
   return (
-    <div style={{ maxWidth: '600px', padding: '20px', backgroundColor: '#fff', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)' }}>
+    <div
+      style={{
+        maxWidth: '600px',
+        padding: '20px',
+        backgroundColor: '#fff',
+        borderRadius: '10px',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+      }}
+    >
       <h1 style={{ color: '#333' }}>Solicitação de cadastro de parceiro IRB</h1>
       <span>
-        Email enviado através do site:{" "}
+        Email enviado através do site:{' '}
         <a href="http://irbauto.com.br">irbauto.com.br</a>
       </span>
 
@@ -23,27 +36,38 @@ export default function TemplateMailPartner({ data }) {
         <h2 style={{ color: '#333' }}>{data.inputs?.info.partnerType}</h2>
       )}
       {data.inputs?.info.cnpj && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>CNPJ: {data.inputs?.info.cnpj}</p>
+        <p style={{ color: '#666', marginBottom: '10px' }}>
+          CNPJ: {data.inputs?.info.cnpj}
+        </p>
       )}
       {data.inputs?.info.companyName && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>Razão Social: {data.inputs?.info.companyName}</p>
+        <p style={{ color: '#666', marginBottom: '10px' }}>
+          Razão Social: {data.inputs?.info.companyName}
+        </p>
       )}
       {data.inputs?.info.tradingName && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>Nome Fantasia: {data.inputs?.info.tradingName}</p>
+        <p style={{ color: '#666', marginBottom: '10px' }}>
+          Nome Fantasia: {data.inputs?.info.tradingName}
+        </p>
       )}
       {data.inputs?.info.email && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>Email: {data.inputs?.info.email}</p>
+        <p style={{ color: '#666', marginBottom: '10px' }}>
+          Email: {data.inputs?.info.email}
+        </p>
       )}
       {data.inputs?.info.phone && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>Telefone: {data.inputs?.info.phone}</p>
+        <p style={{ color: '#666', marginBottom: '10px' }}>
+          Telefone: {data.inputs?.info.phone}
+        </p>
       )}
-      
+
       {data.inputs?.address && (
         <p style={{ color: '#666', marginBottom: '10px' }}>
           Endereço:
           {data.inputs?.address.street && ` ${data.inputs?.address.street},`}
           {data.inputs?.address.number && ` ${data.inputs?.address.number} -`}
-          {data.inputs?.address.neighborhood && ` ${data.inputs?.address.neighborhood},`}
+          {data.inputs?.address.neighborhood &&
+            ` ${data.inputs?.address.neighborhood},`}
           {data.inputs?.address.city && ` ${data.inputs?.address.city} -`}
           {data.inputs?.address.state && ` ${data.inputs?.address.state},`}
           {data.inputs?.address.cep && ` CEP: ${data.inputs?.address.cep}`}
@@ -64,7 +88,15 @@ export default function TemplateMailPartner({ data }) {
             <span>
               <a
                 href={actionsLink.accept}
-                style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#22326e', color: '#fff', textDecoration: 'none', borderRadius: '5px', transition: 'background-color 0.3s' }}
+                style={{
+                  display: 'inline-block',
+                  padding: '10px 20px',
+                  backgroundColor: '#22326e',
+                  color: '#fff',
+                  textDecoration: 'none',
+                  borderRadius: '5px',
+                  transition: 'background-color 0.3s',
+                }}
               >
                 Aceitar
               </a>
@@ -74,7 +106,15 @@ export default function TemplateMailPartner({ data }) {
             <span>
               <a
                 href={actionsLink.refuse}
-                style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#c12025', color: '#fff', textDecoration: 'none', borderRadius: '5px', transition: 'background-color 0.3s' }}
+                style={{
+                  display: 'inline-block',
+                  padding: '10px 20px',
+                  backgroundColor: '#c12025',
+                  color: '#fff',
+                  textDecoration: 'none',
+                  borderRadius: '5px',
+                  transition: 'background-color 0.3s',
+                }}
               >
                 Recusar
               </a>
@@ -83,5 +123,5 @@ export default function TemplateMailPartner({ data }) {
         </>
       )}
     </div>
-  );
+  )
 }
