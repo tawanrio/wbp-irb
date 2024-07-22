@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
-const connectMongoDB = async () => {
+const connectMongoDB = async (locale) => {
   try {
-    await mongoose.connect(process.env.DB_HOST);
-    console.log('Conexão estabelecida com sucesso.');
+    locale = (locale === 'pt') ? '' : locale;
+    console.log();
+    await mongoose.connect(`${process.env.DB_HOST}irb${locale}?authSource=admin`);
+    console.log('Conexão estabelecida com sucesso.', locale);
   } catch (error) {
     console.error('Erro ao conectar ao MongoDB:', error);
     throw error;

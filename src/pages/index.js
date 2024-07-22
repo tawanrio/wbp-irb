@@ -10,15 +10,16 @@ import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSche
 import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
 import {Form as FormDb} from '@/service/model/schemas/formsSchema'
 
-export default function index({content}) {
+export default function index({content, locale}) {
+  console.log(locale);
   return (
    <Home content={content}/>
   )
 }
 
-async function getDataPage(){
+async function getDataPage({locale}){
   try{
-    await connectMongoDB();
+    await connectMongoDB(locale);
 
     const page = await Page.findOne({label:"home"}).lean();
     // const menu = await Menu.findOne({label:"menu"}).lean();
@@ -31,6 +32,7 @@ async function getDataPage(){
 
   return {
     page:JSON.parse(JSON.stringify(page)),
+    locale:JSON.parse(JSON.stringify(locale)),
     partners:JSON.parse(JSON.stringify(partners)),
     categories:JSON.parse(JSON.stringify(categories)),
     form:JSON.parse(JSON.stringify(form)),
@@ -44,16 +46,17 @@ async function getDataPage(){
   }
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
   
-  const content = await getDataPage();
+  const content = await getDataPage({locale});
   const response = await fetch('https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts');
   content.blogData = await response.json();
   // const content = await testeRoute(resolvedUrl)
 
   return {
     props: {
-      content
+      content,
+      locale: locale
     },
     revalidate: 3600,
   };

@@ -90,9 +90,9 @@ const routeError = async (error, route) => {
   }
 }
 
-const getDataPage = async (resolvedUrl) => {
+const getDataPage = async (resolvedUrl,locale) => {
 try{
-      await connectMongoDB();
+      await connectMongoDB(locale);
       
       const route = formatStrToUrl(resolvedUrl)
      

@@ -11,6 +11,8 @@ const pageSchema = new mongoose.Schema({
     banners: Object,
     colors: Object,
     companyValues: Array,
+    certificate: Array,
+    servicesOverview: Array,
     faq: Array
     
   }, {

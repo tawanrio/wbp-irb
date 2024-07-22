@@ -9,6 +9,7 @@ export default function MenuDesktop({content}) {
 
     // const dataHeader = layouts.header
     // const colors = layouts.header.colors
+
     const dataHeader = content
     const colors = content?.colors
 
@@ -16,6 +17,7 @@ export default function MenuDesktop({content}) {
         submenu && event.preventDefault();
         submenuOpen ? setSubmenuOpen(false) : setSubmenuOpen(key)
     }
+
 
     function handleMenu(){
         if(menuOpen){
@@ -29,16 +31,16 @@ export default function MenuDesktop({content}) {
     return (
         <>
             <div className=' 
-            md:w-full 
-            justify-between 
-            md:max-w-7xl 
-            md:mx-auto 
-            md:px-14
-            md:min-h-[110px]
-            relative
-            flex
-            items-center
-            px-6
+                md:w-full 
+                justify-between 
+                md:max-w-7xl 
+                md:mx-auto 
+                md:px-14
+                md:min-h-[110px]
+                relative
+                flex
+                items-center
+                px-6
             '>
                 <Link href={dataHeader.logo.route} className='w-20 md:w-36'>
                     <Image
@@ -76,7 +78,6 @@ export default function MenuDesktop({content}) {
                     md:z-50
                     md:w-full
                     md:mt-0
-                    
                     !z-[999]
                     right-0
                     w-[65%]
@@ -121,8 +122,7 @@ export default function MenuDesktop({content}) {
                             font-medium
                             flex-row-reverse
                             gap-3
-                            '
-                            >
+                            '>
                                 <span>{link.label}</span>
                                 {link.hasOwnProperty("submenu") && ( <Image
                                                                         src={dataHeader.nav[0].icon}

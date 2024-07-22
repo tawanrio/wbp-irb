@@ -271,9 +271,9 @@ return {
 }
 }
   
-  const getDataPage = async (arrRoute) => {
+  const getDataPage = async (arrRoute, locale) => {
       try{
-        await connectMongoDB();
+        await connectMongoDB(locale);
   
   
       // se for a rota for distribuidor/ autopeça/ autocenter

@@ -1,67 +1,8 @@
 import Image from "next/image"
 
-export default function ServicesOverview() {
-    const cards = [
-    {
-      "title": "Portfolio",
-      "description": "Cobertura de 99% da frota circulante.",
-      "icons": [
-        {
-          "url":"/images/components/icons/portfolio.png",
-          "alt":"iso 9001",
-          "title":"",
-          "legend":"",
-          "bg": ""
-        }
-      ]
-    },
-    {
-      "title": "Produtos",
-      "description": "Desenvolvidos sob medida para o clima e solo brasileiros.",
-      "icons": [
-        {
-          "url":"/images/components/icons/product-red-2.png",
-          "alt":"iso 9001",
-          "title":"",
-          "legend":"",
-          "bg": ""
-        }
-      ]
-    },
-    {
-      "title": "Certificações",
-      "description": "Maiores certificadoras mundiais.",
-      "icons": [
-        {
-          "url":"/images/components/icons/iso-9001-red.png",
-          "alt":"iso 9001",
-          "title":"",
-          "legend":""
-        },
-        {
-          "url":"/images/components/icons/iso-16949-red.png",
-          "alt":"iso 16949",
-          "title":"",
-          "legend":""
-        }
-      ]
-    }
-  ]
-
-  const certificate =  [
-    {
-      "url":"/images/components/icons/iso-9001-red.png",
-      "alt":"iso 9001",
-      "title":"",
-      "legend":""
-    },
-    {
-      "url":"/images/components/icons/iso-16949-red.png",
-      "alt":"iso 16949",
-      "title":"",
-      "legend":""
-    }
-  ]
+export default function ServicesOverview({content, certificate}) {
+    
+ 
 
 
   return (
@@ -70,7 +11,7 @@ export default function ServicesOverview() {
 
       
     <div className="flex flex-col gap-4 md:flex-row md:gap-10">
-      {cards.map((card, index) => (
+      {content.map((card, index) => (
         <div key={index} className="w-full flex flex-col gap-4 md:w-1/3">
           <div className="card rounded-xl flex flex-col items-center shadow-md p-8 flex-1 h-44">
             <h3 className="text-2xl font-bold text-[#AF231C] uppercase">{card.title}</h3>
