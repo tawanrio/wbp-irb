@@ -17,7 +17,7 @@ export default function Card({ collection }) {
   return (
     <Link
       href={collectionUrl}
-      className="flex h-full w-full flex-col items-center duration-500 hover:scale-95"
+      className="mx-auto flex h-full w-full max-w-[22.5rem] flex-col items-center duration-500 hover:scale-95"
     >
       <h3 className="flex h-16 flex-grow items-center text-xl font-bold capitalize">
         {collection?.tradingName}
@@ -25,7 +25,7 @@ export default function Card({ collection }) {
       <figure className="flex h-[13.75rem] w-full items-center justify-center overflow-hidden rounded-lg border">
         <img
           src={imageNotFound.src}
-          alt={collection?.logo.alt}
+          alt={collection.tradingName}
           className="h-full w-full object-cover"
         />
       </figure>

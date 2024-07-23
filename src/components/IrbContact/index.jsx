@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Description from '../Description'
 import Button from '../Button'
-import imgCallCenter from '../../../public/images/pages/contact/call-center.jpg'
+import imageCallCenter from '../../../public/images/pages/contact/call-center.jpg'
 
 export default function ProductFaq({
-  logo,
   contentDescription,
   title,
   whatsapp,
@@ -16,8 +15,8 @@ export default function ProductFaq({
         <div className="flex flex-col gap-10 lg:flex-row">
           <figure className="mx-auto flex max-h-80 w-full max-w-[27.5rem] flex-col flex-wrap justify-center overflow-hidden rounded-lg md:w-[27.5rem]">
             <img
-              src={imgCallCenter.src}
-              alt={logo.alt}
+              src={imageCallCenter.src}
+              alt={title}
               className="h-full w-full object-cover"
             />
           </figure>
