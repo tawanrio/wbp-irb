@@ -19,7 +19,7 @@ export default function Card({ collection }) {
       href={collectionUrl}
       className="mx-auto flex h-full w-full max-w-[22.5rem] flex-col items-center duration-500 hover:scale-95"
     >
-      <h3 className="flex h-16 flex-grow items-center text-xl font-bold capitalize">
+      <h3 className="flex h-16 items-center text-center text-lg font-bold uppercase">
         {collection?.tradingName}
       </h3>
       <figure className="flex h-[13.75rem] w-full items-center justify-center overflow-hidden rounded-lg border">
