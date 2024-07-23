@@ -1,7 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const menuSchema = new mongoose.Schema({
-    id : Object,
+const menuSchema = new mongoose.Schema(
+  {
+    id: Object,
     label: String,
     menus: Array,
     links: Array,
@@ -9,8 +10,11 @@ const menuSchema = new mongoose.Schema({
     icon: String,
     title: String,
     separateIcon: String,
-  }, {
-    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
-  });
-  
-export const Menu = mongoose?.models?.components || mongoose?.model('components', menuSchema);
+  },
+  {
+    versionKey: false, // Isso impede que o campo "__v" seja incluído nos documentos
+  },
+)
+
+export const Menu =
+  mongoose?.models?.components || mongoose?.model('components', menuSchema)

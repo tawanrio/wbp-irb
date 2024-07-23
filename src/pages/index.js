@@ -1,14 +1,15 @@
-import Home from "@/components/Pages/Home"
+import Home from '@/components/Pages/Home'
 
 // Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db';
+import { connectMongoDB, disconnectMongoDB } from '@/service/db'
 import Page from '@/service/model/schemas/pageSchema'
-import {Menus} from '@/service/model/schemas/menusSchema'
-import {Template} from '@/service/model/schemas/templateSchema'
-import {Categories as SchemaCategories} from '@/service/model/schemas/categoriesSchema'
-import {CategoriesProducts} from '@/service/model/schemas/categoriesProductsSchema'
-import {Products as ProductsDb} from '@/service/model/schemas/productsSchema'
-import {Form as FormDb} from '@/service/model/schemas/formsSchema'
+import { Menus } from '@/service/model/schemas/menusSchema'
+import { Template } from '@/service/model/schemas/templateSchema'
+import { Categories as SchemaCategories } from '@/service/model/schemas/categoriesSchema'
+import { CategoriesProducts } from '@/service/model/schemas/categoriesProductsSchema'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
+import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 
 export default function index({content, locale}) {
   console.log(locale);
@@ -21,14 +22,16 @@ async function getDataPage({locale}){
   try{
     await connectMongoDB(locale);
 
-    const page = await Page.findOne({label:"home"}).lean();
+    const page = await Page.findOne({ label: 'home' }).lean()
     // const menu = await Menu.findOne({label:"menu"}).lean();
-    const menus = await Menus.find().lean();
-    const template = await Template.find();
-    const partners = await SchemaCategories.findOne({label:"partners"}).lean();
-    const categories = await CategoriesProducts.find().lean();
+    const menus = await Menus.find().lean()
+    const template = await Template.find()
+    const partners = await SchemaCategories.findOne({
+      label: 'partners',
+    }).lean()
+    const categories = await CategoriesProducts.find().lean()
     // const products = await ProductsDb.find().lean().limit(6);
-    const form = await FormDb.findOne({label: "form"}).lean();
+    const form = await FormDb.findOne({ label: 'form' }).lean()
 
   return {
     page:JSON.parse(JSON.stringify(page)),
@@ -59,6 +62,5 @@ export async function getStaticProps({locale}) {
       locale: locale
     },
     revalidate: 3600,
-  };
-
-};
+  }
+}

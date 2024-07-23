@@ -1,35 +1,37 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
 const SingleUtility = ({ utilities }) => {
   return (
-    <div className="bg-white shadow-md rounded-md overflow-hidden h-96 justify-between flex flex-col items-start">
+    <div className="flex h-96 flex-col items-start justify-between overflow-hidden rounded-md bg-white shadow-md">
       <div>
-      <div className="relative w-full h-[200px]">
-        <Image
-          src={utilities.image}
-          alt={utilities.title}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-t-md"
-        />
-      </div>
-      <div className="p-4 flex flex-col justify-between items-start">
-        <div>
-          <h2 className="text-xl font-semibold text-[#222]">{utilities.title}</h2>
-          <p className="text-[#222] line-clamp-3">{utilities.description}</p>
+        <div className="relative h-[200px] w-full">
+          <Image
+            src={utilities.image}
+            alt={utilities.title}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-t-md"
+          />
+        </div>
+        <div className="flex flex-col items-start justify-between p-4">
+          <div>
+            <h2 className="text-xl font-semibold text-[#222]">
+              {utilities.title}
+            </h2>
+            <p className="line-clamp-3 text-[#222]">{utilities.description}</p>
+          </div>
         </div>
       </div>
+      <div className="px-4">
+        <a
+          href={utilities.link}
+          className="inline-block rounded-md text-center font-semibold text-black transition-colors duration-500"
+        >
+          Saiba mais
+        </a>
       </div>
-        <div className='px-4'>
-          <a
-            href={utilities.link}
-            className="inline-block font-semibold text-black text-center rounded-md transition-colors duration-500"
-          >
-            Saiba mais
-          </a>
-        </div>
     </div>
-  );
-};
+  )
+}
 
-export default SingleUtility;
+export default SingleUtility

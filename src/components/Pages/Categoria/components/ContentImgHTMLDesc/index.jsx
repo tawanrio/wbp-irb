@@ -1,70 +1,52 @@
-import Image from "next/image";
-import SectionTitle from "../../../../SectionTitle";
-import InsertText from "@/components/InserText";
-import dynamic from 'next/dynamic';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import Image from 'next/image'
+import SectionTitle from '../../../../SectionTitle'
+import InsertText from '@/components/InserText'
+import dynamic from 'next/dynamic'
 
 // const InsertText = dynamic(() => import('@/components/InserText'), { ssr: false });
 
 export default function ContentImgHTMLDesc({ textHTML, image }) {
-    console.log(image);
-    return (
-        <>
-            <article className="flex flex-col items-center " id={`content-img-description_`}>
-                <div className="w-full max-w-7xl md:px-14 px-6 md:my-10 my-4 flex flex-col md:justify-between md:gap-10">
-                    <div className="md:flex-row flex-col flex justify-between md:gap-14 gap-8 md:my-6 mt-8">
-                        <div className="md:h-[400px] h-[300px] relative group">
-                            <div
-                                // style={{ borderRadius: content?.image.borderRadius }}
-                                className="overflow-hidden md:min-w-[380px] h-full group-hover:scale-105 duration-700"
-                            >
-                                <div className="relative">
-                                    {image?.title && (<div className="
-                                        z-90
-                                        w-full 
-                                        absolute 
-                                        md:min-h-[400px] 
-                                        min-h-[300px]
-                                        bg-[#0a0a0aa3]
-                                        flex
-                                        z-[99]
-                                        justify-center
-                                        items-center
-                                        uppercase
-                                        text-white
-                                        font-bold
-                                        text-2xl
-                                    ">{image?.title}</div>)}
-                                    <Image
-                                        src={image?.imageUrl}
-                                        fill
-                                        sizes="100vw"
-                                        alt={image?.alt}
-                                        quality={100}
-                                        className="
-                                            h-full
-                                            md:min-h-[400px]
-                                            min-h-[300px]
-                                            w-full
-                                            object-cover
-                                            z-20
-                                            duration-1000
-                                        "
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="md:w-2/3 w-full flex flex-col gap-8">
-                            <div dangerouslySetInnerHTML={{ __html: textHTML }} className=" md:text-lg
-            text-base
-            flex
-            mb-2
-            font-[400]
-            text-justify
-            text-[#666]"></div>
-                        </div>
+  console.log(image)
+  return (
+    <>
+      <article
+        className="flex flex-col items-center"
+        id={`content-img-description_`}
+      >
+        <div className="my-4 flex w-full max-w-7xl flex-col px-6 md:my-10 md:justify-between md:gap-10 md:px-14">
+          <div className="mt-8 flex flex-col justify-between gap-8 md:my-6 md:flex-row md:gap-14">
+            <div className="group relative h-[300px] md:h-[400px]">
+              <div
+                // style={{ borderRadius: content?.image.borderRadius }}
+                className="h-full overflow-hidden duration-700 group-hover:scale-105 md:min-w-[380px]"
+              >
+                <div className="relative">
+                  {image?.title && (
+                    <div className="z-90 absolute z-[99] flex min-h-[300px] w-full items-center justify-center bg-[#0a0a0aa3] text-2xl font-bold uppercase text-white md:min-h-[400px]">
+                      {image?.title}
                     </div>
+                  )}
+                  <Image
+                    src={image?.imageUrl}
+                    fill
+                    sizes="100vw"
+                    alt={image?.alt}
+                    quality={100}
+                    className="z-20 h-full min-h-[300px] w-full object-cover duration-1000 md:min-h-[400px]"
+                  />
                 </div>
-            </article>
-        </>
-    );
+              </div>
+            </div>
+            <div className="flex w-full flex-col gap-8 md:w-2/3">
+              <div
+                dangerouslySetInnerHTML={{ __html: textHTML }}
+                className="mb-2 flex text-justify text-base font-[400] text-[#666] md:text-lg"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </>
+  )
 }

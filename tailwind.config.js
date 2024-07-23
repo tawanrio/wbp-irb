@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -12,11 +11,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-          'circle': 'linear-gradient(330deg, rgba(0,0,5,0) 13%, rgba(0,2,3,1) 86%)',
-          'white-to-tramsp': 'linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(0,0,0,0) 100%)',
-        },
+        circle: 'linear-gradient(330deg, rgba(0,0,5,0) 13%, rgba(0,2,3,1) 86%)',
+        'white-to-tramsp':
+          'linear-gradient(0deg, rgba(255,255,255,1) 10%, rgba(0,0,0,0) 100%)',
+      },
       fontFamily: {
-        sans : ['Inter', 'arial', 'Times New Roman']
+        sans: ['Inter', 'arial', 'Times New Roman'],
       },
       animation: {
         fadeIn: 'fadeIn 1s',
@@ -31,9 +31,8 @@ module.exports = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-      }
+      },
     },
-    
   },
   plugins: [],
 }

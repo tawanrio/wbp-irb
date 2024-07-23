@@ -1,30 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 const CookiePopup = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  
+  const [showPopup, setShowPopup] = useState(false)
 
   useEffect(() => {
     // Verifica se o cookie "cookieAccepted" existe
-    const cookieAccepted = localStorage.getItem('cookieAccepted');
+    const cookieAccepted = localStorage.getItem('cookieAccepted')
     if (!cookieAccepted) {
       // Se o cookie não existe, mostra o popup
-      setShowPopup(true);
+      setShowPopup(true)
     }
-  }, []);
+  }, [])
 
   const acceptCookies = () => {
     // Define o cookie "cookieAccepted" quando o usuário aceita os cookies
-    localStorage.setItem('cookieAccepted', 'true');
-    setShowPopup(false);
-  };
+    localStorage.setItem('cookieAccepted', 'true')
+    setShowPopup(false)
+  }
 
   return (
     <>
       {showPopup && (
         <div className="cookie-popup">
-          <div className="cookie-popup-content gap-5 flex items-center  flex-col">
-            <p>Este site utiliza cookies para oferecer uma melhor experiência de navegação. Ao continuar, você concorda com o uso de cookies e aceita o armazenamento dos seus dados de acordo com a LGPD (Lei Geral de Proteção de Dados).</p>
+          <div className="cookie-popup-content flex flex-col items-center gap-5">
+            <p>
+              Este site utiliza cookies para oferecer uma melhor experiência de
+              navegação. Ao continuar, você concorda com o uso de cookies e
+              aceita o armazenamento dos seus dados de acordo com a LGPD (Lei
+              Geral de Proteção de Dados).
+            </p>
             <button className="accept-btn w-1/2" onClick={acceptCookies}>
               Aceitar
             </button>
@@ -56,7 +60,7 @@ const CookiePopup = () => {
         }
       `}</style>
     </>
-  );
-};
+  )
+}
 
-export default CookiePopup;
+export default CookiePopup

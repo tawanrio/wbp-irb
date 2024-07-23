@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
-import SectionTitle from "@/components/SectionTitle";
-import FormDistributor from "./Distributor";
-import FormAutoparts from "./Autoparts";
-import FormMechanics from "./Mechanics";
-import { toast } from "react-toastify";
-import ReactDOMServer from 'react-dom/server';
-import TemplateMailPartner from "../../Contato/Forms/Partner/TemplateMail";
-import TemplateMailSuccessRegister from "./Components/TemplateMailSuccessRegister";
-import "react-toastify/dist/ReactToastify.css";
-import {generateUniqueIdByCnpj, generateActionsLink} from "@/utils/functions"
-import { stringify } from "postcss";
-
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useEffect, useState } from 'react'
+import SectionTitle from '@/components/SectionTitle'
+import FormDistributor from './Distributor'
+import FormAutoparts from './Autoparts'
+import FormMechanics from './Mechanics'
+import { toast } from 'react-toastify'
+import ReactDOMServer from 'react-dom/server'
+import TemplateMailPartner from '../../Contato/Forms/Partner/TemplateMail'
+import TemplateMailSuccessRegister from './Components/TemplateMailSuccessRegister'
+import 'react-toastify/dist/ReactToastify.css'
+import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
+import { stringify } from 'postcss'
 
 export default function RegisterForm() {
-  const [partnerType, setPartnerType] = useState('');
+  const [partnerType, setPartnerType] = useState('')
   const [inputs, setInputs] = useState(null)
   const [uniqueId, setUniqueId] = useState('')
   const [structureMail, setStructureMail] = useState({})
@@ -23,30 +24,37 @@ export default function RegisterForm() {
 
   const [responseMessage] = useState({
     success: 'Cadastro enviado com sucesso, aguarde aprovação.',
-    error: 'Erro ao enviar cadastro.'
-  });
+    error: 'Erro ao enviar cadastro.',
+  })
 
   const [formData, setFormData] = useState({
     inputs: {
-     info: {},
-     address: {},
+      info: {},
+      address: {},
     },
-     actionsLink: {},
-     html: ''
-   });
+    actionsLink: {},
+    html: '',
+  })
 
-  const [resetInputs, setResetInputs] = useState(false) 
+  const [resetInputs, setResetInputs] = useState(false)
   const [sending, setSending] = useState(null)
 
-  const handlePartnerType = (value) => setPartnerType(value);
+  const handlePartnerType = (value) => setPartnerType(value)
 
-
-  useEffect(()=>{
-    if(formData.inputs?.info.cnpj){
-      setUniqueId(generateUniqueIdByCnpj(formData.inputs?.info?.cnpj));
-      setActionsLink(generateActionsLink(formData.inputs?.info?.cnpj, uniqueId));
+  useEffect(() => {
+    if (formData.inputs?.info.cnpj) {
+      setUniqueId(generateUniqueIdByCnpj(formData.inputs?.info?.cnpj))
+      setActionsLink(generateActionsLink(formData.inputs?.info?.cnpj, uniqueId))
     }
-    setHtml(ReactDOMServer.renderToString(<TemplateMailPartner data={formData} uniqueId={uniqueId} actionsLink={actionsLink} />))
+    setHtml(
+      ReactDOMServer.renderToString(
+        <TemplateMailPartner
+          data={formData}
+          uniqueId={uniqueId}
+          actionsLink={actionsLink}
+        />,
+      ),
+    )
 
     setStructureMail({
       html,
@@ -55,205 +63,226 @@ export default function RegisterForm() {
       cco: 'tawan.rio@webfoco.com',
       from: 'formData.inputs.info.tradingName',
       subject: 'Solicitação de cadastro de parceiro',
-    });
+    })
 
     setFormData({
       inputs,
       structureMail,
-      uniqueId
+      uniqueId,
     })
 
-    console.log(process.env.NEXT_PUBLIC_EMAIL_TO_SEND);
-    
-  },[inputs])
-  
+    console.log(process.env.NEXT_PUBLIC_EMAIL_TO_SEND)
+  }, [inputs])
 
+  const handleSubmitForm = async (e) => {
+    e.preventDefault()
 
-const handleSubmitForm = async (e) => {
-  e.preventDefault();
-  
-  if(! formData.inputs.info.partnerType) return
-  setSending(true);
-  
-  try {
-    
+    if (!formData.inputs.info.partnerType) return
+    setSending(true)
+
+    try {
       const responseUploadImages = await uploadImagesToDB(formData)
-      if(!responseUploadImages) throw new Error('Upload Images');
+      if (!responseUploadImages) throw new Error('Upload Images')
 
       const responseInserDB = await insertDataIntoDB({
-        formData
-      });
+        formData,
+      })
 
-      if(!responseInserDB) throw new Error('Database');
+      if (!responseInserDB) throw new Error('Database')
 
       const responseSendEmailAdm = await sendEmailToAction(formData)
-      if(!responseSendEmailAdm) throw new Error('Envio de email');
+      if (!responseSendEmailAdm) throw new Error('Envio de email')
 
       const responseSendEmailPartner = await sendEmailToPartner(formData)
-      if(!responseSendEmailPartner) throw new Error('Envio de email');
+      if (!responseSendEmailPartner) throw new Error('Envio de email')
 
       toast.success(responseMessage.success)
-    
-    // setResetInputs(!(resetInputs))
-} catch (error) {
-  toast.error(`${responseMessage.error} - ${error.message}`);
-} finally {
-  setSending(false);
-}
-};
 
-const uploadImagesToDB = async (data) => {
-  // Inserir logo no banco de dados
-  const responseLogo = await insertImgDatabase(data.inputs.info.logo, data.inputs.info.cnpj);
-  if (responseLogo.status !== 200) throw new Error('Database');
-
-  data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`;
-
-  // Inserir imagens de requisitos no banco de dados, se existirem
-  if (data.inputs.requirements) {
-      const { certificateImg, elevatorImg } = data.inputs.requirements;
-      const { cnpj } = data.inputs.info;
-
-      const responseCertificate = certificateImg ? await insertImgDatabase(certificateImg, cnpj) : '';
-      const responseElevatorImg = elevatorImg ? await insertImgDatabase(elevatorImg, cnpj) : '';
-
-      data.inputs.requirements.certificateImg = responseCertificate?.path 
-          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}` 
-          : '';
-      data.inputs.requirements.elevatorImg = responseElevatorImg?.path 
-          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}` 
-          : '';
+      // setResetInputs(!(resetInputs))
+    } catch (error) {
+      toast.error(`${responseMessage.error} - ${error.message}`)
+    } finally {
+      setSending(false)
+    }
   }
 
-  return responseLogo;
-}
+  const uploadImagesToDB = async (data) => {
+    // Inserir logo no banco de dados
+    const responseLogo = await insertImgDatabase(
+      data.inputs.info.logo,
+      data.inputs.info.cnpj,
+    )
+    if (responseLogo.status !== 200) throw new Error('Database')
 
+    data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
 
-const sendEmailToPartner = async (data) => {
-  const structureHtml = ReactDOMServer.renderToString(<TemplateMailSuccessRegister data={data.inputs} />);
+    // Inserir imagens de requisitos no banco de dados, se existirem
+    if (data.inputs.requirements) {
+      const { certificateImg, elevatorImg } = data.inputs.requirements
+      const { cnpj } = data.inputs.info
 
-  data.structureMail = {
-    html: structureHtml,
-    to: data.inputs.info.email,
-    cco: 'tawan.rio@webfoco.com',
-    from: 'formData.inputs.info.tradingName',
-    subject: 'Cadastro Recebido: Aguardando Aprovação',
-  };
+      const responseCertificate = certificateImg
+        ? await insertImgDatabase(certificateImg, cnpj)
+        : ''
+      const responseElevatorImg = elevatorImg
+        ? await insertImgDatabase(elevatorImg, cnpj)
+        : ''
 
-  const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      formData: data,
-    }),
-  });
+      data.inputs.requirements.certificateImg = responseCertificate?.path
+        ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
+        : ''
+      data.inputs.requirements.elevatorImg = responseElevatorImg?.path
+        ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
+        : ''
+    }
 
-  return response.ok;
-};
+    return responseLogo
+  }
 
-const insertImgDatabase = async (img,cnpj) => {
-  const data = new FormData();
-    data.append('file', img);
-    data.append('origin', 'register')
-    data.append('id', cnpj)
+  const sendEmailToPartner = async (data) => {
+    const structureHtml = ReactDOMServer.renderToString(
+      <TemplateMailSuccessRegister data={data.inputs} />,
+    )
 
-const response = await fetch(process.env.NEXT_PUBLIC_UPLOAD_IMAGES + '/communication/files/upload', {
-  method: 'POST',
-  body:data
+    data.structureMail = {
+      html: structureHtml,
+      to: data.inputs.info.email,
+      cco: 'tawan.rio@webfoco.com',
+      from: 'formData.inputs.info.tradingName',
+      subject: 'Cadastro Recebido: Aguardando Aprovação',
+    }
 
-})
-
-const result = await response.json();
-return result
-}
-
-  const sendEmailToAction = async (data) =>{
-   
-    // const response = await fetch('http://localhost:3000/api/handlemail/sendmail', {
-      const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail',
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          formData
+          formData: data,
         }),
-      });
-      return response.ok
+      },
+    )
+
+    return response.ok
+  }
+
+  const insertImgDatabase = async (img, cnpj) => {
+    const data = new FormData()
+    data.append('file', img)
+    data.append('origin', 'register')
+    data.append('id', cnpj)
+
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_UPLOAD_IMAGES + '/communication/files/upload',
+      {
+        method: 'POST',
+        body: data,
+      },
+    )
+
+    const result = await response.json()
+    return result
+  }
+
+  const sendEmailToAction = async (data) => {
+    // const response = await fetch('http://localhost:3000/api/handlemail/sendmail', {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formData,
+        }),
+      },
+    )
+    return response.ok
   }
 
   const insertDataIntoDB = async (data) => {
-          const response = await fetch(process.env.NEXT_PUBLIC_DOMAIN + "/api/handlemail/insertdb",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-      return response.ok
-  };
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/insertdb',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      },
+    )
+    return response.ok
+  }
 
   return (
     <section className="flex flex-col items-center" id={`register_`}>
-      <div className="w-full max-w-7xl md:px-14 md:my-7 px-6 my-4 mb-10 flex flex-col justify-between gap-10">
-        <SectionTitle title={"Cadastro"} line />
+      <div className="my-4 mb-10 flex w-full max-w-7xl flex-col justify-between gap-10 px-6 md:my-7 md:px-14">
+        <SectionTitle title={'Cadastro'} line />
 
         <form
           onSubmit={(e) => handleSubmitForm(e)}
           className="flex flex-col items-center gap-10"
-          enctype =" multipart/form-data "
+          enctype=" multipart/form-data "
         >
           <div className="flex w-full flex-col">
             <label
-              className="font-bold capitalize text-lg"
+              className="text-lg font-bold capitalize"
               htmlFor="partnerType"
             >
               Tipo de parceiro
             </label>
             <select
               id="partnerType"
-              className="border py-2 px-4"
+              className="border px-4 py-2"
               value={partnerType}
               onChange={(e) => handlePartnerType(e.target.value)}
             >
-              <option value=''>Área de Atuação</option>
+              <option value="">Área de Atuação</option>
               <option value="distribuidoras">Distribuidoras</option>
               <option value="mecanicas">Mecânicas</option>
               <option value="autopecas">Autopeças</option>
             </select>
           </div>
 
-          {partnerType === "distribuidoras" && (
-            <FormDistributor setInputs={setInputs} resetInputs={resetInputs} partnerType={partnerType}   />
+          {partnerType === 'distribuidoras' && (
+            <FormDistributor
+              setInputs={setInputs}
+              resetInputs={resetInputs}
+              partnerType={partnerType}
+            />
           )}
-          {partnerType === "mecanicas" && (
-            <FormMechanics setInputs={setInputs} resetInputs={resetInputs} partnerType={partnerType}   />
+          {partnerType === 'mecanicas' && (
+            <FormMechanics
+              setInputs={setInputs}
+              resetInputs={resetInputs}
+              partnerType={partnerType}
+            />
           )}
-          {partnerType === "autopecas" && (
-            <FormAutoparts setInputs={setInputs} resetInputs={resetInputs} partnerType={partnerType}   />
+          {partnerType === 'autopecas' && (
+            <FormAutoparts
+              setInputs={setInputs}
+              resetInputs={resetInputs}
+              partnerType={partnerType}
+            />
           )}
 
-          { !(partnerType === '') && (
+          {!(partnerType === '') && (
             <>
-           
               <div>
                 <button
                   // disabled={sending}
-                  className="px-20 py-2 bg-[#22326e] text-white text-2xl rounded-full hover:scale-110 duration-500"
+                  className="rounded-full bg-[#22326e] px-20 py-2 text-2xl text-white duration-500 hover:scale-110"
                 >
-                  {sending ? "Enviando..." : "Enviar"}
+                  {sending ? 'Enviando...' : 'Enviar'}
                 </button>
               </div>
             </>
           )}
         </form>
-      
       </div>
     </section>
-  );
+  )
 }

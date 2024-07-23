@@ -1,124 +1,67 @@
-import Image from "next/image"
-import Description from "../Description"
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import Image from 'next/image'
+import Description from '../Description'
 
-export default function CompanyValues({cards}) {
-    
+export default function CompanyValues({ cards }) {
   return (
     <section className="flex flex-col items-center" id={`company-values_`}>
-        <div className="w-full md:max-w-7xl md:px-14 md:mb-10 my-4 px-6 flex max-w-lg ">
-
-            <div 
-            style={{scrollSnapType:'x mandatory'}}
-            className="
-            md:justify-between>
-            flex 
-            w-full
-            overflow-x-scroll 
-            flex-nowrap
-            gap-4
-            justify-start
-            scrollbar-hide
-            md:p-0
-            p-5
-            ">
-
-          
-        {cards?.map((card, cId) => {
+      <div className="my-4 flex w-full max-w-lg px-6 md:mb-10 md:max-w-7xl md:px-14">
+        <div
+          style={{ scrollSnapType: 'x mandatory' }}
+          className="md:justify-between> scrollbar-hide flex w-full flex-nowrap justify-start gap-4 overflow-x-scroll p-5 md:p-0"
+        >
+          {cards?.map((card, cId) => {
             return (
-                <div key={cId} style={{background:card.colors.bg, color:card.colors.text, scrollSnapAlign: 'start'}} 
-                className={`
-                 md:w-full 
-                md:min-w-[250px]
-                min-w-[240px]
-                flex 
-                flex-initial
-                flex-col 
-                rounded-3xl
-                shadow-[0px_0px_25px_-10px_rgba(0,0,0,.6)]
-                pt-4
-                md:pb-10
-                pb-6
-                `}>
-                    <div className="
-                        flex
-                        items-end
-                        gap-6
-                        md:px-10
-                        md:pb-7
-                        pb-4
-                        px-5
-                        relative
-                        
-                    ">
-                        <div>
-                            <Image 
-                            src={card.image} 
-                            alt={card.title}
-                            width={50}
-                            height={50}
-                            className="md:w-[50px] md:h-[50px] w-9 h-9"
-                            />
-                        </div>
-                        <h3 className="
-                        md:text-2xl 
-                        text-2xl 
-                        w-full 
-                        font-bold 
-                        right-0
-                        text-center 
-                        absolute 
-                        uppercase">
-                            {card.title}
-                        </h3>
-                    </div>
-                   <div className="relative">
-                        <hr
-                           className="
-                           border-2
-                            border-t-0
-                           "/>
-                        <hr
-                        style={{borderColor: card.colors.hr}}
-                        className="
-                        absolute
-                        border-2
-                        border-t-0
-                        translate-y-[-2px]
-                        translate-x-[200%]
-                        z-50
-                        w-1/3
-                        " />
-                   </div>
-                    <div
-                    className="
-                    md:mt-8
-                    mt-4
-                    text-center
-                    font-light
-                    px-5
-                    ">
-                        <span> {card.description?.map((text , tId)=>(
-              <p key={tId} 
-              id={`description_`}
-              className="
-              md:text-lg
-              text-base
-              flex
-              text-center
-              "
+              <div
+                key={cId}
+                style={{
+                  background: card.colors.bg,
+                  color: card.colors.text,
+                  scrollSnapAlign: 'start',
+                }}
+                className={`flex min-w-[240px] flex-initial flex-col rounded-3xl pb-6 pt-4 shadow-[0px_0px_25px_-10px_rgba(0,0,0,.6)] md:w-full md:min-w-[250px] md:pb-10`}
               >
-              {text}
-            </p>
-          ))}
-                            {/* <Description content={card.description} color="#fff" size="10px"/> */}
-                            </span>
-                    </div>
+                <div className="relative flex items-end gap-6 px-5 pb-4 md:px-10 md:pb-7">
+                  <div>
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      width={50}
+                      height={50}
+                      className="h-9 w-9 md:h-[50px] md:w-[50px]"
+                    />
+                  </div>
+                  <h3 className="absolute right-0 w-full text-center text-2xl font-bold uppercase md:text-2xl">
+                    {card.title}
+                  </h3>
                 </div>
-                )
-            })}
-            
-            </div>
-            </div>
+                <div className="relative">
+                  <hr className="border-2 border-t-0" />
+                  <hr
+                    style={{ borderColor: card.colors.hr }}
+                    className="absolute z-50 w-1/3 translate-x-[200%] translate-y-[-2px] border-2 border-t-0"
+                  />
+                </div>
+                <div className="mt-4 px-5 text-center font-light md:mt-8">
+                  <span>
+                    {' '}
+                    {card.description?.map((text, tId) => (
+                      <p
+                        key={tId}
+                        id={`description_`}
+                        className="flex text-center text-base md:text-lg"
+                      >
+                        {text}
+                      </p>
+                    ))}
+                    {/* <Description content={card.description} color="#fff" size="10px"/> */}
+                  </span>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
     </section>
   )
 }

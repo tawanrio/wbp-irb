@@ -1,7 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const pageSchema = new mongoose.Schema({
-    id : Object,
+const pageSchema = new mongoose.Schema(
+  {
+    id: Object,
     label: String,
     title: String,
     metaTitle: String,

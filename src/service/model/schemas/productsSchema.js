@@ -1,7 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const productsSchema = new mongoose.Schema({
-    id : Object,
+const productsSchema = new mongoose.Schema(
+  {
+    id: Object,
     title: String,
     label: String,
     metaTitle: String,
@@ -12,10 +13,12 @@ const productsSchema = new mongoose.Schema({
     thumbnail: Object,
     gallery: Array,
     models: Array,
-    faq: Object
+    faq: Object,
+  },
+  {
+    versionKey: false, // Isso impede que o campo "__v" seja incluído nos documentos
+  },
+)
 
-  }, {
-    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
-  });
-  
-  export const Products = mongoose?.models?.products || mongoose?.model('products', productsSchema);
+export const Products =
+  mongoose?.models?.products || mongoose?.model('products', productsSchema)
