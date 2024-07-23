@@ -1,7 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const pageSchema = new mongoose.Schema({
-    id : Object,
+const pageSchema = new mongoose.Schema(
+  {
+    id: Object,
     label: String,
     title: String,
     metaTitle: String,
@@ -11,12 +12,13 @@ const pageSchema = new mongoose.Schema({
     banners: Object,
     colors: Object,
     companyValues: Array,
-    faq: Array
-    
-  }, {
-    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
-  });
-  
- const Page = mongoose?.models?.pages || mongoose?.model('pages', pageSchema);
+    faq: Array,
+  },
+  {
+    versionKey: false, // Isso impede que o campo "__v" seja incluído nos documentos
+  },
+)
 
- export default Page
+const Page = mongoose?.models?.pages || mongoose?.model('pages', pageSchema)
+
+export default Page

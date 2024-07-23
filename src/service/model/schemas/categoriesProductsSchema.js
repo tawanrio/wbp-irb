@@ -1,7 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
-const categoriesProductsSchema = new mongoose.Schema({
-    id : Object,
+const categoriesProductsSchema = new mongoose.Schema(
+  {
+    id: Object,
     title: String,
     label: String,
     metaTitle: String,
@@ -13,10 +14,13 @@ const categoriesProductsSchema = new mongoose.Schema({
     gallery: Array,
     models: Array,
     ebook: Array,
-    faq: Object
+    faq: Object,
+  },
+  {
+    versionKey: false, // Isso impede que o campo "__v" seja incluído nos documentos
+  },
+)
 
-  }, {
-    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
-  });
-  
-  export const CategoriesProducts = mongoose?.models?.categories_products || mongoose?.model('categories_products', categoriesProductsSchema);
+export const CategoriesProducts =
+  mongoose?.models?.categories_products ||
+  mongoose?.model('categories_products', categoriesProductsSchema)

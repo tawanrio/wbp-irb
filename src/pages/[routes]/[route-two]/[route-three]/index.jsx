@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
-import { connectMongoDB, disconnectMongoDB } from '@/service/db';
-import { formatStrToUrl } from '@/utils/functions';
+import { connectMongoDB, disconnectMongoDB } from '@/service/db'
+import { formatStrToUrl } from '@/utils/functions'
 
 import { getDataPage } from '@/service/model/routeThree'
 
@@ -16,56 +17,51 @@ import Produtos from '@/components/Pages/Produtos'
 import ProdutoGeo from '@/components/Pages/ProdutoGeo'
 import Error from '@/components/Pages/Error'
 
-export default function index({content}) {
+export default function index({ content }) {
   // const page = content.page.label;
-  console.log(content);
+  console.log(content)
   return (
     <>
-    {content?.type === 'product-geo' && (
-      <>
-        <ProdutoGeo content={content}/>
-
-      </>
+      {content?.type === 'product-geo' && (
+        <>
+          <ProdutoGeo content={content} />
+        </>
       )}
- {(content?.type === 'distribuidoras' || content?.type === 'autopecas' || content?.type === 'mecanicas') && (
-   <>
-        <Parceiro content={content}/>
-      </>
+      {(content?.type === 'distribuidoras' ||
+        content?.type === 'autopecas' ||
+        content?.type === 'mecanicas') && (
+        <>
+          <Parceiro content={content} />
+        </>
       )}
 
       {content?.type === 'error' && (
         <>
-          <Error content={content}/>
-   
+          <Error content={content} />
         </>
-        )}
-      
+      )}
     </>
   )
 }
 
-
-
-
-
-export const getServerSideProps  = async (context) => {
+export const getServerSideProps = async (context) => {
   try {
-    const arrRoute = context.resolvedUrl.replace('/', '').split('/');
-   
-    const content = await getDataPage(arrRoute);
+    const arrRoute = context.resolvedUrl.replace('/', '').split('/')
+
+    const content = await getDataPage(arrRoute)
 
     return {
       props: {
-        content
-      }
-    };
-  } catch (error) {
-    console.error('Erro na página:', error);
-
-    return {
-      props: {
-        content: null
+        content,
       },
-    };
+    }
+  } catch (error) {
+    console.error('Erro na página:', error)
+
+    return {
+      props: {
+        content: null,
+      },
+    }
   }
 }

@@ -1,17 +1,16 @@
-import Image from "next/image"
-import Link from "next/link"
-import {formatPhoneNumber} from "@/utils/functions"
-import { useState } from "react"
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import Image from 'next/image'
+import Link from 'next/link'
+import { formatPhoneNumber } from '@/utils/functions'
+import { useState } from 'react'
 
-export default function Button({content}) {
-
-  console.log(content);
+export default function Button({ content }) {
+  console.log(content)
   const [href] = useState(content.href)
   const [title] = useState(content.label)
   const [colors] = useState(content.colors)
   const [icon] = useState(content.icon)
   const [number] = useState(content.number)
-
 
   const formattedNumber = formatPhoneNumber(number)
   return (
@@ -19,12 +18,11 @@ export default function Button({content}) {
       href={href}
       target="_blank"
       style={{ backgroundColor: colors?.bg, border: colors?.border }}
-      className="w-full max-w-xs px-5 py-4 rounded-2xl bg-slate-800 flex flex-col justify-center
-       hover:scale-105 duration-500 group"
+      className="group flex w-full max-w-xs flex-col justify-center rounded-2xl bg-slate-800 px-5 py-4 duration-500 hover:scale-105"
     >
-      <div className="flex items-center relative">
+      <div className="relative flex items-center">
         {icon && (
-          <div className="relative w-10 h-10">
+          <div className="relative h-10 w-10">
             <Image
               src={icon}
               alt={'Icone button'}
@@ -36,18 +34,7 @@ export default function Button({content}) {
         )}
         <span
           style={{ color: colors?.text, fontWeight: colors?.weight }}
-          className={`
-          md:text-2xl
-          text-lg
-          absolute
-          w-full
-          text-center
-          uppercase
-          opacity-100
-          duration-500
-          ${icon && 'ml-2'}
-          ${number && 'group-hover:opacity-0'}
-          `}
+          className={`absolute w-full text-center text-lg uppercase opacity-100 duration-500 md:text-2xl ${icon && 'ml-2'} ${number && 'group-hover:opacity-0'} `}
         >
           {formattedNumber}
           {/* {title} */}
@@ -55,23 +42,12 @@ export default function Button({content}) {
         {number && (
           <span
             style={{ color: colors?.text, fontWeight: colors?.weight }}
-            className={`
-            md:text-2xl
-            text-lg
-            absolute
-            w-full
-            text-center
-            uppercase
-            opacity-0
-            duration-500
-            ${icon && 'ml-2'}
-            group-hover:opacity-100
-            `}
+            className={`absolute w-full text-center text-lg uppercase opacity-0 duration-500 md:text-2xl ${icon && 'ml-2'} group-hover:opacity-100`}
           >
             {formattedNumber}
           </span>
         )}
       </div>
     </Link>
-  );
+  )
 }

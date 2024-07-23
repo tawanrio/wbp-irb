@@ -1,11 +1,14 @@
-import Description from "../Description";
+import Description from '../Description'
 
 export default function ContentDescription({ content, className }) {
-  console.log(className);
+  console.log(className)
   return (
-    <article className={`flex flex-col items-center ${className}`} id={`content-description_`}>
-      <div className="w-full max-w-7xl md:px-14 px-6 mb-7 mt-2  flex justify-between flex-col gap-6 animate-fadeOut">
-       <Description content={content}/>
+    <article
+      className={`flex flex-col items-center ${className}`}
+      id={`content-description_`}
+    >
+      <div className="mb-7 mt-2 flex w-full max-w-7xl animate-fadeOut flex-col justify-between gap-6 px-6 md:px-14">
+        <Description content={content} />
       </div>
     </article>
   )

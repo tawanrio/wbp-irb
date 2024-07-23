@@ -1,9 +1,9 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
 const CategoryCard = ({ category }) => {
   return (
-    <div className="bg-white shadow-md rounded-md overflow-hidden flex flex-col justify-between">
-      <div className="relative w-full h-48">
+    <div className="flex flex-col justify-between overflow-hidden rounded-md bg-white shadow-md">
+      <div className="relative h-48 w-full">
         <Image
           src={category.thumbnail.imageUrl}
           alt={category.thumbnail.alt}
@@ -12,22 +12,26 @@ const CategoryCard = ({ category }) => {
           className="rounded-t-md"
         />
       </div>
-      <div className="p-4 flex flex-col justify-between flex-grow">
+      <div className="flex flex-grow flex-col justify-between p-4">
         <div>
-          <h2 className="text-2xl font-bold text-[#c12025]">{category.title}</h2>
-          <p className="text-[#666] mt-2 line-clamp-3">{category.contentDescription[0]}</p>
+          <h2 className="text-2xl font-bold text-[#c12025]">
+            {category.title}
+          </h2>
+          <p className="mt-2 line-clamp-3 text-[#666]">
+            {category.contentDescription[0]}
+          </p>
         </div>
         <div className="mt-4">
           <a
             href={category.label}
-            className="inline-block px-4 py-2 bg-[#22326e] text-white text-center rounded-md hover:bg-blue-700 transition-colors duration-300"
+            className="inline-block rounded-md bg-[#22326e] px-4 py-2 text-center text-white transition-colors duration-300 hover:bg-blue-700"
           >
             Saiba mais
           </a>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryCard;
+export default CategoryCard
