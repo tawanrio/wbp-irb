@@ -274,3 +274,7 @@ export function sortByKey(array) {
     return 0
   })
 }
+
+export const generateProductUrl = (baseUrl, name) => {
+  return `/${baseUrl[1]}/${name}`
+}
