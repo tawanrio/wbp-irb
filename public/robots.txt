@@ -1,3 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://irbauto.com.br
+
+# Sitemaps
 Sitemap: https://irbauto.com.br/sitemap.xml

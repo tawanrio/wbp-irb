@@ -325,13 +325,13 @@ const Collection = ({
       </div>
 
       {/* Itens exibidos com base na pesquisa e paginação */}
-      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
         {currentItems?.map((collection, index) => (
-          <div className="" key={index}>
+          <li key={index}>
             <Card collection={collection} />
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {/* Paginação */}
       <div className="mt-4 flex justify-center">
