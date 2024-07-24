@@ -150,9 +150,7 @@ export const partnerCollection = ({
       url: info.logo,
       alt: 'imagem',
     },
-    contentDescription: [
-      'A IRB Automotive é uma empresa, de marca própria, que fornece peças automotivas para todo o Brasil. Com mais de 22 anos de atuação no segmento de reposição automotiva',
-    ],
+    contentDescription: [],
     catalog: [
       {
         label: 'product',
