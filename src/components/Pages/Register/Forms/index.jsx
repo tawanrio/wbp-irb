@@ -9,16 +9,14 @@ import { toast } from 'react-toastify'
 import ReactDOMServer from 'react-dom/server'
 import TemplateMailPartner from '../../Contato/Forms/Partner/TemplateMail'
 import TemplateMailSuccessRegister from './Components/TemplateMailSuccessRegister'
-import 'react-toastify/dist/ReactToastify.css'
 import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
-import { stringify } from 'postcss'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function RegisterForm() {
   const [partnerType, setPartnerType] = useState('')
   const [inputs, setInputs] = useState(null)
   const [uniqueId, setUniqueId] = useState('')
   const [structureMail, setStructureMail] = useState({})
-
   const [html, setHtml] = useState('')
   const [actionsLink, setActionsLink] = useState('')
 
@@ -46,15 +44,20 @@ export default function RegisterForm() {
       setUniqueId(generateUniqueIdByCnpj(formData.inputs?.info?.cnpj))
       setActionsLink(generateActionsLink(formData.inputs?.info?.cnpj, uniqueId))
     }
-    setHtml(
-      ReactDOMServer.renderToString(
-        <TemplateMailPartner
-          data={formData}
-          uniqueId={uniqueId}
-          actionsLink={actionsLink}
-        />,
-      ),
+
+    if (formData.inputs?.info.cnpj && formData.inputs?.info.logo) {
+      uploadImagesToDB(formData)
+    }
+
+    const generatedHtml = ReactDOMServer.renderToString(
+      <TemplateMailPartner
+        data={formData}
+        uniqueId={uniqueId}
+        actionsLink={actionsLink}
+      />,
     )
+
+    setHtml(generatedHtml)
 
     setStructureMail({
       html,
@@ -70,8 +73,6 @@ export default function RegisterForm() {
       structureMail,
       uniqueId,
     })
-
-    console.log(process.env.NEXT_PUBLIC_EMAIL_TO_SEND)
   }, [inputs])
 
   const handleSubmitForm = async (e) => {
@@ -107,17 +108,22 @@ export default function RegisterForm() {
   }
 
   const uploadImagesToDB = async (data) => {
-    // Inserir logo no banco de dados
-    const responseLogo = await insertImgDatabase(
-      data.inputs.info.logo,
-      data.inputs.info.cnpj,
-    )
-    if (responseLogo.status !== 200) throw new Error('Database')
+    if (data.inputs.info.logo instanceof File) {
+      const responseLogo = await insertImgDatabase(
+        data.inputs.info.logo,
+        data.inputs.info.cnpj,
+      )
 
-    data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
+      if (!responseLogo || responseLogo.status !== 200)
+        throw new Error('Database')
 
-    // Inserir imagens de requisitos no banco de dados, se existirem
-    if (data.inputs.requirements) {
+      data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
+    }
+
+    if (
+      data.inputs.requirements.certificateImg instanceof File ||
+      data.inputs.requirements.elevatorImg instanceof File
+    ) {
       const { certificateImg, elevatorImg } = data.inputs.requirements
       const { cnpj } = data.inputs.info
 
@@ -136,7 +142,11 @@ export default function RegisterForm() {
         : ''
     }
 
-    return responseLogo
+    setFormData({
+      ...data,
+    })
+
+    return true
   }
 
   const sendEmailToPartner = async (data) => {
