@@ -3,6 +3,31 @@ import React from 'react'
 
 export default function TemplateMailPartner({ data, actionsLink }) {
   const { address = {}, info = {}, requirements = {} } = data.inputs || {}
+
+  const renderInfo = (label, value) => {
+    return value ? (
+      <p style={{ margin: '10px 0', color: '#333' }}>{`${label}: ${value}`}</p>
+    ) : null
+  }
+
+  const renderImage = (label, src, alt) => {
+    return src ? (
+      <div style={{ margin: '10px 0' }}>
+        <p style={{ color: '#333' }}>{label}</p>
+        <img
+          src={src}
+          alt={alt}
+          style={{
+            display: 'block',
+            margin: '20px auto',
+            maxWidth: '100%',
+            color: '#333',
+          }}
+        />
+      </div>
+    ) : null
+  }
+
   return (
     <div
       style={{
@@ -33,27 +58,11 @@ export default function TemplateMailPartner({ data, actionsLink }) {
         {info.partnerType && (
           <h2 style={{ fontSize: '18px' }}>{info.partnerType}</h2>
         )}
-        {info.cnpj && (
-          <p style={{ margin: '10px 0', color: '#333' }}>CNPJ: {info.cnpj}</p>
-        )}
-        {info.companyName && (
-          <p style={{ margin: '10px 0', color: '#333' }}>
-            Razão Social: {info.companyName}
-          </p>
-        )}
-        {info.tradingName && (
-          <p style={{ margin: '10px 0', color: '#333' }}>
-            Nome Fantasia: {info.tradingName}
-          </p>
-        )}
-        {info.email && (
-          <p style={{ margin: '10px 0', color: '#333' }}>Email: {info.email}</p>
-        )}
-        {info.phone && (
-          <p style={{ margin: '10px 0', color: '#333' }}>
-            Telefone: {info.phone}
-          </p>
-        )}
+        {renderInfo('CNPJ', info.cnpj)}
+        {renderInfo('Razão Social', info.companyName)}
+        {renderInfo('Nome Fantasia', info.tradingName)}
+        {renderInfo('Email', info.email)}
+        {renderInfo('Telefone', info.phone)}
         {address.street &&
           address.number &&
           address.neighborhood &&
@@ -66,65 +75,26 @@ export default function TemplateMailPartner({ data, actionsLink }) {
               {address.cep}
             </p>
           )}
-        {info.logo && (
-          <div>
-            <p style={{ margin: '10px 0', color: '#333' }}>Logomarca</p>
-            <img
-              src={info.logo}
-              alt="Logo da Empresa"
-              style={{
-                display: 'block',
-                margin: '20px auto',
-                maxWidth: '100%',
-                color: '#333',
-              }}
-            />
-          </div>
-        )}
+        {renderImage('Logomarca', info.logo, 'Logo da Empresa')}
         {requirements && (
           <div>
             <h2 style={{ fontSize: '18px', marginTop: '20px', color: '#333' }}>
               Pré-requisitos
             </h2>
-
-            {requirements.certificateImg && (
-              <div style={{ margin: '10px 0' }}>
-                <p style={{ color: '#333' }}>Certificação Profissional</p>
-                <img
-                  src={requirements.certificateImg}
-                  alt="Foto do Certificação Profissional"
-                  style={{
-                    display: 'block',
-                    margin: '20px auto',
-                    maxWidth: '100%',
-                    color: '#333',
-                  }}
-                />
-              </div>
+            {renderImage(
+              'Certificação Profissional',
+              requirements.certificateImg,
+              'Foto do Certificação Profissional',
             )}
-
-            {requirements.elevatorImg && (
-              <div style={{ margin: '10px 0' }}>
-                <p style={{ color: '#333' }}>Equipamento</p>
-                <img
-                  src={requirements.elevatorImg}
-                  alt="Foto do Equipamento"
-                  style={{
-                    display: 'block',
-                    margin: '20px auto',
-                    maxWidth: '100%',
-                    color: '#333',
-                  }}
-                />
-              </div>
+            {renderImage(
+              'Equipamento',
+              requirements.elevatorImg,
+              'Foto do Equipamento',
             )}
-
             {requirements.selectedEquipments && (
-              <div style={{ margin: '10px 0' }}>
-                <p style={{ color: '#333', display: 'inline-block' }}>
-                  Ferramentas: {requirements.selectedEquipments?.join(', ')}
-                </p>
-              </div>
+              <p style={{ margin: '10px 0', color: '#333' }}>
+                Ferramentas: {requirements.selectedEquipments.join(', ')}
+              </p>
             )}
           </div>
         )}
