@@ -29,6 +29,7 @@ export default function RegisterForm() {
     inputs: {
       info: {},
       address: {},
+      requirements: {},
     },
     actionsLink: {},
     html: '',
@@ -40,12 +41,15 @@ export default function RegisterForm() {
   const handlePartnerType = (value) => setPartnerType(value)
 
   useEffect(() => {
-    if (formData.inputs?.info.cnpj) {
-      setUniqueId(generateUniqueIdByCnpj(formData.inputs?.info?.cnpj))
-      setActionsLink(generateActionsLink(formData.inputs?.info?.cnpj, uniqueId))
+    if (inputs?.info?.cnpj) {
+      const newUniqueId = generateUniqueIdByCnpj(inputs.info.cnpj)
+      setUniqueId(newUniqueId)
+      setActionsLink(generateActionsLink(inputs.info.cnpj, newUniqueId))
     }
+  }, [inputs])
 
-    if (formData.inputs?.info.cnpj && formData.inputs?.info.logo) {
+  useEffect(() => {
+    if (inputs?.info?.cnpj && inputs?.info?.logo) {
       uploadImagesToDB(formData)
     }
 
@@ -59,21 +63,33 @@ export default function RegisterForm() {
 
     setHtml(generatedHtml)
 
-    setStructureMail({
-      html,
+    const newStructureMail = {
+      html: generatedHtml,
       to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-      // to: 'marketing@irbauto.com.br',
       cco: 'tawan.rio@webfoco.com',
       from: 'formData.inputs.info.tradingName',
       subject: 'Solicitação de cadastro de parceiro',
-    })
+    }
 
-    setFormData({
+    setStructureMail(newStructureMail)
+
+    setFormData((prevData) => ({
+      ...prevData,
       inputs,
-      structureMail,
+      structureMail: newStructureMail,
       uniqueId,
-    })
-  }, [inputs])
+    }))
+  }, [inputs, uniqueId, actionsLink])
+
+  useEffect(() => {
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      requirements: {
+        ...prevInputs?.requirements,
+        selectedEquipments: formData.inputs?.requirements?.selectedEquipments,
+      },
+    }))
+  }, [formData.inputs?.requirements?.selectedEquipments])
 
   const handleSubmitForm = async (e) => {
     e.preventDefault()
@@ -121,8 +137,8 @@ export default function RegisterForm() {
     }
 
     if (
-      data.inputs.requirements.certificateImg instanceof File ||
-      data.inputs.requirements.elevatorImg instanceof File
+      data.inputs?.requirements?.certificateImg instanceof File ||
+      data.inputs?.requirements?.elevatorImg instanceof File
     ) {
       const { certificateImg, elevatorImg } = data.inputs.requirements
       const { cnpj } = data.inputs.info
@@ -142,9 +158,10 @@ export default function RegisterForm() {
         : ''
     }
 
-    setFormData({
+    setFormData((prevData) => ({
+      ...prevData,
       ...data,
-    })
+    }))
 
     return true
   }

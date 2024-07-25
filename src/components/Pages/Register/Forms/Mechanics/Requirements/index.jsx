@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useEffect, useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
-import { useEffect, useState } from 'react'
 
 export default function Requirements({ setRequiments, resetInputs }) {
   const [certificateImg, setCertificateImg] = useState('')
@@ -40,18 +40,16 @@ export default function Requirements({ setRequiments, resetInputs }) {
     setState(file)
   }
 
-  const handleCheckboxChange = (event) => {
+  const handleCheckboxChange = useCallback((event) => {
     const { value, checked } = event.target
-    if (checked) {
-      setSelectedEquipments([...selectedEquipments, value])
-      console.log(`O equipamento ${value} foi selecionado.`)
-    } else {
-      setSelectedEquipments(
-        selectedEquipments.filter((equipment) => equipment !== value),
-      )
-      console.log(`O equipamento ${value} foi desmarcado.`)
-    }
-  }
+    setSelectedEquipments((prevSelectedEquipments) => {
+      if (checked) {
+        return [...prevSelectedEquipments, value]
+      } else {
+        return prevSelectedEquipments.filter((equipment) => equipment !== value)
+      }
+    })
+  }, [])
 
   return (
     <div className="mt-10">

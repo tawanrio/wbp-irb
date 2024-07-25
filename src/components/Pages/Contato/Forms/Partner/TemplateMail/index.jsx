@@ -19,8 +19,9 @@ export default function TemplateMailPartner({ data, actionsLink }) {
           alt={alt}
           style={{
             display: 'block',
-            margin: '20px auto',
-            maxWidth: '100%',
+            margin: '20px 0',
+            maxHeight: '200px',
+            maxWidth: '400px',
             color: '#333',
           }}
         />
