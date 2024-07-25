@@ -2,6 +2,7 @@
 import React from 'react'
 
 export default function TemplateMailPartner({ data, actionsLink }) {
+  const { address = {}, info = {}, requirements = {} } = data.inputs || {}
   return (
     <div
       style={{
@@ -29,54 +30,103 @@ export default function TemplateMailPartner({ data, actionsLink }) {
         </a>
       </p>
       <div style={{ lineHeight: '1.6', color: '#333' }}>
-        {data.inputs?.info.partnerType && (
-          <h2 style={{ fontSize: '18px' }}>{data.inputs?.info.partnerType}</h2>
+        {info.partnerType && (
+          <h2 style={{ fontSize: '18px' }}>{info.partnerType}</h2>
         )}
-        {data.inputs?.info.cnpj && (
-          <p style={{ margin: '10px 0' }}>CNPJ: {data.inputs?.info.cnpj}</p>
+        {info.cnpj && (
+          <p style={{ margin: '10px 0', color: '#333' }}>CNPJ: {info.cnpj}</p>
         )}
-        {data.inputs?.info.companyName && (
-          <p style={{ margin: '10px 0' }}>
-            Razão Social: {data.inputs?.info.companyName}
+        {info.companyName && (
+          <p style={{ margin: '10px 0', color: '#333' }}>
+            Razão Social: {info.companyName}
           </p>
         )}
-        {data.inputs?.info.tradingName && (
-          <p style={{ margin: '10px 0' }}>
-            Nome Fantasia: {data.inputs?.info.tradingName}
+        {info.tradingName && (
+          <p style={{ margin: '10px 0', color: '#333' }}>
+            Nome Fantasia: {info.tradingName}
           </p>
         )}
-        {data.inputs?.info.email && (
-          <p style={{ margin: '10px 0' }}>Email: {data.inputs?.info.email}</p>
+        {info.email && (
+          <p style={{ margin: '10px 0', color: '#333' }}>Email: {info.email}</p>
         )}
-        {data.inputs?.info.phone && (
-          <p style={{ margin: '10px 0' }}>
-            Telefone: {data.inputs?.info.phone}
+        {info.phone && (
+          <p style={{ margin: '10px 0', color: '#333' }}>
+            Telefone: {info.phone}
           </p>
         )}
-        {data.inputs?.address.street &&
-          data.inputs?.address.number &&
-          data.inputs?.address.neighborhood &&
-          data.inputs?.address.city &&
-          data.inputs?.address.state &&
-          data.inputs?.address.cep && (
-            <p style={{ margin: '10px 0' }}>
-              Endereço: {data.inputs?.address.street},{' '}
-              {data.inputs?.address.number} -{' '}
-              {data.inputs?.address.neighborhood}, {data.inputs?.address.city} -{' '}
-              {data.inputs?.address.state}, CEP: {data.inputs?.address.cep}
+        {address.street &&
+          address.number &&
+          address.neighborhood &&
+          address.city &&
+          address.state &&
+          address.cep && (
+            <p style={{ margin: '10px 0', color: '#333' }}>
+              Endereço: {address.street}, {address.number} -{' '}
+              {address.neighborhood}, {address.city} - {address.state}, CEP:{' '}
+              {address.cep}
             </p>
           )}
-        {data.inputs?.info.logo && (
-          <img
-            src={data.inputs?.info?.logo?.url}
-            alt="Logo da Empresa"
-            style={{ display: 'block', margin: '20px auto', maxWidth: '100%' }}
-          />
+        {info.logo && (
+          <div>
+            <p style={{ margin: '10px 0', color: '#333' }}>Logomarca</p>
+            <img
+              src={info.logo}
+              alt="Logo da Empresa"
+              style={{
+                display: 'block',
+                margin: '20px auto',
+                maxWidth: '100%',
+                color: '#333',
+              }}
+            />
+          </div>
         )}
-        {data.inputs?.requeriments && (
-          <h2 style={{ fontSize: '18px', marginTop: '20px' }}>
-            Pré-requisitos
-          </h2>
+        {requirements && (
+          <div>
+            <h2 style={{ fontSize: '18px', marginTop: '20px', color: '#333' }}>
+              Pré-requisitos
+            </h2>
+
+            {requirements.certificateImg && (
+              <div style={{ margin: '10px 0' }}>
+                <p style={{ color: '#333' }}>Certificação Profissional</p>
+                <img
+                  src={requirements.certificateImg}
+                  alt="Foto do Certificação Profissional"
+                  style={{
+                    display: 'block',
+                    margin: '20px auto',
+                    maxWidth: '100%',
+                    color: '#333',
+                  }}
+                />
+              </div>
+            )}
+
+            {requirements.elevatorImg && (
+              <div style={{ margin: '10px 0' }}>
+                <p style={{ color: '#333' }}>Equipamento</p>
+                <img
+                  src={requirements.elevatorImg}
+                  alt="Foto do Equipamento"
+                  style={{
+                    display: 'block',
+                    margin: '20px auto',
+                    maxWidth: '100%',
+                    color: '#333',
+                  }}
+                />
+              </div>
+            )}
+
+            {requirements.selectedEquipments && (
+              <div style={{ margin: '10px 0' }}>
+                <p style={{ color: '#333', display: 'inline-block' }}>
+                  Ferramentas: {requirements.selectedEquipments?.join(', ')}
+                </p>
+              </div>
+            )}
+          </div>
         )}
       </div>
       <div style={{ textAlign: 'center', marginTop: '20px' }}>
