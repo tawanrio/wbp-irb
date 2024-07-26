@@ -2,9 +2,9 @@ import Image from 'next/image'
 
 const SingleUtility = ({ utilities }) => {
   return (
-    <div className="flex h-96 flex-col items-start justify-between overflow-hidden rounded-md bg-white shadow-md">
+    <div className="flex h-[500px] flex-col items-start justify-between overflow-hidden rounded-md bg-white shadow-md">
       <div>
-        <div className="relative h-[200px] w-full">
+        <div className="relative h-[270px] w-full">
           <Image
             src={utilities.image}
             alt={utilities.title}

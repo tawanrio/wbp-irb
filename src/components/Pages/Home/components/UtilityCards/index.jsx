@@ -9,7 +9,7 @@ const UtilityCards = ({ title }) => {
       title: 'EngraxaMente',
       description:
         'EngraxaMente é a plataforma de cursos online e gratuitos desenvolvida pela IRB Automotive. Em comemoração aos seus dois anos no ar, lançamos um novo curso sobre Mecânica Automotiva Básica P1. Cresça profissionalmente e agregue valor ao seu negócio!',
-      image: '/images/partners/engraxamente.jpg',
+      image: '/images/components/utilityCards/engraxaMente.jpg',
       link: 'https://engraxamente.eadplataforma.app/',
       linkText: 'Saiba mais',
     },
@@ -17,7 +17,7 @@ const UtilityCards = ({ title }) => {
       title: 'IRB Code',
       description:
         'IRB Code é uma ferramenta desenvolvida pela IRB Automotive, que auxilia nossos amigos reparadores no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
-      image: '/images/partners/irbCode.jpeg',
+      image: '/images/components/utilityCards/irbCode.jpg',
       link: '/autopecas',
       linkText: 'Onde encontrar',
     },
@@ -25,7 +25,7 @@ const UtilityCards = ({ title }) => {
       title: 'Catálogo eletrônico',
       description:
         'Consulte nosso catálogo eletrônico e saiba todas as aplicações dos nossos produtos.',
-      image: '/images/partners/catalogo.png',
+      image: '/images/components/utilityCards/catalogo.jpg',
       link: 'https://c123.com.br/app/aplicativo/?n=IRB',
       linkText: 'Baixar catálogo',
     },
@@ -33,11 +33,10 @@ const UtilityCards = ({ title }) => {
       title: 'eBooks',
       description:
         'Na aba “Conteúdo” você vai encontrar eBooks disponíveis para download gratuitamente! Neles você irá conhecer um pouco mais sobre nossas linhas de produto e suas especificações, além de dicas técnicas!',
-      image: '/images/partners/ebook.jpeg',
+      image: '/images/components/utilityCards/ebook.jpg',
       link: 'https://irbauto.rds.land/material-rico',
       linkText: 'Baixar eBook!',
     },
-    // Mais cartões...
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -81,7 +80,7 @@ const UtilityCards = ({ title }) => {
     >
       <div className="relative my-4 flex w-full max-w-lg flex-col px-6 md:mb-0 md:max-w-7xl md:px-14">
         <SectionTitle title={'Utilidades'} line />
-        <div className="container mx-auto my-5 py-10">
+        <div className="py-15 container mx-auto my-5">
           <div className="relative flex overflow-hidden">
             <button
               onClick={prevSlide}
