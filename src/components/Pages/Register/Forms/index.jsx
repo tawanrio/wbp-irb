@@ -194,20 +194,22 @@ export default function RegisterForm() {
 
     try {
       const isImagesUploaded = await uploadImagesToDB(formData)
-      if (!isImagesUploaded) throw new Error('Upload Images')
+      if (!isImagesUploaded)
+        throw new Error(RESPONSE_MESSAGE.error.uploadImages)
 
       const isDataInserted = await insertDataIntoDB({ formData })
-      if (!isDataInserted) throw new Error('Database')
+      if (!isDataInserted) throw new Error(RESPONSE_MESSAGE.error.database)
 
       const isEmailPartnerSent = await sendEmailToPartner(formData)
-      if (!isEmailPartnerSent) throw new Error('Envio de email')
+      if (!isEmailPartnerSent)
+        throw new Error(RESPONSE_MESSAGE.error.emailPartner)
 
       const isEmailAdminSent = await sendEmailToAction(formData)
-      if (!isEmailAdminSent) throw new Error('Envio de email')
+      if (!isEmailAdminSent) throw new Error(RESPONSE_MESSAGE.error.emailAdmin)
 
       toast.success(RESPONSE_MESSAGE.success)
     } catch (error) {
-      toast.error(`${RESPONSE_MESSAGE.error} - ${error.message}`)
+      toast.error(`${RESPONSE_MESSAGE.error.default} - ${error.message}`)
     } finally {
       setSending(false)
     }

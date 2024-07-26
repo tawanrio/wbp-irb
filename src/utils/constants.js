@@ -17,5 +17,11 @@ export const EQUIPMENTS = [
 
 export const RESPONSE_MESSAGE = {
   success: 'Cadastro enviado com sucesso, aguarde aprovação.',
-  error: 'Erro ao enviar cadastro.',
+  error: {
+    default: 'Erro ao enviar cadastro',
+    uploadImages: 'Erro ao fazer upload das imagens.',
+    database: 'Erro ao inserir dados no banco de dados.',
+    emailPartner: 'Erro ao enviar e-mail para o parceiro.',
+    emailAdmin: 'Erro ao enviar e-mail para o administrador.',
+  },
 }

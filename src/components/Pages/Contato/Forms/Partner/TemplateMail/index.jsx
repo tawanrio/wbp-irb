@@ -12,8 +12,26 @@ export default function TemplateMailPartner({ data, actionsLink }) {
     ) : null
   }
 
-  const renderImage = (label, src, alt) => {
-    return src ? (
+  const renderFile = (label, src, alt) => {
+    if (!src) return null
+
+    const fileExtension = src.split('.').pop().toLowerCase()
+    if (fileExtension === 'pdf') {
+      return (
+        <div style={{ margin: '20px 0' }}>
+          <strong style={{ color: '#333' }}>{label}</strong>
+          <a
+            href={src}
+            target="_blank"
+            style={{ display: 'block', margin: '10px auto' }}
+          >
+            Abrir PDF
+          </a>
+        </div>
+      )
+    }
+
+    return (
       <div style={{ margin: '20px 0', textAlign: 'center' }}>
         <strong style={{ color: '#333' }}>{label}</strong>
         <img
@@ -31,7 +49,7 @@ export default function TemplateMailPartner({ data, actionsLink }) {
           }}
         />
       </div>
-    ) : null
+    )
   }
 
   return (
@@ -90,16 +108,16 @@ export default function TemplateMailPartner({ data, actionsLink }) {
               {address.cep}
             </p>
           )}
-        {renderImage('Logomarca', info.logo, 'Logo da Empresa')}
+        {renderFile('Logomarca', info.logo, 'Logo da Empresa')}
         {Object.keys(requirements).length > 0 && (
           <div style={{ marginTop: '40px' }}>
             <h2 style={{ fontSize: '18px', color: '#333' }}>Pré-requisitos</h2>
-            {renderImage(
+            {renderFile(
               'Certificação Profissional',
               requirements.certificateImg,
               'Foto do Certificação Profissional',
             )}
-            {renderImage(
+            {renderFile(
               'Equipamento: Elevador',
               requirements.elevatorImg,
               'Foto do Equipamento',

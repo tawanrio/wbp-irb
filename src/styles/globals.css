@@ -47,8 +47,6 @@ p {
   margin: 15px 0px;
 }
 
-img.wp-image-5236 {}
-
 strong.schema-faq-question {
   font-size: 24px;
 }
@@ -82,4 +80,13 @@ section#register_ label {
   -webkit-text-stroke-color: #000;
   font-size: 3em;
   color: #fffdd9;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+input[data-autocompleted] {
+  background-color: transparent !important;
 }
