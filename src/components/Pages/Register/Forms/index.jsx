@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
@@ -107,15 +106,20 @@ export default function RegisterForm() {
       }
       data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
 
-      const responseCertificate = await insertImgDatabase(certificateImg, cnpj)
-      data.inputs.requirements.certificateImg = responseCertificate?.path
-        ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
-        : ''
+      if (certificateImg && elevatorImg) {
+        const responseCertificate = await insertImgDatabase(
+          certificateImg,
+          cnpj,
+        )
+        data.inputs.requirements.certificateImg = responseCertificate?.path
+          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
+          : ''
 
-      const responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
-      data.inputs.requirements.elevatorImg = responseElevatorImg?.path
-        ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
-        : ''
+        const responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
+        data.inputs.requirements.elevatorImg = responseElevatorImg?.path
+          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
+          : ''
+      }
 
       setFormData((prevData) => ({
         ...prevData,

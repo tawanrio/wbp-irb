@@ -6,22 +6,27 @@ export default function TemplateMailPartner({ data, actionsLink }) {
 
   const renderInfo = (label, value) => {
     return value ? (
-      <p style={{ margin: '10px 0', color: '#333' }}>{`${label}: ${value}`}</p>
+      <p style={{ margin: '10px 0', color: '#333' }}>
+        <strong>{label}:</strong> {value}
+      </p>
     ) : null
   }
 
   const renderImage = (label, src, alt) => {
     return src ? (
-      <div style={{ margin: '10px 0' }}>
-        <p style={{ color: '#333' }}>{label}</p>
+      <div style={{ margin: '20px 0', textAlign: 'center' }}>
+        <strong style={{ color: '#333' }}>{label}</strong>
         <img
           src={src}
           alt={alt}
+          border="0"
           style={{
             display: 'block',
-            margin: '20px 0',
-            maxHeight: '200px',
-            maxWidth: '400px',
+            margin: '10px auto',
+            maxHeight: '150px',
+            maxWidth: '300px',
+            width: 'auto',
+            height: 'auto',
             color: '#333',
           }}
         />
@@ -39,6 +44,7 @@ export default function TemplateMailPartner({ data, actionsLink }) {
         border: '1px solid #dddddd',
         borderRadius: '5px',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        fontFamily: 'Arial, sans-serif',
       }}
     >
       <div style={{ textAlign: 'center', paddingBottom: '20px' }}>
@@ -55,9 +61,17 @@ export default function TemplateMailPartner({ data, actionsLink }) {
           irbauto.com.br
         </a>
       </p>
-      <div style={{ lineHeight: '1.6', color: '#333' }}>
+      <div style={{ lineHeight: '1.6' }}>
         {info.partnerType && (
-          <h2 style={{ fontSize: '18px' }}>{info.partnerType}</h2>
+          <h2
+            style={{
+              fontSize: '18px',
+              textTransform: 'capitalize',
+              color: '#333',
+            }}
+          >
+            {info.partnerType}
+          </h2>
         )}
         {renderInfo('CNPJ', info.cnpj)}
         {renderInfo('Razão Social', info.companyName)}
@@ -71,32 +85,29 @@ export default function TemplateMailPartner({ data, actionsLink }) {
           address.state &&
           address.cep && (
             <p style={{ margin: '10px 0', color: '#333' }}>
-              Endereço: {address.street}, {address.number} -{' '}
+              <strong>Endereço:</strong> {address.street}, {address.number} -{' '}
               {address.neighborhood}, {address.city} - {address.state}, CEP:{' '}
               {address.cep}
             </p>
           )}
         {renderImage('Logomarca', info.logo, 'Logo da Empresa')}
         {Object.keys(requirements).length > 0 && (
-          <div>
-            <h2 style={{ fontSize: '18px', marginTop: '20px', color: '#333' }}>
-              Pré-requisitos
-            </h2>
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={{ fontSize: '18px', color: '#333' }}>Pré-requisitos</h2>
             {renderImage(
               'Certificação Profissional',
               requirements.certificateImg,
               'Foto do Certificação Profissional',
             )}
             {renderImage(
-              'Equipamento',
+              'Equipamento: Elevador',
               requirements.elevatorImg,
               'Foto do Equipamento',
             )}
-            {requirements.selectedEquipments && (
-              <p style={{ margin: '10px 0', color: '#333' }}>
-                Ferramentas: {requirements.selectedEquipments.join(', ')}
-              </p>
-            )}
+            <p style={{ margin: '10px 0', color: '#333' }}>
+              <strong>Ferramentas:</strong>{' '}
+              {requirements.selectedEquipments.join(', ')}
+            </p>
           </div>
         )}
       </div>
