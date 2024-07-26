@@ -1,8 +1,7 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function InputsAddress({ setAddress, resetInputs }) {
@@ -42,7 +41,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
   const handleBlur = async () => {
     const cleanedValue = cep.replace(/\D/g, '')
-    if (cleanedValue.length != 8) return
+    if (cleanedValue.length !== 8) return
 
     const fullAddress = await fetchAddress(cleanedValue)
 
@@ -62,13 +61,11 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
   const fetchAddress = async (cleanedValue) => {
     try {
-      // const url = `https://viacep.com.br/ws/${cleanedValue}/json/`;
       const url = `https://api.brasilaberto.com/v1/zipcode/${cleanedValue}`
       const returnAddress = await fetch(url).then((response) => {
         return response.json()
       })
 
-      // setAddress(returnAddress);
       return returnAddress
     } catch (error) {
       return null

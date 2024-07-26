@@ -32,8 +32,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
       },
       address,
     })
-
-    console.log(logo)
   }, [cnpj, companyName, tradingName, email, phone, logo, address, whereToBuy])
 
   useEffect(() => {
@@ -72,17 +70,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             value={whereToBuy}
             onChange={(e) => setWhereToBuy(e.target.value)}
           />
-          {/* <select
-                id="partnerType"
-                className="border py-2 px-4"
-                value={partnerType}
-                onChange={(e) => handlePartnerType(e.target.value)}
-              >
-                <option value="">Área de Atuação</option>
-                <option value="distribuidoras">Distribuidoras</option>
-                <option value="mecanicas">Mecânicas</option>
-                <option value="autopecas">Autopeças</option>
-              </select> */}
         </div>
         <div className="mt-2 flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="companyName">

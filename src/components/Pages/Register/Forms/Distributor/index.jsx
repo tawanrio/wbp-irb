@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { createModifiedFile } from '@/utils/functions'
@@ -53,7 +52,6 @@ export default function FormDistributor({
 
   const handleImg = (event, setState) => {
     const file = createModifiedFile(event.target.files[0])
-
     if (!file) {
       return
     }
@@ -63,6 +61,7 @@ export default function FormDistributor({
       toast.error('Por favor selecione uma imagem válida.')
       return
     }
+
     setState(file)
   }
 

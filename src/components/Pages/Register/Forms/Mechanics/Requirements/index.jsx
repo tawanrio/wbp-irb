@@ -1,28 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
+import { EQUIPMENTS } from '@/utils/constants'
 
 export default function Requirements({ setRequiments, resetInputs }) {
   const [certificateImg, setCertificateImg] = useState('')
   const [elevatorImg, setElevatorImg] = useState('')
   const [selectedEquipments, setSelectedEquipments] = useState([])
 
-  const equipments = [
-    'Torquímetro',
-    'Paquímetro',
-    'Micrometro',
-    'Relógio comparador centesimal',
-    'Base magnética',
-    'Refratometro',
-    'Balança de precisão',
-    'Kit de teste de estanqueidade do sistema de arrefecimento',
-    'Scanner automotivo',
-    'Multímetro - alicate amperímetro',
-    'Acesso aos manuais técnicos de manutenção',
-    'Ferramentas manuais',
-    'Macaco jacaré hidráulico',
-    'Cavaletes',
-  ]
+  useEffect(() => {
+    setRequiments({ certificateImg, elevatorImg, selectedEquipments })
+  }, [certificateImg, elevatorImg, selectedEquipments])
 
   useEffect(() => {
     setCertificateImg('')
@@ -30,12 +18,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
     setSelectedEquipments([])
   }, [resetInputs])
 
-  useEffect(() => {
-    setRequiments({ certificateImg, elevatorImg, selectedEquipments })
-  }, [certificateImg, elevatorImg, selectedEquipments])
-
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = event.target.files[0]
     setState(file)
   }
@@ -54,7 +37,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
 
   return (
     <div className="mt-10">
-      <SectionTitle title={'Pré-Requisitos'} line={true} />
+      <SectionTitle title="Pré-Requisitos" line={true} />
       <div className="mt-5 flex w-full flex-row flex-wrap justify-between gap-5">
         <div className="flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
@@ -99,7 +82,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
             Preencher quais ferramentas você possui
           </span>
           <div className="mt-2 flex flex-wrap justify-between gap-2">
-            {equipments.map((equipment, index) => (
+            {EQUIPMENTS.map((equipment, index) => (
               <label key={index} className="cap mr-4 flex w-[48%] items-center">
                 <input
                   type="checkbox"
