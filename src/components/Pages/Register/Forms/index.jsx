@@ -47,30 +47,9 @@ export default function RegisterForm() {
   }, [inputs])
 
   useEffect(() => {
-    if (inputs?.info?.cnpj && inputs?.info?.logo) {
-      uploadImagesToDB(formData)
-    }
-
-    const generatedHtml = ReactDOMServer.renderToString(
-      <TemplateMailPartner
-        data={formData}
-        uniqueId={uniqueId}
-        actionsLink={actionsLink}
-      />,
-    )
-
-    const structureMail = {
-      html: generatedHtml,
-      to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-      cco: 'tawan.rio@webfoco.com',
-      from: 'formData.inputs.info.tradingName',
-      subject: 'Solicitação de cadastro de parceiro',
-    }
-
     setFormData((prevData) => ({
       ...prevData,
       inputs,
-      structureMail,
       uniqueId,
     }))
   }, [inputs, uniqueId, actionsLink])
@@ -116,43 +95,53 @@ export default function RegisterForm() {
       setSending(false)
     }
   }
-  const uploadImagesToDB = async (data) => {
-    if (data.inputs.info.logo instanceof File) {
-      const responseLogo = await insertImgDatabase(
-        data.inputs.info.logo,
-        data.inputs.info.cnpj,
-      )
 
+  const uploadImagesToDB = async (data) => {
+    const { certificateImg, elevatorImg } = data.inputs?.requirements || {}
+    const { cnpj, logo } = data.inputs.info
+
+    if (logo && cnpj) {
+      const responseLogo = await insertImgDatabase(logo, cnpj)
       if (!responseLogo || responseLogo.status !== 200) {
         throw new Error('Database')
       }
-
       data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
-    }
 
-    const { certificateImg, elevatorImg } = data.inputs?.requirements || {}
-    const { cnpj } = data.inputs.info
-
-    let responseCertificate, responseElevatorImg
-
-    if (certificateImg instanceof File) {
-      responseCertificate = await insertImgDatabase(certificateImg, cnpj)
+      const responseCertificate = await insertImgDatabase(certificateImg, cnpj)
       data.inputs.requirements.certificateImg = responseCertificate?.path
         ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
         : ''
-    }
 
-    if (elevatorImg instanceof File) {
-      responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
+      const responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
       data.inputs.requirements.elevatorImg = responseElevatorImg?.path
         ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
         : ''
-    }
 
-    setFormData((prevData) => ({
-      ...prevData,
-      ...data,
-    }))
+      setFormData((prevData) => ({
+        ...prevData,
+        ...data,
+      }))
+
+      return true
+    }
+  }
+
+  const insertImgDatabase = async (img, cnpj) => {
+    const data = new FormData()
+    data.append('file', img)
+    data.append('origin', 'register')
+    data.append('id', cnpj)
+
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_UPLOAD_IMAGES + '/communication/files/upload',
+      {
+        method: 'POST',
+        body: data,
+      },
+    )
+
+    const result = await response.json()
+    return result
   }
 
   const sendEmailToPartner = async (data) => {
@@ -184,26 +173,23 @@ export default function RegisterForm() {
     return response.ok
   }
 
-  const insertImgDatabase = async (img, cnpj) => {
-    const data = new FormData()
-    data.append('file', img)
-    data.append('origin', 'register')
-    data.append('id', cnpj)
-
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_UPLOAD_IMAGES + '/communication/files/upload',
-      {
-        method: 'POST',
-        body: data,
-      },
+  const sendEmailToAction = async (data) => {
+    const structureHtml = ReactDOMServer.renderToString(
+      <TemplateMailPartner
+        data={data}
+        uniqueId={uniqueId}
+        actionsLink={actionsLink}
+      />,
     )
 
-    const result = await response.json()
-    return result
-  }
+    data.structureMail = {
+      html: structureHtml,
+      to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
+      cco: 'tawan.rio@webfoco.com',
+      from: 'formData.inputs.info.tradingName',
+      subject: 'Solicitação de cadastro de parceiro',
+    }
 
-  const sendEmailToAction = async (data) => {
-    // const response = await fetch('http://localhost:3000/api/handlemail/sendmail', {
     const response = await fetch(
       process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail',
       {
@@ -212,7 +198,7 @@ export default function RegisterForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          formData,
+          formData: data,
         }),
       },
     )
