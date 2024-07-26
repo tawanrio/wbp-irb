@@ -233,7 +233,7 @@ export default function RegisterForm() {
           </label>
           <select
             id="partnerType"
-            className="border px-4 py-2"
+            className="bg-custom-arrow appearance-none border bg-[calc(100%-1rem)_center] bg-no-repeat px-4 py-2"
             value={partnerType}
             onChange={(e) => handlePartnerType(e.target.value)}
           >

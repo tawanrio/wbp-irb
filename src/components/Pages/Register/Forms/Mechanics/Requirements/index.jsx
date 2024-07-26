@@ -38,8 +38,8 @@ export default function Requirements({ setRequiments, resetInputs }) {
   return (
     <div className="mt-10">
       <SectionTitle title="Pré-Requisitos" line={true} />
-      <div className="mt-5 flex w-full flex-row flex-wrap justify-between gap-5">
-        <div className="flex w-[48%] flex-col">
+      <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Certificação Profissional *
           </label>
@@ -53,11 +53,11 @@ export default function Requirements({ setRequiments, resetInputs }) {
             accept="image/png, image/jpeg, application/pdf"
             onChange={(event) => handleImg(event, setCertificateImg)}
           />
-          <span className="text-sm text-slate-400">
+          <span className="mt-1 text-sm text-slate-400">
             Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.
           </span>
         </div>
-        <div className="flex w-[48%] flex-col">
+        <div className="flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Equipamento: Elevador *
           </label>
@@ -71,28 +71,28 @@ export default function Requirements({ setRequiments, resetInputs }) {
             accept="image/png, image/jpeg, application/pdf"
             onChange={(event) => handleImg(event, setElevatorImg)}
           />
-          <span className="text-sm text-slate-400">
+          <span className="mt-1 text-sm text-slate-400">
             Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.
           </span>
         </div>
+      </div>
 
-        <div className="flex w-full flex-col">
-          <label className="text-lg font-bold">Ferramentas:</label>
-          <span className="text-sm text-slate-400">
-            Preencher quais ferramentas você possui
-          </span>
-          <div className="mt-2 flex flex-wrap justify-between gap-2">
-            {EQUIPMENTS.map((equipment, index) => (
-              <label key={index} className="cap mr-4 flex w-[48%] items-center">
-                <input
-                  type="checkbox"
-                  value={equipment}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="ml-2">{equipment}</span>
-              </label>
-            ))}
-          </div>
+      <div className="mt-5 flex w-full flex-col">
+        <label className="text-lg font-bold">Ferramentas:</label>
+        <span className="text-sm text-slate-400">
+          Preencher quais ferramentas você possui
+        </span>
+        <div className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
+          {EQUIPMENTS.map((equipment, index) => (
+            <label key={index} className="flex flex-row items-center">
+              <input
+                type="checkbox"
+                value={equipment}
+                onChange={handleCheckboxChange}
+              />
+              <span className="ml-2">{equipment}</span>
+            </label>
+          ))}
         </div>
       </div>
     </div>

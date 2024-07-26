@@ -56,8 +56,8 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
 
   return (
     <div className="flex w-full flex-col justify-between gap-4 md:my-0 md:gap-2 md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between">
-        <div className="mt-2 flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="partnerType">
             Em qual distribuidor você adquiri os produtos IRB
           </label>
@@ -71,7 +71,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             onChange={(e) => setWhereToBuy(e.target.value)}
           />
         </div>
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="companyName">
             Razão social
           </label>
@@ -86,7 +86,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="tradingName">
             Nome fantasia
           </label>
@@ -100,7 +100,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             onChange={(e) => settradingName(e.target.value)}
           />
         </div>
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="cnpj">
             CNPJ
           </label>
@@ -116,7 +116,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="email">
             E-mail
           </label>
@@ -131,7 +131,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
             Telefone
           </label>
@@ -147,7 +147,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold capitalize" htmlFor="logo">
             Anexar logomarca
           </label>
@@ -158,7 +158,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             accept="image/png, image/jpeg"
             onChange={(e) => handleImg(e, setLogo)}
           />
-          <span className="text-sm text-slate-400">
+          <span className="mt-1 text-sm text-slate-400">
             Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho
             máximo do arquivo: 3MB.
           </span>
