@@ -16,8 +16,6 @@ export default function RegisterForm() {
   const [partnerType, setPartnerType] = useState('')
   const [inputs, setInputs] = useState(null)
   const [uniqueId, setUniqueId] = useState('')
-  const [structureMail, setStructureMail] = useState({})
-  const [html, setHtml] = useState('')
   const [actionsLink, setActionsLink] = useState('')
 
   const [responseMessage] = useState({
@@ -61,9 +59,7 @@ export default function RegisterForm() {
       />,
     )
 
-    setHtml(generatedHtml)
-
-    const newStructureMail = {
+    const structureMail = {
       html: generatedHtml,
       to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
       cco: 'tawan.rio@webfoco.com',
@@ -71,12 +67,10 @@ export default function RegisterForm() {
       subject: 'Solicitação de cadastro de parceiro',
     }
 
-    setStructureMail(newStructureMail)
-
     setFormData((prevData) => ({
       ...prevData,
       inputs,
-      structureMail: newStructureMail,
+      structureMail,
       uniqueId,
     }))
   }, [inputs, uniqueId, actionsLink])
@@ -122,7 +116,6 @@ export default function RegisterForm() {
       setSending(false)
     }
   }
-
   const uploadImagesToDB = async (data) => {
     if (data.inputs.info.logo instanceof File) {
       const responseLogo = await insertImgDatabase(
@@ -130,29 +123,27 @@ export default function RegisterForm() {
         data.inputs.info.cnpj,
       )
 
-      if (!responseLogo || responseLogo.status !== 200)
+      if (!responseLogo || responseLogo.status !== 200) {
         throw new Error('Database')
+      }
 
       data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
     }
 
-    if (
-      data.inputs?.requirements?.certificateImg instanceof File ||
-      data.inputs?.requirements?.elevatorImg instanceof File
-    ) {
-      const { certificateImg, elevatorImg } = data.inputs.requirements
-      const { cnpj } = data.inputs.info
+    const { certificateImg, elevatorImg } = data.inputs?.requirements || {}
+    const { cnpj } = data.inputs.info
 
-      const responseCertificate = certificateImg
-        ? await insertImgDatabase(certificateImg, cnpj)
-        : ''
-      const responseElevatorImg = elevatorImg
-        ? await insertImgDatabase(elevatorImg, cnpj)
-        : ''
+    let responseCertificate, responseElevatorImg
 
+    if (certificateImg instanceof File) {
+      responseCertificate = await insertImgDatabase(certificateImg, cnpj)
       data.inputs.requirements.certificateImg = responseCertificate?.path
         ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
         : ''
+    }
+
+    if (elevatorImg instanceof File) {
+      responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
       data.inputs.requirements.elevatorImg = responseElevatorImg?.path
         ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
         : ''
@@ -162,8 +153,6 @@ export default function RegisterForm() {
       ...prevData,
       ...data,
     }))
-
-    return true
   }
 
   const sendEmailToPartner = async (data) => {
@@ -245,14 +234,14 @@ export default function RegisterForm() {
   }
 
   return (
-    <section className="flex flex-col items-center" id={`register_`}>
+    <section className="flex flex-col items-center" id="register_">
       <div className="my-4 mb-10 flex w-full max-w-7xl flex-col justify-between gap-10 px-6 md:my-7 md:px-14">
-        <SectionTitle title={'Cadastro'} line />
+        <SectionTitle title="Cadastro" line />
 
         <form
           onSubmit={(e) => handleSubmitForm(e)}
           className="flex flex-col items-center gap-10"
-          enctype=" multipart/form-data "
+          encType="multipart/form-data"
         >
           <div className="flex w-full flex-col">
             <label

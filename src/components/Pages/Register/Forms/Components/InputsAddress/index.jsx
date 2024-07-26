@@ -1,9 +1,9 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function InputsAddress({ setAddress, resetInputs }) {
   const [street, setStreet] = useState('')
@@ -12,6 +12,8 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [cep, setCep] = useState('')
+
+  const zipCodeRef = useRef(null)
 
   useEffect(() => {
     const address = {
@@ -80,9 +82,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           CEP
         </label>
         <InputMask
-          mask="99999-999"
-          maskPlaceholder=""
           id="cep"
+          mask="99999-999"
+          ref={zipCodeRef}
           placeholder="CEP"
           className="border px-4 py-2"
           value={cep}

@@ -77,7 +77,7 @@ export default function TemplateMailPartner({ data, actionsLink }) {
             </p>
           )}
         {renderImage('Logomarca', info.logo, 'Logo da Empresa')}
-        {requirements && (
+        {Object.keys(requirements).length > 0 && (
           <div>
             <h2 style={{ fontSize: '18px', marginTop: '20px', color: '#333' }}>
               Pré-requisitos

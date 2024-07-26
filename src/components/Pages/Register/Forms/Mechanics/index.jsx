@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import InputsAddress from './../Components/InputsAddress'
 import Requirements from './Requirements'
 import { createModifiedFile } from '@/utils/functions'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
   const [cnpj, setCnpj] = useState('')
@@ -15,9 +14,11 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [logo, setLogo] = useState('')
-
   const [requirements, setRequiments] = useState({})
   const [address, setAddress] = useState({})
+
+  const cnpjRef = useRef(null)
+  const phoneRef = useRef(null)
 
   useEffect(() => {
     setInputs({
@@ -60,7 +61,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
   }
 
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = createModifiedFile(event.target.files[0])
     setState(file)
   }
@@ -102,9 +102,9 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
             CNPJ
           </label>
           <InputMask
-            mask="99.999.999/9999-99"
-            maskPlaceholder=""
             id="cnpj"
+            mask="99.999.999/9999-99"
+            ref={cnpjRef}
             required
             placeholder="CNPJ"
             className="border px-4 py-2"
@@ -135,7 +135,7 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
           <InputMask
             id="phone"
             mask="(99) 99999-9999"
-            maskPlaceholder=""
+            ref={phoneRef}
             required
             placeholder="Telefone"
             className="border px-4 py-2"

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { createModifiedFile } from '@/utils/functions'
 import InputsAddress from './../Components/InputsAddress'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 export default function FormDistributor({
   setInputs,
@@ -17,8 +17,10 @@ export default function FormDistributor({
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [logo, setLogo] = useState('')
-
   const [address, setAddress] = useState({})
+
+  const cnpjRef = useRef(null)
+  const phoneRef = useRef(null)
 
   useEffect(() => {
     setInputs({
@@ -50,14 +52,12 @@ export default function FormDistributor({
   }
 
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = createModifiedFile(event.target.files[0])
 
     if (!file) {
       return
     }
-    console.log(file)
-    // Verificar o tipo de arquivo
+
     const validImageTypes = ['image/jpeg', 'image/png', 'image/heic']
     if (!validImageTypes.includes(file.type)) {
       toast.error('Por favor selecione uma imagem válida.')
@@ -103,9 +103,9 @@ export default function FormDistributor({
             CNPJ
           </label>
           <InputMask
-            mask="99.999.999/9999-99"
-            maskPlaceholder=""
             id="cnpj"
+            mask="99.999.999/9999-99"
+            ref={cnpjRef}
             required
             placeholder="CNPJ"
             className="border px-4 py-2"
@@ -136,7 +136,7 @@ export default function FormDistributor({
           <InputMask
             id="phone"
             mask="(99) 99999-9999"
-            maskPlaceholder=""
+            ref={phoneRef}
             required
             placeholder="Telefone"
             className="border px-4 py-2"

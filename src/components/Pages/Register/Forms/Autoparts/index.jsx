@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { createModifiedFile } from '@/utils/functions'
 import InputsAddress from './../Components/InputsAddress'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
   const [cnpj, setCnpj] = useState('')
@@ -13,8 +13,10 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [logo, setLogo] = useState(null)
-
   const [address, setAddress] = useState({})
+
+  const cnpjRef = useRef(null)
+  const phoneRef = useRef(null)
 
   useEffect(() => {
     setInputs({
@@ -50,7 +52,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
   }
 
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = createModifiedFile(event.target.files[0])
     setState(file)
   }
@@ -117,9 +118,9 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             CNPJ
           </label>
           <InputMask
-            mask="99.999.999/9999-99"
-            maskPlaceholder=""
             id="cnpj"
+            mask="99.999.999/9999-99"
+            ref={cnpjRef}
             required
             placeholder="CNPJ"
             className="border px-4 py-2"
@@ -150,7 +151,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
           <InputMask
             id="phone"
             mask="(99) 99999-9999"
-            maskPlaceholder=""
+            ref={phoneRef}
             required
             placeholder="Telefone"
             className="border px-4 py-2"

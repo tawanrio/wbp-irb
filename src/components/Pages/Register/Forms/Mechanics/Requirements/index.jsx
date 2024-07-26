@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
 
 export default function Requirements({ setRequiments, resetInputs }) {
@@ -40,8 +40,9 @@ export default function Requirements({ setRequiments, resetInputs }) {
     setState(file)
   }
 
-  const handleCheckboxChange = useCallback((event) => {
+  const handleCheckboxChange = (event) => {
     const { value, checked } = event.target
+
     setSelectedEquipments((prevSelectedEquipments) => {
       if (checked) {
         return [...prevSelectedEquipments, value]
@@ -49,7 +50,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
         return prevSelectedEquipments.filter((equipment) => equipment !== value)
       }
     })
-  }, [])
+  }
 
   return (
     <div className="mt-10">
