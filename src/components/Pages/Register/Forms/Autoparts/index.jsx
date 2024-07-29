@@ -17,6 +17,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
 
   const cnpjRef = useRef(null)
   const phoneRef = useRef(null)
+  const logoRef = useRef(null)
 
   useEffect(() => {
     setInputs({
@@ -47,6 +48,10 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
     setLogo('')
     setWhereToBuy('')
     setAddress({})
+
+    if (logoRef.current) {
+      logoRef.current.value = ''
+    }
   }
 
   const handleImg = (event, setState) => {
@@ -62,8 +67,8 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             Em qual distribuidor você adquiri os produtos IRB
           </label>
           <input
-            type="text"
             id="whereToBuy"
+            type="text"
             placeholder="Em qual distribuidor você adquiri os produtos IRB"
             className="border px-4 py-2"
             required
@@ -76,8 +81,8 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             Razão social
           </label>
           <input
-            type="text"
             id="companyName"
+            type="text"
             placeholder="Razão Social"
             className="border px-4 py-2"
             required
@@ -91,8 +96,8 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             Nome fantasia
           </label>
           <input
-            type="text"
             id="tradingName"
+            type="text"
             placeholder="Nome fantasia"
             className="border px-4 py-2"
             required
@@ -121,8 +126,8 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             E-mail
           </label>
           <input
-            type="email"
             id="email"
+            type="email"
             required
             placeholder="E-mail"
             className="border px-4 py-2"
@@ -152,9 +157,10 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             Anexar logomarca
           </label>
           <input
-            type="file"
             id="logo"
+            type="file"
             required
+            ref={logoRef}
             accept="image/png, image/jpeg"
             onChange={(e) => handleImg(e, setLogo)}
           />
@@ -165,7 +171,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
         </div>
       </div>
 
-      <InputsAddress setAddress={setAddress} />
+      <InputsAddress setAddress={setAddress} resetInputs={resetInputs} />
     </div>
   )
 }

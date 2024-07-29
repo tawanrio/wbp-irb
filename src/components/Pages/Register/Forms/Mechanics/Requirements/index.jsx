@@ -1,22 +1,44 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
 import { EQUIPMENTS } from '@/utils/constants'
 
 export default function Requirements({ setRequiments, resetInputs }) {
-  const [certificateImg, setCertificateImg] = useState('')
-  const [elevatorImg, setElevatorImg] = useState('')
+  const [certificateImg, setCertificateImg] = useState(null)
+  const [elevatorImg, setElevatorImg] = useState(null)
   const [selectedEquipments, setSelectedEquipments] = useState([])
+
+  const certificateImgRef = useRef(null)
+  const elevatorImgRef = useRef(null)
+  const checkboxRefs = useRef([])
 
   useEffect(() => {
     setRequiments({ certificateImg, elevatorImg, selectedEquipments })
   }, [certificateImg, elevatorImg, selectedEquipments])
 
   useEffect(() => {
-    setCertificateImg('')
-    setElevatorImg('')
-    setSelectedEquipments([])
+    resetForm()
   }, [resetInputs])
+
+  const resetForm = () => {
+    setCertificateImg(null)
+    setElevatorImg(null)
+    setSelectedEquipments([])
+
+    if (certificateImgRef.current) {
+      certificateImgRef.current.value = ''
+    }
+
+    if (elevatorImgRef.current) {
+      elevatorImgRef.current.value = ''
+    }
+
+    checkboxRefs.current.forEach((checkbox) => {
+      if (checkbox) {
+        checkbox.checked = false
+      }
+    })
+  }
 
   const handleImg = (event, setState) => {
     const file = event.target.files[0]
@@ -47,9 +69,10 @@ export default function Requirements({ setRequiments, resetInputs }) {
             Anexar o seu certificado{' '}
           </span>
           <input
-            type="file"
             id="logo"
+            type="file"
             className="mt-2"
+            ref={certificateImgRef}
             accept="image/png, image/jpeg, application/pdf"
             onChange={(event) => handleImg(event, setCertificateImg)}
           />
@@ -65,9 +88,10 @@ export default function Requirements({ setRequiments, resetInputs }) {
             Anexar uma foto do seu elevador
           </span>
           <input
-            type="file"
             id="logo"
+            type="file"
             className="mt-2"
+            ref={elevatorImgRef}
             accept="image/png, image/jpeg, application/pdf"
             onChange={(event) => handleImg(event, setElevatorImg)}
           />
@@ -89,6 +113,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
                 type="checkbox"
                 value={equipment}
                 onChange={handleCheckboxChange}
+                ref={(el) => (checkboxRefs.current[index] = el)}
               />
               <span className="ml-2">{equipment}</span>
             </label>
