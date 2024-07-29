@@ -65,7 +65,7 @@ const UtilityCards = ({ utilityCards }) => {
                 <div
                   key={index}
                   className="w-[80vw] flex-shrink-0 overflow-hidden rounded-md duration-500 hover:scale-95 md:w-[48%]"
-                  style={{ marginRight: '8px' }} // Assuming gap is 8px
+                  style={{ marginRight: '8px' }}
                 >
                   <SingleUtility utilities={utilities} />
                 </div>

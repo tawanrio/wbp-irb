@@ -5,7 +5,7 @@ import { Posts } from '@/service/model/schemas/postsSchema'
 import { formatStrToDash } from '@/utils/functions'
 
 export default function UpdatePost({ content }) {
-  console.log(content.data)
+  // console.log(content.data)
   if (content.type !== 'error') {
     // Aqui você pode adicionar a lógica de renderização se precisar
   }
@@ -30,7 +30,7 @@ export const getServerSideProps = async (context) => {
 
     do {
       const response = await fetch(
-        `https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts?per_page=50&page=${page}`,
+        `https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts?per_page=30&page=${page}`,
       )
       if (!response.ok) {
         throw new Error('Erro ao buscar dados da API')
@@ -45,9 +45,9 @@ export const getServerSideProps = async (context) => {
 
     // Iterar sobre cada post e imprimir o ID no console
     for (const post of allPosts) {
-      //   console.log(`Post ID: ${post.id}`);
-      //   console.log(`Título: ${post.title.rendered}`);
-      //   console.log(`Data: ${post.date}`);
+      // console.log(`Post ID: ${post.id}`)
+      // console.log(`Título: ${post.title.rendered}`)
+      // console.log(`Data: ${post.date}`)
 
       const existingPost = await Posts.findOne({ postId: post.id })
       const dateLastModified = new Date(post.modified).toISOString()
