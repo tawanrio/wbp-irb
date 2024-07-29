@@ -36,8 +36,8 @@ export default function FormOthers({ setFormData, resetInputs }) {
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between gap-2">
-        <div className="flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="flex flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="fullName">
               Nome completo
@@ -84,7 +84,7 @@ export default function FormOthers({ setFormData, resetInputs }) {
             />
           </div>
         </div>
-        <div className="flex w-[48%] flex-col">
+        <div className="flex flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold capitalize" htmlFor="message">
               Mensagem

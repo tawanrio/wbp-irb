@@ -73,8 +73,8 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   }
 
   return (
-    <div className="flex w-full flex-row flex-wrap justify-between">
-      <div className="mt-2 flex w-[48%] flex-col">
+    <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="cep">
           CEP
         </label>
@@ -89,7 +89,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           onBlur={handleBlur}
         />
       </div>
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="street">
           {' '}
           Rua/Avenida
@@ -104,7 +104,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="number">
           Número
         </label>
@@ -118,7 +118,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="neighborhood">
           Bairro
         </label>
@@ -132,7 +132,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="city">
           Cidade
         </label>
@@ -146,7 +146,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="state">
           Estado
         </label>

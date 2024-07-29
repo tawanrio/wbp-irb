@@ -11,6 +11,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
   const [address, setAddress] = useState({})
 
   const phoneRef = useRef(null)
+  const curriculumRef = useRef(null)
 
   useEffect(() => {
     setFormData({
@@ -36,6 +37,10 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
     setFullName('')
     setCurriculum('')
     setAddress({})
+
+    if (curriculumRef.current) {
+      curriculumRef.current.value = ''
+    }
   }
 
   const handleImg = (event, setState) => {
@@ -45,8 +50,8 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between">
-        <div className="mt-2 flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="fullName">
             Nome completo
           </label>
@@ -60,7 +65,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="email">
             E-mail
           </label>
@@ -74,7 +79,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
             Telefone
           </label>
@@ -90,18 +95,19 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Anexar currículo
           </label>
           <input
-            id="logo"
+            id="curriculum"
             type="file"
-            accept="image/png, image/jpeg, application/pdf"
+            ref={curriculumRef}
+            accept="application/pdf"
             onChange={(e) => handleImg(e, setCurriculum)}
           />
-          <span className="text-sm text-slate-400">
-            Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 3MB.
+          <span className="mt-1 text-sm text-slate-400">
+            Formatos suportados: PDF; Tamanho máximo do arquivo: 3MB.
           </span>
         </div>
       </div>

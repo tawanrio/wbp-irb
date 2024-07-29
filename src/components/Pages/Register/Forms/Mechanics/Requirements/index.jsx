@@ -106,19 +106,19 @@ export default function Requirements({ setRequiments, resetInputs }) {
         <span className="text-sm text-slate-400">
           Preencher quais ferramentas você possui
         </span>
-        <div className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
+        <ul className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
           {EQUIPMENTS.map((equipment, index) => (
-            <label key={index} className="flex flex-row items-center">
+            <li key={index} className="flex flex-row items-center">
               <input
                 type="checkbox"
                 value={equipment}
                 onChange={handleCheckboxChange}
                 ref={(el) => (checkboxRefs.current[index] = el)}
               />
-              <span className="ml-2">{equipment}</span>
-            </label>
+              <label className="ml-2">{equipment}</label>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   )

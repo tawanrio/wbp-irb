@@ -1,6 +1,16 @@
 import React from 'react'
 
 export default function TemplateMailWorkWithUs({ data }) {
+  const { info = {} } = data.inputs || {}
+
+  const renderInfo = (label, value) => {
+    return value ? (
+      <p style={{ margin: '10px 0', color: '#666' }}>
+        <strong>{label}:</strong> {value}
+      </p>
+    ) : null
+  }
+
   return (
     <div
       style={{
@@ -11,35 +21,19 @@ export default function TemplateMailWorkWithUs({ data }) {
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
       }}
     >
-      <h1 style={{ color: '#333' }}>Trabalhar na IRB</h1>
-      <span>
-        Email enviado através do site:{' '}
+      <h2 style={{ color: '#333' }}>Trabalhar na IRB</h2>
+      <p style={{ color: '#666' }}>
+        <strong>Email enviado através do site:</strong>{' '}
         <a href="http://irbauto.com.br">irbauto.com.br</a>
-      </span>
+      </p>
 
-      {data.inputs?.info.fullName && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Nome completo: {data.inputs?.info.fullName}
-        </p>
-      )}
+      {renderInfo('Nome Completo', info.fullName)}
+      {renderInfo('Email', info.email)}
+      {renderInfo('Telefone', info.phone)}
 
-      {data.inputs?.info.email && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Email: {data.inputs?.info.email}
-        </p>
-      )}
-
-      {data.inputs?.info.phone && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Telefone: {data.inputs?.info.phone}
-        </p>
-      )}
-
-      {data.inputs?.info.curriculum && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Currículo: {data.inputs?.info.curriculum}
-        </p>
-      )}
+      <p style={{ margin: '10px 0', color: '#666' }}>
+        <strong>Currículo:</strong> <a href={info.curriculum}>Abrir PDF</a>
+      </p>
 
       {data.inputs?.address.street &&
         data.inputs?.address.number &&
@@ -48,7 +42,7 @@ export default function TemplateMailWorkWithUs({ data }) {
         data.inputs?.address.state &&
         data.inputs?.address.cep && (
           <p style={{ color: '#666', marginBottom: '10px' }}>
-            Endereço: {data.inputs?.address.street},{' '}
+            <strong>Endereço:</strong> {data.inputs?.address.street},{' '}
             {data.inputs?.address.number} - {data.inputs?.address.neighborhood},{' '}
             {data.inputs?.address.city} - {data.inputs?.address.state}, CEP:{' '}
             {data.inputs?.address.cep}

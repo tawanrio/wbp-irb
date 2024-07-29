@@ -42,8 +42,8 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
 
   return (
     <div className="flex w-full flex-col justify-between md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between">
-        <div className="mt-2 flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="product">
             Produto
           </label>
@@ -63,7 +63,7 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
           </select>
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="productLine">
             Linha
           </label>
@@ -77,8 +77,8 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
           />
         </div>
       </div>
-      <div className="flex w-full flex-row flex-wrap justify-between gap-2">
-        <div className="flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="flex flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="fullName">
               Nome completo
@@ -94,7 +94,7 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
             />
           </div>
 
-          <div className="mt-2 flex w-full flex-col">
+          <div className="mt-2 flex flex-col">
             <label className="text-lg font-bold" htmlFor="email">
               E-mail
             </label>
@@ -109,7 +109,7 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
             />
           </div>
 
-          <div className="mt-2 flex w-full flex-col">
+          <div className="mt-2 flex flex-col">
             <label className="text-lg font-bold" htmlFor="phone">
               Telefone
             </label>
@@ -125,7 +125,7 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
             />
           </div>
         </div>
-        <div className="flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold capitalize" htmlFor="message">
               Mensagem
