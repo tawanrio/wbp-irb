@@ -9,10 +9,10 @@ import Title from '@/components/Title'
 
 // Components
 import Banner from '@/components/Banner/index'
+import DynamicForm from './components/Form'
 import ContentDescription from '@/components/ContentDescription'
 import InsertVideo from '@/components/InsertVideo'
 import Partners from '@/components/Partners'
-import Form from '@/components/Form'
 import CompanyValues from '@/components/CompanyValues'
 import Categories from '@/components/Categories'
 import BreadCrumb from '@/components/BreadCrumb'
@@ -39,17 +39,14 @@ export default function Home({ content, locale }) {
   const [metaDescription] = useState(content?.page?.metaDescription)
   const [metaKeywords] = useState(content?.page?.metaKeywords)
   const [description] = useState(content?.page?.contentDescription)
-  const [banners] = useState(content?.page?.banners)
-  const [utilityCards] = useState(content?.page?.components.utilityCards)
   const [diffCarousel] = useState(content?.page?.components.diffCarousel)
-  const [categories] = useState(content?.page?.components.categories)
   const [partners] = useState(content?.page?.components.partners)
+  const [utilityCards] = useState(content?.page?.components.utilityCards)
+  const [banners] = useState(content?.page?.banners)
   const [servicesOverview] = useState(
     content?.page?.components.servicesOverview,
   )
-  const [formDefault] = useState(
-    content?.form?.forms.find((item) => item.label === 'default'),
-  )
+  const [formDefault] = useState(content?.page.components.form)
   const [posts] = useState(content.blogData)
 
   const sortedCategories = sortByKey(content.categories, 'label')
@@ -85,14 +82,17 @@ export default function Home({ content, locale }) {
         <DiffCarouselTwo content={diffCarousel} />
         {/* <CompanyValues cards={cardsValues}/> */}
         {/* <TextVideo video={video} description={description} /> */}
-        <CategoryGrid categories={sortedCategories} title={categories.title} />
+        <CategoryGrid
+          categories={sortedCategories}
+          title={content?.page.components.categories.title}
+        />
         {/* <Categories categories={sortedCategories} colors={content?.page?.colors.products} title /> */}
         <PartnersButton partners={partners} />
         {/* <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/> */}
         <UtilityCards utilityCards={utilityCards} />
         {/* <Utilities title={'Utilidades'}/> */}
-        <BlogCarousel posts={posts} />
-        <Form inputs={formDefault} colors={content?.form?.colors} />
+        {/* <BlogCarousel posts={posts} /> */}
+        <DynamicForm form={formDefault} colors={content?.form?.colors} />
       </Templates>
     </>
   )

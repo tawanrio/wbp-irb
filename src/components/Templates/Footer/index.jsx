@@ -8,8 +8,6 @@ export default function Footer({ content }) {
   const colors = dataFooter?.colors
   const certificates = dataFooter?.certificates
 
-  console.log(certificates)
-
   return (
     <footer style={{ background: colors?.bg, color: colors?.text }}>
       <div className="mx-auto flex flex-wrap gap-1 px-6 py-6 md:max-w-7xl md:justify-between md:px-14 md:py-12">

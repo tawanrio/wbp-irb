@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
 import FormPartner from './Partner'
@@ -14,46 +13,33 @@ export default function ContactForm({ categories }) {
     success: '',
     error: '',
   })
-
   const [formData, setFormData] = useState({
-    inputs: {
-      info: {},
-      address: {},
-    },
+    inputs: { info: {}, address: {} },
     actionsLink: {},
     html: '',
   })
-
   const [resetInputs, setResetInputs] = useState(false)
-  const [sending, setSending] = useState(null)
+  const [sending, setSending] = useState(false)
 
-  const handlePartnerType = (value) => {
-    setPartnerType(value)
-  }
+  const handlePartnerType = (value) => setPartnerType(value)
 
   const handleSubmitForm = async (e) => {
     e.preventDefault()
+    setSending(true)
 
     try {
-      setSending(true)
-
       const responseSendEmail = await sendEmailToAction(formData)
-
       if (!responseSendEmail) throw new Error('Enviar email')
 
       if (formData.inputs.info.partnerType) {
-        const responseInserDB = await insertDataIntoDB({
-          formData,
-        })
-        if (!responseInserDB) throw new Error('Database')
+        const responseInsertDB = await insertDataIntoDB({ formData })
+        if (!responseInsertDB) throw new Error('Database')
       }
 
       toast.success('Email enviado com sucesso')
-      // toast.success(responseMessage.success)
       setResetInputs(!resetInputs)
     } catch (error) {
-      // toast.error(`${responseMessage.error} - ${error.message}`);
-      toast.error(`Error ao enviar seu email, tente novamente mais tarde`)
+      toast.error(`Erro ao enviar seu email, tente novamente mais tarde`)
     } finally {
       setSending(false)
     }
@@ -61,15 +47,11 @@ export default function ContactForm({ categories }) {
 
   const sendEmailToAction = async (formData) => {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/sendmail',
+      `${process.env.NEXT_PUBLIC_DOMAIN}/api/handlemail/sendmail`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          formData,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formData }),
       },
     )
     return response.ok
@@ -77,25 +59,66 @@ export default function ContactForm({ categories }) {
 
   const insertDataIntoDB = async (data) => {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_DOMAIN + '/api/handlemail/insertdb',
+      `${process.env.NEXT_PUBLIC_DOMAIN}/api/handlemail/insertdb`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       },
     )
     return response.ok
   }
 
-  return (
-    <section className="flex flex-col items-center" id={`register_`}>
-      <div className="my-4 mb-10 flex w-full max-w-7xl flex-col justify-between gap-10 px-6 md:my-7 md:px-14">
-        <SectionTitle title={'Envie-nos um email'} />
+  const renderFormComponent = () => {
+    switch (partnerType) {
+      case 'work-with-us':
+        return (
+          <FormWorkWithUs
+            setFormData={setFormData}
+            formData={formData}
+            resetInputs={resetInputs}
+            setResponseMessage={setResponseMessage}
+          />
+        )
+      case 'budget':
+        return (
+          <FormBudget
+            setFormData={setFormData}
+            formData={formData}
+            resetInputs={resetInputs}
+            categories={categories}
+            setResponseMessage={setResponseMessage}
+          />
+        )
+      case 'others':
+        return (
+          <FormOther
+            setFormData={setFormData}
+            formData={formData}
+            resetInputs={resetInputs}
+            setResponseMessage={setResponseMessage}
+          />
+        )
+      case 'parceiro':
+        return (
+          <FormPartner
+            formData={formData}
+            setFormData={setFormData}
+            resetInputs={resetInputs}
+            setResponseMessage={setResponseMessage}
+          />
+        )
+      default:
+        return null
+    }
+  }
 
+  return (
+    <section className="flex flex-col items-center" id="register_">
+      <div className="my-4 mb-10 flex w-full max-w-7xl flex-col justify-between gap-10 px-6 md:my-7 md:px-14">
+        <SectionTitle title="Envie-nos um email" />
         <form
-          onSubmit={(e) => handleSubmitForm(e)}
+          onSubmit={handleSubmitForm}
           className="flex flex-col items-center gap-10"
         >
           <div className="flex w-full flex-col">
@@ -115,53 +138,13 @@ export default function ContactForm({ categories }) {
               <option value="others">Outros</option>
             </select>
           </div>
-
-          {partnerType === 'work-with-us' && (
-            <FormWorkWithUs
-              setFormData={setFormData}
-              formData={formData}
-              resetInputs={resetInputs}
-              setResponseMessage={setResponseMessage}
-            />
-          )}
-          {partnerType === 'budget' && (
-            <FormBudget
-              setFormData={setFormData}
-              formData={formData}
-              resetInputs={resetInputs}
-              categories={categories}
-              setResponseMessage={setResponseMessage}
-            />
-          )}
-
-          {partnerType === 'others' && (
-            <FormOther
-              setFormData={setFormData}
-              formData={formData}
-              resetInputs={resetInputs}
-              setResponseMessage={setResponseMessage}
-            />
-          )}
-          {partnerType === 'parceiro' && (
-            <FormPartner
-              formData={formData}
-              setFormData={setFormData}
-              resetInputs={resetInputs}
-              setResponseMessage={setResponseMessage}
-            />
-          )}
-
-          {!(partnerType === '') && (
-            <>
-              <div>
-                <button
-                  // disabled={sending}
-                  className="rounded-full bg-[#22326e] px-20 py-2 text-2xl text-white duration-500 hover:scale-110"
-                >
-                  {sending ? 'Enviando...' : 'Enviar'}
-                </button>
-              </div>
-            </>
+          {renderFormComponent()}
+          {partnerType && (
+            <div>
+              <button className="rounded-full bg-[#22326e] px-20 py-2 text-2xl text-white duration-500 hover:scale-110">
+                {sending ? 'Enviando...' : 'Enviar'}
+              </button>
+            </div>
           )}
         </form>
       </div>

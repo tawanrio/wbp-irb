@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
-import { connectMongoDB, disconnectMongoDB } from '@/service/db'
-import { formatStrToUrl } from '@/utils/functions'
 
 // Pages
 import Contato from '@/components/Pages/Contato'
@@ -95,8 +93,8 @@ export default function index({ content }) {
 
 export const getServerSideProps = async (context) => {
   try {
-    const resolvedUrl = context.resolvedUrl;
-    const content = await getDataPage(resolvedUrl,context.locale);
+    const resolvedUrl = context.resolvedUrl
+    const content = await getDataPage(resolvedUrl, context.locale)
 
     return {
       props: {

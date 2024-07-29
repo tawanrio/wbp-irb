@@ -22,7 +22,7 @@ const SinglePartner = ({ partner }) => {
             href={partner.link}
             className="inline-block rounded-md border-2 border-white bg-white px-4 py-2 text-center font-semibold text-[#222b4e] transition-colors duration-500 hover:border-white hover:bg-[#222b4e] hover:text-white"
           >
-            Saiba mais
+            {partner.linkText}
           </a>
         </div>
       </div>

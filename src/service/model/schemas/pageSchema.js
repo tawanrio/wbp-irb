@@ -10,16 +10,20 @@ const pageSchema = new mongoose.Schema(
     contentDescription: Array,
     location: Object,
     banners: Object,
+    categories: Object,
     colors: Object,
+    components: Object,
+    partners: Object,
     companyValues: Array,
     certificate: Array,
     servicesOverview: Array,
-    faq: Array
-    
-  }, {
-    versionKey: false // Isso impede que o campo "__v" seja incluído nos documentos
-  });
-  
- const Page = mongoose?.models?.pages || mongoose?.model('pages', pageSchema);
+    faq: Array,
+  },
+  {
+    versionKey: false, // Isso impede que o campo "__v" seja incluído nos documentos
+  },
+)
 
- export default Page
+const Page = mongoose?.models?.pages || mongoose?.model('pages', pageSchema)
+
+export default Page

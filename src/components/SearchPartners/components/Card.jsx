@@ -23,7 +23,7 @@ export default function Card({ collection }) {
   return (
     <Link
       href={collectionUrl}
-      classNamae=" w-full h-full   flex  items-center flex-col hover:scale-95 duration-500"
+      className="flex h-full w-full flex-col items-center duration-500 hover:scale-95"
     >
       <h3 className="flex h-16 flex-grow items-center text-xl font-bold capitalize">
         {collection?.tradingName}

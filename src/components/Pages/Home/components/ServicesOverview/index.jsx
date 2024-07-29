@@ -1,9 +1,6 @@
 import Image from 'next/image'
 
 export default function ServicesOverview({content, certificate}) {
-    
- 
-
 
   return (
     <section className="relative flex flex-col items-center" id="blog-carousel">

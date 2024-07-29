@@ -4,65 +4,10 @@ import Image from 'next/image'
 import { useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
 
-export default function CompanyValuesNew({ cards }) {
+export default function CompanyValuesNew({ companyValues }) {
   const [expandedCard, setExpandedCard] = useState(null)
 
-  const companyValues = [
-    {
-      colors: {
-        bg: '#22326E',
-        text: '#fff',
-        hr: '#6FBFD8',
-      },
-      title: 'nosso sonho',
-      content: {
-        listStyle: 'none',
-        description: [
-          'Ser a primeira escolha do cliente e líder mundial no segmento de peças automotivas.',
-        ],
-      },
-      image: '/images/components/companyValues/mission.webp',
-    },
-    {
-      colors: {
-        bg: '#353535',
-        text: '#fff',
-        hr: '#C12025',
-      },
-      title: 'nosso combustível',
-      content: {
-        listStyle: 'auto',
-        description: [
-          'Fazemos negócios com ética, integridade e profissionalismo.',
-          'Somos movidos por surpreender nossos clientes e fornecer o melhor produto do mercado.',
-          'Somos incansáveis em entregar qualidade, inovação e segurança em nossas soluções.',
-          'Somos comprometidos em encontrar nossos colaboradores e gerar valor para a sociedade.',
-        ],
-      },
-      image: '/images/components/companyValues/vision.webp',
-    },
-    {
-      colors: {
-        bg: '#C12025',
-        text: '#fff',
-        hr: '#22326E',
-      },
-      title: 'nossas atitudes',
-      content: {
-        listStyle: 'disc',
-        description: [
-          'Atitude corajosa',
-          'Impulsiona resultados',
-          'Graxa na veia',
-          'Cliente no centro',
-          'Constrói parcerias',
-          'Aprendizagem contínua',
-        ],
-      },
-      image: '/images/components/companyValues/values.webp',
-    },
-  ]
-
+  console.log(companyValues)
   const handleMouseEnter = (index) => {
     setExpandedCard(index)
   }
@@ -74,10 +19,10 @@ export default function CompanyValuesNew({ cards }) {
   return (
     <section className="mt-6 flex flex-col items-center" id={`company-values_`}>
       <div className="my-4 flex w-full max-w-lg flex-col px-6 md:mb-10 md:max-w-7xl md:gap-14 md:px-14">
-        <SectionTitle title={'Missão, visão e valores'} line />
+        <SectionTitle title={companyValues.title} line />
         <div className="scrollbar-hide flex w-full flex-col justify-start gap-4 p-5 md:flex-row md:justify-between md:p-0">
           <div className="flex w-full flex-col gap-5 md:flex-row">
-            {companyValues.map((card, index) => (
+            {companyValues.cards.map((card, index) => (
               <div
                 key={index}
                 style={{

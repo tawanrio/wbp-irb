@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Home from '@/components/Pages/Home'
+import HomeEn from '@/components/Pages/Home/en.jsx'
 
 // Database // Schema
 import { connectMongoDB, disconnectMongoDB } from '@/service/db'
@@ -7,20 +9,23 @@ import { Menus } from '@/service/model/schemas/menusSchema'
 import { Template } from '@/service/model/schemas/templateSchema'
 import { Categories as SchemaCategories } from '@/service/model/schemas/categoriesSchema'
 import { CategoriesProducts } from '@/service/model/schemas/categoriesProductsSchema'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
 import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 
-export default function index({content, locale}) {
-  console.log(locale);
+export default function index({ content, locale }) {
   return (
-   <Home content={content}/>
+    <>
+      {locale !== 'pt' ? (
+        <HomeEn content={content} locale={locale} />
+      ) : (
+        <Home content={content} locale={locale} />
+      )}
+    </>
   )
 }
 
-async function getDataPage({locale}){
-  try{
-    await connectMongoDB(locale);
+async function getDataPage({ locale }) {
+  try {
+    await connectMongoDB(locale)
 
     const page = await Page.findOne({ label: 'home' }).lean()
     // const menu = await Menu.findOne({label:"menu"}).lean();
@@ -33,33 +38,33 @@ async function getDataPage({locale}){
     // const products = await ProductsDb.find().lean().limit(6);
     const form = await FormDb.findOne({ label: 'form' }).lean()
 
-  return {
-    page:JSON.parse(JSON.stringify(page)),
-    locale:JSON.parse(JSON.stringify(locale)),
-    partners:JSON.parse(JSON.stringify(partners)),
-    categories:JSON.parse(JSON.stringify(categories)),
-    form:JSON.parse(JSON.stringify(form)),
-    template:JSON.parse(JSON.stringify(template)),
-    // menu:JSON.parse(JSON.stringify(menu)),
-    menus:JSON.parse(JSON.stringify(menus))
-  }
-  }
-  finally{
-    disconnectMongoDB();
+    return {
+      page: JSON.parse(JSON.stringify(page)),
+      locale: JSON.parse(JSON.stringify(locale)),
+      partners: JSON.parse(JSON.stringify(partners)),
+      categories: JSON.parse(JSON.stringify(categories)),
+      form: JSON.parse(JSON.stringify(form)),
+      template: JSON.parse(JSON.stringify(template)),
+      // menu:JSON.parse(JSON.stringify(menu)),
+      menus: JSON.parse(JSON.stringify(menus)),
+    }
+  } finally {
+    disconnectMongoDB()
   }
 }
 
-export async function getStaticProps({locale}) {
-  
-  const content = await getDataPage({locale});
-  const response = await fetch('https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts');
-  content.blogData = await response.json();
+export async function getStaticProps({ locale }) {
+  const content = await getDataPage({ locale })
+  const response = await fetch(
+    'https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts',
+  )
+  content.blogData = await response.json()
   // const content = await testeRoute(resolvedUrl)
 
   return {
     props: {
       content,
-      locale: locale
+      locale,
     },
     revalidate: 3600,
   }

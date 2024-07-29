@@ -2,25 +2,7 @@
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 
-export default function TimeLineNew() {
-  const events = [
-    { year: '1998', description: 'Fundação da empresa' },
-    {
-      year: '1998-2007',
-      description:
-        'Nos tornamos especialistas e referência no mercado nas linhas de Rolamentos e Cubos de roda',
-    },
-    { year: '2007', description: 'Início das importações' },
-    {
-      year: '2019',
-      description: 'Lançamento das linhas de Radiadores, Trizetas e Linha 6000',
-    },
-    {
-      year: '2024',
-      description: 'Lançamento das linhas de Cubos Vazios e Eletroventiladores',
-    },
-  ]
-
+export default function TimeLineNew({ timeLine }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [viewIndex, setViewIndex] = useState(0)
   const [bulletsToShow, setBulletsToShow] = useState(5)
@@ -31,7 +13,7 @@ export default function TimeLineNew() {
       clearInterval(intervalRef.current)
     }
     intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length)
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % timeLine.length)
     }, 3000)
   }
 
@@ -55,16 +37,16 @@ export default function TimeLineNew() {
   useEffect(() => {
     resetInterval()
     return () => clearInterval(intervalRef.current)
-  }, [events.length])
+  }, [timeLine.length])
 
   const nextEvent = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length)
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % timeLine.length)
     resetInterval()
   }
 
   const prevEvent = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + events.length) % events.length,
+      (prevIndex) => (prevIndex - 1 + timeLine.length) % timeLine.length,
     )
     resetInterval()
   }
@@ -79,9 +61,9 @@ export default function TimeLineNew() {
       <div className="my-4 flex w-full max-w-7xl flex-col items-center justify-between px-6 md:my-7 md:px-14">
         <div className="flex w-full flex-col-reverse items-center gap-10 md:w-11/12">
           <div className="mt-4 text-center">
-            <h3 className="text-xl font-bold">{events[currentIndex].year}</h3>
+            <h3 className="text-xl font-bold">{timeLine[currentIndex].year}</h3>
             <p className={`opacity-100 transition-opacity duration-500`}>
-              {events[currentIndex].description}
+              {timeLine[currentIndex].description}
             </p>
           </div>
           <div className="relative flex h-[100px] w-full items-center justify-between overflow-hidden">
@@ -104,7 +86,7 @@ export default function TimeLineNew() {
                   style={{ borderColor: '#22326E' }}
                 ></div>
               </div>
-              {events
+              {timeLine
                 .slice(viewIndex, viewIndex + bulletsToShow)
                 .map((event, index) => (
                   <div

@@ -7,7 +7,7 @@ import Templates from '@/components/Templates'
 import Banner from '@/components/Banner/index'
 
 // Others
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { sortByKey } from '@/utils/functions'
 
@@ -28,40 +28,40 @@ import CarouselEvent from './components/CarouselEvents'
 import CategoryGrid from '@/components/CategoryGrid'
 
 export default function Fabrica({ content }) {
-  const router = useRouter()
-  const pageUrl = router.asPath.replace('/', '')
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [video] = useState(content?.page?.video)
-  const [cardsValues] = useState(content?.page?.companyValues)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [imgDescription] = useState(content?.page.imgDescription)
-  const [metaKeywords] = useState(content?.page?.metaKeywords)
-  const [events] = useState(content?.page?.events)
+  const [banners, setBanners] = useState(content?.page.banners)
+  const [title, setTitle] = useState(content?.page.title)
+  const [description, setDescription] = useState(
+    content?.page.contentDescription,
+  )
+  const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
+  const [companyValues, setCompanyValues] = useState(
+    content?.page?.components.companyValues,
+  )
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page.metaDescription,
+  )
+  const [timeLine, setTimeLine] = useState(content?.page.components.timeLine)
+  const [metaKeywords, setMetaKeywords] = useState(content?.page?.metaKeywords)
+  const [events, setEvents] = useState(content?.page?.components.events)
 
-  const sortedCategories = sortByKey(content.categories, 'label')
-
-  const bannerTeste = {
-    colors: {
-      bg: '#fff',
-      text: '#fff',
-      controllers: '#fff',
-    },
-    size: {
-      height: 330,
-    },
-    carousel: [
-      {
-        title: 'CENTRO LOGÍSTICO IRB',
-        description: '',
-        url: '/video/sobre.mp4',
-        alt: 'banner dois',
-        position: 'start',
-      },
-    ],
-  }
+  const [sortedCategories, setSortedCategories] = useState(
+    sortByKey(content.categories, 'label'),
+  )
+  useEffect(() => {
+    // Atualiza os estados quando o idioma muda
+    // MetaData
+    setTitle(content?.page.title)
+    setMetaTitle(content?.page.metaTitle)
+    setDescription(content?.page.contentDescription)
+    setMetaDescription(content?.page.metaDescription)
+    setMetaKeywords(content?.page?.metaKeywords)
+    // Components
+    setBanners(content?.page.banners)
+    setCompanyValues(content?.page?.components.companyValues)
+    setTimeLine(content?.page.components.timeLine)
+    setEvents(content?.page?.components.events)
+    setSortedCategories(sortByKey(content.categories, 'label'))
+  }, [content])
 
   return (
     <>
@@ -79,16 +79,16 @@ export default function Fabrica({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={bannerTeste} stlyeText={true} />
+        <Banner banners={banners} stlyeText={true} />
         <BreadCrumb />
         <Title title={title} className={'mt-5'} />
         <ContentDescription content={description} className={'mt-5'} />
-        <TimeLineNew />
-        <CompanyValuesNew cards={cardsValues} />
+        <TimeLineNew timeLine={timeLine} />
+        <CompanyValuesNew companyValues={companyValues} />
         <CategoryGrid categories={sortedCategories} title />
+        {/* <CarouselEvent events={events}/> */}
         {/* <InsertVideo content={video}/> */}
         {/* <Categories baseUrl={`/`} categories={content?.categories} colors={content?.page?.colors.products} title /> */}
-        {/* <CarouselEvent events={events}/> */}
         {/* <Products baseUrl={`${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title/> */}
         {/* <Utilities title={'Utilidades'}/> */}
       </Templates>

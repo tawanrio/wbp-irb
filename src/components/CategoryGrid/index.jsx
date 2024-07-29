@@ -9,7 +9,7 @@ const CategoryGrid = ({ categories, title }) => {
       id="blog-carousel"
     >
       <div className="relative my-4 flex w-full max-w-lg flex-col px-6 md:mb-0 md:max-w-7xl md:px-14">
-        <SectionTitle title={'Nossa Linha de Produtos'} line />
+        <SectionTitle title={title} line />
         <div className="container mx-auto my-5 py-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {categories.slice(0, 6).map((category) => (

@@ -1,10 +1,11 @@
 import Image from 'next/image'
 
 const SingleUtility = ({ utilities }) => {
+  console.log(utilities)
   return (
-    <div className="flex h-96 flex-col items-start justify-between overflow-hidden rounded-md bg-white shadow-md">
+    <div className="flex h-[500px] flex-col items-start justify-between overflow-hidden rounded-md bg-white shadow-md">
       <div>
-        <div className="relative h-[200px] w-full">
+        <div className="relative h-[280px] w-full">
           <Image
             src={utilities.image}
             alt={utilities.title}
@@ -27,7 +28,7 @@ const SingleUtility = ({ utilities }) => {
           href={utilities.link}
           className="inline-block rounded-md text-center font-semibold text-black transition-colors duration-500"
         >
-          Saiba mais
+          {utilities.linkText}
         </a>
       </div>
     </div>
