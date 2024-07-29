@@ -1,9 +1,8 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function InputsAddress({ setAddress, resetInputs }) {
   const [street, setStreet] = useState('')
@@ -12,6 +11,8 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [cep, setCep] = useState('')
+
+  const zipCodeRef = useRef(null)
 
   useEffect(() => {
     const address = {
@@ -40,7 +41,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
   const handleBlur = async () => {
     const cleanedValue = cep.replace(/\D/g, '')
-    if (cleanedValue.length != 8) return
+    if (cleanedValue.length !== 8) return
 
     const fullAddress = await fetchAddress(cleanedValue)
 
@@ -60,13 +61,11 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
   const fetchAddress = async (cleanedValue) => {
     try {
-      // const url = `https://viacep.com.br/ws/${cleanedValue}/json/`;
       const url = `https://api.brasilaberto.com/v1/zipcode/${cleanedValue}`
       const returnAddress = await fetch(url).then((response) => {
         return response.json()
       })
 
-      // setAddress(returnAddress);
       return returnAddress
     } catch (error) {
       return null
@@ -74,15 +73,15 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   }
 
   return (
-    <div className="flex w-full flex-row flex-wrap justify-between">
-      <div className="mt-2 flex w-[48%] flex-col">
+    <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="cep">
           CEP
         </label>
         <InputMask
-          mask="99999-999"
-          maskPlaceholder=""
           id="cep"
+          mask="99999-999"
+          ref={zipCodeRef}
           placeholder="CEP"
           className="border px-4 py-2"
           value={cep}
@@ -90,7 +89,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           onBlur={handleBlur}
         />
       </div>
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="street">
           {' '}
           Rua/Avenida
@@ -106,7 +105,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="number">
           Número
         </label>
@@ -121,7 +120,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="neighborhood">
           Bairro
         </label>
@@ -135,7 +134,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="city">
           Cidade
         </label>
@@ -150,7 +149,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="state">
           Estado
         </label>
