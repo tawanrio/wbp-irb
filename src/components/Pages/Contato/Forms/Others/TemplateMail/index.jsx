@@ -1,6 +1,16 @@
 import React from 'react'
 
 export default function TemplateMailOthers({ data }) {
+  const { info = {} } = data.inputs || {}
+
+  const renderInfo = (label, value) => {
+    return value ? (
+      <p style={{ margin: '10px 0', color: '#666' }}>
+        <strong>{label}:</strong> {value}
+      </p>
+    ) : null
+  }
+
   return (
     <div
       style={{
@@ -12,31 +22,14 @@ export default function TemplateMailOthers({ data }) {
       }}
     >
       <h2 style={{ color: '#333' }}>Contato IRB</h2>
-      <span>
-        Email enviado através do site:
+      <p style={{ color: '#666' }}>
+        <strong>Email enviado através do site:</strong>{' '}
         <a href="http://irbauto.com.br">irbauto.com.br</a>
-      </span>
-
-      {data.inputs?.info.fullName && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Nome: {data.inputs?.info.fullName}
-        </p>
-      )}
-      {data.inputs?.info.email && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Email: {data.inputs?.info.email}
-        </p>
-      )}
-      {data.inputs?.info.phone && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Telefone: {data.inputs?.info.phone}
-        </p>
-      )}
-      {data.inputs?.info.message && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Mensagem: {data.inputs?.info.message}
-        </p>
-      )}
+      </p>
+      {renderInfo('Nome', info.fullName)}
+      {renderInfo('Email', info.email)}
+      {renderInfo('Telefone', info.phone)}
+      {renderInfo('Mensagem', info.message)}
     </div>
   )
 }

@@ -1,43 +1,25 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
-import TemplateMailOthers from './TemplateMail'
-import ReactDOMServer from 'react-dom/server'
 
-export default function FormOthers({ setFormData, resetInputs, formData }) {
+export default function FormOthers({ setFormData, resetInputs }) {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
-  const [html, setHtml] = useState('')
-  const [structureMail, setStructureMail] = useState({})
-  const [address, setAddress] = useState({})
+
+  const phoneRef = useRef(null)
 
   useEffect(() => {
-    setHtml(
-      ReactDOMServer.renderToString(<TemplateMailOthers data={formData} />),
-    )
-
-    setStructureMail({
-      html,
-      to: 'marketing@irbauto.com.br',
-      cco: 'tawan.rio@webfoco.com',
-      from: 'Contato IRB',
-      subject: 'Contato IRB',
-    })
-
     setFormData({
       inputs: {
         info: {
-          message,
           fullName,
           email,
           phone,
+          message,
         },
-        address,
       },
-      structureMail,
     })
   }, [fullName, email, phone, message])
 
@@ -46,9 +28,9 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
   }, [resetInputs])
 
   const resetForm = () => {
+    setFullName('')
     setEmail('')
     setPhone('')
-    setFullName('')
     setMessage('')
   }
 
@@ -61,8 +43,8 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
               Nome completo
             </label>
             <input
-              type="text"
               id="fullName"
+              type="text"
               placeholder="Nome completo"
               required
               className="border px-4 py-2"
@@ -76,8 +58,8 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
               E-mail
             </label>
             <input
-              type="email"
               id="email"
+              type="email"
               required
               placeholder="E-mail"
               className="border px-4 py-2"
@@ -93,7 +75,7 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
             <InputMask
               id="phone"
               mask="(99) 99999-9999"
-              maskPlaceholder=""
+              ref={phoneRef}
               required
               placeholder="Telefone"
               className="border px-4 py-2"
@@ -108,8 +90,8 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
               Mensagem
             </label>
             <textarea
-              name="message"
               id="message"
+              name="message"
               cols="50"
               required
               placeholder="Mensagem"

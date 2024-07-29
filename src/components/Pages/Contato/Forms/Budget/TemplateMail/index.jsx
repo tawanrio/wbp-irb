@@ -1,6 +1,16 @@
 import React from 'react'
 
 export default function TemplateMailBudget({ data }) {
+  const { info = {} } = data.inputs || {}
+
+  const renderInfo = (label, value) => {
+    return value ? (
+      <p style={{ margin: '10px 0', color: '#666' }}>
+        <strong>{label}:</strong> {value}
+      </p>
+    ) : null
+  }
+
   return (
     <div
       style={{
@@ -12,41 +22,17 @@ export default function TemplateMailBudget({ data }) {
       }}
     >
       <h2 style={{ color: '#333' }}>Pedido de orçamento</h2>
-      <span>
-        Email enviado através do site:{' '}
+      <p style={{ color: '#666' }}>
+        <strong>Email enviado através do site:</strong>{' '}
         <a href="http://irbauto.com.br">irbauto.com.br</a>
-      </span>
+      </p>
 
-      {data.inputs?.info.fullName && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Nome: {data.inputs?.info.fullName}
-        </p>
-      )}
-      {data.inputs?.info.email && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Email: {data.inputs?.info.email}
-        </p>
-      )}
-      {data.inputs?.info.phone && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Telefone: {data.inputs?.info.phone}
-        </p>
-      )}
-      {data.inputs?.info.product && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Produto: {data.inputs?.info.product}
-        </p>
-      )}
-      {data.inputs?.info.productLine && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Linha de produto: {data.inputs?.info.productLine}
-        </p>
-      )}
-      {data.inputs?.info.message && (
-        <p style={{ color: '#666', marginBottom: '10px' }}>
-          Mensagem: {data.inputs?.info.message}
-        </p>
-      )}
+      {renderInfo('Nome', info.fullName)}
+      {renderInfo('Email', info.email)}
+      {renderInfo('Telefone', info.phone)}
+      {renderInfo('Produto', info.product)}
+      {renderInfo('Linha de produto', info.productLine)}
+      {renderInfo('Mensagem', info.message)}
     </div>
   )
 }

@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default function RegisterForm() {
   const [partnerType, setPartnerType] = useState('')
+  const [resetInputs, setResetInputs] = useState(false)
   const [inputs, setInputs] = useState({})
   const [uniqueId, setUniqueId] = useState('')
   const [actionsLink, setActionsLink] = useState('')
@@ -27,8 +28,6 @@ export default function RegisterForm() {
     actionsLink: {},
     html: '',
   })
-
-  const [resetInputs, setResetInputs] = useState(false)
 
   useEffect(() => {
     if (inputs?.info?.cnpj) {

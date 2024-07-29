@@ -1,38 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import InputsAddress from './../Components/InputsAddress'
-import TemplateMailWorkWithUs from './TemplateMail'
-import ReactDOMServer from 'react-dom/server'
 
-export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
-  const [cnpj, setCnpj] = useState('')
+export default function FormWorkWithUs({ setFormData, resetInputs }) {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [curriculum, setCurriculum] = useState('')
-  const [structureMail, setStructureMail] = useState({})
-  const [html, setHtml] = useState('')
-
   const [address, setAddress] = useState({})
 
+  const phoneRef = useRef(null)
+
   useEffect(() => {
-    setHtml(
-      ReactDOMServer.renderToString(<TemplateMailWorkWithUs data={formData} />),
-    )
-
-    setStructureMail({
-      html,
-      to: 'marketing@irbauto.com.br',
-      cco: 'tawan.rio@webfoco.com',
-      from: 'Trabalhe conosco - IRB',
-      subject: 'Trabalhe conosco',
-    })
-
     setFormData({
       inputs: {
         info: {
-          cnpj,
           fullName,
           email,
           phone,
@@ -40,16 +23,14 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
         },
         address,
       },
-      structureMail,
     })
-  }, [cnpj, fullName, email, phone, curriculum, address])
+  }, [fullName, email, phone, curriculum, address])
 
   useEffect(() => {
     resetForm()
   }, [resetInputs])
 
   const resetForm = () => {
-    setCnpj('')
     setEmail('')
     setPhone('')
     setFullName('')
@@ -58,7 +39,6 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
   }
 
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = event.target.files[0]
     setState(file)
   }
@@ -71,8 +51,8 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
             Nome completo
           </label>
           <input
-            type="text"
             id="fullName"
+            type="text"
             placeholder="Nome completo"
             className="border px-4 py-2"
             value={fullName}
@@ -85,8 +65,8 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
             E-mail
           </label>
           <input
-            type="email"
             id="email"
+            type="email"
             placeholder="E-mail"
             className="border px-4 py-2"
             value={email}
@@ -101,7 +81,8 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
           <InputMask
             id="phone"
             mask="(99) 99999-9999"
-            maskPlaceholder=""
+            ref={phoneRef}
+            required
             placeholder="Telefone"
             className="border px-4 py-2"
             value={phone}
@@ -114,8 +95,8 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
             Anexar currículo
           </label>
           <input
-            type="file"
             id="logo"
+            type="file"
             accept="image/png, image/jpeg, application/pdf"
             onChange={(e) => handleImg(e, setCurriculum)}
           />
