@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { connectMongoDB, disconnectMongoDB } from '@/service/db'
 import { getCurrentDateFormatted } from '@/utils/functions'
 import { Collection } from '@/service/model/schemas/collectionsSchema'
@@ -30,7 +29,7 @@ export default async function insertDb(req, res) {
       res.status(500).json({
         message:
           error.name === 'MongoServerError' && error.code === 11000
-            ? 'CNPJ já existe no banco de dados.'
+            ? 'Esse CPNJ já está sendo utilizado por um parceiro IRB.'
             : 'Erro ao inserir dados no banco de dados.',
       })
     } finally {
