@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
 /* eslint-disable eqeqeq */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 import InputMask from 'react-input-mask'
 
@@ -12,6 +12,8 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [cep, setCep] = useState('')
+
+  const phoneRef = useRef(null)
 
   useEffect(() => {
     const address = {
@@ -65,7 +67,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         return response.json()
       })
 
-      // setAddress(returnAddress);
       return returnAddress
     } catch (error) {
       return null
@@ -79,10 +80,11 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           CEP
         </label>
         <InputMask
-          mask="99999-999"
-          maskPlaceholder=""
           id="cep"
+          mask="99999-999"
+          ref={phoneRef}
           placeholder="CEP"
+          required
           className="border px-4 py-2"
           value={cep}
           onChange={(e) => setCep(e.target.value)}
@@ -95,8 +97,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           Rua/Avenida
         </label>
         <input
-          type="text"
           id="street"
+          type="text"
+          required
           placeholder="Rua/Avenida"
           className="border px-4 py-2"
           value={street}
@@ -109,8 +112,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           Número
         </label>
         <input
-          type="text"
           id="number"
+          type="text"
+          required
           placeholder="Número"
           className="border px-4 py-2"
           value={number}
@@ -123,8 +127,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           Bairro
         </label>
         <input
-          type="text"
           id="neighborhood"
+          type="text"
+          required
           placeholder="Bairro"
           className="border px-4 py-2"
           value={neighborhood}
@@ -137,8 +142,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           Cidade
         </label>
         <input
-          type="text"
           id="city"
+          type="text"
+          required
           placeholder="Cidade"
           className="border px-4 py-2"
           value={city}
@@ -151,8 +157,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           Estado
         </label>
         <input
-          type="text"
           id="state"
+          type="text"
+          required
           placeholder="Estado"
           className="border px-4 py-2"
           value={state}

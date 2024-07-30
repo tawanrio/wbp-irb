@@ -95,7 +95,7 @@ export default function FormOthers({ setFormData, resetInputs }) {
               cols="50"
               required
               placeholder="Mensagem"
-              className="h-[196px] w-full resize-none border px-4 py-2"
+              className="h-[12.375rem] w-full resize-none border px-4 py-2"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />

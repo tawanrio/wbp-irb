@@ -20,6 +20,10 @@ export default function Requirements({ setRequiments, resetInputs }) {
     resetForm()
   }, [resetInputs])
 
+  useEffect(() => {
+    updateCheckboxRequiredStatus()
+  }, [selectedEquipments])
+
   const resetForm = () => {
     setCertificateImg(null)
     setElevatorImg(null)
@@ -38,6 +42,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
         checkbox.checked = false
       }
     })
+    updateCheckboxRequiredStatus()
   }
 
   const handleImg = (event, setState) => {
@@ -66,6 +71,15 @@ export default function Requirements({ setRequiments, resetInputs }) {
     }
   }
 
+  const updateCheckboxRequiredStatus = () => {
+    const anyChecked = selectedEquipments.length > 0
+    checkboxRefs.current.forEach((checkbox) => {
+      if (checkbox) {
+        checkbox.required = !anyChecked
+      }
+    })
+  }
+
   return (
     <div className="mt-10">
       <SectionTitle title="Pré-Requisitos" line={true} />
@@ -80,6 +94,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
           <input
             id="logo"
             type="file"
+            required
             className="mt-2"
             ref={certificateImgRef}
             accept="image/png, image/jpeg, application/pdf"
@@ -99,6 +114,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
           <input
             id="logo"
             type="file"
+            required
             className="mt-2"
             ref={elevatorImgRef}
             accept="image/png, image/jpeg, application/pdf"

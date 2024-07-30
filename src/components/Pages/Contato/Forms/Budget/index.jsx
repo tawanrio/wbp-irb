@@ -70,6 +70,7 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
           <input
             id="productLine"
             type="text"
+            required
             placeholder="Informe a linha do produto"
             className="border px-4 py-2"
             value={productLine}
@@ -136,7 +137,7 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
               name="message"
               cols="50"
               placeholder="Mensagem"
-              className="h-[196px] w-full resize-none border px-4 py-2"
+              className="h-[12.375rem] w-full resize-none border px-4 py-2"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />

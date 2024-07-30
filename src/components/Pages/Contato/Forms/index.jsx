@@ -12,8 +12,8 @@ import { generateActionsLink, generateUniqueIdByCnpj } from '@/utils/functions'
 import TemplateMailOthers from './Others/TemplateMail'
 import TemplateMailBudget from './Budget/TemplateMail'
 import TemplateMailWorkWithUs from './WorkWithUs/TemplateMail'
-import 'react-toastify/dist/ReactToastify.css'
 import TemplateMailSuccessRegister from '../../Register/Forms/Components/TemplateMailSuccessRegister'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function ContactForm({ categories }) {
   const [partnerType, setPartnerType] = useState('')

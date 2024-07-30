@@ -58,6 +58,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
           <input
             id="fullName"
             type="text"
+            required
             placeholder="Nome completo"
             className="border px-4 py-2"
             value={fullName}
@@ -72,6 +73,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
           <input
             id="email"
             type="email"
+            required
             placeholder="E-mail"
             className="border px-4 py-2"
             value={email}
@@ -102,6 +104,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
           <input
             id="curriculum"
             type="file"
+            required
             ref={curriculumRef}
             accept="application/pdf"
             onChange={(e) => handleImg(e, setCurriculum)}

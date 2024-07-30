@@ -83,6 +83,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           mask="99999-999"
           ref={zipCodeRef}
           placeholder="CEP"
+          required
           className="border px-4 py-2"
           value={cep}
           onChange={(e) => setCep(e.target.value)}
@@ -127,6 +128,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         <input
           id="neighborhood"
           type="text"
+          required
           placeholder="Bairro"
           className="border px-4 py-2"
           value={neighborhood}
