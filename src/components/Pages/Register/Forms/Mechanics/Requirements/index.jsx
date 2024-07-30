@@ -57,6 +57,15 @@ export default function Requirements({ setRequiments, resetInputs }) {
     })
   }
 
+  const handleLiClick = (index) => {
+    const checkbox = checkboxRefs.current[index]
+    if (checkbox) {
+      checkbox.checked = !checkbox.checked
+      const event = { target: checkbox }
+      handleCheckboxChange(event)
+    }
+  }
+
   return (
     <div className="mt-10">
       <SectionTitle title="Pré-Requisitos" line={true} />
@@ -108,14 +117,20 @@ export default function Requirements({ setRequiments, resetInputs }) {
         </span>
         <ul className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
           {EQUIPMENTS.map((equipment, index) => (
-            <li key={index} className="flex flex-row items-center">
+            <li
+              key={index}
+              className="flex w-fit cursor-pointer flex-row items-center"
+              onClick={() => handleLiClick(index)}
+            >
               <input
                 type="checkbox"
                 value={equipment}
                 onChange={handleCheckboxChange}
                 ref={(el) => (checkboxRefs.current[index] = el)}
+                onClick={(e) => e.stopPropagation()}
+                className="cursor-pointer"
               />
-              <label className="ml-2">{equipment}</label>
+              <label className="ml-2 cursor-pointer">{equipment}</label>
             </li>
           ))}
         </ul>

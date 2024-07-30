@@ -20,7 +20,7 @@ export default function FormPartner({ resetInputs, setInputs }) {
         </label>
         <select
           id="partnerType"
-          className="border px-4 py-2"
+          className="appearance-none border bg-custom-arrow bg-[calc(100%-1rem)_center] bg-no-repeat px-4 py-2"
           value={partnerType}
           required
           onChange={(e) => handlePartnerType(e.target.value)}

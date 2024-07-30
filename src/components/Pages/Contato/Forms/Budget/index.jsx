@@ -49,7 +49,7 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
           </label>
           <select
             id="product"
-            className="border px-4 py-2"
+            className="appearance-none border bg-custom-arrow bg-[calc(100%-1rem)_center] bg-no-repeat px-4 py-2"
             required
             value={product}
             onChange={(e) => setProduct(e.target.value)}
