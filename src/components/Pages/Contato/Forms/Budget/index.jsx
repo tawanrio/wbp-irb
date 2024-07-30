@@ -136,7 +136,7 @@ export default function FormBudget({ setFormData, resetInputs, categories }) {
               name="message"
               cols="50"
               placeholder="Mensagem"
-              className="h-[196px] w-full border px-4 py-2"
+              className="h-[196px] w-full resize-none border px-4 py-2"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />

@@ -13,6 +13,7 @@ import TemplateMailOthers from './Others/TemplateMail'
 import TemplateMailBudget from './Budget/TemplateMail'
 import TemplateMailWorkWithUs from './WorkWithUs/TemplateMail'
 import 'react-toastify/dist/ReactToastify.css'
+import TemplateMailSuccessRegister from '../../Register/Forms/Components/TemplateMailSuccessRegister'
 
 export default function ContactForm({ categories }) {
   const [partnerType, setPartnerType] = useState('')
@@ -191,8 +192,7 @@ export default function ContactForm({ categories }) {
           formData,
           <TemplateMailBudget data={formData} />,
           'Pedido de orçamento',
-          process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-          // 'marketing@irbauto.com.br',
+          'marketing@irbauto.com.br',
         )
       } else if (partnerType === 'parceiro') {
         await handlePartnerFormSubmission()
@@ -205,8 +205,7 @@ export default function ContactForm({ categories }) {
           formData,
           <TemplateMailOthers data={formData} />,
           'Contato IRB',
-          process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-          // 'marketing@irbauto.com.br',
+          'marketing@irbauto.com.br',
         )
       }
 
@@ -236,7 +235,7 @@ export default function ContactForm({ categories }) {
       throw new Error(RESPONSE_MESSAGE.error.uploadImages)
     }
 
-    const isEmailPartnerSent = await sendEmail(
+    const isEmailAdminSent = await sendEmail(
       formData,
       <TemplateMailPartner
         data={formData}
@@ -245,6 +244,16 @@ export default function ContactForm({ categories }) {
       />,
       'Solicitação de cadastro de parceiro',
       process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
+    )
+    if (!isEmailAdminSent) {
+      throw new Error(RESPONSE_MESSAGE.error.emailAdmin)
+    }
+
+    const isEmailPartnerSent = await sendEmail(
+      formData,
+      <TemplateMailSuccessRegister data={formData.inputs} />,
+      'Cadastro Recebido: Aguardando Aprovação',
+      formData.inputs.info.email,
     )
     if (!isEmailPartnerSent) {
       throw new Error(RESPONSE_MESSAGE.error.emailPartner)
@@ -262,7 +271,6 @@ export default function ContactForm({ categories }) {
       <TemplateMailWorkWithUs data={formData} />,
       'Trabalhar na IRB',
       process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-      // process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
     )
     if (!isEmailWorkWithUs) {
       throw new Error(RESPONSE_MESSAGE.error.emailJob)
