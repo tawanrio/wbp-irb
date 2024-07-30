@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import InputMask from 'react-input-mask'
 import TemplateMailBudget from './TemplateMail'
 import ReactDOMServer from 'react-dom/server'
+import { useIntl } from 'react-intl'
+import InsertTranslationMsg from '@/components/InsertTranslationMsg'
 
 export default function FormBudget({
   setFormData,
@@ -22,6 +24,8 @@ export default function FormBudget({
   const [html, setHtml] = useState('')
   const [structureMail, setStructureMail] = useState({})
   const [errors, setErrors] = useState({})
+  const intl = useIntl()
+  const messages = intl.messages
 
   // setResponseMessage({
   //   success:"Orçamento enviado com sucesso, aguarde contato em breve!",
@@ -73,12 +77,16 @@ export default function FormBudget({
 
   const validateForm = () => {
     const newErrors = {}
-    if (!fullName) newErrors.fullName = 'Nome completo é obrigatório'
-    if (!email) newErrors.email = 'E-mail é obrigatório'
-    if (!phone) newErrors.phone = 'Telefone é obrigatório'
-    if (!product) newErrors.product = 'Produto é obrigatório'
-    if (!productLine) newErrors.productLine = 'Linha do produto é obrigatória'
-    if (!message) newErrors.message = 'Mensagem é obrigatória'
+    if (!fullName)
+      newErrors.fullName = messages['notifications.form.error.fullName']
+    if (!email) newErrors.email = messages['notifications.form.error.email']
+    if (!phone) newErrors.phone = messages['notifications.form.error.phone']
+    if (!product)
+      newErrors.product = messages['notifications.form.error.product']
+    if (!productLine)
+      newErrors.productLine = messages['notifications.form.error.productLine']
+    if (!message)
+      newErrors.message = messages['notifications.form.error.message']
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -110,7 +118,9 @@ export default function FormBudget({
       <div className="flex w-full flex-row flex-wrap justify-between">
         <div className="mt-2 flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="product">
-            Produto
+            <InsertTranslationMsg
+              keyTrans={'component.contact.budget.product'}
+            />
           </label>
           <select
             id="product"
@@ -119,7 +129,12 @@ export default function FormBudget({
             value={product}
             onChange={(e) => setProduct(e.target.value)}
           >
-            <option value="">Selecione um produto</option>
+            <InsertTranslationMsg
+              keyTrans={'component.contact.budget.select'}
+              value=""
+              tag="option"
+            />
+
             {categories.map((category) => (
               <option key={category.label} value={category.label}>
                 {category.title}
@@ -133,12 +148,16 @@ export default function FormBudget({
 
         <div className="mt-2 flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="productLine">
-            Linha
+            <InsertTranslationMsg
+              keyTrans={'component.contact.budget.select.line'}
+            />
           </label>
           <input
             type="text"
             id="productLine"
-            placeholder="Informe a linha do produto"
+            placeholder={
+              messages['component.contact.budget.select.line.placeholder']
+            }
             className="border px-4 py-2"
             value={productLine}
             onChange={(e) => setProductLine(e.target.value)}
@@ -152,13 +171,13 @@ export default function FormBudget({
         <div className="flex w-[48%] flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="fullName">
-              Nome completo
+              <InsertTranslationMsg keyTrans={'component.form.input.name'} />
             </label>
             <input
               type="text"
               id="fullName"
               required
-              placeholder="Nome completo"
+              placeholder={messages['component.form.input.name.placeholder']}
               className="border px-4 py-2"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
@@ -170,13 +189,13 @@ export default function FormBudget({
 
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="email">
-              E-mail
+              <InsertTranslationMsg keyTrans={'component.form.input.email'} />
             </label>
             <input
               type="email"
               id="email"
               required
-              placeholder="E-mail"
+              placeholder={messages['component.form.input.email.placeholder']}
               className="border px-4 py-2"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -188,14 +207,14 @@ export default function FormBudget({
 
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="phone">
-              Telefone
+              <InsertTranslationMsg keyTrans={'component.form.input.phone'} />
             </label>
             <InputMask
               id="phone"
               mask="(99) 99999-9999"
               required
               maskPlaceholder=""
-              placeholder="Telefone"
+              placeholder={messages['component.form.input.phone.placeholder']}
               className="border px-4 py-2"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -208,14 +227,14 @@ export default function FormBudget({
         <div className="flex w-[48%] flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold capitalize" htmlFor="message">
-              Mensagem
+              <InsertTranslationMsg keyTrans={'component.form.input.message'} />
             </label>
             <textarea
               name="message"
               required
               id="message"
               cols="50"
-              placeholder="Mensagem"
+              placeholder={messages['component.form.input.message.placeholder']}
               className="h-[196px] w-full border px-4 py-2"
               value={message}
               onChange={(e) => setMessage(e.target.value)}

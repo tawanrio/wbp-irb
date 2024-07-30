@@ -91,12 +91,11 @@ const routeError = async (error, route) => {
   }
 }
 
-const getDataPage = async (resolvedUrl,locale) => {
-try{
-      await connectMongoDB(locale);
-      
-      const route = formatStrToUrl(resolvedUrl)
-     
+const getDataPage = async (resolvedUrl, locale) => {
+  try {
+    await connectMongoDB(locale)
+
+    const route = formatStrToUrl(resolvedUrl)
 
     // página
     const page = await Page.findOne({ label: route }).lean()

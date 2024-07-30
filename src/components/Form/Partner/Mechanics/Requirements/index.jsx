@@ -2,15 +2,11 @@
 import { useEffect, useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
 import { EQUIPMENTS } from '@/utils/constants'
-import InsertTranslationMsg from '@/components/InsertTranslationMsg'
-import { useIntl } from 'react-intl'
 
 export default function Requirements({ setRequiments, resetInputs }) {
   const [certificateImg, setCertificateImg] = useState('')
   const [elevatorImg, setElevatorImg] = useState('')
   const [selectedEquipments, setSelectedEquipments] = useState([])
-  const intl = useIntl()
-  const messages = intl.messages
 
   useEffect(() => {
     setRequiments({ certificateImg, elevatorImg, selectedEquipments })
@@ -41,25 +37,14 @@ export default function Requirements({ setRequiments, resetInputs }) {
 
   return (
     <div className="mt-10">
-      <SectionTitle
-        title={messages['component.form.partner.input.autopart.requeriments']}
-        line={true}
-      />
+      <SectionTitle title="Pré-Requisitos" line={true} />
       <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
-            <InsertTranslationMsg
-              keyTrans={
-                'component.form.partner.input.autopart.requeriments.certificate'
-              }
-            />
+            Certificação Profissional *
           </label>
           <span className="text-sm text-slate-400">
-            <InsertTranslationMsg
-              keyTrans={
-                'component.form.partner.input.autopart.requeriments.certificate.placeholder'
-              }
-            />
+            Anexar o seu certificado{' '}
           </span>
           <input
             type="file"
@@ -69,23 +54,15 @@ export default function Requirements({ setRequiments, resetInputs }) {
             onChange={(event) => handleImg(event, setCertificateImg)}
           />
           <span className="mt-1 text-sm text-slate-400">
-            <InsertTranslationMsg keyTrans={'component.form.mediaFormats'} />
+            Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.
           </span>
         </div>
         <div className="flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
-            <InsertTranslationMsg
-              keyTrans={
-                'component.form.partner.input.autopart.requeriments.elevator'
-              }
-            />
+            Equipamento: Elevador *
           </label>
           <span className="text-sm text-slate-400">
-            <InsertTranslationMsg
-              keyTrans={
-                'component.form.partner.input.autopart.requeriments.elevator.placeholder'
-              }
-            />
+            Anexar uma foto do seu elevador
           </span>
           <input
             type="file"
@@ -95,35 +72,25 @@ export default function Requirements({ setRequiments, resetInputs }) {
             onChange={(event) => handleImg(event, setElevatorImg)}
           />
           <span className="mt-1 text-sm text-slate-400">
-            <InsertTranslationMsg keyTrans={'component.form.mediaFormats'} />
+            Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.
           </span>
         </div>
       </div>
 
       <div className="mt-5 flex w-full flex-col">
-        <label className="text-lg font-bold">
-          <InsertTranslationMsg
-            keyTrans={
-              'component.form.partner.input.autopart.requeriments.tools'
-            }
-          />
-        </label>
+        <label className="text-lg font-bold">Ferramentas:</label>
         <span className="text-sm text-slate-400">
-          <InsertTranslationMsg
-            keyTrans={
-              'component.form.partner.input.autopart.requeriments.tools.placeholder'
-            }
-          />
+          Preencher quais ferramentas você possui
         </span>
         <div className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
           {EQUIPMENTS.map((equipment, index) => (
             <label key={index} className="flex flex-row items-center">
               <input
                 type="checkbox"
-                value={messages[equipment]}
+                value={equipment}
                 onChange={handleCheckboxChange}
               />
-              <span className="ml-2">{messages[equipment]}</span>
+              <span className="ml-2">{equipment}</span>
             </label>
           ))}
         </div>

@@ -46,9 +46,9 @@ export default function index({ content }) {
 
 export const getServerSideProps = async (context) => {
   try {
-    const arrRoute = context.resolvedUrl.replace('/', '').split('/');
-   
-    const content = await getDataPage(arrRoute, context.locale);
+    const arrRoute = context.resolvedUrl.replace('/', '').split('/')
+
+    const content = await getDataPage(arrRoute, context.locale)
 
     return {
       props: {

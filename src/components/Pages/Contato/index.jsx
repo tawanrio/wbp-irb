@@ -9,26 +9,56 @@ import LogoContact from '@/components/LogoContact'
 import Banner from '@/components/Banner/index'
 
 // Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db'
-import Page from '@/service/model/schemas/pageSchema'
-import { Menu } from '@/service/model/schemas/menuSchema'
-import { Template } from '@/service/model/schemas/templateSchema'
-import { Address } from '@/service/model/schemas/addressSchema'
-import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
+import Address from '@/components/Address'
 
 // Context Api
-import { useState } from 'react'
-import ServiceAddress from '@/components/ServiceAddress'
+import { useEffect, useState } from 'react'
+// import ServiceAddress from '@/components/ServiceAddress'
 import ContactForm from './Forms'
+import CategoryGrid from '@/components/CategoryGrid'
+
+import { sortByKey } from '@/utils/functions'
 
 export default function Contato({ content }) {
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
-  const [logoContact] = useState(content?.page.logoContact)
-  const [arrButton] = useState(logoContact?.arrButton)
+  const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page.metaDescription,
+  )
+  const [banners, setBanners] = useState(content?.page.banners)
+  const [title, setTitle] = useState(content?.page.title)
+  const [categories, setCategories] = useState(
+    sortByKey(content.categories, 'title'),
+  )
+  const [categoriesComponent, setCategoriesComponent] = useState(
+    content?.page.components.categories,
+  )
+  const [formComponent, setFormComponent] = useState(
+    content?.page.components.form,
+  )
+  const [componentAddress, setComponentAddress] = useState(
+    content?.page.components?.address,
+  )
+  const [description, setDescription] = useState(
+    content?.page.contentDescription,
+  )
+  const [logoContact, setLogoContact] = useState(
+    content?.page.components.logoContact,
+  )
+  const [arrButton, setArrButton] = useState(logoContact?.arrButton)
+
+  useEffect(() => {
+    setMetaTitle(content?.page.metaTitle)
+    setMetaDescription(content?.page.metaDescription)
+    setBanners(content?.page.banners)
+    setTitle(content?.page.title)
+    setCategories(sortByKey(content.categories, 'title'))
+    setCategoriesComponent(content?.page.components.categories)
+    setFormComponent(content?.page.components.form)
+    setComponentAddress(content?.page.components?.address)
+    setDescription(content?.page.contentDescription)
+    setLogoContact(content?.page.components.logoContact)
+    setArrButton(content?.page.components.logoContact?.arrButton)
+  }, [content])
 
   // const whatsappNumber = logoContact.button.whatsapp
   // const phoneNumber = logoContact.button.phone
@@ -36,7 +66,6 @@ export default function Contato({ content }) {
     (address) => address.label === 'default',
   )
 
-  console.log(content.categories)
   return (
     <>
       <Head>
@@ -60,8 +89,15 @@ export default function Contato({ content }) {
           title={logoContact?.title}
           arrButton={arrButton}
         />
-        <ServiceAddress products={content.categories} address={address} />
-        <ContactForm categories={content.categories} />
+        <Address address={address} title={componentAddress?.title} />
+        <CategoryGrid
+          categories={categories}
+          title={categoriesComponent?.title}
+        />
+        <ContactForm
+          categories={content.categories}
+          title={formComponent.title}
+        />
       </Templates>
     </>
   )

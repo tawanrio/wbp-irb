@@ -264,19 +264,18 @@ const singleProduct = async (product, arrRoute) => {
     arrRoute: JSON.parse(JSON.stringify(arrRoute)),
   }
 }
-  
-  const getDataPage = async (arrRoute, locale) => {
-      try{
-        await connectMongoDB(locale);
-  
-  
-      // se for a rota for distribuidor/ autopeça/ autocenter
-      if(
-        arrRoute[0] === 'distribuidoras' ||
-        arrRoute[0] === 'autopecas' ||
-        arrRoute[0] === 'fabrica' ||
-        arrRoute[0] === 'mecanicas'
-      ){
+
+const getDataPage = async (arrRoute, locale) => {
+  try {
+    await connectMongoDB(locale)
+
+    // se for a rota for distribuidor/ autopeça/ autocenter
+    if (
+      arrRoute[0] === 'distribuidoras' ||
+      arrRoute[0] === 'autopecas' ||
+      arrRoute[0] === 'fabrica' ||
+      arrRoute[0] === 'mecanicas'
+    ) {
       return await routePartner(arrRoute)
     }
 

@@ -4,6 +4,8 @@ import InputMask from 'react-input-mask'
 import InputsAddress from './../Components/InputsAddress'
 import TemplateMailWorkWithUs from './TemplateMail'
 import ReactDOMServer from 'react-dom/server'
+import InsertTranslationMsg from '@/components/InsertTranslationMsg'
+import { useIntl } from 'react-intl'
 
 export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
   const [cnpj, setCnpj] = useState('')
@@ -15,6 +17,8 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
   const [html, setHtml] = useState('')
 
   const [address, setAddress] = useState({})
+  const intl = useIntl()
+  const messages = intl.messages
 
   useEffect(() => {
     setHtml(
@@ -68,12 +72,12 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
       <div className="flex w-full flex-row flex-wrap justify-between">
         <div className="mt-2 flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="fullName">
-            Nome completo
+            <InsertTranslationMsg keyTrans={'component.form.input.name'} />
           </label>
           <input
             type="text"
             id="fullName"
-            placeholder="Nome completo"
+            placeholder={messages['component.form.input.name.placeholder']}
             className="border px-4 py-2"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -82,12 +86,12 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
 
         <div className="mt-2 flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="email">
-            E-mail
+            <InsertTranslationMsg keyTrans={'component.form.input.email'} />
           </label>
           <input
             type="email"
             id="email"
-            placeholder="E-mail"
+            placeholder={messages['component.form.input.email.placeholder']}
             className="border px-4 py-2"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -96,13 +100,13 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
 
         <div className="mt-2 flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
-            Telefone
+            <InsertTranslationMsg keyTrans={'component.form.input.phone'} />
           </label>
           <InputMask
             id="phone"
             mask="(99) 99999-9999"
             maskPlaceholder=""
-            placeholder="Telefone"
+            placeholder={messages['component.form.input.phone.placeholder']}
             className="border px-4 py-2"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -111,7 +115,9 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
 
         <div className="mt-2 flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
-            Anexar currículo
+            <InsertTranslationMsg
+              id={'component.form.input.workWithUs.attachResume'}
+            />
           </label>
           <input
             type="file"
@@ -120,7 +126,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
             onChange={(e) => handleImg(e, setCurriculum)}
           />
           <span className="text-sm text-slate-400">
-            Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 3MB.
+            <InsertTranslationMsg keyTrans={'component.contact.mediaFormats'} />
           </span>
         </div>
       </div>

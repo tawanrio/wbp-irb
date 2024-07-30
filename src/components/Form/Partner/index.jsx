@@ -6,13 +6,13 @@ import FormDistributor from './Distributor'
 import FormAutoparts from './Autoparts'
 import FormMechanics from './Mechanics'
 import { toast } from 'react-toastify'
-import TemplateMailPartner from '../../Contato/Forms/Partner/TemplateMail'
+import TemplateMailPartner from '@/components/Email/Templates/Partners'
 import TemplateMailSuccessRegister from './Components/TemplateMailSuccessRegister'
 import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
 import { RESPONSE_MESSAGE } from '@/utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 
-export default function RegisterForm() {
+export default function FormPartner() {
   const [partnerType, setPartnerType] = useState('')
   const [inputs, setInputs] = useState({})
   const [uniqueId, setUniqueId] = useState('')

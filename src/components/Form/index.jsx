@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react'
 import SectionTitle from '../SectionTitle'
 
@@ -48,7 +49,6 @@ export default function Form({ inputs, colors }) {
 
       if (response.ok) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const responseData = await response.json()
         setSuccessMessage('Email enviado com sucesso!')
         resetForm()
       } else {

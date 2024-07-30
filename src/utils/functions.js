@@ -227,7 +227,7 @@ export function generateUniqueIdByCnpj(cnpj) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const seconds = now.getSeconds().toString().padStart(2, '0')
 
-  // Construir o ID único no formato "HHxxxxxxMMxxxxxSS"
+  // Construir o ID único no formato "HHxxxxxxMMxxxxx"
   const uniqueId = `${hours}${paddedCnpj.substring(0, 6)}${minutes}${paddedCnpj.substring(6, 12)}`
 
   return uniqueId
@@ -248,7 +248,7 @@ export function getCurrentDateFormatted() {
   return formattedDate
 }
 
-export function sortByKey(array) {
+export function sortByKey(array, key) {
   return array.sort((a, b) => {
     // Itens com prioridade vêm primeiro
     if (a.priority !== undefined && b.priority !== undefined) {
@@ -264,11 +264,11 @@ export function sortByKey(array) {
       return b.priority === -1 ? -1 : 1
     }
 
-    // Itens sem prioridade são ordenados alfabeticamente
-    if (a.label < b.label) {
+    // Itens sem prioridade são ordenados alfabeticamente pela chave especificada
+    if (a[key] < b[key]) {
       return -1
     }
-    if (a.label > b.label) {
+    if (a[key] > b[key]) {
       return 1
     }
     return 0

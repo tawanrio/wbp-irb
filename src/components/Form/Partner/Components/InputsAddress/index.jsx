@@ -1,11 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-undef */
-/* eslint-disable eqeqeq */
-import { useEffect, useState } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
-import InsertTranslationMsg from '@/components/InsertTranslationMsg'
-import { useIntl } from 'react-intl'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function InputsAddress({ setAddress, resetInputs }) {
   const [street, setStreet] = useState('')
@@ -15,8 +12,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   const [state, setState] = useState('')
   const [cep, setCep] = useState('')
 
-  const intl = useIntl()
-  const messages = intl.messages
+  const zipCodeRef = useRef(null)
 
   useEffect(() => {
     const address = {
@@ -45,7 +41,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
   const handleBlur = async () => {
     const cleanedValue = cep.replace(/\D/g, '')
-    if (cleanedValue.length != 8) return
+    if (cleanedValue.length !== 8) return
 
     const fullAddress = await fetchAddress(cleanedValue)
 
@@ -57,20 +53,19 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   }
 
   const insertAddress = (fullAddress) => {
-    setStreet(fullAddress.logradouro)
-    setNeighborhood(fullAddress.bairro)
-    setCity(fullAddress.localidade)
-    setState(fullAddress.uf)
+    setStreet(fullAddress.result.street)
+    setNeighborhood(fullAddress.result.district)
+    setCity(fullAddress.result.city)
+    setState(fullAddress.result.state)
   }
 
   const fetchAddress = async (cleanedValue) => {
     try {
-      const url = `https://viacep.com.br/ws/${cleanedValue}/json/`
+      const url = `https://api.brasilaberto.com/v1/zipcode/${cleanedValue}`
       const returnAddress = await fetch(url).then((response) => {
         return response.json()
       })
 
-      // setAddress(returnAddress);
       return returnAddress
     } catch (error) {
       return null
@@ -78,86 +73,91 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   }
 
   return (
-    <div className="flex w-full flex-row flex-wrap justify-between">
-      <div className="mt-2 flex w-[48%] flex-col">
+    <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="cep">
-          <InsertTranslationMsg keyTrans={'component.address.input.cep'} />
+          CEP
         </label>
         <InputMask
-          mask="99999-999"
-          maskPlaceholder=""
           id="cep"
-          placeholder={messages['component.address.input.cep']}
+          mask="99999-999"
+          ref={zipCodeRef}
+          placeholder="CEP"
           className="border px-4 py-2"
           value={cep}
           onChange={(e) => setCep(e.target.value)}
           onBlur={handleBlur}
         />
       </div>
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="street">
-          <InsertTranslationMsg keyTrans={'component.address.input.street'} />
+          {' '}
+          Rua/Avenida
         </label>
         <input
           type="text"
+          required
           id="street"
-          placeholder={messages['component.address.input.street']}
+          placeholder="Rua/Avenida"
           className="border px-4 py-2"
           value={street}
           onChange={(e) => setStreet(e.target.value)}
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="number">
-          <InsertTranslationMsg keyTrans={'component.address.input.number'} />
+          Número
         </label>
         <input
           type="text"
+          required
           id="number"
-          placeholder={messages['component.address.input.number']}
+          placeholder="Número"
           className="border px-4 py-2"
           value={number}
           onChange={(e) => setNumber(e.target.value)}
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="neighborhood">
-          <InsertTranslationMsg keyTrans={'component.address.input.district'} />
+          Bairro
         </label>
         <input
           type="text"
           id="neighborhood"
-          placeholder={messages['component.address.input.district']}
+          placeholder="Bairro"
           className="border px-4 py-2"
           value={neighborhood}
           onChange={(e) => setNeighborhood(e.target.value)}
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="city">
-          <InsertTranslationMsg keyTrans={'component.address.input.city'} />
+          Cidade
         </label>
         <input
           type="text"
+          required
           id="city"
-          placeholder={messages['component.address.input.city']}
+          placeholder="Cidade"
           className="border px-4 py-2"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="state">
-          <InsertTranslationMsg keyTrans={'component.address.input.state'} />
+          Estado
         </label>
         <input
           type="text"
           id="state"
-          placeholder={messages['component.address.input.state']}
+          required
+          placeholder="Estado"
           className="border px-4 py-2"
           value={state}
           onChange={(e) => setState(e.target.value)}

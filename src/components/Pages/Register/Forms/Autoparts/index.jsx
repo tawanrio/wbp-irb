@@ -1,170 +1,58 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from 'react'
-import InputMask from 'react-input-mask'
-import { createModifiedFile } from '@/utils/functions'
+import { useEffect, useState } from 'react'
 import InputsAddress from './../Components/InputsAddress'
-import 'react-toastify/dist/ReactToastify.css'
+import InputsInfo from '../Components/InputsInfo'
+import InsertTranslationMsg from '@/components/InsertTranslationMsg'
+import { useIntl } from 'react-intl'
 
 export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
-  const [cnpj, setCnpj] = useState('')
-  const [companyName, setCompanyName] = useState('')
-  const [whereToBuy, setWhereToBuy] = useState('')
-  const [tradingName, settradingName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [logo, setLogo] = useState(null)
   const [address, setAddress] = useState({})
-
-  const cnpjRef = useRef(null)
-  const phoneRef = useRef(null)
+  const [info, setInfo] = useState({})
+  const [whereToBuy, setWhereToBuy] = useState('')
+  const intl = useIntl()
+  const messages = intl.messages
 
   useEffect(() => {
+    const updatedInfo = {
+      ...info,
+      whereToBuy,
+    }
+
+    setInfo(updatedInfo)
+
     setInputs({
-      info: {
-        partnerType,
-        cnpj,
-        companyName,
-        tradingName,
-        email,
-        phone,
-        logo,
-        whereToBuy,
-      },
+      info: updatedInfo,
       address,
     })
-  }, [cnpj, companyName, tradingName, email, phone, logo, address, whereToBuy])
-
-  useEffect(() => {
-    resetForm()
-  }, [resetInputs])
-
-  const resetForm = () => {
-    setCnpj('')
-    setEmail('')
-    setPhone('')
-    setCompanyName('')
-    settradingName('')
-    setLogo('')
-    setWhereToBuy('')
-    setAddress({})
-  }
-
-  const handleImg = (event, setState) => {
-    const file = createModifiedFile(event.target.files[0])
-    setState(file)
-  }
+  }, [info, address, whereToBuy])
 
   return (
     <div className="flex w-full flex-col justify-between gap-4 md:my-0 md:gap-2 md:px-0">
-      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
-        <div className="mt-2 flex flex-col">
-          <label className="text-lg font-bold" htmlFor="partnerType">
-            Em qual distribuidor você adquiri os produtos IRB
-          </label>
-          <input
-            type="text"
-            id="whereToBuy"
-            placeholder="Em qual distribuidor você adquiri os produtos IRB"
-            className="border px-4 py-2"
-            required
-            value={whereToBuy}
-            onChange={(e) => setWhereToBuy(e.target.value)}
+      <InputsInfo
+        setInfo={setInfo}
+        resetInputs={resetInputs}
+        partnerType={partnerType}
+      />
+      <div className="mt-2 flex flex-col">
+        <label className="text-lg font-bold" htmlFor="partnerType">
+          <InsertTranslationMsg
+            keyTrans={'component.form.partner.input.autopart.whereToBuy'}
           />
-        </div>
-        <div className="mt-2 flex flex-col">
-          <label className="text-lg font-bold" htmlFor="companyName">
-            Razão social
-          </label>
-          <input
-            type="text"
-            id="companyName"
-            placeholder="Razão Social"
-            className="border px-4 py-2"
-            required
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-          />
-        </div>
-
-        <div className="mt-2 flex flex-col">
-          <label className="text-lg font-bold" htmlFor="tradingName">
-            Nome fantasia
-          </label>
-          <input
-            type="text"
-            id="tradingName"
-            placeholder="Nome fantasia"
-            className="border px-4 py-2"
-            required
-            value={tradingName}
-            onChange={(e) => settradingName(e.target.value)}
-          />
-        </div>
-        <div className="mt-2 flex flex-col">
-          <label className="text-lg font-bold" htmlFor="cnpj">
-            CNPJ
-          </label>
-          <InputMask
-            id="cnpj"
-            mask="99.999.999/9999-99"
-            ref={cnpjRef}
-            required
-            placeholder="CNPJ"
-            className="border px-4 py-2"
-            value={cnpj}
-            onChange={(e) => setCnpj(e.target.value)}
-          />
-        </div>
-
-        <div className="mt-2 flex flex-col">
-          <label className="text-lg font-bold" htmlFor="email">
-            E-mail
-          </label>
-          <input
-            type="email"
-            id="email"
-            required
-            placeholder="E-mail"
-            className="border px-4 py-2"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-
-        <div className="mt-2 flex flex-col">
-          <label className="text-lg font-bold" htmlFor="phone">
-            Telefone
-          </label>
-          <InputMask
-            id="phone"
-            mask="(99) 99999-9999"
-            ref={phoneRef}
-            required
-            placeholder="Telefone"
-            className="border px-4 py-2"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-
-        <div className="mt-2 flex flex-col">
-          <label className="text-lg font-bold capitalize" htmlFor="logo">
-            Anexar logomarca
-          </label>
-          <input
-            type="file"
-            id="logo"
-            required
-            accept="image/png, image/jpeg"
-            onChange={(e) => handleImg(e, setLogo)}
-          />
-          <span className="mt-1 text-sm text-slate-400">
-            Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho
-            máximo do arquivo: 3MB.
-          </span>
-        </div>
+        </label>
+        <input
+          type="text"
+          id="whereToBuy"
+          placeholder={
+            messages[
+              'component.form.partner.input.autopart.whereToBuy.placeholder'
+            ]
+          }
+          className="border px-4 py-2"
+          required
+          value={whereToBuy}
+          onChange={(e) => setWhereToBuy(e.target.value)}
+        />
       </div>
-
       <InputsAddress setAddress={setAddress} />
     </div>
   )

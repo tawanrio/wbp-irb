@@ -26,7 +26,7 @@ const CategoryCard = ({ category }) => {
             href={category.label}
             className="inline-block rounded-md bg-[#22326e] px-4 py-2 text-center text-white transition-colors duration-300 hover:bg-blue-700"
           >
-            Saiba mais
+            {category.textButton}
           </a>
         </div>
       </div>

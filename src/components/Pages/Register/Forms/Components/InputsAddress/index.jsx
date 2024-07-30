@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import InsertTranslationMsg from '@/components/InsertTranslationMsg'
+import { useIntl } from 'react-intl'
 
 export default function InputsAddress({ setAddress, resetInputs }) {
   const [street, setStreet] = useState('')
@@ -13,6 +15,8 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   const [cep, setCep] = useState('')
 
   const zipCodeRef = useRef(null)
+  const intl = useIntl()
+  const messages = intl.messages
 
   useEffect(() => {
     const address = {
@@ -76,13 +80,13 @@ export default function InputsAddress({ setAddress, resetInputs }) {
     <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
       <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="cep">
-          CEP
+          <InsertTranslationMsg keyTrans={'component.address.input.cep'} />
         </label>
         <InputMask
           id="cep"
           mask="99999-999"
           ref={zipCodeRef}
-          placeholder="CEP"
+          placeholder={messages['component.address.input.cep.placeholder']}
           className="border px-4 py-2"
           value={cep}
           onChange={(e) => setCep(e.target.value)}
@@ -91,14 +95,15 @@ export default function InputsAddress({ setAddress, resetInputs }) {
       </div>
       <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="street">
-          {' '}
-          Rua/Avenida
+          <InsertTranslationMsg
+            keyTrans={'component.address.input.street.placeholder'}
+          />
         </label>
         <input
           type="text"
           required
           id="street"
-          placeholder="Rua/Avenida"
+          placeholder={messages['component.address.input.street.placeholder']}
           className="border px-4 py-2"
           value={street}
           onChange={(e) => setStreet(e.target.value)}
@@ -107,13 +112,15 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
       <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="number">
-          Número
+          <InsertTranslationMsg
+            keyTrans={'component.address.input.number.placeholder'}
+          />
         </label>
         <input
           type="text"
           required
           id="number"
-          placeholder="Número"
+          placeholder={messages['component.address.input.number.placeholder']}
           className="border px-4 py-2"
           value={number}
           onChange={(e) => setNumber(e.target.value)}
@@ -122,12 +129,14 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
       <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="neighborhood">
-          Bairro
+          <InsertTranslationMsg
+            keyTrans={'component.address.input.district.placeholder'}
+          />
         </label>
         <input
           type="text"
           id="neighborhood"
-          placeholder="Bairro"
+          placeholder={messages['component.address.input.district.placeholder']}
           className="border px-4 py-2"
           value={neighborhood}
           onChange={(e) => setNeighborhood(e.target.value)}
@@ -136,13 +145,15 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
       <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="city">
-          Cidade
+          <InsertTranslationMsg
+            keyTrans={'component.address.input.city.placeholder'}
+          />
         </label>
         <input
           type="text"
           required
           id="city"
-          placeholder="Cidade"
+          placeholder={messages['component.address.input.city.placeholder']}
           className="border px-4 py-2"
           value={city}
           onChange={(e) => setCity(e.target.value)}
@@ -151,13 +162,15 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
       <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="state">
-          Estado
+          <InsertTranslationMsg
+            keyTrans={'component.address.input.state.placeholder'}
+          />
         </label>
         <input
           type="text"
           id="state"
           required
-          placeholder="Estado"
+          placeholder={messages['component.address.input.state.placeholder']}
           className="border px-4 py-2"
           value={state}
           onChange={(e) => setState(e.target.value)}

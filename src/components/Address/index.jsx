@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Button from '../Button'
+import SectionTitle from '../SectionTitle'
 import Icon from './components/Icon'
 import Maps from './components/Maps'
 
-export default function Address({ address }) {
+export default function Address({ address, title }) {
   const wazeMaps = address.maps.find((map) => map.label === 'waze')
   const googleMaps = address.maps.find((map) => map.label === 'google')
 
@@ -12,9 +13,10 @@ export default function Address({ address }) {
   googleMaps.route = googleMapsUrl.split('&')[0]
 
   return (
-    <div className="flex flex-col items-center" id="address">
-      <div className="flex w-full max-w-7xl flex-col justify-between md:gap-10">
+    <section className="flex flex-col items-center" id={`address_`}>
+      <div className="my-4 mb-14 flex w-full max-w-7xl flex-col md:mb-10 md:gap-10 md:px-14">
         <div>
+          {title && <SectionTitle title={title} className="mb-5" />}
           <div className="flex items-center gap-10">
             <div>
               <span className="first-letter:ca w-full text-sm md:text-base">
@@ -46,6 +48,6 @@ export default function Address({ address }) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

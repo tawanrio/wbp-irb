@@ -7,6 +7,7 @@ import FormMechanics from '@/components/Pages/Register/Forms/Mechanics'
 import ReactDOMServer from 'react-dom/server'
 import TemplateMailPartner from './TemplateMail'
 import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
+import InsertTranslationMsg from '@/components/InsertTranslationMsg'
 
 export default function FormPartner({ formData, setFormData }) {
   const [partnerType, setPartnerType] = useState('')
@@ -55,7 +56,7 @@ export default function FormPartner({ formData, setFormData }) {
     <div className="flex w-full flex-col justify-between gap-10">
       <div className="flex w-full flex-col">
         <label className="text-lg font-bold" htmlFor="partnerType">
-          Tipo de parceiro
+          <InsertTranslationMsg keyTrans={'component.form.partner.select'} />
         </label>
         <select
           id="partnerType"
@@ -64,10 +65,26 @@ export default function FormPartner({ formData, setFormData }) {
           required
           onChange={(e) => handlePartnerType(e.target.value)}
         >
-          <option value="">Área de Atuação</option>
-          <option value="distribuidoras">Distribuidoras</option>
-          <option value="mecanicas">Mecânicas</option>
-          <option value="autopecas">Autopeças</option>
+          <InsertTranslationMsg
+            keyTrans={'component.form.partner.select.area'}
+            tag="option"
+            value=""
+          />
+          <InsertTranslationMsg
+            keyTrans={'component.form.partner.select.distributor'}
+            tag="option"
+            value="distribuidoras"
+          />
+          <InsertTranslationMsg
+            keyTrans={'component.form.partner.select.mechanic'}
+            tag="option"
+            value="mecanicas"
+          />
+          <InsertTranslationMsg
+            keyTrans={'component.form.partner.select.autopart'}
+            tag="option"
+            value="autopecas"
+          />
         </select>
       </div>
 

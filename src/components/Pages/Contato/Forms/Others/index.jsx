@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import InputMask from 'react-input-mask'
 import TemplateMailOthers from './TemplateMail'
 import ReactDOMServer from 'react-dom/server'
+import { useIntl } from 'react-intl'
+import InsertTranslationMsg from '@/components/InsertTranslationMsg'
 
 export default function FormOthers({ setFormData, resetInputs, formData }) {
   const [fullName, setFullName] = useState('')
@@ -13,6 +15,8 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
   const [html, setHtml] = useState('')
   const [structureMail, setStructureMail] = useState({})
   const [address, setAddress] = useState({})
+  const intl = useIntl()
+  const messages = intl.messages
 
   useEffect(() => {
     setHtml(
@@ -58,12 +62,12 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
         <div className="flex w-[48%] flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="fullName">
-              Nome completo
+              <InsertTranslationMsg keyTrans={'component.form.input.name'} />
             </label>
             <input
               type="text"
               id="fullName"
-              placeholder="Nome completo"
+              placeholder={messages['component.form.input.name.placeholder']}
               required
               className="border px-4 py-2"
               value={fullName}
@@ -73,13 +77,13 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
 
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="email">
-              E-mail
+              <InsertTranslationMsg keyTrans={'component.form.input.email'} />
             </label>
             <input
               type="email"
               id="email"
               required
-              placeholder="E-mail"
+              placeholder={messages['component.form.input.email.placeholder']}
               className="border px-4 py-2"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -88,14 +92,14 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
 
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="phone">
-              Telefone
+              <InsertTranslationMsg keyTrans={'component.form.input.phone'} />
             </label>
             <InputMask
               id="phone"
               mask="(99) 99999-9999"
               maskPlaceholder=""
               required
-              placeholder="Telefone"
+              placeholder={messages['component.form.input.phone.placeholder']}
               className="border px-4 py-2"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -105,14 +109,14 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
         <div className="flex w-[48%] flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold capitalize" htmlFor="message">
-              Mensagem
+              <InsertTranslationMsg keyTrans={'component.form.input.message'} />
             </label>
             <textarea
               name="message"
               id="message"
               cols="50"
               required
-              placeholder="Mensagem"
+              placeholder={messages['component.form.input.message.placeholder']}
               className="h-[196px] w-full border px-4 py-2"
               value={message}
               onChange={(e) => setMessage(e.target.value)}

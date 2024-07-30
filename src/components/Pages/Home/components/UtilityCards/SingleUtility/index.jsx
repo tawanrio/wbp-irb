@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
 const SingleUtility = ({ utilities }) => {
-  console.log(utilities)
   return (
     <div className="flex h-[500px] flex-col items-start justify-between overflow-hidden rounded-md bg-white shadow-md">
       <div>

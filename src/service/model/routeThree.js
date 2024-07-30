@@ -281,11 +281,10 @@ const routeProduct = async (category, arrRoute) => {
   if (error) return await routeError(error)
 }
 
-async function getDataPage(arrRoute, locale){
-    try{
-
+async function getDataPage(arrRoute, locale) {
+  try {
     // const route = await resolveRoute(arrRoute)
-    await connectMongoDB(locale);
+    await connectMongoDB(locale)
 
     // se for a rota for distribuidor/ autopeça/ autocenter
     if (
