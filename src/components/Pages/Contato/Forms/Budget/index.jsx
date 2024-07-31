@@ -108,7 +108,6 @@ export default function FormBudget({
     })
 
     const result = await response.json()
-    console.log(result.message)
 
     resetForm()
   }

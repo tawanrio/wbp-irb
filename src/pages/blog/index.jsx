@@ -169,9 +169,9 @@ export default function Blog({ content, data }) {
   )
 }
 
-async function getDataPage() {
+async function getDataPage(locale) {
   try {
-    await connectMongoDB()
+    await connectMongoDB(locale)
 
     const page = await Page.findOne({ label: 'blog' }).lean()
     const menus = await Menus.find().lean()
@@ -197,14 +197,12 @@ async function getDataPage() {
   }
 }
 
-export async function getStaticProps() {
-  const content = await getDataPage()
-  const data = {}
+export async function getStaticProps({ locale }) {
+  const content = await getDataPage(locale)
 
   return {
     props: {
       content,
-      data,
     },
     revalidate: 2,
   }

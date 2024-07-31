@@ -96,9 +96,9 @@ const getDataPage = async (resolvedUrl, locale) => {
     await connectMongoDB(locale)
 
     const route = formatStrToUrl(resolvedUrl)
-
     // página
     const page = await Page.findOne({ label: route }).lean()
+
     if (page) return await routePage(page, route)
 
     // categoria

@@ -44,12 +44,10 @@ export default function Requirements({ setRequiments, resetInputs }) {
     const { value, checked } = event.target
     if (checked) {
       setSelectedEquipments([...selectedEquipments, value])
-      console.log(`O equipamento ${value} foi selecionado.`)
     } else {
       setSelectedEquipments(
         selectedEquipments.filter((equipment) => equipment !== value),
       )
-      console.log(`O equipamento ${value} foi desmarcado.`)
     }
   }
 

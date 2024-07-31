@@ -3,9 +3,12 @@ import Image from 'next/image'
 
 export default function ServicesOverview({ content, certificate }) {
   return (
-    <section className="relative flex flex-col items-center" id="blog-carousel">
+    <section
+      className="relative flex flex-col items-center"
+      id="servicesOverview"
+    >
       <div className="my-4 flex w-full max-w-7xl flex-col justify-between gap-4 px-6 md:my-7 md:gap-10 md:px-14">
-        <div className="flex flex-col gap-4 md:flex-row md:gap-10">
+        <div className="flex flex-col justify-center gap-4 md:flex-row md:gap-10">
           {content.map((card, index) => (
             <div key={index} className="flex w-full flex-col gap-4 md:w-1/3">
               <div className="card flex h-44 flex-1 flex-col items-center rounded-xl p-8 shadow-md">

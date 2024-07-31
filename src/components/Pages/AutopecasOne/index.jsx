@@ -32,7 +32,6 @@ import SearchPartnersOne from '@/components/SearchPartnersOne'
 import { insertMenuInTemplate } from '@/utils/functions'
 
 export default function Autoparts({ content }) {
-  console.log(content)
   const router = useRouter()
   const pageUrl = router.asPath.replace('/', '')
   const [banners] = useState(content?.page.banners)

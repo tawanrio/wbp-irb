@@ -26,12 +26,14 @@ import TimeLine from './components/TimeLine'
 import TimeLineNew from './components/TimeLineNew'
 import CarouselEvent from './components/CarouselEvents'
 import CategoryGrid from '@/components/CategoryGrid'
+import InsertTextHTML from '@/components/InserTextHTML'
+import Container from '@/components/Container'
 
 export default function Fabrica({ content }) {
   const [banners, setBanners] = useState(content?.page.banners)
   const [title, setTitle] = useState(content?.page.title)
   const [description, setDescription] = useState(
-    content?.page.contentDescription,
+    content?.page.components.description,
   )
   const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
   const [companyValues, setCompanyValues] = useState(
@@ -52,7 +54,7 @@ export default function Fabrica({ content }) {
     // MetaData
     setTitle(content?.page.title)
     setMetaTitle(content?.page.metaTitle)
-    setDescription(content?.page.contentDescription)
+    setDescription(content?.page.components.description)
     setMetaDescription(content?.page.metaDescription)
     setMetaKeywords(content?.page?.metaKeywords)
     // Components
@@ -82,7 +84,10 @@ export default function Fabrica({ content }) {
         <Banner banners={banners} stlyeText={true} />
         <BreadCrumb />
         <Title title={title} className={'mt-5'} />
-        <ContentDescription content={description} className={'mt-5'} />
+        {/* <ContentDescription content={description} className={'mt-5'} /> */}
+        <Container>
+          <InsertTextHTML text={description} />
+        </Container>
         <TimeLineNew timeLine={timeLine} />
         <CompanyValuesNew companyValues={companyValues} />
         <CategoryGrid categories={sortedCategories} title />

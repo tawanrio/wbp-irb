@@ -29,7 +29,7 @@ import { Collection } from '@/service/model/schemas/collectionsSchema'
 
 export default function Index({ content }) {
   // const page = content.page.label;
-  // console.log(content);
+  // ;
 
   return (
     <>
@@ -71,7 +71,7 @@ export default function Index({ content }) {
 }
 
 // export default function Index({content,arrRoute}) {
-//   console.log(content);
+//   ;
 //   console.log(arrRoute);
 //   return (
 //     <>

@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import SectionTitle from '../../../../SectionTitle'
 import InsertText from '@/components/InserText'
-import dynamic from 'next/dynamic'
 
 // const InsertText = dynamic(() => import('@/components/InserText'), { ssr: false })
 

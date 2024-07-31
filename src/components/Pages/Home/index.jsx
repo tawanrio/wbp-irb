@@ -32,8 +32,6 @@ import BlogCarousel from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
 
 export default function Home({ content, locale }) {
-  console.log(content)
-
   const [metaTitle] = useState(content?.page?.metaTitle)
   const [title] = useState(content?.page?.title)
   const [metaDescription] = useState(content?.page?.metaDescription)
@@ -92,7 +90,11 @@ export default function Home({ content, locale }) {
         <UtilityCards utilityCards={utilityCards} />
         {/* <Utilities title={'Utilidades'}/> */}
         <BlogCarousel posts={posts} />
-        <Form inputs={formDefault} colors={content?.form?.colors} />
+        <Form
+          inputs={formDefault}
+          colors={content?.form?.colors}
+          title={content.page.components.form.title}
+        />
       </Templates>
     </>
   )

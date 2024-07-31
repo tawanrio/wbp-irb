@@ -7,7 +7,6 @@ import SectionTitle from '@/components/SectionTitle'
 export default function CompanyValuesNew({ companyValues }) {
   const [expandedCard, setExpandedCard] = useState(null)
 
-  console.log(companyValues)
   const handleMouseEnter = (index) => {
     setExpandedCard(index)
   }

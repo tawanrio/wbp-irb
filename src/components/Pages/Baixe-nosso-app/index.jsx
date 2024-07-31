@@ -48,7 +48,6 @@ export default function BaixeNossoApp({ content }) {
     ],
   }
 
-  console.log(content.categories)
   return (
     <>
       <Head>

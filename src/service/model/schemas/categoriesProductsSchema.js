@@ -9,6 +9,7 @@ const categoriesProductsSchema = new mongoose.Schema(
     metaDescription: Array,
     contentDescription: Array,
     category: String,
+    components: Object,
     banners: Object,
     thumbnail: Object,
     gallery: Array,

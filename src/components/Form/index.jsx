@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react'
 import SectionTitle from '../SectionTitle'
+import { useIntl } from 'react-intl'
+import InsertTranslationMsg from '@/components/InsertTranslationMsg'
 
-export default function Form({ inputs, colors }) {
+export default function Form({ inputs, colors, title }) {
   const colorText = '#666'
 
   const [name, setName] = useState('')
@@ -13,6 +15,8 @@ export default function Form({ inputs, colors }) {
   const [isSending, setIsSending] = useState(false)
   const [successMessage, setSuccessMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const intl = useIntl()
+  const messages = intl.messages
 
   const resetForm = () => {
     setName('')
@@ -66,7 +70,7 @@ export default function Form({ inputs, colors }) {
   return (
     <section className="flex flex-col items-center" id={`contact_`}>
       <div className="my-4 mb-10 flex w-full max-w-7xl flex-col justify-between gap-10 px-6 md:my-7 md:px-14">
-        <SectionTitle title={'Contato'} line />
+        <SectionTitle title={title} line />
         <form
           onSubmit={(e) => handleSubmitForm(e)}
           className="flex flex-col items-center gap-10"
@@ -77,15 +81,19 @@ export default function Form({ inputs, colors }) {
                 <div className="flex flex-col">
                   <label
                     className="text-lg font-bold capitalize"
-                    htmlFor="nome"
+                    htmlFor="fullName"
                     style={{ color: colorText }}
                   >
-                    Nome
+                    <InsertTranslationMsg
+                      keyTrans={'component.form.input.name'}
+                    />
                   </label>
                   <input
                     type="text"
-                    id="nome"
-                    placeholder="Nome"
+                    id="fullName"
+                    placeholder={
+                      messages['component.form.input.name.placeholder']
+                    }
                     className="border px-4 py-2"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -99,12 +107,16 @@ export default function Form({ inputs, colors }) {
                     htmlFor="email"
                     style={{ color: colorText }}
                   >
-                    Email
+                    <InsertTranslationMsg
+                      keyTrans={'component.form.input.email'}
+                    />
                   </label>
                   <input
                     type="text"
                     id="email"
-                    placeholder="Email"
+                    placeholder={
+                      messages['component.form.input.email.placeholder']
+                    }
                     className="border px-4 py-2"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -118,12 +130,16 @@ export default function Form({ inputs, colors }) {
                     htmlFor="phone"
                     style={{ color: colorText }}
                   >
-                    Telefone
+                    <InsertTranslationMsg
+                      keyTrans={'component.form.input.phone'}
+                    />
                   </label>
                   <input
                     type="text"
                     id="phone"
-                    placeholder="Telefone"
+                    placeholder={
+                      messages['component.form.input.phone.placeholder']
+                    }
                     className="border px-4 py-2"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
@@ -137,12 +153,16 @@ export default function Form({ inputs, colors }) {
                     htmlFor="subject"
                     style={{ color: colorText }}
                   >
-                    Assunto
+                    <InsertTranslationMsg
+                      keyTrans={'component.form.input.subject'}
+                    />
                   </label>
                   <input
                     type="text"
                     id="subject"
-                    placeholder="Assunto"
+                    placeholder={
+                      messages['component.form.input.subject.placeholder']
+                    }
                     className="border px-4 py-2"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
@@ -158,14 +178,18 @@ export default function Form({ inputs, colors }) {
                     htmlFor="message"
                     style={{ color: colorText }}
                   >
-                    Mensagem
+                    <InsertTranslationMsg
+                      keyTrans={'component.form.input.message'}
+                    />
                   </label>
                   <textarea
                     name="message"
                     id="message"
                     cols="50"
                     rows="5"
-                    placeholder="Mensagem"
+                    placeholder={
+                      messages['component.form.input.message.placeholder']
+                    }
                     className="h-full w-full border px-4 py-2"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}

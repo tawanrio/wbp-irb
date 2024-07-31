@@ -11,7 +11,9 @@ export default function Description({ content, color, size, className }) {
             ...(size && { fontSize: size }),
           }}
         >
-          {content[0].title.length > 0 && <b className="mb-2">{text?.title}</b>}
+          {content[0]?.title?.length > 0 && (
+            <b className="mb-2">{text?.title}</b>
+          )}
           <p>{text?.description}</p>
         </span>
       ))}

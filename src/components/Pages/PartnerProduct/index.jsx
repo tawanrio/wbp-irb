@@ -33,8 +33,6 @@ import { useRouter } from 'next/router'
 import { getProductFromUrl, insertMenuInTemplate } from '@/utils/functions'
 
 export default function Produto({ content }) {
-  console.log(content)
-
   const route = useRouter()
   let pageUrl = route.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]

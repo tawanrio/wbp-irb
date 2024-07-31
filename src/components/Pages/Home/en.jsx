@@ -10,30 +10,20 @@ import Title from '@/components/Title'
 // Components
 import Banner from '@/components/Banner/index'
 import DynamicForm from './components/Form'
-import ContentDescription from '@/components/ContentDescription'
-import InsertVideo from '@/components/InsertVideo'
-import Partners from '@/components/Partners'
-import CompanyValues from '@/components/CompanyValues'
-import Categories from '@/components/Categories'
-import BreadCrumb from '@/components/BreadCrumb'
-import TextVideo from '@/components/TextVideo'
 
 // Others || functions
 import { useState } from 'react'
 import { sortByKey } from '@/utils/functions'
 
-import Utilities from '@/components/Utilities'
-import DiffCarousel from './components/DiffCarousel'
 import DiffCarouselTwo from './components/DiffCarouselTwo'
 import CategoryGrid from '@/components/CategoryGrid'
 import PartnersButton from './components/PartnersButton'
 import UtilityCards from './components/UtilityCards'
-import BlogCarousel from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
+import ContentImgHTMLDesc from '../Categoria/components/ContentImgHTMLDesc'
+import Form from '@/components/Form'
 
-export default function Home({ content, locale }) {
-  console.log(content)
-
+export default function Home({ content }) {
   const [metaTitle] = useState(content?.page?.metaTitle)
   const [title] = useState(content?.page?.title)
   const [metaDescription] = useState(content?.page?.metaDescription)
@@ -43,18 +33,22 @@ export default function Home({ content, locale }) {
   const [partners] = useState(content?.page?.components.partners)
   const [utilityCards] = useState(content?.page?.components.utilityCards)
   const [banners] = useState(content?.page?.banners)
+  const [category] = useState(content.categories[0])
   const [servicesOverview] = useState(
     content?.page?.components.servicesOverview,
   )
   const [formDefault] = useState(content?.page.components.form)
   const [posts] = useState(content.blogData)
+  console.log(content)
 
-  const sortedCategories = sortByKey(content.categories, 'label')
+  // const sortedCategories = sortByKey(content.categories, 'label')
   content.menus[2].links = sortByKey(content.menus[2].links, 'label')
   // content.menus[0].links[3].submenu = sortByKey(
   //   content.menus[0].links[3].submenu,
   //   'label',
   // )
+
+  // console.log(sortedCategories[0]);
 
   return (
     <>
@@ -76,23 +70,22 @@ export default function Home({ content, locale }) {
         <Banner banners={banners} stlyeText={true} />
         <ServicesOverview
           content={servicesOverview}
-          certificate={content?.page.certificate}
+          certificate={content?.page.components.certificate}
         />
-        {/* <DiffCarousel content={diffCarousel}/> */}
-        <DiffCarouselTwo content={diffCarousel} />
-        {/* <CompanyValues cards={cardsValues}/> */}
-        {/* <TextVideo video={video} description={description} /> */}
-        <CategoryGrid
-          categories={sortedCategories}
-          title={content?.page.components.categories.title}
+        <ContentImgHTMLDesc
+          textHTML={category.description}
+          image={category.thumbnail}
+          title={category.title}
         />
-        {/* <Categories categories={sortedCategories} colors={content?.page?.colors.products} title /> */}
-        <PartnersButton partners={partners} />
-        {/* <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/> */}
-        <UtilityCards utilityCards={utilityCards} />
-        {/* <Utilities title={'Utilidades'}/> */}
-        {/* <BlogCarousel posts={posts} /> */}
-        <DynamicForm form={formDefault} colors={content?.form?.colors} />
+        {/* <PartnersButton partners={partners} /> */}
+        {/* <UtilityCards utilityCards={utilityCards} /> */}
+        <Form
+          inputs={content?.form?.forms.find((item) => item.label === 'default')}
+          colors={content?.form?.colors}
+          title={content.page.components.form.title}
+        />
+
+        {/* <DynamicForm form={formDefault} colors={content?.form?.colors} /> */}
       </Templates>
     </>
   )

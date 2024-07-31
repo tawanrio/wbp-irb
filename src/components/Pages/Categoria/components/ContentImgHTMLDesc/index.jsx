@@ -6,8 +6,7 @@ import dynamic from 'next/dynamic'
 
 // const InsertText = dynamic(() => import('@/components/InserText'), { ssr: false });
 
-export default function ContentImgHTMLDesc({ textHTML, image }) {
-  console.log(image)
+export default function ContentImgHTMLDesc({ textHTML, image, title }) {
   return (
     <>
       <article
@@ -15,6 +14,9 @@ export default function ContentImgHTMLDesc({ textHTML, image }) {
         id={`content-img-description_`}
       >
         <div className="my-4 flex w-full max-w-7xl flex-col px-6 md:my-10 md:justify-between md:gap-10 md:px-14">
+          {title && (
+            <SectionTitle title={title} className={'mb-[-30px]'} line />
+          )}
           <div className="mt-8 flex flex-col justify-between gap-8 md:my-6 md:flex-row md:gap-14">
             <div className="group relative h-[300px] md:h-[400px]">
               <div

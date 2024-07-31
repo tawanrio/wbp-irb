@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 export default function TimeLineNew({ timeLine }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [viewIndex, setViewIndex] = useState(0)
-  const [bulletsToShow, setBulletsToShow] = useState(5)
+  const [bulletsToShow, setBulletsToShow] = useState(6)
   const intervalRef = useRef(null)
 
   const resetInterval = () => {
@@ -23,8 +23,8 @@ export default function TimeLineNew({ timeLine }) {
         setBulletsToShow(2)
         setViewIndex(Math.floor(currentIndex / 2) * 2)
       } else {
-        setBulletsToShow(5)
-        setViewIndex(Math.floor(currentIndex / 5) * 5)
+        setBulletsToShow(6)
+        setViewIndex(Math.floor(currentIndex / 6) * 6)
       }
     }
 

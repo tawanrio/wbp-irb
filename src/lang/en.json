@@ -34,6 +34,8 @@
   "component.form.input.name.placeholder": "Full name",
   "component.form.input.email": "Email",
   "component.form.input.email.placeholder": "Email",
+  "component.form.input.subject": "Subject",
+  "component.form.input.subject.placeholder": "Subject",
   "component.form.input.phone": "Phone",
   "component.form.input.logo": "Attach logo",
   "component.form.input.phone.placeholder": "Phone",

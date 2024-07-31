@@ -1,38 +1,4 @@
 /* eslint-disable array-callback-return */
-export function insertMenuInTemplateOld({
-  menu,
-  menuName,
-  template,
-  templateName,
-  itemTemplateName,
-}) {
-  const menuHeader = menu?.menus.find((item) => item.label === menuName)
-
-  template
-    ?.find((template) => template.label === templateName)
-    .items.find((item) => {
-      if (item.label === itemTemplateName) {
-        if (!Array.isArray(item.nav)) {
-          item.nav = []
-        }
-        // verificar se já existe menuHeader no array item.nav
-        if (item.nav.find((item) => item.label === menuHeader.label)) {
-          return item
-        }
-        item.nav.push(menuHeader)
-
-        return item
-      }
-    })
-}
-//   insertMenuInTemplate({
-//   menu:content?.menu,
-//   template: content?.template,
-//   menuName: "header",
-//   itemTemplateName:"default",
-//   templateName: "header"
-// })
-
 export function insertMenuInTemplate({
   menus,
   menuName,

@@ -37,6 +37,8 @@
   "component.form.input.name.placeholder": "Nome completo",
   "component.form.input.email": "E-mail",
   "component.form.input.email.placeholder": "E-mail",
+  "component.form.input.subject": "Assunto",
+  "component.form.input.subject.placeholder": "Assunto",
   "component.form.input.phone": "Telefone",
   "component.form.input.logo": "Anexar logomarca",
   "component.form.input.phone.placeholder": "Telefone",

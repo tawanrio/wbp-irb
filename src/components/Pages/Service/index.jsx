@@ -23,8 +23,6 @@ export default function Service({ content }) {
   const [service] = useState(content?.page.service)
   const [description] = useState(content?.page.contentDescription)
 
-  console.log(content)
-
   return (
     <>
       <Head>

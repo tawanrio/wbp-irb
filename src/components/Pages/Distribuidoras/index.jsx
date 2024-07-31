@@ -33,8 +33,6 @@ import { useRouter } from 'next/router'
 import { sortByKey } from '@/utils/functions'
 
 export default function Distribuidoras({ content }) {
-  console.log(content)
-
   const router = useRouter()
   const pageUrl = router.asPath.replace('/', '')
   const [banners] = useState(content?.page?.banners)

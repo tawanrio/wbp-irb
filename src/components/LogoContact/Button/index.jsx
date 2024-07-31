@@ -5,7 +5,6 @@ import { formatPhoneNumber } from '@/utils/functions'
 import { useState } from 'react'
 
 export default function Button({ content }) {
-  console.log(content)
   const [href] = useState(content.href)
   const [title] = useState(content.label)
   const [colors] = useState(content.colors)
