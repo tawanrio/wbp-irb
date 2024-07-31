@@ -3,19 +3,22 @@ import Link from 'next/link'
 
 export const BlogCard = ({ post }) => {
   const getUrlImage = (post) => {
-    let urlImageDest = '/images/components/others/not-found.jpg'
-    if (post?.yoast_head_json?.og_image) {
-      urlImageDest = post?.yoast_head_json.og_image[0]?.url
-    }
-    return urlImageDest
+    const defaultImage = '/images/components/others/not-found.jpg'
+    return post?.yoast_head_json.og_image[0]?.url || defaultImage
   }
 
-  const formattedTitle = post?.title?.rendered
-    .split(' ')
-    .join('-')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+  const formatTitle = (title) => {
+    return title
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .split(' ')
+      .join('-')
+      .trim()
+  }
+
+  const imageUrl = getUrlImage(post)
+  const formattedTitle = formatTitle(post?.title?.rendered)
 
   return (
     <Link
@@ -24,7 +27,7 @@ export const BlogCard = ({ post }) => {
     >
       <figure className="relative h-52 w-full">
         <img
-          src={getUrlImage(post)}
+          src={imageUrl}
           alt={post?.image?.alt}
           className="h-full w-full object-cover"
         />
@@ -37,7 +40,7 @@ export const BlogCard = ({ post }) => {
           className="line-clamp-5 text-[#222]"
           dangerouslySetInnerHTML={{ __html: post?.excerpt?.rendered }}
         />
-        <p className="m-0 text-center font-semibold text-black transition-colors duration-500">
+        <p className="m-0 font-semibold text-black hover:underline">
           Saiba mais
         </p>
       </div>
