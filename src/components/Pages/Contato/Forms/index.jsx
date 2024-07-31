@@ -162,7 +162,7 @@ export default function ContactForm({ categories }) {
     data.structureMail = {
       html: structureHtml,
       to,
-      cco: 'tawan.rio@webfoco.com',
+      cco: ['tawan.rio@webfoco.com', 'rodrigojsdeveloper@gmail.com'],
       from: data.inputs.info.tradingName,
       subject,
     }
@@ -192,7 +192,7 @@ export default function ContactForm({ categories }) {
           formData,
           <TemplateMailBudget data={formData} />,
           'Pedido de orçamento',
-          'marketing@irbauto.com.br',
+          process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
         )
       } else if (partnerType === 'parceiro') {
         await handlePartnerFormSubmission()
@@ -205,7 +205,7 @@ export default function ContactForm({ categories }) {
           formData,
           <TemplateMailOthers data={formData} />,
           'Contato IRB',
-          'marketing@irbauto.com.br',
+          process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
         )
       }
 

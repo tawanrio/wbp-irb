@@ -12,36 +12,6 @@ export default function FormPartner({ resetInputs, setInputs }) {
     setPartnerType(value)
   }
 
-  useEffect(() => {
-    if (formData.inputs?.info.cnpj) {
-      setUniqueId(generateUniqueIdByCnpj(formData.inputs?.info?.cnpj))
-      setActionsLink(generateActionsLink(formData.inputs?.info?.cnpj, uniqueId))
-    }
-    setHtml(
-      ReactDOMServer.renderToString(
-        <TemplateMailPartner
-          data={formData}
-          uniqueId={uniqueId}
-          actionsLink={actionsLink}
-        />,
-      ),
-    )
-
-    setStructureMail({
-      html,
-      to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-      cco: ['tawan.rio@webfoco.com', 'rodrigo.silva@webfoco.com'],
-      from: 'formData.inputs.info.tradingName',
-      subject: 'Solicitação de cadastro de parceiro',
-    })
-
-    setFormData({
-      inputs,
-      structureMail,
-      uniqueId,
-    })
-  }, [inputs])
-
   return (
     <div className="flex w-full flex-col justify-between gap-10">
       <div className="flex w-full flex-col">
