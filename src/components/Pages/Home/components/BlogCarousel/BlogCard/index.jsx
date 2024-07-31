@@ -37,7 +37,7 @@ export const BlogCard = ({ post }) => {
           {post?.title?.rendered}
         </h2>
         <p
-          className="line-clamp-5 text-[#222]"
+          className="line-clamp-5 h-[8.5rem] text-[#222]"
           dangerouslySetInnerHTML={{ __html: post?.excerpt?.rendered }}
         />
         <p className="m-0 font-semibold text-black hover:underline">
