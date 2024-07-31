@@ -11,7 +11,7 @@ const collectionsSchema = new mongoose.Schema(
     logo: Object,
     whereToBuy: String,
     enabled: Boolean,
-    cnpj: String,
+    cnpj: { type: String, unique: true, index: true },
     info: Object,
     geo: Object,
     banners: Object,

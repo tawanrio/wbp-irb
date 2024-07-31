@@ -1,38 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import InputsAddress from './../Components/InputsAddress'
-import TemplateMailWorkWithUs from './TemplateMail'
-import ReactDOMServer from 'react-dom/server'
 
-export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
-  const [cnpj, setCnpj] = useState('')
+export default function FormWorkWithUs({ setFormData, resetInputs }) {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [curriculum, setCurriculum] = useState('')
-  const [structureMail, setStructureMail] = useState({})
-  const [html, setHtml] = useState('')
-
   const [address, setAddress] = useState({})
 
+  const phoneRef = useRef(null)
+  const curriculumRef = useRef(null)
+
   useEffect(() => {
-    setHtml(
-      ReactDOMServer.renderToString(<TemplateMailWorkWithUs data={formData} />),
-    )
-
-    setStructureMail({
-      html,
-      to: 'marketing@irbauto.com.br',
-      cco: 'tawan.rio@webfoco.com',
-      from: 'Trabalhe conosco - IRB',
-      subject: 'Trabalhe conosco',
-    })
-
     setFormData({
       inputs: {
         info: {
-          cnpj,
           fullName,
           email,
           phone,
@@ -40,39 +24,41 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
         },
         address,
       },
-      structureMail,
     })
-  }, [cnpj, fullName, email, phone, curriculum, address])
+  }, [fullName, email, phone, curriculum, address])
 
   useEffect(() => {
     resetForm()
   }, [resetInputs])
 
   const resetForm = () => {
-    setCnpj('')
     setEmail('')
     setPhone('')
     setFullName('')
     setCurriculum('')
     setAddress({})
+
+    if (curriculumRef.current) {
+      curriculumRef.current.value = ''
+    }
   }
 
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = event.target.files[0]
     setState(file)
   }
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between">
-        <div className="mt-2 flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="fullName">
             Nome completo
           </label>
           <input
-            type="text"
             id="fullName"
+            type="text"
+            required
             placeholder="Nome completo"
             className="border px-4 py-2"
             value={fullName}
@@ -80,13 +66,14 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="email">
             E-mail
           </label>
           <input
-            type="email"
             id="email"
+            type="email"
+            required
             placeholder="E-mail"
             className="border px-4 py-2"
             value={email}
@@ -94,14 +81,15 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
             Telefone
           </label>
           <InputMask
             id="phone"
             mask="(99) 99999-9999"
-            maskPlaceholder=""
+            ref={phoneRef}
+            required
             placeholder="Telefone"
             className="border px-4 py-2"
             value={phone}
@@ -109,18 +97,20 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Anexar currículo
           </label>
           <input
+            id="curriculum"
             type="file"
-            id="logo"
-            accept="image/png, image/jpeg, application/pdf"
+            required
+            ref={curriculumRef}
+            accept="application/pdf"
             onChange={(e) => handleImg(e, setCurriculum)}
           />
-          <span className="text-sm text-slate-400">
-            Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 3MB.
+          <span className="mt-1 text-sm text-slate-400">
+            Formatos suportados: PDF; Tamanho máximo do arquivo: 3MB.
           </span>
         </div>
       </div>

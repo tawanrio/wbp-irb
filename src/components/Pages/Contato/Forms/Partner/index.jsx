@@ -1,21 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import FormAutoparts from '@/components/Pages/Register/Forms/Autoparts'
 import FormDistributor from '@/components/Pages/Register/Forms/Distributor'
 import FormMechanics from '@/components/Pages/Register/Forms/Mechanics'
-import ReactDOMServer from 'react-dom/server'
-import TemplateMailPartner from './TemplateMail'
-import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
 
-export default function FormPartner({ formData, setFormData }) {
+export default function FormPartner({ resetInputs, setInputs }) {
   const [partnerType, setPartnerType] = useState('')
-  const [resetInputs, setResetInputs] = useState(false)
-  const [html, setHtml] = useState('')
-  const [structureMail, setStructureMail] = useState({})
-  const [inputs, setInputs] = useState(null)
-  const [uniqueId, setUniqueId] = useState('')
-  const [actionsLink, setActionsLink] = useState('')
 
   const handlePartnerType = (value) => {
     setPartnerType(value)
@@ -59,7 +50,7 @@ export default function FormPartner({ formData, setFormData }) {
         </label>
         <select
           id="partnerType"
-          className="border px-4 py-2"
+          className="appearance-none border bg-custom-arrow bg-[calc(100%-1rem)_center] bg-no-repeat px-4 py-2"
           value={partnerType}
           required
           onChange={(e) => handlePartnerType(e.target.value)}

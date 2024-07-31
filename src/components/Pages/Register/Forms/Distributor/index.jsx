@@ -1,10 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { createModifiedFile } from '@/utils/functions'
 import InputsAddress from './../Components/InputsAddress'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 export default function FormDistributor({
   setInputs,
@@ -16,9 +15,12 @@ export default function FormDistributor({
   const [tradingName, settradingName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [logo, setLogo] = useState('')
-
+  const [logo, setLogo] = useState(null)
   const [address, setAddress] = useState({})
+
+  const cnpjRef = useRef(null)
+  const phoneRef = useRef(null)
+  const logoRef = useRef(null)
 
   useEffect(() => {
     setInputs({
@@ -45,37 +47,39 @@ export default function FormDistributor({
     setPhone('')
     setCompanyName('')
     settradingName('')
-    setLogo('')
+    setLogo(null)
     setAddress({})
+
+    if (logoRef.current) {
+      logoRef.current.value = ''
+    }
   }
 
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = createModifiedFile(event.target.files[0])
-
     if (!file) {
       return
     }
-    console.log(file)
-    // Verificar o tipo de arquivo
+
     const validImageTypes = ['image/jpeg', 'image/png', 'image/heic']
     if (!validImageTypes.includes(file.type)) {
       toast.error('Por favor selecione uma imagem válida.')
       return
     }
+
     setState(file)
   }
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between">
-        <div className="mt-2 flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="companyName">
             Razão social
           </label>
           <input
-            type="text"
             id="companyName"
+            type="text"
             placeholder="Razão social"
             required
             className="border px-4 py-2"
@@ -84,13 +88,13 @@ export default function FormDistributor({
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="tradingName">
             Nome fantasia
           </label>
           <input
-            type="text"
             id="tradingName"
+            type="text"
             required
             placeholder="Nome fantasia"
             className="border px-4 py-2"
@@ -98,14 +102,14 @@ export default function FormDistributor({
             onChange={(e) => settradingName(e.target.value)}
           />
         </div>
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="cnpj">
             CNPJ
           </label>
           <InputMask
-            mask="99.999.999/9999-99"
-            maskPlaceholder=""
             id="cnpj"
+            mask="99.999.999/9999-99"
+            ref={cnpjRef}
             required
             placeholder="CNPJ"
             className="border px-4 py-2"
@@ -114,13 +118,13 @@ export default function FormDistributor({
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="email">
             E-mail
           </label>
           <input
-            type="email"
             id="email"
+            type="email"
             required
             placeholder="E-mail"
             className="border px-4 py-2"
@@ -129,14 +133,14 @@ export default function FormDistributor({
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
             Telefone
           </label>
           <InputMask
             id="phone"
             mask="(99) 99999-9999"
-            maskPlaceholder=""
+            ref={phoneRef}
             required
             placeholder="Telefone"
             className="border px-4 py-2"
@@ -145,18 +149,19 @@ export default function FormDistributor({
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Anexar logomarca
           </label>
           <input
+            id="logo"
             type="file"
             required
-            id="logo"
+            ref={logoRef}
             accept="image/png, image/jpeg"
             onChange={(e) => handleImg(e, setLogo)}
           />
-          <span className="text-sm text-slate-400">
+          <span className="mt-1 text-sm text-slate-400">
             Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho
             máximo do arquivo: 3MB.
           </span>

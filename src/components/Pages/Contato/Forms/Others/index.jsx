@@ -1,43 +1,25 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
-import TemplateMailOthers from './TemplateMail'
-import ReactDOMServer from 'react-dom/server'
 
-export default function FormOthers({ setFormData, resetInputs, formData }) {
+export default function FormOthers({ setFormData, resetInputs }) {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
-  const [html, setHtml] = useState('')
-  const [structureMail, setStructureMail] = useState({})
-  const [address, setAddress] = useState({})
+
+  const phoneRef = useRef(null)
 
   useEffect(() => {
-    setHtml(
-      ReactDOMServer.renderToString(<TemplateMailOthers data={formData} />),
-    )
-
-    setStructureMail({
-      html,
-      to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-      cco: ['tawan.rio@webfoco.com', 'rodrigo.silva@webfoco.com'],
-      from: 'Contato IRB',
-      subject: 'Contato IRB',
-    })
-
     setFormData({
       inputs: {
         info: {
-          message,
           fullName,
           email,
           phone,
+          message,
         },
-        address,
       },
-      structureMail,
     })
   }, [fullName, email, phone, message])
 
@@ -46,23 +28,23 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
   }, [resetInputs])
 
   const resetForm = () => {
+    setFullName('')
     setEmail('')
     setPhone('')
-    setFullName('')
     setMessage('')
   }
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between gap-2">
-        <div className="flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="flex flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="fullName">
               Nome completo
             </label>
             <input
-              type="text"
               id="fullName"
+              type="text"
               placeholder="Nome completo"
               required
               className="border px-4 py-2"
@@ -76,8 +58,8 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
               E-mail
             </label>
             <input
-              type="email"
               id="email"
+              type="email"
               required
               placeholder="E-mail"
               className="border px-4 py-2"
@@ -93,7 +75,7 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
             <InputMask
               id="phone"
               mask="(99) 99999-9999"
-              maskPlaceholder=""
+              ref={phoneRef}
               required
               placeholder="Telefone"
               className="border px-4 py-2"
@@ -102,18 +84,18 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
             />
           </div>
         </div>
-        <div className="flex w-[48%] flex-col">
+        <div className="flex flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold capitalize" htmlFor="message">
               Mensagem
             </label>
             <textarea
-              name="message"
               id="message"
+              name="message"
               cols="50"
               required
               placeholder="Mensagem"
-              className="h-[196px] w-full border px-4 py-2"
+              className="h-[12.375rem] w-full resize-none border px-4 py-2"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
