@@ -189,7 +189,7 @@ export default function Form({ inputs, colors }) {
             color: colors?.button.text,
           }}
           type="submit"
-          className="rounded-full px-20 py-2 text-2xl text-white duration-500 hover:scale-110"
+          className="rounded-full px-20 py-2 text-2xl text-white duration-500 hover:scale-110 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100"
         >
           {isSending ? 'Enviando...' : 'Enviar'}
         </button>

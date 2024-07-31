@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react'
 import FormAutoparts from '@/components/Pages/Register/Forms/Autoparts'
 import FormDistributor from '@/components/Pages/Register/Forms/Distributor'
@@ -25,7 +23,9 @@ export default function FormPartner({ resetInputs, setInputs }) {
           required
           onChange={(e) => handlePartnerType(e.target.value)}
         >
-          <option value="">Área de Atuação</option>
+          <option value="" disabled>
+            Área de Atuação
+          </option>
           <option value="distribuidoras">Distribuidoras</option>
           <option value="mecanicas">Mecânicas</option>
           <option value="autopecas">Autopeças</option>

@@ -61,7 +61,7 @@ export default function Contato({ content }) {
           arrButton={arrButton}
         />
         <ServiceAddress products={content.categories} address={address} />
-        <ContactForm categories={content.categories} />
+        <ContactForm />
       </Templates>
     </>
   )
