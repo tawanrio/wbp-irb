@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react'
 import FormAutoparts from '@/components/Pages/Register/Forms/Autoparts'
 import FormDistributor from '@/components/Pages/Register/Forms/Distributor'
@@ -30,6 +28,7 @@ export default function FormPartner({ resetInputs, setInputs }) {
             keyTrans={'component.form.partner.select.area'}
             tag="option"
             value=""
+            disabled
           />
           <InsertTranslationMsg
             keyTrans={'component.form.partner.select.distributor'}

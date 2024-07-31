@@ -26,3 +26,8 @@ export const RESPONSE_MESSAGE = {
     emailJob: 'notifications.register.error.emailJob',
   },
 }
+
+export const EMAILS_TO_SEND = [
+  'tawan.rio@webfoco.com',
+  'rodrigo.silva@webfoco.com',
+]

@@ -3,6 +3,7 @@ import { Collection } from '@/service/model/schemas/collectionsSchema'
 import { formatStrToDash } from '@/utils/functions'
 import TemplateMailAcceptRegister from '@/components/Templates/Email/AcceptRegister'
 import ReactDOMServer from 'react-dom/server'
+import { EMAILS_TO_SEND } from '@/utils/constants'
 export default function AcceptRegisterPartner() {
   return <></>
 }
@@ -39,7 +40,7 @@ const sendEmailToPartner = async (data) => {
   data.structureMail = {
     html: structureHtml,
     to: data.email,
-    cco: 'tawan.rio@webfoco.com',
+    cco: EMAILS_TO_SEND,
     from: 'formData.inputs.info.tradingName',
     subject: 'Cadastro Aprovado!',
   }

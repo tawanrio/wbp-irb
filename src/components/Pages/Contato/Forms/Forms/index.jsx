@@ -124,7 +124,9 @@ export default function FormPartner() {
           value={partnerType}
           onChange={(e) => handlePartnerType(e.target.value)}
         >
-          <option value="">Área de Atuação</option>
+          <option value="" disabled>
+            Área de Atuação
+          </option>
           <option value="distribuidoras">Distribuidoras</option>
           <option value="mecanicas">Mecânicas</option>
           <option value="autopecas">Autopeças</option>

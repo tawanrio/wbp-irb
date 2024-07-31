@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer'
 import { connectMongoDB, disconnectMongoDB } from '@/service/db'
 import { Config } from '@/service/model/schemas/configSchema'
+import { EMAILS_TO_SEND } from '@/utils/constants'
 
 export default async function sendEmailRegisterPartner(req, res) {
   if (req.method === 'GET') {
@@ -43,7 +44,7 @@ const sendEmail = async ({ formData, user }) => {
   const structurmail = {
     from: formData.structureMail.from,
     to: formData.structureMail.to,
-    cco: ['tawan.rio@webfoco.com', 'rodrigo.silva@webfoco.com'],
+    cco: EMAILS_TO_SEND,
     subject: formData.structureMail.subject,
     html: formData.structureMail.html,
   }

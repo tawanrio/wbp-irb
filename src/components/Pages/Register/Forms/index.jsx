@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react'
 import ReactDOMServer from 'react-dom/server'
 import SectionTitle from '@/components/SectionTitle'
@@ -9,7 +8,7 @@ import { toast } from 'react-toastify'
 import TemplateMailPartner from '../../Contato/Forms/Partner/TemplateMail'
 import TemplateMailSuccessRegister from './Components/TemplateMailSuccessRegister'
 import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
-import { RESPONSE_MESSAGE } from '@/utils/constants'
+import { EMAILS_TO_SEND, RESPONSE_MESSAGE } from '@/utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function RegisterForm() {
@@ -18,7 +17,7 @@ export default function RegisterForm() {
   const [inputs, setInputs] = useState({})
   const [uniqueId, setUniqueId] = useState('')
   const [actionsLink, setActionsLink] = useState('')
-  const [sending, setSending] = useState(false)
+  const [isSending, setIsSending] = useState(false)
   const [formData, setFormData] = useState({
     inputs: {
       info: {},
@@ -139,7 +138,7 @@ export default function RegisterForm() {
     data.structureMail = {
       html: structureHtml,
       to: data.inputs.info.email,
-      cco: 'tawan.rio@webfoco.com',
+      cco: EMAILS_TO_SEND,
       from: 'formData.inputs.info.tradingName',
       subject: 'Cadastro Recebido: Aguardando Aprovação',
     }
@@ -171,7 +170,7 @@ export default function RegisterForm() {
     data.structureMail = {
       html: structureHtml,
       to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-      cco: 'tawan.rio@webfoco.com',
+      cco: EMAILS_TO_SEND,
       from: 'formData.inputs.info.tradingName',
       subject: 'Solicitação de cadastro de parceiro',
     }
@@ -195,7 +194,7 @@ export default function RegisterForm() {
     e.preventDefault()
 
     if (!formData.inputs.info.partnerType) return
-    setSending(true)
+    setIsSending(true)
 
     try {
       const isDataInserted = await insertDataIntoDB({ formData })
@@ -221,7 +220,7 @@ export default function RegisterForm() {
     } catch (error) {
       toast.error(error.message)
     } finally {
-      setSending(false)
+      setIsSending(false)
     }
   }
 
@@ -247,7 +246,9 @@ export default function RegisterForm() {
             value={partnerType}
             onChange={(e) => handlePartnerType(e.target.value)}
           >
-            <option value="">Área de Atuação</option>
+            <option value="" disabled>
+              Área de Atuação
+            </option>
             <option value="distribuidoras">Distribuidoras</option>
             <option value="mecanicas">Mecânicas</option>
             <option value="autopecas">Autopeças</option>
@@ -279,9 +280,10 @@ export default function RegisterForm() {
         {partnerType && (
           <button
             type="submit"
-            className="rounded-full bg-[#22326e] px-20 py-2 text-2xl text-white duration-500 hover:scale-110"
+            disabled={isSending}
+            className="rounded-full bg-[#22326e] px-20 py-2 text-2xl text-white duration-500 hover:scale-110 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100"
           >
-            {sending ? 'Enviando...' : 'Enviar'}
+            {isSending ? 'Enviando...' : 'Enviar'}
           </button>
         )}
       </form>

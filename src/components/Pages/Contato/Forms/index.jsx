@@ -7,23 +7,22 @@ import FormWorkWithUs from './WorkWithUs'
 import FormBudget from './Budget'
 import { useIntl } from 'react-intl'
 import FormOther from './Others'
-import { RESPONSE_MESSAGE } from '@/utils/constants'
+import { EMAILS_TO_SEND, RESPONSE_MESSAGE } from '@/utils/constants'
 import TemplateMailPartner from './Partner/TemplateMail'
 import { generateActionsLink, generateUniqueIdByCnpj } from '@/utils/functions'
 import TemplateMailOthers from './Others/TemplateMail'
-import TemplateMailBudget from './Budget/TemplateMail'
 import TemplateMailWorkWithUs from './WorkWithUs/TemplateMail'
 import TemplateMailSuccessRegister from '../../Register/Forms/Components/TemplateMailSuccessRegister'
 import 'react-toastify/dist/ReactToastify.css'
 import InsertTranslationMsg from '@/components/InsertTranslationMsg'
 
-export default function ContactForm({ categories, title }) {
+export default function ContactForm({ title }) {
   const [partnerType, setPartnerType] = useState('')
   const [uniqueId, setUniqueId] = useState('')
   const [actionsLink, setActionsLink] = useState('')
   const [resetInputs, setResetInputs] = useState(false)
   const [inputs, setInputs] = useState(null)
-  const [sending, setSending] = useState(false)
+  const [isSending, setIsSending] = useState(false)
   const [formData, setFormData] = useState({
     inputs: {
       info: {},
@@ -166,7 +165,7 @@ export default function ContactForm({ categories, title }) {
     data.structureMail = {
       html: structureHtml,
       to,
-      cco: ['tawan.rio@webfoco.com', 'rodrigojsdeveloper@gmail.com'],
+      cco: EMAILS_TO_SEND,
       from: data.inputs.info.tradingName,
       subject,
     }
@@ -187,7 +186,7 @@ export default function ContactForm({ categories, title }) {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault()
-    setSending(true)
+    setIsSending(true)
 
     try {
       let emailSent = false
@@ -222,7 +221,7 @@ export default function ContactForm({ categories, title }) {
     } catch (error) {
       toast.error(error.message)
     } finally {
-      setSending(false)
+      setIsSending(false)
     }
   }
 
@@ -331,13 +330,6 @@ export default function ContactForm({ categories, title }) {
           </select>
         </div>
 
-        {partnerType === 'budget' && (
-          <FormBudget
-            setFormData={setFormData}
-            resetInputs={resetInputs}
-            categories={categories}
-          />
-        )}
         {partnerType === 'parceiro' && (
           <FormPartner resetInputs={resetInputs} setInputs={setInputs} />
         )}
@@ -350,7 +342,7 @@ export default function ContactForm({ categories, title }) {
 
         {partnerType && (
           <button className="rounded-full bg-[#22326e] px-20 py-2 text-2xl text-white duration-500 hover:scale-110">
-            {sending
+            {isSending
               ? messages['component.form.sending']
               : messages['component.form.send']}
           </button>

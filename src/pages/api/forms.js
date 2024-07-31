@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer'
 import { connectMongoDB, disconnectMongoDB } from '@/service/db'
 import { Config } from '@/service/model/schemas/configSchema'
+import { EMAILS_TO_SEND } from '@/utils/constants'
 
 export default async function forms(req, res) {
   if (req.method === 'GET') {
@@ -85,7 +86,7 @@ const sendEmail = async (data) => {
   await transporter.sendMail({
     from: `${data.name} <${data.email}>`,
     to: authSmtp.auth.user,
-    cc: 'marketing@irbauto.com.br',
+    cc: EMAILS_TO_SEND,
     subject: data.subject,
     html,
   })
