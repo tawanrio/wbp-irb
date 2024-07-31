@@ -1,42 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import InputsAddress from './../Components/InputsAddress'
-import TemplateMailWorkWithUs from './TemplateMail'
-import ReactDOMServer from 'react-dom/server'
 import InsertTranslationMsg from '@/components/InsertTranslationMsg'
 import { useIntl } from 'react-intl'
 
-export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
-  const [cnpj, setCnpj] = useState('')
+export default function FormWorkWithUs({ setFormData, resetInputs }) {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [curriculum, setCurriculum] = useState('')
-  const [structureMail, setStructureMail] = useState({})
-  const [html, setHtml] = useState('')
-
   const [address, setAddress] = useState({})
+
+  const phoneRef = useRef(null)
+  const curriculumRef = useRef(null)
   const intl = useIntl()
   const messages = intl.messages
 
   useEffect(() => {
-    setHtml(
-      ReactDOMServer.renderToString(<TemplateMailWorkWithUs data={formData} />),
-    )
-
-    setStructureMail({
-      html,
-      to: 'marketing@irbauto.com.br',
-      cco: 'tawan.rio@webfoco.com',
-      from: 'Trabalhe conosco - IRB',
-      subject: 'Trabalhe conosco',
-    })
-
     setFormData({
       inputs: {
         info: {
-          cnpj,
           fullName,
           email,
           phone,
@@ -44,39 +28,41 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
         },
         address,
       },
-      structureMail,
     })
-  }, [cnpj, fullName, email, phone, curriculum, address])
+  }, [fullName, email, phone, curriculum, address])
 
   useEffect(() => {
     resetForm()
   }, [resetInputs])
 
   const resetForm = () => {
-    setCnpj('')
     setEmail('')
     setPhone('')
     setFullName('')
     setCurriculum('')
     setAddress({})
+
+    if (curriculumRef.current) {
+      curriculumRef.current.value = ''
+    }
   }
 
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = event.target.files[0]
     setState(file)
   }
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between">
-        <div className="mt-2 flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="fullName">
             <InsertTranslationMsg keyTrans={'component.form.input.name'} />
           </label>
           <input
-            type="text"
             id="fullName"
+            type="text"
+            required
             placeholder={messages['component.form.input.name.placeholder']}
             className="border px-4 py-2"
             value={fullName}
@@ -84,13 +70,14 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="email">
             <InsertTranslationMsg keyTrans={'component.form.input.email'} />
           </label>
           <input
-            type="email"
             id="email"
+            type="email"
+            required
             placeholder={messages['component.form.input.email.placeholder']}
             className="border px-4 py-2"
             value={email}
@@ -98,14 +85,15 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
             <InsertTranslationMsg keyTrans={'component.form.input.phone'} />
           </label>
           <InputMask
             id="phone"
             mask="(99) 99999-9999"
-            maskPlaceholder=""
+            ref={phoneRef}
+            required
             placeholder={messages['component.form.input.phone.placeholder']}
             className="border px-4 py-2"
             value={phone}
@@ -113,20 +101,22 @@ export default function FormWorkWithUs({ setFormData, resetInputs, formData }) {
           />
         </div>
 
-        <div className="mt-2 flex w-[48%] flex-col">
+        <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             <InsertTranslationMsg
               id={'component.form.input.workWithUs.attachResume'}
             />
           </label>
           <input
+            id="curriculum"
             type="file"
-            id="logo"
-            accept="image/png, image/jpeg, application/pdf"
+            required
+            ref={curriculumRef}
+            accept="application/pdf"
             onChange={(e) => handleImg(e, setCurriculum)}
           />
-          <span className="text-sm text-slate-400">
-            <InsertTranslationMsg keyTrans={'component.contact.mediaFormats'} />
+          <span className="mt-1 text-sm text-slate-400">
+          <InsertTranslationMsg keyTrans={'component.contact.mediaFormats'} />
           </span>
         </div>
       </div>

@@ -23,5 +23,6 @@ export const RESPONSE_MESSAGE = {
     database: 'notifications.register.error.database',
     emailPartner: 'notifications.register.error.emailPartner',
     emailAdmin: 'notifications.register.error.emailAdmin',
+    emailJob: 'notifications.register.error.emailJob',
   },
 }

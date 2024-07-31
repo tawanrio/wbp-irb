@@ -43,6 +43,7 @@ const sendEmail = async ({ formData, user }) => {
   const structurmail = {
     from: formData.structureMail.from,
     to: formData.structureMail.to,
+    cco: ['tawan.rio@webfoco.com', 'rodrigo.silva@webfoco.com'],
     subject: formData.structureMail.subject,
     html: formData.structureMail.html,
   }

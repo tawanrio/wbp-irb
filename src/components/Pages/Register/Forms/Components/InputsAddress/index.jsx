@@ -88,6 +88,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           ref={zipCodeRef}
           placeholder={messages['component.address.input.cep.placeholder']}
           className="border px-4 py-2"
+          required
           value={cep}
           onChange={(e) => setCep(e.target.value)}
           onBlur={handleBlur}
@@ -100,9 +101,11 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           />
         </label>
         <input
+          id="street"
           type="text"
           required
           id="street"
+          required
           placeholder={messages['component.address.input.street.placeholder']}
           className="border px-4 py-2"
           value={street}
@@ -117,6 +120,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           />
         </label>
         <input
+          id="number"
           type="text"
           required
           id="number"
@@ -134,7 +138,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           />
         </label>
         <input
-          type="text"
           id="neighborhood"
           placeholder={messages['component.address.input.district.placeholder']}
           className="border px-4 py-2"
@@ -150,6 +153,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           />
         </label>
         <input
+          id="city"
           type="text"
           required
           id="city"
@@ -167,8 +171,8 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           />
         </label>
         <input
-          type="text"
           id="state"
+          type="text"
           required
           placeholder={messages['component.address.input.state.placeholder']}
           className="border px-4 py-2"

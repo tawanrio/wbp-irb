@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
 /* eslint-disable eqeqeq */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css'
 import InputMask from 'react-input-mask'
 import InsertTranslationMsg from '@/components/InsertTranslationMsg'
@@ -15,8 +15,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   const [state, setState] = useState('')
   const [cep, setCep] = useState('')
 
-  const intl = useIntl()
-  const messages = intl.messages
+  const phoneRef = useRef(null)
 
   useEffect(() => {
     const address = {
@@ -50,7 +49,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
     const fullAddress = await fetchAddress(cleanedValue)
 
     if (fullAddress.erro) {
-      return toast.error('CEP não encontrado!')
+      return toast.error(messages['notifications.register.error.cep'])
     } else {
       insertAddress(fullAddress)
     }
@@ -70,7 +69,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         return response.json()
       })
 
-      // setAddress(returnAddress);
       return returnAddress
     } catch (error) {
       return null
@@ -78,29 +76,31 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   }
 
   return (
-    <div className="flex w-full flex-row flex-wrap justify-between">
-      <div className="mt-2 flex w-[48%] flex-col">
+    <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="cep">
           <InsertTranslationMsg keyTrans={'component.address.input.cep'} />
         </label>
         <InputMask
-          mask="99999-999"
-          maskPlaceholder=""
           id="cep"
+          mask="99999-999"
+          ref={phoneRef}
           placeholder={messages['component.address.input.cep']}
+          required
           className="border px-4 py-2"
           value={cep}
           onChange={(e) => setCep(e.target.value)}
           onBlur={handleBlur}
         />
       </div>
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="street">
           <InsertTranslationMsg keyTrans={'component.address.input.street'} />
         </label>
         <input
-          type="text"
           id="street"
+          type="text"
+          required
           placeholder={messages['component.address.input.street']}
           className="border px-4 py-2"
           value={street}
@@ -108,13 +108,14 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="number">
           <InsertTranslationMsg keyTrans={'component.address.input.number'} />
         </label>
         <input
-          type="text"
           id="number"
+          type="text"
+          required
           placeholder={messages['component.address.input.number']}
           className="border px-4 py-2"
           value={number}
@@ -122,13 +123,14 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="neighborhood">
           <InsertTranslationMsg keyTrans={'component.address.input.district'} />
         </label>
         <input
-          type="text"
           id="neighborhood"
+          type="text"
+          required
           placeholder={messages['component.address.input.district']}
           className="border px-4 py-2"
           value={neighborhood}
@@ -136,13 +138,14 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="city">
           <InsertTranslationMsg keyTrans={'component.address.input.city'} />
         </label>
         <input
-          type="text"
           id="city"
+          type="text"
+          required
           placeholder={messages['component.address.input.city']}
           className="border px-4 py-2"
           value={city}
@@ -150,13 +153,14 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         />
       </div>
 
-      <div className="mt-2 flex w-[48%] flex-col">
+      <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="state">
           <InsertTranslationMsg keyTrans={'component.address.input.state'} />
         </label>
         <input
-          type="text"
           id="state"
+          type="text"
+          required
           placeholder={messages['component.address.input.state']}
           className="border px-4 py-2"
           value={state}

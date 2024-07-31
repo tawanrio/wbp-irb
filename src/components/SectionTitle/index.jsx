@@ -10,7 +10,7 @@ export default function SectionTitle({ title, line, className }) {
       >
         {title}
       </h2>
-      {line === true && (
+      {line && (
         <hr
           className="h-1/2 flex-1 border-b-2 border-t-0 border-black"
           style={{ borderColor: '#999' }}

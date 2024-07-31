@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import TemplateMailOthers from './TemplateMail'
 import ReactDOMServer from 'react-dom/server'
 import { useIntl } from 'react-intl'
 import InsertTranslationMsg from '@/components/InsertTranslationMsg'
 
-export default function FormOthers({ setFormData, resetInputs, formData }) {
+export default function FormOthers({ setFormData, resetInputs }) {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -19,29 +18,15 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
   const messages = intl.messages
 
   useEffect(() => {
-    setHtml(
-      ReactDOMServer.renderToString(<TemplateMailOthers data={formData} />),
-    )
-
-    setStructureMail({
-      html,
-      to: 'marketing@irbauto.com.br',
-      cco: 'tawan.rio@webfoco.com',
-      from: 'Contato IRB',
-      subject: 'Contato IRB',
-    })
-
     setFormData({
       inputs: {
         info: {
-          message,
           fullName,
           email,
           phone,
+          message,
         },
-        address,
       },
-      structureMail,
     })
   }, [fullName, email, phone, message])
 
@@ -50,22 +35,21 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
   }, [resetInputs])
 
   const resetForm = () => {
+    setFullName('')
     setEmail('')
     setPhone('')
-    setFullName('')
     setMessage('')
   }
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="flex w-full flex-row flex-wrap justify-between gap-2">
-        <div className="flex w-[48%] flex-col">
+      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="flex flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold" htmlFor="fullName">
               <InsertTranslationMsg keyTrans={'component.form.input.name'} />
             </label>
             <input
-              type="text"
               id="fullName"
               placeholder={messages['component.form.input.name.placeholder']}
               required
@@ -80,8 +64,8 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
               <InsertTranslationMsg keyTrans={'component.form.input.email'} />
             </label>
             <input
-              type="email"
               id="email"
+              type="email"
               required
               placeholder={messages['component.form.input.email.placeholder']}
               className="border px-4 py-2"
@@ -97,7 +81,7 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
             <InputMask
               id="phone"
               mask="(99) 99999-9999"
-              maskPlaceholder=""
+              ref={phoneRef}
               required
               placeholder={messages['component.form.input.phone.placeholder']}
               className="border px-4 py-2"
@@ -106,14 +90,14 @@ export default function FormOthers({ setFormData, resetInputs, formData }) {
             />
           </div>
         </div>
-        <div className="flex w-[48%] flex-col">
+        <div className="flex flex-col">
           <div className="mt-2 flex w-full flex-col">
             <label className="text-lg font-bold capitalize" htmlFor="message">
               <InsertTranslationMsg keyTrans={'component.form.input.message'} />
             </label>
             <textarea
-              name="message"
               id="message"
+              name="message"
               cols="50"
               required
               placeholder={messages['component.form.input.message.placeholder']}
