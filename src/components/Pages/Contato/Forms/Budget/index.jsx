@@ -45,8 +45,8 @@ export default function FormBudget({
 
     setStructureMail({
       html,
-      to: 'marketing@irbauto.com.br',
-      cco: 'tawan.rio@webfoco.com',
+      to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
+      cco: ['tawan.rio@webfoco.com', 'rodrigo.silva@webfoco.com'],
       from: 'Orçamento IRB',
       subject: 'Pedido de orçamento',
     })
