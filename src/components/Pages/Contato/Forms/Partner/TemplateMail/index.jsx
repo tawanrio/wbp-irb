@@ -56,20 +56,26 @@ export default function TemplateMailPartner({ data, actionsLink }) {
     <div
       style={{
         maxWidth: '600px',
-        margin: '20px auto',
-        backgroundColor: '#fff',
-        padding: '20px',
-        border: '1px solid #dddddd',
-        borderRadius: '5px',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
         fontFamily: 'Arial, sans-serif',
+        backgroundColor: '#fff',
+        border: '1px solid #dddddd',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        borderRadius: '5px',
+        padding: '20px',
+        margin: '20px auto',
       }}
     >
-      <div style={{ textAlign: 'center', paddingBottom: '20px' }}>
-        <h1 style={{ margin: 0, fontSize: '24px', color: '#333' }}>
-          Solicitação de cadastro de parceiro IRB
-        </h1>
-      </div>
+      <h2
+        style={{
+          textAlign: 'center',
+          margin: 0,
+          fontSize: '24px',
+          color: '#333',
+          paddingBottom: '20px',
+        }}
+      >
+        Solicitação de cadastro de parceiro IRB
+      </h2>
       <p style={{ textAlign: 'center', margin: '20px 0', color: '#666' }}>
         Email enviado através do site:{' '}
         <a
@@ -91,6 +97,8 @@ export default function TemplateMailPartner({ data, actionsLink }) {
             {info.partnerType}
           </h2>
         )}
+        {info?.whereToBuy &&
+          renderInfo('Distribuidor dos Produtos IRB', info.whereToBuy)}
         {renderInfo('CNPJ', info.cnpj)}
         {renderInfo('Razão Social', info.companyName)}
         {renderInfo('Nome Fantasia', info.tradingName)}

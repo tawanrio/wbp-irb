@@ -15,11 +15,12 @@ export default function FormDistributor({
   const [tradingName, settradingName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
-  const [logo, setLogo] = useState('')
+  const [logo, setLogo] = useState(null)
   const [address, setAddress] = useState({})
 
   const cnpjRef = useRef(null)
   const phoneRef = useRef(null)
+  const logoRef = useRef(null)
 
   useEffect(() => {
     setInputs({
@@ -46,8 +47,12 @@ export default function FormDistributor({
     setPhone('')
     setCompanyName('')
     settradingName('')
-    setLogo('')
+    setLogo(null)
     setAddress({})
+
+    if (logoRef.current) {
+      logoRef.current.value = ''
+    }
   }
 
   const handleImg = (event, setState) => {
@@ -73,8 +78,8 @@ export default function FormDistributor({
             Razão social
           </label>
           <input
-            type="text"
             id="companyName"
+            type="text"
             placeholder="Razão social"
             required
             className="border px-4 py-2"
@@ -88,8 +93,8 @@ export default function FormDistributor({
             Nome fantasia
           </label>
           <input
-            type="text"
             id="tradingName"
+            type="text"
             required
             placeholder="Nome fantasia"
             className="border px-4 py-2"
@@ -118,8 +123,8 @@ export default function FormDistributor({
             E-mail
           </label>
           <input
-            type="email"
             id="email"
+            type="email"
             required
             placeholder="E-mail"
             className="border px-4 py-2"
@@ -149,9 +154,10 @@ export default function FormDistributor({
             Anexar logomarca
           </label>
           <input
+            id="logo"
             type="file"
             required
-            id="logo"
+            ref={logoRef}
             accept="image/png, image/jpeg"
             onChange={(e) => handleImg(e, setLogo)}
           />

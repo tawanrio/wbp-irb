@@ -9,7 +9,6 @@ export default async function forms(req, res) {
   if (req.method === 'POST') {
     const { name, email, tel, subject, message } = req.body
 
-    // res.status(200).json({name, email, tel, subject, message});
     try {
       if (!name || !email || !tel || !subject || !message)
         throw new Error('Por favor, preencha todos os campos')
@@ -40,15 +39,47 @@ const sendEmail = async (data) => {
       pass: authSmtp.auth.pass,
     },
   })
-  const html = `
-    <h2>Email enviado atrávez do site: irbauto.com.br</h2>
 
-    <p>Nome: ${data.name}</p>
-    <p>Email: ${data.email}</p>
-    <p>Telefone: ${data.tel}</p>
-    <br>
-    <p>Assunto: ${data.subject}</p>
-    <p>Mensagem: ${data.message}</p>
+  const html = `
+      <div
+        style="
+          max-width: 600px;
+          font-family: Arial, sans-serif;
+          background-color: #fff;
+          border: 1px solid #dddddd;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 5px;
+          padding: 20px;
+          margin: 20px auto;
+        "
+      >
+        <h2
+          style="
+            text-align: center;
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+            padding-bottom: 20px;
+          "
+        >
+          ${data.subject}
+        </h2>
+        <p style="text-align: center; margin: 20px 0; color: #666;">
+          Email enviado através do site:
+          <a
+            href="http://irbauto.com.br"
+            style="color: #4caf50; text-decoration: none;"
+          >
+            irbauto.com.br
+          </a>
+        </p>
+
+        <p style="margin: 10px 0; color: #333;"><strong>Nome:</strong> ${data.name}</p>
+        <p style="margin: 10px 0; color: #333;"><strong>Email:</strong> ${data.email}</p>
+        <p style="margin: 10px 0; color: #333;"><strong>Telefone:</strong> ${data.tel}</p>
+        <p style="margin: 10px 0; color: #333;"><strong>Assunto:</strong> ${data.subject}</p>
+        <p style="margin: 10px 0; color: #333;"><strong>Mensagem:</strong> ${data.message}</p>
+      </div>
     `
 
   await transporter.sendMail({

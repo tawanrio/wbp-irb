@@ -23,5 +23,6 @@ export const RESPONSE_MESSAGE = {
     database: 'Erro ao inserir dados no banco de dados.',
     emailPartner: 'Erro ao enviar e-mail para o parceiro.',
     emailAdmin: 'Erro ao enviar e-mail para o administrador.',
+    emailJob: 'Erro ao enviar e-mail para a IRB.',
   },
 }

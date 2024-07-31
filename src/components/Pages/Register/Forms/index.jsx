@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default function RegisterForm() {
   const [partnerType, setPartnerType] = useState('')
+  const [resetInputs, setResetInputs] = useState(false)
   const [inputs, setInputs] = useState({})
   const [uniqueId, setUniqueId] = useState('')
   const [actionsLink, setActionsLink] = useState('')
@@ -27,8 +28,6 @@ export default function RegisterForm() {
     actionsLink: {},
     html: '',
   })
-
-  const [resetInputs, setResetInputs] = useState(false)
 
   useEffect(() => {
     if (inputs?.info?.cnpj) {
@@ -123,7 +122,13 @@ export default function RegisterForm() {
         body: JSON.stringify(data),
       },
     )
-    return response.ok
+
+    if (response.ok) {
+      return response.ok
+    } else {
+      const responseData = await response.json()
+      return responseData
+    }
   }
 
   const sendEmailToPartner = async (data) => {
@@ -193,23 +198,28 @@ export default function RegisterForm() {
     setSending(true)
 
     try {
-      const isImagesUploaded = await uploadImagesToDB(formData)
-      if (!isImagesUploaded)
-        throw new Error(RESPONSE_MESSAGE.error.uploadImages)
-
       const isDataInserted = await insertDataIntoDB({ formData })
-      if (!isDataInserted) throw new Error(RESPONSE_MESSAGE.error.database)
+      if (isDataInserted && isDataInserted.message) {
+        throw new Error(isDataInserted.message)
+      }
+
+      const isImagesUploaded = await uploadImagesToDB(formData)
+      if (!isImagesUploaded) {
+        throw new Error(RESPONSE_MESSAGE.error.uploadImages)
+      }
 
       const isEmailPartnerSent = await sendEmailToPartner(formData)
-      if (!isEmailPartnerSent)
+      if (!isEmailPartnerSent) {
         throw new Error(RESPONSE_MESSAGE.error.emailPartner)
+      }
 
       const isEmailAdminSent = await sendEmailToAction(formData)
       if (!isEmailAdminSent) throw new Error(RESPONSE_MESSAGE.error.emailAdmin)
 
       toast.success(RESPONSE_MESSAGE.success)
+      setResetInputs(!resetInputs)
     } catch (error) {
-      toast.error(`${RESPONSE_MESSAGE.error.default} - ${error.message}`)
+      toast.error(error.message)
     } finally {
       setSending(false)
     }
@@ -233,7 +243,7 @@ export default function RegisterForm() {
           </label>
           <select
             id="partnerType"
-            className="bg-custom-arrow appearance-none border bg-[calc(100%-1rem)_center] bg-no-repeat px-4 py-2"
+            className="appearance-none border bg-custom-arrow bg-[calc(100%-1rem)_center] bg-no-repeat px-4 py-2"
             value={partnerType}
             onChange={(e) => handlePartnerType(e.target.value)}
           >
