@@ -18,6 +18,7 @@ export default function InputsInfo({ setInfo, resetInputs, partnerType }) {
 
   const cnpjRef = useRef(null)
   const phoneRef = useRef(null)
+  const logoRef = useRef(null)
   const intl = useIntl()
   const messages = intl.messages
 
@@ -28,6 +29,9 @@ export default function InputsInfo({ setInfo, resetInputs, partnerType }) {
     setCompanyName('')
     settradingName('')
     setLogo('')
+    if (logoRef.current) {
+      logoRef.current.value = ''
+    }
   }
 
   useEffect(() => {
@@ -146,6 +150,7 @@ export default function InputsInfo({ setInfo, resetInputs, partnerType }) {
           type="file"
           required
           id="logo"
+          ref={logoRef}
           accept="image/png, image/jpeg"
           onChange={(e) => handleImg(e, setLogo)}
         />

@@ -16,6 +16,8 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   const [cep, setCep] = useState('')
 
   const phoneRef = useRef(null)
+  const intl = useIntl()
+  const messages = intl.messages
 
   useEffect(() => {
     const address = {

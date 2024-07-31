@@ -14,6 +14,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   const [state, setState] = useState('')
   const [cep, setCep] = useState('')
 
+  const phoneRef = useRef(null)
   const zipCodeRef = useRef(null)
   const intl = useIntl()
   const messages = intl.messages
@@ -104,8 +105,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           id="street"
           type="text"
           required
-          id="street"
-          required
           placeholder={messages['component.address.input.street.placeholder']}
           className="border px-4 py-2"
           value={street}
@@ -122,8 +121,8 @@ export default function InputsAddress({ setAddress, resetInputs }) {
         <input
           id="number"
           type="text"
+          ref={phoneRef}
           required
-          id="number"
           placeholder={messages['component.address.input.number.placeholder']}
           className="border px-4 py-2"
           value={number}
@@ -156,7 +155,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           id="city"
           type="text"
           required
-          id="city"
           placeholder={messages['component.address.input.city.placeholder']}
           className="border px-4 py-2"
           value={city}

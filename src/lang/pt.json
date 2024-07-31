@@ -9,23 +9,27 @@
   "notifications.form.error.productLine": "Linha do produto é obrigatória",
   "notifications.form.error.message": "Mensagem é obrigatória",
   
-  "notifications.register.success": "Cadastro enviado com sucesso, aguarde aprovação.",
+  "notifications.register.success": "Cadastro recebido com sucesso, aguarde aprovação.",
   "notifications.register.error": "Erro ao enviar cadastro",
   "notifications.register.error.uploadImages": "Erro ao fazer upload das imagens.",
   "notifications.register.error.database": "Erro ao inserir dados no banco de dados.",
   "notifications.register.error.emailPartner": "Erro ao enviar e-mail para o parceiro.",
   "notifications.register.error.emailAdmin": "Erro ao enviar e-mail para o administrador.",
+  "notifications.register.error.emailJob":"Erro ao enviar e-mail para a IRB.",
+  "notifications.register.error.cep": "CEP não encontrado!",
   
 
 
 
+  "component.contact": "Contato IRB",
   "component.contact.reason": "Motivo do contato",
   "component.contact.select": "Selecione",
   "component.contact.select.budget": "Realizar um orçamento",
+  "component.contact.budget": "Pedido de orçamento",
   "component.contact.select.partner": "Virar um parceiro IRB",
   "component.contact.select.workWithUs": "Trabalhar na IRB",
-    "component.contact.select.others": "Outros",
-  
+  "component.contact.select.others": "Outros",
+  "component.contact.partner.register":"Solicitação de cadastro de parceiro",
   "component.contact.budget.product": "Produto",
   "component.contact.budget.select": "Selecione um produto",
   "component.contact.budget.select.line": "Linha",

@@ -88,9 +88,9 @@ export default function Form({ inputs, colors, title }) {
                   htmlFor="fullName"
                   style={{ color: colorText }}
                 >
-                   <InsertTranslationMsg
-                      keyTrans={'component.form.input.name'}
-                    />
+                  <InsertTranslationMsg
+                    keyTrans={'component.form.input.name'}
+                  />
                 </label>
                 <input
                   id="fullName"
@@ -113,8 +113,8 @@ export default function Form({ inputs, colors, title }) {
                   style={{ color: colorText }}
                 >
                   <InsertTranslationMsg
-                      keyTrans={'component.form.input.email'}
-                    />
+                    keyTrans={'component.form.input.email'}
+                  />
                 </label>
                 <input
                   id="email"
@@ -136,9 +136,9 @@ export default function Form({ inputs, colors, title }) {
                   htmlFor="phone"
                   style={{ color: colorText }}
                 >
-                    <InsertTranslationMsg
-                      keyTrans={'component.form.input.phone'}
-                    />
+                  <InsertTranslationMsg
+                    keyTrans={'component.form.input.phone'}
+                  />
                 </label>
                 <InputMask
                   id="phone"
@@ -162,8 +162,8 @@ export default function Form({ inputs, colors, title }) {
                   style={{ color: colorText }}
                 >
                   <InsertTranslationMsg
-                      keyTrans={'component.form.input.subject'}
-                    />
+                    keyTrans={'component.form.input.subject'}
+                  />
                 </label>
                 <input
                   id="subject"
@@ -187,8 +187,8 @@ export default function Form({ inputs, colors, title }) {
                 style={{ color: colorText }}
               >
                 <InsertTranslationMsg
-                      keyTrans={'component.form.input.message'}
-                    />
+                  keyTrans={'component.form.input.message'}
+                />
               </label>
               <textarea
                 id="message"

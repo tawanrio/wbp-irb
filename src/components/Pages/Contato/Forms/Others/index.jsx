@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
-import TemplateMailOthers from './TemplateMail'
-import ReactDOMServer from 'react-dom/server'
 import { useIntl } from 'react-intl'
 import InsertTranslationMsg from '@/components/InsertTranslationMsg'
 
@@ -11,9 +9,7 @@ export default function FormOthers({ setFormData, resetInputs }) {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [message, setMessage] = useState('')
-  const [html, setHtml] = useState('')
-  const [structureMail, setStructureMail] = useState({})
-  const [address, setAddress] = useState({})
+  const phoneRef = useRef(null)
   const intl = useIntl()
   const messages = intl.messages
 
