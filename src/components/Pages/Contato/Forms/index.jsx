@@ -5,7 +5,7 @@ import FormPartner from './Partner'
 import { toast } from 'react-toastify'
 import FormWorkWithUs from './WorkWithUs'
 import FormOther from './Others'
-import { EMAILS_TO_SEND, RESPONSE_MESSAGE } from '@/utils/constants'
+import { EMAIL_RECIPIENTS, RESPONSE_MESSAGES } from '@/utils/constants'
 import TemplateMailPartner from './Partner/TemplateMail'
 import { generateActionsLink, generateUniqueIdByCnpj } from '@/utils/functions'
 import TemplateMailOthers from './Others/TemplateMail'
@@ -160,7 +160,7 @@ export default function ContactForm() {
     data.structureMail = {
       html: structureHtml,
       to,
-      cco: EMAILS_TO_SEND,
+      cco: EMAIL_RECIPIENTS,
       from: data.inputs.info.tradingName,
       subject,
     }
@@ -201,10 +201,10 @@ export default function ContactForm() {
       }
 
       if (emailSent) {
-        toast.success(RESPONSE_MESSAGE.success)
+        toast.success(RESPONSE_MESSAGES.success)
         setResetInputs(!resetInputs)
       } else {
-        throw new Error(RESPONSE_MESSAGE.error.emailAdmin)
+        throw new Error(RESPONSE_MESSAGES.error.emailAdmin)
       }
     } catch (error) {
       toast.error(error.message)
@@ -223,7 +223,7 @@ export default function ContactForm() {
 
     const isImagesUploaded = await uploadImagesToDB(formData)
     if (!isImagesUploaded) {
-      throw new Error(RESPONSE_MESSAGE.error.uploadImages)
+      throw new Error(RESPONSE_MESSAGES.error.uploadImages)
     }
 
     const isEmailAdminSent = await sendEmail(
@@ -237,24 +237,24 @@ export default function ContactForm() {
       process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
     )
     if (!isEmailAdminSent) {
-      throw new Error(RESPONSE_MESSAGE.error.emailAdmin)
+      throw new Error(RESPONSE_MESSAGES.error.emailAdmin)
     }
 
     const isEmailPartnerSent = await sendEmail(
       formData,
-      <TemplateMailSuccessRegister data={formData.inputs} />,
+      <TemplateMailSuccessRegister data={formData} />,
       'Cadastro Recebido: Aguardando Aprovação',
       formData.inputs.info.email,
     )
     if (!isEmailPartnerSent) {
-      throw new Error(RESPONSE_MESSAGE.error.emailPartner)
+      throw new Error(RESPONSE_MESSAGES.error.emailPartner)
     }
   }
 
   const handleWorkWithUsFormSubmission = async () => {
     const isImagesUploaded = await uploadCurriculumToDB(formData)
     if (!isImagesUploaded) {
-      throw new Error(RESPONSE_MESSAGE.error.uploadImages)
+      throw new Error(RESPONSE_MESSAGES.error.uploadImages)
     }
 
     const isEmailWorkWithUs = await sendEmail(
@@ -264,7 +264,7 @@ export default function ContactForm() {
       process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
     )
     if (!isEmailWorkWithUs) {
-      throw new Error(RESPONSE_MESSAGE.error.emailJob)
+      throw new Error(RESPONSE_MESSAGES.error.emailJob)
     }
   }
 

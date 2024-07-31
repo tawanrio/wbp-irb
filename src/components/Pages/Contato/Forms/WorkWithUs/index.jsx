@@ -110,7 +110,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
             onChange={(e) => handleImg(e, setCurriculum)}
           />
           <span className="mt-1 text-sm text-slate-400">
-            Formatos suportados: PDF; Tamanho máximo do arquivo: 3MB.
+            Formatos suportados: PDF; Tamanho máximo do arquivo: 5MB.
           </span>
         </div>
       </div>

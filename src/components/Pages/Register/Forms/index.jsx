@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 import TemplateMailPartner from '../../Contato/Forms/Partner/TemplateMail'
 import TemplateMailSuccessRegister from './Components/TemplateMailSuccessRegister'
 import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
-import { EMAILS_TO_SEND, RESPONSE_MESSAGE } from '@/utils/constants'
+import { EMAIL_RECIPIENTS, RESPONSE_MESSAGES } from '@/utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function RegisterForm() {
@@ -132,13 +132,13 @@ export default function RegisterForm() {
 
   const sendEmailToPartner = async (data) => {
     const structureHtml = ReactDOMServer.renderToString(
-      <TemplateMailSuccessRegister data={data.inputs} />,
+      <TemplateMailSuccessRegister data={data} />,
     )
 
     data.structureMail = {
       html: structureHtml,
       to: data.inputs.info.email,
-      cco: EMAILS_TO_SEND,
+      cco: EMAIL_RECIPIENTS,
       from: 'formData.inputs.info.tradingName',
       subject: 'Cadastro Recebido: Aguardando Aprovação',
     }
@@ -170,7 +170,7 @@ export default function RegisterForm() {
     data.structureMail = {
       html: structureHtml,
       to: process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-      cco: EMAILS_TO_SEND,
+      cco: EMAIL_RECIPIENTS,
       from: 'formData.inputs.info.tradingName',
       subject: 'Solicitação de cadastro de parceiro',
     }
@@ -204,18 +204,18 @@ export default function RegisterForm() {
 
       const isImagesUploaded = await uploadImagesToDB(formData)
       if (!isImagesUploaded) {
-        throw new Error(RESPONSE_MESSAGE.error.uploadImages)
+        throw new Error(RESPONSE_MESSAGES.error.uploadImages)
       }
 
       const isEmailPartnerSent = await sendEmailToPartner(formData)
       if (!isEmailPartnerSent) {
-        throw new Error(RESPONSE_MESSAGE.error.emailPartner)
+        throw new Error(RESPONSE_MESSAGES.error.emailPartner)
       }
 
       const isEmailAdminSent = await sendEmailToAction(formData)
-      if (!isEmailAdminSent) throw new Error(RESPONSE_MESSAGE.error.emailAdmin)
+      if (!isEmailAdminSent) throw new Error(RESPONSE_MESSAGES.error.emailAdmin)
 
-      toast.success(RESPONSE_MESSAGE.success)
+      toast.success(RESPONSE_MESSAGES.success)
       setResetInputs(!resetInputs)
     } catch (error) {
       toast.error(error.message)
