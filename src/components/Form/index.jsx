@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import SectionTitle from '../SectionTitle'
 import { toast } from 'react-toastify'
-import { RESPONSE_MESSAGE } from '@/utils/constants'
+import { RESPONSE_MESSAGES } from '@/utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function Form({ inputs, colors }) {
@@ -53,13 +53,13 @@ export default function Form({ inputs, colors }) {
         message,
       })
       if (!messageContact) {
-        throw new Error(RESPONSE_MESSAGE.error.emailJob)
+        throw new Error(RESPONSE_MESSAGES.error.emailJob)
       }
 
-      toast.success(RESPONSE_MESSAGE.success)
+      toast.success(RESPONSE_MESSAGES.success)
       resetForm()
     } catch (error) {
-      toast.error(RESPONSE_MESSAGE.error)
+      toast.error(RESPONSE_MESSAGES.error)
     } finally {
       setIsSending(false)
     }
@@ -73,9 +73,9 @@ export default function Form({ inputs, colors }) {
       <SectionTitle title="Contato" line className="w-full" />
       <form
         onSubmit={(e) => handleSubmitForm(e)}
-        className="flex flex-col items-center gap-10"
+        className="flex w-full flex-col items-center gap-10"
       >
-        <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+        <div className="grid w-full grid-cols-1 gap-x-8 sm:grid-cols-2">
           <div className="mb-2 flex flex-col gap-2">
             {inputs?.name && (
               <div className="flex flex-col">

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
-import { EQUIPMENTS } from '@/utils/constants'
+import { EQUIPMENT_LIST } from '@/utils/constants'
 
 export default function Requirements({ setRequiments, resetInputs }) {
   const [certificateImg, setCertificateImg] = useState(null)
@@ -132,7 +132,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
           Preencher quais ferramentas você possui
         </span>
         <ul className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2">
-          {EQUIPMENTS.map((equipment, index) => (
+          {EQUIPMENT_LIST.map((equipment, index) => (
             <li
               key={index}
               className="flex w-fit cursor-pointer flex-row items-center"
@@ -144,7 +144,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
                 onChange={handleCheckboxChange}
                 ref={(el) => (checkboxRefs.current[index] = el)}
                 onClick={(e) => e.stopPropagation()}
-                className="cursor-pointer"
+                className="min-h-[0.813rem] min-w-[0.813rem] cursor-pointer"
               />
               <label className="ml-2 cursor-pointer">{equipment}</label>
             </li>
