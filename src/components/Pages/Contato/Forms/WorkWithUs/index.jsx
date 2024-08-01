@@ -116,7 +116,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
             onChange={(e) => handleImg(e, setCurriculum)}
           />
           <span className="mt-1 text-sm text-slate-400">
-          <InsertTranslationMsg keyTrans={'component.contact.mediaFormats'} />
+            <InsertTranslationMsg keyTrans={'component.contact.mediaFormats'} />
           </span>
         </div>
       </div>
