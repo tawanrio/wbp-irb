@@ -96,13 +96,13 @@ export default function Blog({ content, data }) {
         <BreadCrumb />
         <div className="mx-3.5 max-w-6xl py-8 md:mx-auto">
           <h1 className="mb-4 text-3xl font-bold">Publicações</h1>
-          <ul className="flex flex-wrap gap-4 md:grid md:grid-cols-3">
+          <div className="flex flex-wrap gap-4 md:grid md:grid-cols-3">
             {currentPosts.map((post, key) => (
-              <li key={key}>
-                <Link
-                  href={`/blog/${post.permaLink || formatStrToDash(post.title)}`}
-                  className="flex h-full cursor-pointer flex-col justify-between border p-4 hover:bg-gray-100"
-                >
+              <Link
+                key={key}
+                href={`/blog/${post.permaLink || formatStrToDash(post.title)}`}
+              >
+                <div className="flex h-full cursor-pointer flex-col justify-between border p-4 hover:bg-gray-100">
                   <div>
                     <h2 className="mb-2 h-20 overflow-hidden text-xl font-semibold">
                       {post.title}
@@ -119,19 +119,24 @@ export default function Blog({ content, data }) {
                       }}
                     ></p>
                   </div>
-                  <p className="m-0 w-fit text-blue-500 hover:underline">
-                    Leia mais
-                  </p>
-                </Link>
-              </li>
+                  <div className="mt-auto">
+                    <Link
+                      className="text-blue-500 hover:underline"
+                      href={`/blog/${post.permaLink}`}
+                    >
+                      Leia mais
+                    </Link>
+                  </div>
+                </div>
+              </Link>
             ))}
-          </ul>
+          </div>
           <ul className="mt-4 flex justify-center">
             {currentPage > 3 && (
               <li>
                 <button
                   onClick={() => paginate(currentPage - 3)}
-                  className="mx-1 rounded bg-blue-500 px-3 py-1 text-white"
+                  className="mx-1 rounded bg-gray-200 px-3 py-1 text-gray-700"
                 >
                   &lt;
                 </button>
