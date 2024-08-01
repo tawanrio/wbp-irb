@@ -53,13 +53,13 @@ export default function imgCatalogDescription({ content, className }) {
                 datetime="2016-10-25"
                 suppressHydrationWarning
               />
-              <div className="flex gap-5">
+              <div className="flex flex-wrap gap-5">
                 <Link
                   target="_blank"
                   href={content?.button[0].link}
                   className="mt-4 w-[200px] rounded-xl text-center font-semibold text-white"
                 >
-                  <div className="relative h-[55px]">
+                  <figure className="relative h-[55px]">
                     <Image
                       src={content?.button[0].image}
                       fill
@@ -68,7 +68,7 @@ export default function imgCatalogDescription({ content, className }) {
                       alt={content?.button[0].alt}
                       className=""
                     />
-                  </div>
+                  </figure>
                 </Link>
 
                 <Link
@@ -76,7 +76,7 @@ export default function imgCatalogDescription({ content, className }) {
                   href={content?.button[1].link}
                   className="mt-4 w-[200px] rounded-xl text-center font-semibold text-white"
                 >
-                  <div className="relative h-[55px]">
+                  <figure className="relative h-[55px]">
                     <Image
                       src={content?.button[1].image}
                       fill
@@ -85,7 +85,7 @@ export default function imgCatalogDescription({ content, className }) {
                       alt={content?.button[1].alt}
                       className=""
                     />
-                  </div>
+                  </figure>
                 </Link>
               </div>
             </div>

@@ -79,7 +79,7 @@ export default function QuemSomos({ content, data }) {
       >
         <Banner banners={banners} />
         <BreadCrumb />
-        <div className="mx-2 max-w-6xl py-8 md:mx-auto">
+        <div className="mx-3.5 max-w-6xl py-8 md:mx-auto">
           <h1 className="mb-4 text-3xl font-bold">Publicações</h1>
           <div className="flex flex-wrap gap-4 md:grid md:grid-cols-3">
             {currentPosts.map((post) => (

@@ -94,7 +94,7 @@ export default function Blog({ content, data }) {
       >
         <Banner banners={banners} />
         <BreadCrumb />
-        <div className="mx-2 max-w-6xl py-8 md:mx-auto">
+        <div className="mx-3.5 max-w-6xl py-8 md:mx-auto">
           <h1 className="mb-4 text-3xl font-bold">Publicações</h1>
           <div className="flex flex-wrap gap-4 md:grid md:grid-cols-3">
             {currentPosts.map((post, key) => (
@@ -146,7 +146,7 @@ export default function Blog({ content, data }) {
               <li key={pageNumber}>
                 <button
                   onClick={() => paginate(pageNumber)}
-                  className={`mx-1 rounded px-3 py-1 ${currentPage === pageNumber ? 'bg-blue-950' : 'bg-blue-500'} text-white`}
+                  className={`mx-1 rounded px-3 py-1 ${currentPage === pageNumber ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
                 >
                   {pageNumber}
                 </button>
@@ -156,7 +156,7 @@ export default function Blog({ content, data }) {
               <li>
                 <button
                   onClick={() => paginate(currentPage + 3)}
-                  className="mx-1 rounded bg-blue-500 px-3 py-1 text-white"
+                  className="mx-1 rounded bg-gray-200 px-3 py-1 text-gray-700"
                 >
                   &gt;
                 </button>

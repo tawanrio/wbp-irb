@@ -39,7 +39,7 @@ export default function MenuDesktop({ content }) {
       <div className="flex flex-col">
         <div
           className="flex w-full cursor-pointer items-center justify-end gap-4 md:hidden"
-          onClick={() => handleMenu()}
+          onClick={handleMenu}
         >
           <span className="text-xl font-semibold capitalize">Menu</span>
           <div className="relative w-5">
@@ -138,6 +138,7 @@ export default function MenuDesktop({ content }) {
                         href={submenu.route || '/#'}
                         onMouseEnter={() => setIsHovered('s' + sId)}
                         onMouseLeave={() => setIsHovered(false)}
+                        onClick={handleMenu}
                         style={{
                           ...(isHovered && isHovered === 's' + sId
                             ? {

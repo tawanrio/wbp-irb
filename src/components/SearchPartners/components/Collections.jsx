@@ -1,15 +1,11 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState, useMemo } from 'react'
-import Card from './Card'
 import { useRouter } from 'next/router'
-
-import 'tailwindcss/tailwind.css'
-
-// util
-import { formatStrToUrl } from '@/utils/functions'
-import { logging } from '../../../../next.config'
 import Link from 'next/link'
+import Card from './Card'
+import { formatStrToUrl } from '@/utils/functions'
+import 'tailwindcss/tailwind.css'
 
 const Collection = ({
   collections,
@@ -46,7 +42,6 @@ const Collection = ({
 
   const itemsPerPage = 6
   const [currentPage, setCurrentPage] = useState(1)
-  const [searchTerm, setSearchTerm] = useState('')
   const [selectedState, setSelectedState] = useState(stateMatch || '')
   const [selectedCity, setSelectedCity] = useState('')
   const [selectedProduct, setSelectedProduct] = useState('')
@@ -101,11 +96,6 @@ const Collection = ({
     setCurrentPage(page)
   }
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target?.value)
-    setCurrentPage(1)
-  }
-
   const handleStateChange = (event) => {
     const newState = event.target?.value
     setSelectedState(newState)
@@ -123,20 +113,6 @@ const Collection = ({
     setCurrentPage(1)
   }
 
-  const handleClickSearch = (event) => {
-    if (selectedCity) {
-      navigateUrlGeo(selectedCity)
-    } else if (selectedState) {
-      navigateUrlGeo(selectedState)
-    }
-  }
-
-  const navigateUrlGeo = (geo) => {
-    const formatedGeo = formatStrToUrl(geo)
-    const url = generateUrlGeo(formatedGeo)
-    router.push(url)
-  }
-
   const generateUrlGeo = (geo) => {
     const url = router.asPath
     const arrUrl = url.substring(1).split('/')
@@ -147,6 +123,13 @@ const Collection = ({
     }
     if (geo) return `/${arrUrl[0]}/${formatStrToUrl(geo)}`
     return `/${arrUrl[0]}`
+  }
+
+  const getPaginationGroup = () => {
+    const start = Math.floor((currentPage - 1) / 3) * 3
+    return new Array(Math.min(3, totalPages - start))
+      .fill()
+      .map((_, idx) => start + idx + 1)
   }
 
   return (
@@ -233,19 +216,35 @@ const Collection = ({
       </ul>
 
       <div className="mt-4 flex justify-center">
-        {Array.from({ length: totalPages }).map((_, index) => (
+        {currentPage > 1 && (
           <button
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
+            onClick={() => handlePageChange(currentPage - 1)}
+            className="mx-1 rounded bg-gray-200 px-3 py-2 text-gray-700"
+          >
+            &lt;
+          </button>
+        )}
+        {getPaginationGroup().map((pageNumber) => (
+          <button
+            key={pageNumber}
+            onClick={() => handlePageChange(pageNumber)}
             className={`mx-1 rounded px-3 py-2 ${
-              currentPage === index + 1
+              currentPage === pageNumber
                 ? 'bg-blue-500 text-white'
                 : 'bg-gray-200 text-gray-700'
             }`}
           >
-            {index + 1}
+            {pageNumber}
           </button>
         ))}
+        {currentPage < totalPages && (
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            className="mx-1 rounded bg-gray-200 px-3 py-2 text-gray-700"
+          >
+            &gt;
+          </button>
+        )}
       </div>
     </div>
   )
