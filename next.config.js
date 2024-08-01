@@ -2,9 +2,18 @@
 const nextConfig = {
   reactStrictMode: true,
   i18n: {
-    locales: ["pt", "en"],
-    defaultLocale: "pt",
+    locales: ['pt', 'en'],
+    defaultLocale: 'pt',
   },
-};
+  async redirects() {
+    return [
+      {
+        source: '/en/blog',
+        destination: '/blog',
+        permanent: true,
+      },
+    ]
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

@@ -17,36 +17,9 @@ export default function BaixeNossoApp({ content }) {
   const [banners] = useState(content?.page.banners)
   const [title] = useState(content?.page.title)
   const [description] = useState(content?.page.contentDescription)
-
-  const catalogDescription = {
-    imageProduct: {
-      imageUrl: '/images/partners/bannerIRB.png',
-      alt: 'catalogo online',
-    },
-    title:
-      'Baixe agora mesmo o catálogo eletrônico e consulte facilmente toda nossa linha de produtos.',
-    subtitle: 'Acesse pelo celular',
-    button: [
-      {
-        title: '',
-        alt: 'appstore',
-        image: '/images/products/appstore.png',
-        link: 'https://apps.apple.com/br/app/irb-cat%C3%A1logo/id1169028455',
-      },
-      {
-        title: '',
-        alt: 'google-play',
-        image: '/images/products/google-play.png',
-        link: 'https://play.google.com/store/apps/details?id=br.com.ideia2001.CatalogoIRB',
-      },
-    ],
-
-    description: [
-      'Baixe agora nosso catálogo online e tenha acesso a uma ampla seleção de produtos automotivos de alta qualidade.',
-      'Explore nossa vasta gama de peças e componentes para atender às necessidades do seu veículo.',
-      'Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!',
-    ],
-  }
+  const [catalogDescription] = useState(
+    content?.page.components.catalogDescription,
+  )
 
   return (
     <>

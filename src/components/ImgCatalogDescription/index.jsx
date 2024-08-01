@@ -37,7 +37,7 @@ export default function imgCatalogDescription({ content, className }) {
                         "/> */}
 
                   <img
-                    src={content?.imageProduct.imageUrl}
+                    src={content?.imageProduct.image}
                     alt={content?.imageProduct.alt}
                     className="h-[500px] w-64"
                   />
