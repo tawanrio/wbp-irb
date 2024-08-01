@@ -1,4 +1,4 @@
-export const EQUIPMENTS = [
+export const EQUIPMENT_LIST = [
   'Torquímetro',
   'Paquímetro',
   'Micrometro',
@@ -15,7 +15,7 @@ export const EQUIPMENTS = [
   'Cavaletes',
 ]
 
-export const RESPONSE_MESSAGE = {
+export const RESPONSE_MESSAGES = {
   success: 'Cadastro enviado com sucesso, aguarde aprovação.',
   error: {
     default: 'Erro ao enviar cadastro',
@@ -27,7 +27,7 @@ export const RESPONSE_MESSAGE = {
   },
 }
 
-export const EMAILS_TO_SEND = [
+export const EMAIL_RECIPIENTS = [
   'tawan.rio@webfoco.com',
   'rodrigo.silva@webfoco.com',
 ]

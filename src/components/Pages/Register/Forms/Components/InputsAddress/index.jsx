@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { fetchAddress } from '@/utils/functions'
 import { useEffect, useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { toast } from 'react-toastify'
@@ -57,19 +58,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
     setNeighborhood(fullAddress.result.district)
     setCity(fullAddress.result.city)
     setState(fullAddress.result.state)
-  }
-
-  const fetchAddress = async (cleanedValue) => {
-    try {
-      const url = `https://api.brasilaberto.com/v1/zipcode/${cleanedValue}`
-      const returnAddress = await fetch(url).then((response) => {
-        return response.json()
-      })
-
-      return returnAddress
-    } catch (error) {
-      return null
-    }
   }
 
   return (

@@ -278,3 +278,16 @@ export function sortByKey(array) {
 export const generateProductUrl = (baseUrl, name) => {
   return `/${baseUrl[1]}/${name}`
 }
+
+export const fetchAddress = async (cleanedValue) => {
+  try {
+    const url = `https://api.brasilaberto.com/v1/zipcode/${cleanedValue}`
+    const returnAddress = await fetch(url).then((response) => {
+      return response.json()
+    })
+
+    return returnAddress
+  } catch (error) {
+    return null
+  }
+}
