@@ -216,25 +216,29 @@ export function getCurrentDateFormatted() {
 
 export function sortByKey(array, key) {
   return array.sort((a, b) => {
-    // Itens com prioridade vêm primeiro
+    if (a.title === true && b.title !== true) {
+      return -1
+    }
+    if (a.title !== true && b.title === true) {
+      return 1
+    }
     if (a.priority !== undefined && b.priority !== undefined) {
-      // Se ambos têm prioridade, ordene por prioridade
       if (a.priority !== b.priority) {
         return a.priority - b.priority
       }
     } else if (a.priority !== undefined) {
-      // Se só 'a' tem prioridade, 'a' vem primeiro
       return a.priority === -1 ? 1 : -1
     } else if (b.priority !== undefined) {
-      // Se só 'b' tem prioridade, 'b' vem primeiro
       return b.priority === -1 ? -1 : 1
     }
 
-    // Itens sem prioridade são ordenados alfabeticamente pela chave especificada
-    if (a[key] < b[key]) {
+    const aValue = a[key]?.toString().toLowerCase()
+    const bValue = b[key]?.toString().toLowerCase()
+
+    if (aValue < bValue) {
       return -1
     }
-    if (a[key] > b[key]) {
+    if (aValue > bValue) {
       return 1
     }
     return 0

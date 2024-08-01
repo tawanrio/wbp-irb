@@ -4,7 +4,6 @@ import SectionTitle from '@/components/SectionTitle'
 import FormPartner from './Partner'
 import { toast } from 'react-toastify'
 import FormWorkWithUs from './WorkWithUs'
-import FormBudget from './Budget'
 import { useIntl } from 'react-intl'
 import FormOther from './Others'
 import { EMAILS_TO_SEND, RESPONSE_MESSAGE } from '@/utils/constants'
@@ -190,14 +189,8 @@ export default function ContactForm({ title }) {
 
     try {
       let emailSent = false
-      if (partnerType === 'budget') {
-        emailSent = await sendEmail(
-          formData,
-          <TemplateMailBudget data={formData} />,
-          messages['component.contact.budget'],
-          process.env.NEXT_PUBLIC_EMAIL_TO_SEND,
-        )
-      } else if (partnerType === 'parceiro') {
+
+      if (partnerType === 'partner') {
         await handlePartnerFormSubmission()
         emailSent = true
       } else if (partnerType === 'work-with-us') {
@@ -307,14 +300,9 @@ export default function ContactForm({ title }) {
               value=""
             />
             <InsertTranslationMsg
-              keyTrans={'component.contact.select.budget'}
-              tag="option"
-              value="budget"
-            />
-            <InsertTranslationMsg
               keyTrans={'component.contact.select.partner'}
               tag="option"
-              value="parceiro"
+              value="partner"
             />
             <InsertTranslationMsg
               keyTrans={'component.contact.select.workWithUs'}
@@ -330,7 +318,7 @@ export default function ContactForm({ title }) {
           </select>
         </div>
 
-        {partnerType === 'parceiro' && (
+        {partnerType === 'partner' && (
           <FormPartner resetInputs={resetInputs} setInputs={setInputs} />
         )}
         {partnerType === 'work-with-us' && (

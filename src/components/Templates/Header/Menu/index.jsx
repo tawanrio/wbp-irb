@@ -2,14 +2,13 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
+import { sortByKey } from '@/utils/functions'
 
 export default function MenuDesktop({ content }) {
   const [isHovered, setIsHovered] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [submenuOpen, setSubmenuOpen] = useState(false)
 
-  // const dataHeader = layouts.header
-  // const colors = layouts.header.colors
   const dataHeader = content
   const colors = content?.colors
 
@@ -134,7 +133,7 @@ export default function MenuDesktop({ content }) {
                     }}
                     className="z-[99] hidden text-sm md:absolute md:overflow-hidden md:rounded-2xl md:py-2 md:shadow-[0_10px_15px_-10px_rgba(0,0,0,.8)] md:group-hover:block"
                   >
-                    {link.submenu.map((submenu, sId) => (
+                    {sortByKey(link.submenu, 'label').map((submenu, sId) => (
                       <ul key={submenu.label || 's' + sId} className="w-full">
                         <Link
                           target={submenu?.blank}
