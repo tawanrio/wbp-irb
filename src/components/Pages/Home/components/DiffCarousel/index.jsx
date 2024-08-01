@@ -118,7 +118,7 @@ const DiffCarousel = ({ content }) => {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`h-3 w-3 rounded-full ${
+            className={`size-3 rounded-full ${
               currentIndex === index ? 'bg-[#22326E]' : 'bg-gray-300'
             }`}
           />

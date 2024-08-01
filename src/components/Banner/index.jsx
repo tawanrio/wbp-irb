@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react'
-import Image from 'next/image'
 import Dots from './components/Dots'
 import ContentBanner from './components/ContentBanner'
 import Arrow from './components/Arrow'
@@ -30,14 +28,14 @@ export default function Banner({ banners, video, stlyeText }) {
   }
 
   return (
-    <section className="relative" id={`description_`}>
+    <section className="relative" id="description_">
       <div
-        style={{ height: size }}
+        id="containerBanner"
         className={`relative mb-4 flex justify-center bg-[#03050ede] md:mb-10 ${
           video &&
           `before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-[#3338579e] before:content-['']`
         }`}
-        id="containerBanner"
+        style={{ height: size }}
       >
         <Dots
           controllerBanner={{ banners, setActiveBanner, activeBanner, size }}
@@ -56,7 +54,7 @@ export default function Banner({ banners, video, stlyeText }) {
           <>
             <InsertVideo content={video} home />
 
-            <div className="absolute mt-14 flex w-full flex-col items-center justify-center gap-6 sm:gap-8 md:mt-[10px] md:h-full md:gap-10 lg:gap-[60px]">
+            <div className="absolute my-auto flex h-full w-full flex-col items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-[60px]">
               <h2
                 className="text-outline z-10 w-full text-center text-3xl font-semibold uppercase sm:text-5xl md:text-6xl lg:text-8xl"
                 data-text="REVOLUCIONANDO"

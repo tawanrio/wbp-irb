@@ -87,7 +87,7 @@ export default function TimeLineNew() {
           <div className="relative flex h-[100px] w-full items-center justify-between overflow-hidden">
             <button
               onClick={prevEvent}
-              className="mt-6 flex h-10 w-10 items-center justify-center rounded-full bg-white p-2 md:block"
+              className="mt-6 flex size-10 items-center justify-center rounded-full bg-white p-2 md:block"
             >
               <Image
                 src="/images/arrow.svg"
@@ -114,12 +114,12 @@ export default function TimeLineNew() {
                     <span className="mb-1 w-32 text-center">{event.year}</span>
                     <div
                       onClick={() => changeEvent(viewIndex + index)}
-                      className={`h-6 w-6 cursor-pointer rounded-full border-2 bg-white duration-500 hover:scale-125 ${viewIndex + index === currentIndex ? 'flex items-center justify-center' : ''}`}
+                      className={`size-6 cursor-pointer rounded-full border-2 bg-white duration-500 hover:scale-125 ${viewIndex + index === currentIndex ? 'flex items-center justify-center' : ''}`}
                       style={{ borderColor: '#22326E' }}
                     >
                       {viewIndex + index === currentIndex && (
                         <div
-                          className="h-3 w-3 rounded-full"
+                          className="size-3 rounded-full"
                           style={{ backgroundColor: '#22326E' }}
                         ></div>
                       )}
@@ -129,7 +129,7 @@ export default function TimeLineNew() {
             </div>
             <button
               onClick={nextEvent}
-              className="mt-6 flex h-10 w-10 items-center justify-center rounded-full bg-white p-2 md:block"
+              className="mt-6 flex size-10 items-center justify-center rounded-full bg-white p-2 md:block"
             >
               <Image
                 src="/images/arrow.svg"
