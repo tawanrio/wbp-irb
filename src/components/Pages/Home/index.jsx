@@ -28,7 +28,7 @@ import DiffCarouselTwo from './components/DiffCarouselTwo'
 import CategoryGrid from '@/components/CategoryGrid'
 import PartnersButton from './components/PartnersButton'
 import UtilityCards from './components/UtilityCards'
-import BlogCarousel from './components/BlogCarousel'
+import { BlogCarousel } from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
 
 export default function Home({ content }) {

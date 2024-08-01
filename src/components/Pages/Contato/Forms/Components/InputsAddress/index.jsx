@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-undef */
-/* eslint-disable eqeqeq */
 import { useEffect, useRef, useState } from 'react'
-import 'react-toastify/dist/ReactToastify.css'
 import InputMask from 'react-input-mask'
+import { fetchAddress } from '@/utils/functions'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function InputsAddress({ setAddress, resetInputs }) {
   const [street, setStreet] = useState('')
@@ -42,7 +42,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
   const handleBlur = async () => {
     const cleanedValue = cep.replace(/\D/g, '')
-    if (cleanedValue.length != 8) return
+    if (cleanedValue.length !== 8) return
 
     const fullAddress = await fetchAddress(cleanedValue)
 
@@ -54,23 +54,10 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   }
 
   const insertAddress = (fullAddress) => {
-    setStreet(fullAddress.logradouro)
-    setNeighborhood(fullAddress.bairro)
-    setCity(fullAddress.localidade)
-    setState(fullAddress.uf)
-  }
-
-  const fetchAddress = async (cleanedValue) => {
-    try {
-      const url = `https://viacep.com.br/ws/${cleanedValue}/json/`
-      const returnAddress = await fetch(url).then((response) => {
-        return response.json()
-      })
-
-      return returnAddress
-    } catch (error) {
-      return null
-    }
+    setStreet(fullAddress.result.street)
+    setNeighborhood(fullAddress.result.district)
+    setCity(fullAddress.result.city)
+    setState(fullAddress.result.state)
   }
 
   return (
