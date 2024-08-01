@@ -8,16 +8,16 @@ export default function Footer({ content }) {
   const colors = dataFooter?.colors
   const certificates = dataFooter?.certificates
 
-  console.log(certificates)
-
   return (
     <footer style={{ background: colors?.bg, color: colors?.text }}>
-      <div className="mx-auto flex flex-wrap gap-1 px-6 py-6 md:max-w-7xl md:justify-between md:px-14 md:py-12">
-        <RenderList nav={dataFooter?.nav} colors={colors} />
+      <div className="mx-auto flex flex-col gap-1 px-6 py-6 md:max-w-7xl md:justify-between md:px-14 md:py-12 lg:flex-row">
+        <ul className="flex flex-col sm:flex-row">
+          <RenderList nav={dataFooter?.nav} colors={colors} />
+        </ul>
 
-        <div className="flex flex-col items-center md:mx-3 md:w-max md:flex-1 md:items-start md:last:mr-0">
-          <ul className="list-ul flex flex-col items-center md:items-start">
-            <li className="text-center text-base font-light md:text-start md:text-lg">
+        <div className="mx-auto flex flex-col items-center lg:mx-3 lg:w-max lg:flex-1 lg:items-start lg:last:mr-0">
+          <ul className="list-ul flex flex-col items-center lg:items-start">
+            <li className="text-center text-base font-light lg:text-start lg:text-lg">
               {dataFooter?.address}
             </li>
             <li className="mb-3 mt-4">

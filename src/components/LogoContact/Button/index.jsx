@@ -11,6 +11,7 @@ export default function Button({ content }) {
   const [number] = useState(content.number)
 
   const formattedNumber = formatPhoneNumber(number)
+
   return (
     <Link
       href={href}
@@ -20,35 +21,24 @@ export default function Button({ content }) {
         border:
           label === 'Whatsapp' ? '3px solid rgb(97, 194, 95)' : colors?.border,
       }}
-      className="group flex w-full max-w-xs flex-col justify-center rounded-2xl bg-slate-800 px-5 py-4 duration-500 hover:scale-105"
+      className="group flex flex-1 flex-row items-center gap-4 rounded-2xl bg-slate-800 px-5 py-2 duration-500 hover:scale-105 md:py-4"
     >
-      <div className="relative flex items-center">
-        {icon && (
-          <figure className="relative h-10 w-10">
-            <Image
-              src={icon}
-              alt={'Icone button'}
-              sizes="100vw"
-              fill
-              className="duration-500"
-            />
-          </figure>
-        )}
-        <span
-          style={{ color: colors?.text, fontWeight: colors?.weight }}
-          className={`absolute w-full text-center text-lg uppercase opacity-100 duration-500 md:text-2xl ${icon && 'ml-2'} ${number && 'group-hover:opacity-0'} `}
-        >
-          {formattedNumber}
-        </span>
-        {number && (
-          <span
-            style={{ color: colors?.text, fontWeight: colors?.weight }}
-            className={`absolute w-full text-center text-lg uppercase opacity-0 duration-500 md:text-2xl ${icon && 'ml-2'} group-hover:opacity-100`}
-          >
-            {formattedNumber}
-          </span>
-        )}
-      </div>
+      <figure className="relative h-10 w-10">
+        <Image
+          src={icon}
+          alt="Icone button"
+          sizes="100vw"
+          fill
+          className="!relative"
+          style={{ minWidth: '40px', minHeight: '40px' }}
+        />
+      </figure>
+      <span
+        style={{ color: colors?.text, fontWeight: colors?.weight }}
+        className="!relative whitespace-nowrap text-center text-lg uppercase md:text-2xl"
+      >
+        {formattedNumber}
+      </span>
     </Link>
   )
 }

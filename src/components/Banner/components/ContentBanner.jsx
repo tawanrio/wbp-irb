@@ -52,7 +52,7 @@ export default function ContentBanner({
         ) : (
           <div className="absolute mt-14 flex w-full flex-col items-center justify-center gap-[60px] md:mt-[30px] md:h-full">
             <h2
-              className="text-outline z-10 w-full text-center text-xl font-semibold uppercase md:text-[6rem]"
+              className="text-outline z-10 w-full text-center text-2xl font-semibold uppercase sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               data-text={banner.title}
             >
               {banner.title}

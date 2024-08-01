@@ -30,7 +30,7 @@ export default function ProductFaq({
             <div className="flex flex-col gap-4">
               <Description content={contentDescription} />
             </div>
-            <div className="mt-8 flex flex-col gap-8 md:flex-row">
+            <div className="mt-8 flex flex-wrap gap-5 md:gap-8">
               {arrButton &&
                 arrButton.map((button, i) => {
                   if (button.status === true)
