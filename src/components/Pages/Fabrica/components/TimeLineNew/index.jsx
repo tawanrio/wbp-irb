@@ -87,7 +87,7 @@ export default function TimeLineNew() {
           <div className="relative flex h-[100px] w-full items-center justify-between overflow-hidden">
             <button
               onClick={prevEvent}
-              className="size-10 mt-6 flex items-center justify-center rounded-full bg-white p-2 md:block"
+              className="mt-6 flex size-10 items-center justify-center rounded-full bg-white p-2 md:block"
             >
               <Image
                 src="/images/arrow.svg"
@@ -129,7 +129,7 @@ export default function TimeLineNew() {
             </div>
             <button
               onClick={nextEvent}
-              className="size-10 mt-6 flex items-center justify-center rounded-full bg-white p-2 md:block"
+              className="mt-6 flex size-10 items-center justify-center rounded-full bg-white p-2 md:block"
             >
               <Image
                 src="/images/arrow.svg"
