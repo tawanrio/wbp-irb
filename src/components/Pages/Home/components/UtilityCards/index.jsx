@@ -88,22 +88,21 @@ const UtilityCards = ({ title }) => {
             >
               {'<'}
             </button>
-            <div
-              className="flex gap-5 transition-transform duration-500"
+            <ul
+              className="flex gap-6 transition-transform duration-500"
               style={{
                 transform: `translateX(-${currentIndex * (isMobile ? '25' : '50')}%)`,
               }}
             >
               {partnerTypes.map((utilities, index) => (
-                <div
+                <li
                   key={index}
                   className="w-[80vw] flex-shrink-0 overflow-hidden rounded-md duration-500 hover:scale-95 md:w-[48%]"
-                  style={{ marginRight: '8px' }} // Assuming gap is 8px
                 >
                   <SingleUtility utilities={utilities} />
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
             <button
               onClick={nextSlide}
               className="absolute right-0 top-1/2 z-10 -translate-y-1/2 transform bg-[#22326e] p-3 text-center font-semibold text-white opacity-70 duration-500 hover:border-white hover:bg-[#22326e] hover:text-white hover:opacity-100"

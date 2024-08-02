@@ -36,7 +36,7 @@ export default function singlePost({ content }) {
     >
       <Banner banners={banners} />
       <BreadCrumb />
-      <div className="mx-2 max-w-7xl py-8 md:mx-auto">
+      <div className="mx-3.5 max-w-7xl py-8 md:mx-auto">
         <h1 className="mb-4 text-3xl font-bold">{posts?.title}</h1>
         <p className="mb-4 text-gray-600">{posts?._createdAt.split('T')[0]}</p>
         {/* <img src={posts?.featuredImg?.url} alt={posts?.featuredImg?.alt} className="mb-2 m-auto w-3/4 h-[500px] object-cover" /> */}

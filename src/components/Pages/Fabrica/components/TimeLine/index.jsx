@@ -43,7 +43,7 @@ export default function TimeLine() {
                   </div>
                 </div>
                 <div className="flex w-1/12 items-center justify-center">
-                  <div className="h-8 w-8 rounded-full border-4 border-white bg-[#22326e] shadow-md"></div>
+                  <div className="size-8 rounded-full border-4 border-white bg-[#22326e] shadow-md"></div>
                 </div>
               </div>
             </div>

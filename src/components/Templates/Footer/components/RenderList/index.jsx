@@ -4,7 +4,7 @@ export default function RenderList({ nav, colors }) {
   return (
     <>
       {nav?.map((items, ulId) => (
-        <div
+        <li
           key={ulId}
           className="mb-6 flex-1 font-light md:mx-3 md:flex-1 md:first:ml-0"
         >
@@ -18,7 +18,7 @@ export default function RenderList({ nav, colors }) {
               />
             ))}
           </ul>
-        </div>
+        </li>
       ))}
     </>
   )

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import ImageBanner from './ImageBanner'
 import VideoBanner from './VideoBanner'
 
@@ -7,11 +6,10 @@ export default function ContentBanner({
   backdrop,
   stlyeText,
 }) {
-  const { activeBanner, setActiveBanner, banners } = controllerBanner
+  const { activeBanner, banners } = controllerBanner
 
   const renderBanners = banners?.carousel.map((banner, index) => {
-    const { url, alt, title, description, position } = banner
-    const isVideo = url.match(/\.(mp4|webm|ogg)$/i)
+    const { url } = banner
     const isImage = url.match(/\.(jpg|jpeg|png|gif|bmp|svg)$/i)
 
     return (
@@ -50,14 +48,14 @@ export default function ContentBanner({
             </p>
           </div>
         ) : (
-          <div className="absolute mt-14 flex w-full flex-col items-center justify-center gap-[60px] md:mt-[30px] md:h-full">
+          <div className="absolute flex h-full w-full flex-col items-center justify-center gap-[60px]">
             <h2
-              className="text-outline z-10 w-full text-center text-xl font-semibold uppercase md:text-[6rem]"
+              className="text-outline z-10 w-full text-center text-2xl font-semibold uppercase sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               data-text={banner.title}
             >
               {banner.title}
             </h2>
-            <h3 className="z-10 w-full text-center text-xl font-extrabold uppercase text-white md:text-[3rem]">
+            <h3 className="z-10 hidden w-full text-center text-xl font-extrabold uppercase text-white md:text-[3rem]">
               {banner.description}
             </h3>
           </div>

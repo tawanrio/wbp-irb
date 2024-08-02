@@ -24,7 +24,7 @@ export default function ButtonTell({ phone, whatsapp }) {
         >
           <div className="relative flex items-center">
             {phone?.icon && (
-              <div className="relative h-10 w-10">
+              <div className="relative size-10">
                 <Image
                   src={phone?.icon}
                   alt={'Icone button'}
@@ -72,7 +72,7 @@ export default function ButtonTell({ phone, whatsapp }) {
         >
           <div className="relative flex items-center">
             {whatsapp?.icon && (
-              <div className="relative h-10 w-10">
+              <div className="relative size-10">
                 <Image
                   src={'/images/components/button/whatsapp.png'}
                   alt={'Icone button'}
