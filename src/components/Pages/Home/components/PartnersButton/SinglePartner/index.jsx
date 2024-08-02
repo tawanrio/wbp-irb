@@ -3,7 +3,7 @@ import Image from 'next/image'
 const SinglePartner = ({ partner }) => {
   return (
     <div className="group flex items-center justify-center overflow-hidden rounded-md bg-[#22326e] py-4 shadow-md duration-500">
-      <div className="relative size-24 rounded-full border-[#AF231C] bg-[#AF231C] md:h-32 md:w-32 md:border-4">
+      <div className="size-24 relative rounded-full border-[#AF231C] bg-[#AF231C] md:h-32 md:w-32 md:border-4">
         <Image
           src={partner.image}
           alt={'teste'}
