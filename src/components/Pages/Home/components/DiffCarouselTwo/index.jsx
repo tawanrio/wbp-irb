@@ -1,12 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { sanitizeHtml } from '@/utils/functions'
 
 const DiffCarouselTwo = ({ content }) => {
+  const [sanitizedContent, setSanitizedContent] = useState([])
+
+  useEffect(() => {
+    if (content && content.length > 0) {
+      const sanitized = content.map((item) => ({
+        ...item,
+        descriptionHTML: sanitizeHtml(item.descriptionHTML),
+      }))
+      setSanitizedContent(sanitized)
+    }
+  }, [content])
+
   return (
     <section className="relative flex flex-col items-center" id="blog-carousel">
       <div className="relative mt-4 flex w-full max-w-lg flex-wrap px-6 md:max-w-7xl md:px-14">
-        {content.map((item, index) => (
+        {sanitizedContent.map((item, index) => (
           <div key={index} className="mb-4 w-full flex-shrink-0 px-2 md:w-1/4">
             <div className="flex flex-col overflow-hidden rounded-md bg-white">
               <div className="relative h-72 w-full">

@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { sanitizeHtml } from '@/utils/functions'
 
 export const BlogCard = ({ post }) => {
   const getUrlImage = (post) => {
@@ -16,10 +17,6 @@ export const BlogCard = ({ post }) => {
       .split(' ')
       .join('-')
       .trim()
-  }
-
-  const sanitizeHtml = (html) => {
-    return html.replace(/<\/?[^>]+(>|$)/g, '')
   }
 
   const imageUrl = getUrlImage(post)

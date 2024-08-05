@@ -15,18 +15,20 @@ import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 import { Posts } from '@/service/model/schemas/postsSchema'
 import BreadCrumb from '@/components/BreadCrumb'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { sanitizeHtml } from '@/utils/functions'
 
 export default function singlePost({ content }) {
-  const [metaTitle] = useState(content?.page?.metaTitle)
-  const [metaDescription] = useState(content?.page?.metaDescription)
-  const [banners] = useState(content?.page?.banners)
-  const [title] = useState(content?.page?.title)
-  const [video] = useState(content?.page?.video)
-  const [cardsValues] = useState(content?.page?.companyValues)
-  const [description] = useState(content?.page?.contentDescription)
-  const [posts, setPosts] = useState(content?.posts)
+  const { banners } = content?.page || {}
+  const { posts } = content || {}
+  const [sanitizedContent, setSanitizedContent] = useState('')
+
+  useEffect(() => {
+    if (posts) {
+      setSanitizedContent(sanitizeHtml(posts.contentHTML))
+    }
+  }, [posts])
 
   return (
     <Templates
@@ -39,14 +41,10 @@ export default function singlePost({ content }) {
       <div className="mx-3.5 max-w-7xl py-8 md:mx-auto">
         <h1 className="mb-4 text-3xl font-bold">{posts?.title}</h1>
         <p className="mb-4 text-gray-600">{posts?._createdAt.split('T')[0]}</p>
-        {/* <img src={posts?.featuredImg?.url} alt={posts?.featuredImg?.alt} className="mb-2 m-auto w-3/4 h-[500px] object-cover" /> */}
         <div
           className="prose overflow-hidden"
-          dangerouslySetInnerHTML={{ __html: posts.contentHTML }}
-        >
-          {/* Conteúdo do post em formato de Markdown */}
-          {/* {data?.content.rendered} */}
-        </div>
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        ></div>
         <div className="mt-8">
           <Link href="/blog" className="text-blue-500 hover:underline">
             Voltar para Blog
