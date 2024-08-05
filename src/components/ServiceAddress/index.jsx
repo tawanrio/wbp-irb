@@ -6,7 +6,6 @@ import { sortByKey } from '@/utils/functions'
 import CategoryGrid from '../CategoryGrid'
 
 export default function ServiceAddress({ products, address }) {
-  console.log(products)
   const sortedCategories = sortByKey(products, 'label')
   return (
     <section className="flex flex-col items-center" id={`service-address_`}>
