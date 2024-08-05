@@ -38,9 +38,8 @@ const DiffCarousel = ({ content }) => {
                     <Image
                       src={item.image}
                       alt={item.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-md"
+                      fill
+                      className="rounded-t-md object-contain"
                     />
                     <a
                       href={item.link}
@@ -118,9 +117,8 @@ const DiffCarousel = ({ content }) => {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`size-3 rounded-full ${
-              currentIndex === index ? 'bg-[#22326E]' : 'bg-gray-300'
-            }`}
+            className={`size-3 rounded-full ${currentIndex === index ? 'bg-[#22326E]' : 'bg-gray-300'
+              }`}
           />
         ))}
       </div>

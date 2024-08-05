@@ -35,7 +35,7 @@ export default function ContentBanner({
               color: banners?.colors.text,
               height: controllerBanner.size,
             }}
-            className={`absolute top-0 flex w-full flex-col justify-center px-16 md:max-w-7xl md:px-14`}
+            className="absolute top-0 flex w-full flex-col justify-center px-16 md:max-w-7xl md:px-14"
           >
             <h2
               style={{ width: `${banner?.textWidth}%` }}

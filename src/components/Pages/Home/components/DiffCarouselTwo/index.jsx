@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const DiffCarouselTwo = ({ content }) => {
-  console.log(content)
   return (
     <section className="relative flex flex-col items-center" id="blog-carousel">
       <div className="relative mt-4 flex w-full max-w-lg flex-wrap px-6 md:max-w-7xl md:px-14">
@@ -14,9 +13,8 @@ const DiffCarouselTwo = ({ content }) => {
                 <Image
                   src={item.image}
                   alt={item.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-t-md"
+                  fill
+                  className="rounded-t-md object-contain"
                 />
                 <a
                   href={item.link}
