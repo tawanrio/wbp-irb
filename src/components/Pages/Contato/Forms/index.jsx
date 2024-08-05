@@ -64,57 +64,60 @@ export default function ContactForm() {
     const { certificateImg, elevatorImg } = data.inputs?.requirements || {}
     const { cnpj, logo } = data.inputs.info
 
-    if (logo && cnpj) {
-      const responseLogo = await insertImgDatabase(logo, cnpj)
-      if (!responseLogo || responseLogo.status !== 200) {
-        throw new Error('Database')
-      }
-      data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
-
-      if (certificateImg && elevatorImg) {
-        const responseCertificate = await insertImgDatabase(
-          certificateImg,
-          cnpj,
-        )
-        data.inputs.requirements.certificateImg = responseCertificate?.path
-          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
-          : ''
-
-        const responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
-        data.inputs.requirements.elevatorImg = responseElevatorImg?.path
-          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
-          : ''
-      }
-
-      setFormData((prevData) => ({
-        ...prevData,
-        ...data,
-      }))
-
-      return true
+    if (!logo || !cnpj) {
+      throw new Error('Logo ou CNPJ estão faltando')
     }
 
-    return false
+    const responseLogo = await insertImgDatabase(logo, cnpj)
+    if (!responseLogo || responseLogo.status !== 200) {
+      throw new Error('Falha ao fazer upload do logo para o banco de dados')
+    }
+    data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
+
+    if (certificateImg && elevatorImg) {
+      const responseCertificate = await insertImgDatabase(certificateImg, cnpj)
+      if (responseCertificate?.path) {
+        data.inputs.requirements.certificateImg = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
+      } else {
+        data.inputs.requirements.certificateImg = ''
+      }
+
+      const responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
+      if (responseElevatorImg?.path) {
+        data.inputs.requirements.elevatorImg = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
+      } else {
+        data.inputs.requirements.elevatorImg = ''
+      }
+    }
+
+    setFormData((prevData) => ({
+      ...prevData,
+      ...data,
+    }))
   }
 
   const uploadCurriculumToDB = async (data) => {
     const { cnpj, curriculum } = data.inputs.info || {}
 
-    if (curriculum) {
-      const responseCurriculum = await insertImgDatabase(curriculum, cnpj)
-      data.inputs.info.curriculum = responseCurriculum?.path
-        ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCurriculum.path}`
-        : ''
-
-      setFormData((prevData) => ({
-        ...prevData,
-        ...data,
-      }))
-
-      return true
+    if (!curriculum) {
+      throw new Error('Currículo está faltando')
     }
 
-    return false
+    const responseCurriculum = await insertImgDatabase(curriculum, cnpj)
+    if (!responseCurriculum || responseCurriculum.status !== 200) {
+      throw new Error(
+        'Falha ao fazer upload do currículo para o banco de dados',
+      )
+    }
+
+    data.inputs.info.curriculum = responseCurriculum?.path
+      ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCurriculum.path}`
+      : ''
+
+    setFormData((prevData) => ({
+      ...prevData,
+      ...data,
+    }))
   }
 
   const insertImgDatabase = async (img, cnpj) => {
@@ -221,8 +224,9 @@ export default function ContactForm() {
       throw new Error(isDataInserted.message)
     }
 
-    const isImagesUploaded = await uploadImagesToDB(formData)
-    if (!isImagesUploaded) {
+    try {
+      await uploadImagesToDB(formData)
+    } catch (error) {
       throw new Error(RESPONSE_MESSAGES.error.uploadImages)
     }
 
@@ -252,8 +256,9 @@ export default function ContactForm() {
   }
 
   const handleWorkWithUsFormSubmission = async () => {
-    const isImagesUploaded = await uploadCurriculumToDB(formData)
-    if (!isImagesUploaded) {
+    try {
+      await uploadCurriculumToDB(formData)
+    } catch (error) {
       throw new Error(RESPONSE_MESSAGES.error.uploadImages)
     }
 

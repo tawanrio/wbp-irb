@@ -60,37 +60,36 @@ export default function RegisterForm() {
     const { certificateImg, elevatorImg } = data.inputs?.requirements || {}
     const { cnpj, logo } = data.inputs.info
 
-    if (logo && cnpj) {
-      const responseLogo = await insertImgDatabase(logo, cnpj)
-      if (!responseLogo || responseLogo.status !== 200) {
-        throw new Error('Database')
-      }
-      data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
-
-      if (certificateImg && elevatorImg) {
-        const responseCertificate = await insertImgDatabase(
-          certificateImg,
-          cnpj,
-        )
-        data.inputs.requirements.certificateImg = responseCertificate?.path
-          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
-          : ''
-
-        const responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
-        data.inputs.requirements.elevatorImg = responseElevatorImg?.path
-          ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
-          : ''
-      }
-
-      setFormData((prevData) => ({
-        ...prevData,
-        ...data,
-      }))
-
-      return true
+    if (!logo || !cnpj) {
+      throw new Error('Logo ou CNPJ estão faltando')
     }
 
-    return false
+    const responseLogo = await insertImgDatabase(logo, cnpj)
+    if (!responseLogo || responseLogo.status !== 200) {
+      throw new Error('Falha ao fazer upload do logo para o banco de dados')
+    }
+    data.inputs.info.logo = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseLogo.path}`
+
+    if (certificateImg && elevatorImg) {
+      const responseCertificate = await insertImgDatabase(certificateImg, cnpj)
+      if (responseCertificate?.path) {
+        data.inputs.requirements.certificateImg = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCertificate.path}`
+      } else {
+        data.inputs.requirements.certificateImg = ''
+      }
+
+      const responseElevatorImg = await insertImgDatabase(elevatorImg, cnpj)
+      if (responseElevatorImg?.path) {
+        data.inputs.requirements.elevatorImg = `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseElevatorImg.path}`
+      } else {
+        data.inputs.requirements.elevatorImg = ''
+      }
+    }
+
+    setFormData((prevData) => ({
+      ...prevData,
+      ...data,
+    }))
   }
 
   const insertImgDatabase = async (img, cnpj) => {
@@ -202,8 +201,9 @@ export default function RegisterForm() {
         throw new Error(isDataInserted.message)
       }
 
-      const isImagesUploaded = await uploadImagesToDB(formData)
-      if (!isImagesUploaded) {
+      try {
+        await uploadImagesToDB(formData)
+      } catch (error) {
         throw new Error(RESPONSE_MESSAGES.error.uploadImages)
       }
 
