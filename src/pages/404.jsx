@@ -7,7 +7,6 @@ import { Menus } from '@/service/model/schemas/menusSchema'
 import { Template } from '@/service/model/schemas/templateSchema'
 
 export default function Index({ content }) {
-  console.log(content)
   return (
     <>
       {content?.type === 'error' && (

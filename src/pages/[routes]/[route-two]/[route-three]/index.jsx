@@ -19,7 +19,6 @@ import Error from '@/components/Pages/Error'
 
 export default function index({ content }) {
   // const page = content.page.label;
-  console.log(content)
   return (
     <>
       {content?.type === 'product-geo' && (

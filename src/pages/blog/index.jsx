@@ -37,8 +37,6 @@ import Utilities from '@/components/Utilities'
 import Link from 'next/link'
 
 export default function Blog({ content, data }) {
-  console.log(content)
-
   const [metaTitle] = useState(content?.page?.metaTitle)
   const [metaDescription] = useState(content?.page?.metaDescription)
   const [banners] = useState(content?.page?.banners)
