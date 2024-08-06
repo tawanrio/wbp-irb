@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { sanitizeHtml } from '@/utils/functions'
 
 export const BlogCard = ({ post }) => {
   const getUrlImage = (post) => {
@@ -19,6 +21,13 @@ export const BlogCard = ({ post }) => {
 
   const imageUrl = getUrlImage(post)
   const formattedTitle = formatTitle(post?.title?.rendered)
+  const [sanitizedExcerpt, setSanitizedExcerpt] = useState('')
+
+  useEffect(() => {
+    if (post?.excerpt?.rendered) {
+      setSanitizedExcerpt(sanitizeHtml(post.excerpt.rendered))
+    }
+  }, [post])
 
   return (
     <Link
@@ -38,7 +47,7 @@ export const BlogCard = ({ post }) => {
         </h2>
         <p
           className="line-clamp-5 h-[8.5rem] text-[#222]"
-          dangerouslySetInnerHTML={{ __html: post?.excerpt?.rendered }}
+          dangerouslySetInnerHTML={{ __html: sanitizedExcerpt }}
         />
         <p className="m-0 font-semibold text-black hover:underline">
           Saiba mais

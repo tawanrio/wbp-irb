@@ -22,8 +22,6 @@ import { insertMenuInTemplate } from '@/utils/functions'
 import { NextDataPathnameNormalizer } from 'next/dist/server/future/normalizers/request/next-data'
 import BreadCrumb from '@/components/BreadCrumb'
 export default function Post({ content, data }) {
-  console.log(data)
-  console.log(content)
   const [metaTitle] = useState(content?.page?.metaTitle)
   const [metaDescription] = useState(content?.page?.metaDescription)
   const [banners] = useState(content?.page?.banners)

@@ -33,8 +33,6 @@ export default function Contato({ content }) {
   //   const [description] = useState(content?.page.contentDescription)
   //   const [logoContact] = useState(content?.page.logoContact)
 
-  console.log(content)
-
   let whatsappNumber =
     partner.info.phone.find((number) => number.label === 'Whatsapp') || null
   let phoneNumber =

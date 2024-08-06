@@ -36,7 +36,6 @@ export default function Contato({ content }) {
     (address) => address.label === 'default',
   )
 
-  console.log(content.categories)
   return (
     <>
       <Head>

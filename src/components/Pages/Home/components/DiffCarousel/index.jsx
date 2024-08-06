@@ -1,9 +1,12 @@
-import { useState } from 'react'
+/* eslint-disable prettier/prettier */
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { sanitizeHtml } from '@/utils/functions'
 
 const DiffCarousel = ({ content }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showMore, setShowMore] = useState(false)
+  const [sanitizedContent, setSanitizedContent] = useState([])
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -23,6 +26,17 @@ const DiffCarousel = ({ content }) => {
     setShowMore((prevShowMore) => !prevShowMore)
   }
 
+  useEffect(() => {
+    if (content && content.length > 0) {
+      const sanitized = content.map((item) => ({
+        ...item,
+        descriptionHTML: sanitizeHtml(item.descriptionHTML),
+        contentHTML: item.contentHTML ? sanitizeHtml(item.contentHTML) : null,
+      }))
+      setSanitizedContent(sanitized)
+    }
+  }, [content])
+
   return (
     <section className="relative flex flex-col items-center" id="blog-carousel">
       <div className="relative mt-4 flex w-full max-w-lg px-6 md:max-w-7xl md:px-14">
@@ -31,16 +45,15 @@ const DiffCarousel = ({ content }) => {
             className="flex transition-transform duration-1000 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {content.map((item, index) => (
+            {sanitizedContent.map((item, index) => (
               <div key={index} className="w-full flex-shrink-0">
                 <div className="flex flex-col overflow-hidden rounded-md bg-white">
                   <div className="relative h-48 w-full">
                     <Image
                       src={item.image}
                       alt={item.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-t-md"
+                      fill
+                      className="rounded-t-md object-contain"
                     />
                     <a
                       href={item.link}
@@ -118,9 +131,8 @@ const DiffCarousel = ({ content }) => {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`size-3 rounded-full ${
-              currentIndex === index ? 'bg-[#22326E]' : 'bg-gray-300'
-            }`}
+            className={`size-3 rounded-full ${currentIndex === index ? 'bg-[#22326E]' : 'bg-gray-300'
+              }`}
           />
         ))}
       </div>

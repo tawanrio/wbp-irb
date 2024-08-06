@@ -7,9 +7,8 @@ const CategoryCard = ({ category }) => {
         <Image
           src={category.thumbnail.imageUrl}
           alt={category.thumbnail.alt}
-          layout="fill"
-          objectFit="contain"
-          className="rounded-t-md"
+          fill
+          className="rounded-t-md object-contain"
         />
       </div>
       <div className="flex flex-grow flex-col justify-between p-4">

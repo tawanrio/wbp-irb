@@ -291,3 +291,7 @@ export const fetchAddress = async (cleanedValue) => {
     return null
   }
 }
+
+export const sanitizeHtml = (html) => {
+  return html.replace(/<\/?[^>]+(>|$)/g, '')
+}

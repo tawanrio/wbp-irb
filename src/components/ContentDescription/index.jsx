@@ -1,7 +1,6 @@
 import Description from '../Description'
 
 export default function ContentDescription({ content, className }) {
-  console.log(className)
   return (
     <article
       className={`flex flex-col items-center ${className}`}

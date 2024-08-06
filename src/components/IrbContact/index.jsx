@@ -25,7 +25,7 @@ export default function ProductFaq({
               {title}
             </h2>
             <Description content={contentDescription} />
-            <div className="my-8 flex flex-col flex-wrap gap-8 md:flex-row">
+            <div className="mt-8 flex flex-wrap gap-5 md:gap-8">
               {whatsapp && <Button whatsapp={whatsapp} />}
               {phone && <Button phone={phone} />}
             </div>

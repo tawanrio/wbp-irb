@@ -1,15 +1,9 @@
-import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { formatPhoneNumber } from '@/utils/functions'
 
 export default function Button({ content }) {
-  const [href] = useState(content.href)
-  const [label] = useState(content.label)
-  const [colors] = useState(content.colors)
-  const [icon] = useState(content.icon)
-  const [number] = useState(content.number)
-
+  const { href, label, colors, icon, number } = content
   const formattedNumber = formatPhoneNumber(number)
 
   return (
@@ -21,12 +15,12 @@ export default function Button({ content }) {
         border:
           label === 'Whatsapp' ? '3px solid rgb(97, 194, 95)' : colors?.border,
       }}
-      className="group flex flex-1 flex-row items-center gap-4 rounded-2xl bg-slate-800 px-5 py-2 duration-500 hover:scale-105 md:py-4"
+      className="flex flex-1 flex-row items-center gap-4 rounded-2xl bg-slate-800 px-5 py-2 duration-500 hover:scale-105 md:py-4"
     >
       <figure className="relative size-10">
         <Image
           src={icon}
-          alt="Icone button"
+          alt={`Ícone ${label}`}
           sizes="100vw"
           fill
           className="!relative"

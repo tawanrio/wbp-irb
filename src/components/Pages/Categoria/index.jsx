@@ -48,9 +48,6 @@ export default function Categoria({ content }) {
     setCategory(content.category)
   }, [pageUrl])
 
-  console.log(content)
-  //  console.log(content);
-
   const catalogDescription = {
     imageProduct: {
       imageUrl: '/images/partners/bannerIRB.png',

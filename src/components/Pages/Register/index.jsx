@@ -19,7 +19,6 @@ import RegisterForm from './Forms'
 // Components
 
 export default function Register({ content }) {
-  console.log('teste')
   const router = useRouter()
   const pageUrl = router.asPath.replace('/', '')
   const [banners] = useState(content?.page.banners)

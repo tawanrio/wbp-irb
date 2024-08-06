@@ -8,9 +8,8 @@ const SingleUtility = ({ utilities }) => {
           <Image
             src={utilities.image}
             alt={utilities.title}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-t-md"
+            fill
+            className="rounded-t-md object-contain"
           />
         </div>
         <div className="flex flex-col items-start justify-between p-4">
