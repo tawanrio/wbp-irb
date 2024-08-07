@@ -1,13 +1,8 @@
 import { cn } from '@/utils/cn'
 import { Plus } from 'lucide-react'
 
-export const Question = ({
-  index,
-  question,
-  openDetailIndex,
-  toggleDetail,
-}) => {
-  const { title, description } = question
+export const Question = ({ index, faq, openDetailIndex, toggleDetail }) => {
+  const { asking, answer } = faq
 
   return (
     <details
@@ -18,7 +13,7 @@ export const Question = ({
         onClick={(event) => toggleDetail(index, event)}
         className="hide-details-marker flex items-center justify-between gap-3 p-6 text-base font-medium sm:text-lg"
       >
-        {title}
+        {asking}
         <Plus
           className={cn(
             'min-h-7 min-w-7 transition-transform duration-200',
@@ -27,7 +22,7 @@ export const Question = ({
         />
       </summary>
       <p className="px-6 pb-6 text-sm font-normal opacity-60 sm:text-base">
-        {description}
+        {answer}
       </p>
     </details>
   )

@@ -164,7 +164,7 @@ const Collection = ({
                 Todos os estados
               </Link>
             </li>
-            {uniqueStates.map((state, index) => (
+            {uniqueStates?.map((state, index) => (
               <li key={index}>
                 <Link
                   href={generateUrlGeo(state)}

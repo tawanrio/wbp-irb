@@ -101,7 +101,7 @@ export default function Blog({ content }) {
                     <p className="text-gray-700">{`${post.contentHTML.slice(0, 120)}...`}</p>
                   </div>
                   <p
-                    className="text-blue-500 hover:underline"
+                    className="text-blue-600 hover:underline"
                     href={`/blog/${post.permaLink}`}
                   >
                     Leia mais
