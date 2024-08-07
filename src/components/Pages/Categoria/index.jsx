@@ -16,7 +16,7 @@ import Ebooks from './components/Ebooks'
 import ContentImgHTMLDesc from './components/ContentImgHTMLDesc'
 import PartnersButton from '../Home/components/PartnersButton'
 import UtilityCards from '../Home/components/UtilityCards'
-import { BearingInfo } from '@/components/BearingInfo'
+import { Info } from '@/components/Info'
 import { PRODUCT_CATALOG_DETAILS } from '@/utils/constants'
 import { CommonQuestions } from '@/components/CommonQuestions'
 
@@ -26,7 +26,7 @@ export default function Categoria({ content }) {
   pageUrl = pageUrl[pageUrl.length - 1]
 
   const [category, setCategory] = useState(content?.category)
-
+  console.log({ content })
   useEffect(() => {
     setCategory(content.category)
   }, [pageUrl])
@@ -58,8 +58,8 @@ export default function Categoria({ content }) {
         {content.category.ebook && <Ebooks ebooks={content.category.ebook} />}
         <PartnersButton partners={content?.partners?.types} />
         <UtilityCards />
-        {content?.description?.length > 0 && (
-          <BearingInfo description={content.description} />
+        {content?.category?.info?.length > 0 && (
+          <Info info={content.category.info} />
         )}
         {content?.category?.faq &&
           Object.entries(content.category.faq).length > 0 && (
