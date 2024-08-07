@@ -69,10 +69,7 @@ export default function Fabrica({ content }) {
         <title>{metaTitle || title}</title>
         <meta name="description" content={metaDescription || description} />
         <meta name="keywords" content={metaKeywords || ''} />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Templates
         template={content?.template}
@@ -84,7 +81,7 @@ export default function Fabrica({ content }) {
         <Title title={title} className={'mt-5'} />
         <ContentDescription content={description} className={'mt-5'} />
         <TimeLineNew />
-        <CompanyValuesNew cards={cardsValues} />
+        <CompanyValuesNew />
         <CategoryGrid categories={sortedCategories} title />
         {/* <InsertVideo content={video}/> */}
         {/* <Categories baseUrl={`/`} categories={content?.categories} colors={content?.page?.colors.products} title /> */}

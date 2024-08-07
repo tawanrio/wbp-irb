@@ -39,10 +39,7 @@ export default function Categoria({ content }) {
           name="description"
           content={category?.metaDescription || category?.contentDescription}
         />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <Templates
@@ -64,9 +61,10 @@ export default function Categoria({ content }) {
         {content?.description?.length > 0 && (
           <BearingInfo description={content.description} />
         )}
-        {content?.questions?.length > 0 && (
-          <CommonQuestions questions={content.questions} />
-        )}
+        {content?.category?.faq &&
+          Object.entries(content.category.faq).length > 0 && (
+            <CommonQuestions faq={content.category.faq} />
+          )}
       </Templates>
     </>
   )
