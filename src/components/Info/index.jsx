@@ -1,11 +1,20 @@
+import { useState } from 'react'
 import { Paragraph } from './Paragraph'
 import { Title } from './Title'
 
 export const Info = ({ info }) => {
+  const [showAll, setShowAll] = useState(false)
+
+  const handleReadMore = () => {
+    setShowAll(true)
+  }
+
+  const itemsToShow = showAll ? info : info.slice(0, 2)
+
   return (
     <section className="mx-auto mt-16 flex w-full max-w-7xl flex-col gap-6 px-6 md:px-14">
-      {info.map((inf) => (
-        <>
+      {itemsToShow.map((inf, index) => (
+        <div key={index} className="flex w-full flex-col gap-6">
           {inf.title && Object.entries(inf.title).length > 0 && (
             <Title tag={inf.title.tag}>{inf.title.name}</Title>
           )}
@@ -24,8 +33,16 @@ export const Info = ({ info }) => {
               ))}
             </ul>
           )}
-        </>
+        </div>
       ))}
+      {!showAll && info.length > 2 && (
+        <button
+          onClick={handleReadMore}
+          className="mt-4 w-fit text-left text-black underline hover:no-underline"
+        >
+          Ler Mais
+        </button>
+      )}
     </section>
   )
 }

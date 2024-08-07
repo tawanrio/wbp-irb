@@ -26,7 +26,7 @@ export default function Categoria({ content }) {
   pageUrl = pageUrl[pageUrl.length - 1]
 
   const [category, setCategory] = useState(content?.category)
-  console.log({ content })
+
   useEffect(() => {
     setCategory(content.category)
   }, [pageUrl])
