@@ -39,7 +39,7 @@ export default function ProductsCard({
             >
               <img
                 src={category.thumbnail.imageUrl}
-                alt={category.title}
+                alt={`Imagem ${category.title}`}
                 className="h-[250%] object-cover duration-700 md:h-[200%] md:group-hover:h-[170%]"
               />
               <p

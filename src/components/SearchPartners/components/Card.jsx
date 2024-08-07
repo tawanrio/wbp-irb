@@ -25,7 +25,7 @@ export default function Card({ collection }) {
       <figure className="flex h-[13.75rem] w-full items-center justify-center overflow-hidden rounded-lg border">
         <img
           src={imageNotFound.src}
-          alt={collection.tradingName}
+          alt={`Imagem ${collection.companyName}`}
           className="h-full w-full object-cover"
         />
       </figure>

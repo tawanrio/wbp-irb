@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 import SectionTitle from '../SectionTitle'
 import Link from 'next/link'
 
@@ -14,16 +14,12 @@ export default function Parceiros({ title, partners, colors, hiddenTitle }) {
               href={'/' + partner.label}
               className="group relative flex h-40 min-w-[16.875rem] flex-1 items-center justify-center overflow-hidden rounded-3xl grayscale-[80%] duration-500 before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-[#0a0a0ab4] before:content-[''] hover:scale-105 md:min-w-[20%]"
             >
-              <div>
-                <Image
-                  fill
-                  sizes="100vw"
-                  src={partner.bgImage}
-                  alt={partner.title}
-                  className="h-[120%] object-cover duration-700 group-hover:h-[100%]"
-                />
-              </div>
-              <div
+              <img
+                src={partner.bgImage}
+                alt={`Imagem ${partner.title}`}
+                className="h-[120%] w-full object-cover duration-700 group-hover:h-[100%]"
+              />
+              <p
                 style={{
                   color: colors.text || '#fff',
                   textShadow: colors.border || '2px 2px 1px #000',
@@ -31,7 +27,7 @@ export default function Parceiros({ title, partners, colors, hiddenTitle }) {
                 className="absolute z-10 w-full text-center text-sm font-medium uppercase duration-700 group-hover:scale-[1.10] md:text-2xl"
               >
                 {partner.title}
-              </div>
+              </p>
             </Link>
           ))}
         </div>

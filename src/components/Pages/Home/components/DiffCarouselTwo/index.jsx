@@ -22,19 +22,14 @@ const DiffCarouselTwo = ({ content }) => {
         {sanitizedContent.map((item, index) => (
           <div key={index} className="mb-4 w-full flex-shrink-0 px-2 md:w-1/4">
             <div className="flex flex-col overflow-hidden rounded-md bg-white">
-              <div className="relative h-72 w-full">
+              <figure className="relative h-72 w-full">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   className="rounded-t-md object-contain"
                 />
-                <a
-                  href={item.link}
-                  title={item.title}
-                  className="absolute inset-0"
-                ></a>
-              </div>
+              </figure>
               <div className="fle flex-col justify-between py-4 text-[#AF231C]">
                 <div>
                   <h2 className="mt-2 text-xl font-bold">{item.title}</h2>
