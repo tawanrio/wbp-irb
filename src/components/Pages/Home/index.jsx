@@ -1,35 +1,25 @@
 /* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // SEO
 import Head from 'next/head'
 
 // Template / Layout
 import Templates from '@/components/Templates'
-import Title from '@/components/Title'
 
 // Components
 import Banner from '@/components/Banner/index'
-import ContentDescription from '@/components/ContentDescription'
-import InsertVideo from '@/components/InsertVideo'
-import Partners from '@/components/Partners'
 import Form from '@/components/Form'
-import CompanyValues from '@/components/CompanyValues'
-import Categories from '@/components/Categories'
-import BreadCrumb from '@/components/BreadCrumb'
-import TextVideo from '@/components/TextVideo'
 
 // Others || functions
 import { useState } from 'react'
 import { sortByKey } from '@/utils/functions'
 
-import Utilities from '@/components/Utilities'
-import DiffCarousel from './components/DiffCarousel'
 import DiffCarouselTwo from './components/DiffCarouselTwo'
 import CategoryGrid from '@/components/CategoryGrid'
 import PartnersButton from './components/PartnersButton'
 import UtilityCards from './components/UtilityCards'
 import { BlogCarousel } from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
+import { Info } from '@/components/Info'
 
 export default function Home({ content }) {
   const [metaTitle] = useState(content?.page?.metaTitle)
@@ -39,9 +29,7 @@ export default function Home({ content }) {
   const [description] = useState(content?.page?.contentDescription)
   const [diffCarousel] = useState(content?.page?.diffCarousel)
   const [banners] = useState(content?.page?.banners)
-  const [video] = useState(content?.page?.video)
   const [bannerVideo] = useState(content?.page?.banners.carousel[0])
-  const [cardsValues] = useState(content?.page?.companyValues)
   const [formDefault] = useState(
     content?.form?.forms.find((item) => item.label === 'default'),
   )
@@ -70,24 +58,14 @@ export default function Home({ content }) {
       >
         <Banner banners={banners} video={bannerVideo} />
         <ServicesOverview />
-        {/* <DiffCarousel content={diffCarousel}/> */}
         <DiffCarouselTwo content={diffCarousel} />
-        {/* <CompanyValues cards={cardsValues}/> */}
-        {/* <TextVideo video={video} description={description} /> */}
         <CategoryGrid categories={sortedCategories} title />
-        {/* <Categories categories={sortedCategories} colors={content?.page?.colors.products} title /> */}
         <PartnersButton partners={content?.partners?.types} />
-        {/* <Partners title={"Nossos parceiros"} partners={content?.partners?.types}  colors={content?.partners?.colors}/> */}
         <UtilityCards />
-        {/* <Utilities title={'Utilidades'}/> */}
         <BlogCarousel posts={posts} />
         <Form inputs={formDefault} colors={content?.form?.colors} />
+        {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
       </Templates>
-
-      {/* <BreadCrumb/> */}
-      {/* <Title title={title}/> */}
-      {/* <InsertVideo content={video}/> */}
-      {/* <ContentDescription content={description}/> */}
     </>
   )
 }
@@ -97,14 +75,12 @@ async function getDataPage() {
     await connectMongoDB()
 
     const page = await Page.findOne({ label: 'home' }).lean()
-    // const menu = await Menu.findOne({label:"menu"}).lean();
     const menus = await Menus.find().lean()
     const template = await Template.find()
     const partners = await SchemaCategories.findOne({
       label: 'partners',
     }).lean()
     const categories = await CategoriesProducts.find().lean()
-    // const products = await ProductsDb.find().lean().limit(6);
     const form = await FormDb.findOne({ label: 'form' }).lean()
 
     return {
@@ -113,7 +89,6 @@ async function getDataPage() {
       categories: JSON.parse(JSON.stringify(categories)),
       form: JSON.parse(JSON.stringify(form)),
       template: JSON.parse(JSON.stringify(template)),
-      // menu:JSON.parse(JSON.stringify(menu)),
       menus: JSON.parse(JSON.stringify(menus)),
     }
   } finally {
@@ -123,7 +98,6 @@ async function getDataPage() {
 
 export async function getStaticProps() {
   const content = await getDataPage()
-  // const content = await testeRoute(resolvedUrl)
 
   return {
     props: {
