@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { ToastContainer } from 'react-toastify'
 import Copyright from './Copyright'
 import Footer from './Footer'
 import Header from './Header'
-import ContactLine from './ContactLine'
-import { ToastContainer } from 'react-toastify'
-
 import { insertMenuInTemplate } from '@/utils/functions'
-import CookiePopup from '../CookiePopup'
+import { CookiePopup } from '../CookiePopup'
 
 export default function Templates({ style, children, template, page, menus }) {
   style = style || 'default'
@@ -15,9 +12,6 @@ export default function Templates({ style, children, template, page, menus }) {
 
   const footer = template?.find((item) => item?.label === 'footer')
   const copyright = template?.find((item) => item?.label === 'copyright')
-  const contactLine = template
-    ?.find((item) => item?.label === 'contactline')
-    .items.find((menu) => menu.label === 'default')
 
   insertMenuInTemplate({
     menus,
@@ -58,7 +52,6 @@ export default function Templates({ style, children, template, page, menus }) {
 
   return (
     <>
-      {/* <ContactLine content={contactLine} /> */}
       <Header content={header} page={page} />
       <CookiePopup />
       <ToastContainer />

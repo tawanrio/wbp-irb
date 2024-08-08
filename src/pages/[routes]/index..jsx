@@ -18,9 +18,6 @@ import Error from '@/components/Pages/Error'
 import BaixeNossoApp from '@/components/Pages/Baixe-nosso-app'
 import Service from '@/components/Pages/Service'
 
-// Components
-import CookiePopup from '@/components/CookiePopup'
-
 import { getDataPage } from '@/service/model/routeOne'
 
 export default function index({ content }) {

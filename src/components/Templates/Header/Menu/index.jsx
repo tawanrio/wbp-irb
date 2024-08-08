@@ -73,7 +73,7 @@ export default function MenuDesktop({ content }) {
             background: colors.bg,
             color: colors.text,
           }}
-          className="absolute right-0 !z-[999] mt-10 w-[65%] flex-col p-4 pt-0 capitalize opacity-0 duration-500 md:relative md:z-50 md:mt-0 md:w-full md:flex-row md:items-center md:justify-center md:gap-0 md:p-0 md:opacity-100"
+          className="absolute right-0 !z-20 mt-10 w-[65%] flex-col p-4 pt-0 capitalize opacity-0 duration-500 md:relative md:z-50 md:mt-0 md:w-full md:flex-row md:items-center md:justify-center md:gap-0 md:p-0 md:opacity-100"
         >
           {dataHeader?.nav[0].links?.map((link, lId) => (
             <li
