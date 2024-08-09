@@ -20,10 +20,13 @@ import SearchPartners from '@/components/SearchPartners'
 import { useRouter } from 'next/router'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
+import { useEffect, useState } from 'react'
 
 export default function Distribuidoras({ content }) {
   const router = useRouter()
   const pageUrl = router.asPath.replace('/', '')
+  const [fullUrl, setFullUrl] = useState('')
+
   const {
     banners,
     title,
@@ -34,6 +37,13 @@ export default function Distribuidoras({ content }) {
     metaKeywords,
   } = content?.page
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
+
   return (
     <>
       <Head>
@@ -41,6 +51,7 @@ export default function Distribuidoras({ content }) {
         <meta name="description" content={metaDescription || description} />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
         template={content?.template}
@@ -67,7 +78,7 @@ export default function Distribuidoras({ content }) {
           title
         />
         <Partners
-          title={'Nossos parceiros'}
+          title="Nossos parceiros"
           partners={content?.partners?.types}
           colors={content?.partners?.colors}
         />

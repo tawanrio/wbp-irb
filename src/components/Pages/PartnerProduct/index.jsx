@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-fallthrough */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Template
 import Head from 'next/head'
@@ -11,32 +9,22 @@ import ContentDescription from '@/components/ContentDescription'
 import Title from '@/components/Title'
 import Banner from '@/components/Banner/index'
 import BreadCrumb from '@/components/BreadCrumb'
-import ProductModels from '@/components/Products/ProductModels'
-import Faq from '@/components/Faq'
-import Filter from '@/components/Filter'
-import FindPartners from '@/components/FindPartners'
 import Partners from '@/components/Partners'
 import Categories from '@/components/Categories'
 import SearchPartners from '@/components/SearchPartners'
-import Products from '@/components/Products'
-
-// Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db'
-import Page from '@/service/model/schemas/pageSchema'
-import { Menu } from '@/service/model/schemas/menuSchema'
-import { Template } from '@/service/model/schemas/templateSchema'
-import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { getProductFromUrl, insertMenuInTemplate } from '@/utils/functions'
+import { Info } from '@/components/Info'
+import { CommonQuestions } from '@/components/CommonQuestions'
 
 export default function Produto({ content }) {
-  const route = useRouter()
-  let pageUrl = route.asPath.split('/')
+  const router = useRouter()
+  let pageUrl = router.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
 
+  const [fullUrl, setFullUrl] = useState('')
   const [product, setProduct] = useState(content?.arrRoute)
   const [arrRoute, setArrRoute] = useState(content?.arrRoute)
   const [partnerDescription, setPartnerDescription] = useState(
@@ -49,8 +37,11 @@ export default function Produto({ content }) {
 
   switch (arrRoute[0]) {
     case 'distribuidoras':
+      break
 
     case 'mecanicas':
+      break
+
     case 'autopecas':
       break
 
@@ -61,35 +52,23 @@ export default function Produto({ content }) {
   let partnerName
   if (content?.arrRoute[0] !== 'fabrica') {
     partnerName = content?.partners.types.find(
-      (item) => item.label == content?.arrRoute[0],
+      (item) => item.label === content?.arrRoute[0],
     )
   } else {
     partnerName = { title: 'Fábricas' }
   }
+
   useEffect(() => {
     setProduct(content.categories)
     setMetaTitle(content?.category?.partner?.metaTitle)
-    // const replacedText = replaceShortcodePartner(partnerDescription,partnerName.title)
-    // partnerDescription && setPartnerDescription(replacedText)
   }, [pageUrl])
 
-  const replaceShortcodeProduct = (text, product) => {
-    const shortcode = '{{product}}'
-    const hasShortcode = text.includes(shortcode)
-    if (hasShortcode) {
-      return text.replace(shortcode, product)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
     }
-    return text
-  }
-
-  // (product.partner?.description) && (product.partner.description[0] = replaceShortcodeProduct(product?.partner?.description[0], `${content?.arrRoute[1]}s` ));
-
-  // console.log(partnerName.title);
-  // (content?.category.partner.description) && (content?.category?.partner.description[0] = replaceShortcodePartner( content?.category.partner.description[0] , `das nossas ${partnerName?.title}`));
-
-  // content?.category?.partner?.description = ['teste'];
-
-  // content?.category.partner.description[0] = replaceShortcodePartner(content?.category.partner.description[0] , `das nossas ${partnerName?.title}`);
+  }, [router])
 
   return (
     <>
@@ -104,6 +83,7 @@ export default function Produto({ content }) {
         />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
 
       <Templates
@@ -115,9 +95,6 @@ export default function Produto({ content }) {
         <BreadCrumb />
         <Title title={content?.category.title} />
         <ContentDescription content={partnerDescription} />
-        {/* <ProductModels products={product?.models} cards={product?.models} baseUrl={`/${pageUrl}/`} title={'Título h2 - Modelos Produtos'}/> */}
-        {/* <Filter select={product?.models}  title={'Modelos de Produtos'}/> */}
-        {/* <FindPartners title={content?.partners?.title} product={product} partners={content?.partners?.types}  colors={content?.partners?.colors} hiddenTitle /> */}
         <SearchPartners
           geo={content?.geo}
           title={`Encontre um(a) ${partnerName.title}`}
@@ -126,8 +103,6 @@ export default function Produto({ content }) {
           products={content?.products}
           hiddenProductSearch
         />
-        {/* <Faq faq={product?.faq}/> */}
-        {/* <Products products={content?.products} colors={content?.page?.colors.products} title /> */}
         <Categories
           baseUrl={`/${content?.arrRoute[0]}/`}
           categories={content?.categories}
@@ -135,12 +110,18 @@ export default function Produto({ content }) {
           title
         />
 
-        {/* <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`/${content?.arrRoute[0]}/`} title /> */}
         <Partners
-          title={'Nossos parceiros'}
+          title="Nossos parceiros"
           partners={content?.partners?.types}
           colors={content?.partners?.colors}
         />
+        {content?.category?.partner?.info?.length > 0 && (
+          <Info info={content.category.partner.info} />
+        )}
+        {content?.category?.partner?.faq &&
+          Object.entries(content.category.partner.faq).length > 0 && (
+            <CommonQuestions faq={content.category.partner.faq} />
+          )}
       </Templates>
     </>
   )
