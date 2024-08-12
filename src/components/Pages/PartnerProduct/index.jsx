@@ -93,7 +93,7 @@ export default function Produto({ content }) {
       >
         <Banner banners={content?.category.banners} />
         <BreadCrumb />
-        <Title title={content?.category.title} />
+        <Title title={content?.category?.partner.title} />
         <ContentDescription content={partnerDescription} />
         <SearchPartners
           geo={content?.geo}

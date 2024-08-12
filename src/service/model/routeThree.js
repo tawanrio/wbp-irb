@@ -95,15 +95,11 @@ const routePartner = async (arrRoute) => {
 }
 
 const routeGeo = async (hasPartner, arrRoute, category, countries, geoName) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const partner = formatStrToNoDash(arrRoute[1])
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const stateName = formatStrToNoDash(arrRoute[2])
+  const partner = formatStrToNoDash(arrRoute[0])
   const page = await Page.findOne({ label: 'produtos' }).lean()
   const products = await ProductsDb.find().lean()
   const template = await Template.find()
   const categories = await CategoriesProducts.find().lean()
-  // const menu = await Menu.findOne({label:"menu"}).lean();
   const partners = await Categories.findOne({ label: 'partners' }).lean()
   const menus = await Menus.find().lean()
 
@@ -111,11 +107,17 @@ const routeGeo = async (hasPartner, arrRoute, category, countries, geoName) => {
 
   let partnerName
   if (arrRoute[0] !== 'fabrica') {
-    // eslint-disable-next-line eqeqeq
-    partnerName = partners.types.find((item) => item.label == arrRoute[0])
+    partnerName = partners.types.find((item) => item.label === arrRoute[0])
   } else {
     partnerName = { title: 'Fábrica' }
   }
+
+  const title = category.partner.title
+  const irb = 'irb'
+  const newTitle = title
+    .replace(new RegExp(`(\\s*-\\s*${irb})|(${irb})`, 'i'), '')
+    .trim()
+  category.partner.title = `${partner} de ${newTitle} em ${geoName} - ${irb}`
 
   let description = category.partner.description
   description = replaceShortcodePartner(description, partnerName.title)

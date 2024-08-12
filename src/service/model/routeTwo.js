@@ -43,11 +43,11 @@ const singlePartner = async (arrRoute, collection) => {
 }
 
 const routePartnerProduct = async (arrRoute, category) => {
+  const partner = formatStrToNoDash(arrRoute[0])
   const page = await Page.findOne({ label: 'produtos' }).lean()
   const products = await ProductsDb.find().lean()
   const categories = await CategoriesProducts.find().lean()
   const template = await Template.find()
-  // const collection = await Collection.find({"products.label": arrRoute[1]}).lean();
   const collection = await Collection.find({
     label: { $regex: new RegExp(arrRoute[0], 'i') },
     'products.label': arrRoute[1],
@@ -55,22 +55,24 @@ const routePartnerProduct = async (arrRoute, category) => {
   }).lean()
   const partners = await Categories.findOne({ label: 'partners' }).lean()
 
-  // const menu = await Menu.findOne({label:"menu"}).lean();
   const menus = await Menus.find().lean()
   const geoDb = await Geo.findOne({ 'countries.name': 'brasil' })
   const geo = geoDb.countries.find(
     (country) => country.name.toLowerCase() === 'brasil',
   )
 
-  // Encontrou o documento, agora vamos filtrar o array countries
-
   let partnerName
   if (arrRoute[0] !== 'fabrica') {
-    // eslint-disable-next-line eqeqeq
-    partnerName = partners.types.find((item) => item.label == arrRoute[0])
+    partnerName = partners.types.find((item) => item.label === arrRoute[0])
   } else {
     partnerName = { title: 'Fábrica' }
   }
+
+  const irb = 'irb'
+  const newTitle = category.partner.title
+    .replace(new RegExp(`(\\s*-\\s*${irb})|(${irb})`, 'i'), '')
+    .trim()
+  category.partner.title = `${partner} de ${newTitle} - ${irb}`
 
   let description = category.partner.description
   description = replaceShortcodePartner(
@@ -102,22 +104,21 @@ const routePartnerProduct = async (arrRoute, category) => {
 }
 
 const routeGeo = async (arrRoute, hasPartner, geo, geoName) => {
-  // se a rota encontrar um estado
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const routeGeoName = formatStrToNoDash(arrRoute[1])
-
   const page = await Page.findOne({ label: arrRoute[0] }).lean()
   const template = await Template.find()
-  // const menu = await Menu.findOne({label:"menu"}).lean();
-  // const products = await ProductsDb.find().lean();
   const partners = await Categories.findOne({ label: 'partners' }).lean()
   const categories = await CategoriesProducts.find().lean()
   const menus = await Menus.find().lean()
 
-  page.title = `${page.title} em ${geoName}`
+  const irb = 'irb'
+  const newTitle = page.title
+    .replace(new RegExp(`(\\s*-\\s*${irb})|(${irb})`, 'i'), '')
+    .trim()
+  page.title = `${newTitle} em ${geoName} - ${irb}`
 
   page.metaTitle = updateMetatitleGeo(page.metaTitle, geoName)
   page.metaDescription[0] = updateMetatitleGeo(page.metaDescription[0], geoName)
+
   return {
     type: `geo-${arrRoute[0]}`,
     arrRoute: JSON.parse(JSON.stringify(arrRoute)),
@@ -129,7 +130,6 @@ const routeGeo = async (arrRoute, hasPartner, geo, geoName) => {
     template: template && JSON.parse(JSON.stringify(template)),
     collection: hasPartner && JSON.parse(JSON.stringify(hasPartner)),
     menus: menus && JSON.parse(JSON.stringify(menus)),
-    //  products: products && JSON.parse(JSON.stringify(products)),
   }
 }
 
