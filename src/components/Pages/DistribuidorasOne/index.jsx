@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 // SEO
 import Head from 'next/head'
 
@@ -20,9 +19,12 @@ import SearchPartnersOne from '@/components/SearchPartnersOne'
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
+import { capitalize } from '@/utils/functions'
 
 export default function Distribuidoras({ content }) {
   const router = useRouter()
+  const pathname = usePathname()
   const pageUrl = router.asPath.replace('/', '')
   const [fullUrl, setFullUrl] = useState('')
   const [title, setTitle] = useState(content?.page.title)
@@ -41,8 +43,19 @@ export default function Distribuidoras({ content }) {
   useEffect(() => {
     setTitle(content?.page.title)
     setMetaTitle(content?.page.metaTitle)
-    setMetaDescription(content?.page.metaDescription)
-  }, [content?.page.title, content?.page.metaTitle])
+    setMetaDescription(
+      content?.page?.metaDescription[0].replace(
+        '{{geoName}}',
+        `em ${capitalize(pathname.split('/').pop())}`,
+      ),
+    )
+  }, [
+    content?.page.title,
+    content?.page.metaTitle,
+    content?.page?.metaDescription,
+    fullUrl,
+    pathname,
+  ])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

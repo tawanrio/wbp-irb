@@ -26,9 +26,17 @@ export default function Categoria({ content }) {
   pageUrl = pageUrl[pageUrl.length - 1]
 
   const [category, setCategory] = useState(content?.category)
+  const [metaDescription, setMetaDescription] = useState(
+    content?.category?.metaDescription,
+  )
 
   useEffect(() => {
     setCategory(content.category)
+    setMetaDescription(
+      content?.category?.metaDescription[0]
+        .replace('{{geoName}}', '')
+        .replace(/\s+\. /g, '. '),
+    )
   }, [pageUrl])
 
   return (
@@ -37,7 +45,7 @@ export default function Categoria({ content }) {
         <title>{category?.metaTitle || category?.title}</title>
         <meta
           name="description"
-          content={category?.metaDescription || category?.contentDescription}
+          content={metaDescription || category?.contentDescription}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>

@@ -20,12 +20,14 @@ import SearchPartners from '@/components/SearchPartners'
 export default function AutocenterEMecanicas({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page?.metaDescription,
+  )
 
   const {
     banners,
     title,
     metaTitle,
-    metaDescription,
     contentDescription: description,
     imgDescription,
     metaKeywords,
@@ -36,7 +38,12 @@ export default function AutocenterEMecanicas({ content }) {
       const url = window.location.href
       setFullUrl(url)
     }
-  }, [router])
+    setMetaDescription(
+      content?.page?.metaDescription[0]
+        .replace('{{geoName}}', '')
+        .replace(/\s+\. /g, '. '),
+    )
+  }, [content?.page?.metaDescription, router])
 
   return (
     <>

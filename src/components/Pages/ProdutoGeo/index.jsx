@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Template
 import Head from 'next/head'
@@ -16,10 +15,12 @@ import Categories from '@/components/Categories'
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { getProductFromUrl } from '@/utils/functions'
+import { capitalize, getProductFromUrl } from '@/utils/functions'
+import { usePathname } from 'next/navigation'
 
 export default function Produto({ content }) {
   const router = useRouter()
+  const pathname = usePathname()
   let pageUrl = router.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
 
@@ -32,6 +33,9 @@ export default function Produto({ content }) {
     content?.category?.partner?.metaTitle,
   )
   const [metaKeywords] = useState(content?.category?.metaKeywords)
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page?.metaDescription,
+  )
 
   let partnerName
   if (content?.arrRoute[0] !== 'fabrica') {
@@ -44,7 +48,19 @@ export default function Produto({ content }) {
 
   useEffect(() => {
     setProduct(getProductFromUrl(content.products, pageUrl))
-  }, [pageUrl])
+    setMetaDescription(
+      content?.category?.metaDescription[0]?.replace(
+        '{{geoName}}',
+        `em ${capitalize(pathname.split('/').pop())}`,
+      ),
+    )
+  }, [
+    content?.category?.metaDescription,
+    content.page.metaDescription,
+    content.products,
+    pageUrl,
+    pathname,
+  ])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -59,10 +75,7 @@ export default function Produto({ content }) {
         <title>{metaTitle || content?.category?.title}</title>
         <meta
           name="description"
-          content={
-            content?.category?.metaDescription ||
-            content?.category?.contentDescription
-          }
+          content={metaDescription || content?.category?.contentDescription}
         />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

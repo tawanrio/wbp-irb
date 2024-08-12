@@ -34,6 +34,9 @@ export default function Produto({ content }) {
     content?.category?.partner?.metaTitle,
   )
   const [metaKeywords] = useState(content?.category?.metaKeywords)
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page?.metaDescription,
+  )
 
   switch (arrRoute[0]) {
     case 'distribuidoras':
@@ -61,6 +64,11 @@ export default function Produto({ content }) {
   useEffect(() => {
     setProduct(content.categories)
     setMetaTitle(content?.category?.partner?.metaTitle)
+    setMetaDescription(
+      content?.category?.metaDescription[0]
+        ?.replace('{{geoName}}', '')
+        .replace(/\s+\. /g, '. '),
+    )
   }, [pageUrl])
 
   useEffect(() => {
@@ -76,10 +84,7 @@ export default function Produto({ content }) {
         <title>{metaTitle || content?.category?.title}</title>
         <meta
           name="description"
-          content={
-            content?.category?.metaDescription ||
-            content?.category?.contentDescription
-          }
+          content={metaDescription || content?.category?.contentDescription}
         />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

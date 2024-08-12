@@ -26,12 +26,14 @@ export default function Distribuidoras({ content }) {
   const router = useRouter()
   const pageUrl = router.asPath.replace('/', '')
   const [fullUrl, setFullUrl] = useState('')
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page?.metaDescription,
+  )
 
   const {
     banners,
     title,
     metaTitle,
-    metaDescription,
     contentDescription: description,
     imgDescription,
     metaKeywords,
@@ -42,7 +44,13 @@ export default function Distribuidoras({ content }) {
       const url = window.location.href
       setFullUrl(url)
     }
-  }, [router])
+    setMetaDescription(
+      content?.page?.metaDescription[0].replace(
+        '{{geoName}}',
+        'IRB Automotive',
+      ),
+    )
+  }, [content?.page?.metaDescription, fullUrl, router])
 
   return (
     <>

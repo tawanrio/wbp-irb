@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 // SEO
 import Head from 'next/head'
 
@@ -17,9 +16,12 @@ import Partners from '@/components/Partners'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import SearchPartnersOne from '@/components/SearchPartnersOne'
+import { capitalize } from '@/utils/functions'
+import { usePathname } from 'next/navigation'
 
 export default function AutocenterEMecanicas({ content }) {
   const router = useRouter()
+  const pathname = usePathname()
   const [fullUrl, setFullUrl] = useState('')
   const [title, setTitle] = useState(content?.page.title)
   const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
@@ -37,8 +39,18 @@ export default function AutocenterEMecanicas({ content }) {
   useEffect(() => {
     setTitle(content?.page.title)
     setMetaTitle(content?.page.metaTitle)
-    setMetaDescription(content?.page.metaDescription)
-  }, [content?.page.title, content?.page.metaTitle])
+    setMetaDescription(
+      content?.page?.metaDescription[0].replace(
+        '{{geoName}}',
+        `em ${capitalize(pathname.split('/').pop())}`,
+      ),
+    )
+  }, [
+    content?.page.title,
+    content?.page.metaTitle,
+    content?.page?.metaDescription,
+    pathname,
+  ])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
