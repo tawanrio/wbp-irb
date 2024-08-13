@@ -48,11 +48,11 @@ export default function Home({ content }) {
   const [posts] = useState(content.blogData)
 
   const sortedCategories = sortByKey(content.categories, 'label')
-  content.menus[2].links = sortByKey(content.menus[2].links, 'label')
-  content.menus[0].links[3].submenu = sortByKey(
-    content.menus[0].links[3].submenu,
-    'label',
-  )
+  // content.menus[2].links = sortByKey(content.menus[2].links, 'label')
+  // content.menus[0].links[3].submenu = sortByKey(
+  //   content.menus[0].links[3].submenu,
+  //   'label',
+  // )
 
   return (
     <>
