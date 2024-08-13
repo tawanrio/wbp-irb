@@ -67,7 +67,7 @@ export default function MenuDesktop({ content }) {
             ></div>
           </div>
         </div>
-        <div
+        <ul
           style={{
             ...(menuOpen && { opacity: '1', zIndex: '10' }),
             background: colors.bg,
@@ -76,7 +76,7 @@ export default function MenuDesktop({ content }) {
           className="absolute right-0 !z-20 mt-10 w-[65%] flex-col p-4 pt-0 capitalize opacity-0 duration-500 md:relative md:z-50 md:mt-0 md:w-full md:flex-row md:items-center md:justify-center md:gap-0 md:p-0 md:opacity-100"
         >
           {dataHeader?.nav[0].links?.map((link, lId) => (
-            <ul
+            <li
               key={'l' + lId}
               className="group z-50 flex w-full flex-col items-end uppercase md:inline-block md:w-auto"
             >
@@ -155,9 +155,9 @@ export default function MenuDesktop({ content }) {
                   ))}
                 </div>
               )}
-            </ul>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </menu>
   )

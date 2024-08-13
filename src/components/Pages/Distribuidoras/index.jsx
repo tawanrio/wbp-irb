@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // SEO
 import Head from 'next/head'
 
@@ -7,43 +6,51 @@ import Templates from '@/components/Templates'
 import Banner from '@/components/Banner/index'
 
 // Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db'
-import Page from '@/service/model/schemas/pageSchema'
-import { Menu } from '@/service/model/schemas/menuSchema'
-import { Template } from '@/service/model/schemas/templateSchema'
-import { Categories as SchemaCategories } from '@/service/model/schemas/categoriesSchema'
 import Categories from '@/components/Categories'
-import { Collection } from '@/service/model/schemas/collectionsSchema'
-import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
 
 // Components
 import ContentDescription from '@/components/ContentDescription'
 import BreadCrumb from '@/components/BreadCrumb'
 import ContentImgDescription from '@/components/ContentImgDescription'
-import ProductFaq from '@/components/ProductFaq'
-import Products from '@/components/Products'
 import Title from '@/components/Title'
 import Partners from '@/components/Partners'
 import SearchPartners from '@/components/SearchPartners'
-import CategoryGrid from '@/components/CategoryGrid'
 
 // Others
-import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { sortByKey } from '@/utils/functions'
+import { Info } from '@/components/Info'
+import { CommonQuestions } from '@/components/CommonQuestions'
+import { useEffect, useState } from 'react'
 
 export default function Distribuidoras({ content }) {
   const router = useRouter()
   const pageUrl = router.asPath.replace('/', '')
-  const [banners] = useState(content?.page?.banners)
-  const [title] = useState(content?.page?.title)
-  const [metaTitle] = useState(content?.page?.metaTitle)
-  const [metaDescription] = useState(content?.page?.metaDescription)
-  const [description] = useState(content?.page?.contentDescription)
-  const [imgDescription] = useState(content?.page?.imgDescription)
-  const [metaKeywords] = useState(content?.page?.metaKeywords)
-  const [faq] = useState(content?.page?.faq)
-  const sortedCategories = sortByKey(content.categories, 'label')
+  const [fullUrl, setFullUrl] = useState('')
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page?.metaDescription,
+  )
+
+  const {
+    banners,
+    title,
+    metaTitle,
+    contentDescription: description,
+    imgDescription,
+    metaKeywords,
+  } = content?.page
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+    setMetaDescription(
+      content?.page?.metaDescription[0].replace(
+        '{{geoName}}',
+        'IRB Automotive',
+      ),
+    )
+  }, [content?.page?.metaDescription, fullUrl, router])
 
   return (
     <>
@@ -51,10 +58,8 @@ export default function Distribuidoras({ content }) {
         <title>{metaTitle || title}</title>
         <meta name="description" content={metaDescription || description} />
         <meta name="keywords" content={metaKeywords || ''} />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
         template={content?.template}
@@ -74,21 +79,21 @@ export default function Distribuidoras({ content }) {
           geo={content?.geo}
         />
         <ContentImgDescription content={imgDescription} />
-        {/* <ProductFaq products={content?.products} faq={faq} baseUrl={`/${pageUrl}/`}/>  */}
-        {/* <CategoryGrid baseUrl={`${pageUrl}/`} categories={sortedCategories} title /> */}
-
         <Categories
           baseUrl={`${pageUrl}/`}
           categories={content?.categories}
           colors={content?.page?.colors.products}
           title
         />
-        {/* <Products products={content?.products} colors={content?.page?.colors.products} baseUrl={`${pageUrl}/`} title /> */}
         <Partners
-          title={'Nossos parceiros'}
+          title="Nossos parceiros"
           partners={content?.partners?.types}
           colors={content?.partners?.colors}
         />
+        {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
+        {content?.page?.faq && Object.entries(content.page.faq).length > 0 && (
+          <CommonQuestions faq={content.page.faq} />
+        )}
       </Templates>
     </>
   )

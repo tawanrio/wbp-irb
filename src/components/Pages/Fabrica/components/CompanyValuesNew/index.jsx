@@ -1,67 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable eqeqeq */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import Image from 'next/image'
 import { useState } from 'react'
 import SectionTitle from '@/components/SectionTitle'
+import { COMPANY_CORE_VALUES } from '@/utils/constants'
 
-export default function CompanyValuesNew({ cards }) {
+export default function CompanyValuesNew() {
   const [expandedCard, setExpandedCard] = useState(null)
-
-  const companyValues = [
-    {
-      colors: {
-        bg: '#22326E',
-        text: '#fff',
-        hr: '#6FBFD8',
-      },
-      title: 'nosso sonho',
-      content: {
-        listStyle: 'none',
-        description: [
-          'Ser a primeira escolha do cliente e líder mundial no segmento de peças automotivas.',
-        ],
-      },
-      image: '/images/components/companyValues/mission.webp',
-    },
-    {
-      colors: {
-        bg: '#353535',
-        text: '#fff',
-        hr: '#C12025',
-      },
-      title: 'nosso combustível',
-      content: {
-        listStyle: 'auto',
-        description: [
-          'Fazemos negócios com ética, integridade e profissionalismo.',
-          'Somos movidos por surpreender nossos clientes e fornecer o melhor produto do mercado.',
-          'Somos incansáveis em entregar qualidade, inovação e segurança em nossas soluções.',
-          'Somos comprometidos em encontrar nossos colaboradores e gerar valor para a sociedade.',
-        ],
-      },
-      image: '/images/components/companyValues/vision.webp',
-    },
-    {
-      colors: {
-        bg: '#C12025',
-        text: '#fff',
-        hr: '#22326E',
-      },
-      title: 'nossas atitudes',
-      content: {
-        listStyle: 'disc',
-        description: [
-          'Atitude corajosa',
-          'Impulsiona resultados',
-          'Graxa na veia',
-          'Cliente no centro',
-          'Constrói parcerias',
-          'Aprendizagem contínua',
-        ],
-      },
-      image: '/images/components/companyValues/values.webp',
-    },
-  ]
 
   const handleMouseEnter = (index) => {
     setExpandedCard(index)
@@ -72,12 +16,12 @@ export default function CompanyValuesNew({ cards }) {
   }
 
   return (
-    <section className="mt-6 flex flex-col items-center" id={`company-values_`}>
+    <section className="mt-6 flex flex-col items-center" id="company-values_">
       <div className="my-4 flex w-full max-w-lg flex-col px-6 md:mb-10 md:max-w-7xl md:gap-14 md:px-14">
-        <SectionTitle title={'Missão, visão e valores'} line />
+        <SectionTitle title="Missão, visão e valores" line />
         <div className="scrollbar-hide flex w-full flex-col justify-start gap-4 p-5 md:flex-row md:justify-between md:p-0">
           <div className="flex w-full flex-col gap-5 md:flex-row">
-            {companyValues.map((card, index) => (
+            {COMPANY_CORE_VALUES.map((card, index) => (
               <div
                 key={index}
                 style={{
@@ -89,20 +33,16 @@ export default function CompanyValuesNew({ cards }) {
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="relative flex max-h-[100px] items-end px-5 pb-4 md:px-10 md:pb-7">
-                  <div>
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      width={50}
-                      height={50}
-                      className="h-9 w-9 md:h-[50px] md:w-[60px]"
-                    />
-                  </div>
-                  <h3 className="right-0 w-full text-center text-xl font-bold uppercase">
+                <figure className="relative flex max-h-[100px] items-end px-5 pb-4 md:px-10 md:pb-7">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="size-9 md:h-[50px] md:w-[60px]"
+                  />
+                  <figcaption className="right-0 w-full text-center text-xl font-bold uppercase">
                     {card.title}
-                  </h3>
-                </div>
+                  </figcaption>
+                </figure>
                 <div className="relative opacity-100 transition-all duration-500 ease-in-out">
                   <div className="relative opacity-0 duration-1000 group-hover:opacity-100">
                     <hr className="border-2 border-t-0" />

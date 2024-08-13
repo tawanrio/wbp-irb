@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .hide-details-marker {
+    @apply list-none;
+  }
+
+  .hide-details-marker::-webkit-details-marker {
+    display: none;
+  }
+}
+
 #__next {
   height: 100vh;
   display: flex;
@@ -89,4 +99,9 @@ input:-webkit-autofill:focus {
 
 input[data-autocompleted] {
   background-color: transparent !important;
+}
+
+.tag-children a {
+  color: #2563eb;
+  text-decoration: underline;
 }

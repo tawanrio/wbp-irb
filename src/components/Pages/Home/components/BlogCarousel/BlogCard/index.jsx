@@ -37,7 +37,7 @@ export const BlogCard = ({ post }) => {
       <figure className="relative h-52 w-full">
         <img
           src={imageUrl}
-          alt={post?.image?.alt}
+          alt={post?.title?.rendered}
           className="h-full w-full object-cover"
         />
       </figure>

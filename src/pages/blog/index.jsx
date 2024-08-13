@@ -81,8 +81,8 @@ export default function Blog({ content }) {
         <Banner banners={banners} />
         <BreadCrumb />
         <div className="mx-3.5 max-w-6xl py-8 md:mx-auto">
-          <h1 className="mb-4 text-3xl font-bold">Publicações</h1>
-          <div className="flex flex-wrap gap-4 md:grid md:grid-cols-3">
+          <h1 className="mb-4 text-3xl font-bold md:pl-3">Publicações</h1>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:px-3 lg:grid-cols-3">
             {currentPosts.map((post, key) => (
               <Link
                 key={key}
@@ -101,7 +101,7 @@ export default function Blog({ content }) {
                     <p className="text-gray-700">{`${post.contentHTML.slice(0, 120)}...`}</p>
                   </div>
                   <p
-                    className="text-blue-500 hover:underline"
+                    className="text-blue-600 hover:underline"
                     href={`/blog/${post.permaLink}`}
                   >
                     Leia mais

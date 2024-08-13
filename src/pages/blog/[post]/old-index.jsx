@@ -51,17 +51,15 @@ export default function Post({ content, data }) {
         <p className="mb-4 text-gray-600">{data?.date}</p>
         {/* <img src={getUrlImage(data)} alt={NextDataPathnameNormalizer.image?.alt} className="mb-2 m-auto w-3/4 h-[500px] object-cover" /> */}
         <div
-          className="prose overflow-hidden"
+          className="prose mb-8 overflow-hidden"
           dangerouslySetInnerHTML={{ __html: data.content.rendered }}
         >
           {/* Conteúdo do post em formato de Markdown */}
           {/* {data?.content.rendered} */}
         </div>
-        <div className="mt-8">
-          <Link href="/blog" className="text-blue-500 hover:underline">
-            Voltar para Blog
-          </Link>
-        </div>
+        <Link href="/blog" className="mt-8 text-blue-600 hover:underline">
+          Voltar para Blog
+        </Link>
       </div>
     </Templates>
   )
