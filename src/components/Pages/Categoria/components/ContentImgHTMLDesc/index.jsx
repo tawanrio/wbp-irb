@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { sanitizeHtml } from '@/utils/functions'
+// import { sanitizeHtml } from '@/utils/functions'
 
 export default function ContentImgHTMLDesc({ textHTML, image }) {
   const [sanitizedText, setSanitizedText] = useState('')
 
   useEffect(() => {
     if (textHTML) {
-      setSanitizedText(sanitizeHtml(textHTML))
+      setSanitizedText(textHTML)
     }
   }, [textHTML])
 
