@@ -8,7 +8,6 @@ import { Template } from '@/service/model/schemas/templateSchema'
 import { Categories as SchemaCategories } from '@/service/model/schemas/categoriesSchema'
 import { CategoriesProducts } from '@/service/model/schemas/categoriesProductsSchema'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
 import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 
 export default function index({ content }) {
