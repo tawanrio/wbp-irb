@@ -79,10 +79,10 @@ export default function TimeLineNew() {
       <div className="my-4 flex w-full max-w-7xl flex-col items-center justify-between px-6 md:my-7 md:px-14">
         <div className="flex w-full flex-col-reverse items-center gap-10 md:w-11/12">
           <div className="mt-4 text-center">
-            <h3 className="text-xl font-bold">{events[currentIndex].year}</h3>
-            <p className={`opacity-100 transition-opacity duration-500`}>
+            <p className="text-xl font-bold">{events[currentIndex].year}</p>
+            <span className={`opacity-100 transition-opacity duration-500`}>
               {events[currentIndex].description}
-            </p>
+            </span>
           </div>
           <div className="relative flex h-[100px] w-full items-center justify-between overflow-hidden">
             <button

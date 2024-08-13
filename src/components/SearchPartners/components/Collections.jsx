@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Card from './Card'
 import { formatStrToUrl } from '@/utils/functions'
+import { cn } from '@/utils/cn'
 import 'tailwindcss/tailwind.css'
 
 const Collection = ({
@@ -228,11 +229,12 @@ const Collection = ({
           <button
             key={pageNumber}
             onClick={() => handlePageChange(pageNumber)}
-            className={`mx-1 rounded px-3 py-2 ${
+            className={cn(
+              'mx-1 rounded px-3 py-2',
               currentPage === pageNumber
                 ? 'bg-blue-500 text-white'
-                : 'bg-gray-200 text-gray-700'
-            }`}
+                : 'bg-gray-200 text-gray-700',
+            )}
           >
             {pageNumber}
           </button>
