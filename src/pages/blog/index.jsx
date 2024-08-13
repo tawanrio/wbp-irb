@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 // SEO
 import Head from 'next/head'
 
@@ -24,8 +23,13 @@ import { Posts } from '@/service/model/schemas/postsSchema'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Image from 'next/image'
+import { cn } from '@/utils/cn'
 
 export default function Blog({ content }) {
+  const [posts, setPosts] = useState(content?.posts)
+  const [isLoading, setIsLoading] = useState(true)
+
   const {
     metaTitle,
     metaDescription,
@@ -33,18 +37,6 @@ export default function Blog({ content }) {
     title,
     contentDescription: description,
   } = content?.page || {}
-
-  const [posts, setPosts] = useState(content?.posts)
-
-  useEffect(() => {
-    if (content?.posts) {
-      const sanitizedPosts = content.posts.map((post) => ({
-        ...post,
-        contentHTML: sanitizeHtml(post.contentHTML),
-      }))
-      setPosts(sanitizedPosts)
-    }
-  }, [content])
 
   const router = useRouter()
   const { page = 1 } = router.query
@@ -65,6 +57,28 @@ export default function Blog({ content }) {
       .fill()
       .map((_, idx) => start + idx + 1)
   }
+
+  useEffect(() => {
+    if (content?.posts) {
+      const sanitizedPosts = content.posts.map((post) => ({
+        ...post,
+        contentHTML: sanitizeHtml(post.contentHTML),
+      }))
+      setPosts(sanitizedPosts)
+    }
+  }, [content])
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setIsLoading(true)
+      const res = await fetch(`/api/getPosts?page=${currentPage}`)
+      const data = await res.json()
+      setPosts(data.posts)
+      setIsLoading(false)
+    }
+
+    fetchPosts()
+  }, [currentPage])
 
   return (
     <>
@@ -93,10 +107,18 @@ export default function Blog({ content }) {
                     <h2 className="mb-2 h-20 overflow-hidden text-xl font-semibold">
                       {post.title}
                     </h2>
-                    <img
+                    <Image
                       src={post.featuredImg?.url}
                       alt={post.featuredImg?.alt}
-                      className="mb-2 h-52 w-full object-cover"
+                      width={327}
+                      height={208}
+                      priority
+                      quality={100}
+                      onLoad={() => setIsLoading(false)}
+                      className={cn(
+                        'mb-2 h-52 w-full object-cover transition-[scale,filter] duration-700',
+                        isLoading && 'scale-[1.02] blur-xl grayscale',
+                      )}
                     />
                     <p className="text-gray-700">{`${post.contentHTML.slice(0, 120)}...`}</p>
                   </div>
