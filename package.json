@@ -26,11 +26,7 @@
     "react-input-mask": "^2.0.4",
     "react-toastify": "^10.0.5",
     "sharp": "^0.33.2",
-<<<<<<< HEAD
-    "tailwind-merge": "^2.4.0",
-=======
     "tailwind-merge": "^2.5.2",
->>>>>>> cebbf8383e6ea4de98fda536d1e7e312aed202e5
     "unorm": "^1.6.0"
   },
   "devDependencies": {
