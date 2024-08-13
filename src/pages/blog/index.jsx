@@ -182,7 +182,7 @@ async function getDataPage() {
     }).lean()
     const categories = await CategoriesProducts.find().lean()
     const form = await FormDb.findOne({ label: 'form' }).lean()
-    const posts = await Posts.find().lean()
+    const posts = await Posts.find().lean().sort({ postId: -1 })
 
     return {
       page: JSON.parse(JSON.stringify(page)),
