@@ -5,7 +5,6 @@ import Templates from '@/components/Templates'
 
 // Components
 import Title from '@/components/Title'
-import Banner from '@/components/Banner/index'
 import BreadCrumb from '@/components/BreadCrumb'
 import ImgCatalogDescription from '@/components/ImgCatalogDescription'
 
@@ -54,8 +53,8 @@ export default function Categoria({ content }) {
         template={content?.template}
         page={content?.page}
         menus={content?.menus}
+        banner={content?.category?.banners}
       >
-        <Banner banners={content?.category?.banners} />
         <BreadCrumb />
         <Title title={category?.title} />
         <ContentImgHTMLDesc

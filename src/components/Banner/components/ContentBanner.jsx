@@ -19,7 +19,9 @@ export default function ContentBanner({
           backdrop
             ? `before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-circle before:content-['']`
             : `before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-[#3338579e] before:content-['']`
-        } absolute flex w-full opacity-0 md:justify-center ${index === activeBanner && '!opacity-100'}`}
+        } absolute flex w-full opacity-0 md:justify-center ${
+          index === activeBanner && '!opacity-100'
+        }`}
       >
         {isImage ? (
           <ImageBanner banner={banner} controllerBanner={controllerBanner} />
@@ -48,14 +50,14 @@ export default function ContentBanner({
             </p>
           </div>
         ) : (
-          <div className="absolute flex h-full w-full flex-col items-center justify-center gap-[60px]">
+          <div className="absolute flex h-full w-full flex-col items-center justify-center gap-[20px] md:gap-[60px]">
             <h2
-              className="text-outline z-10 w-full text-center text-2xl font-semibold uppercase sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
+              className="text-outline z-10 w-full text-center text-4xl font-semibold uppercase sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
               data-text={banner.title}
             >
               {banner.title}
             </h2>
-            <h3 className="z-10 hidden w-full text-center text-xl font-extrabold uppercase text-white md:text-[3rem]">
+            <h3 className="z-10 w-full text-center text-3xl font-extrabold uppercase text-white md:text-[3rem]">
               {banner.description}
             </h3>
           </div>

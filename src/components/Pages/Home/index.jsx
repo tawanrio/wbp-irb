@@ -6,7 +6,6 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import Banner from '@/components/Banner/index'
 import Form from '@/components/Form'
 
 // Others || functions
@@ -29,7 +28,6 @@ export default function Home({ content }) {
   const [description] = useState(content?.page?.contentDescription)
   const [diffCarousel] = useState(content?.page?.diffCarousel)
   const [banners] = useState(content?.page?.banners)
-  const [bannerVideo] = useState(content?.page?.banners.carousel[0])
   const [formDefault] = useState(
     content?.form?.forms.find((item) => item.label === 'default'),
   )
@@ -55,8 +53,9 @@ export default function Home({ content }) {
         template={content?.template}
         page={content?.page}
         menus={content?.menus}
+        banner={banners}
+        style={'home'}
       >
-        <Banner banners={banners} video={bannerVideo} />
         <ServicesOverview />
         <DiffCarouselTwo content={diffCarousel} />
         <CategoryGrid categories={sortedCategories} title />

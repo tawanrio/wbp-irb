@@ -75,8 +75,9 @@ export default function Fabrica({ content }) {
         template={content?.template}
         page={content?.page}
         menus={content?.menus}
+        banner={banners}
+        style={true}
       >
-        <Banner banners={bannerTeste} stlyeText={true} />
         <BreadCrumb />
         <Title title={title} className={'mt-5'} />
         <ContentDescription content={description} className={'mt-5'} />

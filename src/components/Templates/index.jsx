@@ -4,11 +4,18 @@ import Footer from './Footer'
 import Header from './Header'
 import { insertMenuInTemplate } from '@/utils/functions'
 import { CookiePopup } from '../CookiePopup'
+import Banner from '../Banner'
 
-export default function Templates({ style, children, template, page, menus }) {
-  style = style || 'default'
+export default function Templates({
+  style,
+  children,
+  template,
+  page,
+  menus,
+  banner,
+}) {
   const arrHeader = template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find((item) => item?.label === style)
+  const header = arrHeader?.items.find((item) => item?.label === 'default')
 
   const footer = template?.find((item) => item?.label === 'footer')
   const copyright = template?.find((item) => item?.label === 'copyright')
@@ -52,9 +59,10 @@ export default function Templates({ style, children, template, page, menus }) {
 
   return (
     <>
-      <Header content={header} page={page} />
       <CookiePopup />
       <ToastContainer />
+      <Header content={header} page={page.label} />
+      <Banner banners={banner} stlyeText={style} page={page.label} />
       <main>{children}</main>
       <Footer content={footer} />
       <Copyright content={copyright} />

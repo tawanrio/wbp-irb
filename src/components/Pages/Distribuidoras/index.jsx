@@ -3,7 +3,6 @@ import Head from 'next/head'
 
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
 
 // Database // Schema
 import Categories from '@/components/Categories'
@@ -65,8 +64,8 @@ export default function Distribuidoras({ content }) {
         template={content?.template}
         page={content?.page}
         menus={content?.menus}
+        banner={banners}
       >
-        <Banner banners={banners} />
         <BreadCrumb />
         <Title title={title} />
         <ContentDescription content={description} />
@@ -85,6 +84,7 @@ export default function Distribuidoras({ content }) {
           colors={content?.page?.colors.products}
           title
         />
+
         <Partners
           title="Nossos parceiros"
           partners={content?.partners?.types}
