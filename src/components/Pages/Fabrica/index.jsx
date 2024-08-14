@@ -61,7 +61,7 @@ export default function Fabrica({ content }) {
         template={content?.template}
         page={content?.page}
         menus={content?.menus}
-        banner={banners}
+        banner={content.page.banners}
         style={true}
       >
         <BreadCrumb />

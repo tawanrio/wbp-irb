@@ -19,7 +19,7 @@ export default function BreadCrumb() {
   return (
     <div className="flex flex-col items-center" id={`breadcrumb_`}>
       <div className="flex w-full max-w-7xl flex-col justify-between gap-16 px-6 md:px-14">
-        <div className="flex animate-fadeOut gap-2 overflow-auto text-xs uppercase md:gap-4 md:text-base">
+        <div className="flex animate-fadeOut gap-2 overflow-auto text-xs uppercase md:mt-8 md:gap-4 md:text-base">
           {pathname.map((page, index) => {
             let currentPage = ''
             for (let i = 0; i <= index; i++) {
