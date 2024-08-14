@@ -8,7 +8,7 @@ export const ImportantNotice = ({ onClose }) => {
         <img
           src={ImportantNoticeImg.src}
           alt="Comunicado Importante"
-          className="h-full !max-h-[36rem] max-w-full"
+          className="max-h-[42rem] max-w-full"
         />
         <button
           onClick={onClose}

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // SEO
 import Head from 'next/head'
 
@@ -6,40 +5,27 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 import Banner from '@/components/Banner/index'
 
-// Others
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import { sortByKey } from '@/utils/functions'
-
 // Components
 import ContentDescription from '@/components/ContentDescription'
 import BreadCrumb from '@/components/BreadCrumb'
 import CompanyValuesNew from './components/CompanyValuesNew'
-import ContentImgDescription from '@/components/ContentImgDescription'
-import Products from '@/components/Products'
-import Categories from '@/components/Categories'
-import Faq from '@/components/Faq'
 import Title from '@/components/Title'
-import InsertVideo from '@/components/InsertVideo'
-import Utilities from '@/components/Utilities'
-import TimeLine from './components/TimeLine'
 import TimeLineNew from './components/TimeLineNew'
 import CarouselEvent from './components/CarouselEvents'
 import CategoryGrid from '@/components/CategoryGrid'
 
+// Others
+import { sortByKey } from '@/utils/functions'
+
 export default function Fabrica({ content }) {
-  const router = useRouter()
-  const pageUrl = router.asPath.replace('/', '')
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [video] = useState(content?.page?.video)
-  const [cardsValues] = useState(content?.page?.companyValues)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [imgDescription] = useState(content?.page.imgDescription)
-  const [metaKeywords] = useState(content?.page?.metaKeywords)
-  const [events] = useState(content?.page?.events)
+  const {
+    title,
+    contentDescription: description,
+    metaTitle,
+    metaDescription,
+    metaKeywords,
+    events,
+  } = content?.page
 
   const sortedCategories = sortByKey(content.categories, 'label')
 
@@ -84,11 +70,7 @@ export default function Fabrica({ content }) {
         <TimeLineNew />
         <CompanyValuesNew />
         <CategoryGrid categories={sortedCategories} title />
-        {/* <InsertVideo content={video}/> */}
-        {/* <Categories baseUrl={`/`} categories={content?.categories} colors={content?.page?.colors.products} title /> */}
-        {/* <CarouselEvent events={events}/> */}
-        {/* <Products baseUrl={`${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title/> */}
-        {/* <Utilities title={'Utilidades'}/> */}
+        <CarouselEvent events={events} />
       </Templates>
     </>
   )
