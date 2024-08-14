@@ -49,7 +49,7 @@ const Carousel = ({ events }) => {
         <div
           className="mx-4 flex gap-7 py-5 transition-transform duration-1000 ease-in-out"
           style={{
-            transform: `translateX(-${currentIndex * (isMobile ? 103 : 100 / 3)}%)`,
+            transform: `translateX(-${currentIndex * (isMobile ? 108 : 100 / 3)}%)`,
           }}
         >
           {events.map((item, index) => (
