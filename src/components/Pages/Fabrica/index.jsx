@@ -3,7 +3,6 @@ import Head from 'next/head'
 
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
 
 // Components
 import ContentDescription from '@/components/ContentDescription'
@@ -28,26 +27,6 @@ export default function Fabrica({ content }) {
   } = content?.page
 
   const sortedCategories = sortByKey(content.categories, 'label')
-
-  const bannerTeste = {
-    colors: {
-      bg: '#fff',
-      text: '#fff',
-      controllers: '#fff',
-    },
-    size: {
-      height: 330,
-    },
-    carousel: [
-      {
-        title: 'CENTRO LOGÍSTICO IRB',
-        description: '',
-        url: '/video/sobre.mp4',
-        alt: 'banner dois',
-        position: 'start',
-      },
-    ],
-  }
 
   return (
     <>
