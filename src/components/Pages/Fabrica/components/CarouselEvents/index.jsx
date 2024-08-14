@@ -74,18 +74,6 @@ const Carousel = ({ events }) => {
                         <span className="font-bold">Data:</span> {item.date}
                       </p>
                     )}
-                    {item.timeStart && (
-                      <p className="text-white">
-                        <span className="font-bold">Horário:</span>{' '}
-                        {item.timeStart}
-                      </p>
-                    )}
-                    {item.duration && (
-                      <p className="text-white">
-                        <span className="font-bold">Duração:</span>{' '}
-                        {item.duration}
-                      </p>
-                    )}
                     {item.location && (
                       <p className="text-white">
                         <span className="font-bold">Local:</span>{' '}
@@ -93,13 +81,11 @@ const Carousel = ({ events }) => {
                       </p>
                     )}
                   </div>
-                  <div>
-                    {item.link && (
-                      <a href={item.link} className="text-white underline">
-                        Saiba mais
-                      </a>
-                    )}
-                  </div>
+                  {item.link && (
+                    <a href={item.link} className="text-white underline">
+                      Saiba mais
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
