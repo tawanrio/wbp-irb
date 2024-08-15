@@ -2,15 +2,15 @@ import Image from 'next/image'
 
 const CategoryCard = ({ category }) => {
   return (
-    <div className="flex flex-col justify-between overflow-hidden rounded-md bg-white shadow-md">
-      <div className="relative h-48 w-full">
+    <li className="flex flex-col justify-between overflow-hidden rounded-md bg-white shadow-md">
+      <figure className="relative h-48 w-full">
         <Image
           src={category.thumbnail.imageUrl}
           alt={category.thumbnail.alt}
           fill
           className="rounded-t-md object-contain"
         />
-      </div>
+      </figure>
       <div className="flex flex-grow flex-col justify-between p-4">
         <div>
           <h2 className="text-2xl font-bold text-[#c12025]">
@@ -29,7 +29,7 @@ const CategoryCard = ({ category }) => {
           </a>
         </div>
       </div>
-    </div>
+    </li>
   )
 }
 

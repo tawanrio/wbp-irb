@@ -117,3 +117,21 @@ export const COMPANY_CORE_VALUES = [
     image: '/images/components/companyValues/values.webp',
   },
 ]
+
+export const PARTNER_TYPES = [
+  {
+    image: '/images/components/icons/autoparts2-white.png',
+    title: 'Autopeças',
+    link: '/autopecas',
+  },
+  {
+    image: '/images/components/icons/distributors-white.png',
+    title: 'Distribuidoras',
+    link: '/distribuidoras',
+  },
+  {
+    image: '/images/components/icons/mechanic-white.png',
+    title: 'Mecânicas',
+    link: '/mecanicas',
+  },
+]

@@ -4,26 +4,23 @@ import Head from 'next/head'
 // Template / Layout
 import Templates from '@/components/Templates'
 
-// Database // Schema
-import Categories from '@/components/Categories'
-
 // Components
 import ContentDescription from '@/components/ContentDescription'
 import BreadCrumb from '@/components/BreadCrumb'
 import ContentImgDescription from '@/components/ContentImgDescription'
 import Title from '@/components/Title'
-import Partners from '@/components/Partners'
 import SearchPartners from '@/components/SearchPartners'
-
-// Others
-import { useRouter } from 'next/router'
+import PartnersButton from '../Home/components/PartnersButton'
+import CategoryGrid from '@/components/CategoryGrid'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
+
+// Others
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Distribuidoras({ content }) {
   const router = useRouter()
-  const pageUrl = router.asPath.replace('/', '')
   const [fullUrl, setFullUrl] = useState('')
   const [metaDescription, setMetaDescription] = useState(
     content?.page?.metaDescription,
@@ -78,18 +75,8 @@ export default function Distribuidoras({ content }) {
           geo={content?.geo}
         />
         <ContentImgDescription content={imgDescription} />
-        <Categories
-          baseUrl={`${pageUrl}/`}
-          categories={content?.categories}
-          colors={content?.page?.colors.products}
-          title
-        />
-
-        <Partners
-          title="Nossos parceiros"
-          partners={content?.partners?.types}
-          colors={content?.partners?.colors}
-        />
+        <CategoryGrid categories={content?.categories} />
+        <PartnersButton />
         {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
         {content?.page?.faq && Object.entries(content.page.faq).length > 0 && (
           <CommonQuestions faq={content.page.faq} />

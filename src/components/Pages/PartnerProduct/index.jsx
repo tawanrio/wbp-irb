@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Template
 import Head from 'next/head'
@@ -9,15 +8,15 @@ import ContentDescription from '@/components/ContentDescription'
 import Title from '@/components/Title'
 import Banner from '@/components/Banner/index'
 import BreadCrumb from '@/components/BreadCrumb'
-import Partners from '@/components/Partners'
-import Categories from '@/components/Categories'
 import SearchPartners from '@/components/SearchPartners'
+import PartnersButton from '../Home/components/PartnersButton'
+import { Info } from '@/components/Info'
+import { CommonQuestions } from '@/components/CommonQuestions'
+import CategoryGrid from '@/components/CategoryGrid'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Info } from '@/components/Info'
-import { CommonQuestions } from '@/components/CommonQuestions'
 
 export default function Produto({ content }) {
   const router = useRouter()
@@ -69,7 +68,12 @@ export default function Produto({ content }) {
         ?.replace('{{geoName}}', '')
         .replace(/\s+\. /g, '. '),
     )
-  }, [pageUrl])
+  }, [
+    content.categories,
+    content?.category?.metaDescription,
+    content?.category?.partner?.metaTitle,
+    pageUrl,
+  ])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -108,18 +112,8 @@ export default function Produto({ content }) {
           products={content?.products}
           hiddenProductSearch
         />
-        <Categories
-          baseUrl={`/${content?.arrRoute[0]}/`}
-          categories={content?.categories}
-          colors={content?.page?.colors.products}
-          title
-        />
-
-        <Partners
-          title="Nossos parceiros"
-          partners={content?.partners?.types}
-          colors={content?.partners?.colors}
-        />
+        <CategoryGrid categories={content?.categories} />
+        <PartnersButton />
         {content?.category?.partner?.info?.length > 0 && (
           <Info info={content.category.partner.info} />
         )}

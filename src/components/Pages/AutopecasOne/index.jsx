@@ -5,24 +5,21 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 import Banner from '@/components/Banner/index'
 
-// Database // Schema
-import Categories from '@/components/Categories'
-
 // Components
 import ContentDescription from '@/components/ContentDescription'
 import BreadCrumb from '@/components/BreadCrumb'
 import ContentImgDescription from '@/components/ContentImgDescription'
 import Title from '@/components/Title'
-import Partners from '@/components/Partners'
+import PartnersButton from '../Home/components/PartnersButton'
+import CategoryGrid from '@/components/CategoryGrid'
+import SearchPartnersOne from '@/components/SearchPartnersOne'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import SearchPartnersOne from '@/components/SearchPartnersOne'
 
 export default function Autoparts({ content }) {
   const router = useRouter()
-  const pageUrl = router.asPath.replace('/', '')
   const [fullUrl, setFullUrl] = useState('')
   const [title, setTitle] = useState(content?.page.title)
   const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
@@ -82,17 +79,8 @@ export default function Autoparts({ content }) {
           products={content?.products}
         />
         <ContentImgDescription content={imgDescription} />
-        <Categories
-          baseUrlGeo={`/${pageUrl}`}
-          categories={content?.categories}
-          colors={content?.page?.colors.products}
-          title
-        />
-        <Partners
-          title="Nossos parceiros"
-          partners={content?.partners?.types}
-          colors={content?.partners?.colors}
-        />
+        <CategoryGrid categories={content?.categories} />
+        <PartnersButton />
       </Templates>
     </>
   )

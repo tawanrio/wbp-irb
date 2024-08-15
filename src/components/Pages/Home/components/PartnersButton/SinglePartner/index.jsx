@@ -2,17 +2,17 @@ import Image from 'next/image'
 
 const SinglePartner = ({ partner }) => {
   return (
-    <div className="group flex items-center justify-center overflow-hidden rounded-md bg-[#22326e] py-4 shadow-md duration-500">
-      <div className="relative size-24 rounded-full border-[#AF231C] bg-[#AF231C] md:h-32 md:w-32 md:border-4">
+    <li className="group flex items-center justify-center overflow-hidden rounded-md bg-[#22326e] py-4 shadow-md duration-500">
+      <figure className="relative size-24 rounded-full border-[#AF231C] bg-[#AF231C] md:h-32 md:w-32 md:border-4">
         <Image
           src={partner.image}
-          alt={'teste'}
+          alt={`Imagem ${partner.title}`}
           width={200}
           quality={100}
           height={200}
           className="m-auto p-4 duration-500 group-hover:scale-105"
         />
-      </div>
+      </figure>
       <div className="flex w-[200px] flex-col items-start justify-between p-4">
         <div>
           <h2 className="text-2xl font-bold text-white">{partner.title}</h2>
@@ -26,7 +26,7 @@ const SinglePartner = ({ partner }) => {
           </a>
         </div>
       </div>
-    </div>
+    </li>
   )
 }
 

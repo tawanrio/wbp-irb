@@ -10,7 +10,7 @@ import ContentDescription from '@/components/ContentDescription'
 import BreadCrumb from '@/components/BreadCrumb'
 import ContentImgDescription from '@/components/ContentImgDescription'
 import Title from '@/components/Title'
-import Partners from '@/components/Partners'
+import PartnersButton from '../Home/components/PartnersButton'
 
 // Others
 import { useEffect, useState } from 'react'
@@ -77,7 +77,6 @@ export default function AutocenterEMecanicas({ content }) {
         <BreadCrumb />
         <Title title={title} />
         <ContentDescription content={description} />
-
         <SearchPartnersOne
           geo={content?.geo}
           partnerType="mecanica"
@@ -87,14 +86,8 @@ export default function AutocenterEMecanicas({ content }) {
           collections={content?.collection}
           products={content?.products}
         />
-
         <ContentImgDescription content={imgDescription} />
-
-        <Partners
-          title="Nossos parceiros"
-          partners={content?.partners?.types}
-          colors={content?.partners?.colors}
-        />
+        <PartnersButton />
       </Templates>
     </>
   )

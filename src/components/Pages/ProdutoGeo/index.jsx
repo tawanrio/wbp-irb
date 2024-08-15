@@ -8,15 +8,15 @@ import ContentDescription from '@/components/ContentDescription'
 import Title from '@/components/Title'
 import Banner from '@/components/Banner/index'
 import BreadCrumb from '@/components/BreadCrumb'
-import Partners from '@/components/Partners'
 import SearchPartners from '@/components/SearchPartners'
-import Categories from '@/components/Categories'
+import PartnersButton from '../Home/components/PartnersButton'
+import CategoryGrid from '@/components/CategoryGrid'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { capitalize, getProductFromUrl } from '@/utils/functions'
 import { usePathname } from 'next/navigation'
+import { capitalize, getProductFromUrl } from '@/utils/functions'
 
 export default function Produto({ content }) {
   const router = useRouter()
@@ -99,17 +99,8 @@ export default function Produto({ content }) {
           arrRoute={content?.arrRoute}
           hiddenProductSearch
         />
-        <Categories
-          baseUrl={`/${content?.arrRoute[0]}/`}
-          categories={content?.categories}
-          colors={content?.page?.colors.products}
-          title
-        />
-        <Partners
-          title="Nossos parceiros"
-          partners={content?.partners?.types}
-          colors={content?.partners?.colors}
-        />
+        <CategoryGrid categories={content?.categories} />
+        <PartnersButton />
       </Templates>
     </>
   )

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { cn } from '@/utils/cn'
 import Link from 'next/link'
 
 export default function ProductsCard({
@@ -35,7 +36,10 @@ export default function ProductsCard({
                 baseUrlGeo,
                 category: category.label,
               })}
-              className={`group flex h-[6.25rem] w-full flex-1 items-center justify-center overflow-hidden rounded-[60px_25px_60px_25px] bg-cover bg-center py-5 grayscale-[80%] duration-500 before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-[#0a0a0ab4] before:content-[''] md:h-[135px] md:min-w-[25%] md:rounded-[90px_25px_90px_25px] md:hover:scale-105 ${heightCard && heightCard} `}
+              className={cn(
+                "group flex h-[6.25rem] w-full flex-1 items-center justify-center overflow-hidden rounded-[60px_25px_60px_25px] bg-cover bg-center py-5 grayscale-[80%] duration-500 before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-[#0a0a0ab4] before:content-[''] md:h-[135px] md:min-w-[25%] md:rounded-[90px_25px_90px_25px] md:hover:scale-105",
+                heightCard && heightCard,
+              )}
             >
               <img
                 src={category.thumbnail.imageUrl}
@@ -47,7 +51,10 @@ export default function ProductsCard({
                   color: colors?.text || '#fff',
                   textShadow: '2px 2px 1px #000',
                 }}
-                className={`absolute ${textSize} z-10 w-3/4 text-center text-base font-medium uppercase duration-700 md:group-hover:scale-[1.10]`}
+                className={cn(
+                  'absolute z-10 w-3/4 text-center text-base font-medium uppercase duration-700 md:group-hover:scale-[1.10]',
+                  textSize,
+                )}
               >
                 {category.title}
               </p>
