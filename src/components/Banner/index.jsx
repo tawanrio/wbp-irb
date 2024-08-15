@@ -22,6 +22,8 @@ export default function Banner({ banners, stlyeText, page }) {
       return () => {
         window.removeEventListener('resize', handleResize)
       }
+    } else {
+      setIsSmallScreen(false)
     }
   }, [])
 

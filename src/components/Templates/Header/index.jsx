@@ -20,6 +20,8 @@ export default function Header({ content, page }) {
       return () => {
         window.removeEventListener('resize', handleResize)
       }
+    } else {
+      setIsSmallScreen(false)
     }
   }, [])
 
