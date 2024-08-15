@@ -34,7 +34,7 @@ export default function Nav({ content }) {
           background: colors.bg,
           color: colors.text,
         }}
-        className="absolute right-0 top-4 !z-[999] mt-8 flex w-[65%] flex-col p-4 pt-0 capitalize opacity-0 duration-500 md:relative md:top-0 md:z-50 md:mt-0 md:w-full md:flex-row md:items-center md:justify-end md:gap-0 md:p-0 md:opacity-100"
+        className={`absolute right-0 top-4 !z-[999] mt-8 flex w-[65%] flex-col p-4 pt-0 capitalize opacity-0 duration-500 md:relative md:top-0 md:z-50 md:mt-0 md:w-full md:flex-row md:items-center md:justify-end md:gap-0 md:p-0 md:opacity-100`}
       >
         {dataHeader?.nav[0].links?.map((link, lId) => (
           <MenuItem

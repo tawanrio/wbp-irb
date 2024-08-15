@@ -46,11 +46,6 @@ export default function Produtos({ content }) {
       >
         <Banner banners={banners} />
         <BreadCrumb />
-        <Products
-          products={content?.products}
-          colors={content?.page.colors}
-          page
-        />
         {/* <Faq faq={faq}/> */}
       </Templates>
     </>

@@ -2,21 +2,36 @@ import { useState, useEffect } from 'react'
 import Dots from './components/Dots'
 import ContentBanner from './components/ContentBanner'
 import Arrow from './components/Arrow'
-import { useMediaQuery } from 'react-responsive'
 
 export default function Banner({ banners, stlyeText, page }) {
   const [activeBanner, setActiveBanner] = useState(0)
   const [size, setSize] = useState(banners?.size.height)
   const showButtonsBanner = banners?.carousel.length > 1
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
 
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 760px)' })
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsSmallScreen(window.innerWidth < 760)
+
+      const handleResize = () => {
+        setIsSmallScreen(window.innerWidth < 760)
+      }
+
+      window.addEventListener('resize', handleResize)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (page !== 'home') return
+
     if (isSmallScreen) {
-      setSize(400)
+      setSize(400) // Define o tamanho do banner para telas pequenas
     } else {
-      setSize(banners?.size.height) // ou o tamanho padrão
+      setSize(banners?.size.height) // Define o tamanho padrão do banner
     }
   }, [isSmallScreen, banners, page])
 
