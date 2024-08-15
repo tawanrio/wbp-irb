@@ -12,7 +12,7 @@ export default function SubMenu({
     <div
       style={{
         ...(submenuOpen && { display: 'block' }),
-        background: colors.bg,
+        background: colors.bgSubmenu || colors.bg,
         color: colors.text,
       }}
       className="z-[99] hidden text-sm md:absolute md:overflow-hidden md:rounded-b-md md:py-2 md:shadow-[0_10px_15px_-10px_rgba(0,0,0,.8)] md:group-hover:block"

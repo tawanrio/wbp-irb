@@ -10,7 +10,7 @@ export default function Header({ content, page }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 180) {
+      if (window.scrollY > 150) {
         setHeaderFixed(true)
       } else {
         setHeaderFixed(false)
@@ -29,21 +29,22 @@ export default function Header({ content, page }) {
   }, [])
 
   if (page === 'home') {
-    content.colors.bg = '#252525'
-    content.colors.hoverbg = '#636363'
+    content.colors.bg = 'transparent'
+    content.colors.bgSubmenu = '#252525'
+    content.colors.hoverbg = '#888888'
     content.colors.hovertext = '#fff'
     content.colors.text = '#fff'
     content.logo.url = '/images/templates/header/logo-white.svg'
     content.nav[0].icon = '/images/arrow-white.svg'
 
-    styleHome = `absolute z-50 w-full mt-5 transition-all duration-700 ease-in-out`
-    styleDefault = `fixed z-50 top-0 left-0 w-full !bg-[#252525] transition-all duration-700 ease-in-out`
+    styleHome = `absolute z-30 w-full transition-all duration-1000 ease-in-out`
+    styleDefault = `fixed z-30 top-0 left-0 w-full !bg-[#252525] transition-all duration-1000 ease-in-out`
   }
 
   return (
     <header className={`${!headerFixed ? styleHome : styleDefault}`}>
       <Container
-        className={`!flex-row !items-center rounded-2xl !py-4 ${page === 'home' && '!bg-[#252525] !py-2'} ${headerFixed && '!w-full'}`}
+        className={`!flex-row !items-center rounded-2xl !py-4 ${page === 'home' && '!bg-transparent !py-2'} ${headerFixed && '!w-full'}`}
       >
         <Logo content={content} />
         <Nav content={content} />

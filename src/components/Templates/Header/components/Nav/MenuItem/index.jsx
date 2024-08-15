@@ -27,7 +27,7 @@ export default function MenuItem({
             ? { background: colors.hoverbg, color: colors.hovertext }
             : ''),
         }}
-        className="mx-1 flex w-full flex-row-reverse justify-start gap-3 px-4 py-2 font-medium duration-500 md:flex-row md:text-base"
+        className="mx-1 flex w-full flex-row-reverse justify-start gap-3 px-4 py-2 font-medium duration-500 md:flex-row md:justify-center md:rounded-full md:text-base"
       >
         <span>{link.label}</span>
         {hasSubmenu && (

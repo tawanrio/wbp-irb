@@ -3,12 +3,12 @@ import ImportantNoticeImg from '../../../../public/images/components/cookiePopup
 
 export const ImportantNotice = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 z-40 flex h-full w-full items-center justify-center bg-black/50">
-      <div className="z-50 m-3.5 flex flex-col items-center gap-5 rounded bg-[#f0f0f0] p-5 shadow-lg">
+    <div className="fixed inset-0 z-40 flex h-full w-full items-center justify-center bg-black/50 p-3.5">
+      <div className="z-50 flex max-h-[90vh] flex-col items-center gap-5 rounded bg-[#f0f0f0] p-5 shadow-lg">
         <img
           src={ImportantNoticeImg.src}
           alt="Comunicado Importante"
-          className="max-h-[42rem] max-w-full"
+          className="max-h-[70vh] max-w-full object-contain"
         />
         <button
           onClick={onClose}
