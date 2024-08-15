@@ -1,10 +1,7 @@
 export default function Dots({ controllerBanner }) {
   const { activeBanner, setActiveBanner, banners } = controllerBanner
   return (
-    <div
-      id="dotsBanners"
-      className={`absolute bottom-0 z-30 mb-2 md:mb-10 ${!(banners?.carousel.length > 1) && 'md:hidden'}`}
-    >
+    <div id="dotsBanners" className={`absolute bottom-0 z-30 mb-2 md:mb-10`}>
       {banners?.carousel.map((banner, index) => (
         <button
           type="button"

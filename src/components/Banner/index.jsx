@@ -7,6 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 export default function Banner({ banners, stlyeText, page }) {
   const [activeBanner, setActiveBanner] = useState(0)
   const [size, setSize] = useState(banners?.size.height)
+  const showButtonsBanner = banners?.carousel.length > 1
 
   const isSmallScreen = useMediaQuery({ query: '(max-width: 760px)' })
 
@@ -44,9 +45,11 @@ export default function Banner({ banners, stlyeText, page }) {
         className={`relative mb-4 flex justify-center bg-[#03050ede] md:mb-0`}
         style={{ height: size }}
       >
-        <Dots
-          controllerBanner={{ banners, setActiveBanner, activeBanner, size }}
-        />
+        {showButtonsBanner && (
+          <Dots
+            controllerBanner={{ banners, setActiveBanner, activeBanner, size }}
+          />
+        )}
 
         <ContentBanner
           controllerBanner={{
@@ -58,16 +61,18 @@ export default function Banner({ banners, stlyeText, page }) {
           stlyeText={stlyeText}
         />
 
-        <Arrow
-          controllerBanner={{
-            banners,
-            setActiveBanner,
-            activeBanner,
-            prevBanner,
-            nextBanner,
-            size,
-          }}
-        />
+        {showButtonsBanner && (
+          <Arrow
+            controllerBanner={{
+              banners,
+              setActiveBanner,
+              activeBanner,
+              prevBanner,
+              nextBanner,
+              size,
+            }}
+          />
+        )}
       </div>
     </section>
   )

@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import Logo from './components/Logo'
 import Container from '@/components/Container'
 import Nav from './components/Nav'
+import { useMediaQuery } from 'react-responsive'
 
 export default function Header({ content, page }) {
   const [headerFixed, setHeaderFixed] = useState(false)
   let styleHome
   let styleDefault
+  const isSmallScreen = useMediaQuery({ query: '(max-width: 760px)' })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +31,7 @@ export default function Header({ content, page }) {
   }, [])
 
   if (page === 'home') {
-    content.colors.bg = 'transparent'
+    content.colors.bg = !isSmallScreen ? 'transparent' : '#252525'
     content.colors.bgSubmenu = '#252525'
     content.colors.hoverbg = '#888888'
     content.colors.hovertext = '#fff'

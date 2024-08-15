@@ -5,7 +5,7 @@ export default function Arrow({ controllerBanner }) {
   return (
     <div
       id="arrowBanners"
-      className={`md:max-w-8xl absolute w-full select-none ${!(banners?.carousel.length > 1) && 'hidden'} `}
+      className={`md:max-w-8xl absolute w-full select-none`}
     >
       <a
         style={{
