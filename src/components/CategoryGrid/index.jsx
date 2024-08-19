@@ -1,7 +1,7 @@
 import CategoryCard from './CategoryCard'
 import SectionTitle from '@/components/SectionTitle'
 
-const CategoryGrid = ({ categories }) => {
+const CategoryGrid = ({ categories, baseUrl }) => {
   return (
     <section
       id="blog-carousel"
@@ -10,7 +10,11 @@ const CategoryGrid = ({ categories }) => {
       <SectionTitle title="Nossa Linha de Produtos" line />
       <ul className="container mx-auto my-5 grid grid-cols-1 gap-8 py-10 md:grid-cols-2 lg:grid-cols-3">
         {categories.slice(0, 6).map((category) => (
-          <CategoryCard key={category._id} category={category} />
+          <CategoryCard
+            key={category._id}
+            category={category}
+            baseUrl={baseUrl}
+          />
         ))}
       </ul>
     </section>

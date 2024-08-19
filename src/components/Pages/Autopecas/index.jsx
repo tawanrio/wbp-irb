@@ -31,6 +31,7 @@ export default function Autoparts({ content }) {
     imgDescription,
     metaKeywords,
   } = content?.page
+  const pageUrl = router.asPath.replace('/', '')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -66,7 +67,10 @@ export default function Autoparts({ content }) {
           products={content?.products}
         />
         <ContentImgDescription content={imgDescription} />
-        <CategoryGrid categories={content?.categories} />
+        <CategoryGrid
+          categories={content?.categories}
+          baseUrl={pageUrl + '/'}
+        />
         <PartnersButton />
       </Templates>
     </>

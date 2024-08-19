@@ -23,6 +23,7 @@ export default function AutocenterEMecanicas({ content }) {
   const [metaDescription, setMetaDescription] = useState(
     content?.page?.metaDescription,
   )
+  const pageUrl = router.asPath.replace('/', '')
 
   const {
     banners,
@@ -71,7 +72,10 @@ export default function AutocenterEMecanicas({ content }) {
           collections={content?.collection}
           products={content?.products}
         />
-        <ContentImgDescription content={imgDescription} />
+        <ContentImgDescription
+          content={imgDescription}
+          baseUrl={pageUrl + '/'}
+        />
         <PartnersButton />
       </Templates>
     </>

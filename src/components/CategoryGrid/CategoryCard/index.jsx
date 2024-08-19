@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const CategoryCard = ({ category }) => {
+const CategoryCard = ({ category, baseUrl }) => {
   return (
     <li className="flex flex-col justify-between overflow-hidden rounded-md bg-white shadow-md">
       <figure className="relative h-48 w-full">
@@ -22,7 +22,10 @@ const CategoryCard = ({ category }) => {
         </div>
         <div className="mt-4">
           <a
-            href={category.label}
+            href={generateProductUrl({
+              baseUrl,
+              category: category.label,
+            })}
             className="inline-block rounded-md bg-[#22326e] px-4 py-2 text-center text-white transition-colors duration-300 hover:bg-blue-700"
           >
             Saiba mais
@@ -31,6 +34,17 @@ const CategoryCard = ({ category }) => {
       </div>
     </li>
   )
+}
+
+function generateProductUrl({ baseUrl, baseUrlGeo, category }) {
+  const productName = category.toLowerCase().trim().replaceAll(' ', '-')
+  baseUrl = baseUrl || '/'
+
+  if (baseUrlGeo) {
+    const arrRoute = baseUrlGeo.replace('/', '').split('/')
+    return `/${arrRoute[0]}/${productName}/${arrRoute[1]}`
+  }
+  return baseUrl + productName
 }
 
 export default CategoryCard

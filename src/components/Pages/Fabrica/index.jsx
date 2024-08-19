@@ -15,6 +15,7 @@ import CategoryGrid from '@/components/CategoryGrid'
 
 // Others
 import { sortByKey } from '@/utils/functions'
+import { useRouter } from 'next/router'
 
 export default function Fabrica({ content }) {
   const {
@@ -25,7 +26,8 @@ export default function Fabrica({ content }) {
     metaKeywords,
     events,
   } = content?.page
-
+  const router = useRouter()
+  const pageUrl = router.asPath.replace('/', '')
   const sortedCategories = sortByKey(content.categories, 'label')
 
   return (
@@ -48,7 +50,11 @@ export default function Fabrica({ content }) {
         <ContentDescription content={description} className={'mt-5'} />
         <TimeLineNew />
         <CompanyValuesNew />
-        <CategoryGrid categories={sortedCategories} title />
+        <CategoryGrid
+          categories={sortedCategories}
+          title
+          baseUrl={pageUrl + '/'}
+        />
         <CarouselEvent events={events} />
       </Templates>
     </>

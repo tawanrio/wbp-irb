@@ -21,6 +21,7 @@ import { useRouter } from 'next/router'
 
 export default function Distribuidoras({ content }) {
   const router = useRouter()
+  const pageUrl = router.asPath.replace('/', '')
   const [fullUrl, setFullUrl] = useState('')
   const [metaDescription, setMetaDescription] = useState(
     content?.page?.metaDescription,
@@ -75,7 +76,10 @@ export default function Distribuidoras({ content }) {
           geo={content?.geo}
         />
         <ContentImgDescription content={imgDescription} />
-        <CategoryGrid categories={content?.categories} />
+        <CategoryGrid
+          categories={content?.categories}
+          baseUrl={pageUrl + '/'}
+        />
         <PartnersButton />
         {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
         {content?.page?.faq && Object.entries(content.page.faq).length > 0 && (
