@@ -14,6 +14,8 @@ import { useState } from 'react'
 import ContentImgHTMLDesc from '../Categoria/components/ContentImgHTMLDesc'
 import ButtonCta from '@/components/ButtonCta'
 import SectionTitle from '@/components/SectionTitle'
+import Form from './components/Form'
+import Container from '@/components/Container'
 
 export default function Service({ content }) {
   const [metaTitle] = useState(content?.page.metaTitle)
@@ -37,18 +39,14 @@ export default function Service({ content }) {
       >
         <Banner banners={banners} />
         <BreadCrumb />
-        <section
-          className="flex flex-col items-center"
-          id={`content-img-description_`}
-        >
-          <div className="my-4 flex w-full max-w-7xl flex-col px-6 md:mb-[-20px] md:mt-10 md:justify-between md:gap-10 md:px-14">
-            <SectionTitle title={content.page.title} />
-          </div>
-        </section>
+        <Container>
+          <SectionTitle title={content.page.title} />
+        </Container>
         <ContentImgHTMLDesc
           textHTML={service?.contentHTML}
           image={service?.image}
         />
+        <Form></Form>
         {service.button.url && (
           <ButtonCta button={service.button} className={'mt-[-50px]'} />
         )}

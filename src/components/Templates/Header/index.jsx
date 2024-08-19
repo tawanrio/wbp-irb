@@ -2,13 +2,28 @@ import { useEffect, useState } from 'react'
 import Logo from './components/Logo'
 import Container from '@/components/Container'
 import Nav from './components/Nav'
-import { useMediaQuery } from 'react-responsive'
 
 export default function Header({ content, page }) {
   const [headerFixed, setHeaderFixed] = useState(false)
-  let styleHome
-  let styleDefault
-  const isSmallScreen = useMediaQuery({ query: '(max-width: 760px)' })
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsSmallScreen(window.innerWidth < 640)
+
+      const handleResize = () => {
+        setIsSmallScreen(window.innerWidth < 640)
+      }
+
+      window.addEventListener('resize', handleResize)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
+    } else {
+      setIsSmallScreen(false)
+    }
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +45,11 @@ export default function Header({ content, page }) {
     }
   }, [])
 
+  let styleHome
+  let styleDefault
+
   if (page === 'home') {
+    // Aplica diferentes estilos de acordo com o tamanho da tela
     content.colors.bg = !isSmallScreen ? 'transparent' : '#252525'
     content.colors.bgSubmenu = '#252525'
     content.colors.hoverbg = '#888888'
@@ -46,7 +65,9 @@ export default function Header({ content, page }) {
   return (
     <header className={`${!headerFixed ? styleHome : styleDefault}`}>
       <Container
-        className={`!flex-row !items-center rounded-2xl !py-4 ${page === 'home' && '!bg-transparent !py-2'} ${headerFixed && '!w-full'}`}
+        className={`!flex-row !items-center rounded-2xl !py-4 ${
+          page === 'home' && '!bg-transparent !py-2'
+        } ${headerFixed && '!w-full'}`}
       >
         <Logo content={content} />
         <Nav content={content} />

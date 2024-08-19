@@ -16,7 +16,7 @@ export default function ContentImgHTMLDesc({ textHTML, image }) {
       id="content-img-description_"
       className="flex flex-col items-center"
     >
-      <div className="my-4 flex w-full max-w-7xl flex-col px-6 md:my-10 md:justify-between md:gap-10 md:px-14">
+      <div className="my-4 flex w-full max-w-7xl flex-col px-6 md:my-0 md:justify-between md:gap-10 md:px-14">
         <div className="mt-8 flex flex-col justify-between gap-8 md:my-6 md:flex-row md:gap-14">
           <div className="group relative h-[300px] md:h-[400px]">
             <div className="h-full overflow-hidden duration-700 group-hover:scale-105 md:min-w-[380px]">
