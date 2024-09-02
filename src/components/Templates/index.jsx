@@ -37,6 +37,13 @@ export default function Templates({
 
   insertMenuInTemplate({
     menus,
+    template,
+    menuName: 'company',
+    itemTemplateName: 'default',
+    templateName: 'footer',
+  })
+  insertMenuInTemplate({
+    menus,
     menuName: 'partners',
     template,
     itemTemplateName: 'default',
@@ -46,13 +53,6 @@ export default function Templates({
     menus,
     template,
     menuName: 'products',
-    itemTemplateName: 'default',
-    templateName: 'footer',
-  })
-  insertMenuInTemplate({
-    menus,
-    template,
-    menuName: 'company',
     itemTemplateName: 'default',
     templateName: 'footer',
   })
