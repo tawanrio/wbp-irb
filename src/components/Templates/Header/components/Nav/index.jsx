@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import MenuItem from './MenuItem'
 import Hamburguer from './Hamburger'
+import { cn } from '@/utils/cn'
 
 export default function Nav({ content }) {
   const [isHovered, setIsHovered] = useState(false)
@@ -34,7 +35,10 @@ export default function Nav({ content }) {
           background: menuOpen && colors.bg,
           color: colors.text,
         }}
-        className="absolute right-0 top-4 !z-[999] mt-8 flex w-[65%] flex-col p-4 pt-0 capitalize opacity-0 duration-500 lg:relative lg:top-0 lg:z-50 lg:mt-0 lg:w-full lg:flex-row lg:items-center lg:justify-end lg:gap-0 lg:p-0 lg:opacity-100"
+        className={cn(
+          'absolute right-14 top-24 !z-[999] mt-8 flex w-7/12 flex-col rounded-lg p-4 capitalize opacity-0 backdrop-blur-md duration-500 lg:relative lg:right-0 lg:top-0 lg:z-50 lg:mt-0 lg:w-full lg:flex-row lg:items-center lg:justify-end lg:gap-0 lg:p-0 lg:opacity-100 lg:backdrop-blur-none',
+          menuOpen ? 'flex' : 'max-lg:hidden',
+        )}
       >
         {dataHeader?.nav[0].links?.map((link, lId) => (
           <MenuItem

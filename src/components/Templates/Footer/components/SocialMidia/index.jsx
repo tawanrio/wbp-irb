@@ -4,7 +4,9 @@ import Link from 'next/link'
 export default function SocialMidia({ content, setWhatsapp }) {
   return (
     <ul className="space-y-3">
-      <li className="text-lg font-normal capitalize">{content?.labelName}</li>
+      <li className="text-center text-lg font-normal capitalize lg:text-start">
+        {content?.labelName}
+      </li>
 
       <li className="flex items-center gap-3.5">
         {content?.networks.map((network, index) => {

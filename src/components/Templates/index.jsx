@@ -4,17 +4,9 @@ import Footer from './Footer'
 import Header from './Header'
 import { insertMenuInTemplate } from '@/utils/functions'
 import { CookiePopup } from '../CookiePopup'
-import Banner from '../Banner'
-import { BackgroundImageAutomotive } from '../BackgroundImage/Automotive'
+import { BackgroundImage } from '../BackgroundImage'
 
-export default function Templates({
-  style,
-  children,
-  template,
-  page,
-  menus,
-  banner,
-}) {
+export default function Templates({ children, template, page, menus }) {
   const arrHeader = template?.find((item) => item?.label === 'header')
   const header = arrHeader?.items.find((item) => item?.label === 'default')
 
@@ -60,15 +52,29 @@ export default function Templates({
 
   return (
     <>
-      <CookiePopup />
-      <ToastContainer />
-      <Header content={header} page={page.label} />
-      <Banner banners={banner} stlyeText={style} page={page.label} />
-      <BackgroundImageAutomotive>
-        <main>{children}</main>
-        <Footer content={footer} />
-        <Copyright content={copyright} />
-      </BackgroundImageAutomotive>
+      {page.label === 'home' ? (
+        <>
+          <CookiePopup />
+          <ToastContainer />
+          <BackgroundImage isHome>
+            <Header content={header} page={page.label} />
+          </BackgroundImage>
+          <BackgroundImage>
+            <main>{children}</main>
+            <Footer content={footer} />
+            <Copyright content={copyright} />
+          </BackgroundImage>
+        </>
+      ) : (
+        <>
+          <CookiePopup />
+          <ToastContainer />
+          <Header content={header} page={page.label} />
+          <main>{children}</main>
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </>
+      )}
     </>
   )
 }
