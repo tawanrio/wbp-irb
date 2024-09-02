@@ -8,7 +8,8 @@ export default function SocialMidia({ content, setWhatsapp }) {
 
       <li className="flex items-center gap-3.5">
         {content?.networks.map((network, index) => {
-          setWhatsapp(network.name !== 'Whatsapp' && network)
+          network.name === 'Whatsapp' && setWhatsapp(network)
+
           return (
             network.name !== 'Whatsapp' && (
               <Link

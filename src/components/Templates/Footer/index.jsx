@@ -13,7 +13,7 @@ export default function Footer({ content }) {
 
   return (
     <footer style={{ background: colors?.bg, color: colors?.text }}>
-      <div className="relative mx-auto flex flex-col gap-1 px-5 py-6 md:max-w-7xl md:justify-between md:px-14 md:py-12 lg:flex-row">
+      <div className="relative mx-auto flex flex-col gap-1 px-5 py-6 md:max-w-[1600px] md:justify-between md:px-14 md:py-12 lg:flex-row">
         <RenderList nav={dataFooter?.nav} colors={colors} />
 
         <div className="mx-auto flex w-full max-w-80 flex-col items-center gap-6 lg:mx-3 lg:flex-1 lg:items-start lg:last:mr-0">

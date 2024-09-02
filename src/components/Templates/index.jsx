@@ -5,6 +5,7 @@ import Header from './Header'
 import { insertMenuInTemplate } from '@/utils/functions'
 import { CookiePopup } from '../CookiePopup'
 import Banner from '../Banner'
+import { BackgroundImageAutomotive } from '../BackgroundImage/Automotive'
 
 export default function Templates({
   style,
@@ -63,9 +64,11 @@ export default function Templates({
       <ToastContainer />
       <Header content={header} page={page.label} />
       <Banner banners={banner} stlyeText={style} page={page.label} />
-      <main>{children}</main>
-      <Footer content={footer} />
-      <Copyright content={copyright} />
+      <BackgroundImageAutomotive>
+        <main>{children}</main>
+        <Footer content={footer} />
+        <Copyright content={copyright} />
+      </BackgroundImageAutomotive>
     </>
   )
 }

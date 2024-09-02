@@ -25,11 +25,11 @@ export default function RenderList({ nav, colors }) {
         ))}
       </ul>
 
-      <figure className="flex w-full justify-center lg:w-10/12 lg:justify-end">
+      <figure className="flex w-full justify-center lg:w-[80%] lg:justify-end">
         <Image
           src={logo}
           alt="Logo IRB Automovite"
-          width={173.37}
+          width={163.37}
           height={168.84}
         />
       </figure>
