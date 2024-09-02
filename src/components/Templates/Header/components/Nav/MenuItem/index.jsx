@@ -15,7 +15,7 @@ export default function MenuItem({
   const hasSubmenu = Object.prototype.hasOwnProperty.call(link, 'submenu')
 
   return (
-    <ul className="group z-50 flex w-full flex-col items-end uppercase md:inline-block md:w-auto">
+    <ul className="group z-50 flex w-full flex-col items-end uppercase lg:inline-block lg:w-auto">
       <Link
         target={link?.blank}
         href={link.route || '/#'}
@@ -27,7 +27,7 @@ export default function MenuItem({
             ? { background: colors.hoverbg, color: colors.hovertext }
             : ''),
         }}
-        className="mx-1 flex w-full flex-row-reverse justify-start gap-3 px-4 py-2 font-medium duration-500 md:flex-row md:justify-center md:rounded-full md:text-base"
+        className="mx-1 flex w-full flex-row-reverse justify-start gap-3 px-4 py-2 font-medium duration-500 lg:flex-row lg:justify-center lg:rounded-full lg:text-base"
       >
         <span>{link.label}</span>
         {hasSubmenu && (
@@ -42,7 +42,7 @@ export default function MenuItem({
                   transform: 'rotate(0deg)',
                 }),
             }}
-            className="rotate-[90deg] duration-500 md:rotate-[-90deg] md:group-hover:rotate-[0deg]"
+            className="rotate-[90deg] duration-500 lg:rotate-[-90deg] lg:group-hover:rotate-[0deg]"
           />
         )}
       </Link>

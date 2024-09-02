@@ -15,7 +15,7 @@ export default function SubMenu({
         background: colors.bgSubmenu || colors.bg,
         color: colors.text,
       }}
-      className="z-[99] hidden text-sm md:absolute md:overflow-hidden md:rounded-b-md md:py-2 md:shadow-[0_10px_15px_-10px_rgba(0,0,0,.8)] md:group-hover:block"
+      className="z-[99] hidden text-sm lg:absolute lg:overflow-hidden lg:rounded-b-md lg:py-2 lg:shadow-[0_10px_15px_-10px_rgba(0,0,0,.8)] lg:group-hover:block"
     >
       {submenu.map((submenuItem, sId) => (
         <ul key={submenuItem.label || 's' + sId} className="w-full">
@@ -30,7 +30,7 @@ export default function SubMenu({
                 ? { background: colors.hoverbg, color: colors.hovertext }
                 : ''),
             }}
-            className="flex w-full justify-end whitespace-nowrap px-5 py-1 text-end duration-500 md:justify-start md:text-start md:text-base"
+            className="flex w-full justify-end whitespace-nowrap px-5 py-1 text-end duration-500 lg:justify-start lg:text-start lg:text-base"
           >
             {submenuItem.label || 'Submenu Item'}
           </Link>

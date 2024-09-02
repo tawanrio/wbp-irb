@@ -4,7 +4,7 @@ export default function Hamburguer({ menuOpen, handleMenu, colors }) {
   return (
     <>
       <div
-        className="flex w-full cursor-pointer items-center justify-end gap-4 md:hidden"
+        className="flex w-full cursor-pointer items-center justify-end gap-4 lg:hidden"
         onClick={handleMenu}
       >
         <span
