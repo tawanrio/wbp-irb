@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react'
-import SectionTitle from '@/components/SectionTitle'
 import SingleUtility from './SingleUtility'
 
-const UtilityCards = ({ title }) => {
+const UtilityCards = () => {
   const partnerTypes = [
     {
       title: 'EngraxaMente',
@@ -67,7 +65,7 @@ const UtilityCards = ({ title }) => {
     setCurrentIndex((prevIndex) => {
       const newIndex = prevIndex - 1
       if (newIndex < 0) {
-        return partnerTypes.length - 2 // Voltar para o último card ao chegar ao início
+        return partnerTypes.length - 2
       }
       return newIndex
     })
@@ -79,7 +77,6 @@ const UtilityCards = ({ title }) => {
       id="blog-carousel"
     >
       <div className="relative my-4 flex w-full max-w-lg flex-col px-6 md:mb-0 md:max-w-7xl md:px-14">
-        <SectionTitle title={'Utilidades'} line />
         <div className="py-15 container mx-auto my-5">
           <div className="relative flex overflow-hidden">
             <button

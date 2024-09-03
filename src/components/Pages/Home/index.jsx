@@ -6,13 +6,11 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import DiffCarouselTwo from './components/DiffCarouselTwo'
 import CategoryGrid from '@/components/CategoryGrid'
 import PartnersButton from './components/PartnersButton'
 import UtilityCards from './components/UtilityCards'
 import { BlogCarousel } from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
-import { Info } from '@/components/Info'
 import { FormHome } from '@/components/Form/Home'
 
 // Others || functions
@@ -25,7 +23,6 @@ export default function Home({ content }) {
   const [metaDescription] = useState(content?.page?.metaDescription)
   const [metaKeywords] = useState(content?.page?.metaKeywords)
   const [description] = useState(content?.page?.contentDescription)
-  const [diffCarousel] = useState(content?.page?.diffCarousel)
   const [banners] = useState(content?.page?.banners)
   const [formDefault] = useState(
     content?.form?.forms.find((item) => item.label === 'default'),
@@ -33,11 +30,6 @@ export default function Home({ content }) {
   const [posts] = useState(content.blogData)
 
   const sortedCategories = sortByKey(content.categories, 'label')
-  // content.menus[2].links = sortByKey(content.menus[2].links, 'label')
-  // content.menus[0].links[3].submenu = sortByKey(
-  //   content.menus[0].links[3].submenu,
-  //   'label',
-  // )
 
   return (
     <>
@@ -56,13 +48,12 @@ export default function Home({ content }) {
         style={'home'}
       >
         <ServicesOverview />
-        <DiffCarouselTwo content={diffCarousel} />
         <CategoryGrid categories={sortedCategories} title />
         <PartnersButton partners={content?.partners?.types} />
         <UtilityCards />
         <BlogCarousel posts={posts} />
         <FormHome inputs={formDefault} />
-        {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
+        {/* {content?.page?.info?.length > 0 && <Info info={content.page.info} />} */}
       </Templates>
     </>
   )

@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-const SinglePartner = ({ partner }) => {
+export const SinglePartner = ({ partner }) => {
   return (
-    <li className="group flex items-center justify-center overflow-hidden rounded-md bg-[#22326e] py-4 shadow-md duration-500">
-      <figure className="relative size-24 rounded-full border-[#AF231C] bg-[#AF231C] md:h-32 md:w-32 md:border-4">
+    <li className="flex flex-col gap-5">
+      <div className="rounded-3xl border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] p-4 shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)]">
         <Image
           src={partner.image}
           alt={`Imagem ${partner.title}`}
@@ -12,22 +13,21 @@ const SinglePartner = ({ partner }) => {
           height={200}
           className="m-auto p-4 duration-500 group-hover:scale-105"
         />
-      </figure>
-      <div className="flex w-[200px] flex-col items-start justify-between p-4">
-        <div>
-          <h2 className="text-2xl font-bold text-white">{partner.title}</h2>
-        </div>
-        <div className="mt-4">
-          <a
-            href={partner.link}
-            className="inline-block rounded-md border-2 border-white bg-white px-4 py-2 text-center font-semibold text-[#222b4e] transition-colors duration-500 hover:border-white hover:bg-[#222b4e] hover:text-white"
-          >
-            Saiba mais
-          </a>
+        <div className="flex flex-col items-start justify-between gap-1 p-4">
+          <p className="m-0 text-3xl font-extralight uppercase text-[#982225]">
+            {partner.surtitle}
+          </p>
+          <h2 className="m-0 break-all text-3xl font-black uppercase text-[#982225]">
+            {partner.title}
+          </h2>
         </div>
       </div>
+      <Link
+        href={partner.link}
+        className="mx-auto w-fit rounded-full bg-[#982225] px-5 py-1 text-center text-lg font-extralight uppercase text-white duration-200"
+      >
+        Saiba mais
+      </Link>
     </li>
   )
 }
-
-export default SinglePartner

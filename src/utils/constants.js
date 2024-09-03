@@ -120,18 +120,21 @@ export const COMPANY_CORE_VALUES = [
 
 export const PARTNER_TYPES = [
   {
-    image: '/images/components/icons/autoparts2-white.png',
+    surtitle: 'Redes',
     title: 'Autopeças',
+    image: '/images/components/icons/gear-red.svg',
     link: '/autopecas',
   },
   {
-    image: '/images/components/icons/distributors-white.png',
+    surtitle: 'Nossos',
     title: 'Distribuidoras',
+    image: '/images/components/icons/distributors-red.svg',
     link: '/distribuidoras',
   },
   {
-    image: '/images/components/icons/mechanic-white.png',
+    surtitle: 'Encontre',
     title: 'Mecânicas',
+    image: '/images/components/icons/mechanic-red.svg',
     link: '/mecanicas',
   },
 ]
