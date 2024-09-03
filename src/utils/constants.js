@@ -135,3 +135,57 @@ export const PARTNER_TYPES = [
     link: '/mecanicas',
   },
 ]
+
+export const SERVICE_ADVANTAGES = [
+  {
+    title: 'Portfólio',
+    description: 'Cobertura de 99% da frota circulante',
+    icon: {
+      url: '/images/components/icons/truck.svg',
+      alt: 'Ícone de caminhão',
+    },
+  },
+  {
+    title: 'Produtos',
+    description: 'Desenvolvidos sob medida para o clima e solo brasileiros',
+    icon: {
+      url: '/images/components/icons/brazil.svg',
+      alt: 'Ícone do brasil',
+    },
+  },
+  {
+    title: 'Certificações',
+    description:
+      'Maiores <strong class="font-medium">certificadoras</strong> mundiais',
+    icon: {
+      url: '/images/components/icons/tool.svg',
+      alt: 'Ícone de ferramenta',
+    },
+  },
+]
+
+export const QUALITY_CERTIFICATIONS = [
+  {
+    url: '/images/components/icons/iso-16949-red.png',
+    alt: 'iso 16949',
+  },
+  {
+    url: '/images/components/icons/iso-9001-red.png',
+    alt: 'iso 9001',
+  },
+]
+
+export const NAVIGATION_LINKS = [
+  {
+    title: 'Nossos Produtos',
+    href: '',
+  },
+  {
+    title: 'EngraxaMente',
+    href: '',
+  },
+  {
+    title: 'Parceiros',
+    href: '',
+  },
+]

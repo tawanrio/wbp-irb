@@ -1,103 +1,76 @@
 import Image from 'next/image'
+import { cn } from '@/utils/cn'
+import {
+  SERVICE_ADVANTAGES,
+  QUALITY_CERTIFICATIONS,
+  NAVIGATION_LINKS,
+} from '@/utils/constants'
+import { LinkRed } from '@/components/LinkRed'
 
 export default function ServicesOverview() {
-  const cards = [
-    {
-      title: 'Portfólio',
-      description: 'Cobertura de 99% da frota circulante.',
-      icons: [
-        {
-          url: '/images/components/icons/portfolio.png',
-          alt: 'iso 9001',
-          title: '',
-          legend: '',
-          bg: '',
-        },
-      ],
-    },
-    {
-      title: 'Produtos',
-      description: 'Desenvolvidos sob medida para o clima e solo brasileiros.',
-      icons: [
-        {
-          url: '/images/components/icons/product-red-2.png',
-          alt: 'iso 9001',
-          title: '',
-          legend: '',
-          bg: '',
-        },
-      ],
-    },
-    {
-      title: 'Certificações',
-      description: 'Maiores certificadoras mundiais.',
-      icons: [
-        {
-          url: '/images/components/icons/iso-9001-red.png',
-          alt: 'iso 9001',
-          title: '',
-          legend: '',
-        },
-        {
-          url: '/images/components/icons/iso-16949-red.png',
-          alt: 'iso 16949',
-          title: '',
-          legend: '',
-        },
-      ],
-    },
-  ]
-
-  const certificate = [
-    {
-      url: '/images/components/icons/iso-9001-red.png',
-      alt: 'iso 9001',
-      title: '',
-      legend: '',
-    },
-    {
-      url: '/images/components/icons/iso-16949-red.png',
-      alt: 'iso 16949',
-      title: '',
-      legend: '',
-    },
-  ]
-
   return (
-    <section className="relative flex flex-col items-center" id="blog-carousel">
-      <div className="my-4 flex w-full max-w-7xl flex-col justify-between gap-4 px-6 md:my-7 md:gap-10 md:px-14">
-        <div className="flex flex-col gap-4 md:flex-row md:gap-10">
-          {cards.map((card, index) => (
-            <div key={index} className="flex w-full flex-col gap-4 md:w-1/3">
-              <div className="card flex h-44 flex-1 flex-col items-center rounded-xl p-8 shadow-md">
-                <h3 className="text-2xl font-bold uppercase text-[#AF231C]">
-                  {card.title}
-                </h3>
-                <p className="text-center text-lg text-[#666]">
-                  {card.description}
-                </p>
-              </div>
-              <div className="flex">
-                {/* Adicione aqui o conteúdo adicional dentro do segundo div */}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-wrap justify-center gap-4">
-          {certificate?.map((icon, indexIcon) => (
-            <div key={indexIcon} className="relative h-24 w-1/2 md:w-1/5">
+    <section
+      id="blog-carousel"
+      className="mx-auto my-4 flex w-full max-w-7xl flex-col gap-4 px-6 md:my-7 md:gap-10 md:px-14"
+    >
+      <div>
+        <div className="flex justify-end gap-1.5">
+          {QUALITY_CERTIFICATIONS?.map((icon, indexIcon) => (
+            <figure key={indexIcon}>
               <Image
                 src={icon.url}
                 alt={icon.alt}
-                fill
-                sizes="100%"
                 quality={100}
-                className={`!h-[80px] object-contain p-0 ${icon.bg ? 'my-1 !h-[70px] rounded-md bg-[#AF231C] !p-1' : ''}`}
+                width={105.28}
+                height={41.42}
+                className={cn(
+                  '!h-[80px] object-contain p-0',
+                  icon.bg && 'my-1 !h-[70px] rounded-md bg-[#AF231C] !p-1',
+                )}
               />
-            </div>
+            </figure>
           ))}
         </div>
+        <>
+          <h1 className="font-['Libre_Baskerville'] text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+            Revolucionando
+          </h1>
+          <h2 className="text-3xl !font-thin text-white sm:text-4xl md:text-5xl">
+            o mercado de <strong className="font-bold">autopeças</strong>
+          </h2>
+        </>
       </div>
+      <ul className="mb-4 mt-7 flex w-full flex-row flex-wrap items-center justify-center gap-7">
+        {NAVIGATION_LINKS.map((link, index) => (
+          <LinkRed
+            key={index}
+            href={link.href}
+            className="w-full max-w-[200px]"
+          >
+            {link.title}
+          </LinkRed>
+        ))}
+      </ul>
+      <ul className="mx-auto flex flex-col gap-4 lg:flex-row lg:gap-10">
+        {SERVICE_ADVANTAGES.map((card, index) => (
+          <li
+            key={index}
+            className="flex w-full max-w-80 flex-col gap-3 rounded-3xl border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] p-10"
+          >
+            <Image
+              src={card.icon.url}
+              alt={card.icon.alt}
+              quality={100}
+              width={90.77}
+              height={90.77}
+            />
+            <p
+              className="m-0 text-2xl !font-thin text-white"
+              dangerouslySetInnerHTML={{ __html: card.description }}
+            />
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }
