@@ -67,8 +67,8 @@ export default function Form({ inputs, colors }) {
 
   return (
     <section
-      className="mx-auto my-4 mb-10 flex w-full max-w-7xl flex-col items-center justify-between gap-10 px-6 md:my-7 md:px-14"
       id="contact_"
+      className="mx-auto my-4 mb-10 flex w-full max-w-7xl flex-col items-center justify-between gap-10 px-6 md:my-7 md:px-14"
     >
       <SectionTitle title="Contato" line className="w-full" />
       <form

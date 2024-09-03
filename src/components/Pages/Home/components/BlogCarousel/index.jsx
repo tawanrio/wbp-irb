@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import SectionTitle from '@/components/SectionTitle'
 import { BlogCard } from './BlogCard'
+import { LinkRed } from '@/components/LinkRed'
 
 export const BlogCarousel = ({ posts }) => {
+  const currentPosts = posts.slice(1, 4)
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const cardWidth = 350
@@ -32,31 +33,32 @@ export const BlogCarousel = ({ posts }) => {
   return (
     <section
       id="blog-carousel"
-      className="mx-auto my-4 flex w-full max-w-7xl flex-col items-center justify-between px-6 md:my-7 md:gap-10 md:px-14"
+      className="mx-auto my-4 flex w-full max-w-7xl flex-col items-center justify-between px-6 md:my-32 md:gap-10 md:px-14"
     >
-      <SectionTitle
-        title="Acompanhe nossas últimas postagens"
-        line
-        className="w-full"
-      />
+      <LinkRed
+        href=""
+        className="w-full uppercase !shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]"
+      >
+        Últimas notícias
+      </LinkRed>
 
       <div className="relative w-full overflow-hidden">
         <ul
-          className="flex gap-4 py-5 transition-transform duration-500 ease-in-out"
+          className="flex gap-10 py-5 transition-transform duration-500 ease-in-out"
           style={{
             transform: `translateX(-${currentIndex * (cardWidth + gap)}px)`,
           }}
         >
-          {posts.map((post, index) => (
+          {currentPosts.map((post, index) => (
             <li
               key={index}
-              className="w-[21.875rem] flex-shrink-0 overflow-hidden rounded-md duration-500 hover:scale-105"
+              className="w-[21.875rem] flex-shrink-0 overflow-hidden rounded-md"
             >
               <BlogCard post={post} />
             </li>
           ))}
         </ul>
-        {posts.length > visibleCards && (
+        {currentPosts.length > visibleCards && (
           <>
             <button
               onClick={prevSlide}

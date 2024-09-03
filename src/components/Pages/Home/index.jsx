@@ -6,12 +6,6 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import Form from '@/components/Form'
-
-// Others || functions
-import { useState } from 'react'
-import { sortByKey } from '@/utils/functions'
-
 import DiffCarouselTwo from './components/DiffCarouselTwo'
 import CategoryGrid from '@/components/CategoryGrid'
 import PartnersButton from './components/PartnersButton'
@@ -19,6 +13,11 @@ import UtilityCards from './components/UtilityCards'
 import { BlogCarousel } from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
 import { Info } from '@/components/Info'
+import { FormHome } from '@/components/Form/Home'
+
+// Others || functions
+import { useState } from 'react'
+import { sortByKey } from '@/utils/functions'
 
 export default function Home({ content }) {
   const [metaTitle] = useState(content?.page?.metaTitle)
@@ -62,7 +61,7 @@ export default function Home({ content }) {
         <PartnersButton partners={content?.partners?.types} />
         <UtilityCards />
         <BlogCarousel posts={posts} />
-        <Form inputs={formDefault} colors={content?.form?.colors} />
+        <FormHome inputs={formDefault} />
         {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
       </Templates>
     </>

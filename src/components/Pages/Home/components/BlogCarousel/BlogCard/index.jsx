@@ -30,29 +30,29 @@ export const BlogCard = ({ post }) => {
   }, [post])
 
   return (
-    <Link
-      href={`blog/${formattedTitle}`}
-      className="flex flex-col items-start justify-start overflow-hidden bg-white"
-    >
-      <figure className="relative h-52 w-full">
+    <p className="flex flex-col items-start justify-start overflow-hidden">
+      <figure className="relative h-[285.96px] w-full">
         <img
           src={imageUrl}
           alt={post?.title?.rendered}
-          className="h-full w-full object-cover"
+          className="h-full w-full rounded-3xl object-cover"
         />
       </figure>
-      <div className="flex flex-grow flex-col items-start justify-between p-4">
-        <h2 className="line-clamp-2 h-14 text-xl font-semibold text-[#222]">
+      <div className="flex flex-grow flex-col items-start justify-between gap-6 px-4 pt-6">
+        <h2 className="line-clamp-2 h-14 text-2xl font-black text-[#982225]">
           {post?.title?.rendered}
         </h2>
         <p
-          className="line-clamp-5 h-[8.5rem] text-[#222]"
+          className="line-clamp-4 text-lg font-thin text-[#222]"
           dangerouslySetInnerHTML={{ __html: sanitizedExcerpt }}
         />
-        <p className="m-0 font-semibold text-black hover:underline">
-          Saiba mais
-        </p>
+        <Link
+          href={`blog/${formattedTitle}`}
+          className="m-0 rounded-full bg-[#22326E] px-5 py-1 font-extralight text-white transition-all duration-200 hover:scale-95"
+        >
+          Ler mais
+        </Link>
       </div>
-    </Link>
+    </p>
   )
 }
