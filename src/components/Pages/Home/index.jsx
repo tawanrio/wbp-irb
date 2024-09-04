@@ -6,13 +6,13 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import CategoryGrid from '@/components/CategoryGrid'
 import PartnersButton from './components/PartnersButton'
 import UtilityCards from './components/UtilityCards'
 import { BlogCarousel } from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
 import { FormHome } from '@/components/Form/Home'
 import { ListProduct } from '@/components/ListProduct'
+import Banner from '@/components/Banner'
 
 // Others || functions
 import { useState } from 'react'
@@ -50,7 +50,7 @@ export default function Home({ content }) {
       >
         <ServicesOverview />
         <ListProduct categories={sortedCategories} />
-        <CategoryGrid categories={sortedCategories} title />
+        <Banner banners={banners} page={content?.page} />
         <PartnersButton partners={content?.partners?.types} />
         <UtilityCards />
         <BlogCarousel posts={posts} />

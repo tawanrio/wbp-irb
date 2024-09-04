@@ -37,7 +37,7 @@ export const BlogCarousel = ({ posts }) => {
     >
       <LinkRed
         href=""
-        className="w-full uppercase !shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]"
+        className="w-full uppercase !shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)] hover:scale-100"
       >
         Últimas notícias
       </LinkRed>

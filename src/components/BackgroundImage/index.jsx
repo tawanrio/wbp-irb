@@ -11,10 +11,10 @@ export const BackgroundImage = ({ children, isHome }) => {
         alt="Imagem de fundo"
         quality={100}
         width={1600}
-        height={3341}
+        height={isHome ? 1997 : 3341}
         className={cn(
           'absolute inset-x-0 -z-50 mx-auto w-full',
-          isHome ? 'top-0' : 'bottom-0',
+          isHome ? 'top-0 h-[1997px]' : 'bottom-0 h-[3341px]',
         )}
       />
       {children}

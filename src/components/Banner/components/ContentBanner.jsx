@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils'
 import ImageBanner from './ImageBanner'
 import VideoBanner from './VideoBanner'
 
@@ -15,13 +16,13 @@ export default function ContentBanner({
     return (
       <div
         key={index}
-        className={` ${
+        className={cn(
+          'absolute flex w-full opacity-0 md:justify-center',
           backdrop
-            ? `before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-circle before:content-['']`
-            : `before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-[#3338579e] before:content-['']`
-        } absolute flex w-full opacity-0 md:justify-center ${
-          index === activeBanner && '!opacity-100'
-        }`}
+            ? 'before:absolute before:z-[2] before:block before:h-full before:w-full before:content-[""]'
+            : 'before:absolute before:z-[2] before:block before:h-full before:w-full before:bg-[#3338579e] before:content-[""]',
+          index === activeBanner && '!opacity-100',
+        )}
       >
         {isImage ? (
           <ImageBanner banner={banner} controllerBanner={controllerBanner} />

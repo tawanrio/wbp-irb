@@ -24,7 +24,7 @@ export const SinglePartner = ({ partner }) => {
       </div>
       <Link
         href={partner.link}
-        className="mx-auto w-fit rounded-full bg-[#982225] px-5 py-1 text-center text-lg font-extralight uppercase text-white duration-200 hover:scale-95"
+        className="mx-auto w-fit rounded-full bg-[#982225] px-5 py-1 text-center text-lg font-normal uppercase text-white duration-200 hover:scale-95"
       >
         Saiba mais
       </Link>

@@ -17,7 +17,7 @@ export const ListProduct = ({ categories }) => {
   return (
     <section
       id="blog-carousel"
-      className="relative mx-auto mt-28 flex w-full max-w-lg flex-col px-6 md:mb-0 md:max-w-[1600px] md:px-14"
+      className="relative mx-auto mt-28 flex w-full max-w-lg flex-col px-6 md:max-w-[1600px] md:px-14"
     >
       <LinkRed href="/" className="mx-auto w-full max-w-[281px]">
         Nossos Produtos
@@ -35,7 +35,6 @@ export const ListProduct = ({ categories }) => {
                 key={category._id}
                 category={category}
                 className={cn(index % 2 === 1 ? 'scale-95' : '')}
-                // className={cn(index % 2 === 1 ? 'transform scale-95' : 'transform scale-100')}
               />
             </CarouselItem>
           ))}
@@ -43,6 +42,9 @@ export const ListProduct = ({ categories }) => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
+      <LinkRed href="/" className="mx-auto mb-14 mt-20 w-full max-w-[281px]">
+        EngraxaMente
+      </LinkRed>
     </section>
   )
 }

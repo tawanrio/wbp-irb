@@ -74,7 +74,7 @@ export const FormHome = ({ inputs }) => {
         alt="Mecânico"
         width={564.73}
         height={849}
-        className="absolute bottom-0 left-0 -z-10"
+        className="absolute bottom-0 left-0 -z-10 opacity-40 lg:opacity-100"
       />
       <section className="flex flex-col items-center gap-12">
         <div className="flex w-full max-w-[505.91px] flex-col items-end">

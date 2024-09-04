@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Dots from './components/Dots'
 import ContentBanner from './components/ContentBanner'
 import Arrow from './components/Arrow'
+import Link from 'next/link'
 
 export default function Banner({ banners, stlyeText, page }) {
   const [activeBanner, setActiveBanner] = useState(0)
@@ -31,9 +32,9 @@ export default function Banner({ banners, stlyeText, page }) {
     if (page !== 'home') return
 
     if (isSmallScreen) {
-      setSize(400) // Define o tamanho do banner para telas pequenas
+      setSize(400)
     } else {
-      setSize(banners?.size.height) // Define o tamanho padrão do banner
+      setSize(banners?.size.height)
     }
   }, [isSmallScreen, banners, page])
 
@@ -59,7 +60,7 @@ export default function Banner({ banners, stlyeText, page }) {
     <section className="relative" id="banner_">
       <div
         id="containerBanner"
-        className={`relative mb-4 flex justify-center bg-[#03050ede] md:mb-0`}
+        className="relative mb-4 flex justify-center bg-[#03050ede] md:mb-0"
         style={{ height: size }}
       >
         {showButtonsBanner && (
@@ -76,6 +77,7 @@ export default function Banner({ banners, stlyeText, page }) {
             size,
           }}
           stlyeText={stlyeText}
+          backdrop={page?.title === 'Home'}
         />
 
         {showButtonsBanner && (
@@ -91,6 +93,24 @@ export default function Banner({ banners, stlyeText, page }) {
           />
         )}
       </div>
+
+      {banners?.buttons?.length > 0 && (
+        <div className="mx-auto mt-14 flex w-full max-w-[800px] flex-row flex-wrap items-center justify-between gap-4 px-4">
+          {banners?.buttons.map((button, index) => (
+            <Link
+              key={index}
+              href={button.url}
+              style={{
+                background: button.colors.bg,
+                color: button.colors.text,
+              }}
+              className="mx-auto w-full max-w-[276.35px] rounded-full px-4 py-2 text-center text-xl font-normal capitalize shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95"
+            >
+              {button.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </section>
   )
 }
