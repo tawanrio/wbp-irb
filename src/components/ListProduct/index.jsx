@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import { cn } from '@/utils/cn'
 import { Product } from '../Product'
 import { LinkRed } from '../LinkRed'
 import {
@@ -12,12 +11,12 @@ import {
 import Autoplay from 'embla-carousel-autoplay'
 
 export const ListProduct = ({ categories }) => {
-  const plugin = useRef(Autoplay({ delay: 1000, stopOnInteraction: true }))
+  const plugin = useRef(Autoplay({ delay: 4000, stopOnInteraction: true }))
 
   return (
     <section
       id="blog-carousel"
-      className="relative mx-auto mt-28 flex w-full max-w-lg flex-col px-6 md:max-w-[1600px] md:px-14"
+      className="relative mx-auto mt-20 flex w-full max-w-lg flex-col px-6 sm:mt-28 md:max-w-[1600px] md:px-14"
     >
       <LinkRed href="/" className="mx-auto w-full max-w-[281px]">
         Nossos Produtos
@@ -31,18 +30,17 @@ export const ListProduct = ({ categories }) => {
         <CarouselContent>
           {categories.slice(0, 6).map((category, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-              <Product
-                key={category._id}
-                category={category}
-                className={cn(index % 2 === 1 ? 'scale-95' : '')}
-              />
+              <Product key={category._id} category={category} />
             </CarouselItem>
           ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <LinkRed href="/" className="mx-auto mb-14 mt-20 w-full max-w-[281px]">
+      <LinkRed
+        href="/"
+        className="mx-auto mb-14 mt-10 w-full max-w-[281px] sm:mt-20"
+      >
         EngraxaMente
       </LinkRed>
     </section>

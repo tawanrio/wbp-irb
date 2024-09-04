@@ -20,6 +20,8 @@ module.exports = {
         'background-home': "url('/images/templates/background-image/home.png')",
         'background-automotive':
           "url('/images/templates/background-image/automotive.png')",
+        'background-mechanic-working':
+          "url('/images/components/utilityCards/mechanic-working.png')",
       },
       fontFamily: {
         sans: ['Inter', 'arial', 'Times New Roman', 'Libre Baskerville'],

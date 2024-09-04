@@ -6,7 +6,7 @@ export const Product = ({ category, className }) => {
   return (
     <li
       className={cn(
-        'flex w-[532px] scale-75 flex-col items-start justify-start overflow-hidden rounded-3xl border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] px-7 pb-7 pt-3',
+        'flex w-full flex-col items-start justify-start overflow-hidden rounded-3xl border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] px-7 pb-7 pt-3',
         className,
       )}
     >
@@ -20,7 +20,7 @@ export const Product = ({ category, className }) => {
         />
       </figure>
       <div className="flex flex-col items-start justify-between px-2 pt-6">
-        <h2 className="line-clamp-2 text-4xl font-extrabold text-white">
+        <h2 className="line-clamp-1 text-4xl font-extrabold text-white">
           {category.title}
         </h2>
         <p className="m-0 mt-1.5 line-clamp-3 text-lg font-thin text-white">

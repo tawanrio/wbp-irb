@@ -40,7 +40,7 @@ export default function ServicesOverview() {
           </h2>
         </>
       </div>
-      <ul className="mb-4 mt-7 flex w-full flex-row flex-wrap items-center justify-center gap-7">
+      <ul className="mb-4 mt-7 flex w-full flex-row flex-wrap items-center justify-center gap-5 sm:gap-7">
         {NAVIGATION_LINKS.map((link, index) => (
           <LinkRed
             key={index}

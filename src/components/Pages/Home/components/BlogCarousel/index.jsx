@@ -32,9 +32,9 @@ export const BlogCarousel = ({ posts }) => {
   return (
     <section
       id="blog-carousel"
-      className="mx-auto my-4 flex w-full max-w-7xl flex-col items-center justify-between px-6 md:my-32 md:gap-10 md:px-14"
+      className="mx-auto mb-4 flex w-full max-w-7xl flex-col items-center justify-between px-6 md:mb-32 md:gap-10 md:px-14"
     >
-      <p className="w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
+      <p className="m-0 w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
         Últimas notícias
       </p>
 
