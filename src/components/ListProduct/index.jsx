@@ -1,10 +1,19 @@
+import { useRef } from 'react'
 import { cn } from '@/utils/cn'
 import { Product } from '../Product'
 import { LinkRed } from '../LinkRed'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+import Autoplay from 'embla-carousel-autoplay'
 
 export const ListProduct = ({ categories }) => {
-  const totalItems = categories.slice(0, 3).length
-  const middleIndex = Math.floor(totalItems / 2)
+  const plugin = useRef(Autoplay({ delay: 1000, stopOnInteraction: true }))
+
   return (
     <section
       id="blog-carousel"
@@ -13,19 +22,27 @@ export const ListProduct = ({ categories }) => {
       <LinkRed href="/" className="mx-auto w-full max-w-[281px]">
         Nossos Produtos
       </LinkRed>
-      <ul className="container mx-auto flex py-10">
-        {categories.slice(0, 3).map((category, index) => (
-          <Product
-            key={category._id}
-            category={category}
-            className={cn(
-              index === middleIndex - 1 || index === middleIndex + 1
-                ? 'scale-75'
-                : '',
-            )}
-          />
-        ))}
-      </ul>
+      <Carousel
+        plugins={[plugin.current]}
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+        className="container mx-auto flex py-10"
+      >
+        <CarouselContent>
+          {categories.slice(0, 6).map((category, index) => (
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+              <Product
+                key={category._id}
+                category={category}
+                className={cn(index % 2 === 1 ? 'scale-95' : '')}
+                // className={cn(index % 2 === 1 ? 'transform scale-95' : 'transform scale-100')}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </section>
   )
 }
