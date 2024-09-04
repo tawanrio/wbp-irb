@@ -30,7 +30,7 @@ export const BlogCard = ({ post }) => {
   }, [post])
 
   return (
-    <p className="flex flex-col items-start justify-start overflow-hidden">
+    <div className="flex flex-col items-start justify-start overflow-hidden">
       <figure className="relative h-[285.96px] w-full">
         <img
           src={imageUrl}
@@ -53,6 +53,6 @@ export const BlogCard = ({ post }) => {
           Ler mais
         </Link>
       </div>
-    </p>
+    </div>
   )
 }

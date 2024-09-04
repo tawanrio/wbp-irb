@@ -3,7 +3,7 @@ import { BlogCard } from './BlogCard'
 import { LinkRed } from '@/components/LinkRed'
 
 export const BlogCarousel = ({ posts }) => {
-  const currentPosts = posts.slice(1, 4)
+  const currentPosts = posts.slice(0, 3)
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const cardWidth = 350

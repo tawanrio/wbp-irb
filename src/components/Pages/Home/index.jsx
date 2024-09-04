@@ -12,6 +12,7 @@ import UtilityCards from './components/UtilityCards'
 import { BlogCarousel } from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
 import { FormHome } from '@/components/Form/Home'
+import { ListProduct } from '@/components/ListProduct'
 
 // Others || functions
 import { useState } from 'react'
@@ -48,6 +49,7 @@ export default function Home({ content }) {
         style={'home'}
       >
         <ServicesOverview />
+        <ListProduct categories={sortedCategories} />
         <CategoryGrid categories={sortedCategories} title />
         <PartnersButton partners={content?.partners?.types} />
         <UtilityCards />
