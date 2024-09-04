@@ -51,7 +51,7 @@ export default function ServicesOverview() {
           </LinkRed>
         ))}
       </ul>
-      <ul className="mx-auto flex flex-col gap-4 lg:flex-row lg:gap-10">
+      <ul className="mx-auto flex flex-row flex-wrap justify-center gap-4 lg:gap-10">
         {SERVICE_ADVANTAGES.map((card, index) => (
           <li
             key={index}

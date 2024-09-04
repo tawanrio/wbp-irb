@@ -39,7 +39,7 @@ export const BlogCard = ({ post }) => {
         />
       </figure>
       <div className="flex flex-grow flex-col items-start justify-between gap-6 px-4 pt-6">
-        <h2 className="line-clamp-2 h-14 text-2xl font-black text-[#982225]">
+        <h2 className="line-clamp-2 text-2xl font-black text-[#982225]">
           {post?.title?.rendered}
         </h2>
         <p

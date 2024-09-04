@@ -56,10 +56,8 @@ export default function Templates({ children, template, page, menus }) {
         <>
           <CookiePopup />
           <ToastContainer />
-          <BackgroundImage isHome>
-            <Header content={header} page={page.label} />
-          </BackgroundImage>
           <BackgroundImage>
+            <Header content={header} page={page.label} />
             <main>{children}</main>
             <Footer content={footer} />
             <Copyright content={copyright} />
