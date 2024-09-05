@@ -122,19 +122,22 @@ export const PARTNER_TYPES = [
   {
     surtitle: 'Redes',
     title: 'Autopeças',
-    image: '/images/components/icons/gear-red.svg',
+    src: '/images/components/icons/gear-red.svg',
+    alt: 'Ícone de Autopeças',
     link: '/autopecas',
   },
   {
     surtitle: 'Nossos',
     title: 'Distribuidoras',
-    image: '/images/components/icons/distributors-red.svg',
+    src: '/images/components/icons/distributors-red.svg',
+    alt: 'Ícone de Distribuidoras',
     link: '/distribuidoras',
   },
   {
     surtitle: 'Encontre',
     title: 'Mecânicas',
-    image: '/images/components/icons/mechanic-red.svg',
+    src: '/images/components/icons/mechanic-red.svg',
+    alt: 'Ícone de Mecânicas',
     link: '/mecanicas',
   },
 ]
@@ -145,7 +148,7 @@ export const SERVICE_ADVANTAGES = [
     description: 'Cobertura de 99% da frota circulante',
     icon: {
       url: '/images/components/icons/truck.svg',
-      alt: 'Ícone de caminhão',
+      alt: 'Ícone de Caminhão',
     },
   },
   {
@@ -153,7 +156,7 @@ export const SERVICE_ADVANTAGES = [
     description: 'Desenvolvidos sob medida para o clima e solo brasileiros',
     icon: {
       url: '/images/components/icons/brazil.svg',
-      alt: 'Ícone do brasil',
+      alt: 'Ícone do Brasil',
     },
   },
   {
@@ -162,7 +165,7 @@ export const SERVICE_ADVANTAGES = [
       'Maiores <strong class="font-medium">certificadoras</strong> mundiais',
     icon: {
       url: '/images/components/icons/tool.svg',
-      alt: 'Ícone de ferramenta',
+      alt: 'Ícone de Ferramenta',
     },
   },
 ]
@@ -170,11 +173,11 @@ export const SERVICE_ADVANTAGES = [
 export const QUALITY_CERTIFICATIONS = [
   {
     url: '/images/components/icons/iso-16949-red.png',
-    alt: 'iso 16949',
+    alt: 'ISO 16949',
   },
   {
     url: '/images/components/icons/iso-9001-red.png',
-    alt: 'iso 9001',
+    alt: 'ISO 9001',
   },
 ]
 
@@ -185,7 +188,7 @@ export const NAVIGATION_LINKS = [
   },
   {
     title: 'EngraxaMente',
-    href: '',
+    href: 'https://engraxamente.eadplataforma.app',
   },
   {
     title: 'Parceiros',

@@ -6,8 +6,8 @@ export const SinglePartner = ({ partner }) => {
     <li className="flex flex-col gap-5">
       <div className="rounded-3xl border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] p-4 shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)]">
         <Image
-          src={partner.image}
-          alt={`Imagem ${partner.title}`}
+          src={partner.src}
+          alt={partner.alt}
           width={200}
           quality={100}
           height={200}

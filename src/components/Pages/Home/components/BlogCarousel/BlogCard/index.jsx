@@ -1,27 +1,15 @@
-/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { sanitizeHtml } from '@/utils/functions'
+import Image from 'next/image'
+import { formatTitle, getUrlImage, sanitizeHtml } from '@/utils/functions'
+import { cn } from '@/utils/cn'
 
 export const BlogCard = ({ post }) => {
-  const getUrlImage = (post) => {
-    const defaultImage = '/images/components/others/not-found.jpg'
-    return post?.yoast_head_json.og_image[0]?.url || defaultImage
-  }
-
-  const formatTitle = (title) => {
-    return title
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .split(' ')
-      .join('-')
-      .trim()
-  }
+  const [sanitizedExcerpt, setSanitizedExcerpt] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
 
   const imageUrl = getUrlImage(post)
   const formattedTitle = formatTitle(post?.title?.rendered)
-  const [sanitizedExcerpt, setSanitizedExcerpt] = useState('')
 
   useEffect(() => {
     if (post?.excerpt?.rendered) {
@@ -32,16 +20,24 @@ export const BlogCard = ({ post }) => {
   return (
     <div className="flex flex-col items-start justify-start overflow-hidden">
       <figure className="relative h-[285.96px] w-full">
-        <img
+        <Image
           src={imageUrl}
           alt={post?.title?.rendered}
-          className="h-full w-full rounded-3xl object-cover"
+          width={350}
+          height={285.96}
+          priority
+          quality={100}
+          onLoad={() => setIsLoading(false)}
+          className={cn(
+            'h-full w-full rounded-3xl object-cover transition-[scale,filter] duration-700',
+            isLoading && 'scale-[1.02] blur-xl grayscale',
+          )}
         />
       </figure>
-      <div className="flex flex-grow flex-col items-start justify-between gap-6 px-4 pt-6">
-        <h2 className="line-clamp-2 text-2xl font-black text-[#982225]">
+      <section className="flex flex-grow flex-col items-start justify-between gap-6 px-4 pt-6">
+        <h3 className="line-clamp-2 text-2xl font-black text-[#982225]">
           {post?.title?.rendered}
-        </h2>
+        </h3>
         <p
           className="line-clamp-4 text-lg font-thin text-[#222]"
           dangerouslySetInnerHTML={{ __html: sanitizedExcerpt }}
@@ -52,7 +48,7 @@ export const BlogCard = ({ post }) => {
         >
           Ler mais
         </Link>
-      </div>
+      </section>
     </div>
   )
 }

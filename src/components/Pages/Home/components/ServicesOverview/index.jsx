@@ -24,7 +24,7 @@ export default function ServicesOverview() {
                 width={105.28}
                 height={41.42}
                 className={cn(
-                  '!h-[80px] object-contain p-0',
+                  '!h-[80px] object-contain p-0 text-white',
                   icon.bg && 'my-1 !h-[70px] rounded-md bg-[#AF231C] !p-1',
                 )}
               />
@@ -42,13 +42,11 @@ export default function ServicesOverview() {
       </div>
       <ul className="mb-4 mt-7 flex w-full flex-row flex-wrap items-center justify-center gap-5 sm:gap-7">
         {NAVIGATION_LINKS.map((link, index) => (
-          <LinkRed
-            key={index}
-            href={link.href}
-            className="w-full max-w-[200px]"
-          >
-            {link.title}
-          </LinkRed>
+          <li key={index}>
+            <LinkRed href={link.href} className="w-full max-w-[200px]">
+              {link.title}
+            </LinkRed>
+          </li>
         ))}
       </ul>
       <ul className="mx-auto flex flex-row flex-wrap justify-center gap-4 lg:gap-10">
@@ -63,6 +61,7 @@ export default function ServicesOverview() {
               quality={100}
               width={90.77}
               height={90.77}
+              className="text-white"
             />
             <p
               className="m-0 text-2xl !font-thin text-white"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import SingleUtility from './SingleUtility'
+import { SingleUtility } from './SingleUtility'
 import { UTILITY_CARDS } from '@/utils/constants'
 
 const UtilityCards = () => {

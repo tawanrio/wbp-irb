@@ -8,6 +8,7 @@ export default function Logo({ content }) {
         alt={content.logo.alt}
         width={109.81}
         height={99.42}
+        className="text-white"
       />
     </Link>
   )

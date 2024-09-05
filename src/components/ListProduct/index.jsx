@@ -38,7 +38,7 @@ export const ListProduct = ({ categories }) => {
         <CarouselNext />
       </Carousel>
       <LinkRed
-        href="/"
+        href="https://engraxamente.eadplataforma.app"
         className="mx-auto mb-14 mt-10 w-full max-w-[281px] sm:mt-20"
       >
         EngraxaMente

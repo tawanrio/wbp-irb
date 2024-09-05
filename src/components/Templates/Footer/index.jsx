@@ -17,23 +17,21 @@ export default function Footer({ content }) {
         <RenderList nav={dataFooter?.nav} colors={colors} />
 
         <div className="mx-auto flex w-full max-w-80 flex-col items-center gap-6 lg:mx-3 lg:flex-1 lg:items-start lg:last:mr-0">
-          <ul className="list-ul flex flex-col items-center gap-5 lg:items-start">
-            <li className="text-center font-normal lg:text-start lg:text-lg">
+          <div className="flex flex-col items-center gap-5 lg:items-start">
+            <address className="text-center font-normal not-italic lg:text-start lg:text-lg">
               {dataFooter?.address}
-            </li>
-            <li>
-              {certificates?.map((certificate, index) => (
-                <Image
-                  key={index}
-                  src={certificate?.url}
-                  alt={certificate?.alt}
-                  width={253.99}
-                  height={120.61}
-                  className="w-[253.99px]"
-                />
-              ))}
-            </li>
-          </ul>
+            </address>
+            {certificates?.map((certificate, index) => (
+              <Image
+                key={index}
+                src={certificate?.url}
+                alt={certificate?.alt}
+                width={253.99}
+                height={120.61}
+                className="w-[253.99px]"
+              />
+            ))}
+          </div>
 
           <SocialMidia
             content={dataFooter?.socialMidia}

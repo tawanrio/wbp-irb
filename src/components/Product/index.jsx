@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 
 export const Product = ({ category, className }) => {
   return (
-    <li
+    <div
       className={cn(
         'flex w-full flex-col items-start justify-start overflow-hidden rounded-3xl border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] px-7 pb-7 pt-3',
         className,
@@ -16,13 +16,13 @@ export const Product = ({ category, className }) => {
           alt={category.thumbnail.alt}
           width={361.2}
           height={395.9}
-          className="h-full w-full rounded-3xl object-cover"
+          className="h-full w-full rounded-3xl object-cover text-white"
         />
       </figure>
-      <div className="flex flex-col items-start justify-between px-2 pt-6">
-        <h2 className="line-clamp-1 text-4xl font-extrabold text-white">
+      <section className="flex flex-col items-start justify-between px-2 pt-6">
+        <h3 className="line-clamp-1 text-4xl font-extrabold text-white">
           {category.title}
-        </h2>
+        </h3>
         <p className="m-0 mt-1.5 line-clamp-3 text-lg font-thin text-white">
           {category.contentDescription[0]}
         </p>
@@ -32,7 +32,7 @@ export const Product = ({ category, className }) => {
         >
           Ver mais
         </Link>
-      </div>
-    </li>
+      </section>
+    </div>
   )
 }

@@ -1,76 +1,38 @@
-import React, { useState } from 'react'
 import { BlogCard } from './BlogCard'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
 
 export const BlogCarousel = ({ posts }) => {
   const currentPosts = posts.slice(0, 3)
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const cardWidth = 350
-  const gap = 16
-  const visibleCards = 4
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex - 1
-      if (newIndex < 0) {
-        return posts.length - visibleCards
-      }
-      return newIndex
-    })
-  }
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex + 1
-      if (newIndex >= posts.length - visibleCards + 2) {
-        return 0
-      }
-      return newIndex
-    })
-  }
-
   return (
     <section
       id="blog-carousel"
       className="mx-auto mb-4 flex w-full max-w-7xl flex-col items-center justify-between px-6 md:mb-32 md:gap-10 md:px-14"
     >
-      <p className="m-0 w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
+      <h2 className="m-0 w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
         Últimas notícias
-      </p>
+      </h2>
 
-      <div className="relative w-full overflow-hidden">
-        <ul
-          className="flex gap-10 py-5 transition-transform duration-500 ease-in-out"
-          style={{
-            transform: `translateX(-${currentIndex * (cardWidth + gap)}px)`,
-          }}
-        >
+      <Carousel className="flex w-full gap-10 py-5 transition-transform duration-500 ease-in-out">
+        <CarouselContent>
           {currentPosts.map((post, index) => (
-            <li
-              key={index}
-              className="w-[21.875rem] flex-shrink-0 overflow-hidden rounded-md"
-            >
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
               <BlogCard post={post} />
-            </li>
+            </CarouselItem>
           ))}
-        </ul>
-        {currentPosts.length > visibleCards && (
+        </CarouselContent>
+        {currentPosts.length > 3 && (
           <>
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 transform bg-[#22326e] p-3 text-white opacity-70 shadow-md duration-500 hover:bg-[#999] hover:opacity-100"
-            >
-              {'<'}
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 transform bg-[#22326e] p-3 text-white opacity-70 shadow-md duration-500 hover:bg-[#999] hover:opacity-100"
-            >
-              {'>'}
-            </button>
+            <CarouselPrevious />
+            <CarouselNext />
           </>
         )}
-      </div>
+      </Carousel>
     </section>
   )
 }

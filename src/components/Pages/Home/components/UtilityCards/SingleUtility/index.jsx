@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const SingleUtility = ({ utilities }) => {
+export const SingleUtility = ({ utilities }) => {
   return (
-    <div className="bg-background-mechanic-working flex h-[420px] flex-row items-center justify-center gap-5 rounded-3xl shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] before:absolute before:z-[2] before:block before:h-full before:w-[700px] before:rounded-3xl before:bg-[#3338579e] before:content-['']">
+    <div className="flex h-[420px] flex-row items-center justify-center gap-5 rounded-3xl bg-background-mechanic-working shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] before:absolute before:z-[2] before:block before:h-full before:w-[700px] before:rounded-3xl before:bg-[#3338579e] before:content-['']">
       <Image
         src={utilities.image}
         alt={utilities.title}
@@ -13,9 +13,9 @@ const SingleUtility = ({ utilities }) => {
       />
       <div className="z-[3] flex h-full w-full max-w-[337.84px] flex-col items-end justify-between pb-14 pt-20">
         <div className="flex flex-col gap-4">
-          <h2 className="text-xl font-extrabold text-white">
+          <h3 className="text-xl font-extrabold text-white">
             {utilities.title}
-          </h2>
+          </h3>
           <span className="text-sm font-light text-white">
             {utilities.surtitle}
           </span>
@@ -33,5 +33,3 @@ const SingleUtility = ({ utilities }) => {
     </div>
   )
 }
-
-export default SingleUtility

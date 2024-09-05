@@ -1,7 +1,17 @@
+import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function SocialMidia({ content, setWhatsapp }) {
+  useEffect(() => {
+    const whatsappNetwork = content?.networks.find(
+      (network) => network.name === 'Whatsapp',
+    )
+    if (whatsappNetwork) {
+      setWhatsapp(whatsappNetwork)
+    }
+  }, [content, setWhatsapp])
+
   return (
     <ul className="space-y-3">
       <li className="text-center text-lg font-normal capitalize lg:text-start">
@@ -9,10 +19,8 @@ export default function SocialMidia({ content, setWhatsapp }) {
       </li>
 
       <li className="flex items-center gap-3.5">
-        {content?.networks.map((network, index) => {
-          network.name === 'Whatsapp' && setWhatsapp(network)
-
-          return (
+        {content?.networks.map(
+          (network, index) =>
             network.name !== 'Whatsapp' && (
               <Link
                 key={index}
@@ -26,11 +34,11 @@ export default function SocialMidia({ content, setWhatsapp }) {
                   alt={network.name}
                   width={25}
                   height={25}
+                  className="text-black"
                 />
               </Link>
-            )
-          )
-        })}
+            ),
+        )}
       </li>
     </ul>
   )

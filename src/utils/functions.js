@@ -269,3 +269,18 @@ export const sanitizeHtml = (html) => {
 export const capitalize = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 }
+
+export const getUrlImage = (post) => {
+  const defaultImage = '/images/components/others/not-found.jpg'
+  return post?.yoast_head_json.og_image[0]?.url || defaultImage
+}
+
+export const formatTitle = (title) => {
+  return title
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .split(' ')
+    .join('-')
+    .trim()
+}
