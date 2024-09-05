@@ -12,7 +12,7 @@ export const Product = ({ category, className }) => {
     >
       <figure className="h-[395.9px] w-full">
         <Image
-          src={category.thumbnail.imageUrl}
+          src={category.thumbnail.imageUrlPng}
           alt={category.thumbnail.alt}
           width={361.2}
           height={395.9}

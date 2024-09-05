@@ -7,8 +7,11 @@ import Link from 'next/link'
 export default function Banner({ banners, stlyeText, page }) {
   const [activeBanner, setActiveBanner] = useState(0)
   const [size, setSize] = useState(banners?.size.height)
-  const showButtonsBanner = banners?.carousel.length > 1
   const [isSmallScreen, setIsSmallScreen] = useState(false)
+
+  const carousel =
+    page?.title === 'Home' ? banners?.carouselHome : banners?.carousel
+  const showButtonsBanner = carousel.length > 1
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -39,7 +42,7 @@ export default function Banner({ banners, stlyeText, page }) {
   }, [isSmallScreen, banners, page])
 
   function nextBanner() {
-    const qntBanner = banners?.carousel.length - 1
+    const qntBanner = carousel.length - 1
     if (activeBanner === qntBanner) {
       setActiveBanner(0)
     } else {
@@ -48,7 +51,7 @@ export default function Banner({ banners, stlyeText, page }) {
   }
 
   function prevBanner() {
-    const qntBanner = banners?.carousel.length - 1
+    const qntBanner = carousel.length - 1
     if (activeBanner === 0) {
       setActiveBanner(qntBanner)
     } else {
@@ -65,12 +68,19 @@ export default function Banner({ banners, stlyeText, page }) {
       >
         {showButtonsBanner && (
           <Dots
-            controllerBanner={{ banners, setActiveBanner, activeBanner, size }}
+            controllerBanner={{
+              carousel,
+              banners,
+              setActiveBanner,
+              activeBanner,
+              size,
+            }}
           />
         )}
 
         <ContentBanner
           controllerBanner={{
+            carousel,
             banners,
             setActiveBanner,
             activeBanner,
@@ -83,6 +93,7 @@ export default function Banner({ banners, stlyeText, page }) {
         {showButtonsBanner && (
           <Arrow
             controllerBanner={{
+              carousel,
               banners,
               setActiveBanner,
               activeBanner,
@@ -104,6 +115,7 @@ export default function Banner({ banners, stlyeText, page }) {
                 background: button.colors.bg,
                 color: button.colors.text,
               }}
+              target="_blank"
               className="mx-auto w-full max-w-[276.35px] rounded-full px-4 py-2 text-center text-xl font-normal capitalize shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95 sm:mx-0"
             >
               {button.name}

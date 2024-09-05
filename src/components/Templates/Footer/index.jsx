@@ -9,7 +9,7 @@ export default function Footer({ content }) {
 
   const dataFooter = content?.items.find((item) => item.label === 'default')
   const colors = dataFooter?.colors
-  const certificates = dataFooter?.certificates
+  const certificates = dataFooter?.certificatesHome
 
   return (
     <footer style={{ background: colors?.bg, color: colors?.text }}>

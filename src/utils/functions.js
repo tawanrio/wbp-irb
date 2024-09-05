@@ -280,6 +280,7 @@ export const formatTitle = (title) => {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s]/g, '')
     .split(' ')
     .join('-')
     .trim()

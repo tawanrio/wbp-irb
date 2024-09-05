@@ -1,8 +1,8 @@
 export default function Dots({ controllerBanner }) {
-  const { activeBanner, setActiveBanner, banners } = controllerBanner
+  const { activeBanner, setActiveBanner, banners, carousel } = controllerBanner
   return (
     <div id="dotsBanners" className={`absolute bottom-0 z-30 mb-2 md:mb-10`}>
-      {banners?.carousel.map((banner, index) => (
+      {carousel.map((banner, index) => (
         <button
           type="button"
           key={index + '_' + Math.random().toString().slice(-8)}

@@ -184,15 +184,16 @@ export const QUALITY_CERTIFICATIONS = [
 export const NAVIGATION_LINKS = [
   {
     title: 'Nossos Produtos',
-    href: '',
+    href: '/#product-carousel',
   },
   {
     title: 'EngraxaMente',
     href: 'https://engraxamente.eadplataforma.app',
+    target: '_blank',
   },
   {
     title: 'Parceiros',
-    href: '',
+    href: '/registre-se',
   },
 ]
 

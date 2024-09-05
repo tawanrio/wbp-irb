@@ -15,12 +15,12 @@ export const ListProduct = ({ categories }) => {
 
   return (
     <section
-      id="blog-carousel"
+      id="product-carousel"
       className="relative mx-auto mt-20 flex w-full max-w-lg flex-col px-6 sm:mt-28 md:max-w-[1600px] md:px-14"
     >
-      <LinkRed href="/" className="mx-auto w-full max-w-[281px]">
+      <h2 className="mx-auto w-full max-w-[281px] rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal text-white shadow-[inset_0px_6.21px_5.5px_rgba(0,0,0,0.5)]">
         Nossos Produtos
-      </LinkRed>
+      </h2>
       <Carousel
         plugins={[plugin.current]}
         onMouseEnter={plugin.current.stop}
@@ -39,6 +39,7 @@ export const ListProduct = ({ categories }) => {
       </Carousel>
       <LinkRed
         href="https://engraxamente.eadplataforma.app"
+        target="_blank"
         className="mx-auto mb-14 mt-10 w-full max-w-[281px] sm:mt-20"
       >
         EngraxaMente
