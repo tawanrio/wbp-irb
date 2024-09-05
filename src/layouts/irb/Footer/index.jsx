@@ -1,9 +1,7 @@
+import { useContext } from 'react'
 import Image from 'next/image'
 import RenderList from './components/RenderList'
-
-import { useContext } from 'react'
 import { PageData } from '@/context/pageData'
-
 import SocialMidia from './components/SocialMidia'
 
 export default function Footer() {

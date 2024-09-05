@@ -13,7 +13,7 @@ export const SingleUtility = ({ utility }) => {
   return (
     <div
       className={cn(
-        "font-nunito relative mx-auto flex h-[420px] w-[700px] flex-row items-center justify-center gap-5 rounded-3xl bg-background-mechanic-working shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] before:absolute before:z-[2] before:block before:h-full before:w-full before:rounded-3xl before:bg-[#3338579e] before:content-['']",
+        "relative mx-auto flex h-[420px] w-[700px] flex-row items-center justify-center gap-5 rounded-3xl bg-background-mechanic-working font-nunito shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] before:absolute before:z-[2] before:block before:h-full before:w-full before:rounded-3xl before:bg-[#3338579e] before:content-['']",
         nunito.variable,
       )}
     >

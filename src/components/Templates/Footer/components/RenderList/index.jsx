@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { RenderListItem } from './RenderListItem'
-import logo from '../../../../../../public/caminho/da/imagem.png'
+import logo from '../../../../../../public/images/templates/header/logo-white.svg'
 
 export default function RenderList({ nav, colors }) {
   return (

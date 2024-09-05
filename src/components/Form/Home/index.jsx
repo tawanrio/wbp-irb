@@ -81,7 +81,7 @@ export const FormHome = ({ inputs }) => {
           <h2 className="bg-[linear-gradient(90deg,#982225_0%,#22326E_100%)] bg-clip-text text-end text-4xl font-bold text-transparent sm:text-5xl md:text-6xl">
             Entre em contato
           </h2>
-          <h3 className="bg-[linear-gradient(90deg,#982225_0%,#22326E_100%)] bg-clip-text text-end text-4xl font-bold text-transparent sm:text-5xl md:text-6xl">
+          <h3 className="bg-[linear-gradient(90deg,#982225_0%,#22326E_100%)] bg-clip-text text-end text-4xl font-bold !leading-[1.2] text-transparent sm:text-5xl md:text-6xl">
             com a gente :{')'}
           </h3>
         </div>

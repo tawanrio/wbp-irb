@@ -216,24 +216,6 @@ export const UTILITIES_CARDS = [
     link: 'https://engraxamente.eadplataforma.app/',
     linkText: 'Saiba mais',
   },
-  {
-    title: 'Consulte nosso catálogo eletrônico',
-    surtitle: '(disponível para Android, IOS e Windows)',
-    description:
-      'e confira todos os itens, aplicações e características técnicas',
-    image: '/images/components/utilityCards/mobile.png',
-    link: 'https://engraxamente.eadplataforma.app/',
-    linkText: 'Saiba mais',
-  },
-  {
-    title: 'Consulte nosso catálogo eletrônico',
-    surtitle: '(disponível para Android, IOS e Windows)',
-    description:
-      'e confira todos os itens, aplicações e características técnicas',
-    image: '/images/components/utilityCards/mobile.png',
-    link: 'https://engraxamente.eadplataforma.app/',
-    linkText: 'Saiba mais',
-  },
 ]
 
 const partnerTypes = [
