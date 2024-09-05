@@ -25,6 +25,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', 'arial', 'Times New Roman', 'Libre Baskerville'],
+        nunito: ['var(--font-nunito)'],
       },
       animation: {
         fadeIn: 'fadeIn 1s',
