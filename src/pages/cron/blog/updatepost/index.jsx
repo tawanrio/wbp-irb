@@ -10,6 +10,7 @@ export default function UpdatePost({ content }) {
     <>
       {content.type === 'error' && <div>não autenticado</div>}
       {content.type !== 'error' && <div>ok</div>}
+      {content.message}
     </>
   )
 }
@@ -73,11 +74,12 @@ export const getServerSideProps = async (context) => {
         content: {
           type: 'success',
           data: allPosts,
+          message: null,
         },
       },
     }
   } catch (error) {
-    console.error('Erro na página:', error)
+    console.log('Erro na página:', error)
 
     return {
       props: {
