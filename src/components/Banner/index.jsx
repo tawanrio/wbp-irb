@@ -3,6 +3,7 @@ import Dots from './components/Dots'
 import ContentBanner from './components/ContentBanner'
 import Arrow from './components/Arrow'
 import Link from 'next/link'
+import { LinkRed } from '../LinkRed'
 
 export default function Banner({ banners, stlyeText, page }) {
   const [activeBanner, setActiveBanner] = useState(0)
@@ -61,6 +62,24 @@ export default function Banner({ banners, stlyeText, page }) {
 
   return (
     <section className="relative" id="banner_">
+      {banners?.linksHeader?.length > 0 && (
+        <div className="mx-auto mb-14 mt-10 flex w-full max-w-[800px] flex-row flex-wrap items-center justify-between gap-4 px-4 sm:mt-20">
+          {banners?.linksHeader.map((button, index) => (
+            <LinkRed
+              key={index}
+              href={button.url}
+              style={{
+                background: button.colors.bg,
+                color: button.colors.text,
+              }}
+              target="_blank"
+              className="mx-auto w-full max-w-[281px]"
+            >
+              {button.name}
+            </LinkRed>
+          ))}
+        </div>
+      )}
       <div
         id="containerBanner"
         className="relative mb-4 flex justify-center bg-[#03050ede] md:mb-0"
@@ -105,9 +124,9 @@ export default function Banner({ banners, stlyeText, page }) {
         )}
       </div>
 
-      {banners?.buttons?.length > 0 && (
+      {banners?.linksFooter?.length > 0 && (
         <div className="mx-auto mt-14 flex w-full max-w-[800px] flex-row flex-wrap items-center justify-between gap-4 px-4">
-          {banners?.buttons.map((button, index) => (
+          {banners?.linksFooter.map((button, index) => (
             <Link
               key={index}
               href={button.url}

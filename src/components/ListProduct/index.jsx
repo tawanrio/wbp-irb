@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { Product } from '../Product'
-import { LinkRed } from '../LinkRed'
 import {
   Carousel,
   CarouselContent,
@@ -37,13 +36,6 @@ export const ListProduct = ({ categories }) => {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <LinkRed
-        href="https://engraxamente.eadplataforma.app"
-        target="_blank"
-        className="mx-auto mb-14 mt-10 w-full max-w-[281px] sm:mt-20"
-      >
-        EngraxaMente
-      </LinkRed>
     </section>
   )
 }

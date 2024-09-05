@@ -11,7 +11,7 @@ export default function ServicesOverview() {
   return (
     <section
       id="blog-carousel"
-      className="mx-auto my-4 flex w-full max-w-7xl flex-col gap-4 px-6 md:my-7 md:gap-10 md:px-14"
+      className="mx-auto mb-4 flex w-full max-w-7xl flex-col gap-4 px-6 md:mb-7 md:gap-10 md:px-14"
     >
       <div>
         <div className="flex justify-end gap-1.5">

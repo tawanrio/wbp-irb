@@ -7,8 +7,10 @@ import { CookiePopup } from '../CookiePopup'
 import { BackgroundImage } from '../BackgroundImage'
 
 export default function Templates({ children, template, page, menus }) {
+  const isHome = page?.title === 'Home' ? 'redesign-home' : 'default'
+  const isHomeHeader = page?.title === 'Home' ? 'header-home' : 'header'
   const arrHeader = template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find((item) => item?.label === 'default')
+  const header = arrHeader?.items.find((item) => item?.label === isHome)
 
   const footer = template?.find((item) => item?.label === 'footer')
   const copyright = template?.find((item) => item?.label === 'copyright')
@@ -16,8 +18,8 @@ export default function Templates({ children, template, page, menus }) {
   insertMenuInTemplate({
     menus,
     template,
-    menuName: 'header',
-    itemTemplateName: 'default',
+    menuName: isHomeHeader,
+    itemTemplateName: isHome,
     templateName: 'header',
   })
   insertMenuInTemplate({
@@ -52,10 +54,10 @@ export default function Templates({ children, template, page, menus }) {
 
   return (
     <>
+      <CookiePopup />
+      <ToastContainer />
       {page.label === 'home' ? (
         <>
-          <CookiePopup />
-          <ToastContainer />
           <BackgroundImage>
             <Header content={header} page={page.label} />
             <main>{children}</main>
@@ -65,8 +67,6 @@ export default function Templates({ children, template, page, menus }) {
         </>
       ) : (
         <>
-          <CookiePopup />
-          <ToastContainer />
           <Header content={header} page={page.label} />
           <main>{children}</main>
           <Footer content={footer} />

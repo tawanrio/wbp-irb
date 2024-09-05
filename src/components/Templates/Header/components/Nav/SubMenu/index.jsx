@@ -30,7 +30,7 @@ export default function SubMenu({
                 ? { background: colors.hoverbg, color: colors.hovertext }
                 : ''),
             }}
-            className="flex w-full justify-end whitespace-nowrap px-5 py-1 text-end duration-500 lg:justify-start lg:text-start lg:text-base"
+            className="flex w-full justify-end px-5 py-1 text-end duration-500 sm:whitespace-nowrap lg:justify-start lg:text-start lg:text-base"
           >
             {submenuItem.label || 'Submenu Item'}
           </Link>
