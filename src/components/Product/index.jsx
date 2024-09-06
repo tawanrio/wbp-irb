@@ -10,7 +10,7 @@ export const Product = ({ category, className }) => {
         className,
       )}
     >
-      <figure className="h-full max-h-[395.9px]">
+      <figure className="h-full max-h-[395.9px] w-full">
         <Image
           src={category.thumbnail.imageUrlPng}
           alt={category.thumbnail.alt}
