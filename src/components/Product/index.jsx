@@ -10,7 +10,7 @@ export const Product = ({ category, className }) => {
         className,
       )}
     >
-      <figure className="h-[395.9px] w-full">
+      <figure className="h-full w-full">
         <Image
           src={category.thumbnail.imageUrlPng}
           alt={category.thumbnail.alt}
@@ -20,7 +20,7 @@ export const Product = ({ category, className }) => {
         />
       </figure>
       <section className="flex flex-col items-start justify-between px-2 pt-6">
-        <h3 className="line-clamp-1 text-4xl font-extrabold text-white">
+        <h3 className="line-clamp-1 break-all text-4xl font-extrabold text-white">
           {category.title}
         </h3>
         <p className="m-0 mt-1.5 line-clamp-3 text-lg font-thin text-white">
