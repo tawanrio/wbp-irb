@@ -1,8 +1,8 @@
 import { EmblaCarousel } from '../Carousel'
 
-export const ListProduct = ({ categories }) => {
-  const OPTIONS = { loop: true }
+const OPTIONS = { loop: true }
 
+export const ListProduct = ({ categories }) => {
   return (
     <section
       id="product-carousel"

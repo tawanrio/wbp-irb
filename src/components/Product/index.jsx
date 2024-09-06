@@ -10,13 +10,13 @@ export const Product = ({ category, className }) => {
         className,
       )}
     >
-      <figure className="h-full w-full">
+      <figure className="h-full max-h-[395.9px]">
         <Image
           src={category.thumbnail.imageUrlPng}
           alt={category.thumbnail.alt}
           width={361.2}
           height={395.9}
-          className="h-full w-full rounded-3xl object-cover text-white"
+          className="h-full max-h-[395.9px] w-full rounded-3xl text-white"
         />
       </figure>
       <section className="flex flex-col items-start justify-between px-2 pt-6">
@@ -26,12 +26,14 @@ export const Product = ({ category, className }) => {
         <p className="m-0 mt-1.5 line-clamp-3 text-lg font-thin text-white">
           {category.contentDescription[0]}
         </p>
-        <Link
-          href={`/${category.label}`}
-          className="m-0 mt-8 rounded-full bg-[#C12025] px-5 py-1 font-thin text-white transition-all duration-200 hover:scale-95"
-        >
-          Ver mais
-        </Link>
+        <div className="mt-8 flex w-full justify-end">
+          <Link
+            href={`/${category.label}`}
+            className="m-0 rounded-full bg-[#982225] px-5 py-1 font-thin text-white transition-all duration-200 hover:scale-95"
+          >
+            Ver mais
+          </Link>
+        </div>
       </section>
     </div>
   )

@@ -7,11 +7,10 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from './CarouselArrowButtons'
-import { DotButton, useDotButton } from './CarouselDotButton'
 import { Product } from '../Product'
 import '../../styles/embla.css'
 
-const TWEEN_FACTOR_BASE = 0.52
+const TWEEN_FACTOR_BASE = 0.15
 
 const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max)
@@ -21,9 +20,6 @@ export const EmblaCarousel = (props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
   const tweenNodes = useRef([])
-
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi)
 
   const {
     prevBtnDisabled,
@@ -96,7 +92,7 @@ export const EmblaCarousel = (props) => {
       .on('reInit', tweenScale)
       .on('scroll', tweenScale)
       .on('slideFocus', tweenScale)
-  }, [emblaApi, tweenScale])
+  }, [emblaApi, setTweenFactor, setTweenNodes, tweenScale])
 
   return (
     <div className="embla container mx-auto flex py-10">
@@ -116,20 +112,6 @@ export const EmblaCarousel = (props) => {
         <div className="embla__buttons">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
-      </div>
-
-      <div className="embla__controls">
-        <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={'embla__dot'.concat(
-                index === selectedIndex ? 'embla__dot--selected' : '',
-              )}
-            />
-          ))}
         </div>
       </div>
     </div>

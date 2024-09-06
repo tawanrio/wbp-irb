@@ -8,10 +8,10 @@
 @media screen and (max-width: 1024px) {
   .embla {
     width: 100%;
-    max-width: 700px;
+    max-width: 600px;
     margin: auto;
     --slide-spacing: 1rem;
-    --slide-size: 80%;
+    --slide-size: 85%;
   }
 }
 
