@@ -15,7 +15,7 @@ export default function MenuItem({
   const hasSubmenu = Object.prototype.hasOwnProperty.call(link, 'submenu')
 
   return (
-    <ul className="group z-50 flex w-full flex-col items-end uppercase lg:inline-block lg:w-auto">
+    <div className="group z-50 flex w-full flex-col items-end uppercase lg:inline-block lg:w-auto">
       <Link
         target={link?.blank}
         href={link.route || '/#'}
@@ -29,7 +29,7 @@ export default function MenuItem({
         }}
         className="mx-1 flex w-full flex-row-reverse justify-start gap-3 px-4 py-2 font-medium duration-500 lg:flex-row lg:justify-center lg:rounded-full lg:text-base"
       >
-        <span>{link.label}</span>
+        <span className="max-[475px]:w-min">{link.label}</span>
         {hasSubmenu && (
           <Image
             src={dataHeader.nav[0].icon}
@@ -56,6 +56,6 @@ export default function MenuItem({
           colors={colors}
         />
       )}
-    </ul>
+    </div>
   )
 }

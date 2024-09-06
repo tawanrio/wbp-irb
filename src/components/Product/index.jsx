@@ -29,7 +29,7 @@ export const Product = ({ category, className }) => {
         <div className="mt-8 flex w-full justify-end">
           <Link
             href={`/${category.label}`}
-            className="m-0 rounded-full bg-[#982225] px-5 py-1 font-thin text-white transition-all duration-200 hover:scale-95"
+            className="m-0 rounded-full bg-[#982225] px-5 py-1.5 font-thin text-white transition-all duration-200 hover:scale-95"
           >
             Ver mais
           </Link>

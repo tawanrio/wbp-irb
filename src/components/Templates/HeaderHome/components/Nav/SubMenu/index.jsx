@@ -18,7 +18,7 @@ export default function SubMenu({
       className="z-[99] hidden text-sm md:absolute md:overflow-hidden md:rounded-2xl md:py-2 md:shadow-[0_10px_15px_-10px_rgba(0,0,0,.8)] md:group-hover:block"
     >
       {submenu.map((submenuItem, sId) => (
-        <ul key={submenuItem.label || 's' + sId} className="w-full">
+        <div key={submenuItem.label || 's' + sId} className="w-full">
           <Link
             target={submenuItem?.blank}
             href={submenuItem.route || '/#'}
@@ -34,7 +34,7 @@ export default function SubMenu({
           >
             {submenuItem.label || 'Submenu Item'}
           </Link>
-        </ul>
+        </div>
       ))}
     </div>
   )

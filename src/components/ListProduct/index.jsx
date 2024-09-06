@@ -1,6 +1,6 @@
+import { OPTIONS } from '@/utils/constants'
 import { EmblaCarousel } from '../Carousel'
-
-const OPTIONS = { loop: true }
+import { Product } from '../Product'
 
 export const ListProduct = ({ categories }) => {
   return (
@@ -11,7 +11,13 @@ export const ListProduct = ({ categories }) => {
       <h2 className="mx-auto w-full max-w-[281px] rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal text-white shadow-[inset_0px_6.21px_5.5px_rgba(0,0,0,0.5)]">
         Nossos Produtos
       </h2>
-      <EmblaCarousel slides={categories.slice(0, 6)} options={OPTIONS} />
+      <EmblaCarousel options={OPTIONS}>
+        {categories.slice(0, 6).map((category) => (
+          <li className="embla__slide" key={category._id}>
+            <Product category={category} className="embla__slide__number" />
+          </li>
+        ))}
+      </EmblaCarousel>
     </section>
   )
 }

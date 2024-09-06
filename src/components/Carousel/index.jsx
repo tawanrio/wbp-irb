@@ -7,7 +7,6 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from './CarouselArrowButtons'
-import { Product } from '../Product'
 import '../../styles/embla.css'
 
 const TWEEN_FACTOR_BASE = 0.15
@@ -16,7 +15,7 @@ const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max)
 
 export const EmblaCarousel = (props) => {
-  const { slides, options } = props
+  const { options, children } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
   const tweenNodes = useRef([])
@@ -94,20 +93,20 @@ export const EmblaCarousel = (props) => {
       .on('slideFocus', tweenScale)
   }, [emblaApi, setTweenFactor, setTweenNodes, tweenScale])
 
+  useEffect(() => {
+    if (!emblaApi) return
+
+    const autoScroll = setInterval(() => {
+      emblaApi.scrollNext()
+    }, 10000)
+
+    return () => clearInterval(autoScroll)
+  }, [emblaApi])
+
   return (
     <div className="embla container mx-auto flex py-10">
       <div className="embla__viewport" ref={emblaRef}>
-        <ul className="embla__container">
-          {slides.map((slide) => (
-            <li className="embla__slide" key={slide._id}>
-              <Product
-                key={slide._id}
-                category={slide}
-                className="embla__slide__number"
-              />
-            </li>
-          ))}
-        </ul>
+        <ul className="embla__container">{children}</ul>
 
         <div className="embla__buttons">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />

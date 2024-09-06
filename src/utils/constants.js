@@ -252,3 +252,5 @@ const partnerTypes = [
     linkText: 'Baixar eBook!',
   },
 ]
+
+export const OPTIONS = { loop: true }

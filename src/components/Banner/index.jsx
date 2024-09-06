@@ -63,7 +63,7 @@ export default function Banner({ banners, stlyeText, page }) {
   return (
     <section className="relative" id="banner_">
       {banners?.linksHeader?.length > 0 && (
-        <div className="mx-auto mb-14 mt-10 flex w-full max-w-[800px] flex-row flex-wrap items-center justify-between gap-4 px-4 sm:mt-20">
+        <div className="mx-auto mb-12 mt-10 flex w-full max-w-[800px] flex-row flex-wrap items-center justify-between gap-4 px-4 sm:mt-14">
           {banners?.linksHeader.map((button, index) => (
             <LinkRed
               key={index}
@@ -125,7 +125,7 @@ export default function Banner({ banners, stlyeText, page }) {
       </div>
 
       {banners?.linksFooter?.length > 0 && (
-        <div className="mx-auto mt-14 flex w-full max-w-[800px] flex-row flex-wrap items-center justify-between gap-4 px-4">
+        <div className="mx-auto mt-12 flex w-full max-w-[800px] flex-row flex-wrap items-center justify-between gap-4 px-4">
           {banners?.linksFooter.map((button, index) => (
             <Link
               key={index}

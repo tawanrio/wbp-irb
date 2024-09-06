@@ -32,10 +32,10 @@ export default function ServicesOverview() {
           ))}
         </div>
         <>
-          <h1 className="font-['Libre_Baskerville'] text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+          <h1 className="font-['Libre_Baskerville'] text-4xl font-bold text-white sm:text-6xl md:text-7xl">
             Revolucionando
           </h1>
-          <h2 className="text-3xl !font-thin text-white sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl !font-thin text-white sm:text-5xl md:text-5xl">
             o mercado de <strong className="font-bold">autopeças</strong>
           </h2>
         </>
@@ -49,7 +49,7 @@ export default function ServicesOverview() {
           </li>
         ))}
       </ul>
-      <ul className="mx-auto flex flex-row flex-wrap justify-center gap-4 lg:gap-10">
+      <ul className="mx-auto flex flex-row flex-wrap justify-center gap-5 lg:gap-14">
         {SERVICE_ADVANTAGES.map((card, index) => (
           <li
             key={index}

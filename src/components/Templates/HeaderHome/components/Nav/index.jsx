@@ -28,7 +28,7 @@ export default function Nav({ content }) {
     <>
       <Hamburguer menuOpen={menuOpen} handleMenu={handleMenu} />
 
-      <div
+      <nav
         style={{
           ...(menuOpen && { opacity: '1', zIndex: '10' }),
           background: colors.bg,
@@ -49,7 +49,7 @@ export default function Nav({ content }) {
             handleMenu={handleMenu}
           />
         ))}
-      </div>
+      </nav>
     </>
   )
 }
