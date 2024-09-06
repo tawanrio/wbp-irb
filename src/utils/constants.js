@@ -199,57 +199,40 @@ export const NAVIGATION_LINKS = [
 
 export const UTILITIES_CARDS = [
   {
-    title: 'Consulte nosso catálogo eletrônico',
-    surtitle: '(disponível para Android, IOS e Windows)',
-    description:
-      'e confira todos os itens, aplicações e características técnicas',
+    title: 'Publicação Quinzenal de Vídeos Educativos',
+    surtitle: 'Nosso canal no Youtube (IRB Automotive)',
+    description: 'Dicas Sobre Mecânica Automotiva no Canal do YouTube',
     image: '/images/components/utilityCards/mobile.png',
     link: 'https://engraxamente.eadplataforma.app/',
     linkText: 'Saiba mais',
   },
   {
-    title: 'Consulte nosso catálogo eletrônico',
-    surtitle: '(disponível para Android, IOS e Windows)',
+    title: 'IRB Code é uma ferramenta desenvolvida pela IRB Automotive',
+    surtitle: 'IRB Code (desenvolvida pela IRB Automotive)',
     description:
-      'e confira todos os itens, aplicações e características técnicas',
+      'Auxilia nossos amigos reparadores no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
     image: '/images/components/utilityCards/mobile.png',
-    link: 'https://engraxamente.eadplataforma.app/',
-    linkText: 'Saiba mais',
-  },
-]
-
-const partnerTypes = [
-  {
-    title: 'EngraxaMente',
-    description:
-      'EngraxaMente é a plataforma de cursos online e gratuitos desenvolvida pela IRB Automotive. Em comemoração aos seus dois anos no ar, lançamos um novo curso sobre Mecânica Automotiva Básica P1. Cresça profissionalmente e agregue valor ao seu negócio!',
-    image: '/images/components/utilityCards/engraxaMente.jpg',
-    link: 'https://engraxamente.eadplataforma.app/',
-    linkText: 'Saiba mais',
-  },
-  {
-    title: 'IRB Code',
-    description:
-      'IRB Code é uma ferramenta desenvolvida pela IRB Automotive, que auxilia nossos amigos reparadores no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
-    image: '/images/components/utilityCards/irbCode.jpg',
     link: '/autopecas',
     linkText: 'Onde encontrar',
   },
   {
-    title: 'Catálogo eletrônico',
+    title: 'Consulte nosso catálogo eletrônico',
+    surtitle: '(disponível para Android, IOS e Windows)',
     description:
-      'Consulte nosso catálogo eletrônico e saiba todas as aplicações dos nossos produtos.',
-    image: '/images/components/utilityCards/catalogo.jpg',
+      'e confira todos os itens, aplicações e características técnicas',
+    image: '/images/components/utilityCards/mobile.png',
     link: 'https://c123.com.br/app/aplicativo/?n=IRB',
     linkText: 'Baixar catálogo',
   },
   {
-    title: 'eBooks',
+    title:
+      "Na aba 'Educacional' você vai encontrar eBooks disponíveis para download gratuitamente!",
+    surtitle: 'Baixe os eBooks e se aprenda com nossos materiais',
     description:
-      'Na aba “Conteúdo” você vai encontrar eBooks disponíveis para download gratuitamente! Neles você irá conhecer um pouco mais sobre nossas linhas de produto e suas especificações, além de dicas técnicas!',
-    image: '/images/components/utilityCards/ebook.jpg',
+      'Neles você irá conhecer um pouco mais sobre nossas linhas de produto e suas especificações, além de dicas técnicas',
+    image: '/images/components/utilityCards/mobile.png',
     link: 'https://irbauto.rds.land/material-rico',
-    linkText: 'Baixar eBook!',
+    linkText: 'Baixar E-books',
   },
 ]
 

@@ -13,6 +13,7 @@ import ServicesOverview from './components/ServicesOverview'
 import { FormHome } from '@/components/Form/Home'
 import { ListProduct } from '@/components/ListProduct'
 import Banner from '@/components/Banner'
+// import { Info } from '@/components/Info'
 
 // Others || functions
 import { useState } from 'react'

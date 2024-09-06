@@ -24,7 +24,7 @@ export const SingleUtility = ({ utility }) => {
         height={455}
         className="z-[3] -mt-[34px] rounded-t-md object-contain"
       />
-      <div className="z-[3] flex h-full w-full max-w-[337.84px] flex-col items-end justify-between pb-14 pt-20">
+      <div className="z-[3] flex h-full w-full max-w-[337.84px] flex-col items-end justify-between py-8">
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl font-extrabold text-white">
             {utility.title}
@@ -41,7 +41,7 @@ export const SingleUtility = ({ utility }) => {
           target="_blank"
           className="rounded-full bg-[#982225] px-5 py-1 text-center font-medium uppercase text-white transition-all duration-200 hover:scale-95"
         >
-          Baixe Agora
+          {utility.linkText}
         </Link>
       </div>
     </div>
