@@ -7,14 +7,14 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from './CarouselArrowButtons'
-import '../../styles/embla.css'
+import './styles/embla-scale.css'
 
 const TWEEN_FACTOR_BASE = 0.15
 
 const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max)
 
-export const EmblaCarousel = (props) => {
+export const CarouselScale = (props) => {
   const { options, children } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
