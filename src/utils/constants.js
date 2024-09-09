@@ -225,11 +225,10 @@ export const UTILITIES_CARDS = [
     linkText: 'Baixar catálogo',
   },
   {
-    title:
-      "Na aba 'Educacional' você vai encontrar eBooks disponíveis para download gratuitamente!",
+    title: "Na aba 'Educacional' há eBooks grátis para download!",
     surtitle: 'Baixe os eBooks e se aprenda com nossos materiais',
     description:
-      'Neles você irá conhecer um pouco mais sobre nossas linhas de produto e suas especificações, além de dicas técnicas',
+      'Neles você conhecerá mais sobre nossas linhas de produtos, especificações e dicas técnicas',
     image: '/images/components/utilityCards/mobile.png',
     link: 'https://irbauto.rds.land/material-rico',
     linkText: 'Baixar E-books',
