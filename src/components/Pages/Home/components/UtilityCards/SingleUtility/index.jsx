@@ -25,7 +25,7 @@ export const SingleUtility = ({ utility }) => {
         className="z-[3] -mt-[34px] hidden rounded-t-md object-contain lg:block"
       />
       <div className="z-[3] flex h-full w-full flex-col justify-between px-7 py-8 lg:max-w-[337.84px] lg:items-end lg:px-0">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 sm:gap-4">
           <h3 className="text-2xl font-extrabold text-white">
             {utility.title}
           </h3>

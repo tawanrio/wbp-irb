@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { BlogCard } from './BlogCard'
 import {
   Carousel,
@@ -8,7 +9,21 @@ import {
 } from '@/components/ui/carousel'
 
 export const BlogCarousel = ({ posts }) => {
+  const [width, setWidth] = useState(0)
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth)
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   const currentPosts = posts.slice(0, 3)
+
   return (
     <section
       id="blog-carousel"
@@ -26,7 +41,7 @@ export const BlogCarousel = ({ posts }) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        {currentPosts.length > 3 && (
+        {(width < 998 || currentPosts.length > 3) && (
           <>
             <CarouselPrevious />
             <CarouselNext />

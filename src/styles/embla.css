@@ -76,12 +76,6 @@
   background-color: var(--white);
 }
 
-@media screen and (max-width: 640px) {
-  .embla__button {
-    display: none;
-  }
-}
-
 .embla__button--next {
   top: 50%;
   right: 0;
