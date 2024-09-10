@@ -7,7 +7,6 @@ import {
   PrevButton,
   usePrevNextButtons,
 } from './CarouselArrowButtons'
-import './styles/embla-scale.css'
 
 const TWEEN_FACTOR_BASE = 0.15
 

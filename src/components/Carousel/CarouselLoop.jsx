@@ -4,7 +4,6 @@ import {
   usePrevNextButtons,
 } from './CarouselArrowButtons'
 import useEmblaCarousel from 'embla-carousel-react'
-import './styles/embla-loop.css'
 
 export const CarouselLoop = (props) => {
   const { children, options } = props
