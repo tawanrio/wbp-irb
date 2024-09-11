@@ -66,6 +66,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--white);
+  margin: 0 10px;
 }
 .embla__button:disabled {
   color: var(--detail-high-contrast);

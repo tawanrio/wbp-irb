@@ -19,10 +19,8 @@ export const CarouselLoop = (props) => {
   return (
     <section className="embla_loop">
       <div className="embla__viewport_loop" ref={emblaRef}>
-        <div className="embla__container_loop">{children}</div>
-      </div>
+        <ul className="embla__container_loop">{children}</ul>
 
-      <div className="embla__controls_loop">
         <div className="embla__buttons_loop">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />

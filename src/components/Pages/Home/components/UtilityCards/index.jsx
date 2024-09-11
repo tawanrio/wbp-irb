@@ -11,10 +11,7 @@ const UtilityCards = () => {
       <CarouselLoop options={OPTIONS}>
         {UTILITIES_CARDS.map((utility, index) => (
           <li className="embla__slide_loop" key={index}>
-            <SingleUtility
-              utility={utility}
-              className="embla__slide__number_loop"
-            />
+            <SingleUtility utility={utility} />
           </li>
         ))}
       </CarouselLoop>
