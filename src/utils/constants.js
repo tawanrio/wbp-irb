@@ -64,57 +64,22 @@ export const PRODUCT_CATALOG_DETAILS = {
 
 export const COMPANY_CORE_VALUES = [
   {
-    colors: {
-      bg: '#22326E',
-      text: '#fff',
-      hr: '#6FBFD8',
-    },
-    title: 'nosso sonho',
-    content: {
-      listStyle: 'none',
-      description: [
-        'Ser a primeira escolha do cliente e líder mundial no segmento de peças automotivas.',
-      ],
-    },
-    image: '/images/components/companyValues/mission.webp',
+    icon: '/images/components/companyValues/mission.svg',
+    title: 'missão',
+    description:
+      'Os cubos de rodas são componentes essenciais nos sistemas de suspensão e direção de um veículo. Localizados na',
   },
   {
-    colors: {
-      bg: '#353535',
-      text: '#fff',
-      hr: '#C12025',
-    },
-    title: 'nosso combustível',
-    content: {
-      listStyle: 'auto',
-      description: [
-        'Fazemos negócios com ética, integridade e profissionalismo.',
-        'Somos movidos por surpreender nossos clientes e fornecer o melhor produto do mercado.',
-        'Somos incansáveis em entregar qualidade, inovação e segurança em nossas soluções.',
-        'Somos comprometidos em encontrar nossos colaboradores e gerar valor para a sociedade.',
-      ],
-    },
-    image: '/images/components/companyValues/vision.webp',
+    icon: '/images/components/companyValues/vision.svg',
+    title: 'visão',
+    description:
+      'Os cubos de rodas são componentes essenciais nos sistemas de suspensão e direção de um veículo. Localizados na',
   },
   {
-    colors: {
-      bg: '#C12025',
-      text: '#fff',
-      hr: '#22326E',
-    },
-    title: 'nossas atitudes',
-    content: {
-      listStyle: 'disc',
-      description: [
-        'Atitude corajosa',
-        'Impulsiona resultados',
-        'Graxa na veia',
-        'Cliente no centro',
-        'Constrói parcerias',
-        'Aprendizagem contínua',
-      ],
-    },
-    image: '/images/components/companyValues/values.webp',
+    icon: '/images/components/companyValues/values.svg',
+    title: 'valores',
+    description:
+      'Os cubos de rodas são componentes essenciais nos sistemas de suspensão e direção de um veículo. Localizados na',
   },
 ]
 

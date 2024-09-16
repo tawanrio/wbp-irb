@@ -7,15 +7,9 @@ import Templates from '@/components/Templates'
 // Components
 import ContentDescription from '@/components/ContentDescription'
 import BreadCrumb from '@/components/BreadCrumb'
-import CompanyValuesNew from './components/CompanyValuesNew'
+import { CompanyValuesNew } from './components/CompanyValuesNew'
 import Title from '@/components/Title'
-import TimeLineNew from './components/TimeLineNew'
 import CarouselEvent from './components/CarouselEvents'
-import CategoryGrid from '@/components/CategoryGrid'
-
-// Others
-import { sortByKey } from '@/utils/functions'
-import { useRouter } from 'next/router'
 
 export default function Fabrica({ content }) {
   const {
@@ -26,9 +20,6 @@ export default function Fabrica({ content }) {
     metaKeywords,
     events,
   } = content?.page
-  const router = useRouter()
-  const pageUrl = router.asPath.replace('/', '')
-  const sortedCategories = sortByKey(content.categories, 'label')
 
   return (
     <>
@@ -48,13 +39,7 @@ export default function Fabrica({ content }) {
         <BreadCrumb />
         <Title title={title} className={'mt-5'} />
         <ContentDescription content={description} className={'mt-5'} />
-        <TimeLineNew />
         <CompanyValuesNew />
-        <CategoryGrid
-          categories={sortedCategories}
-          title
-          baseUrl={pageUrl + '/'}
-        />
         <CarouselEvent events={events} />
       </Templates>
     </>
