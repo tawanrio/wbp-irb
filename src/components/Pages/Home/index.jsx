@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+'use client'
+
 // SEO
 import Head from 'next/head'
 
@@ -16,8 +18,9 @@ import Banner from '@/components/Banner'
 // import { Info } from '@/components/Info'
 
 // Others || functions
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { sortByKey } from '@/utils/functions'
+import { cn } from '@/utils/cn'
 
 export default function Home({ content }) {
   const [metaTitle] = useState(content?.page?.metaTitle)
@@ -30,8 +33,27 @@ export default function Home({ content }) {
     content?.form?.forms.find((item) => item.label === 'default'),
   )
   const [posts] = useState(content.blogData)
+  const [showBanner, setShowBanner] = useState(true)
 
   const sortedCategories = sortByKey(content.categories, 'label')
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setShowBanner(false)
+      } else {
+        setShowBanner(true)
+      }
+    }
+
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <>
@@ -51,8 +73,8 @@ export default function Home({ content }) {
       >
         <ServicesOverview />
         <ListProduct categories={sortedCategories} />
-        <Banner banners={banners} page={content?.page} />
-        <PartnersButton partners={content?.partners?.types} />
+        {showBanner && <Banner banners={banners} page={content?.page} />}
+        <PartnersButton className={cn(!showBanner && '!max-w-full bg-white')} />
         <UtilityCards />
         <BlogCarousel posts={posts} />
         <FormHome inputs={formDefault} />

@@ -11,11 +11,11 @@ export default function Footer({ content }) {
 
   return (
     <footer style={{ background: colors?.bg, color: colors?.text }}>
-      <div className="relative mx-auto flex flex-col gap-1 px-5 py-6 md:max-w-[1600px] md:justify-between md:px-14 md:py-12 lg:flex-row">
+      <div className="relative mx-auto flex flex-col gap-1 gap-y-7 px-5 py-6 md:max-w-[1600px] md:justify-between md:px-14 md:py-12 lg:flex-row">
         <RenderList nav={nav} colors={colors} />
 
         <div className="mx-auto flex w-full max-w-sm flex-col items-center gap-6 lg:mx-3 lg:flex-1 lg:items-start lg:last:mr-0">
-          <div className="flex flex-col items-center gap-5 lg:items-start">
+          <div className="flex flex-col items-center gap-7 lg:items-start lg:gap-5">
             <address className="text-center font-normal not-italic lg:text-start lg:text-lg">
               {address}
             </address>

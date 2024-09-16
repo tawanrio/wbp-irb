@@ -4,7 +4,7 @@ import logo from '../../../../../../public/images/templates/header/logo-white.sv
 
 export default function RenderList({ nav, colors }) {
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex flex-1 flex-col max-sm:gap-y-5">
       <ul className="flex flex-1 flex-col justify-between sm:flex-row">
         {nav?.map((items, ulId) => (
           <li
@@ -31,6 +31,7 @@ export default function RenderList({ nav, colors }) {
           alt="Logo IRB Automovite"
           width={163.37}
           height={168.84}
+          className="w-[143.37px] lg:w-[163.37px]"
         />
       </figure>
     </div>
