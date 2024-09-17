@@ -62,23 +62,12 @@ export default function Templates({ children, template, page, menus }) {
     <>
       <CookiePopup />
       <ToastContainer />
-      {page.label === 'home' || page?.label === 'fabrica' ? (
-        <>
-          <BackgroundImage>
-            <Header content={header} page={page.label} />
-            <main>{children}</main>
-            <Footer content={footer} />
-            <Copyright content={copyright} />
-          </BackgroundImage>
-        </>
-      ) : (
-        <>
-          <Header content={header} page={page.label} />
-          <main>{children}</main>
-          <Footer content={footer} />
-          <Copyright content={copyright} />
-        </>
-      )}
+      <BackgroundImage backgrounds={page.backgroundImages}>
+        <Header content={header} page={page.label} />
+        <main>{children}</main>
+        <Footer content={footer} />
+        <Copyright content={copyright} />
+      </BackgroundImage>
     </>
   )
 }
