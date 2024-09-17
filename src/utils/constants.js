@@ -148,7 +148,7 @@ export const SERVICE_ADVANTAGES = [
     description: 'Cobertura de 99% da frota circulante',
     icon: {
       url: '/images/components/icons/cars.svg',
-      alt: 'Ícone de Caminhão',
+      alt: 'Ícone de Carros',
     },
   },
   {

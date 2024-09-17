@@ -20,10 +20,10 @@ export const Product = ({ category, className }) => {
         />
       </figure>
       <section className="flex flex-col items-start justify-between px-2 pt-6">
-        <h3 className="mb-1.5 line-clamp-1 break-all text-2xl font-extrabold text-white sm:text-4xl">
+        <h3 className="mb-1.5 line-clamp-2 text-2xl font-extrabold text-white max-sm:break-all xl:text-4xl">
           {category.title}
         </h3>
-        <p className="m-0 mt-1.5 line-clamp-3 font-thin text-white sm:text-lg">
+        <p className="m-0 mt-1.5 line-clamp-3 font-thin text-white xl:text-lg">
           {category.contentDescription[0]}
         </p>
         <div className="mt-8 flex w-full justify-end">
