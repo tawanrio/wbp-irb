@@ -10,6 +10,7 @@ import ContentDescription from './components/ContentDescription'
 import { CompanyValuesNew } from './components/CompanyValuesNew'
 import { CarouselEvent } from './components/CarouselEvents'
 import { Infos } from './components/Infos'
+import { Gallery } from './components/Gallery'
 
 export default function Fabrica({ content }) {
   const {
@@ -38,6 +39,7 @@ export default function Fabrica({ content }) {
       >
         <BreadCrumb />
         <Infos />
+        <Gallery />
         <CompanyValuesNew />
         <ContentDescription content={description} className="mb-8 mt-16" />
         <CarouselEvent events={events} />

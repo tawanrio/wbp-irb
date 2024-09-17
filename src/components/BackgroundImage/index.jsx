@@ -17,7 +17,7 @@ export const BackgroundImage = ({ children, backgrounds }) => {
               style={{
                 backgroundImage: `url(${backgrounds.automotive.image})`,
                 minHeight: backgrounds.automotive.size,
-                marginTop: backgrounds.home.size
+                marginTop: backgrounds.automotive.margin
               }} />
             {children}
           </>

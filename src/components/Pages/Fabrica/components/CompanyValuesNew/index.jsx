@@ -5,7 +5,7 @@ export const CompanyValuesNew = () => {
   return (
     <section
       id="company-values_"
-      className="mx-auto my-8 flex w-full max-w-7xl flex-row items-center px-6"
+      className="mx-auto my-14 flex w-full max-w-7xl flex-row items-center px-6"
     >
       <ul className="flex w-full flex-row flex-wrap justify-center gap-8">
         {COMPANY_CORE_VALUES.map((card, index) => (
