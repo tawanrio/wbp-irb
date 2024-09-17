@@ -32,7 +32,7 @@ export default function ServicesOverview() {
           ))}
         </div>
         <>
-          <h1 className="font-['Libre_Baskerville'] text-4xl font-bold text-white sm:text-6xl md:text-7xl">
+          <h1 className="text-4xl font-bold text-white sm:text-6xl md:text-7xl">
             Revolucionando
           </h1>
           <h2 className="text-3xl !font-thin text-white sm:text-5xl md:text-5xl">

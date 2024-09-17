@@ -5,16 +5,16 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
 import BreadCrumb from '@/components/BreadCrumb'
+import ContentDescription from './components/ContentDescription'
 import { CompanyValuesNew } from './components/CompanyValuesNew'
-import Title from '@/components/Title'
-import CarouselEvent from './components/CarouselEvents'
+import { CarouselEvent } from './components/CarouselEvents'
+import { Infos } from './components/Infos'
 
 export default function Fabrica({ content }) {
   const {
     title,
-    contentDescription: description,
+    contentDescriptionRedesign: description,
     metaTitle,
     metaDescription,
     metaKeywords,
@@ -37,9 +37,9 @@ export default function Fabrica({ content }) {
         style={true}
       >
         <BreadCrumb />
-        <Title title={title} className={'mt-5'} />
-        <ContentDescription content={description} className={'mt-5'} />
+        <Infos />
         <CompanyValuesNew />
+        <ContentDescription content={description} className="mb-8 mt-16" />
         <CarouselEvent events={events} />
       </Templates>
     </>

@@ -1,3 +1,5 @@
+import { cn } from '@/lib/utils'
+
 export default function Description({ content, color, size, className }) {
   return (
     <>
@@ -5,7 +7,10 @@ export default function Description({ content, color, size, className }) {
         <p
           key={tId}
           id="description_"
-          className={`flex text-justify text-base font-[400] md:text-lg ${className && className} `}
+          className={cn(
+            'flex text-justify text-base font-[400] md:text-lg',
+            className && className,
+          )}
           style={{
             color: color || '#666',
             ...(size && { fontSize: size }),

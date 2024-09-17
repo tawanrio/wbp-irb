@@ -11,7 +11,7 @@ export const CompanyValuesNew = () => {
         {COMPANY_CORE_VALUES.map((card, index) => (
           <li
             key={index}
-            className="min-h-[480.68px] w-full max-w-[364.82px] rounded-[25.22px] border border-solid border-[##FFFFFF4D] p-8"
+            className="min-h-[480.68px] w-full max-w-[364.82px] rounded-[25.22px] border border-solid border-[#FFFFFF4D] p-8 text-white"
           >
             <Image
               src={card.icon}

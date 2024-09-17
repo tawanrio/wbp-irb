@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import SectionTitle from '@/components/SectionTitle'
 
-const Carousel = ({ events }) => {
+export const CarouselEvent = ({ events }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -40,11 +39,9 @@ const Carousel = ({ events }) => {
 
   return (
     <section
-      className="mx-auto my-4 flex w-full max-w-7xl flex-col justify-between px-6 md:my-7 md:gap-10 md:px-14"
       id="timeline"
+      className="mx-auto my-4 flex w-full max-w-7xl flex-col justify-between px-6 md:my-7 md:gap-10 md:px-14"
     >
-      <SectionTitle title="Nossos eventos" line />
-
       <div className="relative w-full overflow-hidden">
         <div
           className="mx-4 flex gap-7 py-5 transition-transform duration-1000 ease-in-out"
@@ -111,5 +108,3 @@ const Carousel = ({ events }) => {
     </section>
   )
 }
-
-export default Carousel

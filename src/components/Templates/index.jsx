@@ -7,8 +7,14 @@ import { CookiePopup } from '../CookiePopup'
 import { BackgroundImage } from '../BackgroundImage'
 
 export default function Templates({ children, template, page, menus }) {
-  const isHome = page?.title === 'Home' ? 'redesign-home' : 'default'
-  const isHomeHeader = page?.title === 'Home' ? 'header-home' : 'header'
+  const isHome =
+    page?.title === 'Home' || page?.label === 'fabrica'
+      ? 'redesign-home'
+      : 'default'
+  const isHomeHeader =
+    page?.title === 'Home' || page?.label === 'fabrica'
+      ? 'header-home'
+      : 'header'
   const arrHeader = template?.find((item) => item?.label === 'header')
   const header = arrHeader?.items.find((item) => item?.label === isHome)
 
@@ -56,7 +62,7 @@ export default function Templates({ children, template, page, menus }) {
     <>
       <CookiePopup />
       <ToastContainer />
-      {page.label === 'home' ? (
+      {page.label === 'home' || page?.label === 'fabrica' ? (
         <>
           <BackgroundImage>
             <Header content={header} page={page.label} />
