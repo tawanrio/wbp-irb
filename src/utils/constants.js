@@ -235,4 +235,16 @@ export const UTILITIES_CARDS = [
   },
 ]
 
+export const UNIQUE_UTILITIES_CARDS = [
+  {
+    title: 'Consulte nosso catálogo eletrônico',
+    surtitle: '(disponível para Android, IOS e Windows)',
+    description:
+      'e confira todos os itens, aplicações e características técnicas',
+    image: '/images/components/utilityCards/mobile.png',
+    link: 'https://c123.com.br/app/aplicativo/?n=IRB',
+    linkText: 'Baixar catálogo',
+  },
+]
+
 export const OPTIONS = { loop: true }

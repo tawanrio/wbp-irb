@@ -13,7 +13,7 @@ export default function ServicesOverview() {
       id="blog-carousel"
       className="mx-auto mb-4 flex w-full max-w-7xl flex-col gap-4 px-6 md:mb-7 md:gap-10 md:px-14"
     >
-      <div>
+      <div className="space-y-4">
         <div className="flex justify-end gap-1.5">
           {QUALITY_CERTIFICATIONS?.map((icon, indexIcon) => (
             <figure key={indexIcon}>
@@ -21,24 +21,24 @@ export default function ServicesOverview() {
                 src={icon.url}
                 alt={icon.alt}
                 quality={100}
-                width={105.28}
+                width={125.28}
                 height={41.42}
                 className={cn(
-                  '!h-[80px] object-contain p-0 text-white',
+                  '!h-[80px] w-[105.28px] object-contain p-0 text-white sm:w-[125.28px]',
                   icon.bg && 'my-1 !h-[70px] rounded-md bg-[#AF231C] !p-1',
                 )}
               />
             </figure>
           ))}
         </div>
-        <>
+        <div>
           <h1 className="font-['Libre_Baskerville'] text-4xl font-bold text-white sm:text-6xl md:text-7xl">
             Revolucionando
           </h1>
           <h2 className="text-3xl !font-thin text-white sm:text-5xl md:text-5xl">
             o mercado de <strong className="font-bold">autopeças</strong>
           </h2>
-        </>
+        </div>
       </div>
       <ul className="mb-4 mt-7 flex w-full flex-row flex-wrap items-center justify-center gap-5 sm:gap-7">
         {NAVIGATION_LINKS.map((link, index) => (

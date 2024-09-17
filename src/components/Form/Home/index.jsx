@@ -114,7 +114,7 @@ export const FormHome = ({ inputs }) => {
                   htmlFor="email"
                   className="text-lg font-black capitalize text-[#22326E]"
                 >
-                  Endereço de e-mail
+                  E-mail
                 </label>
                 <input
                   id="email"
@@ -130,9 +130,9 @@ export const FormHome = ({ inputs }) => {
               <div className="flex w-full flex-col gap-1">
                 <label
                   htmlFor="phone"
-                  className="text-lg font-black capitalize text-[#22326E]"
+                  className="text-lg font-black text-[#22326E]"
                 >
-                  Telefone e WhatsApp
+                  Telefone ou WhatsApp
                 </label>
                 <InputMask
                   id="phone"
@@ -149,9 +149,9 @@ export const FormHome = ({ inputs }) => {
               <div className="flex w-full flex-col gap-1">
                 <label
                   htmlFor="message"
-                  className="text-lg font-black capitalize text-[#22326E]"
+                  className="text-lg font-black text-[#22326E]"
                 >
-                  Deixei sua mensagem :{')'}
+                  Deixe sua Mensagem :{')'}
                 </label>
                 <textarea
                   id="message"
