@@ -1,9 +1,28 @@
-export const BackgroundImage = ({ children }) => {
+/* eslint-disable prettier/prettier */
+export const BackgroundImage = ({ children, backgrounds }) => {
   return (
     <div className="relative">
-      <div className="absolute inset-0 -z-50 max-h-[2500px] bg-background-home bg-top bg-no-repeat" />
-      <div className="absolute inset-0 -z-50 mt-[2500px] min-h-[3341px] bg-background-automotive bg-bottom bg-no-repeat" />
-      {children}
+      {
+        backgrounds ? (
+          <>
+            <div
+              className="absolute inset-0 -z-50 bg-top bg-no-repeat"
+              style={{
+                backgroundImage: `url(${backgrounds.home.image})`,
+                maxHeight: backgrounds.home.size,
+              }}
+            />
+            <div
+              className="absolute inset-0 -z-50 bg-bottom bg-no-repeat"
+              style={{
+                backgroundImage: `url(${backgrounds.automotive.image})`,
+                minHeight: backgrounds.automotive.size,
+                marginTop: backgrounds.home.size
+              }} />
+            {children}
+          </>
+        ) : children
+      }
     </div>
   )
 }
