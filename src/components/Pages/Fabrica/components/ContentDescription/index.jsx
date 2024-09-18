@@ -6,14 +6,14 @@ export default function ContentDescription({ content, className }) {
     <article
       id="content-description_"
       className={cn(
-        'mx-auto flex w-full max-w-[1058px] flex-col items-center gap-8 px-6 md:px-14',
+        'mx-auto flex w-full max-w-[79rem] flex-col items-center gap-8 px-6 md:px-14',
         className,
       )}
     >
       <Description
         content={content}
         color="#fff"
-        className="font-extralight sm:!text-xl"
+        className="font-extralight sm:!text-2xl"
       />
     </article>
   )
