@@ -14,11 +14,11 @@ export default function SocialMidia({ content, setWhatsapp }) {
 
   return (
     <ul className="space-y-3">
-      <li className="text-center text-lg font-normal capitalize lg:text-start">
-        {content?.labelName}
+      <li className="max-w-60 text-center font-['Libre_Baskerville'] text-xl font-semibold lg:text-start">
+        {content?.labelNameHome}
       </li>
 
-      <li className="flex items-center gap-3.5">
+      <li className="flex items-center gap-3.5 max-lg:justify-center">
         {content?.networks.map(
           (network, index) =>
             network.name !== 'Whatsapp' && (
@@ -27,13 +27,13 @@ export default function SocialMidia({ content, setWhatsapp }) {
                 href={network.url}
                 target="_blank"
                 rel="noopener"
-                className="flex size-9 items-center justify-center rounded-full bg-white transition-all duration-200 hover:bg-white/85"
+                className="flex size-10 items-center justify-center rounded-full bg-white p-1.5 transition-all duration-200 hover:bg-white/85"
               >
                 <Image
                   src={network.imageUrl}
                   alt={network.name}
-                  width={25}
-                  height={25}
+                  width={49.03}
+                  height={49.03}
                   className="text-black"
                 />
               </Link>
