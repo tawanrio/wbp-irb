@@ -4,7 +4,6 @@ import Footer from './Footer'
 import Header from './Header'
 import { insertMenuInTemplate } from '@/utils/functions'
 import { CookiePopup } from '../CookiePopup'
-import { BackgroundImage } from '../BackgroundImage'
 
 export default function Templates({ children, template, page, menus }) {
   const isHome = page?.title === 'Home' ? 'redesign-home' : 'default'
@@ -56,12 +55,10 @@ export default function Templates({ children, template, page, menus }) {
     <>
       <CookiePopup />
       <ToastContainer />
-      <BackgroundImage backgrounds={page.backgroundImages}>
-        <Header content={header} page={page.label} />
-        <main>{children}</main>
-        <Footer content={footer} />
-        <Copyright content={copyright} />
-      </BackgroundImage>
+      <Header content={header} page={page.label} />
+      <main>{children}</main>
+      <Footer content={footer} />
+      <Copyright content={copyright} />
     </>
   )
 }

@@ -15,11 +15,12 @@ import ServicesOverview from './components/ServicesOverview'
 import { FormHome } from '@/components/Form/Home'
 import { ListProduct } from '@/components/ListProduct'
 import Banner from '@/components/Banner'
-// import { Info } from '@/components/Info'
 
 // Others || functions
 import { useState } from 'react'
 import { sortByKey } from '@/utils/functions'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 
 export default function Home({ content }) {
   const [metaTitle] = useState(content?.page?.metaTitle)
@@ -51,14 +52,17 @@ export default function Home({ content }) {
         banner={banners}
         style={'home'}
       >
-        <ServicesOverview />
-        <ListProduct categories={sortedCategories} />
-        <Banner banners={banners} page={content?.page} />
-        <PartnersButton />
-        <UtilityCards />
-        <BlogCarousel posts={posts} />
-        <FormHome inputs={formDefault} />
-        {/* {content?.page?.info?.length > 0 && <Info info={content.page.info} />} */}
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <ServicesOverview />
+          <ListProduct categories={sortedCategories} />
+          <Banner banners={banners} page={content?.page} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <PartnersButton />
+          <UtilityCards />
+          <BlogCarousel posts={posts} />
+          <FormHome inputs={formDefault} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )
