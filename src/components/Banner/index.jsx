@@ -7,11 +7,17 @@ import { LinkRed } from '../LinkRed'
 
 export default function Banner({ banners, stlyeText, page }) {
   const [activeBanner, setActiveBanner] = useState(0)
-  const [size, setSize] = useState(banners?.size.height)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
+  const [size, setSize] = useState(banners?.size.height)
 
   const carousel =
-    page?.title === 'Home' ? banners?.carouselHome : banners?.carousel
+    page?.title === 'Home' && isSmallScreen
+      ? banners?.carouselHomeMobile
+      : page?.title === 'Home'
+        ? banners?.carouselHome
+        : isSmallScreen
+          ? banners?.carouselHomeMobile
+          : banners?.carousel
   const showButtonsBanner = carousel.length > 1
 
   useEffect(() => {
@@ -33,10 +39,8 @@ export default function Banner({ banners, stlyeText, page }) {
   }, [])
 
   useEffect(() => {
-    if (page !== 'home') return
-
-    if (isSmallScreen) {
-      setSize(400)
+    if (page?.title === 'Home' && isSmallScreen) {
+      setSize(banners?.size.height_mobile || 400)
     } else {
       setSize(banners?.size.height)
     }
