@@ -65,21 +65,41 @@ export const PRODUCT_CATALOG_DETAILS = {
 export const COMPANY_CORE_VALUES = [
   {
     icon: '/images/components/companyValues/mission.svg',
-    title: 'missão',
-    description:
-      'Os cubos de rodas são componentes essenciais nos sistemas de suspensão e direção de um veículo. Localizados na',
+    title: 'nosso sonho',
+    content: {
+      listStyle: 'none',
+      description: [
+        'Ser a primeira escolha do cliente e líder mundial no segmento de peças automotivas.',
+      ],
+    },
   },
   {
     icon: '/images/components/companyValues/vision.svg',
-    title: 'visão',
-    description:
-      'Os cubos de rodas são componentes essenciais nos sistemas de suspensão e direção de um veículo. Localizados na',
+    title: 'nosso combustível',
+    content: {
+      listStyle: 'auto',
+      description: [
+        'Fazemos negócios com ética, integridade e profissionalismo.',
+        'Somos movidos por surpreender nossos clientes e fornecer o melhor produto do mercado.',
+        'Somos incansáveis em entregar qualidade, inovação e segurança em nossas soluções.',
+        'Somos comprometidos em encontrar nossos colaboradores e gerar valor para a sociedade.',
+      ],
+    },
   },
   {
     icon: '/images/components/companyValues/values.svg',
-    title: 'valores',
-    description:
-      'Os cubos de rodas são componentes essenciais nos sistemas de suspensão e direção de um veículo. Localizados na',
+    title: 'nossas atitudes',
+    content: {
+      listStyle: 'disc',
+      description: [
+        'Atitude corajosa',
+        'Impulsiona resultados',
+        'Graxa na veia',
+        'Cliente no centro',
+        'Constrói parcerias',
+        'Aprendizagem contínua',
+      ],
+    },
   },
 ]
 
