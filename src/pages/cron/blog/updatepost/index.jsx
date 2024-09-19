@@ -1,11 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import mongoose from 'mongoose'
 import { connectMongoDB, disconnectMongoDB } from '@/service/db'
 import { Posts } from '@/service/model/schemas/postsSchema'
 import { formatStrToDash } from '@/utils/functions'
 
 export default function UpdatePost({ content }) {
-  // Aqui você pode adicionar a lógica de renderização se precisar
   return (
     <>
       {content.type === 'error' && <div>não autenticado</div>}
@@ -41,40 +38,46 @@ export const getServerSideProps = async (context) => {
       page += 1
     } while (page <= totalPages)
 
-    // Apaga todos os posts existentes antes de recriar
-    await Posts.deleteMany({})
-    console.log('Coleção de Posts apagada.')
+    // Obtenha os IDs de todos os posts recuperados do WordPress
+    const postIds = allPosts.map((post) => post.id)
 
-    // Itera sobre todos os posts e os insere novamente
+    // Itera sobre todos os posts e insere ou atualiza
     for (const post of allPosts) {
-      await Posts.create({
-        postId: post.id,
-        title: post.title.rendered,
-        metaTitle: post.yoast_head_json.og_title,
-        category: '',
-        faq: [],
-        metaDescription: post.yoast_head_json.og_description,
-        featuredImg: {
-          url: post.yoast_head_json.og_image[0]?.url,
-          alt: post.title.rendered,
+      await Posts.findOneAndUpdate(
+        { postId: post.id }, // Filtro
+        {
+          postId: post.id,
+          title: post.title.rendered,
+          metaTitle: post.yoast_head_json.og_title,
+          category: '',
+          faq: [],
+          metaDescription: post.yoast_head_json.og_description,
+          featuredImg: {
+            url: post.yoast_head_json.og_image[0]?.url,
+            alt: post.title.rendered,
+          },
+          permaLink: formatStrToDash(post.title.rendered),
+          contentHTML: post.content.rendered,
+          enable: true,
+          trash: false,
+          _createdAt: new Date(post.date).toISOString(),
+          _updatedAt: new Date(post.modified).toISOString(),
         },
-        permaLink: formatStrToDash(post.title.rendered),
-        contentHTML: post.content.rendered,
-        enable: true,
-        trash: false,
-        _createdAt: new Date(post.date).toISOString(),
-        _updatedAt: new Date(post.modified).toISOString(),
-        // Adicione outros campos necessários
-      })
-      console.log(`Post ${post.id} inserido.`)
+        { upsert: true, new: true }, // Opções: `upsert` cria ou atualiza, `new` retorna o documento atualizado
+      )
+      console.log(`Post ${post.id} inserido/atualizado.`)
     }
+
+    // Remove os posts do banco de dados que não estão mais no WordPress
+    await Posts.deleteMany({ postId: { $nin: postIds } })
+    console.log('Posts obsoletos removidos.')
 
     return {
       props: {
         content: {
           type: 'success',
           data: allPosts,
-          message: null,
+          message: 'Posts atualizados com sucesso',
         },
       },
     }
