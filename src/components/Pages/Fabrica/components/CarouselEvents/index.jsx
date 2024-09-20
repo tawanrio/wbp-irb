@@ -40,7 +40,7 @@ export const CarouselEvent = ({ events }) => {
   return (
     <section
       id="timeline"
-      className="mx-auto my-4 flex w-full max-w-7xl flex-col justify-between gap-6 px-6 md:my-20 md:px-14"
+      className="mx-auto flex w-full max-w-7xl flex-col justify-between gap-6 px-6 py-8 md:px-14 md:py-20"
     >
       <h2 className="mx-auto w-full max-w-6xl rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal uppercase text-white shadow-[inset_0px_6.21px_5.5px_rgba(0,0,0,0.5)]">
         Próximos Eventos

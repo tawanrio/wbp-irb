@@ -1,12 +1,14 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 export const VideoPlayer = () => {
   const videoRef = useRef(null)
   const playButtonRef = useRef(null)
+  const [controlsVisible, setControlsVisible] = useState(false)
 
   const handlePlayVideo = () => {
     videoRef.current.play()
     playButtonRef.current.style.display = 'none'
+    setControlsVisible(true)
   }
 
   return (
@@ -15,19 +17,16 @@ export const VideoPlayer = () => {
         ref={videoRef}
         width={689}
         height={442}
-        // controls
+        controls={controlsVisible}
         className="rounded-[19px]"
+        poster="/images/pages/banners/about.jpg"
         onPlay={() => (playButtonRef.current.style.display = 'none')}
-        loop
       >
-        <source
-          src="https://www.w3schools.com/html/mov_bbb.mp4"
-          type="video/mp4"
-        />
+        <source src="/video/sobre.mp4" type="video/mp4" />
       </video>
       <div
         ref={playButtonRef}
-        className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-[17px] bg-[#252121]"
+        className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-[17px]"
         onClick={handlePlayVideo}
       >
         <svg

@@ -12,11 +12,11 @@ export const Infos = () => {
         desenvolvedora de produtos
       </h1>
 
-      <div className="flex flex-col gap-6 md:flex-row">
+      <div className="flex flex-col gap-6 lg:flex-row">
         <VideoPlayer />
 
-        <div className="flex w-full max-w-[431px] flex-col justify-between gap-6">
-          <h2 className="w-full max-w-[350px] font-['Libre_Baskerville'] text-4xl font-bold sm:text-5xl">
+        <div className="flex w-full flex-col justify-between gap-6 lg:max-w-[431px]">
+          <h2 className="w-full font-['Libre_Baskerville'] text-4xl font-bold sm:text-5xl lg:max-w-[350px]">
             Centro de logística IRB
           </h2>
           <p className="text-lg font-extralight sm:text-xl">

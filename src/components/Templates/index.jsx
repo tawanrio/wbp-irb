@@ -57,7 +57,7 @@ export default function Templates({ children, template, page, menus }) {
     templateName: 'footer',
   })
 
-  const REDESIGN_PAGES = ['home']
+  const REDESIGN_PAGES = ['home', 'fabrica']
 
   const pageLabel = page?.label?.toLowerCase() || ''
 
