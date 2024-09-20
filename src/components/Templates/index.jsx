@@ -51,7 +51,17 @@ export default function Templates({ children, template, page, menus }) {
     templateName: 'footer',
   })
 
-  return (
+  const REDESIGN_PAGES = ['home']
+
+  const pageLabel = page?.label?.toLowerCase() || ''
+
+  return REDESIGN_PAGES.includes(pageLabel) ? (
+    <>
+      <CookiePopup />
+      <ToastContainer />
+      <main>{children}</main>
+    </>
+  ) : (
     <>
       <CookiePopup />
       <ToastContainer />

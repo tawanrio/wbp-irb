@@ -1,20 +1,14 @@
 /* eslint-disable prettier/prettier */
 export const BackgroundImageLast = ({ children, backgrounds }) => {
-  return (
+  return backgrounds ? (
     <div className="relative">
-      {
-        backgrounds ? (
-          <>
-            <div
-              className="absolute inset-0 -z-50 bg-bottom bg-no-repeat bg-cover w-full h-full"
-              style={{
-                backgroundImage: `url(${backgrounds.automotive.image})`,
-                minHeight: backgrounds.automotive.size,
-              }} />
-            {children}
-          </>
-        ) : children
-      }
+      <div
+        className="absolute inset-0 -z-50 bg-bottom bg-no-repeat bg-cover w-full h-full"
+        style={{
+          backgroundImage: `url(${backgrounds.automotive.image})`,
+        }}
+      />
+      {children}
     </div>
-  )
+  ) : children
 }

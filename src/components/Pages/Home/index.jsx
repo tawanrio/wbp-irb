@@ -15,12 +15,15 @@ import ServicesOverview from './components/ServicesOverview'
 import { FormHome } from '@/components/Form/Home'
 import { ListProduct } from '@/components/ListProduct'
 import Banner from '@/components/Banner'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others || functions
 import { useState } from 'react'
 import { sortByKey } from '@/utils/functions'
-import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
-import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 
 export default function Home({ content }) {
   const [metaTitle] = useState(content?.page?.metaTitle)
@@ -36,6 +39,15 @@ export default function Home({ content }) {
 
   const sortedCategories = sortByKey(content.categories, 'label')
 
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
+
   return (
     <>
       <Head>
@@ -50,9 +62,10 @@ export default function Home({ content }) {
         page={content?.page}
         menus={content?.menus}
         banner={banners}
-        style={'home'}
+        style="home"
       >
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
           <ServicesOverview />
           <ListProduct categories={sortedCategories} />
           <Banner banners={banners} page={content?.page} />
@@ -62,6 +75,8 @@ export default function Home({ content }) {
           <UtilityCards />
           <BlogCarousel posts={posts} />
           <FormHome inputs={formDefault} />
+          <Footer content={footer} />
+          <Copyright content={copyright} />
         </BackgroundImageLast>
       </Templates>
     </>
