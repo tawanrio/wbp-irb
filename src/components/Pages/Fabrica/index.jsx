@@ -55,7 +55,10 @@ export default function Fabrica({ content }) {
           <Infos />
           <Gallery />
           <CompanyValuesNew />
-          <ContentDescription content={description} className="mt-16 pb-8" />
+          <ContentDescription
+            content={description}
+            className="mt-16 pb-10 sm:pb-20"
+          />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <CarouselEvent events={events} />
