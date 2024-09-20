@@ -112,7 +112,7 @@ export const FormHome = ({ inputs }) => {
               <div className="flex w-full flex-col gap-1">
                 <label
                   htmlFor="email"
-                  className="text-lg font-black capitalize text-[#22326E]"
+                  className="text-lg font-black text-[#22326E]"
                 >
                   E-mail
                 </label>

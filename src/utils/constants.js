@@ -172,7 +172,7 @@ export const NAVIGATION_LINKS = [
     href: '/#product-carousel',
   },
   {
-    title: 'EngraxaMente',
+    title: 'EngraxaMente EAD',
     href: 'https://engraxamente.eadplataforma.app',
     target: '_blank',
   },

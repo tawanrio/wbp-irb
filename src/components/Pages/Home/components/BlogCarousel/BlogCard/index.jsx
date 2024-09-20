@@ -18,7 +18,7 @@ export const BlogCard = ({ post }) => {
   }, [post])
 
   return (
-    <div className="flex flex-col items-start justify-start overflow-hidden">
+    <div className="flex flex-col items-start justify-start overflow-hidden pb-1.5">
       <figure className="relative h-[285.96px] w-full">
         <Image
           src={imageUrl}
@@ -44,7 +44,7 @@ export const BlogCard = ({ post }) => {
         />
         <Link
           href={`blog/${formattedTitle}`}
-          className="m-0 rounded-full bg-[#22326E] px-5 py-1 font-extralight text-white transition-all duration-200 hover:scale-95"
+          className="m-0 rounded-full bg-[#22326E] px-5 py-1 font-extralight text-white shadow-[0px_3.91px_3.91px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95"
         >
           Ler mais
         </Link>
