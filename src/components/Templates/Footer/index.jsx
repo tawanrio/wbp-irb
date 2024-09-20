@@ -22,7 +22,7 @@ export default function Footer({ content }) {
     <footer style={{ background: colors?.bg, color: colors?.text }}>
       <div
         className={cn(
-          'font-rubik relative mx-auto flex flex-col gap-1 gap-y-7 px-5 py-6 md:max-w-[1600px] md:justify-between md:px-14 md:py-12 lg:flex-row',
+          'relative mx-auto flex flex-col gap-1 gap-y-7 px-5 py-6 font-rubik md:max-w-[1600px] md:justify-between md:px-14 md:py-12 lg:flex-row',
           rubik.variable,
         )}
       >
