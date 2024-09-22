@@ -15,7 +15,7 @@ export default function SubMenu({
         background: colors.bgSubmenu || colors.bg,
         color: colors.text,
       }}
-      className="z-[99] hidden rounded-lg text-sm backdrop-blur-md lg:absolute lg:overflow-hidden lg:py-2 lg:shadow-[0_10px_15px_-10px_rgba(0,0,0,.8)] lg:group-hover:block"
+      className="z-[99] hidden rounded-lg border border-solid border-[#FFFFFF30] text-sm backdrop-blur-md lg:absolute lg:overflow-hidden lg:py-2 lg:shadow-[0_10px_15px_-10px_rgba(0,0,0,.8)] lg:group-hover:block"
     >
       {submenu.map((submenuItem, sId) => (
         <ul key={submenuItem.label || 's' + sId} className="w-full">

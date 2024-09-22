@@ -27,14 +27,14 @@ export default function SocialMidia({ content, setWhatsapp }) {
                 href={network.url}
                 target="_blank"
                 rel="noopener"
-                className="flex size-10 items-center justify-center rounded-full bg-white p-1.5 transition-all duration-200 hover:bg-white/85"
+                className="group flex size-10 items-center justify-center rounded-full bg-white p-1.5 transition-all duration-200 hover:scale-95"
               >
                 <Image
                   src={network.imageUrl}
                   alt={network.name}
                   width={49.03}
                   height={49.03}
-                  className="text-black"
+                  className="text-black transition-all duration-200 group-hover:scale-95"
                 />
               </Link>
             ),
