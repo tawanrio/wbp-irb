@@ -68,7 +68,7 @@ export const Gallery = () => {
         {PHOTOS.map((photo, index) => (
           <li
             key={index}
-            className="h-full max-h-[346.61px] w-full"
+            className="h-screen max-h-[190px] w-full sm:max-h-[240px] md:max-h-[290px] lg:max-h-[346.61px]"
             style={{ maxWidth: photo.width }}
           >
             <Image
@@ -76,7 +76,7 @@ export const Gallery = () => {
               alt={photo.alt}
               width={photo.width}
               height={346.61}
-              className="h-screen max-h-[346.61px] w-full object-cover"
+              className="h-full max-h-[190px] w-full object-cover sm:max-h-[240px] md:max-h-[290px] lg:max-h-[346.61px]"
               style={{ maxWidth: photo.width }}
             />
           </li>
@@ -86,7 +86,7 @@ export const Gallery = () => {
         {PHOTOS_2.map((photo, index) => (
           <li
             key={index}
-            className="h-full max-h-[346.61px] w-full"
+            className="h-screen max-h-[190px] w-full sm:max-h-[240px] md:max-h-[290px] lg:max-h-[346.61px]"
             style={{ maxWidth: photo.width }}
           >
             <Image
@@ -94,7 +94,7 @@ export const Gallery = () => {
               alt={photo.alt}
               width={photo.width}
               height={346.61}
-              className="h-screen max-h-[346.61px] w-full object-cover"
+              className="h-full max-h-[190px] w-full object-cover sm:max-h-[240px] md:max-h-[290px] lg:max-h-[346.61px]"
               style={{ maxWidth: photo.width }}
             />
           </li>
