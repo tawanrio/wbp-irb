@@ -58,7 +58,7 @@ export const Gallery = () => {
     {
       src: '/images/pages/fabrica/gallery/background.jpg',
       alt: 'Photo',
-      width: 138.84,
+      width: 146.84,
     },
   ]
 
@@ -68,7 +68,7 @@ export const Gallery = () => {
         {PHOTOS.map((photo, index) => (
           <li
             key={index}
-            className="h-full max-h-[346.61px]"
+            className="h-full max-h-[346.61px] w-full"
             style={{ maxWidth: photo.width }}
           >
             <Image
@@ -86,7 +86,7 @@ export const Gallery = () => {
         {PHOTOS_2.map((photo, index) => (
           <li
             key={index}
-            className="h-full max-h-[346.61px]"
+            className="h-full max-h-[346.61px] w-full"
             style={{ maxWidth: photo.width }}
           >
             <Image

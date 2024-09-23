@@ -27,10 +27,10 @@ export const CompanyValuesNew = () => {
               scrollSnapAlign: 'start',
             }}
             className={cn(
-              'group relative flex min-w-[240px] flex-initial cursor-pointer flex-col overflow-hidden rounded-[21.58px] border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] pb-6 pt-2.5 transition-all duration-500 ease-in-out md:w-full md:min-w-[250px] md:pb-10',
+              'group relative flex min-w-[240px] flex-initial cursor-pointer flex-col overflow-hidden rounded-[21.58px] border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] pb-6 pt-3.5 transition-all duration-500 ease-in-out md:w-full md:min-w-[250px] md:pb-10',
               expandedCard === index
                 ? '!max-h-[500px]'
-                : 'max-h-[60px] md:max-h-[70px]',
+                : 'max-h-[70px] md:max-h-[75px]',
             )}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
