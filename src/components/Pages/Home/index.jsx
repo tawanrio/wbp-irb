@@ -25,10 +25,12 @@ import Copyright from '@/components/Templates/Copyright'
 import { useState, useEffect } from 'react'
 import { sortByKey } from '@/utils/functions'
 import { useRouter } from 'next/router'
+import { BannerMobile } from './components/BannerMobile'
 
 export default function Home({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
+  const [isMobile, setIsMobile] = useState(false)
 
   const [metaTitle] = useState(content?.page?.metaTitle)
   const [title] = useState(content?.page?.title)
@@ -59,6 +61,24 @@ export default function Home({ content }) {
     }
   }, [router])
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 760)
+
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 760)
+      }
+
+      window.addEventListener('resize', handleResize)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
+    } else {
+      setIsMobile(false)
+    }
+  }, [])
+
   return (
     <>
       <Head>
@@ -80,7 +100,11 @@ export default function Home({ content }) {
           <Header content={header} page={content?.page?.label} />
           <ServicesOverview />
           <ListProduct categories={sortedCategories} />
-          <Banner banners={banners} page={content?.page} />
+          {isMobile ? (
+            <BannerMobile banners={banners} />
+          ) : (
+            <Banner banners={banners} page={content?.page} />
+          )}
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <PartnersButton />
