@@ -45,7 +45,7 @@ export const CarouselEvent = ({ events }) => {
       <h2 className="mx-auto w-full max-w-6xl rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal uppercase text-white shadow-[inset_0px_6.21px_5.5px_rgba(0,0,0,0.5)]">
         Próximos Eventos
       </h2>
-      <p className="mx-auto w-full max-w-6xl pl-6 text-3xl font-extralight">
+      <p className="mx-auto w-full max-w-6xl pl-6 text-2xl font-extralight sm:text-3xl">
         Fique de olho nos nossos eventos
       </p>
       <div className="relative w-full overflow-hidden">
