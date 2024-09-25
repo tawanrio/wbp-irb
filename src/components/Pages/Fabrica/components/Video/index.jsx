@@ -22,7 +22,7 @@ export const VideoPlayer = () => {
         poster="/images/pages/banners/about.jpg"
         onPlay={() => (playButtonRef.current.style.display = 'none')}
       >
-        <source src="/video/sobre.mp4" type="video/mp4" />
+        <source src="/video/home.mp4" type="video/mp4" />
       </video>
       <div
         ref={playButtonRef}

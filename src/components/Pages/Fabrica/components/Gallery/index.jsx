@@ -103,7 +103,7 @@ export const Gallery = () => {
 
   return isMobile ? (
     <div className="relative w-full overflow-hidden">
-      <div
+      <ul
         className="mx-4 flex gap-7 py-5 transition-transform duration-1000 ease-in-out"
         style={{
           transform: `translateX(-${currentIndex * 108}%)`,
@@ -123,7 +123,7 @@ export const Gallery = () => {
             />
           </li>
         ))}
-      </div>
+      </ul>
       {PHOTOS_3.length > 3 && (
         <>
           <button
