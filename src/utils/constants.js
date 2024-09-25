@@ -82,7 +82,7 @@ export const COMPANY_CORE_VALUES = [
         'Fazemos negócios com ética, integridade e profissionalismo.',
         'Somos movidos por surpreender nossos clientes e fornecer o melhor produto do mercado.',
         'Somos incansáveis em entregar qualidade, inovação e segurança em nossas soluções.',
-        'Somos comprometidos em encontrar nossos colaboradores e gerar valor para a sociedade.',
+        'Somos comprometidos em encantar nossos colaboradores e gerar valor para a sociedade.',
       ],
     },
   },
