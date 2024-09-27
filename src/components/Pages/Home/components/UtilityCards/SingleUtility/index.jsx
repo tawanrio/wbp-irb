@@ -1,22 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Nunito } from 'next/font/google'
-import { cn } from '@/utils/cn'
-
-const nunito = Nunito({
-  subsets: ['latin'],
-  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-nunito',
-})
 
 export const SingleUtility = ({ utility }) => {
   return (
-    <div
-      className={cn(
-        "relative flex h-[420px] flex-row items-center justify-center gap-5 rounded-3xl bg-background-mechanic-working bg-no-repeat font-nunito shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] before:absolute before:z-[2] before:block before:h-full before:w-full before:rounded-3xl before:bg-[#3338579e] before:content-[''] max-lg:bg-cover lg:w-[700px]",
-        nunito.variable,
-      )}
-    >
+    <div className="relative flex h-[420px] flex-row items-center justify-center gap-5 rounded-3xl bg-background-mechanic-working bg-no-repeat font-sans shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] before:absolute before:z-[2] before:block before:h-full before:w-full before:rounded-3xl before:bg-[#3338579e] before:content-[''] max-lg:bg-cover lg:w-[700px]">
       <Image
         src={utility.image}
         alt={utility.title}
