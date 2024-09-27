@@ -26,6 +26,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'arial', 'Times New Roman', 'Libre Baskerville'],
         nunito: ['var(--font-nunito)'],
+        rubik: ['var(--font-rubik)'],
       },
       animation: {
         fadeIn: 'fadeIn 1s',

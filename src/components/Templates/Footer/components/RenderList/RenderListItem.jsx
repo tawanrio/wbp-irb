@@ -17,11 +17,11 @@ export function RenderListItem({ content, liId, colors }) {
         }),
         ...(content?.title && {
           textTransform: 'uppercase',
-          fontWeight: '800',
+          fontWeight: '700',
           marginTop: '10px',
         }),
       }}
-      className="flex w-full rounded-md px-2"
+      className="flex w-full font-normal px-2"
     >
       <Link href={content.route.toLowerCase()} className=" ">
         {content.label}

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { RenderListItem } from './RenderListItem'
 import logo from '../../../../../../public/images/templates/header/logo-white.svg'
 
-export default function RenderList({ nav, colors }) {
+export default function RenderList({ nav, colors, certificates }) {
   return (
     <div className="flex flex-1 flex-col max-sm:gap-y-5">
       <ul className="flex flex-1 flex-col justify-between sm:flex-row">
@@ -25,13 +25,26 @@ export default function RenderList({ nav, colors }) {
         ))}
       </ul>
 
-      <figure className="flex w-full justify-center lg:w-[80%] lg:justify-end">
+      <figure className="flex w-full flex-col items-center justify-center gap-4 lg:w-[85%] lg:flex-row lg:justify-between">
+        <figure className="flex w-full flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
+          {certificates?.map((certificate, index) => (
+            <Image
+              key={index}
+              src={certificate?.url}
+              alt={certificate?.alt}
+              width={160}
+              height={100.61}
+              className="max-w-[160px]"
+            />
+          ))}
+        </figure>
+
         <Image
           src={logo}
           alt="Logo IRB Automovite"
-          width={163.37}
-          height={168.84}
-          className="w-[143.37px] lg:w-[163.37px]"
+          width={156}
+          height={141.24}
+          className="w-[143.37px] lg:mr-24 lg:w-[156px]"
         />
       </figure>
     </div>

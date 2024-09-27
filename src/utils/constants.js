@@ -64,11 +64,7 @@ export const PRODUCT_CATALOG_DETAILS = {
 
 export const COMPANY_CORE_VALUES = [
   {
-    colors: {
-      bg: '#22326E',
-      text: '#fff',
-      hr: '#6FBFD8',
-    },
+    icon: '/images/components/companyValues/mission.svg',
     title: 'nosso sonho',
     content: {
       listStyle: 'none',
@@ -76,14 +72,9 @@ export const COMPANY_CORE_VALUES = [
         'Ser a primeira escolha do cliente e líder mundial no segmento de peças automotivas.',
       ],
     },
-    image: '/images/components/companyValues/mission.webp',
   },
   {
-    colors: {
-      bg: '#353535',
-      text: '#fff',
-      hr: '#C12025',
-    },
+    icon: '/images/components/companyValues/vision.svg',
     title: 'nosso combustível',
     content: {
       listStyle: 'auto',
@@ -91,17 +82,12 @@ export const COMPANY_CORE_VALUES = [
         'Fazemos negócios com ética, integridade e profissionalismo.',
         'Somos movidos por surpreender nossos clientes e fornecer o melhor produto do mercado.',
         'Somos incansáveis em entregar qualidade, inovação e segurança em nossas soluções.',
-        'Somos comprometidos em encontrar nossos colaboradores e gerar valor para a sociedade.',
+        'Somos comprometidos em encantar nossos colaboradores e gerar valor para a sociedade.',
       ],
     },
-    image: '/images/components/companyValues/vision.webp',
   },
   {
-    colors: {
-      bg: '#C12025',
-      text: '#fff',
-      hr: '#22326E',
-    },
+    icon: '/images/components/companyValues/values.svg',
     title: 'nossas atitudes',
     content: {
       listStyle: 'disc',
@@ -114,7 +100,6 @@ export const COMPANY_CORE_VALUES = [
         'Aprendizagem contínua',
       ],
     },
-    image: '/images/components/companyValues/values.webp',
   },
 ]
 
@@ -187,7 +172,7 @@ export const NAVIGATION_LINKS = [
     href: '/#product-carousel',
   },
   {
-    title: 'EngraxaMente',
+    title: 'EngraxaMente EAD',
     href: 'https://engraxamente.eadplataforma.app',
     target: '_blank',
   },

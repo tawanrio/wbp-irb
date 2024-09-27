@@ -4,11 +4,16 @@ import Footer from './Footer'
 import Header from './Header'
 import { insertMenuInTemplate } from '@/utils/functions'
 import { CookiePopup } from '../CookiePopup'
-import { BackgroundImage } from '../BackgroundImage'
 
 export default function Templates({ children, template, page, menus }) {
-  const isHome = page?.title === 'Home' ? 'redesign-home' : 'default'
-  const isHomeHeader = page?.title === 'Home' ? 'header-home' : 'header'
+  const isHome =
+    page?.title === 'Home' || page?.label === 'fabrica'
+      ? 'redesign-home'
+      : 'default'
+  const isHomeHeader =
+    page?.title === 'Home' || page?.label === 'fabrica'
+      ? 'header-home'
+      : 'header'
   const arrHeader = template?.find((item) => item?.label === 'header')
   const header = arrHeader?.items.find((item) => item?.label === isHome)
 
@@ -52,16 +57,24 @@ export default function Templates({ children, template, page, menus }) {
     templateName: 'footer',
   })
 
-  return (
+  const REDESIGN_PAGES = ['home', 'fabrica']
+
+  const pageLabel = page?.label?.toLowerCase() || ''
+
+  return REDESIGN_PAGES.includes(pageLabel) ? (
     <>
       <CookiePopup />
       <ToastContainer />
-      <BackgroundImage backgrounds={page.backgroundImages}>
-        <Header content={header} page={page.label} />
-        <main>{children}</main>
-        <Footer content={footer} />
-        <Copyright content={copyright} />
-      </BackgroundImage>
+      <main>{children}</main>
+    </>
+  ) : (
+    <>
+      <CookiePopup />
+      <ToastContainer />
+      <Header content={header} page={page.label} />
+      <main>{children}</main>
+      <Footer content={footer} />
+      <Copyright content={copyright} />
     </>
   )
 }

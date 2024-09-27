@@ -42,11 +42,11 @@ export default function ServicesOverview() {
       </div>
       <ul className="mb-4 mt-7 flex w-full flex-row flex-wrap items-center justify-center gap-5 sm:gap-7">
         {NAVIGATION_LINKS.map((link, index) => (
-          <li key={index} className="flex w-full max-w-[200px]">
+          <li key={index} className="flex w-full max-w-[220px]">
             <LinkRed
               href={link.href}
               target={link.target}
-              className="w-full max-sm:p-1 max-sm:text-base"
+              className="w-full whitespace-nowrap max-sm:p-1 max-sm:text-base"
             >
               {link.title}
             </LinkRed>

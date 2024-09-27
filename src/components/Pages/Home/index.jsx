@@ -15,13 +15,23 @@ import ServicesOverview from './components/ServicesOverview'
 import { FormHome } from '@/components/Form/Home'
 import { ListProduct } from '@/components/ListProduct'
 import Banner from '@/components/Banner'
-// import { Info } from '@/components/Info'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others || functions
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { sortByKey } from '@/utils/functions'
+import { useRouter } from 'next/router'
+import { BannerMobile } from './components/BannerMobile'
 
 export default function Home({ content }) {
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
+  const [isMobile, setIsMobile] = useState(false)
+
   const [metaTitle] = useState(content?.page?.metaTitle)
   const [title] = useState(content?.page?.title)
   const [metaDescription] = useState(content?.page?.metaDescription)
@@ -35,6 +45,40 @@ export default function Home({ content }) {
 
   const sortedCategories = sortByKey(content.categories, 'label')
 
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 760)
+
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 760)
+      }
+
+      window.addEventListener('resize', handleResize)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
+    } else {
+      setIsMobile(false)
+    }
+  }, [])
+
   return (
     <>
       <Head>
@@ -42,6 +86,7 @@ export default function Home({ content }) {
         <meta name="description" content={metaDescription || description} />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
 
       <Templates
@@ -49,16 +94,26 @@ export default function Home({ content }) {
         page={content?.page}
         menus={content?.menus}
         banner={banners}
-        style={'home'}
+        style="home"
       >
-        <ServicesOverview />
-        <ListProduct categories={sortedCategories} />
-        <Banner banners={banners} page={content?.page} />
-        <PartnersButton />
-        <UtilityCards />
-        <BlogCarousel posts={posts} />
-        <FormHome inputs={formDefault} />
-        {/* {content?.page?.info?.length > 0 && <Info info={content.page.info} />} */}
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <ServicesOverview />
+          <ListProduct categories={sortedCategories} />
+          {isMobile ? (
+            <BannerMobile banners={banners} />
+          ) : (
+            <Banner banners={banners} page={content?.page} />
+          )}
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <PartnersButton />
+          <UtilityCards />
+          <BlogCarousel posts={posts} />
+          <FormHome inputs={formDefault} />
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

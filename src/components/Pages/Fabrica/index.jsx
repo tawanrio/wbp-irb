@@ -5,30 +5,35 @@ import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
-import BreadCrumb from '@/components/BreadCrumb'
-import CompanyValuesNew from './components/CompanyValuesNew'
-import Title from '@/components/Title'
-import TimeLineNew from './components/TimeLineNew'
-import CarouselEvent from './components/CarouselEvents'
-import CategoryGrid from '@/components/CategoryGrid'
-
-// Others
-import { sortByKey } from '@/utils/functions'
-import { useRouter } from 'next/router'
+import ContentDescription from './components/ContentDescription'
+import { CompanyValuesNew } from './components/CompanyValuesNew'
+import { CarouselEvent } from './components/CarouselEvents'
+import { Infos } from './components/Infos'
+import { Gallery } from './components/Gallery'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 export default function Fabrica({ content }) {
   const {
     title,
-    contentDescription: description,
+    contentDescriptionRedesign: description,
     metaTitle,
     metaDescription,
     metaKeywords,
     events,
   } = content?.page
-  const router = useRouter()
-  const pageUrl = router.asPath.replace('/', '')
-  const sortedCategories = sortByKey(content.categories, 'label')
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   return (
     <>
@@ -45,17 +50,21 @@ export default function Fabrica({ content }) {
         banner={content.page.banners}
         style={true}
       >
-        <BreadCrumb />
-        <Title title={title} className={'mt-5'} />
-        <ContentDescription content={description} className={'mt-5'} />
-        <TimeLineNew />
-        <CompanyValuesNew />
-        <CategoryGrid
-          categories={sortedCategories}
-          title
-          baseUrl={pageUrl + '/'}
-        />
-        <CarouselEvent events={events} />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Infos />
+          <Gallery />
+          <CompanyValuesNew />
+          <ContentDescription
+            content={description}
+            className="mt-16 pb-10 sm:pb-20"
+          />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <CarouselEvent events={events} />
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )
