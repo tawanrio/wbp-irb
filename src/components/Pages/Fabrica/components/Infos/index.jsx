@@ -15,9 +15,9 @@ export const Infos = () => {
       <div className="flex flex-col gap-6 lg:flex-row">
         <VideoPlayer />
 
-        <div className="flex w-full flex-col justify-between gap-6 lg:max-w-[431px]">
+        <div className="flex w-full flex-col gap-4 sm:gap-8 lg:max-w-[431px]">
           <h2 className="w-full font-['Libre_Baskerville'] text-4xl font-bold sm:text-5xl lg:max-w-[350px]">
-            Centro de logística IRB
+            Fábricas IRB
           </h2>
           <p className="text-lg font-extralight sm:text-xl">
             Com mais de 25 anos de expertise no ramo de reposição automotiva,
