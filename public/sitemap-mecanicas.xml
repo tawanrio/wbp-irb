@@ -1331,6 +1331,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/palmelo</loc>
         <lastmod>2024-08-06</lastmod>
@@ -3484,6 +3485,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/indianopolis</loc>
         <lastmod>2024-08-06</lastmod>
@@ -5055,6 +5057,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/olho-d'agua</loc>
         <lastmod>2024-08-06</lastmod>
@@ -5366,6 +5369,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/primeira-cruz</loc>
         <lastmod>2024-08-06</lastmod>
@@ -7279,6 +7283,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/caridade</loc>
         <lastmod>2024-08-06</lastmod>
@@ -7596,6 +7601,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/bataipora</loc>
         <lastmod>2024-08-06</lastmod>
@@ -7961,6 +7967,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/oiapoque</loc>
         <lastmod>2024-08-06</lastmod>
@@ -8050,6 +8057,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/rio-branco</loc>
         <lastmod>2024-08-06</lastmod>
@@ -8121,6 +8129,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/mancio-lima</loc>
         <lastmod>2024-08-06</lastmod>
@@ -8150,6 +8159,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/nhamunda</loc>
         <lastmod>2024-08-06</lastmod>
@@ -8497,6 +8507,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/manicore</loc>
         <lastmod>2024-08-06</lastmod>
@@ -8514,6 +8525,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/belmiro-braga</loc>
         <lastmod>2024-08-06</lastmod>
@@ -12311,6 +12323,7 @@
         <lastmod>2024-08-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
+      </url>
       <url>
         <loc>https://irbauto.com.br/mecanicas/prudente-de-morais</loc>
         <lastmod>2024-08-06</lastmod>
@@ -14380,6 +14393,7 @@
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/caetanos</loc>
     <lastmod>2024-08-06</lastmod>
@@ -14451,6 +14465,7 @@
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/ruy-barbosa</loc>
     <lastmod>2024-08-06</lastmod>
@@ -14468,6 +14483,7 @@
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/estrela-de-alagoas</loc>
     <lastmod>2024-08-06</lastmod>
@@ -14605,6 +14621,7 @@
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/igaci</loc>
     <lastmod>2024-08-06</lastmod>
@@ -15012,11 +15029,13 @@
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/dois-riachos</loc>
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/nucleo-bandeirante</loc>
     <lastmod>2024-08-06</lastmod>
@@ -15046,6 +15065,7 @@
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/estrutural</loc>
     <lastmod>2024-08-06</lastmod>
@@ -15141,6 +15161,7 @@
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/brazlandia</loc>
     <lastmod>2024-08-06</lastmod>
@@ -15200,9 +15221,11 @@
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://irbauto.com.br/mecanicas/sobradinho-ii</loc>
     <lastmod>2024-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
+  </url>
 </urlset>
