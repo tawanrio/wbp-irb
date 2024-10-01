@@ -23,7 +23,7 @@ export function RenderListItem({ content, liId, colors }) {
       }}
       className="flex w-full font-normal px-2"
     >
-      <Link href={content.route.toLowerCase()} className=" ">
+      <Link href={`/${content.route.toLowerCase().replace(/^\/+/, '')}`}>
         {content.label}
       </Link>
     </li>

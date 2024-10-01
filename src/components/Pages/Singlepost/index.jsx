@@ -50,7 +50,7 @@ export default function SinglePost({ content }) {
             {posts?._createdAt.split('T')[0]}
           </p>
           <div
-            className="prose overflow-hidden"
+            className="custom-link-container prose overflow-hidden"
             dangerouslySetInnerHTML={{ __html: sanitizedContent }}
           ></div>
           <div className="mt-8">
