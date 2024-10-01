@@ -1,6 +1,3 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
 
@@ -21,6 +18,7 @@ import { Posts } from '@/service/model/schemas/postsSchema'
 
 // Others || functions
 import { useEffect, useState } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -29,6 +27,7 @@ import { cn } from '@/utils/cn'
 export default function Blog({ content }) {
   const [posts, setPosts] = useState(content?.posts)
   const [isLoading, setIsLoading] = useState(true)
+  const [fullUrl, setFullUrl] = useState('')
 
   const {
     metaTitle,
@@ -80,11 +79,19 @@ export default function Blog({ content }) {
     fetchPosts()
   }, [currentPage])
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
+
   return (
     <>
       <Head>
         <title>{metaTitle || title}</title>
         <meta name="description" content={metaDescription || description} />
+        <link rel="canonical" href={fullUrl} />
       </Head>
 
       <Templates

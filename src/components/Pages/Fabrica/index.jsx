@@ -16,7 +16,14 @@ import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
 
+// Others
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+
 export default function Fabrica({ content }) {
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
+
   const {
     title,
     contentDescriptionRedesign: description,
@@ -24,7 +31,7 @@ export default function Fabrica({ content }) {
     metaDescription,
     metaKeywords,
     events,
-  } = content?.page
+  } = content?.page || {}
 
   const arrHeader = content?.template?.find((item) => item?.label === 'header')
   const header = arrHeader?.items.find(
@@ -35,6 +42,13 @@ export default function Fabrica({ content }) {
     (item) => item?.label === 'copyright',
   )
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
+
   return (
     <>
       <Head>
@@ -42,6 +56,7 @@ export default function Fabrica({ content }) {
         <meta name="description" content={metaDescription || description} />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
         template={content?.template}

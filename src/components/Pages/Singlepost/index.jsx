@@ -1,16 +1,21 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { useEffect, useState } from 'react'
-import Head from 'next/head'
-import Link from 'next/link'
+// Components
 import Templates from '@/components/Templates'
 import Banner from '@/components/Banner/index'
 import BreadCrumb from '@/components/BreadCrumb'
 
-export default function singlePost({ content }) {
-  const { banners } = content?.page || {}
+// Others
+import { useEffect, useState } from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-  const { posts } = content || {}
+export default function SinglePost({ content }) {
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
   const [sanitizedContent, setSanitizedContent] = useState('')
+
+  const { banners } = content?.page || {}
+  const { posts } = content || {}
 
   useEffect(() => {
     if (posts) {
@@ -18,11 +23,19 @@ export default function singlePost({ content }) {
     }
   }, [posts])
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
+
   return (
     <>
       <Head>
         <title>{posts.metaTitle}</title>
         <meta name="description" content={posts.metaDescription} />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
         template={content?.template}

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // Template / Layout
 import Head from 'next/head'
 import Templates from '@/components/Templates'
@@ -7,34 +6,37 @@ import Templates from '@/components/Templates'
 import BreadCrumb from '@/components/BreadCrumb'
 import LogoContact from '@/components/LogoContact'
 import Banner from '@/components/Banner/index'
-
-// Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db'
-import Page from '@/service/model/schemas/pageSchema'
-import { Menu } from '@/service/model/schemas/menuSchema'
-import { Template } from '@/service/model/schemas/templateSchema'
-import { Address } from '@/service/model/schemas/addressSchema'
-import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
-
-// Context Api
-import { useState } from 'react'
 import ServiceAddress from '@/components/ServiceAddress'
 import ContactForm from './Forms'
 
-export default function Contato({ content }) {
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
-  const [logoContact] = useState(content?.page.logoContact)
-  const [arrButton] = useState(logoContact?.arrButton)
+// Others
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
-  // const whatsappNumber = logoContact.button.whatsapp
-  // const phoneNumber = logoContact.button.phone
+export default function Contato({ content }) {
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
+
+  const {
+    metaTitle,
+    metaDescription,
+    banners,
+    title,
+    contentDescription: description,
+    logoContact,
+  } = content?.page || {}
+
+  const [arrButton] = useState(logoContact?.arrButton)
   const address = content?.address.address.find(
     (address) => address.label === 'default',
   )
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
 
   return (
     <>
@@ -42,6 +44,7 @@ export default function Contato({ content }) {
         <title>{metaTitle || title}</title>
         <meta name="description" content={metaDescription || description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
         template={content?.template}

@@ -1,33 +1,33 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 // Template
-import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
 import Title from '@/components/Title'
 import BreadCrumb from '@/components/BreadCrumb'
 import ImgCatalogDescription from '@/components/ImgCatalogDescription'
-
-// Others
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import Ebooks from './components/Ebooks'
 import ContentImgHTMLDesc from './components/ContentImgHTMLDesc'
 import PartnersButton from '../Home/components/PartnersButton'
 import UtilityCards from '../Home/components/UtilityCards'
 import { Info } from '@/components/Info'
-import { PRODUCT_CATALOG_DETAILS } from '@/utils/constants'
 import { CommonQuestions } from '@/components/CommonQuestions'
 
-export default function Categoria({ content }) {
-  const route = useRouter()
-  let pageUrl = route.asPath.split('/')
-  pageUrl = pageUrl[pageUrl.length - 1]
+// Others
+import { useEffect, useState } from 'react'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { PRODUCT_CATALOG_DETAILS } from '@/utils/constants'
 
+export default function Categoria({ content }) {
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
   const [category, setCategory] = useState(content?.category)
   const [metaDescription, setMetaDescription] = useState(
     content?.category?.metaDescription,
   )
+
+  let pageUrl = router.asPath.split('/')
+  pageUrl = pageUrl[pageUrl.length - 1]
 
   useEffect(() => {
     setCategory(content.category)
@@ -36,7 +36,14 @@ export default function Categoria({ content }) {
         .replace('{{geoName}}', '')
         .replace(/\s+\. /g, '. '),
     )
-  }, [pageUrl])
+  }, [content.category, pageUrl])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
 
   return (
     <>
@@ -47,6 +54,7 @@ export default function Categoria({ content }) {
           content={metaDescription || category?.contentDescription}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
 
       <Templates

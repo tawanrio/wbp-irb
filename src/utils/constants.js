@@ -233,3 +233,33 @@ export const UNIQUE_UTILITIES_CARDS = [
 ]
 
 export const OPTIONS = { loop: true }
+
+export const CATALOGS_DESCRIPTION = {
+  imageProduct: {
+    imageUrl: '/images/partners/bannerIRB.png',
+    alt: 'catalogo online',
+  },
+  title:
+    'Baixe agora mesmo o catálogo eletrônico e consulte facilmente toda nossa linha de produtos.',
+  subtitle: 'Acesse pelo celular',
+  button: [
+    {
+      title: '',
+      alt: 'appstore',
+      image: '/images/products/appstore.png',
+      link: 'https://apps.apple.com/br/app/irb-cat%C3%A1logo/id1169028455',
+    },
+    {
+      title: '',
+      alt: 'google-play',
+      image: '/images/products/google-play.png',
+      link: 'https://play.google.com/store/apps/details?id=br.com.ideia2001.CatalogoIRB',
+    },
+  ],
+
+  description: [
+    'Baixe agora nosso catálogo online e tenha acesso a uma ampla seleção de produtos automotivos de alta qualidade.',
+    'Explore nossa vasta gama de peças e componentes para atender às necessidades do seu veículo.',
+    'Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!',
+  ],
+}
