@@ -43,7 +43,7 @@ export const CarouselEvent = ({ events }) => {
       className="mx-auto flex w-full max-w-7xl flex-col justify-between gap-6 px-6 py-8 md:px-14 md:py-10"
     >
       <h2 className="mx-auto w-full max-w-6xl rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal uppercase text-white shadow-[inset_0px_6.21px_5.5px_rgba(0,0,0,0.5)]">
-        Próximos Eventos
+        Eventos IRB
       </h2>
       <p className="mx-auto w-full max-w-6xl pl-6 text-2xl font-extralight sm:text-3xl">
         Fique de olho nos nossos eventos
