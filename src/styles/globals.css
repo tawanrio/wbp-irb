@@ -14,6 +14,10 @@
   .hide-details-marker::-webkit-details-marker {
     display: none;
   }
+
+  .custom-link-container a {
+    @apply text-blue-500 underline hover:no-underline;
+  }
 }
 
 #__next {
