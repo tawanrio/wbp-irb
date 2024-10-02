@@ -9,7 +9,7 @@ import ContentDescription from './components/ContentDescription'
 import { CompanyValuesNew } from './components/CompanyValuesNew'
 import { CarouselEvent } from './components/CarouselEvents'
 import { Infos } from './components/Infos'
-import { Gallery } from './components/Gallery'
+// import { Gallery } from './components/Gallery'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
@@ -68,7 +68,7 @@ export default function Fabrica({ content }) {
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
           <Infos />
-          <Gallery />
+          {/* <Gallery /> */}
           <CompanyValuesNew />
           <ContentDescription
             content={description}
