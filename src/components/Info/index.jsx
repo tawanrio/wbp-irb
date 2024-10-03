@@ -12,9 +12,9 @@ export const Info = ({ info }) => {
   const itemsToShow = showAll ? info : info.slice(0, 2)
 
   return (
-    <section className="mx-auto mt-16 flex w-full max-w-7xl flex-col gap-6 px-6 md:px-14">
+    <section className="mx-auto mt-16 flex w-full max-w-6xl flex-col gap-6 px-5">
       {itemsToShow.map((inf, index) => (
-        <div key={index} className="flex w-full flex-col gap-6">
+        <div key={index} className="flex w-full flex-col gap-8 sm:gap-10">
           {inf.title && Object.entries(inf.title).length > 0 && (
             <Title tag={inf.title.tag}>{inf.title.name}</Title>
           )}

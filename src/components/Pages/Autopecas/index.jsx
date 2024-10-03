@@ -5,6 +5,8 @@ import Templates from '@/components/Templates'
 import { Description } from './components/Description'
 import { Title } from './components/Title'
 import SearchPartners from '@/components/SearchPartners'
+import { Info } from '@/components/Info'
+import { CommonQuestions } from '@/components/CommonQuestions'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
@@ -65,13 +67,17 @@ export default function Autoparts({ content }) {
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <SearchPartners
-            geo={content?.geo}
             partnerType="autopeça"
-            hiddenProductSearch
-            title="Encontre uma autopeça"
             collections={content?.collection}
+            hiddenProductSearch
             products={content?.products}
+            geo={content?.geo}
           />
+          {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
+          {content?.page?.faq &&
+            Object.entries(content.page.faq).length > 0 && (
+              <CommonQuestions faq={content.page.faq} />
+            )}
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>

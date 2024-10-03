@@ -78,7 +78,6 @@ export default function Distribuidoras({ content }) {
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <SearchPartners
             partnerType="distribuidor"
-            title="Encontre um distribuidor"
             collections={content?.collection}
             hiddenProductSearch
             products={content?.products}
