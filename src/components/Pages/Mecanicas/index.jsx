@@ -1,13 +1,12 @@
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
-import ContentImgDescription from '@/components/ContentImgDescription'
-import Title from '@/components/Title'
-import PartnersButton from '../Home/components/PartnersButton'
+import { Description } from './components/Description'
+import { Title } from './components/Title'
 import SearchPartners from '@/components/SearchPartners'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
@@ -23,14 +22,11 @@ export default function AutocenterEMecanicas({ content }) {
   const [metaDescription, setMetaDescription] = useState(
     content?.page?.metaDescription,
   )
-  const pageUrl = router.asPath.replace('/', '')
 
   const {
-    banners,
     title,
     metaTitle,
     contentDescription: description,
-    imgDescription,
     metaKeywords,
   } = content?.page
 
@@ -69,25 +65,23 @@ export default function AutocenterEMecanicas({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Header content={header} page={content?.page?.label} />
-        <Banner banners={banners} />
-        <Title title={title} />
-        <ContentDescription content={description} />
-        <SearchPartners
-          geo={content?.geo}
-          partnerType="mecanica"
-          hiddenProductSearch
-          title="Encontre uma mecânica"
-          collections={content?.collection}
-          products={content?.products}
-        />
-        <ContentImgDescription
-          content={imgDescription}
-          baseUrl={pageUrl + '/'}
-        />
-        <PartnersButton />
-        <Footer content={footer} />
-        <Copyright content={copyright} />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Title title={title} />
+          <Description description={description} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <SearchPartners
+            geo={content?.geo}
+            partnerType="mecanica"
+            hiddenProductSearch
+            title="Encontre uma mecânica"
+            collections={content?.collection}
+            products={content?.products}
+          />
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )
