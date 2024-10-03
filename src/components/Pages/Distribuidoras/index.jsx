@@ -1,23 +1,23 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
-import BreadCrumb from '@/components/BreadCrumb'
+import { Description } from './components/Description'
 import ContentImgDescription from '@/components/ContentImgDescription'
-import Title from '@/components/Title'
+import { Title } from './components/Title'
 import SearchPartners from '@/components/SearchPartners'
 import PartnersButton from '../Home/components/PartnersButton'
 import CategoryGrid from '@/components/CategoryGrid'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Distribuidoras({ content }) {
   const router = useRouter()
@@ -35,6 +35,15 @@ export default function Distribuidoras({ content }) {
     imgDescription,
     metaKeywords,
   } = content?.page
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -64,9 +73,9 @@ export default function Distribuidoras({ content }) {
         menus={content?.menus}
         banner={banners}
       >
-        <BreadCrumb />
+        <Header content={header} page={content?.page?.label} />
         <Title title={title} />
-        <ContentDescription content={description} />
+        <Description description={description} />
         <SearchPartners
           partnerType="distribuidor"
           title="Encontre um distribuidor"
@@ -85,6 +94,8 @@ export default function Distribuidoras({ content }) {
         {content?.page?.faq && Object.entries(content.page.faq).length > 0 && (
           <CommonQuestions faq={content.page.faq} />
         )}
+        <Footer content={footer} />
+        <Copyright content={copyright} />
       </Templates>
     </>
   )

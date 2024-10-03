@@ -1,22 +1,22 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
 import Banner from '@/components/Banner/index'
 
 // Components
 import ContentDescription from '@/components/ContentDescription'
-import BreadCrumb from '@/components/BreadCrumb'
 import ContentImgDescription from '@/components/ContentImgDescription'
 import Title from '@/components/Title'
 import PartnersButton from '../Home/components/PartnersButton'
 import SearchPartners from '@/components/SearchPartners'
 import CategoryGrid from '@/components/CategoryGrid'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Autoparts({ content }) {
   const router = useRouter()
@@ -32,6 +32,15 @@ export default function Autoparts({ content }) {
     metaKeywords,
   } = content?.page
   const pageUrl = router.asPath.replace('/', '')
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -54,8 +63,8 @@ export default function Autoparts({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
+        <Header content={header} page={content?.page?.label} />
         <Banner banners={banners} />
-        <BreadCrumb />
         <Title title={title} />
         <ContentDescription content={description} />
         <SearchPartners
@@ -72,6 +81,8 @@ export default function Autoparts({ content }) {
           baseUrl={pageUrl + '/'}
         />
         <PartnersButton />
+        <Footer content={footer} />
+        <Copyright content={copyright} />
       </Templates>
     </>
   )

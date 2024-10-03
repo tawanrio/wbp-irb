@@ -1,6 +1,3 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
 
@@ -19,6 +16,7 @@ import Copyright from '@/components/Templates/Copyright'
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Fabrica({ content }) {
   const router = useRouter()
