@@ -78,7 +78,7 @@ section#register_ label {
   color: #FFFFFF !important;
 }
 
-section#register_ input:not([type="file"]) {
+section#register_ input:not([type="file"], [type="checkbox"]) {
   border: 1px solid #FFFFFF76;
   background-color: #D9D9D9;
   border-radius: 20px;

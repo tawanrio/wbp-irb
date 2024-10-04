@@ -61,7 +61,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
       <div className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="cep">
           CEP

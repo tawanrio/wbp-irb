@@ -72,7 +72,7 @@ export default function FormDistributor({
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
         <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="companyName">
             Razão social
