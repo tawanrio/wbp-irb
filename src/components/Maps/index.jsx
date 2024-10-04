@@ -5,7 +5,7 @@ export const Maps = ({ googleMapsUrl, collections }) => {
     <div className="relative flex flex-col md:flex-row">
       <ul className="h-[28rem] w-full space-y-4 overflow-y-auto rounded-t-[19.51px] bg-white p-6 shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] md:h-[46rem] md:max-w-[348px] md:rounded-l-[19.51px] md:rounded-r-none">
         {collections.map((collection, index) => (
-          <li key={index}>
+          <li key={index} className="space-y-4">
             <div className="space-y-2 text-[#213271]">
               <h2 className="font-bold italic">{collection.companyName}</h2>
               <address className="space-y-2 text-sm font-extralight not-italic">
