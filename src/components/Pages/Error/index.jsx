@@ -25,14 +25,6 @@ export default function index({ content }) {
   const [imgDescription] = useState(content?.page.imgDescription)
   const [faq] = useState(content?.page.faq)
 
-  // content.collection?.filter(partner => {
-  //   partner.info.address.find(address => {
-  //     if(address.label === 'default'){
-  //     console.log(formatStrToUrl(address.city) === content.arrRoute[2]);
-  //     }
-  //   });
-  // });
-
   return (
     <>
       <Head>

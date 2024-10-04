@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { LinkRed } from '@/components/LinkRed'
 
 export const BannerMobile = ({ banners }) => {
-  console.log(banners)
   return (
     <section className="relative" id="banner_">
       {banners?.linksHeader?.length > 0 && (

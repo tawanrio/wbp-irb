@@ -47,7 +47,6 @@ export default async function sendEmailRegisterPartner(req, res) {
         actionsLink,
       })
 
-      console.log(info.logo)
       res.status(200).json({ message: 'Email enviado com sucesso!' })
     } catch (error) {
       res

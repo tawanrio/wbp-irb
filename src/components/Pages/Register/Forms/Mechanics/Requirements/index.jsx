@@ -81,9 +81,9 @@ export default function Requirements({ setRequiments, resetInputs }) {
 
   return (
     <div className="mt-10">
-      <h3 className="mb-8 font-['Libre_Baskerville'] text-4xl italic text-white">
+      <h2 className="mb-8 font-['Libre_Baskerville'] text-4xl italic text-white">
         Pré-Requisitos
-      </h3>
+      </h2>
       <div className="mt-5 grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2">
         <div className="flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">

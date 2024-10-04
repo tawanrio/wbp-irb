@@ -25,7 +25,6 @@ export default async function registerPartner(req, res) {
         ? (data.requirements = partnerData.requirements)
         : null
 
-      console.log(data)
       await insertDataIntoDB(data)
 
       res.status(200).json({ message: 'Dados salvos com sucesso' })
@@ -58,7 +57,6 @@ const insertDataIntoDB = async (data) => {
   try {
     // Conectar-se ao banco de dados
     await connectMongoDB()
-    console.log(data)
 
     // Inserir os dados na coleção
 

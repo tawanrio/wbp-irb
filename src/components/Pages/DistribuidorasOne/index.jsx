@@ -65,8 +65,6 @@ export default function Distribuidoras({ content }) {
     }
   }, [router])
 
-  console.log({ title })
-
   return (
     <>
       <Head>
