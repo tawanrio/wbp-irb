@@ -108,7 +108,7 @@ const Collection = ({
 
   return (
     <div>
-      <div className="mb-4 flex flex-col justify-center gap-4 md:flex-row md:gap-0">
+      <div className="mb-12 flex flex-col items-center justify-center gap-4 md:flex-row md:gap-0">
         {!hiddenProductSearch && (
           <select
             value={selectedProduct}
