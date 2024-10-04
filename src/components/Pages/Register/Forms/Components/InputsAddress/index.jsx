@@ -70,7 +70,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           id="cep"
           mask="99999-999"
           ref={zipCodeRef}
-          placeholder="CEP"
           required
           className="border px-4 py-2"
           value={cep}
@@ -87,7 +86,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           id="street"
           type="text"
           required
-          placeholder="Rua/Avenida"
           className="border px-4 py-2"
           value={street}
           onChange={(e) => setStreet(e.target.value)}
@@ -102,7 +100,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           id="number"
           type="text"
           required
-          placeholder="Número"
           className="border px-4 py-2"
           value={number}
           onChange={(e) => setNumber(e.target.value)}
@@ -117,7 +114,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           id="neighborhood"
           type="text"
           required
-          placeholder="Bairro"
           className="border px-4 py-2"
           value={neighborhood}
           onChange={(e) => setNeighborhood(e.target.value)}
@@ -132,7 +128,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           id="city"
           type="text"
           required
-          placeholder="Cidade"
           className="border px-4 py-2"
           value={city}
           onChange={(e) => setCity(e.target.value)}
@@ -147,7 +142,6 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           id="state"
           type="text"
           required
-          placeholder="Estado"
           className="border px-4 py-2"
           value={state}
           onChange={(e) => setState(e.target.value)}

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Paragraph } from './Paragraph'
 import { Title } from './Title'
+import { cn } from '@/lib/utils'
 
-export const Info = ({ info }) => {
+export const Info = ({ info, classNameTitle, classNameContainer }) => {
   const [showAll, setShowAll] = useState(false)
 
   const handleReadMore = () => {
@@ -12,11 +13,18 @@ export const Info = ({ info }) => {
   const itemsToShow = showAll ? info : info.slice(0, 2)
 
   return (
-    <section className="mx-auto mt-16 flex w-full max-w-6xl flex-col gap-6 px-5">
+    <section
+      className={cn(
+        'mx-auto mt-16 flex w-full max-w-6xl flex-col gap-6 px-5',
+        classNameContainer,
+      )}
+    >
       {itemsToShow.map((inf, index) => (
         <div key={index} className="flex w-full flex-col gap-8 sm:gap-10">
           {inf.title && Object.entries(inf.title).length > 0 && (
-            <Title tag={inf.title.tag}>{inf.title.name}</Title>
+            <Title tag={inf.title.tag} className={classNameTitle}>
+              {inf.title.name}
+            </Title>
           )}
           {Array.isArray(inf.paragraphs) &&
             inf.paragraphs.map((paragraph, index) => (

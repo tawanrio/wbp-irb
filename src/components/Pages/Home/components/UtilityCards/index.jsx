@@ -6,7 +6,7 @@ const UtilityCards = () => {
   return (
     <section
       id="blog-carousel"
-      className="relative mx-auto mb-4 mt-14 flex w-full max-w-[1540px] flex-col items-center px-6 py-4 md:mb-0 md:px-14"
+      className="relative mx-auto mb-6 flex w-full max-w-[1540px] flex-col items-center px-6 pt-16 md:mb-0 md:px-14"
     >
       <CarouselLoop options={OPTIONS} array={UNIQUE_UTILITIES_CARDS}>
         {UNIQUE_UTILITIES_CARDS.map((utility, index) => (

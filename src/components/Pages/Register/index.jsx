@@ -1,10 +1,15 @@
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
-import BreadCrumb from '@/components/BreadCrumb'
 
 // Components
 import RegisterForm from './Forms'
+import UtilityCards from '../Home/components/UtilityCards'
+import { Info } from '@/components/Info'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
@@ -15,7 +20,7 @@ export default function Register({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
 
-  const { banners, title, metaTitle, metaDescription, metaKeywords } =
+  const { title, metaTitle, metaDescription, metaKeywords } =
     content?.page || {}
 
   const inputs = {
@@ -24,6 +29,15 @@ export default function Register({ content }) {
     subject: false,
     message: true,
   }
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -46,9 +60,22 @@ export default function Register({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <RegisterForm inputs={inputs} />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <RegisterForm inputs={inputs} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <UtilityCards />
+          {content?.page?.info?.length > 0 && (
+            <Info
+              info={content.page.info}
+              classNameTitle="w-full max-w-md"
+              classNameContainer="pb-24"
+            />
+          )}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

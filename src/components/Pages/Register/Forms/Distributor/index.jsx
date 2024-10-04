@@ -80,7 +80,6 @@ export default function FormDistributor({
           <input
             id="companyName"
             type="text"
-            placeholder="Razão social"
             required
             className="border px-4 py-2"
             value={companyName}
@@ -96,7 +95,6 @@ export default function FormDistributor({
             id="tradingName"
             type="text"
             required
-            placeholder="Nome fantasia"
             className="border px-4 py-2"
             value={tradingName}
             onChange={(e) => settradingName(e.target.value)}
@@ -111,7 +109,6 @@ export default function FormDistributor({
             mask="99.999.999/9999-99"
             ref={cnpjRef}
             required
-            placeholder="CNPJ"
             className="border px-4 py-2"
             value={cnpj}
             onChange={(e) => setCnpj(e.target.value)}
@@ -126,7 +123,6 @@ export default function FormDistributor({
             id="email"
             type="email"
             required
-            placeholder="E-mail"
             className="border px-4 py-2"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -142,7 +138,6 @@ export default function FormDistributor({
             mask="(99) 99999-9999"
             ref={phoneRef}
             required
-            placeholder="Telefone"
             className="border px-4 py-2"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}

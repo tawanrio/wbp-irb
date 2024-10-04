@@ -12,6 +12,7 @@ export default function Templates({ children, template, page, menus }) {
     'distribuidoras',
     'autopecas',
     'mecanicas',
+    'registre-se',
   ]
 
   const pageLabel = page?.label?.toLowerCase() || ''
