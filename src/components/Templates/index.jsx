@@ -13,6 +13,7 @@ export default function Templates({ children, template, page, menus }) {
     'autopecas',
     'mecanicas',
     'registre-se',
+    'baixe-nosso-app',
   ]
 
   const pageLabel = page?.label?.toLowerCase() || ''

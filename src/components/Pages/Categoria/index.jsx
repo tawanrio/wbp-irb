@@ -4,7 +4,7 @@ import Templates from '@/components/Templates'
 // Components
 import Title from '@/components/Title'
 import BreadCrumb from '@/components/BreadCrumb'
-import ImgCatalogDescription from '@/components/ImgCatalogDescription'
+import { Catalog } from '@/components/Catalog'
 import Ebooks from './components/Ebooks'
 import ContentImgHTMLDesc from './components/ContentImgHTMLDesc'
 import PartnersButton from '../Home/components/PartnersButton'
@@ -69,7 +69,7 @@ export default function Categoria({ content }) {
           textHTML={category.description}
           image={category.thumbnail}
         />
-        <ImgCatalogDescription content={PRODUCT_CATALOG_DETAILS} />
+        <Catalog content={PRODUCT_CATALOG_DETAILS} />
         {content.category.ebook && <Ebooks ebooks={content.category.ebook} />}
         <PartnersButton partners={content?.partners?.types} />
         <UtilityCards />
