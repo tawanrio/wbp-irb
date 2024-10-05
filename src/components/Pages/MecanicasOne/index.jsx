@@ -1,23 +1,24 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
-import BreadCrumb from '@/components/BreadCrumb'
-import ContentImgDescription from '@/components/ContentImgDescription'
-import Title from '@/components/Title'
-import PartnersButton from '../Home/components/PartnersButton'
+import { Description } from './components/Description'
+import { Title } from './components/Title'
+import SearchPartnersOne from '@/components/SearchPartnersOne'
+import { Info } from '@/components/Info'
+import { CommonQuestions } from '@/components/CommonQuestions'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import SearchPartnersOne from '@/components/SearchPartnersOne'
-import { capitalize } from '@/utils/functions'
 import { usePathname } from 'next/navigation'
+import Head from 'next/head'
+import { capitalize } from '@/utils/functions'
 
 export default function AutocenterEMecanicas({ content }) {
   const router = useRouter()
@@ -29,12 +30,16 @@ export default function AutocenterEMecanicas({ content }) {
     content?.page.metaDescription,
   )
 
-  const {
-    banners,
-    contentDescription: description,
-    imgDescription,
-    metaKeywords,
-  } = content?.page
+  const { contentDescription: description, metaKeywords } = content?.page
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   useEffect(() => {
     setTitle(content?.page.title)
@@ -73,21 +78,29 @@ export default function AutocenterEMecanicas({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <Title title={title} />
-        <ContentDescription content={description} />
-        <SearchPartnersOne
-          geo={content?.geo}
-          partnerType="mecanica"
-          arrRoute={content?.arrRoute}
-          hiddenProductSearch
-          title="Encontre um distribuidor"
-          collections={content?.collection}
-          products={content?.products}
-        />
-        <ContentImgDescription content={imgDescription} />
-        <PartnersButton />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Title title={title} />
+          <Description description={description} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <SearchPartnersOne
+            geo={content?.geo}
+            partnerType="mecanica"
+            arrRoute={content?.arrRoute}
+            hiddenProductSearch
+            title="Encontre um distribuidor"
+            collections={content?.collection}
+            products={content?.products}
+          />
+          {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
+          {content?.page?.faq &&
+            Object.entries(content.page.faq).length > 0 && (
+              <CommonQuestions faq={content.page.faq} />
+            )}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

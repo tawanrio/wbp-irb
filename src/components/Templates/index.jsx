@@ -6,14 +6,20 @@ import { insertMenuInTemplate } from '@/utils/functions'
 import { CookiePopup } from '../CookiePopup'
 
 export default function Templates({ children, template, page, menus }) {
-  const isHome =
-    page?.title === 'Home' || page?.label === 'fabrica'
-      ? 'redesign-home'
-      : 'default'
-  const isHomeHeader =
-    page?.title === 'Home' || page?.label === 'fabrica'
-      ? 'header-home'
-      : 'header'
+  const REDESIGN_PAGES = [
+    'home',
+    'fabrica',
+    'distribuidoras',
+    'autopecas',
+    'mecanicas',
+  ]
+
+  const pageLabel = page?.label?.toLowerCase() || ''
+  const isRedesignPage = REDESIGN_PAGES.includes(pageLabel)
+
+  const isHome = isRedesignPage ? 'redesign-home' : 'default'
+  const isHomeHeader = isRedesignPage ? 'header-home' : 'header'
+
   const arrHeader = template?.find((item) => item?.label === 'header')
   const header = arrHeader?.items.find((item) => item?.label === isHome)
 
@@ -57,11 +63,7 @@ export default function Templates({ children, template, page, menus }) {
     templateName: 'footer',
   })
 
-  const REDESIGN_PAGES = ['home', 'fabrica']
-
-  const pageLabel = page?.label?.toLowerCase() || ''
-
-  return REDESIGN_PAGES.includes(pageLabel) ? (
+  return isRedesignPage ? (
     <>
       <CookiePopup />
       <ToastContainer />

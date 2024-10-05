@@ -8,9 +8,6 @@ export function insertMenuInTemplate({
 }) {
   const menu = menus?.find((menu) => menu.label === menuName)
 
-  // console.log(menus);
-  // console.log(menuName);
-
   template
     ?.find((template) => template.label === templateName)
     .items.find((item) => {
@@ -108,7 +105,7 @@ export function formatToViewPhone(numero) {
     return `(${numero.slice(0, 2)}) ${numero.slice(2, 6)}-${numero.slice(6)}`
   } else if (numero.length === 11) {
     // Formato (xx) x-xxxx-xxxx
-    return `(${numero.slice(0, 2)}) ${numero.slice(2, 3)}-${numero.slice(3, 7)}-${numero.slice(7)}`
+    return `(${numero.slice(0, 2)}) ${numero.slice(2, 3)} ${numero.slice(3, 7)}-${numero.slice(7)}`
   } else {
     // Retorna o número original se ele não tiver 10 ou 11 dígitos
     return numero
@@ -161,7 +158,7 @@ export function updateMetatitleGeoRouteThree(metatitle, geoName) {
 
 export const generateActionsLink = (cnpj, uniqueId) => {
   const cleanedCnpj = cnpj.replace(/\D/g, '')
-  console.log(uniqueId)
+
   const domain = window.location.origin
 
   const accept = `${domain}/registerpartner/actions/${cleanedCnpj}/accept/${uniqueId} `
@@ -285,3 +282,6 @@ export const formatTitle = (title) => {
     .join('-')
     .trim()
 }
+
+export const getGoogleMaps = (googleMapsUrl) =>
+  `https://www.google.com/maps?q=${googleMapsUrl || 'Rua Rosa de Morais, 149 - Vila Água Funda - São Paulo - Brasil'}&output=embed`

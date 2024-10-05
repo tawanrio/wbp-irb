@@ -1,37 +1,43 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
-import BreadCrumb from '@/components/BreadCrumb'
-import ContentImgDescription from '@/components/ContentImgDescription'
-import Title from '@/components/Title'
-import PartnersButton from '../Home/components/PartnersButton'
+import { Description } from './components/Description'
+import { Title } from './components/Title'
 import SearchPartners from '@/components/SearchPartners'
-import CategoryGrid from '@/components/CategoryGrid'
+import { Info } from '@/components/Info'
+import { CommonQuestions } from '@/components/CommonQuestions'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Autoparts({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
 
   const {
-    banners,
     title,
     metaTitle,
     metaDescription,
     contentDescription: description,
-    imgDescription,
     metaKeywords,
   } = content?.page
-  const pageUrl = router.asPath.replace('/', '')
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -54,24 +60,27 @@ export default function Autoparts({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <Title title={title} />
-        <ContentDescription content={description} />
-        <SearchPartners
-          geo={content?.geo}
-          partnerType="autopeça"
-          hiddenProductSearch
-          title="Encontre uma autopeça"
-          collections={content?.collection}
-          products={content?.products}
-        />
-        <ContentImgDescription content={imgDescription} />
-        <CategoryGrid
-          categories={content?.categories}
-          baseUrl={pageUrl + '/'}
-        />
-        <PartnersButton />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Title title={title} />
+          <Description description={description} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <SearchPartners
+            partnerType="autopeça"
+            collections={content?.collection}
+            hiddenProductSearch
+            products={content?.products}
+            geo={content?.geo}
+          />
+          {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
+          {content?.page?.faq &&
+            Object.entries(content.page.faq).length > 0 && (
+              <CommonQuestions faq={content.page.faq} />
+            )}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

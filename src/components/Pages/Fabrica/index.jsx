@@ -1,6 +1,3 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
 
@@ -9,7 +6,7 @@ import ContentDescription from './components/ContentDescription'
 import { CompanyValuesNew } from './components/CompanyValuesNew'
 import { CarouselEvent } from './components/CarouselEvents'
 import { Infos } from './components/Infos'
-import { Gallery } from './components/Gallery'
+// import { Gallery } from './components/Gallery'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
@@ -19,6 +16,7 @@ import Copyright from '@/components/Templates/Copyright'
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Fabrica({ content }) {
   const router = useRouter()
@@ -68,7 +66,7 @@ export default function Fabrica({ content }) {
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
           <Infos />
-          <Gallery />
+          {/* <Gallery /> */}
           <CompanyValuesNew />
           <ContentDescription
             content={description}

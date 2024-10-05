@@ -14,8 +14,8 @@ export const CommonQuestions = ({ faq }) => {
   }
 
   return (
-    <section className="mx-auto mt-24 flex w-full max-w-5xl flex-col gap-8 px-6 md:gap-12 md:px-14">
-      <h2 className="text-center text-2xl font-bold leading-tight md:text-3xl">
+    <section className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-16 md:gap-12 md:px-14 md:py-28">
+      <h2 className="text-center font-['Libre_Baskerville'] text-3xl font-medium italic leading-tight text-[#982225] sm:text-4xl lg:text-5xl">
         {faq?.title}
       </h2>
 
