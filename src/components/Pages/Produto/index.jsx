@@ -33,7 +33,6 @@ export default function Produto({ content }) {
   const route = useRouter()
   const pageUrl = route.asPath.replace('/', '').split('/')
 
-  console.log(content?.partners?.types)
   const [product, setProduct] = useState(content?.product)
   const [partnerTypes, setPartnerTypes] = useState(
     content?.partners?.types.filter((item) => item.label !== 'mecanicas'),

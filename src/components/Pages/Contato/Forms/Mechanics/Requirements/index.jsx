@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import SectionTitle from '@/components/SectionTitle'
 import { useEffect, useState } from 'react'
+import SectionTitle from '@/components/SectionTitle'
 
 export default function Requirements({ setRequiments, resetInputs }) {
   const [certificateImg, setCertificateImg] = useState('')
@@ -35,22 +35,16 @@ export default function Requirements({ setRequiments, resetInputs }) {
   }, [certificateImg, elevatorImg, selectedEquipments])
 
   const handleImg = (event, setState) => {
-    // Handle file upload for logo here
     const file = event.target.files[0]
     setState(file)
   }
 
-  const handleCheckboxChange = (event) => {
-    const { value, checked } = event.target
-    if (checked) {
-      setSelectedEquipments([...selectedEquipments, value])
-      console.log(`O equipamento ${value} foi selecionado.`)
-    } else {
-      setSelectedEquipments(
-        selectedEquipments.filter((equipment) => equipment !== value),
-      )
-      console.log(`O equipamento ${value} foi desmarcado.`)
-    }
+  const handleCheckboxChange = ({ target: { value, checked } }) => {
+    setSelectedEquipments((prevState) =>
+      checked
+        ? [...prevState, value]
+        : prevState.filter((equipment) => equipment !== value),
+    )
   }
 
   return (

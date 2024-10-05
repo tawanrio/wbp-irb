@@ -94,8 +94,6 @@ const processAndSaveImage = async (
   const isHeic = originalName.toLowerCase().endsWith('.heic')
   let imageBuffer = buffer
 
-  console.log(isHeic)
-
   if (isHeic) {
     imageBuffer = await convertHeicToJpg(buffer)
     originalName = originalName.replace(/\.heic$/i, '.jpg')

@@ -61,7 +61,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
 
   return (
     <div className="flex w-full flex-col justify-between gap-4 md:my-0 md:gap-2 md:px-0">
-      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
         <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="partnerType">
             Em qual distribuidor você adquiri os produtos IRB
@@ -69,7 +69,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
           <input
             id="whereToBuy"
             type="text"
-            placeholder="Em qual distribuidor você adquiri os produtos IRB"
             className="border px-4 py-2"
             required
             value={whereToBuy}
@@ -83,7 +82,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
           <input
             id="companyName"
             type="text"
-            placeholder="Razão Social"
             className="border px-4 py-2"
             required
             value={companyName}
@@ -98,7 +96,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
           <input
             id="tradingName"
             type="text"
-            placeholder="Nome fantasia"
             className="border px-4 py-2"
             required
             value={tradingName}
@@ -114,7 +111,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             mask="99.999.999/9999-99"
             ref={cnpjRef}
             required
-            placeholder="CNPJ"
             className="border px-4 py-2"
             value={cnpj}
             onChange={(e) => setCnpj(e.target.value)}
@@ -129,7 +125,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             id="email"
             type="email"
             required
-            placeholder="E-mail"
             className="border px-4 py-2"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -145,7 +140,6 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             mask="(99) 99999-9999"
             ref={phoneRef}
             required
-            placeholder="Telefone"
             className="border px-4 py-2"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}

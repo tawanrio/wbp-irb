@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react'
-import SectionTitle from '@/components/SectionTitle'
 import { EQUIPMENT_LIST } from '@/utils/constants'
 
 export default function Requirements({ setRequiments, resetInputs }) {
@@ -82,8 +81,10 @@ export default function Requirements({ setRequiments, resetInputs }) {
 
   return (
     <div className="mt-10">
-      <SectionTitle title="Pré-Requisitos" line={true} />
-      <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+      <h2 className="mb-8 font-['Libre_Baskerville'] text-4xl italic text-white">
+        Pré-Requisitos
+      </h2>
+      <div className="mt-5 grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2">
         <div className="flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Certificação Profissional *
@@ -126,7 +127,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
         </div>
       </div>
 
-      <div className="mt-5 flex w-full flex-col">
+      <div className="mt-8 flex w-full flex-col">
         <label className="text-lg font-bold">Ferramentas:</label>
         <span className="text-sm text-slate-400">
           Preencher quais ferramentas você possui

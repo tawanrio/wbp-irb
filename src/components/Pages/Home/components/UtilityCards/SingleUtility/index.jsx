@@ -13,9 +13,9 @@ export const SingleUtility = ({ utility }) => {
       />
       <div className="z-[3] flex h-full w-full flex-col justify-between px-7 py-8 lg:max-w-[337.84px] lg:items-end lg:px-0">
         <div className="flex flex-col gap-2 sm:gap-4">
-          <h3 className="text-2xl font-extrabold text-white">
+          <h2 className="text-2xl font-extrabold text-white">
             {utility.title}
-          </h3>
+          </h2>
           <span className="text-sm font-light text-white">
             {utility.surtitle}
           </span>
