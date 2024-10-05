@@ -2,21 +2,20 @@
 import Templates from '@/components/Templates'
 
 // Components
-import Title from '@/components/Title'
-import BreadCrumb from '@/components/BreadCrumb'
-import { Catalog } from '@/components/Catalog'
-import Ebooks from './components/Ebooks'
-import ContentImgHTMLDesc from './components/ContentImgHTMLDesc'
-import PartnersButton from '../Home/components/PartnersButton'
+import { ContentProduct } from './components/ContentProduct'
 import UtilityCards from '../Home/components/UtilityCards'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { PRODUCT_CATALOG_DETAILS } from '@/utils/constants'
 
 export default function Categoria({ content }) {
   const router = useRouter()
@@ -28,6 +27,15 @@ export default function Categoria({ content }) {
 
   let pageUrl = router.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   useEffect(() => {
     setCategory(content.category)
@@ -63,23 +71,25 @@ export default function Categoria({ content }) {
         menus={content?.menus}
         banner={content?.category?.banners}
       >
-        <BreadCrumb />
-        <Title title={category?.title} />
-        <ContentImgHTMLDesc
-          textHTML={category.description}
-          image={category.thumbnail}
-        />
-        <Catalog content={PRODUCT_CATALOG_DETAILS} />
-        {content.category.ebook && <Ebooks ebooks={content.category.ebook} />}
-        <PartnersButton partners={content?.partners?.types} />
-        <UtilityCards />
-        {content?.category?.info?.length > 0 && (
-          <Info info={content.category.info} />
-        )}
-        {content?.category?.faq &&
-          Object.entries(content.category.faq).length > 0 && (
-            <CommonQuestions faq={content.category.faq} />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <ContentProduct
+            category={category}
+            technicalSheet={content?.page?.technicalSheet}
+          />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <UtilityCards />
+          {content?.category?.info?.length > 0 && (
+            <Info info={content.category.info} />
           )}
+          {content?.category?.faq &&
+            Object.entries(content.category.faq).length > 0 && (
+              <CommonQuestions faq={content.category.faq} />
+            )}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

@@ -10,7 +10,7 @@ import Banner from '@/components/Banner/index'
 
 // Context Api
 import { useState } from 'react'
-import ContentImgHTMLDesc from '../Categoria/components/ContentImgHTMLDesc'
+import ContentImgHTMLDesc from '../Categoria/components/ContentProduct'
 import ButtonCta from '@/components/ButtonCta'
 import SectionTitle from '@/components/SectionTitle'
 import Form from './components/Form'
