@@ -3,7 +3,7 @@ import Templates from '@/components/Templates'
 
 // Components
 import { ContentProduct } from './components/ContentProduct'
-import UtilityCards from '../Home/components/UtilityCards'
+import { Utilities } from '../Home/components/Utilities'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
@@ -79,7 +79,7 @@ export default function Categoria({ content }) {
           />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
-          <UtilityCards className="pb-20" />
+          <Utilities className="pb-20" />
           {content?.category?.info?.length > 0 && (
             <Info info={content.category.info} classNameContainer="pb-20" />
           )}

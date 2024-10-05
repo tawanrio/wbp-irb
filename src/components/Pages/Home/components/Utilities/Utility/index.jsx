@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const SingleUtility = ({ utility }) => {
+export const Utility = ({ utility }) => {
   return (
     <div
       className="relative flex h-[420px] flex-row items-center justify-center gap-5 rounded-3xl bg-cover bg-no-repeat font-sans shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] before:absolute before:z-[2] before:block before:h-full before:w-full before:rounded-3xl before:bg-[#213271] before:opacity-80 before:content-[''] max-lg:bg-cover lg:w-[700px]"
@@ -48,11 +48,12 @@ export const SingleUtility = ({ utility }) => {
             </span>
           )}
           <p
-            className="m-0 text-balance text-white"
+            className="m-0 text-white"
             style={{
               fontWeight: utility.description.weight,
               fontSize: utility.description.size,
               textAlign: utility.description.align,
+              textWrap: utility.description.wrap,
             }}
           >
             {utility.description.name}

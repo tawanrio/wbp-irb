@@ -6,7 +6,7 @@ import { Title } from './components/Title'
 import { Subtitle } from './components/Subtitle'
 import { ListProducts } from './components/ListProducts'
 import { Info } from '@/components/Info'
-import UtilityCards from '../Home/components/UtilityCards'
+import { Utilities } from '../Home/components/Utilities'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
@@ -67,7 +67,7 @@ export default function Produtos({ content }) {
           <ListProducts products={content?.categories} />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
-          <UtilityCards className="pb-20" />
+          <Utilities className="pb-20" />
           {content?.page?.info?.length > 0 && (
             <Info
               info={content.page.info}

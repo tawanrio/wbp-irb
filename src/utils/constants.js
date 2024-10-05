@@ -255,6 +255,7 @@ export const UTILITIES_CARDS = [
       weight: 300,
       size: '20px',
       align: 'end',
+      wrap: 'balance',
     },
     image: {
       src: '/images/components/utilityCards/parts.png',
