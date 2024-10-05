@@ -169,7 +169,7 @@ export const QUALITY_CERTIFICATIONS = [
 export const NAVIGATION_LINKS = [
   {
     title: 'Nossos Produtos',
-    href: '/#product-carousel',
+    href: '/produtos',
   },
   {
     title: 'EngraxaMente EAD',
