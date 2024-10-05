@@ -5,6 +5,7 @@ import Templates from '@/components/Templates'
 import { Title } from './components/Title'
 import { Subtitle } from './components/Subtitle'
 import { ListProducts } from './components/ListProducts'
+import { Info } from '@/components/Info'
 import UtilityCards from '../Home/components/UtilityCards'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
@@ -67,6 +68,13 @@ export default function Produtos({ content }) {
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <UtilityCards className="pb-20" />
+          {content?.page?.info?.length > 0 && (
+            <Info
+              info={content.page.info}
+              classNameTitle="w-full max-w-[22rem]"
+              classNameContainer="pb-24"
+            />
+          )}
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>
