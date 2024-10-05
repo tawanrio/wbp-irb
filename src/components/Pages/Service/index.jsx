@@ -6,7 +6,6 @@ import Templates from '@/components/Templates'
 // Components
 import BreadCrumb from '@/components/BreadCrumb'
 import Banner from '@/components/Banner/index'
-import ImgCatalogDescription from '@/components/ImgCatalogDescription'
 // Database // Schema
 
 // Context Api
