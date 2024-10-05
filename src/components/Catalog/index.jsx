@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const Catalog = ({ content }) => {
-  const { buttons, description, imageProduct, title } = content
+  const { buttons, descriptions, imageProduct, title } = content
 
   return (
     <section className="mx-auto flex min-h-[35rem] w-full max-w-[1440px] flex-col items-center px-5 pb-14 pt-8 sm:py-20 md:flex-row">
@@ -20,7 +20,7 @@ export const Catalog = ({ content }) => {
           {title}
         </h2>
         <ul className="space-y-1">
-          {description.map((description, index) => (
+          {descriptions.map((description, index) => (
             <li key={index}>
               <p className="font-extralight sm:text-xl lg:text-2xl">
                 {description}
