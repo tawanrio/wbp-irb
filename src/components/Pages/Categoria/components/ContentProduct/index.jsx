@@ -9,7 +9,7 @@ export const ContentProduct = ({ category, technicalSheet }) => {
       className="mx-auto flex w-full max-w-7xl flex-col gap-20 px-5 py-36 lg:flex-row"
     >
       <div className="mx-auto h-fit w-full max-w-[536.93px] space-y-7 rounded-[33.13px] border border-solid border-[#FFFFFF30] bg-[#D9D9D915] p-8 shadow-[0px_6.02px_6.02px_rgba(0,0,0,0.25)]">
-        <figure class="relative w-full">
+        <figure className="relative w-full">
           <Image
             src={thumbnail?.imageUrlPng}
             alt={thumbnail?.alt}

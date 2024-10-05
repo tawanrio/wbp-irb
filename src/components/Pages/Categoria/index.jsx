@@ -79,9 +79,9 @@ export default function Categoria({ content }) {
           />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
-          <UtilityCards />
+          <UtilityCards className="pb-20" />
           {content?.category?.info?.length > 0 && (
-            <Info info={content.category.info} />
+            <Info info={content.category.info} classNameContainer="pb-20" />
           )}
           {content?.category?.faq &&
             Object.entries(content.category.faq).length > 0 && (
