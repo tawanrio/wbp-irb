@@ -184,51 +184,86 @@ export const NAVIGATION_LINKS = [
 
 export const UTILITIES_CARDS = [
   {
-    title: 'Publicação Quinzenal de Vídeos Educativos',
-    surtitle: 'Nosso canal no Youtube (IRB Automotive)',
-    description: 'Dicas Sobre Mecânica Automotiva no Canal do YouTube',
-    image: '/images/components/utilityCards/mobile.png',
-    link: 'https://engraxamente.eadplataforma.app/',
-    linkText: 'Saiba mais',
+    bgImage: "url('/images/components/utilityCards/mechanic-working.png')",
+    title: {
+      name: 'Consulte nosso catálogo eletrônico',
+      weight: 700,
+      size: '28px',
+    },
+    surtitle: {
+      name: '(disponível para Android, IOS e Windows)',
+      weight: 300,
+      size: '12px',
+    },
+    description: {
+      name: 'e confira todos os itens, aplicações e características técnicas',
+      weight: 700,
+      size: '20px',
+    },
+    image: {
+      src: '/images/components/utilityCards/mobile.png',
+      width: 297.33,
+      height: 455,
+      margin: '-34px',
+    },
+    link: 'https://c123.com.br/app/aplicativo/?n=IRB',
+    linkText: 'Baixar catálogo',
   },
   {
-    title: 'IRB Code é uma ferramenta desenvolvida pela IRB Automotive',
-    surtitle: 'IRB Code (desenvolvida pela IRB Automotive)',
-    description:
-      'Auxilia nossos amigos reparadores no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
-    image: '/images/components/utilityCards/mobile.png',
+    bgImage: "url('/images/components/utilityCards/wrench-workshop.png')",
+    title: {
+      name: 'IRB Code',
+      weight: 700,
+      size: '48px',
+    },
+    description: {
+      name: 'Ferramenta desenvolvida pela IRB Automotive, que auxilia nossos amigos reparadores no correto diagnóstico de problemas no circuito ABS dos rolamentos.',
+      weight: 400,
+      size: '20px',
+    },
+    image: {
+      src: '/images/components/utilityCards/irbCode.png',
+      width: 300,
+      height: 400,
+      margin: '130px',
+    },
     link: '/autopecas',
-    linkText: 'Onde encontrar',
+    linkText: 'Clique aqui',
   },
   {
-    title: 'Consulte nosso catálogo eletrônico',
-    surtitle: '(disponível para Android, IOS e Windows)',
-    description:
-      'e confira todos os itens, aplicações e características técnicas',
-    image: '/images/components/utilityCards/mobile.png',
-    link: 'https://c123.com.br/app/aplicativo/?n=IRB',
-    linkText: 'Baixar catálogo',
-  },
-  {
-    title: "Na aba 'Educacional' há eBooks grátis para download!",
-    surtitle: 'Baixe os eBooks e se aprenda com nossos materiais',
-    description:
-      'Neles você conhecerá mais sobre nossas linhas de produtos, especificações e dicas técnicas',
-    image: '/images/components/utilityCards/mobile.png',
-    link: 'https://irbauto.rds.land/material-rico',
-    linkText: 'Baixar E-books',
-  },
-]
-
-export const UNIQUE_UTILITIES_CARDS = [
-  {
-    title: 'Consulte nosso catálogo eletrônico',
-    surtitle: '(disponível para Android, IOS e Windows)',
-    description:
-      'e confira todos os itens, aplicações e características técnicas',
-    image: '/images/components/utilityCards/mobile.png',
-    link: 'https://c123.com.br/app/aplicativo/?n=IRB',
-    linkText: 'Baixar catálogo',
+    bgImage: "url('/images/components/utilityCards/mechanic-relaxing.png')",
+    title: {
+      name: 'Novidade',
+      weight: 400,
+      size: '16px',
+      color: '#982225',
+      transform: 'uppercase',
+      background: '#FFFFFF',
+      rounded: '19px',
+      padding: '2px 18px',
+      width: 'fit-content',
+      align: 'end',
+    },
+    surtitle: {
+      name: 'Cubo Vazio e Eletroventilador',
+      weight: 700,
+      size: '28px',
+      align: 'end',
+    },
+    description: {
+      name: 'Trouxemos a qualidade e tecnologia já conhecida dos rolamentos e radiadores IRB para essas novas linhas',
+      weight: 300,
+      size: '20px',
+      align: 'end',
+    },
+    image: {
+      src: '/images/components/utilityCards/parts.png',
+      width: 300,
+      height: 300,
+      margin: '20px',
+    },
+    link: '/produtos',
+    linkText: 'Clique aqui',
   },
 ]
 

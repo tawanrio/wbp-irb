@@ -1,5 +1,5 @@
 import { SingleUtility } from './SingleUtility'
-import { OPTIONS, UNIQUE_UTILITIES_CARDS } from '@/utils/constants'
+import { OPTIONS, UTILITIES_CARDS } from '@/utils/constants'
 import { CarouselLoop } from '@/components/Carousel/CarouselLoop'
 import { cn } from '@/lib/utils'
 
@@ -12,8 +12,8 @@ const UtilityCards = ({ className }) => {
         className,
       )}
     >
-      <CarouselLoop options={OPTIONS} array={UNIQUE_UTILITIES_CARDS}>
-        {UNIQUE_UTILITIES_CARDS.map((utility, index) => (
+      <CarouselLoop options={OPTIONS} array={UTILITIES_CARDS}>
+        {UTILITIES_CARDS.map((utility, index) => (
           <li className="embla__slide_loop" key={index}>
             <SingleUtility utility={utility} />
           </li>
