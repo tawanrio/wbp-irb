@@ -29,7 +29,7 @@ export const Catalog = ({ content }) => {
           ))}
         </ul>
         <ul className="flex flex-wrap items-center justify-center gap-5">
-          {buttons.map((button, index) => (
+          {buttons?.map((button, index) => (
             <li key={index}>
               <Link target="_blank" href={button.link} className="text-white">
                 <Image
