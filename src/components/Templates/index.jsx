@@ -15,6 +15,7 @@ export default function Templates({ children, template, page, menus }) {
     'registre-se',
     'baixe-nosso-app',
     'produtos',
+    'blog',
   ]
 
   const pageLabel = page?.label?.toLowerCase() || ''

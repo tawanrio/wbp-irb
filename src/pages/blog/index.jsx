@@ -1,11 +1,6 @@
 // Template / Layout
 import Templates from '@/components/Templates'
 
-// Components
-import Banner from '@/components/Banner/index'
-import BreadCrumb from '@/components/BreadCrumb'
-import { formatStrToDash, sanitizeHtml } from '@/utils/functions'
-
 // Database // Schema
 import { connectMongoDB, disconnectMongoDB } from '@/service/db'
 import Page from '@/service/model/schemas/pageSchema'
@@ -16,13 +11,20 @@ import { CategoriesProducts } from '@/service/model/schemas/categoriesProductsSc
 import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 import { Posts } from '@/service/model/schemas/postsSchema'
 
+// Components
+import { Title } from './components/Title'
+import { ListBlogs } from './components/ListBlogs'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
+
 // Others || functions
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
-import Image from 'next/image'
-import { cn } from '@/utils/cn'
+import { sanitizeHtml } from '@/utils/functions'
 
 export default function Blog({ content }) {
   const [posts, setPosts] = useState(content?.posts)
@@ -32,13 +34,13 @@ export default function Blog({ content }) {
   const {
     metaTitle,
     metaDescription,
-    banners,
     title,
     contentDescription: description,
+    components: { title: titleComponent, surtitle },
   } = content?.page || {}
 
-  const router = useRouter()
-  const { page = 1 } = router.query
+  const route = useRouter()
+  const { page = 1 } = route.query
   const currentPage = parseInt(page, 10)
   const postsPerPage = 6
   const indexOfLastPost = currentPage * postsPerPage
@@ -46,16 +48,14 @@ export default function Blog({ content }) {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
   const totalPages = Math.ceil(posts.length / postsPerPage)
 
-  const handlePageChange = (pageNumber) => {
-    router.push(`/blog?page=${pageNumber}`)
-  }
-
-  const getPaginationGroup = () => {
-    const start = Math.floor((currentPage - 1) / 3) * 3
-    return new Array(Math.min(3, totalPages - start))
-      .fill()
-      .map((_, idx) => start + idx + 1)
-  }
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   useEffect(() => {
     if (content?.posts) {
@@ -84,7 +84,7 @@ export default function Blog({ content }) {
       const url = window.location.href
       setFullUrl(url)
     }
-  }, [router])
+  }, [route])
 
   return (
     <>
@@ -99,79 +99,22 @@ export default function Blog({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <div className="mx-3.5 max-w-6xl py-8 md:mx-auto">
-          <h1 className="mb-4 text-3xl font-bold md:pl-3">Publicações</h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:px-3 lg:grid-cols-3">
-            {currentPosts.map((post, key) => (
-              <Link
-                key={key}
-                href={`/blog/${post.permaLink || formatStrToDash(post.title)}`}
-              >
-                <div className="flex h-full cursor-pointer flex-col justify-between border p-4 hover:bg-gray-100">
-                  <div>
-                    <h2 className="mb-2 h-20 overflow-hidden text-xl font-semibold">
-                      {post.title}
-                    </h2>
-                    <Image
-                      src={post.featuredImg?.url}
-                      alt={post.featuredImg?.alt}
-                      width={327}
-                      height={208}
-                      priority
-                      quality={100}
-                      onLoad={() => setIsLoading(false)}
-                      className={cn(
-                        'mb-2 h-52 w-full object-cover transition-[scale,filter] duration-700',
-                        isLoading && 'scale-[1.02] blur-xl grayscale',
-                      )}
-                    />
-                    <p className="text-gray-700">{`${post.contentHTML.slice(0, 120)}...`}</p>
-                  </div>
-                  <p
-                    className="text-blue-600 hover:underline"
-                    href={`/blog/${post.permaLink}`}
-                  >
-                    Leia mais
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <ul className="mt-4 flex justify-center">
-            {currentPage > 3 && (
-              <li>
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  className="mx-1 rounded bg-gray-200 px-3 py-1 text-gray-700"
-                >
-                  &lt;
-                </button>
-              </li>
-            )}
-            {getPaginationGroup().map((pageNumber) => (
-              <li key={pageNumber}>
-                <button
-                  onClick={() => handlePageChange(pageNumber)}
-                  className={`mx-1 rounded px-3 py-1 ${currentPage === pageNumber ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
-                >
-                  {pageNumber}
-                </button>
-              </li>
-            ))}
-            {currentPage <= totalPages && (
-              <li>
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  className="mx-1 rounded bg-gray-200 px-3 py-1 text-gray-700"
-                >
-                  &gt;
-                </button>
-              </li>
-            )}
-          </ul>
-        </div>
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Title title={titleComponent} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <ListBlogs
+            posts={currentPosts}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            surtitle={surtitle}
+          />
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )
