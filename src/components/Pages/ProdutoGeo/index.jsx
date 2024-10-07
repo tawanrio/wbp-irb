@@ -1,22 +1,23 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // Template
-import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
-import Title from '@/components/Title'
-import Banner from '@/components/Banner/index'
-import BreadCrumb from '@/components/BreadCrumb'
+import { Title } from './components/Title'
+import { Subtitle } from './components/Subtitle'
 import SearchPartners from '@/components/SearchPartners'
-import PartnersButton from '../Home/components/PartnersButton'
-import CategoryGrid from '@/components/CategoryGrid'
+import { Info } from '@/components/Info'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { usePathname } from 'next/navigation'
-import { capitalize, getProductFromUrl } from '@/utils/functions'
+import Head from 'next/head'
+import { capitalize } from '@/utils/functions'
 
 export default function Produto({ content }) {
   const router = useRouter()
@@ -25,13 +26,7 @@ export default function Produto({ content }) {
   pageUrl = pageUrl[pageUrl.length - 1]
 
   const [fullUrl, setFullUrl] = useState('')
-  const [product, setProduct] = useState(content?.product)
-  const [partnerDescription, setPartnerDescription] = useState(
-    content?.category?.partner?.description,
-  )
-  const [metaTitle, setMetaTitle] = useState(
-    content?.category?.partner?.metaTitle,
-  )
+  const [metaTitle] = useState(content?.category?.partner?.metaTitle)
   const [metaKeywords] = useState(content?.category?.metaKeywords)
   const [metaDescription, setMetaDescription] = useState(
     content?.page?.metaDescription,
@@ -46,8 +41,16 @@ export default function Produto({ content }) {
     partnerName = { title: 'Fábricas' }
   }
 
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
+
   useEffect(() => {
-    setProduct(getProductFromUrl(content.products, pageUrl))
     setMetaDescription(
       content?.category?.metaDescription[0]?.replace(
         '{{geoName}}',
@@ -87,20 +90,30 @@ export default function Produto({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={content?.category?.banners} />
-        <BreadCrumb />
-        <Title title={content?.category?.partner.title} />
-        <ContentDescription content={partnerDescription} />
-        <SearchPartners
-          geo={content?.geo}
-          title={`Encontre um(a) ${partnerName.title}`}
-          collections={content?.collection}
-          products={content?.products}
-          arrRoute={content?.arrRoute}
-          hiddenProductSearch
-        />
-        <CategoryGrid categories={content?.categories} />
-        <PartnersButton />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Title title={content?.category?.partner?.title} />
+          <Subtitle subtitle={content?.page?.mainTitles?.subtitle} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <SearchPartners
+            geo={content?.geo}
+            title={`Encontre um(a) ${partnerName.title}`}
+            collections={content?.collection}
+            products={content?.products}
+            arrRoute={content?.arrRoute}
+            hiddenProductSearch
+          />
+          {content?.page?.info?.length > 0 && (
+            <Info
+              info={content.page.info}
+              classNameTitle="w-full max-w-[22rem]"
+              classNameContainer="pb-20"
+            />
+          )}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

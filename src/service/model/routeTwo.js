@@ -68,11 +68,13 @@ const routePartnerProduct = async (arrRoute, category) => {
     partnerName = { title: 'Fábrica' }
   }
 
-  const irb = 'irb'
+  const irb = 'irb'.toLocaleUpperCase()
   const newTitle = category.partner.title
     .replace(new RegExp(`(\\s*-\\s*${irb})|(${irb})`, 'i'), '')
     .trim()
-  category.partner.title = `${partner} de ${newTitle} - ${irb}`
+  const partnerCapitalize = partner.charAt(0).toUpperCase() + partner.slice(1)
+
+  category.partner.title = `${partnerCapitalize} de ${newTitle} - ${irb}`
 
   let description = category.partner.description
   description = replaceShortcodePartner(

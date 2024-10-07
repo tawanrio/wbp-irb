@@ -3,7 +3,7 @@ import Templates from '@/components/Templates'
 
 // Components
 import RegisterForm from './Forms'
-import UtilityCards from '../Home/components/UtilityCards'
+import { Utilities } from '../Home/components/Utilities'
 import { Info } from '@/components/Info'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
@@ -65,7 +65,7 @@ export default function Register({ content }) {
           <RegisterForm inputs={inputs} />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
-          <UtilityCards />
+          <Utilities />
           {content?.page?.info?.length > 0 && (
             <Info
               info={content.page.info}
