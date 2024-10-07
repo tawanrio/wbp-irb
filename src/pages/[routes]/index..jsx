@@ -17,6 +17,7 @@ import Categoria from '@/components/Pages/Categoria'
 import Error from '@/components/Pages/Error'
 import BaixeNossoApp from '@/components/Pages/Baixe-nosso-app'
 import Service from '@/components/Pages/Service'
+import Educacional from '@/components/Pages/Educacional'
 
 import { getDataPage } from '@/service/model/routeOne'
 
@@ -40,6 +41,7 @@ export default function index({ content }) {
             page === 'engraxamente-day' ||
             page === 'conecta-irb' ||
             page === 'ecossistema-irb') && <Service content={content} />}
+          {page === 'educacional' && <Educacional content={content} />}
         </>
       )}
       {content?.type === 'category' && (
