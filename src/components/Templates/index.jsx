@@ -7,11 +7,16 @@ import { CookiePopup } from '../CookiePopup'
 
 export default function Templates({ children, template, page, menus }) {
   const isHome =
-    page?.title === 'Home' || page?.label === 'fabrica'
+    page?.title === 'Home' ||
+    page?.label === 'fabrica' ||
+    page?.label === 'contato'
       ? 'redesign-home'
       : 'default'
+
   const isHomeHeader =
-    page?.title === 'Home' || page?.label === 'fabrica'
+    page?.title === 'Home' ||
+    page?.label === 'fabrica' ||
+    page?.label === 'contato'
       ? 'header-home'
       : 'header'
   const arrHeader = template?.find((item) => item?.label === 'header')
@@ -57,7 +62,7 @@ export default function Templates({ children, template, page, menus }) {
     templateName: 'footer',
   })
 
-  const REDESIGN_PAGES = ['home', 'fabrica']
+  const REDESIGN_PAGES = ['home', 'fabrica', 'contato']
 
   const pageLabel = page?.label?.toLowerCase() || ''
 

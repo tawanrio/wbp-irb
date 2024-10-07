@@ -18,6 +18,7 @@ export default function Banner({ banners, stlyeText, page }) {
         : isSmallScreen
           ? banners?.carouselHomeMobile
           : banners?.carousel
+
   const showButtonsBanner = carousel.length > 1
 
   useEffect(() => {
@@ -110,7 +111,7 @@ export default function Banner({ banners, stlyeText, page }) {
             size,
           }}
           stlyeText={stlyeText}
-          backdrop={page?.title === 'Home'}
+          backdrop={page?.title === 'Home' || page?.title === 'Contato'}
         />
 
         {showButtonsBanner && (
