@@ -6,6 +6,7 @@ import { Title } from './components/Title'
 import { Subtitle } from './components/Subtitle'
 import { Description } from './components/Description'
 import { Banners } from './components/Banners'
+import { Videos } from './components/Videos'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
@@ -16,7 +17,6 @@ import Copyright from '@/components/Templates/Copyright'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { Utilities } from '../Home/components/Utilities'
 
 export default function Educacional({ content }) {
   const router = useRouter()
@@ -81,7 +81,7 @@ export default function Educacional({ content }) {
             description={engraxamente.description}
             className="mt-5 text-[#982225]"
           />
-          <Utilities className="pb-24 pt-0" />
+          <Videos />
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>
