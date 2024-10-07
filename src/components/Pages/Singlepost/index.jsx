@@ -63,22 +63,22 @@ export default function SinglePost({ content }) {
           <Header content={header} page={content?.page?.label} />
           <Title title={titleComponent} />
         </BackgroundImageFirst>
-        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
-          <div className="max-w-7xl px-5 py-12 md:mx-auto">
-            <h1 className="mb-4 text-3xl font-bold">{posts?.title}</h1>
-            <p className="mb-4 text-gray-600">
-              {posts?._createdAt.split('T')[0]}
-            </p>
-            <div
-              className="custom-link-container prose overflow-hidden"
-              dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-            ></div>
-            <div className="mt-8 w-fit cursor-pointer rounded-xl bg-[#22326E] px-5 py-2 transition-all duration-200 hover:scale-95">
-              <Link href="/blog" className="text-white">
-                Voltar para Blog
-              </Link>
-            </div>
+        <div className="max-w-7xl px-5 py-12 md:mx-auto">
+          <h1 className="mb-4 text-3xl font-bold">{posts?.title}</h1>
+          <p className="mb-4 text-gray-600">
+            {posts?._createdAt.split('T')[0]}
+          </p>
+          <div
+            className="custom-link-container prose overflow-hidden"
+            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+          ></div>
+          <div className="mt-8 w-fit cursor-pointer rounded-xl bg-[#22326E] px-5 py-2 transition-all duration-200 hover:scale-95">
+            <Link href="/blog" className="text-white">
+              Voltar para Blog
+            </Link>
           </div>
+        </div>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>
