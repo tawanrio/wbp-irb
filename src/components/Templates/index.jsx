@@ -17,6 +17,7 @@ export default function Templates({ children, template, page, menus }) {
     'produtos',
     'blog',
     'educacional',
+    'error',
   ]
 
   const pageLabel = page?.label?.toLowerCase() || ''
