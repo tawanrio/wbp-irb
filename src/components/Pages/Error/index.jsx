@@ -1,29 +1,35 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
-
-// Others
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import { insertMenuInTemplate, formatStrToUrl } from '@/utils/functions'
 
 // Components
-import BreadCrumb from '@/components/BreadCrumb'
+import { Title } from './components/Title'
 import Error from '@/components/Error'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
+
+// Others
+import Head from 'next/head'
 
 export default function index({ content }) {
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [imgDescription] = useState(content?.page.imgDescription)
-  const [faq] = useState(content?.page.faq)
+  const {
+    title,
+    contentDescription: description,
+    metaTitle,
+    metaDescription,
+    components,
+  } = content?.page || {}
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
 
   return (
     <>
@@ -37,13 +43,15 @@ export default function index({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <Error />
-        {/* <Title title={title}/> */}
-        {/* <ContentDescription content={description}/> */}
-        {/* <Products baseUrl={`/${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title={'Produtos'} /> */}
-        {/* <ContentImgDescription content={imgDescription}/> */}
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Title title={title} />
+        </BackgroundImageFirst>
+        <Error content={components} />
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )
