@@ -10,13 +10,15 @@ export default function Templates({ children, template, page, menus }) {
     'home',
     'fabrica',
     'distribuidoras',
-    'contato',
     'autopecas',
     'mecanicas',
+    'contato',
     'registre-se',
     'baixe-nosso-app',
     'produtos',
     'blog',
+    'educacional',
+    'error',
   ]
 
   const pageLabel = page?.label?.toLowerCase() || ''

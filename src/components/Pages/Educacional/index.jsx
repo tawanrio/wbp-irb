@@ -1,27 +1,37 @@
-// Components
+// Template / Layout
 import Templates from '@/components/Templates'
+
+// Components
+import { Title } from './components/Title'
+import { Subtitle } from './components/Subtitle'
+import { Description } from './components/Description'
+import { Banners } from './components/Banners'
+import { Videos } from './components/Videos'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
-import { Title } from '@/pages/blog/components/Title'
 
 // Others
 import { useEffect, useState } from 'react'
-import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
-export default function SinglePost({ content }) {
+export default function Educacional({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
-  const [sanitizedContent, setSanitizedContent] = useState('')
 
-  const { posts, page } = content || {}
   const {
-    components: { title: titleComponent },
-  } = page || {}
+    title,
+    metaTitle,
+    metaDescription,
+    contentDescription,
+    description,
+    metaKeywords,
+    banners,
+    engraxamente,
+  } = content?.page || {}
 
   const arrHeader = content?.template?.find((item) => item?.label === 'header')
   const header = arrHeader?.items.find(
@@ -33,25 +43,22 @@ export default function SinglePost({ content }) {
   )
 
   useEffect(() => {
-    if (posts) {
-      setSanitizedContent(posts.contentHTML)
-    }
-  }, [posts])
-
-  useEffect(() => {
     if (typeof window !== 'undefined') {
       const url = window.location.href
       setFullUrl(url)
     }
   }, [router])
 
-  console.log()
-
   return (
     <>
       <Head>
-        <title>{posts.metaTitle}</title>
-        <meta name="description" content={posts.metaDescription} />
+        <title>{metaTitle || title}</title>
+        <meta
+          name="description"
+          content={metaDescription || contentDescription}
+        />
+        <meta name="keywords" content={metaKeywords || ''} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
@@ -61,24 +68,20 @@ export default function SinglePost({ content }) {
       >
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
-          <Title title={titleComponent} />
+          <Title title={title} />
+          <Description
+            description={description}
+            className="mt-6 text-white sm:mt-10"
+          />
         </BackgroundImageFirst>
-        <div className="max-w-7xl px-5 py-12 md:mx-auto">
-          <h1 className="mb-4 text-3xl font-bold">{posts?.title}</h1>
-          <p className="mb-4 text-gray-600">
-            {posts?._createdAt.split('T')[0]}
-          </p>
-          <div
-            className="custom-link-container prose overflow-hidden"
-            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-          ></div>
-          <div className="mt-8 w-fit cursor-pointer rounded-xl bg-[#22326E] px-5 py-2 transition-all duration-200 hover:scale-95">
-            <Link href="/blog" className="text-white">
-              Voltar para Blog
-            </Link>
-          </div>
-        </div>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <Banners banners={banners} />
+          <Subtitle subtitle={engraxamente.title} />
+          <Description
+            description={engraxamente.description}
+            className="mt-5 text-[#982225]"
+          />
+          <Videos />
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>
