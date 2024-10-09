@@ -2,8 +2,8 @@
 import Templates from '@/components/Templates'
 
 // Components
-import { Description } from './components/Description'
 import { Title } from './components/Title'
+import { Description } from './components/Description'
 import SearchPartners from '@/components/SearchPartners'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'

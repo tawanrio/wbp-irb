@@ -299,3 +299,24 @@ export const CATALOGS_DESCRIPTION = {
     'Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!',
   ],
 }
+
+export const CONTACT_BANNER = {
+  colors: {
+    bg: '#fff',
+    text: '#fff',
+    controllers: '#fff',
+  },
+  size: {
+    height: 415,
+  },
+  carousel: [
+    {
+      title: '',
+      description: '',
+      textWidth: 100,
+      url: '/images/pages/contact/banner-contact.png',
+      alt: 'banner dois',
+      position: 'start',
+    },
+  ],
+}

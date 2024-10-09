@@ -2,53 +2,51 @@
 import Templates from '@/components/Templates'
 
 // Components
-import BreadCrumb from '@/components/BreadCrumb'
-import IrbContact from '@/components/IrbContact'
+import { Title } from './components/Title'
 import Banner from '@/components/Banner/index'
-import ServiceAddress from '@/components/ServiceAddress'
+import { Telephones } from './components/Telephones'
+import { Maps } from '@/components/Maps'
+import { ListProducts } from '../Produtos/components/ListProducts'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { CONTACT_BANNER } from '@/utils/constants'
+import { getGoogleMaps } from '@/utils/functions'
 
-export default function Contato({ content }) {
-  const router = useRouter()
+export default function Parceiro({ content }) {
+  const route = useRouter()
   const [fullUrl, setFullUrl] = useState('')
 
-  const [partner] = useState(content?.collection)
-  const [metaTitle] = useState(partner?.metaTitle)
-  const [metaDescription] = useState(partner?.metaDescription)
-  const [banners] = useState(partner?.banners)
-  const [title] = useState(partner?.title)
+  const { template, page, collection, menus, categories } = content || {}
+  const {
+    metaTitle,
+    metaDescription,
+    companyName,
+    info: { address, phone },
+  } = collection || {}
+  const { title, label, backgroundImages } = page || {}
 
-  let whatsappNumber =
-    partner.info.phone.find((number) => number.label === 'Whatsapp') || null
-  let phoneNumber =
-    partner.info.phone.find((number) => number.label === 'Telefone') || null
-  const address = partner.info.address.find(
-    (address) => address.label === 'default',
-  )
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
-  if (phoneNumber) {
-    if (!whatsappNumber) {
-      whatsappNumber = phoneNumber
-    }
-  }
-  if (whatsappNumber) {
-    if (!phoneNumber) {
-      phoneNumber = whatsappNumber
-    }
-  }
-  if (!whatsappNumber) whatsappNumber = '11994412805'
-  if (!phoneNumber) phoneNumber = '11994412805'
+  const addressFormatted = `${address[0].street}, ${address[0].number} - ${address[0].city} - ${address[0].state} - ${address[0].country}`
+  const googleMapsUrl = getGoogleMaps(addressFormatted)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const url = window.location.href
       setFullUrl(url)
     }
-  }, [router])
+  }, [route])
 
   return (
     <>
@@ -58,22 +56,25 @@ export default function Contato({ content }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href={fullUrl} />
       </Head>
-      <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-      >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <IrbContact
-          layout={partner}
-          logo={partner.logo}
-          contentDescription={partner.contentDescription}
-          title={partner.tradingName}
-          whatsapp={whatsappNumber}
-          phone={phoneNumber}
-        />
-        <ServiceAddress products={content.categories} address={address} />
+      <Templates template={template} page={page} menus={menus}>
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
+          <Banner banners={CONTACT_BANNER} />
+          <Title title={companyName} />
+          <Telephones phones={phone} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={backgroundImages}>
+          <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 py-24">
+            <Maps googleMapsUrl={googleMapsUrl} collections={[collection]} />
+          </div>
+          <ListProducts
+            products={categories}
+            className="text-black"
+            classNameLink="border-[#0000004D]"
+          />
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

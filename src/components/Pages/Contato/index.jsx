@@ -32,6 +32,7 @@ import ServiceAddress from '@/components/ServiceAddress'
 import ContactForm from './Forms'
 import TellButton from './components/TellButton'
 import Container from '@/components/Container'
+import { CONTACT_BANNER } from '@/utils/constants'
 
 export default function Contato({ content }) {
   const [metaTitle] = useState(content?.page.metaTitle)
@@ -66,26 +67,6 @@ export default function Contato({ content }) {
   const copyright = content?.template?.find(
     (item) => item?.label === 'copyright',
   )
-  const newBanner = {
-    colors: {
-      bg: '#fff',
-      text: '#fff',
-      controllers: '#fff',
-    },
-    size: {
-      height: 415,
-    },
-    carousel: [
-      {
-        title: '',
-        description: '',
-        textWidth: 100,
-        url: '/images/pages/contact/banner-contact.png',
-        alt: 'banner dois',
-        position: 'start',
-      },
-    ],
-  }
 
   return (
     <>
@@ -103,7 +84,7 @@ export default function Contato({ content }) {
       >
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
-          <Banner banners={newBanner} page={content?.page} />
+          <Banner banners={CONTACT_BANNER} page={content?.page} />
           <Description content={newDescription} />
           <TellButton buttons={arrButton} />
         </BackgroundImageFirst>

@@ -64,7 +64,11 @@ export default function Produtos({ content }) {
           <Header content={header} page={content?.page?.label} />
           <Title title={content?.page?.mainTitles?.title} />
           <Subtitle subtitle={content?.page?.mainTitles?.subtitle} />
-          <ListProducts products={content?.categories} />
+          <ListProducts
+            products={content?.categories}
+            className="text-white"
+            classNameLink="border-[#FFFFFF4D]"
+          />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <Utilities className="pb-20" />
