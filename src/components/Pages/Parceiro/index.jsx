@@ -64,7 +64,7 @@ export default function Parceiro({ content }) {
           <Telephones phones={phone} />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={backgroundImages}>
-          <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 py-24">
+          <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-24">
             <Maps googleMapsUrl={googleMapsUrl} collections={[collection]} />
           </div>
           <ListProducts
