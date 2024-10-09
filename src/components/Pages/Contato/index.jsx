@@ -13,6 +13,10 @@ import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
 import Description from './components/Description'
+import SearchPartners from '@/components/SearchPartners'
+import { formatStrToUrl, getGoogleMaps } from '@/utils/functions'
+import { Maps } from '@/components/Maps'
+import { FormContact } from './components/Form/'
 
 // Database // Schema
 import { connectMongoDB, disconnectMongoDB } from '@/service/db'
@@ -27,6 +31,7 @@ import { useState } from 'react'
 import ServiceAddress from '@/components/ServiceAddress'
 import ContactForm from './Forms'
 import TellButton from './components/TellButton'
+import Container from '@/components/Container'
 
 export default function Contato({ content }) {
   const [metaTitle] = useState(content?.page.metaTitle)
@@ -37,14 +42,20 @@ export default function Contato({ content }) {
   const [newDescription] = useState(content?.page.components.description)
   const [logoContact] = useState(content?.page.components.logoContact)
   const [arrButton] = useState(logoContact?.arrButton)
+  const [collections] = useState([content?.collection])
+  const [formDefault] = useState(
+    content?.form?.forms.find((item) => item.label === 'default'),
+  )
 
-  console.log(arrButton)
+  console.log(content)
 
   // const whatsappNumber = logoContact.button.whatsapp
   // const phoneNumber = logoContact.button.phone
   const address = content?.address.address.find(
     (address) => address.label === 'default',
   )
+
+  const googleMapsUrl = getGoogleMaps(false)
   const arrHeader = content?.template?.find((item) => item?.label === 'header')
 
   const header = arrHeader?.items.find(
@@ -96,6 +107,24 @@ export default function Contato({ content }) {
           <Description content={newDescription} />
           <TellButton buttons={arrButton} />
         </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          {/* <SearchPartners
+          partnerType="distribuidor"
+          collections={collections}
+          hiddenProductSearch
+          products={content?.products}
+          geo={content?.geo}
+        /> */}
+          <Container className={'mt-5'}>
+            <h2 className="m-0 mb-10 w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-2xl font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
+              NOSSOS ENDEREÇOS
+            </h2>
+            <Maps googleMapsUrl={googleMapsUrl} collections={collections} />
+            <FormContact inputs={formDefault} />
+          </Container>
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
         {/* <Banner banners={banners} />
         <BreadCrumb />
         <LogoContact

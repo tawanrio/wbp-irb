@@ -1,4 +1,3 @@
-import SectionTitle from '../SectionTitle'
 import Collections from './components/Collections'
 
 export default function SearchPartners({
@@ -7,7 +6,6 @@ export default function SearchPartners({
   products,
   arrRoute,
   hiddenProductSearch,
-  title,
   geo,
 }) {
   return (
@@ -16,8 +14,6 @@ export default function SearchPartners({
       id="content-img-description_"
     >
       <div className="my-4 flex w-full max-w-7xl flex-col px-6 md:my-10 md:justify-between md:gap-10 md:px-14">
-        {title && <SectionTitle title={title} line />}
-
         {collections.length > 0 ? (
           <Collections
             collections={collections}

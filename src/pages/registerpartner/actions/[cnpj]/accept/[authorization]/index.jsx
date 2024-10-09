@@ -24,7 +24,6 @@ const acceptPartner = async (cnpj, authorization) => {
       email: partner.info.email,
     }
 
-    console.log(data)
     return data
   } catch {
   } finally {
@@ -36,7 +35,7 @@ const sendEmailToPartner = async (data) => {
   const structureHtml = ReactDOMServer.renderToString(
     <TemplateMailAcceptRegister data={data} />,
   )
-  console.log(structureHtml)
+
   data.structureMail = {
     html: structureHtml,
     to: data.email,
@@ -78,7 +77,6 @@ export const getServerSideProps = async (context) => {
     const responseAcceptMail = await sendEmailToPartner(partner)
 
     const fullDomain = `${protocol}://${req.headers.host}/${partner.type}/${partner?.tradingName}`
-    console.log(fullDomain)
 
     res.writeHead(302, { Location: fullDomain })
     res.end()

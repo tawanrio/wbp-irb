@@ -1,6 +1,3 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
 
@@ -9,14 +6,22 @@ import ContentDescription from './components/ContentDescription'
 import { CompanyValuesNew } from './components/CompanyValuesNew'
 import { CarouselEvent } from './components/CarouselEvents'
 import { Infos } from './components/Infos'
-import { Gallery } from './components/Gallery'
+// import { Gallery } from './components/Gallery'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
 
+// Others
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
+
 export default function Fabrica({ content }) {
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
+
   const {
     title,
     contentDescriptionRedesign: description,
@@ -24,7 +29,7 @@ export default function Fabrica({ content }) {
     metaDescription,
     metaKeywords,
     events,
-  } = content?.page
+  } = content?.page || {}
 
   const arrHeader = content?.template?.find((item) => item?.label === 'header')
   const header = arrHeader?.items.find(
@@ -35,6 +40,13 @@ export default function Fabrica({ content }) {
     (item) => item?.label === 'copyright',
   )
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
+
   return (
     <>
       <Head>
@@ -42,6 +54,7 @@ export default function Fabrica({ content }) {
         <meta name="description" content={metaDescription || description} />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
         template={content?.template}
@@ -53,7 +66,7 @@ export default function Fabrica({ content }) {
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
           <Infos />
-          <Gallery />
+          {/* <Gallery /> */}
           <CompanyValuesNew />
           <ContentDescription
             content={description}

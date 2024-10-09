@@ -6,19 +6,25 @@ import { insertMenuInTemplate } from '@/utils/functions'
 import { CookiePopup } from '../CookiePopup'
 
 export default function Templates({ children, template, page, menus }) {
-  const isHome =
-    page?.title === 'Home' ||
-    page?.label === 'fabrica' ||
-    page?.label === 'contato'
-      ? 'redesign-home'
-      : 'default'
+  const REDESIGN_PAGES = [
+    'home',
+    'fabrica',
+    'distribuidoras',
+    'contato',
+    'autopecas',
+    'mecanicas',
+    'registre-se',
+    'baixe-nosso-app',
+    'produtos',
+    'blog',
+  ]
 
-  const isHomeHeader =
-    page?.title === 'Home' ||
-    page?.label === 'fabrica' ||
-    page?.label === 'contato'
-      ? 'header-home'
-      : 'header'
+  const pageLabel = page?.label?.toLowerCase() || ''
+  const isRedesignPage = REDESIGN_PAGES.includes(pageLabel)
+
+  const isHome = isRedesignPage ? 'redesign-home' : 'default'
+  const isHomeHeader = isRedesignPage ? 'header-home' : 'header'
+
   const arrHeader = template?.find((item) => item?.label === 'header')
   const header = arrHeader?.items.find((item) => item?.label === isHome)
 
@@ -62,11 +68,7 @@ export default function Templates({ children, template, page, menus }) {
     templateName: 'footer',
   })
 
-  const REDESIGN_PAGES = ['home', 'fabrica', 'contato']
-
-  const pageLabel = page?.label?.toLowerCase() || ''
-
-  return REDESIGN_PAGES.includes(pageLabel) ? (
+  return isRedesignPage ? (
     <>
       <CookiePopup />
       <ToastContainer />

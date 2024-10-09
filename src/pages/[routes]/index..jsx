@@ -33,7 +33,7 @@ export default function index({ content }) {
           {page === 'autopecas' && <Autopecas content={content} />}
           {page === 'mecanicas' && <AutocenterEMecanicas content={content} />}
           {page === 'parceiros' && <Parceiros content={content} />}
-          {page === 'Produtos' && <Produtos content={content} />}
+          {page === 'produtos' && <Produtos content={content} />}
           {page === 'registre-se' && <Register content={content} />}
           {page === 'baixe-nosso-app' && <BaixeNossoApp content={content} />}
           {(page === 'engraxamente-ead' ||

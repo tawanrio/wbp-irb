@@ -6,16 +6,19 @@ import { EMAIL_RECIPIENTS } from '@/utils/constants'
 export default async function forms(req, res) {
   if (req.method === 'GET') {
     res.status(200).json({ message: 'Ok' })
+    return // Adiciona um retorno para sair da função após enviar a resposta
   }
+
   if (req.method === 'POST') {
-    const { name, email, tel, subject, message } = req.body
+    const { name, email, tel, subject, message, curriculum } = req.body
 
     try {
-      if (!name || !email || !tel || !subject || !message)
+      if (!name || !email || !tel || !subject || !message) {
         throw new Error('Por favor, preencha todos os campos')
+      }
 
       await connectMongoDB()
-      await sendEmail({ name, email, tel, subject, message })
+      await sendEmail({ name, email, tel, subject, message, curriculum })
 
       res.status(200).json({ message: 'Email enviado com sucesso!' })
     } catch (error) {
@@ -42,52 +45,54 @@ const sendEmail = async (data) => {
   })
 
   const html = `
-      <div
-        style="
-          max-width: 600px;
-          font-family: Arial, sans-serif;
-          background-color: #fff;
-          border: 1px solid #dddddd;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          border-radius: 5px;
-          padding: 20px;
-          margin: 20px auto;
-        "
-      >
-        <h2
-          style="
-            text-align: center;
-            margin: 0;
-            font-size: 24px;
-            color: #333;
-            padding-bottom: 20px;
-          "
-        >
-          ${data.subject}
-        </h2>
-        <p style="text-align: center; margin: 20px 0; color: #666;">
-          Email enviado através do site:
-          <a
-            href="http://irbauto.com.br"
-            style="color: #4caf50; text-decoration: none;"
-          >
-            irbauto.com.br
-          </a>
-        </p>
+    <div style="
+      max-width: 600px;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      border: 1px solid #dddddd;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 20px;
+      margin: 20px auto;
+    ">
+      <h2 style="
+        text-align: center;
+        margin: 0;
+        font-size: 24px;
+        color: #333;
+        padding-bottom: 20px;
+      ">
+        ${data.subject}
+      </h2>
+      <p style="text-align: center; margin: 20px 0; color: #666;">
+        Email enviado através do site:
+        <a href="http://irbauto.com.br" style="color: #4caf50; text-decoration: none;">irbauto.com.br</a>
+      </p>
+      <p style="margin: 10px 0; color: #333;"><strong>Nome:</strong> ${data.name}</p>
+      <p style="margin: 10px 0; color: #333;"><strong>Email:</strong> ${data.email}</p>
+      <p style="margin: 10px 0; color: #333;"><strong>Telefone:</strong> ${data.tel}</p>
+      <p style="margin: 10px 0; color: #333;"><strong>Assunto:</strong> ${data.subject}</p>
+      <p style="margin: 10px 0; color: #333;"><strong>Mensagem:</strong> ${data.message}</p>
+    </div>
+  `
 
-        <p style="margin: 10px 0; color: #333;"><strong>Nome:</strong> ${data.name}</p>
-        <p style="margin: 10px 0; color: #333;"><strong>Email:</strong> ${data.email}</p>
-        <p style="margin: 10px 0; color: #333;"><strong>Telefone:</strong> ${data.tel}</p>
-        <p style="margin: 10px 0; color: #333;"><strong>Assunto:</strong> ${data.subject}</p>
-        <p style="margin: 10px 0; color: #333;"><strong>Mensagem:</strong> ${data.message}</p>
-      </div>
-    `
-
-  await transporter.sendMail({
+  const mailOptions = {
     from: `${data.name} <${data.email}>`,
     to: authSmtp.auth.user,
     cc: EMAIL_RECIPIENTS,
     subject: data.subject,
     html,
-  })
+  }
+
+  // Verifique se o currículo foi fornecido
+  if (data.curriculum) {
+    mailOptions.attachments = [
+      {
+        filename: data.curriculum.split('/').pop(), // Obtém o nome do arquivo da URL
+        path: data.curriculum, // URL do arquivo
+      },
+    ]
+  }
+
+  await transporter.sendMail(mailOptions)
 }

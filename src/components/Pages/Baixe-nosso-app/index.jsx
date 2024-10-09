@@ -1,52 +1,48 @@
 // Template / Layout
-import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import BreadCrumb from '@/components/BreadCrumb'
-import Banner from '@/components/Banner/index'
-import ImgCatalogDescription from '@/components/ImgCatalogDescription'
-// Database // Schema
+import { Title } from './components/Title'
+import { Subtitle } from './components/Subtitle'
+import { Catalog } from '@/components/Catalog'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
-// Context Api
-import { useState } from 'react'
+// Others
+import { useEffect, useState } from 'react'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 export default function BaixeNossoApp({ content }) {
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
 
-  const catalogDescription = {
-    imageProduct: {
-      imageUrl: '/images/partners/bannerIRB.png',
-      alt: 'catalogo online',
-    },
-    title:
-      'Baixe agora mesmo o catálogo eletrônico e consulte facilmente toda nossa linha de produtos.',
-    subtitle: 'Acesse pelo celular',
-    button: [
-      {
-        title: '',
-        alt: 'appstore',
-        image: '/images/products/appstore.png',
-        link: 'https://apps.apple.com/br/app/irb-cat%C3%A1logo/id1169028455',
-      },
-      {
-        title: '',
-        alt: 'google-play',
-        image: '/images/products/google-play.png',
-        link: 'https://play.google.com/store/apps/details?id=br.com.ideia2001.CatalogoIRB',
-      },
-    ],
+  const {
+    metaTitle,
+    metaDescription,
+    title,
+    contentDescription: description,
+    components: { catalogTitle, catalogDescription },
+  } = content?.page || {}
 
-    description: [
-      'Baixe agora nosso catálogo online e tenha acesso a uma ampla seleção de produtos automotivos de alta qualidade.',
-      'Explore nossa vasta gama de peças e componentes para atender às necessidades do seu veículo.',
-      'Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!',
-    ],
-  }
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
 
   return (
     <>
@@ -54,18 +50,23 @@ export default function BaixeNossoApp({ content }) {
         <title>{metaTitle || title}</title>
         <meta name="description" content={metaDescription || description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
         template={content?.template}
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <ImgCatalogDescription
-          className={'mt-10'}
-          content={catalogDescription}
-        />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Title title={catalogTitle.first} />
+          <Subtitle subtitle={catalogTitle.last} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <Catalog content={catalogDescription} />
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

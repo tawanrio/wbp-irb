@@ -71,7 +71,7 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
 
   return (
     <div className="flex w-full flex-col justify-between gap-4 md:my-0 md:gap-2 md:px-0">
-      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
         <div className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="companyName">
             Razão social
@@ -80,7 +80,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
             id="companyName"
             type="text"
             required
-            placeholder="Razão social"
             className="border px-4 py-2"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
@@ -95,7 +94,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
             id="tradingName"
             type="text"
             required
-            placeholder="Nome fantasia"
             className="border px-4 py-2"
             value={tradingName}
             onChange={(e) => settradingName(e.target.value)}
@@ -110,7 +108,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
             mask="99.999.999/9999-99"
             ref={cnpjRef}
             required
-            placeholder="CNPJ"
             className="border px-4 py-2"
             value={cnpj}
             onChange={(e) => setCnpj(e.target.value)}
@@ -125,7 +122,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
             id="email"
             type="email"
             required
-            placeholder="E-mail"
             className="border px-4 py-2"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -141,7 +137,6 @@ export default function FormMechanics({ setInputs, resetInputs, partnerType }) {
             mask="(99) 99999-9999"
             ref={phoneRef}
             required
-            placeholder="Telefone"
             className="border px-4 py-2"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}

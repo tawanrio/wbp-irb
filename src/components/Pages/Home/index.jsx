@@ -9,7 +9,7 @@ import Templates from '@/components/Templates'
 
 // Components
 import PartnersButton from './components/PartnersButton'
-import UtilityCards from './components/UtilityCards'
+import { Utilities } from './components/Utilities'
 import { BlogCarousel } from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
 import { FormHome } from '@/components/Form/Home'
@@ -108,7 +108,7 @@ export default function Home({ content }) {
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <PartnersButton />
-          <UtilityCards />
+          <Utilities />
           <BlogCarousel posts={posts} />
           <FormHome inputs={formDefault} />
           <Footer content={footer} />

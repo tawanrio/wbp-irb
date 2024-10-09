@@ -6,12 +6,11 @@ import Templates from '@/components/Templates'
 // Components
 import BreadCrumb from '@/components/BreadCrumb'
 import Banner from '@/components/Banner/index'
-import ImgCatalogDescription from '@/components/ImgCatalogDescription'
 // Database // Schema
 
 // Context Api
 import { useState } from 'react'
-import ContentImgHTMLDesc from '../Categoria/components/ContentImgHTMLDesc'
+import { ContentProduct } from '../Categoria/components/ContentProduct'
 import ButtonCta from '@/components/ButtonCta'
 import SectionTitle from '@/components/SectionTitle'
 import Form from './components/Form'
@@ -42,10 +41,7 @@ export default function Service({ content }) {
         <Container>
           <SectionTitle title={content.page.title} />
         </Container>
-        <ContentImgHTMLDesc
-          textHTML={service?.contentHTML}
-          image={service?.image}
-        />
+        {/* <ContentProduct category={service} /> */}
         <Form></Form>
         {service.button.url && (
           <ButtonCta button={service.button} className={'mt-[-50px]'} />
