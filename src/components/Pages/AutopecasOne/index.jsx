@@ -21,32 +21,25 @@ import Head from 'next/head'
 export default function Autoparts({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
-  const [title, setTitle] = useState(content?.page.title)
-  const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription, setMetaDescription] = useState(
-    content?.page.metaDescription,
-  )
 
-  const { contentDescription: description, metaKeywords } = content?.page
+  const { template, page, menus, collection, products, geo, arrRoute } =
+    content || {}
+  const {
+    title,
+    metaTitle,
+    metaDescription,
+    contentDescription: description,
+    metaKeywords,
+    backgroundImages,
+    label,
+    info,
+    faq,
+  } = page || {}
 
-  const arrHeader = content?.template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find(
-    (item) => item?.label === 'redesign-home',
-  )
-  const footer = content?.template?.find((item) => item?.label === 'footer')
-  const copyright = content?.template?.find(
-    (item) => item?.label === 'copyright',
-  )
-
-  useEffect(() => {
-    setTitle(content?.page.title)
-    setMetaTitle(content?.page.metaTitle)
-    setMetaDescription(content?.page.metaDescription)
-  }, [
-    content?.page.title,
-    content?.page.metaTitle,
-    content?.page.metaDescription,
-  ])
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -64,31 +57,26 @@ export default function Autoparts({ content }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href={fullUrl} />
       </Head>
-      <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-      >
-        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
-          <Header content={header} page={content?.page?.label} />
+      <Templates template={template} page={page} menus={menus}>
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
           <Title title={title} />
           <Description description={description} />
         </BackgroundImageFirst>
-        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+        <BackgroundImageLast backgrounds={backgroundImages}>
           <SearchPartnersOne
-            geo={content?.geo}
+            geo={geo}
             partnerType="autopeça"
-            arrRoute={content?.arrRoute}
+            arrRoute={arrRoute}
             hiddenProductSearch
             title="Encontre uma autopeça"
-            collections={content?.collection}
-            products={content?.products}
+            collections={collection}
+            products={products}
           />
-          {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
-          {content?.page?.faq &&
-            Object.entries(content.page.faq).length > 0 && (
-              <CommonQuestions faq={content.page.faq} />
-            )}
+          {info?.length > 0 && <Info info={info} />}
+          {faq && Object.entries(faq).length > 0 && (
+            <CommonQuestions faq={faq} />
+          )}
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>

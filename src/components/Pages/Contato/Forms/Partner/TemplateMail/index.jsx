@@ -23,6 +23,7 @@ export default function TemplateMailPartner({ data, actionsLink }) {
           <a
             href={src}
             target="_blank"
+            rel="noopener"
             style={{ display: 'block', margin: '10px auto' }}
           >
             Abrir PDF

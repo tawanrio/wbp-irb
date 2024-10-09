@@ -22,10 +22,21 @@ const routePage = async (page, route) => {
   //  const products = await ProductsDb.find().lean().limit(9);
   const partners = await SchemaCategories.findOne({ label: 'partners' }).lean()
   const template = await Template.find()
-  const collection = await Collection.find({
-    label: route,
-    enabled: true,
-  }).lean()
+  let form
+  let collection
+  if (route === 'trabalhe-conosco' || route === 'contato') {
+    form = await FormDb.findOne({ label: 'form' }).lean()
+    collection = await Collection.findOne({
+      tradingName: 'irb automotive',
+      enabled: true,
+    }).lean()
+  } else {
+    collection = await Collection.find({
+      label: route,
+      enabled: true,
+    }).lean()
+  }
+
   const categories = await CategoriesProducts.find().lean()
   const menus = await Menus.find().lean()
   const geo = await Geo.findOne({ 'countries.name': 'brasil' })
@@ -36,11 +47,6 @@ const routePage = async (page, route) => {
     countries = geo.countries.find(
       (country) => country.name.toLowerCase() === 'brasil',
     )
-  }
-
-  let form
-  if (route === 'trabalhe-conosco' || route === 'contato') {
-    form = await FormDb.findOne({ label: 'form' }).lean()
   }
 
   page ? (data.page = JSON.parse(JSON.stringify(page))) : null

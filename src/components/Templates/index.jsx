@@ -12,6 +12,7 @@ export default function Templates({ children, template, page, menus }) {
     'distribuidoras',
     'autopecas',
     'mecanicas',
+    'contato',
     'registre-se',
     'baixe-nosso-app',
     'produtos',

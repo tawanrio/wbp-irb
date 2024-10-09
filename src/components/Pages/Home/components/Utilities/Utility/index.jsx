@@ -62,6 +62,7 @@ export const Utility = ({ utility }) => {
         <Link
           href={utility.link}
           target="_blank"
+          rel="noopener"
           className="w-fit rounded-full bg-[#982225] px-5 py-1 text-center font-medium uppercase text-white transition-all duration-200 hover:scale-95"
         >
           {utility.linkText}

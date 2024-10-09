@@ -10,6 +10,7 @@ export default function Button({ content }) {
     <Link
       href={href}
       target="_blank"
+      rel="noopener"
       style={{
         backgroundColor: colors?.bg,
         border:

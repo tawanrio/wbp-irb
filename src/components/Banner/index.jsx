@@ -16,7 +16,7 @@ export default function Banner({ banners, stlyeText, page }) {
       : page?.title === 'Home'
         ? banners?.carouselHome
         : isSmallScreen
-          ? banners?.carouselHomeMobile
+          ? banners?.carousel
           : banners?.carousel
   const showButtonsBanner = carousel.length > 1
 
@@ -77,6 +77,7 @@ export default function Banner({ banners, stlyeText, page }) {
                 color: button.colors.text,
               }}
               target="_blank"
+              rel="noopener"
               className="mx-auto w-full max-w-[281px]"
             >
               {button.name}
@@ -110,7 +111,7 @@ export default function Banner({ banners, stlyeText, page }) {
             size,
           }}
           stlyeText={stlyeText}
-          backdrop={page?.title === 'Home'}
+          backdrop={page?.title === 'Home' || page?.title === 'Contato'}
         />
 
         {showButtonsBanner && (
@@ -140,6 +141,7 @@ export default function Banner({ banners, stlyeText, page }) {
                   color: button.colors.text,
                 }}
                 target="_blank"
+                rel="noopener"
                 className="mx-auto w-full max-w-[276.35px] rounded-full px-4 py-2 text-center text-xl font-normal shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95 sm:mx-0"
               >
                 {button.name}

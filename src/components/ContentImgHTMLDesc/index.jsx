@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Image from 'next/image'
-import SectionTitle from '../../../../SectionTitle'
+import SectionTitle from '@/components/SectionTitle'
 import InsertText from '@/components/InserText'
 import dynamic from 'next/dynamic'
 

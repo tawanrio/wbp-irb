@@ -33,11 +33,7 @@ export const Videos = () => {
 
   return (
     <div className="pb-24 pt-0">
-      <CarouselLoop
-        options={OPTIONS}
-        array={videos}
-        classNameButtons="top-[55%]"
-      >
+      <CarouselLoop options={OPTIONS} array={videos} className="relative">
         {videos.length > 0 &&
           videos.map((video) => (
             <li

@@ -7,7 +7,7 @@ import {
 import useEmblaCarousel from 'embla-carousel-react'
 
 export const CarouselLoop = (props) => {
-  const { children, options, array, classNameButtons } = props
+  const { children, options, array, className } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
 
   const {
@@ -18,12 +18,12 @@ export const CarouselLoop = (props) => {
   } = usePrevNextButtons(emblaApi)
 
   return (
-    <section className="embla_loop">
+    <section className={cn('embla_loop', className)}>
       <div className="embla__viewport_loop" ref={emblaRef}>
         <ul className="embla__container_loop">{children}</ul>
 
         {array.length > 1 && (
-          <div className={cn('embla__buttons_loop', classNameButtons)}>
+          <div className="embla__buttons_loop">
             <PrevButton
               onClick={onPrevButtonClick}
               disabled={prevBtnDisabled}

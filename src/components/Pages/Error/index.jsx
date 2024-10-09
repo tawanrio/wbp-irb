@@ -14,22 +14,21 @@ import Copyright from '@/components/Templates/Copyright'
 import Head from 'next/head'
 
 export default function index({ content }) {
+  const { template, page, menus } = content || {}
   const {
     title,
     contentDescription: description,
     metaTitle,
     metaDescription,
     components,
-  } = content?.page || {}
+    backgroundImages,
+    label,
+  } = page || {}
 
-  const arrHeader = content?.template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find(
-    (item) => item?.label === 'redesign-home',
-  )
-  const footer = content?.template?.find((item) => item?.label === 'footer')
-  const copyright = content?.template?.find(
-    (item) => item?.label === 'copyright',
-  )
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
   return (
     <>
@@ -38,17 +37,13 @@ export default function index({ content }) {
         <meta name="description" content={metaDescription || description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-      >
-        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
-          <Header content={header} page={content?.page?.label} />
+      <Templates template={template} page={page} menus={menus}>
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
           <Title title={title} />
         </BackgroundImageFirst>
         <Error content={components} />
-        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+        <BackgroundImageLast backgrounds={backgroundImages}>
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>
