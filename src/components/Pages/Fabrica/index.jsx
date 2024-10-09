@@ -22,6 +22,7 @@ export default function Fabrica({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
 
+  const { template, page, menus } = content || {}
   const {
     title,
     contentDescriptionRedesign: description,
@@ -29,16 +30,15 @@ export default function Fabrica({ content }) {
     metaDescription,
     metaKeywords,
     events,
-  } = content?.page || {}
+    banners,
+    backgroundImages,
+    label,
+  } = page || {}
 
-  const arrHeader = content?.template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find(
-    (item) => item?.label === 'redesign-home',
-  )
-  const footer = content?.template?.find((item) => item?.label === 'footer')
-  const copyright = content?.template?.find(
-    (item) => item?.label === 'copyright',
-  )
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -57,14 +57,14 @@ export default function Fabrica({ content }) {
         <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-        banner={content.page.banners}
+        template={template}
+        page={page}
+        menus={menus}
+        banner={banners}
         style={true}
       >
-        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
-          <Header content={header} page={content?.page?.label} />
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
           <Infos />
           {/* <Gallery /> */}
           <CompanyValuesNew />
@@ -73,7 +73,7 @@ export default function Fabrica({ content }) {
             className="mt-16 pb-10 sm:pb-20"
           />
         </BackgroundImageFirst>
-        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+        <BackgroundImageLast backgrounds={backgroundImages}>
           <CarouselEvent events={events} />
           <Footer content={footer} />
           <Copyright content={copyright} />

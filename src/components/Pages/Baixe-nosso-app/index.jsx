@@ -20,22 +20,21 @@ export default function BaixeNossoApp({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
 
+  const { template, page, menus } = content || {}
   const {
     metaTitle,
     metaDescription,
     title,
     contentDescription: description,
     components: { catalogTitle, catalogDescription },
-  } = content?.page || {}
+    backgroundImages,
+    label,
+  } = page || {}
 
-  const arrHeader = content?.template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find(
-    (item) => item?.label === 'redesign-home',
-  )
-  const footer = content?.template?.find((item) => item?.label === 'footer')
-  const copyright = content?.template?.find(
-    (item) => item?.label === 'copyright',
-  )
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -52,17 +51,13 @@ export default function BaixeNossoApp({ content }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href={fullUrl} />
       </Head>
-      <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-      >
-        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
-          <Header content={header} page={content?.page?.label} />
+      <Templates template={template} page={page} menus={menus}>
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
           <Title title={catalogTitle.first} />
           <Subtitle subtitle={catalogTitle.last} />
         </BackgroundImageFirst>
-        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+        <BackgroundImageLast backgrounds={backgroundImages}>
           <Catalog content={catalogDescription} />
           <Footer content={footer} />
           <Copyright content={copyright} />

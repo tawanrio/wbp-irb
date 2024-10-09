@@ -22,22 +22,23 @@ export default function Produtos({ content }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
 
+  const { template, page, menus, categories } = content || {}
   const {
     title,
     metaTitle,
     metaDescription,
     contentDescription: description,
     metaKeywords,
-  } = content?.page
+    backgroundImages,
+    label,
+    mainTitles,
+    info,
+  } = page || {}
 
-  const arrHeader = content?.template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find(
-    (item) => item?.label === 'redesign-home',
-  )
-  const footer = content?.template?.find((item) => item?.label === 'footer')
-  const copyright = content?.template?.find(
-    (item) => item?.label === 'copyright',
-  )
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -55,26 +56,22 @@ export default function Produtos({ content }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href={fullUrl} />
       </Head>
-      <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-      >
-        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
-          <Header content={header} page={content?.page?.label} />
-          <Title title={content?.page?.mainTitles?.title} />
-          <Subtitle subtitle={content?.page?.mainTitles?.subtitle} />
+      <Templates template={template} page={page} menus={menus}>
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
+          <Title title={mainTitles?.title} />
+          <Subtitle subtitle={mainTitles?.subtitle} />
           <ListProducts
-            products={content?.categories}
+            products={categories}
             className="text-white"
             classNameLink="border-[#FFFFFF4D]"
           />
         </BackgroundImageFirst>
-        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+        <BackgroundImageLast backgrounds={backgroundImages}>
           <Utilities className="pb-20" />
-          {content?.page?.info?.length > 0 && (
+          {info?.length > 0 && (
             <Info
-              info={content.page.info}
+              info={info}
               classNameTitle="w-full max-w-[22rem]"
               classNameContainer="pb-24"
             />

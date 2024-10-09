@@ -18,19 +18,17 @@ export default function SinglePost({ content }) {
   const [fullUrl, setFullUrl] = useState('')
   const [sanitizedContent, setSanitizedContent] = useState('')
 
-  const { posts, page } = content || {}
+  const { template, page, posts, menus } = content || {}
   const {
     components: { title: titleComponent },
+    backgroundImages,
+    label,
   } = page || {}
 
-  const arrHeader = content?.template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find(
-    (item) => item?.label === 'redesign-home',
-  )
-  const footer = content?.template?.find((item) => item?.label === 'footer')
-  const copyright = content?.template?.find(
-    (item) => item?.label === 'copyright',
-  )
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
   useEffect(() => {
     if (posts) {
@@ -45,8 +43,6 @@ export default function SinglePost({ content }) {
     }
   }, [router])
 
-  console.log()
-
   return (
     <>
       <Head>
@@ -54,13 +50,9 @@ export default function SinglePost({ content }) {
         <meta name="description" content={posts.metaDescription} />
         <link rel="canonical" href={fullUrl} />
       </Head>
-      <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-      >
-        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
-          <Header content={header} page={content?.page?.label} />
+      <Templates template={template} page={page} menus={menus}>
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
           <Title title={titleComponent} />
         </BackgroundImageFirst>
         <div className="max-w-7xl px-5 py-12 md:mx-auto">
@@ -78,7 +70,7 @@ export default function SinglePost({ content }) {
             </Link>
           </div>
         </div>
-        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+        <BackgroundImageLast backgrounds={backgroundImages}>
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>

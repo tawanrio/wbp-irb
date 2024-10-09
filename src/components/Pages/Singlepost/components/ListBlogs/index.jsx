@@ -42,7 +42,7 @@ export const ListBlogs = ({
   }, [posts])
 
   return (
-    <section className="flex max-w-6xl flex-col gap-16 px-5 pb-32 pt-16 md:mx-auto">
+    <section className="flex max-w-6xl flex-col gap-10 px-5 pb-32 pt-12 sm:gap-16 sm:pt-16 md:mx-auto">
       <h2 className="mx-auto w-full max-w-6xl rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-lg font-normal uppercase text-white shadow-[inset_0px_6.21px_5.5px_rgba(0,0,0,0.5)]">
         {surtitle}
       </h2>
