@@ -12,8 +12,8 @@ import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 import { Posts } from '@/service/model/schemas/postsSchema'
 
 // Components
-import { Title } from './components/Title'
-import { ListBlogs } from './components/ListBlogs'
+import { Title } from '../../components/Pages/Singlepost/components/Title'
+import { ListBlogs } from '../../components/Pages/Singlepost/components/ListBlogs'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'

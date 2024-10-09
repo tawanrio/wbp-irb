@@ -16,9 +16,8 @@ export default function Banner({ banners, stlyeText, page }) {
       : page?.title === 'Home'
         ? banners?.carouselHome
         : isSmallScreen
-          ? banners?.carouselHomeMobile
+          ? banners?.carousel
           : banners?.carousel
-
   const showButtonsBanner = carousel.length > 1
 
   useEffect(() => {
