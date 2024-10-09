@@ -25,6 +25,7 @@ export default function Ebooks({ ebooks }) {
                 <Link
                   href={ebook.link}
                   target="_blank"
+                  rel="noopener"
                   className="rounded bg-[#22326e] px-4 py-2 text-white"
                 >
                   Baixar eBook

@@ -59,7 +59,7 @@ export default function Parceiro({ content }) {
       <Templates template={template} page={page} menus={menus}>
         <BackgroundImageFirst backgrounds={backgroundImages}>
           <Header content={header} page={label} />
-          <Banner banners={CONTACT_BANNER} />
+          <Banner banners={CONTACT_BANNER} page={page} />
           <Title title={companyName} />
           <Telephones phones={phone} />
         </BackgroundImageFirst>

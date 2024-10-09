@@ -92,7 +92,6 @@ export const FormContact = ({ inputs }) => {
       let curr
       if (curriculum) {
         curr = await uploadCurriculumToDB(curriculum)
-        console.log(curr)
       }
 
       const messageContact = await sendMessage({

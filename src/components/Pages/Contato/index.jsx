@@ -1,11 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// Template / Layout
-import Head from 'next/head'
+// Template
 import Templates from '@/components/Templates'
 
 // Components
-import BreadCrumb from '@/components/BreadCrumb'
-import LogoContact from '@/components/LogoContact'
 import Banner from '@/components/Banner/index'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
@@ -13,31 +9,20 @@ import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
 import Description from './components/Description'
-import SearchPartners from '@/components/SearchPartners'
-import { formatStrToUrl, getGoogleMaps } from '@/utils/functions'
 import { Maps } from '@/components/Maps'
 import { FormContact } from './components/Form/'
-
-// Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db'
-import Page from '@/service/model/schemas/pageSchema'
-import { Menu } from '@/service/model/schemas/menuSchema'
-import { Template } from '@/service/model/schemas/templateSchema'
-import { Address } from '@/service/model/schemas/addressSchema'
-import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
-
-// Context Api
-import { useState } from 'react'
-import ServiceAddress from '@/components/ServiceAddress'
-import ContactForm from './Forms'
-import TellButton from './components/TellButton'
+import { TellButton } from './components/TellButton'
 import Container from '@/components/Container'
+
+// Others
+import { useState } from 'react'
+import Head from 'next/head'
+import { getGoogleMaps } from '@/utils/functions'
 import { CONTACT_BANNER } from '@/utils/constants'
 
 export default function Contato({ content }) {
   const [metaTitle] = useState(content?.page.metaTitle)
   const [metaDescription] = useState(content?.page.metaDescription)
-  const [banners] = useState(content?.page.banners)
   const [title] = useState(content?.page.title)
   const [description] = useState(content?.page.contentDescription)
   const [newDescription] = useState(content?.page.components.description)
@@ -46,14 +31,6 @@ export default function Contato({ content }) {
   const [collections] = useState([content?.collection])
   const [formDefault] = useState(
     content?.form?.forms.find((item) => item.label === 'default'),
-  )
-
-  console.log(content)
-
-  // const whatsappNumber = logoContact.button.whatsapp
-  // const phoneNumber = logoContact.button.phone
-  const address = content?.address.address.find(
-    (address) => address.label === 'default',
   )
 
   const googleMapsUrl = getGoogleMaps(false)
@@ -89,14 +66,7 @@ export default function Contato({ content }) {
           <TellButton buttons={arrButton} />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
-          {/* <SearchPartners
-          partnerType="distribuidor"
-          collections={collections}
-          hiddenProductSearch
-          products={content?.products}
-          geo={content?.geo}
-        /> */}
-          <Container className={'mt-5'}>
+          <Container className="mt-5">
             <h2 className="m-0 mb-10 w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-2xl font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
               NOSSOS ENDEREÇOS
             </h2>
@@ -106,16 +76,6 @@ export default function Contato({ content }) {
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>
-        {/* <Banner banners={banners} />
-        <BreadCrumb />
-        <LogoContact
-          logo={logoContact?.logo}
-          contentDescription={logoContact?.contentDescription}
-          title={logoContact?.title}
-          arrButton={arrButton}
-        />
-        <ServiceAddress products={content.categories} address={address} />
-        <ContactForm /> */}
       </Templates>
     </>
   )

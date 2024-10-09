@@ -16,7 +16,7 @@ export default function SocialMidia() {
 
         <li className="flex items-center">
           {dataSocialMidia.networks.map((network, nId) => (
-            <Link key={nId} href={network.url} target="_blank">
+            <Link key={nId} href={network.url} target="_blank" rel="noopener">
               <Image
                 src={network.imageUrl}
                 alt={network.name}

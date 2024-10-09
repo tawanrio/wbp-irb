@@ -19,7 +19,6 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 export default function Distribuidoras({ content }) {
-  console.log(content)
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
   const [metaDescription, setMetaDescription] = useState(

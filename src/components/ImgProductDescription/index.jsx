@@ -47,8 +47,9 @@ export default function ImgProductDescription({
               />
               {button && (
                 <Link
-                  target="_blank"
                   href={button.link}
+                  target="_blank"
+                  rel="noopener"
                   className="mt-4 w-[180px] rounded-xl bg-[#68b1e9] px-4 py-2 text-center font-semibold text-white"
                 >
                   {button.title}
