@@ -1,4 +1,5 @@
 import Home from '@/components/Pages/Home'
+import HomeEn from '@/components/Pages/Home/en.jsx'
 
 // Database // Schema
 import { connectMongoDB, disconnectMongoDB } from '@/service/db'
@@ -10,13 +11,21 @@ import { CategoriesProducts } from '@/service/model/schemas/categoriesProductsSc
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 
-export default function index({ content }) {
-  return <Home content={content} />
+export default function index({ content, locale }) {
+  return (
+    <>
+      {locale !== 'pt' ? (
+        <HomeEn content={content} />
+      ) : (
+        <Home content={content} />
+      )}
+    </>
+  )
 }
 
-async function getDataPage() {
+async function getDataPage({ locale }) {
   try {
-    await connectMongoDB()
+    await connectMongoDB(locale)
 
     const page = await Page.findOne({ label: 'home' }).lean()
     // const menu = await Menu.findOne({label:"menu"}).lean();
@@ -43,8 +52,8 @@ async function getDataPage() {
   }
 }
 
-export async function getStaticProps() {
-  const content = await getDataPage()
+export async function getStaticProps({ locale }) {
+  const content = await getDataPage({ locale })
   const response = await fetch(
     'https://clientes.agenciawbp.com/irb/wordpress/wp-json/wp/v2/posts',
   )

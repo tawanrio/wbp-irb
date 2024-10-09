@@ -4,6 +4,7 @@ import Footer from './Footer'
 import Header from './Header'
 import { insertMenuInTemplate } from '@/utils/functions'
 import { CookiePopup } from '../CookiePopup'
+import LanguageSwitcher from './LanguageSwitcher'
 
 export default function Templates({ children, template, page, menus }) {
   const REDESIGN_PAGES = [
@@ -74,12 +75,14 @@ export default function Templates({ children, template, page, menus }) {
     <>
       <CookiePopup />
       <ToastContainer />
+      <LanguageSwitcher />
       <main>{children}</main>
     </>
   ) : (
     <>
       <CookiePopup />
       <ToastContainer />
+      <LanguageSwitcher />
       <Header content={header} page={page.label} />
       <main>{children}</main>
       <Footer content={footer} />

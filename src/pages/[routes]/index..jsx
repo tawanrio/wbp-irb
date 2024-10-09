@@ -95,7 +95,7 @@ export default function index({ content }) {
 export const getServerSideProps = async (context) => {
   try {
     const resolvedUrl = context.resolvedUrl
-    const content = await getDataPage(resolvedUrl)
+    const content = await getDataPage(resolvedUrl, context.locale)
 
     return {
       props: {

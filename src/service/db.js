@@ -2,16 +2,17 @@ import mongoose from 'mongoose'
 
 let isConnected = false // Rastreia o estado da conexão
 
-const connectMongoDB = async () => {
+const connectMongoDB = async (locale) => {
   if (isConnected) {
     console.log('Já está conectado ao MongoDB.')
     return // Retorna se já estiver conectado
   }
 
   try {
-    await mongoose.connect(process.env.DB_HOST, {
-      useNewUrlParser: true,
-    })
+    locale = locale === 'pt' ? '' : locale
+    await mongoose.connect(
+      `${process.env.DB_HOST}irb${locale}?authSource=admin`,
+    )
     isConnected = true // Atualiza o estado da conexão
     console.log('Conexão estabelecida com sucesso.')
   } catch (error) {

@@ -31,14 +31,14 @@ export default function ServicesOverview() {
             </figure>
           ))}
         </div>
-        <div>
-          <h1 className="font-['Libre_Baskerville'] text-4xl font-bold text-white sm:text-6xl md:text-7xl">
+        <h1 className='flex flex-col'>
+          <span className="font-['Libre_Baskerville'] text-4xl font-bold text-white sm:text-6xl md:text-7xl">
             Revolucionando
-          </h1>
-          <h2 className="text-3xl !font-thin text-white sm:text-5xl md:text-5xl">
+          </span>
+          <span className="text-3xl !font-thin text-white sm:text-5xl md:text-5xl">
             o mercado de <strong className="font-bold">autopeças</strong>
-          </h2>
-        </div>
+          </span>
+        </h1>
       </div>
       <ul className="mb-4 mt-7 flex w-full flex-row flex-wrap items-center justify-center gap-5 sm:gap-7">
         {NAVIGATION_LINKS.map((link, index) => (
