@@ -12,7 +12,7 @@ export const Maps = ({ googleMapsUrl, collections }) => {
 
   return (
     <div className="relative flex flex-col md:flex-row">
-      <ul className="max-h-[28rem] w-full space-y-4 overflow-y-auto rounded-t-[19.51px] bg-white p-6 shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] md:h-[46rem] md:max-w-[348px] md:rounded-l-[19.51px] md:rounded-r-none">
+      <ul className="max-h-[28rem] w-full space-y-4 overflow-y-auto rounded-t-[19.51px] bg-white p-6 shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] md:max-h-[46rem] md:max-w-[348px] md:rounded-l-[19.51px] md:rounded-r-none">
         {collections.map((collection, index) => {
           const collectionUrl = generateProductUrl(
             baseUrl,
