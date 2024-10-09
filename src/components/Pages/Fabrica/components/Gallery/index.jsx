@@ -7,27 +7,27 @@ export const Gallery = () => {
 
   const PHOTOS = [
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/1.jpg',
       alt: 'Photo',
       width: 232.88,
     },
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/2.jpg',
       alt: 'Photo',
       width: 278.92,
     },
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/3.jpg',
       alt: 'Photo',
       width: 269.63,
     },
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/4.jpg',
       alt: 'Photo',
       width: 411.6,
     },
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/5.png',
       alt: 'Photo',
       width: 420.08,
     },
@@ -35,32 +35,32 @@ export const Gallery = () => {
 
   const PHOTOS_2 = [
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/6.jpeg',
       alt: 'Photo',
       width: 120.03,
     },
     {
-      src: '/images/pages/fabrica/gallery/photo_7.jpg',
+      src: '/images/pages/fabrica/gallery/7.jpg',
       alt: 'Photo',
       width: 405.03,
     },
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/8.jpeg',
       alt: 'Photo',
       width: 334.23,
     },
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/9.jpg',
       alt: 'Photo',
       width: 195.86,
     },
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/10.jpeg',
       alt: 'Photo',
       width: 346.31,
     },
     {
-      src: '/images/pages/fabrica/gallery/background.jpg',
+      src: '/images/pages/fabrica/gallery/11.jpeg',
       alt: 'Photo',
       width: 146.84,
     },

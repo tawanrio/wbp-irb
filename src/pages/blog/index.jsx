@@ -101,7 +101,7 @@ export default function Blog({ content }) {
       >
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
-          <Title title={titleComponent} />
+          <Title title={titleComponent} h1 />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <ListBlogs

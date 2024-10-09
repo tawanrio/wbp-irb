@@ -1,11 +1,11 @@
 // Components
 import Templates from '@/components/Templates'
+import { Title } from './components/Title'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
-import { Title } from '@/components/Pages/Singlepost/components/Title'
 
 // Others
 import { useEffect, useState } from 'react'
