@@ -5,6 +5,8 @@ import Templates from '@/components/Templates'
 import { Title } from './components/Title'
 import { Description } from './components/Description'
 import SearchPartners from '@/components/SearchPartners'
+import { CarouselScale } from '@/components/Carousel/CarouselScale'
+import { Product } from '@/components/Product'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
@@ -17,6 +19,7 @@ import Copyright from '@/components/Templates/Copyright'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { OPTIONS } from '@/utils/constants'
 
 export default function Autoparts({ content }) {
   const router = useRouter()
@@ -70,6 +73,19 @@ export default function Autoparts({ content }) {
             products={products}
             geo={geo}
           />
+          <CarouselScale options={OPTIONS}>
+            {content?.categories.slice(0, 6).map((category) => (
+              <li className="embla__slide" key={category._id}>
+                <Product
+                  category={{
+                    ...category,
+                    label: `${page?.label}/${category.label}`,
+                  }}
+                  className="embla__slide__number border-[#0000004D] text-black"
+                />
+              </li>
+            ))}
+          </CarouselScale>
           {info?.length > 0 && <Info info={info} />}
           {faq && Object.entries(faq).length > 0 && (
             <CommonQuestions faq={faq} />
