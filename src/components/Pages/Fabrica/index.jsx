@@ -32,7 +32,7 @@ export default function Fabrica({ content }) {
     banners,
     backgroundImages,
     label,
-    components: { video, info, companyValues, events, descriptions },
+    components: { video, info, companyValues, events, descriptions, gallery },
   } = page || {}
 
   const arrHeader = template.find((item) => item.label === 'header')
@@ -66,7 +66,7 @@ export default function Fabrica({ content }) {
         <BackgroundImageFirst backgrounds={backgroundImages}>
           <Header content={header} page={label} />
           <Infos info={info} video={video} />
-          <Gallery />
+          <Gallery gallery={gallery} />
           <CompanyValuesNew content={companyValues} />
           <ContentDescription
             content={descriptions}

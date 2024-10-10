@@ -28,12 +28,10 @@ export default function Educacional({ content }) {
     metaTitle,
     metaDescription,
     contentDescription,
-    description,
     metaKeywords,
-    banners,
-    engraxamente,
     backgroundImages,
     label,
+    components: { banners, description, engraxamente },
   } = page || {}
 
   const arrHeader = template.find((item) => item.label === 'header')
