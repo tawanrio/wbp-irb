@@ -29,10 +29,10 @@ export default function Fabrica({ content }) {
     metaTitle,
     metaDescription,
     metaKeywords,
-    events,
     banners,
     backgroundImages,
     label,
+    components: { video, info, companyValues, events, descriptions },
   } = page || {}
 
   const arrHeader = template.find((item) => item.label === 'header')
@@ -65,11 +65,11 @@ export default function Fabrica({ content }) {
       >
         <BackgroundImageFirst backgrounds={backgroundImages}>
           <Header content={header} page={label} />
-          <Infos />
+          <Infos info={info} video={video} />
           <Gallery />
-          <CompanyValuesNew />
+          <CompanyValuesNew content={companyValues} />
           <ContentDescription
-            content={description}
+            content={descriptions}
             className="mt-16 pb-10 sm:pb-20"
           />
         </BackgroundImageFirst>

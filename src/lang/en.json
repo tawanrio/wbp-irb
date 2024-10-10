@@ -8,21 +8,21 @@
   "notifications.form.error.product": "Product is required",
   "notifications.form.error.productLine": "Product line is required",
   "notifications.form.error.message": "Message is required",
-  
+
   "notifications.register.success": "Registration sent successfully, please wait for approval.",
   "notifications.register.error": "Error sending registration",
   "notifications.register.error.uploadImages": "Error uploading images.",
   "notifications.register.error.database": "Error inserting data into the database.",
   "notifications.register.error.emailPartner": "Error sending email to the partner.",
   "notifications.register.error.emailAdmin": "Error sending email to the administrator.",
-  
+
   "component.contact.reason": "Contact reason",
   "component.contact.select": "Select",
   "component.contact.select.budget": "Request a quote",
   "component.contact.select.partner": "Become an IRB partner",
   "component.contact.select.workWithUs": "Work at IRB",
   "component.contact.select.others": "Others",
-  
+
   "component.contact.budget.product": "Product",
   "component.contact.budget.select": "Select a product",
   "component.contact.budget.select.line": "Line",
@@ -41,7 +41,7 @@
   "component.form.input.phone.placeholder": "Phone",
   "component.form.input.message": "Message",
   "component.form.input.message.placeholder": "Message",
-  
+
   "component.contact.input.workWithUs.attachResume": "Attach resume",
   "component.form.mediaFormats": "Supported formats: JPEG, PNG, PDF; Maximum file size: 5MB.",
 
@@ -92,5 +92,10 @@
   "component.form.partner.autopart.tools.technicalMaintenanceManuals": "Access to technical maintenance manuals",
   "component.form.partner.autopart.tools.handTools": "Hand tools",
   "component.form.partner.autopart.tools.hydraulicFloorJack": "Hydraulic floor jack",
-  "component.form.partner.autopart.tools.jackStands": "Jack stands"
+  "component.form.partner.autopart.tools.jackStands": "Jack stands",
+
+  "component.event.date": "Date",
+  "component.event.location": "Location",
+  "component.event.button.next": "Next button",
+  "component.event.button.prev": "Previous Button"
 }
