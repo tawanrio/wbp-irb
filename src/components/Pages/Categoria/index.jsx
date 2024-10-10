@@ -75,7 +75,7 @@ export default function Categoria({ content }) {
           <Header content={header} page={content?.page?.label} />
           <ContentProduct
             category={category}
-            technicalSheet={content?.page?.technicalSheet}
+            technicalSheet={content?.page?.components?.technicalSheet}
           />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>

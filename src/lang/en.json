@@ -97,5 +97,7 @@
   "component.event.date": "Date",
   "component.event.location": "Location",
   "component.event.button.next": "Next button",
-  "component.event.button.prev": "Previous Button"
+  "component.event.button.prev": "Previous Button",
+
+  "component.product.seeMore": "See more"
 }

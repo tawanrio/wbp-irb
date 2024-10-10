@@ -104,5 +104,7 @@
   "component.event.date": "Data",
   "component.event.location": "Local",
   "component.event.button.next": "Próximo botão",
-  "component.event.button.prev": "Botão anterior"
+  "component.event.button.prev": "Botão anterior",
+
+  "component.product.seeMore": "Ver mais"
 }
