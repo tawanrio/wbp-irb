@@ -99,7 +99,7 @@ export default function LanguageSwitcher() {
       id="contactLine"
     >
       <div
-        className="relative flex flex-1 justify-center text-white md:max-w-7xl md:justify-end md:px-[52px]"
+        className="relative mx-7 flex flex-1 justify-end text-white md:max-w-7xl md:px-[52px]"
         id="containerBanner"
       >
         {loading ? (
