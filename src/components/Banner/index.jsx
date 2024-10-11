@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { LinkRed } from '../LinkRed'
 
 export default function Banner({ banners, stlyeText, page }) {
-  console.log(page);
-  
+  console.log(page)
+
   const [activeBanner, setActiveBanner] = useState(0)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
   const [size, setSize] = useState(banners?.size.height)
