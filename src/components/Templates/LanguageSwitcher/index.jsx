@@ -49,7 +49,7 @@ export default function LanguageSwitcher() {
     router
       .push(router.pathname, router.asPath, { locale: lang })
       .finally(() => {
-        setLoading(false) 
+        setLoading(false)
       })
   }
 
@@ -61,11 +61,11 @@ export default function LanguageSwitcher() {
       cursor: 'pointer',
       // right: '20px',
       // width: '11rem',
-      backgroundColor: '#D9D9D926', 
-      border: 'none', 
-      boxShadow: state.isFocused ? '0 0 0 1px white' : null, 
+      backgroundColor: '#D9D9D926',
+      border: 'none',
+      boxShadow: state.isFocused ? '0 0 0 1px white' : null,
       '&:hover': {
-        borderColor: 'white', 
+        borderColor: 'white',
       },
       color: 'white',
     }),
@@ -75,27 +75,27 @@ export default function LanguageSwitcher() {
       // right: '5px',
       // width: '11rem',
       backgroundColor: 'rgba(34, 50, 110, 0)',
-      zIndex: 90, 
+      zIndex: 90,
     }),
     option: (provided, state) => ({
       ...provided,
       cursor: 'pointer',
-      backgroundColor: state.isSelected ? '#22326e' : 'white', 
-      color: state.isSelected ? 'white' : 'black', 
+      backgroundColor: state.isSelected ? '#22326e' : 'white',
+      color: state.isSelected ? 'white' : 'black',
       '&:hover': {
         backgroundColor: '#3b4c8b',
-        color: 'white', 
+        color: 'white',
       },
     }),
     singleValue: (provided) => ({
       ...provided,
-      color: 'white', 
+      color: 'white',
     }),
   }
 
   return (
     <section
-      className="absolute mt-[6px] flex w-full justify-center bg-[#22326e00]"
+      className="absolute mt-[13px] flex w-full justify-center bg-[#22326e00]"
       id="contactLine"
     >
       <div
@@ -103,7 +103,7 @@ export default function LanguageSwitcher() {
         id="containerBanner"
       >
         {loading ? (
-          <div className="flex items-center justify-center">
+          <div className="mt-[6px] flex items-center justify-center">
             <svg
               className="h-5 w-5 animate-spin text-white"
               xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ export default function LanguageSwitcher() {
             onChange={changeLanguage}
             options={options}
             className="w-44"
-            styles={customStyles} 
+            styles={customStyles}
             isSearchable={false}
             components={{
               IndicatorSeparator: () => null,
