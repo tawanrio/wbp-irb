@@ -17,14 +17,16 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-export default function Categoria({ content }) {
+export default function Categoria({ content, locale }) {
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
   const [category, setCategory] = useState(content?.category)
   const [metaDescription, setMetaDescription] = useState(
     content?.category?.metaDescription,
   )
-  const [utilities] = useState(content?.page?.components.utilities)
+  const [utilities, setUutilities] = useState(
+    content?.page?.components.utilities,
+  )
   let pageUrl = router.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
 
@@ -52,6 +54,10 @@ export default function Categoria({ content }) {
       setFullUrl(url)
     }
   }, [router])
+
+  useEffect(() => {
+    setUutilities(content?.page?.components.utilities)
+  }, [locale, content])
 
   return (
     <>

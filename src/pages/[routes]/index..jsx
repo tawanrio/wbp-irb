@@ -21,13 +21,13 @@ import Educacional from '@/components/Pages/Educacional'
 
 import { getDataPage } from '@/service/model/routeOne'
 
-export default function index({ content }) {
+export default function index({ content, locale }) {
   const page = content?.page.label
   return (
     <>
       {content?.type === 'page' && (
         <>
-          {page === 'contato' && <Contato content={content} />}
+          {page === 'contato' && <Contato content={content} locale={locale} />}
           {page === 'trabalhe-conosco' && <TrabalheConosco content={content} />}
           {page === 'fabrica' && <Fabrica content={content} />}
           {page === 'distribuidoras' && <Distribuidoras content={content} />}
@@ -46,7 +46,7 @@ export default function index({ content }) {
       )}
       {content?.type === 'category' && (
         <>
-          <Categoria content={content} />
+          <Categoria content={content} locale={locale} />
         </>
       )}
 
@@ -100,6 +100,7 @@ export const getServerSideProps = async (context) => {
     return {
       props: {
         content,
+        locale: context.locale,
       },
     }
   } catch (error) {

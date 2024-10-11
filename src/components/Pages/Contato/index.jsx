@@ -16,23 +16,55 @@ import Container from '@/components/Container'
 import { useIntl } from 'react-intl'
 
 // Others
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { getGoogleMaps } from '@/utils/functions'
 import { CONTACT_BANNER } from '@/utils/constants'
 
-export default function Contato({ content }) {
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
-  const [newDescription] = useState(content?.page.components.description)
-  const [logoContact] = useState(content?.page.components.logoContact)
-  const [arrButton] = useState(logoContact?.arrButton)
-  const [collections] = useState([content?.collection])
-  const [formDefault] = useState(
+export default function Contato({ content, locale }) {
+  const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page.metaDescription,
+  )
+  const [title, setTitle] = useState(content?.page.title)
+  const [description, setDescription] = useState(
+    content?.page.contentDescription,
+  )
+  const [newDescription, setNewDescription] = useState(
+    content?.page.components.description,
+  )
+  const [logoContact, setLogoContact] = useState(
+    content?.page.components.logoContact,
+  )
+  const [arrButton, setArrButton] = useState(logoContact?.arrButton)
+  const [collections, setCollections] = useState([content?.collection])
+  const [formDefault, setFormDefault] = useState(
     content?.form?.forms.find((item) => item.label === 'default'),
   )
+
+  useEffect(() => {
+    // Atualiza os estados quando 'locale' muda ou quando 'content' muda
+    if (content) {
+      setMetaTitle(content.page.metaTitle || '')
+      setMetaDescription(content.page.metaDescription || '')
+      setTitle(content.page.title || '')
+      setDescription(content.page.contentDescription || '')
+      setNewDescription(content.page.components.description || '')
+
+      const updatedLogoContact = content.page.components.logoContact || null
+      setLogoContact(updatedLogoContact)
+
+      if (updatedLogoContact) {
+        setArrButton(updatedLogoContact.arrButton || [])
+      }
+
+      setCollections([content.collection || []])
+      setFormDefault(
+        content.form?.forms.find((item) => item.label === 'default') || null,
+      )
+    }
+  }, [locale, content]) // Monitora as mudanças em 'locale' e 'content'
+
   const intl = useIntl()
   const messages = intl.messages
 
