@@ -24,7 +24,7 @@ export default function Categoria({ content }) {
   const [metaDescription, setMetaDescription] = useState(
     content?.category?.metaDescription,
   )
-
+  const [utilities] = useState(content?.page?.components.utilities)
   let pageUrl = router.asPath.split('/')
   pageUrl = pageUrl[pageUrl.length - 1]
 
@@ -75,11 +75,11 @@ export default function Categoria({ content }) {
           <Header content={header} page={content?.page?.label} />
           <ContentProduct
             category={category}
-            technicalSheet={content?.page?.technicalSheet}
+            technicalSheet={content?.page?.components.technicalSheet}
           />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
-          <Utilities className="pb-20" />
+          <Utilities utilities={utilities} className="pb-20" />
           {content?.category?.info?.length > 0 && (
             <Info info={content.category.info} classNameContainer="pb-20" />
           )}

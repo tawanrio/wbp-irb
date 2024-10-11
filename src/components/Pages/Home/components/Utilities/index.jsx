@@ -1,9 +1,9 @@
 import { Utility } from './Utility'
-import { OPTIONS, UTILITIES_CARDS } from '@/utils/constants'
+import { OPTIONS } from '@/utils/constants'
 import { CarouselLoop } from '@/components/Carousel/CarouselLoop'
 import { cn } from '@/lib/utils'
 
-export const Utilities = ({ className }) => {
+export const Utilities = ({ utilities, className }) => {
   return (
     <section
       id="blog-carousel"
@@ -12,8 +12,8 @@ export const Utilities = ({ className }) => {
         className,
       )}
     >
-      <CarouselLoop options={OPTIONS} array={UTILITIES_CARDS}>
-        {UTILITIES_CARDS.map((utility, index) => (
+      <CarouselLoop options={OPTIONS} array={utilities}>
+        {utilities.map((utility, index) => (
           <li className="embla__slide_loop" key={index}>
             <Utility utility={utility} />
           </li>

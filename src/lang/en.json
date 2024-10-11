@@ -28,6 +28,7 @@
   "component.contact.budget.select.line": "Line",
   "component.contact.budget.select.line.placeholder": "Enter the product line",
 
+
   "component.form.send": "Send",
   "component.form.sending": "Sending...",
   "component.form.input.name": "Full name",
@@ -92,5 +93,32 @@
   "component.form.partner.autopart.tools.technicalMaintenanceManuals": "Access to technical maintenance manuals",
   "component.form.partner.autopart.tools.handTools": "Hand tools",
   "component.form.partner.autopart.tools.hydraulicFloorJack": "Hydraulic floor jack",
-  "component.form.partner.autopart.tools.jackStands": "Jack stands"
+  "component.form.partner.autopart.tools.jackStands": "Jack stands",
+
+  "component.home.product.title":"Our Products",
+  "component.home.product.seemore":"See More",
+  "component.home.form.titlel1": "Get in touch",
+  "component.home.form.titlel2": "with us",
+  "component.home.form.name": "Your Name",
+  "component.home.form.email": "Email",
+  "component.home.form.tel": "Phone or WhatsApp",
+  "component.home.form.message": "Leave Your Message =)",
+  "component.home.form.send": "Send",
+  "component.home.form.sending": "Sending",
+
+  "component.contact.address.title": "Our Addresses",
+  "component.contact.form.titlel1": "Contact Via",
+  "component.contact.form.titlel2": "Email",
+  "component.contact.form.reason": "Select the reason for contact",
+  "component.contact.form.reason.contactus": "Contact us",
+  "component.contact.form.reason.workus": "Work at IRB",
+  "component.contact.form.reason.partner": "Become an IRB partner",
+  "component.contact.form.name": "Your Name",
+  "component.contact.form.email": "Email",
+  "component.contact.form.tel": "Phone or WhatsApp",
+  "component.contact.form.curriculum": "Attach resume",
+  "component.contact.form.message": "Leave your Message :)",
+  "component.contact.form.send": "Send",
+  "component.contact.form.sending": "Sending"
+
 }

@@ -7,6 +7,7 @@ import mechanic from '@/../public/images/pages/autoparts/mechanic.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import { createModifiedFile } from '@/utils/functions'
+import { useIntl } from 'react-intl'
 
 export const FormContact = ({ inputs }) => {
   const [name, setName] = useState('')
@@ -16,6 +17,8 @@ export const FormContact = ({ inputs }) => {
   const [isSending, setIsSending] = useState(false)
   const [formType, setFormType] = useState('contact-us')
   const [curriculum, setCurriculum] = useState(null)
+  const intl = useIntl()
+  const messages = intl.messages
 
   const phoneRef = useRef(null)
   const curriculumRef = useRef(null)
@@ -130,36 +133,36 @@ export const FormContact = ({ inputs }) => {
       <section className="flex flex-col items-center gap-4">
         <div className="flex w-full max-w-[505.91px] flex-col items-end">
           <h2 className="bg-[linear-gradient(90deg,#982225_-80%,#22326E_100%)] bg-clip-text text-end text-4xl font-bold text-transparent sm:text-5xl md:text-6xl">
-            Contato via
+            {messages['component.contact.form.titlel1']}
           </h2>
           <h3 className="bg-[linear-gradient(90deg,#982225_-80%,#22326E_100%)] bg-clip-text text-end text-4xl font-bold !leading-[1.2] text-transparent sm:text-5xl md:text-6xl">
-            E-mail
+            {messages['component.contact.form.titlel2']}
           </h3>
         </div>
 
         <div className="flex w-full max-w-[505.91px] flex-col items-end gap-10">
           <div className="flex w-full flex-col gap-1">
             <label htmlFor="nome" className="text-lg font-black text-[#22326E]">
-              Selecione o motivo do contato
+              {messages['component.contact.form.reason']}
             </label>
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => handleButtonClick('contact-us')}
                 className={`rounded-full bg-[#5c5454] px-10 py-2 text-sm uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100 ${formType === 'contact-us' && '!bg-[#982225]'}`}
               >
-                Fale conosco
+                {messages['component.contact.form.reason.contactus']}
               </button>
               <button
                 onClick={() => handleButtonClick('work-us')}
                 className={`rounded-full bg-[#5c5454] px-10 py-2 text-sm uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100 ${formType === 'work-us' && '!bg-[#982225]'}`}
               >
-                Trabalhar na IRB
+                {messages['component.contact.form.reason.workus']}
               </button>
               <Link
                 href="/registre-se"
                 className="shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25) rounded-full bg-[#5c5454] px-10 py-2 text-sm uppercase text-white transition-all duration-200 hover:scale-95 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100"
               >
-                Virar um parceiro IRB
+                {messages['component.contact.form.reason.partner']}
               </Link>
             </div>
           </div>
@@ -175,7 +178,7 @@ export const FormContact = ({ inputs }) => {
                   htmlFor="nome"
                   className="text-lg font-black capitalize text-[#22326E]"
                 >
-                  Seu Nome
+                  {messages['component.contact.form.name']}
                 </label>
                 <input
                   id="nome"
@@ -193,7 +196,7 @@ export const FormContact = ({ inputs }) => {
                   htmlFor="email"
                   className="text-lg font-black text-[#22326E]"
                 >
-                  E-mail
+                  {messages['component.contact.form.email']}
                 </label>
                 <input
                   id="email"
@@ -211,7 +214,7 @@ export const FormContact = ({ inputs }) => {
                   htmlFor="phone"
                   className="text-lg font-black text-[#22326E]"
                 >
-                  Telefone ou WhatsApp
+                  {messages['component.contact.form.tel']}
                 </label>
                 <InputMask
                   id="phone"
@@ -230,7 +233,7 @@ export const FormContact = ({ inputs }) => {
                   htmlFor="phone"
                   className="text-lg font-black text-[#22326E]"
                 >
-                  Anexar currículo
+                  {messages['component.contact.form.curriculum']}
                 </label>
                 <input
                   id="curriculum"
@@ -248,7 +251,7 @@ export const FormContact = ({ inputs }) => {
                   htmlFor="message"
                   className="text-lg font-black text-[#22326E]"
                 >
-                  Deixe sua Mensagem :{')'}
+                  {messages['component.contact.form.message']}
                 </label>
                 <textarea
                   id="message"
@@ -268,7 +271,9 @@ export const FormContact = ({ inputs }) => {
             type="submit"
             className="rounded-full bg-[#982225] px-10 py-2 text-lg uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100"
           >
-            {isSending ? 'Enviando...' : 'Enviar'}
+            {isSending
+              ? messages['component.home.form.sending']
+              : messages['component.home.form.send']}
           </button>
         </form>
       </section>

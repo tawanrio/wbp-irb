@@ -13,6 +13,7 @@ import { Maps } from '@/components/Maps'
 import { FormContact } from './components/Form/'
 import { TellButton } from './components/TellButton'
 import Container from '@/components/Container'
+import { useIntl } from 'react-intl'
 
 // Others
 import { useState } from 'react'
@@ -32,6 +33,8 @@ export default function Contato({ content }) {
   const [formDefault] = useState(
     content?.form?.forms.find((item) => item.label === 'default'),
   )
+  const intl = useIntl()
+  const messages = intl.messages
 
   const googleMapsUrl = getGoogleMaps(false)
   const arrHeader = content?.template?.find((item) => item?.label === 'header')
@@ -68,7 +71,7 @@ export default function Contato({ content }) {
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <Container className="mt-5">
             <h2 className="m-0 mb-10 w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-2xl font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
-              NOSSOS ENDEREÇOS
+              {messages['component.contact.address.title']}
             </h2>
             <Maps googleMapsUrl={googleMapsUrl} collections={collections} />
             <FormContact inputs={formDefault} />

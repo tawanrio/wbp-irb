@@ -35,6 +35,7 @@
   "component.contact.budget.select.line": "Linha",
   "component.contact.budget.select.line.placeholder": "Informe a linha do produto",
 
+  
   "component.form.send": "Enviar",
   "component.form.sending": "Enviando...",
   "component.form.input.name": "Nome completo",
@@ -99,6 +100,31 @@
   "component.form.partner.autopart.tools.technicalMaintenanceManuals": "Acesso aos manuais técnicos de manutenção",
   "component.form.partner.autopart.tools.handTools": "Ferramentas manuais",
   "component.form.partner.autopart.tools.hydraulicFloorJack": "Macaco jacaré hidráulico",
-  "component.form.partner.autopart.tools.jackStands": "Cavaletes"
+  "component.form.partner.autopart.tools.jackStands": "Cavaletes",
 
+  "component.home.product.title":"Nossos Produtos",
+  "component.home.product.seemore":"Ver mais",
+  "component.home.form.titlel1": "Entre em contato",
+  "component.home.form.titlel2": "com a gente",
+  "component.home.form.name": "Seu Nome",
+  "component.home.form.email": "E-mail",
+  "component.home.form.tel": "Telefone ou WhatsApp",
+  "component.home.form.message": "Deixe sua Mensagem :)",
+  "component.home.form.send": "Enviar",
+  "component.home.form.sending": "Eviando",
+
+  "component.contact.address.title":"Nossos Endereços",
+  "component.contact.form.titlel1": "Contato Via",
+  "component.contact.form.titlel2": "E-mail",
+  "component.contact.form.reason": "Selecione o motivo do contato",
+  "component.contact.form.reason.contactus": "Fale conosco",
+  "component.contact.form.reason.workus": "Trabalhar na IRB",
+  "component.contact.form.reason.partner": "Virar um parceiro IRB",
+  "component.contact.form.name": "Seu Nome",
+  "component.contact.form.email": "E-mail",
+  "component.contact.form.tel": "Telefone ou WhatsApp",
+  "component.contact.form.curriculum": "Anexar currículo",
+  "component.contact.form.message": "Deixe sua Mensagem :)",
+  "component.contact.form.send": "Enviar",
+  "component.contact.form.sending": "Eviando"
 }

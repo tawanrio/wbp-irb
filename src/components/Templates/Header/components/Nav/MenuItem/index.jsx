@@ -15,7 +15,7 @@ export default function MenuItem({
   const hasSubmenu = Object.prototype.hasOwnProperty.call(link, 'submenu')
 
   return (
-    <div className="group z-50 flex w-full flex-col items-end uppercase lg:inline-block lg:w-auto">
+    <div className="group flex w-full flex-col items-end uppercase lg:inline-block lg:w-auto">
       <Link
         target={link?.blank}
         href={link.route || '/#'}

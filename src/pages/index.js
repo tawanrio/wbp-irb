@@ -63,6 +63,7 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       content,
+      locale,
     },
     revalidate: 3600,
   }
