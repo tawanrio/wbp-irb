@@ -120,7 +120,10 @@ export default function Produto({ content }) {
             hiddenProductSearch
           />
           <ListProducts
-            products={content?.categories}
+            products={content?.categories.map((category) => ({
+              ...category,
+              label: `${content?.arrRoute[0]}/${category.label}`,
+            }))}
             className="text-black"
             classNameLink="border-[#0000004D]"
           />
