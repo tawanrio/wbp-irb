@@ -31,8 +31,7 @@ export default function Produtos({ content }) {
     metaKeywords,
     backgroundImages,
     label,
-    mainTitles,
-    info,
+    components: { mainTitles, info, utilities },
   } = page || {}
 
   const arrHeader = template.find((item) => item.label === 'header')
@@ -68,7 +67,7 @@ export default function Produtos({ content }) {
           />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={backgroundImages}>
-          <Utilities className="pb-20" />
+          <Utilities className="pb-20" utilities={utilities} />
           {info?.length > 0 && (
             <Info
               info={info}

@@ -8,7 +8,7 @@
   "notifications.form.error.product": "Produto é obrigatório",
   "notifications.form.error.productLine": "Linha do produto é obrigatória",
   "notifications.form.error.message": "Mensagem é obrigatória",
-  
+
   "notifications.register.success": "Cadastro recebido com sucesso, aguarde aprovação.",
   "notifications.register.error": "Erro ao enviar cadastro",
   "notifications.register.error.uploadImages": "Erro ao fazer upload das imagens.",
@@ -17,7 +17,7 @@
   "notifications.register.error.emailAdmin": "Erro ao enviar e-mail para o administrador.",
   "notifications.register.error.emailJob":"Erro ao enviar e-mail para a IRB.",
   "notifications.register.error.cep": "CEP não encontrado!",
-  
+
 
 
 
@@ -35,7 +35,6 @@
   "component.contact.budget.select.line": "Linha",
   "component.contact.budget.select.line.placeholder": "Informe a linha do produto",
 
-  
   "component.form.send": "Enviar",
   "component.form.sending": "Enviando...",
   "component.form.input.name": "Nome completo",
@@ -49,7 +48,7 @@
   "component.form.input.phone.placeholder": "Telefone",
   "component.form.input.message": "Mensagem",
   "component.form.input.message.placeholder": "Mensagem",
-  
+
   "component.contact.input.workWithUs.attachResume": "Anexar currículo",
   "component.form.mediaFormats": "Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.",
 
@@ -102,6 +101,13 @@
   "component.form.partner.autopart.tools.hydraulicFloorJack": "Macaco jacaré hidráulico",
   "component.form.partner.autopart.tools.jackStands": "Cavaletes",
 
+  "component.event.date": "Data",
+  "component.event.location": "Local",
+  "component.event.button.next": "Próximo botão",
+  "component.event.button.prev": "Botão anterior",
+
+  "component.product.seeMore": "Ver mais",
+
   "component.home.product.title":"Nossos Produtos",
   "component.home.product.seemore":"Ver mais",
   "component.home.form.titlel1": "Entre em contato",
@@ -127,4 +133,5 @@
   "component.contact.form.message": "Deixe sua Mensagem :)",
   "component.contact.form.send": "Enviar",
   "component.contact.form.sending": "Eviando"
+
 }

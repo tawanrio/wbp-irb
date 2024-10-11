@@ -5,6 +5,7 @@ import Templates from '@/components/Templates'
 import { Title } from './components/Title'
 import { Subtitle } from './components/Subtitle'
 import SearchPartners from '@/components/SearchPartners'
+import { ListProducts } from '../Produtos/components/ListProducts'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
@@ -117,6 +118,14 @@ export default function Produto({ content }) {
             collections={content?.collection}
             products={content?.products}
             hiddenProductSearch
+          />
+          <ListProducts
+            products={content?.categories.map((category) => ({
+              ...category,
+              label: `${content?.arrRoute[0]}/${category.label}`,
+            }))}
+            className="text-black"
+            classNameLink="border-[#0000004D]"
           />
           {content?.category?.partner?.info?.length > 0 && (
             <Info info={content.category.partner.info} />

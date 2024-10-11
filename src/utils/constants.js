@@ -62,47 +62,6 @@ export const PRODUCT_CATALOG_DETAILS = {
   ],
 }
 
-export const COMPANY_CORE_VALUES = [
-  {
-    icon: '/images/components/companyValues/mission.svg',
-    title: 'nosso sonho',
-    content: {
-      listStyle: 'none',
-      description: [
-        'Ser a primeira escolha do cliente e líder mundial no segmento de peças automotivas.',
-      ],
-    },
-  },
-  {
-    icon: '/images/components/companyValues/vision.svg',
-    title: 'nosso combustível',
-    content: {
-      listStyle: 'auto',
-      description: [
-        'Fazemos negócios com ética, integridade e profissionalismo.',
-        'Somos movidos por surpreender nossos clientes e fornecer o melhor produto do mercado.',
-        'Somos incansáveis em entregar qualidade, inovação e segurança em nossas soluções.',
-        'Somos comprometidos em encantar nossos colaboradores e gerar valor para a sociedade.',
-      ],
-    },
-  },
-  {
-    icon: '/images/components/companyValues/values.svg',
-    title: 'nossas atitudes',
-    content: {
-      listStyle: 'disc',
-      description: [
-        'Atitude corajosa',
-        'Impulsiona resultados',
-        'Graxa na veia',
-        'Cliente no centro',
-        'Constrói parcerias',
-        'Aprendizagem contínua',
-      ],
-    },
-  },
-]
-
 export const PARTNER_TYPES = [
   {
     surtitle: 'Redes',
@@ -269,36 +228,6 @@ export const UTILITIES_CARDS = [
 ]
 
 export const OPTIONS = { loop: true }
-
-export const CATALOGS_DESCRIPTION = {
-  imageProduct: {
-    imageUrl: '/images/partners/bannerIRB.png',
-    alt: 'catalogo online',
-  },
-  title:
-    'Baixe agora mesmo o catálogo eletrônico e consulte facilmente toda nossa linha de produtos.',
-  subtitle: 'Acesse pelo celular',
-  button: [
-    {
-      title: '',
-      alt: 'appstore',
-      image: '/images/products/appstore.png',
-      link: 'https://apps.apple.com/br/app/irb-cat%C3%A1logo/id1169028455',
-    },
-    {
-      title: '',
-      alt: 'google-play',
-      image: '/images/products/google-play.png',
-      link: 'https://play.google.com/store/apps/details?id=br.com.ideia2001.CatalogoIRB',
-    },
-  ],
-
-  description: [
-    'Baixe agora nosso catálogo online e tenha acesso a uma ampla seleção de produtos automotivos de alta qualidade.',
-    'Explore nossa vasta gama de peças e componentes para atender às necessidades do seu veículo.',
-    'Baixe nosso catálogo hoje mesmo e descubra as melhores soluções para a manutenção e reparo do seu veículo!',
-  ],
-}
 
 export const CONTACT_BANNER = {
   colors: {

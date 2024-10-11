@@ -1,5 +1,5 @@
 import { Utility } from './Utility'
-import { OPTIONS } from '@/utils/constants'
+import { OPTIONS, UTILITIES_CARDS } from '@/utils/constants'
 import { CarouselLoop } from '@/components/Carousel/CarouselLoop'
 import { cn } from '@/lib/utils'
 
@@ -12,13 +12,23 @@ export const Utilities = ({ utilities, className }) => {
         className,
       )}
     >
-      <CarouselLoop options={OPTIONS} array={utilities}>
-        {utilities.map((utility, index) => (
-          <li className="embla__slide_loop" key={index}>
-            <Utility utility={utility} />
-          </li>
-        ))}
-      </CarouselLoop>
+      {utilities?.length > 0 ? (
+        <CarouselLoop options={OPTIONS} array={utilities}>
+          {utilities.map((utility, index) => (
+            <li className="embla__slide_loop" key={index}>
+              <Utility utility={utility} />
+            </li>
+          ))}
+        </CarouselLoop>
+      ) : (
+        <CarouselLoop options={OPTIONS} array={UTILITIES_CARDS}>
+          {UTILITIES_CARDS.map((utility, index) => (
+            <li className="embla__slide_loop" key={index}>
+              <Utility utility={utility} />
+            </li>
+          ))}
+        </CarouselLoop>
+      )}
     </section>
   )
 }

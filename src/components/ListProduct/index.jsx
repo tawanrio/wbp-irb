@@ -14,7 +14,10 @@ export const ListProduct = ({ categories }) => {
       <CarouselScale options={OPTIONS}>
         {categories.slice(0, 6).map((category) => (
           <li className="embla__slide" key={category._id}>
-            <Product category={category} className="embla__slide__number" />
+            <Product
+              category={category}
+              className="embla__slide__number border-[#FFFFFF4D] text-white"
+            />
           </li>
         ))}
       </CarouselScale>

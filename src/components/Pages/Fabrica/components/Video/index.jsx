@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 
-export const VideoPlayer = () => {
+export const VideoPlayer = ({ video }) => {
   const videoRef = useRef(null)
   const playButtonRef = useRef(null)
   const [controlsVisible, setControlsVisible] = useState(false)
@@ -19,10 +19,10 @@ export const VideoPlayer = () => {
         height={442}
         controls={controlsVisible}
         className="w-full rounded-[19px] lg:max-w-[680px]"
-        poster="/images/pages/banners/about.jpg"
+        poster={video.poster}
         onPlay={() => (playButtonRef.current.style.display = 'none')}
       >
-        <source src="/video/home.mp4" type="video/mp4" />
+        <source src={video.url} type="video/mp4" />
       </video>
       <div
         ref={playButtonRef}

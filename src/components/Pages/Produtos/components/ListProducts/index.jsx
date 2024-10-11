@@ -1,8 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { useIntl } from 'react-intl'
 
 export const ListProducts = ({ products, className, classNameLink }) => {
+  const intl = useIntl()
+  const messages = intl.messages
+
   return (
     <ul
       className={cn(
@@ -39,7 +43,7 @@ export const ListProducts = ({ products, className, classNameLink }) => {
                 href={`/${product.label}`}
                 className="m-0 rounded-full bg-[#982225] px-5 py-1.5 font-thin !text-white transition-all duration-200 hover:scale-95"
               >
-                Ver mais
+                {messages['component.product.seeMore']}
               </Link>
             </div>
           </section>

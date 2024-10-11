@@ -1,79 +1,16 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-export const Gallery = () => {
+export const Gallery = ({ gallery }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
-
-  const PHOTOS = [
-    {
-      src: '/images/pages/fabrica/gallery/1.jpg',
-      alt: 'Photo',
-      width: 232.88,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/2.jpg',
-      alt: 'Photo',
-      width: 278.92,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/3.jpg',
-      alt: 'Photo',
-      width: 269.63,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/4.jpg',
-      alt: 'Photo',
-      width: 411.6,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/5.png',
-      alt: 'Photo',
-      width: 420.08,
-    },
-  ]
-
-  const PHOTOS_2 = [
-    {
-      src: '/images/pages/fabrica/gallery/6.jpeg',
-      alt: 'Photo',
-      width: 120.03,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/7.jpg',
-      alt: 'Photo',
-      width: 405.03,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/8.jpeg',
-      alt: 'Photo',
-      width: 334.23,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/9.jpg',
-      alt: 'Photo',
-      width: 195.86,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/10.jpeg',
-      alt: 'Photo',
-      width: 346.31,
-    },
-    {
-      src: '/images/pages/fabrica/gallery/11.jpeg',
-      alt: 'Photo',
-      width: 146.84,
-    },
-  ]
-
-  const PHOTOS_3 = [...PHOTOS, ...PHOTOS_2]
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
       if (isMobile) {
-        return prevIndex === 0 ? PHOTOS_3.length - 1 : prevIndex - 1
+        return prevIndex === 0 ? gallery.length - 1 : prevIndex - 1
       } else {
-        return prevIndex === 0 ? PHOTOS_3.length - 3 : prevIndex - 1
+        return prevIndex === 0 ? gallery.length - 3 : prevIndex - 1
       }
     })
   }
@@ -81,9 +18,9 @@ export const Gallery = () => {
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
       if (isMobile) {
-        return prevIndex === PHOTOS_3.length - 1 ? 0 : prevIndex + 1
+        return prevIndex === gallery.length - 1 ? 0 : prevIndex + 1
       } else {
-        return prevIndex === PHOTOS_3.length - 3 ? 0 : prevIndex + 1
+        return prevIndex === gallery.length - 3 ? 0 : prevIndex + 1
       }
     })
   }
@@ -109,7 +46,7 @@ export const Gallery = () => {
           transform: `translateX(-${currentIndex * 108}%)`,
         }}
       >
-        {PHOTOS_3.map((photo, index) => (
+        {gallery.map((photo, index) => (
           <li
             key={index}
             className="h-72 w-full flex-shrink-0 list-none overflow-hidden duration-500 lg:w-[30%]"
@@ -124,7 +61,7 @@ export const Gallery = () => {
           </li>
         ))}
       </ul>
-      {PHOTOS_3.length > 3 && (
+      {gallery.length > 3 && (
         <>
           <button
             onClick={prevSlide}
@@ -144,7 +81,7 @@ export const Gallery = () => {
   ) : (
     <>
       <ul className="mx-auto flex w-full max-w-[1600px] gap-2.5">
-        {PHOTOS.map((photo, index) => (
+        {gallery[0].map((photo, index) => (
           <li
             key={index}
             className="h-screen max-h-[190px] w-full sm:max-h-[240px] md:max-h-[290px] lg:max-h-[346.61px]"
@@ -162,7 +99,7 @@ export const Gallery = () => {
         ))}
       </ul>
       <ul className="mx-auto mt-2.5 flex w-full max-w-[1600px] gap-2.5">
-        {PHOTOS_2.map((photo, index) => (
+        {gallery[1].map((photo, index) => (
           <li
             key={index}
             className="h-screen max-h-[190px] w-full sm:max-h-[240px] md:max-h-[290px] lg:max-h-[346.61px]"
