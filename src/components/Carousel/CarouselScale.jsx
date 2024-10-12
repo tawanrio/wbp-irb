@@ -14,7 +14,7 @@ const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max)
 
 export const CarouselScale = (props) => {
-  const { options, children } = props
+  const { options, children, array } = props
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
   const tweenNodes = useRef([])
@@ -107,10 +107,18 @@ export const CarouselScale = (props) => {
       <div className="embla__viewport" ref={emblaRef}>
         <ul className="embla__container">{children}</ul>
 
-        <div className="embla__buttons">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
+        {array.length > 3 && (
+          <div className="embla__buttons">
+            <PrevButton
+              onClick={onPrevButtonClick}
+              disabled={prevBtnDisabled}
+            />
+            <NextButton
+              onClick={onNextButtonClick}
+              disabled={nextBtnDisabled}
+            />
+          </div>
+        )}
       </div>
     </div>
   )

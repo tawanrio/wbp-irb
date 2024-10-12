@@ -73,7 +73,7 @@ export default function Autoparts({ content }) {
             products={products}
             geo={geo}
           />
-          <CarouselScale options={OPTIONS}>
+          <CarouselScale options={OPTIONS} array={content?.categories}>
             {content?.categories.slice(0, 6).map((category) => (
               <li className="embla__slide" key={category._id}>
                 <Product

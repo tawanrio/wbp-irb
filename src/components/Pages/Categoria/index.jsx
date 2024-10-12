@@ -4,6 +4,7 @@ import Templates from '@/components/Templates'
 // Components
 import { ContentProduct } from './components/ContentProduct'
 import { Utilities } from '../Home/components/Utilities'
+import { ListProduct } from './components/ListProduct'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
@@ -79,6 +80,15 @@ export default function Categoria({ content }) {
           />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          {content?.products.length > 0 && (
+            <ListProduct
+              products={content?.products.map((product) => ({
+                ...product,
+                label: `${content?.category?.label}/${product.label}`,
+              }))}
+              thumbnail={category?.thumbnail}
+            />
+          )}
           <Utilities utilities={utilities} className="pb-20" />
           {content?.category?.info?.length > 0 && (
             <Info info={content.category.info} classNameContainer="pb-20" />
