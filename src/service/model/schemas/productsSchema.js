@@ -3,16 +3,17 @@ import mongoose from 'mongoose'
 const productsSchema = new mongoose.Schema(
   {
     id: Object,
+    productId: Number,
     title: String,
     label: String,
     metaTitle: String,
-    metaDescription: Array,
-    contentDescription: Array,
+    metaDescription: String,
+    contentDescription: String,
     category: String,
     banners: Object,
+    _createdAt: String,
+    _updatedAt: String,
     thumbnail: Object,
-    gallery: Array,
-    models: Array,
     faq: Object,
   },
   {
