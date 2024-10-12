@@ -92,7 +92,6 @@ export default function Categoria({ content, locale }) {
                 ...product,
                 label: `${content?.category?.label}/${product.label}`,
               }))}
-              thumbnail={category?.thumbnail}
             />
           )}
           <Utilities utilities={utilities} className="pb-20" />

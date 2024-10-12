@@ -4,15 +4,10 @@ import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import { useIntl } from 'react-intl'
 
-export const Product = ({ product, className, thumbnail }) => {
+export const Product = ({ product, className }) => {
   const [htmlContent, setHtmlContent] = useState('')
 
-  const {
-    thumbnail: thumbnailProduct,
-    title,
-    contentDescription,
-    label,
-  } = product
+  const { thumbnail, title, contentDescription, label } = product
 
   const intl = useIntl()
   const messages = intl.messages
@@ -31,8 +26,8 @@ export const Product = ({ product, className, thumbnail }) => {
     >
       <figure className="h-full max-h-[395.9px] w-full">
         <Image
-          src={thumbnailProduct.url || thumbnail.imageUrlPng}
-          alt={thumbnailProduct.alt}
+          src={thumbnail.url}
+          alt={thumbnail.alt}
           width={361.2}
           height={395.9}
           className="h-full max-h-[395.9px] w-full rounded-3xl"

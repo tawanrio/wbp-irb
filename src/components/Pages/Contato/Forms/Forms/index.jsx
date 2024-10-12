@@ -108,7 +108,6 @@ export default function FormPartner() {
         body: JSON.stringify(data),
       },
     )
-    response.ok && console.log('dbOk')
     return response.ok
   }
 

@@ -18,6 +18,10 @@
   .custom-link-container a {
     @apply text-blue-600 underline hover:no-underline;
   }
+
+  .custom-strong strong {
+    font-weight: 600;
+  }
 }
 
 #__next {
