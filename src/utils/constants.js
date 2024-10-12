@@ -86,6 +86,23 @@ export const PARTNER_TYPES = [
   },
 ]
 
+export const PARTNER_TYPES_NO_MECHANICS = [
+  {
+    surtitle: 'Redes',
+    title: 'Autopeças',
+    src: '/images/components/icons/gear-red.svg',
+    alt: 'Ícone de Autopeças',
+    link: '/autopecas',
+  },
+  {
+    surtitle: 'Nossos',
+    title: 'Distribuidoras',
+    src: '/images/components/icons/distributors-red.svg',
+    alt: 'Ícone de Distribuidoras',
+    link: '/distribuidoras',
+  },
+]
+
 export const SERVICE_ADVANTAGES = [
   {
     title: 'Portfólio',

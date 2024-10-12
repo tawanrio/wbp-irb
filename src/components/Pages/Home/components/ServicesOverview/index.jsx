@@ -3,8 +3,6 @@ import { cn } from '@/utils/cn'
 import { LinkRed } from '@/components/LinkRed'
 
 export default function ServicesOverview({ content }) {
-  console.log(content)
-
   return (
     <section
       id="blog-carousel"
