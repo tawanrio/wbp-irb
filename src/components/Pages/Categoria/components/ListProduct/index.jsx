@@ -18,7 +18,10 @@ export const ListProduct = ({ products, thumbnail }) => {
       <CarouselScale options={OPTIONS} array={adjustedProducts}>
         {adjustedProducts.map((product, index) =>
           product ? (
-            <li className="embla__slide" key={product._id || index}>
+            <li
+              className="embla__slide max-lg:max-w-lg"
+              key={product._id || index}
+            >
               <Product
                 product={product}
                 className="embla__slide__number"

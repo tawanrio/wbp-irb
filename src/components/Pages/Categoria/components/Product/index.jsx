@@ -1,9 +1,12 @@
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/utils/cn'
 import { useIntl } from 'react-intl'
 
 export const Product = ({ product, className, thumbnail }) => {
+  const [htmlContent, setHtmlContent] = useState('')
+
   const {
     thumbnail: thumbnailProduct,
     title,
@@ -14,8 +17,13 @@ export const Product = ({ product, className, thumbnail }) => {
   const intl = useIntl()
   const messages = intl.messages
 
+  useEffect(() => {
+    setHtmlContent(contentDescription)
+  }, [contentDescription])
+
   return (
     <div
+      suppressHydrationWarning
       className={cn(
         'flex w-full flex-col items-start justify-start overflow-hidden rounded-3xl border border-solid border-[#0000004D] bg-[#D9D9D91A] px-7 pb-7 pt-3',
         className,
@@ -23,24 +31,21 @@ export const Product = ({ product, className, thumbnail }) => {
     >
       <figure className="h-full max-h-[395.9px] w-full">
         <Image
-          src={thumbnailProduct.imageUrl || thumbnail.imageUrlPng}
+          src={thumbnailProduct.url || thumbnail.imageUrlPng}
           alt={thumbnailProduct.alt}
           width={361.2}
           height={395.9}
           className="h-full max-h-[395.9px] w-full rounded-3xl"
         />
       </figure>
-      <section className="flex w-fit flex-col items-start justify-between px-2 pt-6">
+      <section className="flex w-full flex-col items-start justify-between px-2 pt-6">
         <h3 className="mb-1.5 line-clamp-2 text-2xl font-extrabold max-sm:break-all xl:text-4xl">
           {title}
         </h3>
-        <ul>
-          {contentDescription.slice(0, 3).map((text, tId) => (
-            <li key={tId} className="m-0 mt-1.5 w-full">
-              <p className="line-clamp-3 font-thin xl:text-lg">{text}</p>
-            </li>
-          ))}
-        </ul>
+        <p
+          className="line-clamp-4 font-thin xl:text-lg"
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
+        />
         <div className="mt-8 flex w-full justify-end">
           <Link
             href={`/${label}`}
