@@ -106,7 +106,7 @@ export const ListBlogs = ({
             </button>
           </div>
         ))}
-        {currentPage <= totalPages - 3 && (
+        {currentPage < totalPages - 3 && (
           <div>
             <button
               onClick={() => handlePageChange(currentPage + 1)}

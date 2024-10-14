@@ -5,12 +5,14 @@ export const Gallery = ({ gallery }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
+  const totalGallery = [...gallery[0], ...gallery[1]]
+
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => {
       if (isMobile) {
-        return prevIndex === 0 ? gallery.length - 1 : prevIndex - 1
+        return prevIndex === 0 ? totalGallery.length - 1 : prevIndex - 1
       } else {
-        return prevIndex === 0 ? gallery.length - 3 : prevIndex - 1
+        return prevIndex === 0 ? totalGallery.length - 3 : prevIndex - 1
       }
     })
   }
@@ -18,9 +20,9 @@ export const Gallery = ({ gallery }) => {
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
       if (isMobile) {
-        return prevIndex === gallery.length - 1 ? 0 : prevIndex + 1
+        return prevIndex === totalGallery.length - 1 ? 0 : prevIndex + 1
       } else {
-        return prevIndex === gallery.length - 3 ? 0 : prevIndex + 1
+        return prevIndex === totalGallery.length - 3 ? 0 : prevIndex + 1
       }
     })
   }
@@ -46,7 +48,7 @@ export const Gallery = ({ gallery }) => {
           transform: `translateX(-${currentIndex * 108}%)`,
         }}
       >
-        {gallery.map((photo, index) => (
+        {totalGallery.map((photo, index) => (
           <li
             key={index}
             className="h-72 w-full flex-shrink-0 list-none overflow-hidden duration-500 lg:w-[30%]"
@@ -61,7 +63,7 @@ export const Gallery = ({ gallery }) => {
           </li>
         ))}
       </ul>
-      {gallery.length > 3 && (
+      {totalGallery.length > 1 && (
         <>
           <button
             onClick={prevSlide}
