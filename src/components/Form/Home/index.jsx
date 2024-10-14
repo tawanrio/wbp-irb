@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { toast } from 'react-toastify'
-import { RESPONSE_MESSAGES } from '@/utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 import mechanic from '../../../../public/images/pages/autoparts/mechanic.png'
 import Image from 'next/image'
@@ -55,13 +54,12 @@ export const FormHome = ({ inputs }) => {
         message,
       })
       if (!messageContact) {
-        throw new Error(RESPONSE_MESSAGES.error.emailJob)
+        throw new Error(messages['notifications.email.error.message'])
       }
-
-      toast.success(RESPONSE_MESSAGES.success)
+      toast.success(messages['notifications.email.success'])
       resetForm()
     } catch (error) {
-      toast.error(RESPONSE_MESSAGES.error)
+      toast.error(messages['notifications.email.error'])
     } finally {
       setIsSending(false)
     }

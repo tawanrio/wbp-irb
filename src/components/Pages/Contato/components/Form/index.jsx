@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { toast } from 'react-toastify'
-import { RESPONSE_MESSAGES } from '@/utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 import mechanic from '@/../public/images/pages/autoparts/mechanic.png'
 import Image from 'next/image'
@@ -57,13 +56,8 @@ export const FormContact = ({ inputs }) => {
   const uploadCurriculumToDB = async (dataCurriculum) => {
     const responseCurriculum = await insertImgDatabase(dataCurriculum, email)
     if (!responseCurriculum || responseCurriculum.status !== 200) {
-      throw new Error(
-        'Falha ao fazer upload do currículo para o banco de dados',
-      )
+      throw new Error(messages['notifications.email.error.curriculum'])
     }
-    // data.inputs.info.curriculum = responseCurriculum?.path
-    //   ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCurriculum.path}`
-    //   : ''
     const fullPathCurriculum = responseCurriculum?.path
       ? `${process.env.NEXT_PUBLIC_UPLOAD_IMAGES}${responseCurriculum.path}`
       : ''
@@ -106,13 +100,12 @@ export const FormContact = ({ inputs }) => {
         message,
       })
       if (!messageContact) {
-        throw new Error(RESPONSE_MESSAGES.error.emailJob)
+        throw new Error(messages['notifications.email.error.message'])
       }
-
-      toast.success(RESPONSE_MESSAGES.success)
+      toast.success(messages['notifications.email.success'])
       resetForm()
     } catch (error) {
-      toast.error(RESPONSE_MESSAGES.error)
+      toast.error(messages['notifications.email.error'])
     } finally {
       setIsSending(false)
     }

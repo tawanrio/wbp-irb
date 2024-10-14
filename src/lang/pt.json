@@ -1,6 +1,8 @@
 {
   "notifications.email.success": "Email enviado com sucesso",
   "notifications.email.error": "Error ao enviar seu email, tente novamente mais tarde",
+  "notifications.email.error.message": "Por favor preencha o campo de mensagem",
+  "notifications.email.error.curriculum": "Falha ao fazer upload do currículo para o banco de dados",
 
   "notifications.form.error.fullName": "Nome completo é obrigatório",
   "notifications.form.error.email": "E-mail é obrigatório",

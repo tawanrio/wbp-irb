@@ -1,6 +1,8 @@
 {
   "notifications.email.success": "Email sent successfully",
   "notifications.email.error": "Error sending your email, please try again later",
+  "notifications.email.error.message": "Please fill in the message field",
+  "notifications.email.error.curriculum": "Failed to upload resume to database",
 
   "notifications.form.error.fullName": "Full name is required",
   "notifications.form.error.email": "Email is required",

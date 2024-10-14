@@ -17,7 +17,7 @@ export default async function forms(req, res) {
         throw new Error('Por favor, preencha todos os campos')
       }
 
-      await connectMongoDB()
+      await connectMongoDB('pt')
       await sendEmail({ name, email, tel, subject, message, curriculum })
 
       res.status(200).json({ message: 'Email enviado com sucesso!' })
@@ -78,7 +78,10 @@ const sendEmail = async (data) => {
 
   const mailOptions = {
     from: `${data.name} <${data.email}>`,
-    to: authSmtp.auth.user,
+    to:
+      process.env.ENVIRONMENT === 'prod'
+        ? authSmtp.email
+        : process.env.EMAIL_TO_SEND,
     cc: EMAIL_RECIPIENTS,
     subject: data.subject,
     html,
