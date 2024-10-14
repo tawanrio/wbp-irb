@@ -9,9 +9,14 @@ export const ButtonWhatsapp = ({ whatsapp }) => {
       target="_blank"
       rel="noopener"
       aria-label={whatsapp?.name}
-      className="absolute -bottom-10 right-4 flex size-20 rounded-full bg-[#00c327] p-4 transition-all duration-200 hover:scale-95 md:-bottom-14 md:right-14 md:size-[100px]"
+      className="fixed bottom-3 right-3 z-10 flex size-20 rounded-full bg-[#00c327] p-4 transition-all duration-200 hover:scale-95 sm:bottom-6 sm:right-6"
     >
-      <Image src={whatsappIcon} alt="WhatsApp Ícone" width={120} height={120} />
+      <Image
+        src={whatsappIcon}
+        alt="Ícone do WhatsApp"
+        width={120}
+        height={120}
+      />
     </Link>
   )
 }

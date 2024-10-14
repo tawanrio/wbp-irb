@@ -1,6 +1,8 @@
+/* eslint-disable prettier/prettier */
 import Image from 'next/image'
 import Link from 'next/link'
 import SubMenu from '../SubMenu'
+import { cn } from '@/lib/utils'
 
 export default function MenuItem({
   link,
@@ -29,7 +31,13 @@ export default function MenuItem({
         }}
         className="mx-1 flex w-full flex-row-reverse justify-start gap-3 px-4 py-2 font-medium duration-500 lg:flex-row lg:justify-center lg:rounded-full lg:text-base"
       >
-        <span className="max-[475px]:w-min">{link.label}</span>
+        <span
+          className={cn(
+            link.label === 'Linhas de Produtos' && 'max-[520px]:w-min',
+            ['Product Lines', 'Educational BR'].includes(link.label) && 'max-[455px]:w-min text-right')}
+        >
+          {link.label}
+        </span>
         {hasSubmenu && (
           <Image
             src={dataHeader.nav[0].icon}
@@ -39,8 +47,8 @@ export default function MenuItem({
             style={{
               ...(submenuOpen &&
                 submenuOpen === link.label && {
-                  transform: 'rotate(0deg)',
-                }),
+                transform: 'rotate(0deg)',
+              }),
             }}
             className="rotate-[90deg] duration-500 lg:rotate-[-90deg] lg:group-hover:rotate-[0deg]"
           />

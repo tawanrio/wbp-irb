@@ -58,12 +58,12 @@ export default function FormAutoparts({ setFormData, resetInputs }) {
       <div className="flex w-full flex-row flex-wrap justify-between">
         <div className="mt-2 flex w-[48%] flex-col">
           <label className="text-lg font-bold" htmlFor="partnerType">
-            Em qual distribuidor você adquiri os produtos IRB
+            Em qual distribuidor você adquire os produtos IRB?
           </label>
           <input
             type="text"
             id="whereToBuy"
-            placeholder="Em qual distribuidor você adquiri os produtos IRB"
+            placeholder="Em qual distribuidor você adquire os produtos IRB?"
             className="border px-4 py-2"
             value={whereToBuy}
             onChange={(e) => setWhereToBuy(e.target.value)}

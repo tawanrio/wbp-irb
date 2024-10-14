@@ -18,7 +18,7 @@ export default function Footer({ content }) {
     >
       <div
         className={cn(
-          'relative mx-auto flex flex-col gap-1 gap-y-7 py-6 md:max-w-7xl md:justify-between md:py-12 lg:flex-row',
+          'mx-auto flex flex-col gap-1 gap-y-7 py-6 md:max-w-7xl md:justify-between md:py-12 lg:flex-row',
         )}
       >
         <RenderList nav={nav} colors={colors} certificates={certificates} />
