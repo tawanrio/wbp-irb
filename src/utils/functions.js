@@ -83,16 +83,36 @@ export const truncateFileName = (filename, maxLength = 25) => {
   return truncatedName + ext
 }
 
-export const formatPhoneNumber = (str) => {
-  let cleaned = str.replace(/[^0-9]/g, '')
-  if (cleaned.startsWith('55')) {
-    cleaned = cleaned.slice(2)
+export const formatPhoneNumber = (phoneNumber) => {
+  const removeNonNumeric = (str) => str.replace(/[^0-9]/g, '')
+  const formatNumber = (areaCode, firstPart, secondPart) =>
+    `(${areaCode}) ${firstPart}-${secondPart}`
+
+  let cleanedNumber = removeNonNumeric(phoneNumber)
+
+  if (cleanedNumber.startsWith('55')) {
+    cleanedNumber = cleanedNumber.slice(2)
   }
-  if (cleaned.length === 11) {
-    const formatted = `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7)}`
-    return formatted
+
+  const length = cleanedNumber.length
+
+  if (length === 11) {
+    return formatNumber(
+      cleanedNumber.slice(0, 2),
+      cleanedNumber.slice(2, 7),
+      cleanedNumber.slice(7),
+    )
   }
-  return str
+
+  if (length === 10) {
+    return formatNumber(
+      cleanedNumber.slice(0, 2),
+      cleanedNumber.slice(2, 6),
+      cleanedNumber.slice(6),
+    )
+  }
+
+  return phoneNumber
 }
 
 export function formatToViewPhone(numero) {
@@ -283,5 +303,5 @@ export const formatTitle = (title) => {
     .trim()
 }
 
-export const getGoogleMaps = (googleMapsUrl) =>
-  `https://www.google.com/maps?q=${googleMapsUrl || 'Rua Rosa de Morais, 149 - Vila Água Funda - São Paulo - Brasil'}&output=embed`
+export const getGoogleMaps = (address) =>
+  `https://www.google.com/maps?q=${encodeURIComponent(address || 'Rua Lilases, 61 - Vila Clementino - São Paulo - Brasil')}&output=embed`

@@ -1,14 +1,32 @@
+/* eslint-disable prettier/prettier */
+import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import { useIntl } from 'react-intl'
 import {
   formatToViewPhone,
   formatStrToUrl,
   generateProductUrl,
+  getGoogleMaps,
 } from '@/utils/functions'
 
-export const Maps = ({ googleMapsUrl, collections }) => {
+export const Maps = ({ googleMapsUrl, collections, contact }) => {
+  const [selectedMapUrl, setSelectedMapUrl] = useState(googleMapsUrl)
+
+  const intl = useIntl()
+  const messages = intl.messages
+
   const route = useRouter()
   const baseUrl = route.asPath.split('/')
+
+  const handleAddressClick = (address) => {
+    const formattedAddress = `${address.street}, ${address.number}, ${address.city}, ${address.state}, ${address.country}${address.zipcode ? `, ${address.zipcode}` : ''
+      }`
+
+    const googleMapsSearchUrl = getGoogleMaps(formattedAddress)
+    setSelectedMapUrl(googleMapsSearchUrl)
+  }
 
   return (
     <div className="relative flex flex-col md:flex-row">
@@ -19,11 +37,50 @@ export const Maps = ({ googleMapsUrl, collections }) => {
             formatStrToUrl(collection.tradingName),
           )
 
-          return (
+          return contact ? (
+            <li
+              key={index}
+              className="space-y-4"
+              onClick={() => handleAddressClick(collection.info.address[0])}
+            >
+              <div className="space-y-2 cursor-pointer text-[#213271]">
+                <h2 className="flex flex-row gap-1 font-bold italic">
+                  <Image
+                    src={collection.country}
+                    alt={collection.info.address[0].country}
+                    width={25}
+                    height={25}
+                  />
+                  - {collection.companyName}
+                </h2>
+                <address className="space-y-2 text-sm font-extralight not-italic">
+                  <p>
+                    {collection.info.address[0].street},{' '}
+                    {collection.info.address[0].number} -{' '}
+                    {collection.info.address[0].city} -{' '}
+                    {collection.info.address[0].state} -{' '}
+                    {collection.info.address[0].country}
+                  </p>
+                  {collection.info.address[0]?.zipcode && (
+                    <p>
+                      {messages['component.address.input.cep']}:{' '}
+                      {collection.info.address[0].zipcode}
+                    </p>
+                  )}
+                </address>
+              </div>
+
+              {index < collections.length - 1 && (
+                <hr className="h-1 w-full rounded-full bg-[#21327122]" />
+              )}
+            </li>
+          ) : (
             <li key={index}>
               <Link href={collectionUrl} className="space-y-4">
                 <div className="space-y-2 text-[#213271]">
-                  <h2 className="font-bold italic">{collection.companyName}</h2>
+                  <h2 className="flex flex-row gap-1 font-bold italic">
+                    {collection.companyName}
+                  </h2>
                   <address className="space-y-2 text-sm font-extralight not-italic">
                     <p>
                       {collection.info.address[0].street},{' '}
@@ -45,7 +102,7 @@ export const Maps = ({ googleMapsUrl, collections }) => {
         })}
       </ul>
       <iframe
-        src={googleMapsUrl}
+        src={selectedMapUrl}
         width="850"
         height="734"
         loading="lazy"

@@ -13,7 +13,6 @@ import { Maps } from '@/components/Maps'
 import { FormContact } from './components/Form/'
 import { TellButton } from './components/TellButton'
 import Container from '@/components/Container'
-import { useIntl } from 'react-intl'
 
 // Others
 import { useEffect, useState } from 'react'
@@ -37,7 +36,6 @@ export default function Contato({ content, locale }) {
     content?.page.components.logoContact,
   )
   const [arrButton, setArrButton] = useState(logoContact?.arrButton)
-  const [collections, setCollections] = useState([content?.collection])
   const [formDefault, setFormDefault] = useState(
     content?.form?.forms.find((item) => item.label === 'default'),
   )
@@ -58,15 +56,11 @@ export default function Contato({ content, locale }) {
         setArrButton(updatedLogoContact.arrButton || [])
       }
 
-      setCollections([content.collection || []])
       setFormDefault(
         content.form?.forms.find((item) => item.label === 'default') || null,
       )
     }
   }, [locale, content]) // Monitora as mudanças em 'locale' e 'content'
-
-  const intl = useIntl()
-  const messages = intl.messages
 
   const googleMapsUrl = getGoogleMaps(false)
   const arrHeader = content?.template?.find((item) => item?.label === 'header')
@@ -103,9 +97,13 @@ export default function Contato({ content, locale }) {
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <Container className="mt-5">
             <h2 className="m-0 mb-10 w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-2xl font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
-              {messages['component.contact.address.title']}
+              {content?.page.components.address.title}
             </h2>
-            <Maps googleMapsUrl={googleMapsUrl} collections={collections} />
+            <Maps
+              googleMapsUrl={googleMapsUrl}
+              collections={content?.page.components.address.addresses}
+              contact
+            />
             <FormContact inputs={formDefault} />
           </Container>
           <Footer content={footer} />
