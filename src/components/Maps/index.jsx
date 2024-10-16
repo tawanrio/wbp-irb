@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
@@ -27,6 +27,10 @@ export const Maps = ({ googleMapsUrl, collections, contact }) => {
     const googleMapsSearchUrl = getGoogleMaps(formattedAddress)
     setSelectedMapUrl(googleMapsSearchUrl)
   }
+
+  useEffect(() => {
+    setSelectedMapUrl(googleMapsUrl)
+  }, [googleMapsUrl])
 
   return (
     <div className="relative flex flex-col md:flex-row">
