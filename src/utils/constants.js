@@ -103,34 +103,6 @@ export const PARTNER_TYPES_NO_MECHANICS = [
   },
 ]
 
-export const SERVICE_ADVANTAGES = [
-  {
-    title: 'Portfólio',
-    description: 'Cobertura de 99% da frota circulante',
-    icon: {
-      url: '/images/components/icons/cars.svg',
-      alt: 'Ícone de Carros',
-    },
-  },
-  {
-    title: 'Produtos',
-    description: 'Desenvolvidos sob medida para o clima e solo brasileiros',
-    icon: {
-      url: '/images/components/icons/brazil.svg',
-      alt: 'Ícone do Brasil',
-    },
-  },
-  {
-    title: 'Certificações',
-    description:
-      'Maiores <strong class="font-medium">certificadoras</strong> mundiais',
-    icon: {
-      url: '/images/components/icons/tool.svg',
-      alt: 'Ícone de Ferramenta',
-    },
-  },
-]
-
 export const QUALITY_CERTIFICATIONS = [
   {
     url: '/images/components/icons/iso-16949-red.png',
@@ -203,8 +175,9 @@ export const UTILITIES_CARDS = [
       height: 400,
       margin: '130px',
     },
-    link: '/autopecas',
+    link: '/contato',
     linkText: 'Clique aqui',
+    target: '_blank',
   },
   {
     bgImage: "url('/images/components/utilityCards/mechanic-relaxing.png')",
@@ -240,6 +213,30 @@ export const UTILITIES_CARDS = [
       margin: '20px',
     },
     link: '/produtos',
+    linkText: 'Clique aqui',
+  },
+  {
+    bgImage: "url('/images/components/utilityCards/road_united_states.jpg')",
+    title: {
+      name: 'Qualidade que conecta continentes',
+      weight: 700,
+      size: '28px',
+      align: 'end',
+    },
+    description: {
+      name: 'Iniciamos operação nos EUA com a linha de <strong>Cubo de Roda</strong> com qualidade adaptada às condições climáticas e geográficas do país.',
+      weight: 300,
+      size: '20px',
+      align: 'end',
+      wrap: 'balance',
+    },
+    image: {
+      src: '/images/products/roda.png',
+      width: 300,
+      height: 400,
+      margin: '100px',
+    },
+    link: '/cubos-de-rodas',
     linkText: 'Clique aqui',
   },
 ]

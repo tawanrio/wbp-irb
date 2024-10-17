@@ -27,6 +27,7 @@ export const Utility = ({ utility }) => {
               fontSize: utility.title.size,
               color: utility.title.color,
               textTransform: utility.title.transform,
+              textAlign: utility.title.align,
               backgroundColor: utility.title.background,
               borderRadius: utility.title.rounded,
               padding: utility.title.padding,
@@ -48,21 +49,20 @@ export const Utility = ({ utility }) => {
             </span>
           )}
           <p
-            className="m-0 text-white"
+            className="custom-strong m-0 text-white"
             style={{
               fontWeight: utility.description.weight,
               fontSize: utility.description.size,
               textAlign: utility.description.align,
               textWrap: utility.description.wrap,
             }}
-          >
-            {utility.description.name}
-          </p>
+            dangerouslySetInnerHTML={{ __html: utility.description.name }}
+          />
         </div>
         <Link
           href={utility.link}
-          target="_blank"
-          rel="noopener"
+          target={utility.target}
+          rel={utility.target ? 'noopener' : undefined}
           className="w-fit rounded-full bg-[#982225] px-5 py-1 text-center font-medium uppercase text-white transition-all duration-200 hover:scale-95"
         >
           {utility.linkText}
