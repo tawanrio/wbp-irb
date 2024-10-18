@@ -144,7 +144,7 @@ export const UTILITIES_CARDS = [
       size: '12px',
     },
     description: {
-      name: 'e confira todos os itens, aplicações e características técnicas',
+      name: 'e confira todos os itens, aplicações e características técnicas.',
       weight: 700,
       size: '20px',
     },
@@ -200,7 +200,7 @@ export const UTILITIES_CARDS = [
       align: 'end',
     },
     description: {
-      name: 'Trouxemos a qualidade e tecnologia já conhecida dos rolamentos e radiadores IRB para essas novas linhas',
+      name: 'Trouxemos a qualidade e tecnologia já conhecida dos rolamentos e radiadores IRB para essas novas linhas.',
       weight: 300,
       size: '20px',
       align: 'end',

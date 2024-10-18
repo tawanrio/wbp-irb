@@ -3,10 +3,12 @@ import { RenderListItem } from './RenderListItem'
 import logo from '../../../../../../public/images/templates/header/logo-white.svg'
 
 export default function RenderList({ nav, colors, certificates }) {
+  const newNav = nav?.filter((item) => item?.links?.length > 0)
+
   return (
     <div className="flex flex-1 flex-col max-sm:gap-y-5">
       <ul className="flex flex-1 flex-col justify-between sm:flex-row">
-        {nav?.map((items, ulId) => (
+        {newNav.map((items, ulId) => (
           <li
             key={ulId}
             className="mb-6 flex-1 font-light md:mx-3 md:flex-1 md:first:ml-0"
