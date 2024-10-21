@@ -12,8 +12,8 @@ export const Banners = ({ banners }) => {
           <Image src={banner.image} alt={banner.alt} width={350} height={342} />
           <Link
             href={banner.link}
-            target="_blank"
-            rel="noopener"
+            target={banner.target}
+            rel={banner.target ? 'noopener' : undefined}
             className="rounded-full bg-[#213271] px-5 py-1 text-sm text-white shadow-[0px_3.91px_3.91px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95"
           >
             {banner.linkText}
