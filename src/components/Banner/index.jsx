@@ -13,7 +13,7 @@ export default function Banner({ banners, stlyeText, page }) {
   const carousel =
     page?.title === 'Home' && isSmallScreen
       ? banners?.carouselHomeMobile
-      : page?.title === 'Home'
+      : ['Home', 'Contato', 'Contact'].includes(page?.title)
         ? banners?.carouselHome
         : isSmallScreen
           ? banners?.carousel

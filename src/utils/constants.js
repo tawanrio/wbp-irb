@@ -156,6 +156,7 @@ export const UTILITIES_CARDS = [
     },
     link: 'https://c123.com.br/app/aplicativo/?n=IRB',
     linkText: 'Baixar catálogo',
+    target: '_blank',
   },
   {
     bgImage: "url('/images/components/utilityCards/wrench-workshop.png')",
@@ -177,7 +178,6 @@ export const UTILITIES_CARDS = [
     },
     link: '/contato',
     linkText: 'Clique aqui',
-    target: '_blank',
   },
   {
     bgImage: "url('/images/components/utilityCards/mechanic-relaxing.png')",

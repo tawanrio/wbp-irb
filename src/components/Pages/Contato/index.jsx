@@ -18,7 +18,6 @@ import Container from '@/components/Container'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { getGoogleMaps } from '@/utils/functions'
-import { CONTACT_BANNER } from '@/utils/constants'
 
 export default function Contato({ content, locale }) {
   const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
@@ -90,7 +89,7 @@ export default function Contato({ content, locale }) {
       >
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
-          <Banner banners={CONTACT_BANNER} page={content?.page} />
+          <Banner banners={content?.page?.banners} page={content?.page} />
           <Description content={newDescription} />
           <TellButton buttons={arrButton} />
         </BackgroundImageFirst>
