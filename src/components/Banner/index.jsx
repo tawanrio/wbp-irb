@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useState, useEffect } from 'react'
 import Dots from './components/Dots'
 import ContentBanner from './components/ContentBanner'
@@ -9,19 +10,14 @@ export default function Banner({ banners, stlyeText, page }) {
   const [activeBanner, setActiveBanner] = useState(0)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
   const [size, setSize] = useState(banners?.size.height)
-  console.log(page)
 
   const carousel =
-    page?.title === 'Home'
-      ? isSmallScreen
-        ? banners?.carouselHomeMobile
-        : banners?.carouselHome
-      : ['Contato', 'Contact'].includes(page?.title)
+    page?.title === 'Home' && isSmallScreen
+      ? banners?.carouselHomeMobile
+      : ['Home', 'Contato', 'Contact'].includes(page?.title) &&
+        banners?.carouselHome
         ? banners?.carouselHome
-        : isSmallScreen
-          ? banners?.carouselHomeMobile
-          : banners?.carouselHome
-
+        : banners?.carousel || []
   const showButtonsBanner = carousel?.length > 1
 
   useEffect(() => {
