@@ -9,7 +9,7 @@ export default function ContentBanner({
 }) {
   const { activeBanner, banners, carousel } = controllerBanner
 
-  const renderBanners = carousel.map((banner, index) => {
+  const renderBanners = carousel?.map((banner, index) => {
     const { url } = banner
     const isImage = url.match(/\.(jpg|jpeg|png|gif|bmp|svg)$/i)
 
