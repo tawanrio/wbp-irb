@@ -17,10 +17,10 @@ export default function Banner({ banners, stlyeText, page }) {
         ? banners?.carouselHomeMobile
         : banners?.carouselHome
       : ['Contato', 'Contact'].includes(page?.title)
-        ? banners?.carousel
+        ? banners?.carouselHome
         : isSmallScreen
-          ? banners?.carousel
-          : banners?.carousel
+          ? banners?.carouselHomeMobile
+          : banners?.carouselHome
 
   const showButtonsBanner = carousel?.length > 1
 
