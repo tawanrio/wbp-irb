@@ -1,3 +1,4 @@
+'use client'
 // Template / Layout
 import Templates from '@/components/Templates'
 
@@ -5,7 +6,7 @@ import Templates from '@/components/Templates'
 import { Description } from './components/Description'
 import { Title } from './components/Title'
 import { CarouselScale } from '@/components/Carousel/CarouselScale'
-import SearchPartners from '@/components/SearchPartners'
+import SearchDynPart from '@/components/SearchDynPart'
 import { Product } from '@/components/Product'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
@@ -71,7 +72,7 @@ export default function Distribuidoras({ content }) {
           <Description description={description} />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={page?.backgroundImages}>
-          <SearchPartners
+          <SearchDynPart
             partnerType="distribuidor"
             collections={collection}
             hiddenProductSearch
