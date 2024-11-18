@@ -2,7 +2,20 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['clientes.agenciawbp.com', 'irbauto.com.br'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'clientes.agenciawbp.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'irbauto.com.br',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   i18n: {
     locales: ['pt', 'en'],
