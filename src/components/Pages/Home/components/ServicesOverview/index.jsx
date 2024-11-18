@@ -27,7 +27,7 @@ export default function ServicesOverview({ content }) {
           ))}
         </div>
         <h1
-          className="flex flex-col"
+          className="revolution-subtitle flex flex-col"
           dangerouslySetInnerHTML={{ __html: content.title }}
         ></h1>
       </div>

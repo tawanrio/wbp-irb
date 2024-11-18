@@ -12,6 +12,8 @@ import {
 } from '@/utils/functions'
 
 export const Maps = ({ googleMapsUrl, collections, contact }) => {
+
+  
   const [selectedMapUrl, setSelectedMapUrl] = useState(googleMapsUrl)
 
   const intl = useIntl()
@@ -87,11 +89,11 @@ export const Maps = ({ googleMapsUrl, collections, contact }) => {
                   </h2>
                   <address className="space-y-2 text-sm font-extralight not-italic">
                     <p>
-                      {collection.info.address[0].street},{' '}
-                      {collection.info.address[0].number} -{' '}
-                      {collection.info.address[0].city} -{' '}
-                      {collection.info.address[0].state} -{' '}
-                      {collection.info.address[0].country}
+                      {collection.address[0].street},{' '}
+                      {collection.address[0].number} -{' '}
+                      {collection.address[0].city} -{' '}
+                      {collection.address[0].state} -{' '}
+                      {collection.address[0].country}
                     </p>
                     <p>{formatToViewPhone(collection.info.phone[0].number)}</p>
                   </address>

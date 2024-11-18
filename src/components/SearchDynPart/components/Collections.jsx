@@ -3,7 +3,8 @@ import { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { formatStrToUrl } from '@/utils/functions'
-import Maps from './Maps'
+// import Maps from './Maps'
+import Maps from '@/components/Address/components/Maps'
 import 'tailwindcss/tailwind.css'
 
 const Collection = ({

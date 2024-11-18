@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['clientes.agenciawbp.com'],
+    domains: ['clientes.agenciawbp.com', 'irbauto.com.br'],
   },
   i18n: {
     locales: ['pt', 'en'],

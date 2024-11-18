@@ -72,6 +72,7 @@ export default function Contato({ content, locale }) {
   const copyright = content?.template?.find(
     (item) => item?.label === 'copyright',
   )
+  console.log(content.page.banners)
 
   return (
     <>

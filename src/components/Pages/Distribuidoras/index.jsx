@@ -6,12 +6,12 @@ import Templates from '@/components/Templates'
 import { Description } from './components/Description'
 import { Title } from './components/Title'
 import { CarouselScale } from '@/components/Carousel/CarouselScale'
-import SearchDynPart from '@/components/SearchDynPart'
 import { Product } from '@/components/Product'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import SearchPartners from '@/components/SearchPartners'
 import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
@@ -72,7 +72,7 @@ export default function Distribuidoras({ content }) {
           <Description description={description} />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={page?.backgroundImages}>
-          <SearchDynPart
+          <SearchPartners
             partnerType="distribuidor"
             collections={collection}
             hiddenProductSearch

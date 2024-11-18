@@ -28,8 +28,9 @@ export default function Parceiro({ content }) {
   const {
     metaTitle,
     metaDescription,
+    address,
     companyName,
-    info: { address, phone },
+    info: { phone },
   } = collection || {}
   const { title, label, backgroundImages } = page || {}
 
