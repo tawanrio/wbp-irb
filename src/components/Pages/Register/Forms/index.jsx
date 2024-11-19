@@ -11,7 +11,7 @@ import { EMAIL_RECIPIENTS, RESPONSE_MESSAGES } from '@/utils/constants'
 import { cn } from '@/lib/utils'
 import 'react-toastify/dist/ReactToastify.css'
 
-export default function RegisterForm() {
+export default function RegisterForm({ title }) {
   const [partnerType, setPartnerType] = useState('distribuidoras')
   const [resetInputs, setResetInputs] = useState(false)
   const [inputs, setInputs] = useState({})
@@ -231,11 +231,11 @@ export default function RegisterForm() {
       id="register_"
       className="m-auto flex w-full max-w-6xl flex-col justify-between gap-8 px-5 pb-14 pt-14 sm:gap-12 sm:pt-20"
     >
-      <h1 className="max-w-md font-['Libre_Baskerville'] text-4xl text-white sm:text-5xl lg:text-6xl">
-        <i>Torne-se </i>
-        <br />
-        um <i>parceiro</i> IRB
-      </h1>
+      <h1
+        className="max-w-md font-['Libre_Baskerville'] text-4xl text-white sm:text-5xl lg:text-6xl"
+        dangerouslySetInnerHTML={{ __html: title }}
+      ></h1>
+
       <div className="mx-auto flex max-w-6xl flex-row flex-wrap justify-center gap-4">
         <button
           onClick={() => handleButtonClick('autopecas')}

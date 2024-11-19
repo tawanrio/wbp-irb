@@ -62,7 +62,7 @@ export default function Register({ content }) {
       >
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
-          <RegisterForm inputs={inputs} />
+          <RegisterForm title={content?.page?.mainTitle} inputs={inputs} />
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <Utilities />
