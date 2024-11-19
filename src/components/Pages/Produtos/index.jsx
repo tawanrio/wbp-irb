@@ -68,13 +68,13 @@ export default function Produtos({ content }) {
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={backgroundImages}>
           <Utilities className="pb-20" utilities={utilities} />
-          {/* {info?.length > 0 && (
+          {info?.length > 0 && (
             <Info
               info={info}
               classNameTitle="w-full max-w-[22rem]"
               classNameContainer="pb-24"
             />
-          )} */}
+          )}
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>

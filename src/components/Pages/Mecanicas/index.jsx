@@ -80,7 +80,7 @@ export default function AutocenterEMecanicas({ content }) {
             products={content?.products}
             geo={content?.geo}
           />
-          {/* {content?.page?.info?.length > 0 && <Info info={content.page.info} />} */}
+          {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
           {content?.page?.faq &&
             Object.entries(content.page.faq).length > 0 && (
               <CommonQuestions faq={content.page.faq} />

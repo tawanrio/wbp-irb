@@ -86,7 +86,7 @@ export default function Autoparts({ content }) {
               </li>
             ))}
           </CarouselScale>
-          {/* {info?.length > 0 && <Info info={info} />} */}
+          {info?.length > 0 && <Info info={info} />}
           {faq && Object.entries(faq).length > 0 && (
             <CommonQuestions faq={faq} />
           )}
