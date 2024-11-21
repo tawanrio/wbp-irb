@@ -13,8 +13,6 @@ import { Posts } from '@/service/model/schemas/postsSchema'
 import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 
 export default function index({ content, locale }) {
-  console.log(content)
-
   return (
     <>
       {locale !== 'pt' ? (

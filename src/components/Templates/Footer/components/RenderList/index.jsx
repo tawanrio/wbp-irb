@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { RenderListItem } from './RenderListItem'
-import logo from '../../../../../../public/images/templates/header/logo-white.svg'
+import logoLocal from '../../../../../../public/images/templates/header/logo-white.svg'
 
-export default function RenderList({ nav, colors, certificates }) {
+export default function RenderList({ nav, colors, certificates, logo }) {
   const newNav = nav?.filter((item) => item?.links?.length > 0)
 
   return (
@@ -42,8 +42,8 @@ export default function RenderList({ nav, colors, certificates }) {
         </figure>
 
         <Image
-          src={logo}
-          alt="Logo IRB Automovite"
+          src={logo?.url || logoLocal}
+          alt={logo?.url || 'Logo IRB Automovite'}
           width={156}
           height={141.24}
           className="w-[143.37px] lg:mr-24 lg:w-[156px]"

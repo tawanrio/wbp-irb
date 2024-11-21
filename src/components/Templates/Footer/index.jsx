@@ -21,7 +21,12 @@ export default function Footer({ content }) {
           'mx-auto flex flex-col gap-1 gap-y-7 py-6 md:max-w-7xl md:justify-between md:py-12 lg:flex-row',
         )}
       >
-        <RenderList nav={nav} colors={colors} certificates={certificates} />
+        <RenderList
+          nav={nav}
+          colors={colors}
+          certificates={certificates}
+          logo={dataFooter?.logo}
+        />
 
         <div className="mx-auto flex w-full max-w-[15rem] flex-col items-center gap-6 lg:mx-3 lg:flex-1 lg:items-start lg:last:mr-0">
           <div className="flex flex-col items-center gap-7 lg:items-start lg:gap-5">
