@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useIntl } from 'react-intl'
+import { resolveImageUrl } from '@/utils/functions'
 
 export const CarouselEvent = ({ events }) => {
   const intl = useIntl()
@@ -68,7 +69,9 @@ export const CarouselEvent = ({ events }) => {
             >
               <div
                 className="relative h-96 bg-cover bg-center"
-                style={{ backgroundImage: `url(${event.image})` }}
+                style={{
+                  backgroundImage: `url(${resolveImageUrl(event.image)})`,
+                }}
               >
                 <div className="absolute inset-0 flex flex-col justify-between bg-black bg-opacity-70 p-4">
                   <div className="flex flex-col gap-3">

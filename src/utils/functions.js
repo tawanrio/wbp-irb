@@ -305,3 +305,12 @@ export const formatTitle = (title) => {
 
 export const getGoogleMaps = (address) =>
   `https://www.google.com/maps?q=${encodeURIComponent(address || 'Rua Lilases, 61 - Vila Clementino - São Paulo - Brasil')}&output=embed`
+
+export const resolveImageUrl = (url) => {
+  const sanitizedUrl = url.replace(/\(/g, '%28').replace(/\)/g, '%29')
+  const isExternal = sanitizedUrl.startsWith('http')
+
+  return isExternal
+    ? sanitizedUrl
+    : `${process.env.NEXT_PUBLIC_DOMAIN}${sanitizedUrl}`
+}
