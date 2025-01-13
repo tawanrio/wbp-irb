@@ -14,7 +14,8 @@ export default function MenuItem({
   dataHeader,
   handleMenu,
 }) {
-  const hasSubmenu = Object.prototype.hasOwnProperty.call(link, 'submenu')
+  // const hasSubmenu = Object.prototype.hasOwnProperty.call(link, 'submenu')
+  const hasSubmenu = Array.isArray(link.submenu) && link.submenu.length > 0
 
   return (
     <div className="group flex w-full flex-col items-end uppercase lg:inline-block lg:w-auto">
@@ -40,8 +41,8 @@ export default function MenuItem({
         </span>
         {hasSubmenu && (
           <Image
-            src={dataHeader.nav[0].icon}
-            alt={dataHeader.logo.alt}
+            src={dataHeader.nav[0].separateIcon}
+            alt={dataHeader.nav[0].title}
             width={15}
             height={15}
             style={{

@@ -5,13 +5,14 @@ import Templates from '@/components/Templates'
 import { ContentProduct } from './components/ContentProduct'
 import { Utilities } from '../Home/components/Utilities'
 import { ListProduct } from './components/ListProduct'
-import { Info } from '@/components/Info'
-import { CommonQuestions } from '@/components/CommonQuestions'
+// import { Info } from '@/components/Info'
+// import { CommonQuestions } from '@/components/CommonQuestions'
 import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
 import { BackgroundImageLast } from '@/components/BackgroundImage/last'
 import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
+import Ebooks from './components/Ebooks'
 
 // Others
 import { useEffect, useState } from 'react'
@@ -94,14 +95,15 @@ export default function Categoria({ content, locale }) {
               }))}
             />
           )}
+          <Ebooks ebooks={content?.category?.ebook} />
           <Utilities utilities={utilities} className="pb-20" />
-          {content?.category?.info?.length > 0 && (
+          {/* {content?.category?.info?.length > 0 && (
             <Info info={content.category.info} classNameContainer="pb-20" />
-          )}
-          {content?.category?.faq &&
+          )} */}
+          {/* {content?.category?.faq &&
             Object.entries(content.category.faq).length > 0 && (
               <CommonQuestions faq={content.category.faq} />
-            )}
+            )} */}
           <Footer content={footer} />
           <Copyright content={copyright} />
         </BackgroundImageLast>
