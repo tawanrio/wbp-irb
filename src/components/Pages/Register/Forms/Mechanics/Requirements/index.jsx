@@ -81,11 +81,11 @@ export default function Requirements({ setRequiments, resetInputs }) {
 
   return (
     <div className="mt-10">
-      <h2 className="mb-8 font-['Libre_Baskerville'] text-4xl italic text-white">
+      <legend className="mb-8 font-['Libre_Baskerville'] text-4xl italic text-white">
         Pré-Requisitos
-      </h2>
+      </legend>
       <div className="mt-5 grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2">
-        <div className="flex flex-col">
+        <fieldset className="flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Certificação Profissional *
           </label>
@@ -104,8 +104,8 @@ export default function Requirements({ setRequiments, resetInputs }) {
           <span className="mt-1 text-sm text-slate-400">
             Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.
           </span>
-        </div>
-        <div className="flex flex-col">
+        </fieldset>
+        <fieldset className="flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Equipamento: Elevador *
           </label>
@@ -124,7 +124,7 @@ export default function Requirements({ setRequiments, resetInputs }) {
           <span className="mt-1 text-sm text-slate-400">
             Formatos suportados: JPEG, PNG, PDF; Tamanho máximo do arquivo: 5MB.
           </span>
-        </div>
+        </fieldset>
       </div>
 
       <div className="mt-8 flex w-full flex-col">

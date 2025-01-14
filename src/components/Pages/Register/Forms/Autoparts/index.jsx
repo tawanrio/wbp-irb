@@ -62,7 +62,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
   return (
     <div className="flex w-full flex-col justify-between gap-4 md:my-0 md:gap-2 md:px-0">
       <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="partnerType">
             Em qual distribuidor você adquire os produtos IRB?
           </label>
@@ -74,8 +74,9 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             value={whereToBuy}
             onChange={(e) => setWhereToBuy(e.target.value)}
           />
-        </div>
-        <div className="mt-2 flex flex-col">
+        </fieldset>
+
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="companyName">
             Razão social
           </label>
@@ -87,9 +88,9 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="tradingName">
             Nome fantasia
           </label>
@@ -101,8 +102,8 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             value={tradingName}
             onChange={(e) => settradingName(e.target.value)}
           />
-        </div>
-        <div className="mt-2 flex flex-col">
+        </fieldset>
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="cnpj">
             CNPJ
           </label>
@@ -115,9 +116,9 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             value={cnpj}
             onChange={(e) => setCnpj(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="email">
             E-mail
           </label>
@@ -129,9 +130,9 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
             Telefone
           </label>
@@ -144,9 +145,9 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold capitalize" htmlFor="logo">
             Anexar logomarca
           </label>
@@ -162,7 +163,7 @@ export default function FormAutoparts({ setInputs, resetInputs, partnerType }) {
             Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho
             máximo do arquivo: 3MB.
           </span>
-        </div>
+        </fieldset>
       </div>
 
       <InputsAddress setAddress={setAddress} resetInputs={resetInputs} />

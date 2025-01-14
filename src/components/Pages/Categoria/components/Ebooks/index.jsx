@@ -7,7 +7,7 @@ export default function Ebooks({ ebooks }) {
     ebooks.length > 0 && (
       <section
         id="partners_"
-        className="mx-auto flex w-full max-w-7xl flex-col px-6 md:my-7 md:gap-10 md:px-14"
+        className="mx-auto flex w-full max-w-7xl flex-col px-6 md:gap-10 md:px-14 md:py-7"
       >
         <SectionTitle title="Baixe nosso eBook" line />
         <div className="relative">

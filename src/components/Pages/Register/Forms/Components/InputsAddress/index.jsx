@@ -62,7 +62,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
 
   return (
     <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
-      <div className="mt-2 flex flex-col">
+      <fieldset className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="cep">
           CEP
         </label>
@@ -76,8 +76,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           onChange={(e) => setCep(e.target.value)}
           onBlur={handleBlur}
         />
-      </div>
-      <div className="mt-2 flex flex-col">
+      </fieldset>
+
+      <fieldset className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="street">
           {' '}
           Rua/Avenida
@@ -90,9 +91,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           value={street}
           onChange={(e) => setStreet(e.target.value)}
         />
-      </div>
+      </fieldset>
 
-      <div className="mt-2 flex flex-col">
+      <fieldset className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="number">
           Número
         </label>
@@ -104,9 +105,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           value={number}
           onChange={(e) => setNumber(e.target.value)}
         />
-      </div>
+      </fieldset>
 
-      <div className="mt-2 flex flex-col">
+      <fieldset className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="neighborhood">
           Bairro
         </label>
@@ -118,9 +119,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           value={neighborhood}
           onChange={(e) => setNeighborhood(e.target.value)}
         />
-      </div>
+      </fieldset>
 
-      <div className="mt-2 flex flex-col">
+      <fieldset className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="city">
           Cidade
         </label>
@@ -132,9 +133,9 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-      </div>
+      </fieldset>
 
-      <div className="mt-2 flex flex-col">
+      <fieldset className="mt-2 flex flex-col">
         <label className="text-lg font-bold capitalize" htmlFor="state">
           Estado
         </label>
@@ -146,7 +147,7 @@ export default function InputsAddress({ setAddress, resetInputs }) {
           value={state}
           onChange={(e) => setState(e.target.value)}
         />
-      </div>
+      </fieldset>
     </div>
   )
 }
