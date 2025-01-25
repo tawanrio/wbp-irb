@@ -1,9 +1,14 @@
 # *
 User-agent: *
 Allow: /
+Allow: /sitemap.xml
+Allow: /sitemap-autopecas.xml
+Allow: /sitemap-distribuidoras.xml
+Allow: /sitemap-mecanicas.xml
 
 # Host
 Host: https://irbauto.com.br
 
 # Sitemaps
 Sitemap: https://irbauto.com.br/sitemap.xml
+
