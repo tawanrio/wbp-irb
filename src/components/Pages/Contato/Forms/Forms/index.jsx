@@ -20,9 +20,6 @@ export default function FormPartner() {
     setPartnerType(value)
   }
 
-  useEffect(() => {
-    console.log(partnerData)
-  }, [partnerData])
   function generateUniqueIdByCnpj(cnpj) {
     const firstFour = cnpj.replace(/\D/g, '').substring(0, 4).toString()
 
@@ -111,7 +108,6 @@ export default function FormPartner() {
         body: JSON.stringify(data),
       },
     )
-    response.ok && console.log('dbOk')
     return response.ok
   }
 

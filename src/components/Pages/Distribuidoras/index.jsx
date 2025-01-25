@@ -1,40 +1,47 @@
-// SEO
-import Head from 'next/head'
-
+'use client'
 // Template / Layout
 import Templates from '@/components/Templates'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
-import BreadCrumb from '@/components/BreadCrumb'
-import ContentImgDescription from '@/components/ContentImgDescription'
-import Title from '@/components/Title'
-import SearchPartners from '@/components/SearchPartners'
-import PartnersButton from '../Home/components/PartnersButton'
-import CategoryGrid from '@/components/CategoryGrid'
+import { Description } from './components/Description'
+import { Title } from './components/Title'
+import { CarouselScale } from '@/components/Carousel/CarouselScale'
+import { Product } from '@/components/Product'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import SearchPartners from '@/components/SearchPartners'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import { OPTIONS } from '@/utils/constants'
 
 export default function Distribuidoras({ content }) {
   const router = useRouter()
-  const pageUrl = router.asPath.replace('/', '')
   const [fullUrl, setFullUrl] = useState('')
   const [metaDescription, setMetaDescription] = useState(
     content?.page?.metaDescription,
   )
 
+  const { template, page, menus, collection, products, geo } = content || {}
   const {
     banners,
     title,
     metaTitle,
     contentDescription: description,
-    imgDescription,
     metaKeywords,
-  } = content?.page
+  } = page || {}
+
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -58,33 +65,41 @@ export default function Distribuidoras({ content }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href={fullUrl} />
       </Head>
-      <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-        banner={banners}
-      >
-        <BreadCrumb />
-        <Title title={title} />
-        <ContentDescription content={description} />
-        <SearchPartners
-          partnerType="distribuidor"
-          title="Encontre um distribuidor"
-          collections={content?.collection}
-          hiddenProductSearch
-          products={content?.products}
-          geo={content?.geo}
-        />
-        <ContentImgDescription content={imgDescription} />
-        <CategoryGrid
-          categories={content?.categories}
-          baseUrl={pageUrl + '/'}
-        />
-        <PartnersButton />
-        {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
-        {content?.page?.faq && Object.entries(content.page.faq).length > 0 && (
-          <CommonQuestions faq={content.page.faq} />
-        )}
+      <Templates template={template} page={page} menus={menus} banner={banners}>
+        <BackgroundImageFirst backgrounds={page?.backgroundImages}>
+          <Header content={header} page={page?.label} />
+          <Title title={title} />
+          <Description description={description} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={page?.backgroundImages}>
+          <SearchPartners
+            partnerType="distribuidor"
+            collections={collection}
+            hiddenProductSearch
+            products={products}
+            geo={geo}
+          />
+          <CarouselScale options={OPTIONS} array={content?.categories}>
+            {content?.categories.slice(0, 6).map((category) => (
+              <li className="embla__slide" key={category._id}>
+                <Product
+                  category={{
+                    ...category,
+                    label: `${page?.label}/${category.label}`,
+                  }}
+                  className="embla__slide__number border-[#0000004D] text-black"
+                />
+              </li>
+            ))}
+          </CarouselScale>
+          {content?.page?.info?.length > 0 && <Info info={content.page.info} />}
+          {content?.page?.faq &&
+            Object.entries(content.page.faq).length > 0 && (
+              <CommonQuestions faq={content.page.faq} />
+            )}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

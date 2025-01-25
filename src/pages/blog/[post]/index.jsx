@@ -89,7 +89,7 @@ const singlePost = async (posts) => {
 
 async function getDataPage(arrRoute) {
   try {
-    await connectMongoDB()
+    await connectMongoDB('pt')
 
     const posts = await Posts.findOne({ permaLink: arrRoute[1] }).lean()
     if (posts) return await singlePost(posts)

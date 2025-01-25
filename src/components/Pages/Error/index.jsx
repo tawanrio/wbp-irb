@@ -1,37 +1,34 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
-
-// Others
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import { insertMenuInTemplate, formatStrToUrl } from '@/utils/functions'
 
 // Components
-import BreadCrumb from '@/components/BreadCrumb'
+import { Title } from './components/Title'
 import Error from '@/components/Error'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
+
+// Others
+import Head from 'next/head'
 
 export default function index({ content }) {
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [imgDescription] = useState(content?.page.imgDescription)
-  const [faq] = useState(content?.page.faq)
+  const { template, page, menus } = content || {}
+  const {
+    title,
+    contentDescription: description,
+    metaTitle,
+    metaDescription,
+    components,
+    backgroundImages,
+    label,
+  } = page || {}
 
-  // content.collection?.filter(partner => {
-  //   partner.info.address.find(address => {
-  //     if(address.label === 'default'){
-  //     console.log(formatStrToUrl(address.city) === content.arrRoute[2]);
-  //     }
-  //   });
-  // });
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
 
   return (
     <>
@@ -40,18 +37,16 @@ export default function index({ content }) {
         <meta name="description" content={metaDescription || description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-      >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <Error />
-        {/* <Title title={title}/> */}
-        {/* <ContentDescription content={description}/> */}
-        {/* <Products baseUrl={`/${pageUrl}/`} products={content?.products} colors={content?.page?.colors.products} title={'Produtos'} /> */}
-        {/* <ContentImgDescription content={imgDescription}/> */}
+      <Templates template={template} page={page} menus={menus}>
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
+          <Title title={title} />
+        </BackgroundImageFirst>
+        <Error content={components} />
+        <BackgroundImageLast backgrounds={backgroundImages}>
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

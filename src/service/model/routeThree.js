@@ -113,11 +113,13 @@ const routeGeo = async (hasPartner, arrRoute, category, countries, geoName) => {
   }
 
   const title = category.partner.title
-  const irb = 'irb'
+  const irb = 'irb'.toLocaleUpperCase()
   const newTitle = title
     .replace(new RegExp(`(\\s*-\\s*${irb})|(${irb})`, 'i'), '')
     .trim()
-  category.partner.title = `${partner} de ${newTitle} em ${geoName} - ${irb}`
+  const partnerCapitalize = partner.charAt(0).toUpperCase() + partner.slice(1)
+
+  category.partner.title = `${partnerCapitalize} de ${newTitle} em ${geoName} - ${irb}`
 
   let description = category.partner.description
   description = replaceShortcodePartner(description, partnerName.title)
@@ -283,10 +285,10 @@ const routeProduct = async (category, arrRoute) => {
   if (error) return await routeError(error)
 }
 
-async function getDataPage(arrRoute) {
+async function getDataPage(arrRoute, locale) {
   try {
     // const route = await resolveRoute(arrRoute)
-    await connectMongoDB()
+    await connectMongoDB(locale)
 
     // se for a rota for distribuidor/ autopeça/ autocenter
     if (

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import ReactDOMServer from 'react-dom/server'
-import SectionTitle from '@/components/SectionTitle'
 import FormDistributor from './Distributor'
 import FormAutoparts from './Autoparts'
 import FormMechanics from './Mechanics'
@@ -9,10 +8,11 @@ import TemplateMailPartner from '../../Contato/Forms/Partner/TemplateMail'
 import TemplateMailSuccessRegister from './Components/TemplateMailSuccessRegister'
 import { generateUniqueIdByCnpj, generateActionsLink } from '@/utils/functions'
 import { EMAIL_RECIPIENTS, RESPONSE_MESSAGES } from '@/utils/constants'
+import { cn } from '@/lib/utils'
 import 'react-toastify/dist/ReactToastify.css'
 
-export default function RegisterForm() {
-  const [partnerType, setPartnerType] = useState('')
+export default function RegisterForm({ title }) {
+  const [partnerType, setPartnerType] = useState('distribuidoras')
   const [resetInputs, setResetInputs] = useState(false)
   const [inputs, setInputs] = useState({})
   const [uniqueId, setUniqueId] = useState('')
@@ -27,34 +27,6 @@ export default function RegisterForm() {
     actionsLink: {},
     html: '',
   })
-
-  useEffect(() => {
-    if (inputs?.info?.cnpj) {
-      const newUniqueId = generateUniqueIdByCnpj(inputs.info.cnpj)
-      setUniqueId(newUniqueId)
-      setActionsLink(generateActionsLink(inputs.info.cnpj, newUniqueId))
-    }
-  }, [inputs])
-
-  useEffect(() => {
-    setFormData((prevData) => ({
-      ...prevData,
-      inputs,
-      uniqueId,
-    }))
-  }, [inputs, uniqueId, actionsLink])
-
-  useEffect(() => {
-    setInputs((prevInputs) => ({
-      ...prevInputs,
-      requirements: {
-        ...prevInputs?.requirements,
-        selectedEquipments: formData.inputs?.requirements?.selectedEquipments,
-      },
-    }))
-  }, [formData.inputs?.requirements?.selectedEquipments])
-
-  const handlePartnerType = (value) => setPartnerType(value)
 
   const uploadImagesToDB = async (data) => {
     const { certificateImg, elevatorImg } = data.inputs?.requirements || {}
@@ -224,37 +196,86 @@ export default function RegisterForm() {
     }
   }
 
+  const handleButtonClick = (type) => {
+    setPartnerType(type)
+  }
+
+  useEffect(() => {
+    if (inputs?.info?.cnpj) {
+      const newUniqueId = generateUniqueIdByCnpj(inputs.info.cnpj)
+      setUniqueId(newUniqueId)
+      setActionsLink(generateActionsLink(inputs.info.cnpj, newUniqueId))
+    }
+  }, [inputs])
+
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      inputs,
+      uniqueId,
+    }))
+  }, [inputs, uniqueId, actionsLink])
+
+  useEffect(() => {
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      requirements: {
+        ...prevInputs?.requirements,
+        selectedEquipments: formData.inputs?.requirements?.selectedEquipments,
+      },
+    }))
+  }, [formData.inputs?.requirements?.selectedEquipments])
+
   return (
     <section
-      className="m-auto my-4 mb-10 flex w-full max-w-7xl flex-col justify-between gap-10 px-6 md:my-7 md:px-14"
       id="register_"
+      className="m-auto flex w-full max-w-6xl flex-col justify-between gap-8 px-5 pb-14 pt-14 sm:gap-12 sm:pt-20"
     >
-      <SectionTitle title="Cadastro" line />
+      <h1
+        className="max-w-md font-['Libre_Baskerville'] text-4xl text-white sm:text-5xl lg:text-6xl"
+        dangerouslySetInnerHTML={{ __html: title }}
+      ></h1>
 
+      <div className="mx-auto flex max-w-6xl flex-row flex-wrap justify-center gap-4">
+        <button
+          onClick={() => handleButtonClick('autopecas')}
+          className={cn(
+            'rounded-full px-6 py-1 text-lg font-light uppercase duration-500 hover:scale-95',
+            partnerType === 'autopecas'
+              ? 'bg-white text-black'
+              : 'bg-[#FFFFFF42] text-white',
+          )}
+        >
+          Autopeças
+        </button>
+        <button
+          onClick={() => handleButtonClick('distribuidoras')}
+          className={cn(
+            'rounded-full bg-[#FFFFFF42] px-6 py-1 text-lg font-light uppercase text-white duration-500 hover:scale-95',
+            partnerType === 'distribuidoras'
+              ? 'bg-white text-black'
+              : 'bg-[#FFFFFF42] text-white',
+          )}
+        >
+          Distribuidoras
+        </button>
+        <button
+          onClick={() => handleButtonClick('mecanicas')}
+          className={cn(
+            'rounded-full bg-[#FFFFFF42] px-6 py-1 text-lg font-light uppercase text-white duration-500 hover:scale-95',
+            partnerType === 'mecanicas'
+              ? 'bg-white text-black'
+              : 'bg-[#FFFFFF42] text-white',
+          )}
+        >
+          Mecânicas
+        </button>
+      </div>
       <form
         onSubmit={(e) => handleSubmitForm(e)}
-        className="flex flex-col items-center gap-10"
+        className="flex flex-col items-end gap-10"
         encType="multipart/form-data"
       >
-        <div className="flex w-full flex-col">
-          <label className="text-lg font-bold capitalize" htmlFor="partnerType">
-            Tipo de parceiro
-          </label>
-          <select
-            id="partnerType"
-            className="appearance-none border bg-custom-arrow bg-[calc(100%-1rem)_center] bg-no-repeat px-4 py-2"
-            value={partnerType}
-            onChange={(e) => handlePartnerType(e.target.value)}
-          >
-            <option value="" disabled>
-              Área de Atuação
-            </option>
-            <option value="distribuidoras">Distribuidoras</option>
-            <option value="mecanicas">Mecânicas</option>
-            <option value="autopecas">Autopeças</option>
-          </select>
-        </div>
-
         {partnerType === 'distribuidoras' && (
           <FormDistributor
             setInputs={setInputs}
@@ -281,7 +302,7 @@ export default function RegisterForm() {
           <button
             type="submit"
             disabled={isSending}
-            className="rounded-full bg-[#22326e] px-20 py-2 text-2xl text-white duration-500 hover:scale-110 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100"
+            className="rounded-full bg-[#982225] px-6 py-1 font-light uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)] duration-500 hover:scale-95 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100"
           >
             {isSending ? 'Enviando...' : 'Enviar'}
           </button>

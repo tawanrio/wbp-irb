@@ -17,34 +17,36 @@ import Categoria from '@/components/Pages/Categoria'
 import Error from '@/components/Pages/Error'
 import BaixeNossoApp from '@/components/Pages/Baixe-nosso-app'
 import Service from '@/components/Pages/Service'
+import Educacional from '@/components/Pages/Educacional'
 
 import { getDataPage } from '@/service/model/routeOne'
 
-export default function index({ content }) {
+export default function index({ content, locale }) {
   const page = content?.page.label
   return (
     <>
       {content?.type === 'page' && (
         <>
-          {page === 'contato' && <Contato content={content} />}
+          {page === 'contato' && <Contato content={content} locale={locale} />}
           {page === 'trabalhe-conosco' && <TrabalheConosco content={content} />}
           {page === 'fabrica' && <Fabrica content={content} />}
           {page === 'distribuidoras' && <Distribuidoras content={content} />}
           {page === 'autopecas' && <Autopecas content={content} />}
           {page === 'mecanicas' && <AutocenterEMecanicas content={content} />}
           {page === 'parceiros' && <Parceiros content={content} />}
-          {page === 'Produtos' && <Produtos content={content} />}
+          {page === 'produtos' && <Produtos content={content} />}
           {page === 'registre-se' && <Register content={content} />}
           {page === 'baixe-nosso-app' && <BaixeNossoApp content={content} />}
           {(page === 'engraxamente-ead' ||
             page === 'engraxamente-day' ||
             page === 'conecta-irb' ||
             page === 'ecossistema-irb') && <Service content={content} />}
+          {page === 'educacional' && <Educacional content={content} />}
         </>
       )}
       {content?.type === 'category' && (
         <>
-          <Categoria content={content} />
+          <Categoria content={content} locale={locale} />
         </>
       )}
 
@@ -93,11 +95,12 @@ export default function index({ content }) {
 export const getServerSideProps = async (context) => {
   try {
     const resolvedUrl = context.resolvedUrl
-    const content = await getDataPage(resolvedUrl)
+    const content = await getDataPage(resolvedUrl, context.locale)
 
     return {
       props: {
         content,
+        locale: context.locale,
       },
     }
   } catch (error) {

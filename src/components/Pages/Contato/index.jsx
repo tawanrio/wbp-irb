@@ -1,40 +1,78 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// Template / Layout
-import Head from 'next/head'
+// Template
 import Templates from '@/components/Templates'
 
 // Components
-import BreadCrumb from '@/components/BreadCrumb'
-import LogoContact from '@/components/LogoContact'
 import Banner from '@/components/Banner/index'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
+import Description from './components/Description'
+import { Maps } from '@/components/Maps'
+import { FormContact } from './components/Form/'
+import { TellButton } from './components/TellButton'
+import Container from '@/components/Container'
 
-// Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db'
-import Page from '@/service/model/schemas/pageSchema'
-import { Menu } from '@/service/model/schemas/menuSchema'
-import { Template } from '@/service/model/schemas/templateSchema'
-import { Address } from '@/service/model/schemas/addressSchema'
-import { Products as ProductsDb } from '@/service/model/schemas/productsSchema'
+// Others
+import { useEffect, useState } from 'react'
+import Head from 'next/head'
+import { getGoogleMaps } from '@/utils/functions'
 
-// Context Api
-import { useState } from 'react'
-import ServiceAddress from '@/components/ServiceAddress'
-import ContactForm from './Forms'
-
-export default function Contato({ content }) {
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [description] = useState(content?.page.contentDescription)
-  const [logoContact] = useState(content?.page.logoContact)
-  const [arrButton] = useState(logoContact?.arrButton)
-
-  // const whatsappNumber = logoContact.button.whatsapp
-  // const phoneNumber = logoContact.button.phone
-  const address = content?.address.address.find(
-    (address) => address.label === 'default',
+export default function Contato({ content, locale }) {
+  const [metaTitle, setMetaTitle] = useState(content?.page.metaTitle)
+  const [metaDescription, setMetaDescription] = useState(
+    content?.page.metaDescription,
   )
+  const [title, setTitle] = useState(content?.page.title)
+  const [description, setDescription] = useState(
+    content?.page.contentDescription,
+  )
+  const [newDescription, setNewDescription] = useState(
+    content?.page.components.description,
+  )
+  const [logoContact, setLogoContact] = useState(
+    content?.page.components.logoContact,
+  )
+  const [arrButton, setArrButton] = useState(logoContact?.arrButton)
+  const [formDefault, setFormDefault] = useState(
+    content?.form?.forms.find((item) => item.label === 'default'),
+  )
+
+  useEffect(() => {
+    // Atualiza os estados quando 'locale' muda ou quando 'content' muda
+    if (content) {
+      setMetaTitle(content.page.metaTitle || '')
+      setMetaDescription(content.page.metaDescription || '')
+      setTitle(content.page.title || '')
+      setDescription(content.page.contentDescription || '')
+      setNewDescription(content.page.components.description || '')
+
+      const updatedLogoContact = content.page.components.logoContact || null
+      setLogoContact(updatedLogoContact)
+
+      if (updatedLogoContact) {
+        setArrButton(updatedLogoContact.arrButton || [])
+      }
+
+      setFormDefault(
+        content.form?.forms.find((item) => item.label === 'default') || null,
+      )
+    }
+  }, [locale, content]) // Monitora as mudanças em 'locale' e 'content'
+
+  const googleMapsUrl = getGoogleMaps(false)
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
+  console.log(content.page.banners)
 
   return (
     <>
@@ -47,17 +85,30 @@ export default function Contato({ content }) {
         template={content?.template}
         page={content?.page}
         menus={content?.menus}
+        banner={content.page.banners}
+        style={true}
       >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <LogoContact
-          logo={logoContact?.logo}
-          contentDescription={logoContact?.contentDescription}
-          title={logoContact?.title}
-          arrButton={arrButton}
-        />
-        <ServiceAddress products={content.categories} address={address} />
-        <ContactForm />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Banner banners={content?.page?.banners} page={content?.page} />
+          <Description content={newDescription} />
+          <TellButton buttons={arrButton} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <Container className="mt-5">
+            <h2 className="m-0 mb-10 w-full rounded-full bg-[#982225] px-2.5 py-1.5 text-center text-2xl font-normal uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)]">
+              {content?.page.components.address.title}
+            </h2>
+            <Maps
+              googleMapsUrl={googleMapsUrl}
+              collections={content?.page.components.address.addresses}
+              contact
+            />
+            <FormContact inputs={formDefault} />
+          </Container>
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

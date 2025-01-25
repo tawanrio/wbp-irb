@@ -14,6 +14,14 @@
   .hide-details-marker::-webkit-details-marker {
     display: none;
   }
+
+  .custom-link-container a {
+    @apply text-blue-600 underline hover:no-underline;
+  }
+
+  .custom-strong strong {
+    font-weight: 600;
+  }
 }
 
 #__next {
@@ -70,7 +78,20 @@ figure.wp-block-image {
 }
 
 section#register_ label {
-  color: #666 !important;
+  font-weight: 900;
+  color: #FFFFFF !important;
+}
+
+section#register_ input:not([type="file"], [type="checkbox"]) {
+  border: 1px solid #FFFFFF76;
+  background-color: #D9D9D9;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+
+section#register_ input[type="file"] {
+  color: #ffffff;
+  margin-top: 4px;
 }
 
 .text-outline {
@@ -173,4 +194,54 @@ input[data-autocompleted] {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* Banner HOME */
+
+.revolution-title {
+  display: block; /* Para garantir que cada span seja exibido em uma linha separada */
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: bold;
+  line-height: 1;
+  color: white;
+}
+
+/* Responsividade */
+@media (min-width: 640px) {
+  .revolution-title {
+    font-size: 3.75rem; /* sm:text-6xl */
+  }
+}
+
+@media (min-width: 768px) {
+  .revolution-title {
+    font-size: 4.5rem; /* md:text-7xl */
+  }
+}
+
+.revolution-subtitle {
+  font-family: 'Libre Baskerville', serif;
+  display: block;
+  font-size: 2.25rem; /* text-3xl */
+  line-height: 1;
+  color: white;
+}
+
+/* Responsividade */
+@media (min-width: 640px) {
+  .revolution-subtitle {
+    font-size: 4rem; /* sm:text-5xl */
+  }
+}
+
+@media (min-width: 768px) {
+  .revolution-subtitle {
+    font-size: 5rem; /* md:text-5xl */
+  }
+}
+
+.bold-text {
+  font-weight: bold;
 }

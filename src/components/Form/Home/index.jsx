@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react'
 import InputMask from 'react-input-mask'
 import { toast } from 'react-toastify'
-import { RESPONSE_MESSAGES } from '@/utils/constants'
 import 'react-toastify/dist/ReactToastify.css'
 import mechanic from '../../../../public/images/pages/autoparts/mechanic.png'
 import Image from 'next/image'
+import { useIntl } from 'react-intl'
 
 export const FormHome = ({ inputs }) => {
   const [name, setName] = useState('')
@@ -13,6 +13,8 @@ export const FormHome = ({ inputs }) => {
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
   const [isSending, setIsSending] = useState(false)
+  const intl = useIntl()
+  const messages = intl.messages
 
   const phoneRef = useRef(null)
 
@@ -52,13 +54,12 @@ export const FormHome = ({ inputs }) => {
         message,
       })
       if (!messageContact) {
-        throw new Error(RESPONSE_MESSAGES.error.emailJob)
+        throw new Error(messages['notifications.email.error.message'])
       }
-
-      toast.success(RESPONSE_MESSAGES.success)
+      toast.success(messages['notifications.email.success'])
       resetForm()
     } catch (error) {
-      toast.error(RESPONSE_MESSAGES.error)
+      toast.error(messages['notifications.email.error'])
     } finally {
       setIsSending(false)
     }
@@ -79,10 +80,10 @@ export const FormHome = ({ inputs }) => {
       <section className="flex flex-col items-center gap-12">
         <div className="flex w-full max-w-[505.91px] flex-col items-end">
           <h2 className="bg-[linear-gradient(90deg,#982225_0%,#22326E_100%)] bg-clip-text text-end text-4xl font-bold text-transparent sm:text-5xl md:text-6xl">
-            Entre em contato
+            {messages['component.home.form.titlel1']}
           </h2>
           <h3 className="bg-[linear-gradient(90deg,#982225_0%,#22326E_100%)] bg-clip-text text-end text-4xl font-bold !leading-[1.2] text-transparent sm:text-5xl md:text-6xl">
-            com a gente :{')'}
+            {messages['component.home.form.titlel2']} :{')'}
           </h3>
         </div>
         <form
@@ -96,7 +97,7 @@ export const FormHome = ({ inputs }) => {
                   htmlFor="nome"
                   className="text-lg font-black capitalize text-[#22326E]"
                 >
-                  Seu Nome
+                  {messages['component.home.form.name']}
                 </label>
                 <input
                   id="nome"
@@ -114,7 +115,7 @@ export const FormHome = ({ inputs }) => {
                   htmlFor="email"
                   className="text-lg font-black text-[#22326E]"
                 >
-                  E-mail
+                  {messages['component.home.form.email']}
                 </label>
                 <input
                   id="email"
@@ -132,7 +133,7 @@ export const FormHome = ({ inputs }) => {
                   htmlFor="phone"
                   className="text-lg font-black text-[#22326E]"
                 >
-                  Telefone ou WhatsApp
+                  {messages['component.home.form.tel']}
                 </label>
                 <InputMask
                   id="phone"
@@ -151,7 +152,7 @@ export const FormHome = ({ inputs }) => {
                   htmlFor="message"
                   className="text-lg font-black text-[#22326E]"
                 >
-                  Deixe sua Mensagem :{')'}
+                  {messages['component.home.form.message']}
                 </label>
                 <textarea
                   id="message"
@@ -171,7 +172,9 @@ export const FormHome = ({ inputs }) => {
             type="submit"
             className="rounded-full bg-[#982225] px-10 py-2 text-lg uppercase text-white shadow-[inset_0px_5.26px_5.26px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100"
           >
-            {isSending ? 'Enviando...' : 'Enviar'}
+            {isSending
+              ? messages['component.home.form.sending']
+              : messages['component.home.form.send']}
           </button>
         </form>
       </section>

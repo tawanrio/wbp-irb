@@ -1,31 +1,27 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
-import Banner from '@/components/Banner/index'
-import BreadCrumb from '@/components/BreadCrumb'
-
-// Database // Schema
-import { connectMongoDB, disconnectMongoDB } from '@/service/db'
-
-// Others
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-// import FormDistributor from './components/Forms/FormDistributor';
-import RegisterForm from './Forms'
 
 // Components
+import RegisterForm from './Forms'
+import { Utilities } from '../Home/components/Utilities'
+import { Info } from '@/components/Info'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
+
+// Others
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Register({ content }) {
   const router = useRouter()
-  const pageUrl = router.asPath.replace('/', '')
-  const [banners] = useState(content?.page.banners)
-  const [title] = useState(content?.page.title)
-  const [metaTitle] = useState(content?.page.metaTitle)
-  const [metaDescription] = useState(content?.page.metaDescription)
-  const [metaKeywords] = useState(content?.page?.metaKeywords)
+  const [fullUrl, setFullUrl] = useState('')
+
+  const { title, metaTitle, metaDescription, metaKeywords } =
+    content?.page || {}
 
   const inputs = {
     email: true,
@@ -34,6 +30,22 @@ export default function Register({ content }) {
     message: true,
   }
 
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
+
   return (
     <>
       <Head>
@@ -41,15 +53,29 @@ export default function Register({ content }) {
         <meta name="description" content={metaDescription} />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
         template={content?.template}
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={banners} />
-        <BreadCrumb />
-        <RegisterForm inputs={inputs} />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <RegisterForm title={content?.page?.mainTitle} inputs={inputs} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <Utilities />
+          {content?.page?.info?.length > 0 && (
+            <Info
+              info={content.page.info}
+              classNameTitle="w-full max-w-md"
+              classNameContainer="pb-24"
+            />
+          )}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

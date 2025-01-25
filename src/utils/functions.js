@@ -8,9 +8,6 @@ export function insertMenuInTemplate({
 }) {
   const menu = menus?.find((menu) => menu.label === menuName)
 
-  // console.log(menus);
-  // console.log(menuName);
-
   template
     ?.find((template) => template.label === templateName)
     .items.find((item) => {
@@ -86,16 +83,36 @@ export const truncateFileName = (filename, maxLength = 25) => {
   return truncatedName + ext
 }
 
-export const formatPhoneNumber = (str) => {
-  let cleaned = str.replace(/[^0-9]/g, '')
-  if (cleaned.startsWith('55')) {
-    cleaned = cleaned.slice(2)
+export const formatPhoneNumber = (phoneNumber) => {
+  const removeNonNumeric = (str) => str.replace(/[^0-9]/g, '')
+  const formatNumber = (areaCode, firstPart, secondPart) =>
+    `(${areaCode}) ${firstPart}-${secondPart}`
+
+  let cleanedNumber = removeNonNumeric(phoneNumber)
+
+  if (cleanedNumber.startsWith('55')) {
+    cleanedNumber = cleanedNumber.slice(2)
   }
-  if (cleaned.length === 11) {
-    const formatted = `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7)}`
-    return formatted
+
+  const length = cleanedNumber.length
+
+  if (length === 11) {
+    return formatNumber(
+      cleanedNumber.slice(0, 2),
+      cleanedNumber.slice(2, 7),
+      cleanedNumber.slice(7),
+    )
   }
-  return str
+
+  if (length === 10) {
+    return formatNumber(
+      cleanedNumber.slice(0, 2),
+      cleanedNumber.slice(2, 6),
+      cleanedNumber.slice(6),
+    )
+  }
+
+  return phoneNumber
 }
 
 export function formatToViewPhone(numero) {
@@ -108,7 +125,7 @@ export function formatToViewPhone(numero) {
     return `(${numero.slice(0, 2)}) ${numero.slice(2, 6)}-${numero.slice(6)}`
   } else if (numero.length === 11) {
     // Formato (xx) x-xxxx-xxxx
-    return `(${numero.slice(0, 2)}) ${numero.slice(2, 3)}-${numero.slice(3, 7)}-${numero.slice(7)}`
+    return `(${numero.slice(0, 2)}) ${numero.slice(2, 3)} ${numero.slice(3, 7)}-${numero.slice(7)}`
   } else {
     // Retorna o número original se ele não tiver 10 ou 11 dígitos
     return numero
@@ -161,7 +178,7 @@ export function updateMetatitleGeoRouteThree(metatitle, geoName) {
 
 export const generateActionsLink = (cnpj, uniqueId) => {
   const cleanedCnpj = cnpj.replace(/\D/g, '')
-  console.log(uniqueId)
+
   const domain = window.location.origin
 
   const accept = `${domain}/registerpartner/actions/${cleanedCnpj}/accept/${uniqueId} `
@@ -284,4 +301,16 @@ export const formatTitle = (title) => {
     .split(' ')
     .join('-')
     .trim()
+}
+
+export const getGoogleMaps = (address) =>
+  `https://www.google.com/maps?q=${encodeURIComponent(address || 'Rua Lilases, 61 - Vila Clementino - São Paulo - Brasil')}&output=embed`
+
+export const resolveImageUrl = (url) => {
+  const sanitizedUrl = url.replace(/\(/g, '%28').replace(/\)/g, '%29')
+  const isExternal = sanitizedUrl.startsWith('http')
+
+  return isExternal
+    ? sanitizedUrl
+    : `${process.env.NEXT_PUBLIC_DOMAIN}${sanitizedUrl}`
 }

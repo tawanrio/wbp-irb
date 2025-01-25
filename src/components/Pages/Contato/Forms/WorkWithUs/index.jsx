@@ -51,7 +51,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
       <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="fullName">
             Nome completo
           </label>
@@ -64,9 +64,9 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="email">
             E-mail
           </label>
@@ -79,9 +79,9 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
             Telefone
           </label>
@@ -95,9 +95,9 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Anexar currículo
           </label>
@@ -112,7 +112,7 @@ export default function FormWorkWithUs({ setFormData, resetInputs }) {
           <span className="mt-1 text-sm text-slate-400">
             Formatos suportados: PDF; Tamanho máximo do arquivo: 5MB.
           </span>
-        </div>
+        </fieldset>
       </div>
 
       <InputsAddress setAddress={setAddress} resetInputs={resetInputs} />

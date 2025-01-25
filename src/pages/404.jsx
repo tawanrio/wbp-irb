@@ -29,17 +29,17 @@ const routeError = async () => {
     menus: menus && JSON.parse(JSON.stringify(menus)),
   }
 }
-const getData404 = async () => {
+const getData404 = async (locale) => {
   try {
-    await connectMongoDB()
+    await connectMongoDB(locale)
     return await routeError()
   } finally {
     disconnectMongoDB()
   }
 }
 
-export const getStaticProps = async () => {
-  const content = await getData404()
+export const getStaticProps = async ({ locale }) => {
+  const content = await getData404(locale)
 
   return {
     props: {

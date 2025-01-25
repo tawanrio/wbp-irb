@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { cn } from '@/utils/cn'
-import { COMPANY_CORE_VALUES } from '@/utils/constants'
 import Image from 'next/image'
+import { cn } from '@/utils/cn'
 
-export const CompanyValuesNew = () => {
+export const CompanyValuesNew = ({ content }) => {
   const [expandedCard, setExpandedCard] = useState(null)
 
   const handleMouseEnter = (index) => {
@@ -20,7 +19,7 @@ export const CompanyValuesNew = () => {
       className="mx-auto my-14 flex w-full max-w-7xl flex-row items-center px-6 md:px-14"
     >
       <ul className="flex w-full flex-col justify-center gap-8 lg:flex-row">
-        {COMPANY_CORE_VALUES.map((card, index) => (
+        {content.map((card, index) => (
           <li
             key={index}
             style={{
@@ -51,9 +50,9 @@ export const CompanyValuesNew = () => {
               <div className="mt-4 transform px-5 text-center font-light text-white transition-all duration-500 ease-in-out">
                 <ul
                   className="list-inside opacity-0 duration-500 group-hover:opacity-100"
-                  style={{ listStyle: card.content?.listStyle }}
+                  style={{ listStyle: card.content.listStyle }}
                 >
-                  {card.content.description.map((text, tId) => (
+                  {card.content.descriptions.map((text, tId) => (
                     <li
                       key={tId}
                       id="description_"

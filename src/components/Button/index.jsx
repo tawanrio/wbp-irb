@@ -15,6 +15,7 @@ export default function ButtonTell({ phone, whatsapp }) {
     <Link
       href={href}
       target="_blank"
+      rel="noopener"
       style={styles}
       className="flex h-[3.875rem] flex-1 flex-row items-center gap-4 rounded-2xl bg-slate-800 px-5 py-2 duration-500 hover:scale-105 md:h-[4.375rem] md:py-4"
     >

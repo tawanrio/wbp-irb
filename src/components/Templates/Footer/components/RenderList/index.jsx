@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import { RenderListItem } from './RenderListItem'
-import logo from '../../../../../../public/images/templates/header/logo-white.svg'
+import logoLocal from '../../../../../../public/images/templates/header/logo-white.svg'
 
-export default function RenderList({ nav, colors, certificates }) {
+export default function RenderList({ nav, colors, certificates, logo }) {
+  const newNav = nav?.filter((item) => item?.links?.length > 0)
+
   return (
     <div className="flex flex-1 flex-col max-sm:gap-y-5">
       <ul className="flex flex-1 flex-col justify-between sm:flex-row">
-        {nav?.map((items, ulId) => (
+        {newNav.map((items, ulId) => (
           <li
             key={ulId}
             className="mb-6 flex-1 font-light md:mx-3 md:flex-1 md:first:ml-0"
@@ -40,8 +42,8 @@ export default function RenderList({ nav, colors, certificates }) {
         </figure>
 
         <Image
-          src={logo}
-          alt="Logo IRB Automovite"
+          src={logo?.url || logoLocal}
+          alt={logo?.url || 'Logo IRB Automovite'}
           width={156}
           height={141.24}
           className="w-[143.37px] lg:mr-24 lg:w-[156px]"

@@ -9,7 +9,7 @@ import Templates from '@/components/Templates'
 
 // Components
 import PartnersButton from './components/PartnersButton'
-import UtilityCards from './components/UtilityCards'
+import { Utilities } from './components/Utilities'
 import { BlogCarousel } from './components/BlogCarousel'
 import ServicesOverview from './components/ServicesOverview'
 import { FormHome } from '@/components/Form/Home'
@@ -38,6 +38,10 @@ export default function Home({ content }) {
   const [metaKeywords] = useState(content?.page?.metaKeywords)
   const [description] = useState(content?.page?.contentDescription)
   const [banners] = useState(content?.page?.banners)
+  const [serviceOverview] = useState(
+    content?.page?.components.servicesOverviewNew,
+  )
+  const [utilities] = useState(content?.page?.components.utilities)
   const [formDefault] = useState(
     content?.form?.forms.find((item) => item.label === 'default'),
   )
@@ -98,7 +102,7 @@ export default function Home({ content }) {
       >
         <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
           <Header content={header} page={content?.page?.label} />
-          <ServicesOverview />
+          <ServicesOverview content={serviceOverview} />
           <ListProduct categories={sortedCategories} />
           {isMobile ? (
             <BannerMobile banners={banners} />
@@ -108,7 +112,7 @@ export default function Home({ content }) {
         </BackgroundImageFirst>
         <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
           <PartnersButton />
-          <UtilityCards />
+          <Utilities utilities={utilities} />
           <BlogCarousel posts={posts} />
           <FormHome inputs={formDefault} />
           <Footer content={footer} />
@@ -117,41 +121,4 @@ export default function Home({ content }) {
       </Templates>
     </>
   )
-}
-
-async function getDataPage() {
-  try {
-    await connectMongoDB()
-
-    const page = await Page.findOne({ label: 'home' }).lean()
-    const menus = await Menus.find().lean()
-    const template = await Template.find()
-    const partners = await SchemaCategories.findOne({
-      label: 'partners',
-    }).lean()
-    const categories = await CategoriesProducts.find().lean()
-    const form = await FormDb.findOne({ label: 'form' }).lean()
-
-    return {
-      page: JSON.parse(JSON.stringify(page)),
-      partners: JSON.parse(JSON.stringify(partners)),
-      categories: JSON.parse(JSON.stringify(categories)),
-      form: JSON.parse(JSON.stringify(form)),
-      template: JSON.parse(JSON.stringify(template)),
-      menus: JSON.parse(JSON.stringify(menus)),
-    }
-  } finally {
-    disconnectMongoDB()
-  }
-}
-
-export async function getStaticProps() {
-  const content = await getDataPage()
-
-  return {
-    props: {
-      content,
-    },
-    revalidate: 3600,
-  }
 }

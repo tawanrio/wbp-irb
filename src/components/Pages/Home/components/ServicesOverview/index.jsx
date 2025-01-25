@@ -1,13 +1,8 @@
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
-import {
-  SERVICE_ADVANTAGES,
-  QUALITY_CERTIFICATIONS,
-  NAVIGATION_LINKS,
-} from '@/utils/constants'
 import { LinkRed } from '@/components/LinkRed'
 
-export default function ServicesOverview() {
+export default function ServicesOverview({ content }) {
   return (
     <section
       id="blog-carousel"
@@ -15,7 +10,7 @@ export default function ServicesOverview() {
     >
       <div className="space-y-4">
         <div className="flex justify-end gap-1.5">
-          {QUALITY_CERTIFICATIONS?.map((icon, indexIcon) => (
+          {content.certifications?.map((icon, indexIcon) => (
             <figure key={indexIcon}>
               <Image
                 src={icon.url}
@@ -31,17 +26,13 @@ export default function ServicesOverview() {
             </figure>
           ))}
         </div>
-        <div>
-          <h1 className="font-['Libre_Baskerville'] text-4xl font-bold text-white sm:text-6xl md:text-7xl">
-            Revolucionando
-          </h1>
-          <h2 className="text-3xl !font-thin text-white sm:text-5xl md:text-5xl">
-            o mercado de <strong className="font-bold">autopeças</strong>
-          </h2>
-        </div>
+        <h1
+          className="revolution-subtitle flex flex-col"
+          dangerouslySetInnerHTML={{ __html: content.title }}
+        ></h1>
       </div>
       <ul className="mb-4 mt-7 flex w-full flex-row flex-wrap items-center justify-center gap-5 sm:gap-7">
-        {NAVIGATION_LINKS.map((link, index) => (
+        {content.links.map((link, index) => (
           <li key={index} className="flex w-full max-w-[220px]">
             <LinkRed
               href={link.href}
@@ -54,7 +45,7 @@ export default function ServicesOverview() {
         ))}
       </ul>
       <ul className="mx-auto flex flex-row flex-wrap justify-center gap-5 lg:gap-14">
-        {SERVICE_ADVANTAGES.map((card, index) => (
+        {content.advantages.map((card, index) => (
           <li
             key={index}
             className="flex w-full max-w-80 flex-col gap-3 rounded-3xl border border-solid border-[#FFFFFF4D] bg-[#D9D9D91A] p-10"

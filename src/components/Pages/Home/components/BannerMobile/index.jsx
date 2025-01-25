@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { LinkRed } from '@/components/LinkRed'
 
 export const BannerMobile = ({ banners }) => {
-  console.log(banners)
   return (
     <section className="relative" id="banner_">
       {banners?.linksHeader?.length > 0 && (
@@ -17,6 +16,7 @@ export const BannerMobile = ({ banners }) => {
                 color: button.colors.text,
               }}
               target="_blank"
+              rel="noopener"
               className="mx-auto w-full max-w-[281px]"
             >
               {button.name}
@@ -48,6 +48,7 @@ export const BannerMobile = ({ banners }) => {
                   color: button.colors.text,
                 }}
                 target="_blank"
+                rel="noopener"
                 className="mx-auto w-full max-w-[276.35px] rounded-full px-4 py-2 text-center text-xl font-normal shadow-[0px_3.55px_3.55px_rgba(0,0,0,0.25)] transition-all duration-200 hover:scale-95 sm:mx-0"
               >
                 {button.name}

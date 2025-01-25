@@ -1,22 +1,23 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // Template
-import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import ContentDescription from '@/components/ContentDescription'
-import Title from '@/components/Title'
-import Banner from '@/components/Banner/index'
-import BreadCrumb from '@/components/BreadCrumb'
+import { Title } from './components/Title'
+import { Subtitle } from './components/Subtitle'
 import SearchPartners from '@/components/SearchPartners'
-import PartnersButton from '../Home/components/PartnersButton'
+import { ListProducts } from '../Produtos/components/ListProducts'
 import { Info } from '@/components/Info'
 import { CommonQuestions } from '@/components/CommonQuestions'
-import CategoryGrid from '@/components/CategoryGrid'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
 
 // Others
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function Produto({ content }) {
   const router = useRouter()
@@ -24,11 +25,7 @@ export default function Produto({ content }) {
   pageUrl = pageUrl[pageUrl.length - 1]
 
   const [fullUrl, setFullUrl] = useState('')
-  const [product, setProduct] = useState(content?.arrRoute)
-  const [arrRoute, setArrRoute] = useState(content?.arrRoute)
-  const [partnerDescription, setPartnerDescription] = useState(
-    content?.category?.partner?.description,
-  )
+  const [arrRoute] = useState(content?.arrRoute)
   const [metaTitle, setMetaTitle] = useState(
     content?.category?.partner?.metaTitle,
   )
@@ -60,8 +57,16 @@ export default function Produto({ content }) {
     partnerName = { title: 'Fábricas' }
   }
 
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
+  )
+
   useEffect(() => {
-    setProduct(content.categories)
     setMetaTitle(content?.category?.partner?.metaTitle)
     setMetaDescription(
       content?.category?.metaDescription[0]
@@ -100,27 +105,38 @@ export default function Produto({ content }) {
         page={content?.page}
         menus={content?.menus}
       >
-        <Banner banners={content?.category.banners} />
-        <BreadCrumb />
-        <Title title={content?.category?.partner.title} />
-        <ContentDescription content={partnerDescription} />
-        <SearchPartners
-          geo={content?.geo}
-          title={`Encontre um(a) ${partnerName.title}`}
-          arrRoute={content?.arrRoute}
-          collections={content?.collection}
-          products={content?.products}
-          hiddenProductSearch
-        />
-        <CategoryGrid categories={content?.categories} />
-        <PartnersButton />
-        {content?.category?.partner?.info?.length > 0 && (
-          <Info info={content.category.partner.info} />
-        )}
-        {content?.category?.partner?.faq &&
-          Object.entries(content.category.partner.faq).length > 0 && (
-            <CommonQuestions faq={content.category.partner.faq} />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <Title title={content?.category?.partner?.title} />
+          <Subtitle subtitle={content?.page?.mainTitles?.subtitle} />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          <SearchPartners
+            geo={content?.geo}
+            title={`Encontre um(a) ${partnerName.title}`}
+            arrRoute={content?.arrRoute}
+            collections={content?.collection}
+            products={content?.products}
+            hiddenProductSearch
+          />
+          <ListProducts
+            products={content?.categories.map((category) => ({
+              ...category,
+              label: `${content?.arrRoute[0]}/${category.label}`,
+            }))}
+            className="text-black"
+            classNameLink="border-[#0000004D]"
+          />
+          {content?.category?.partner?.info?.length > 0 && (
+            <Info info={content.category.partner.info} />
           )}
+          {content?.category?.partner?.faq &&
+            Object.entries(content.category.partner.faq).length > 0 && (
+              <CommonQuestions faq={content.category.partner.faq} />
+            )}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

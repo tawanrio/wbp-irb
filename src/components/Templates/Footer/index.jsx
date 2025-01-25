@@ -1,16 +1,9 @@
 import { useState } from 'react'
 import Image from 'next/image'
-import { Rubik } from 'next/font/google'
 import RenderList from './components/RenderList'
 import SocialMidia from './components/SocialMidia'
 import { ButtonWhatsapp } from '@/components/ButtonWhatsapp'
 import { cn } from '@/utils/cn'
-
-const rubik = Rubik({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-rubik',
-})
 
 export default function Footer({ content }) {
   const [whatsapp, setWhatsapp] = useState(null)
@@ -25,11 +18,15 @@ export default function Footer({ content }) {
     >
       <div
         className={cn(
-          'relative mx-auto flex flex-col gap-1 gap-y-7 py-6 font-rubik md:max-w-7xl md:justify-between md:py-12 lg:flex-row',
-          rubik.variable,
+          'mx-auto flex flex-col gap-1 gap-y-7 py-6 md:max-w-7xl md:justify-between md:py-12 lg:flex-row',
         )}
       >
-        <RenderList nav={nav} colors={colors} certificates={certificates} />
+        <RenderList
+          nav={nav}
+          colors={colors}
+          certificates={certificates}
+          logo={dataFooter?.logo}
+        />
 
         <div className="mx-auto flex w-full max-w-[15rem] flex-col items-center gap-6 lg:mx-3 lg:flex-1 lg:items-start lg:last:mr-0">
           <div className="flex flex-col items-center gap-7 lg:items-start lg:gap-5">

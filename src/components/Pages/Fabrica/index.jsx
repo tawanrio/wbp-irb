@@ -1,6 +1,3 @@
-// SEO
-import Head from 'next/head'
-
 // Template / Layout
 import Templates from '@/components/Templates'
 
@@ -16,24 +13,39 @@ import Header from '@/components/Templates/Header'
 import Footer from '@/components/Templates/Footer'
 import Copyright from '@/components/Templates/Copyright'
 
+// Others
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
+
 export default function Fabrica({ content }) {
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
+
+  const { template, page, menus } = content || {}
   const {
     title,
     contentDescriptionRedesign: description,
     metaTitle,
     metaDescription,
     metaKeywords,
-    events,
-  } = content?.page
+    banners,
+    backgroundImages,
+    label,
+    components: { video, info, companyValues, events, descriptions, gallery },
+  } = page || {}
 
-  const arrHeader = content?.template?.find((item) => item?.label === 'header')
-  const header = arrHeader?.items.find(
-    (item) => item?.label === 'redesign-home',
-  )
-  const footer = content?.template?.find((item) => item?.label === 'footer')
-  const copyright = content?.template?.find(
-    (item) => item?.label === 'copyright',
-  )
+  const arrHeader = template.find((item) => item.label === 'header')
+  const header = arrHeader.items.find((item) => item.label === 'redesign-home')
+  const footer = template.find((item) => item.label === 'footer')
+  const copyright = template.find((item) => item.label === 'copyright')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
 
   return (
     <>
@@ -42,25 +54,26 @@ export default function Fabrica({ content }) {
         <meta name="description" content={metaDescription || description} />
         <meta name="keywords" content={metaKeywords || ''} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
       <Templates
-        template={content?.template}
-        page={content?.page}
-        menus={content?.menus}
-        banner={content.page.banners}
+        template={template}
+        page={page}
+        menus={menus}
+        banner={banners}
         style={true}
       >
-        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
-          <Header content={header} page={content?.page?.label} />
-          <Infos />
-          <Gallery />
-          <CompanyValuesNew />
+        <BackgroundImageFirst backgrounds={backgroundImages}>
+          <Header content={header} page={label} />
+          <Infos info={info} video={video} />
+          <Gallery gallery={gallery} />
+          <CompanyValuesNew content={companyValues} />
           <ContentDescription
-            content={description}
+            content={descriptions}
             className="mt-16 pb-10 sm:pb-20"
           />
         </BackgroundImageFirst>
-        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+        <BackgroundImageLast backgrounds={backgroundImages}>
           <CarouselEvent events={events} />
           <Footer content={footer} />
           <Copyright content={copyright} />

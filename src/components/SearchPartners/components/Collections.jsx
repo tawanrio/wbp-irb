@@ -1,11 +1,9 @@
 /* eslint-disable array-callback-return */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Card from './Card'
-import { formatStrToUrl } from '@/utils/functions'
-import { cn } from '@/utils/cn'
+import { formatStrToUrl, getGoogleMaps } from '@/utils/functions'
+import { Maps } from '@/components/Maps'
 import 'tailwindcss/tailwind.css'
 
 const Collection = ({
@@ -41,8 +39,6 @@ const Collection = ({
       }
     })
 
-  const itemsPerPage = 6
-  const [currentPage, setCurrentPage] = useState(1)
   const [selectedState, setSelectedState] = useState(stateMatch || '')
   const [selectedCity, setSelectedCity] = useState('')
   const [selectedProduct, setSelectedProduct] = useState('')
@@ -75,7 +71,7 @@ const Collection = ({
     let cities = []
     collections &&
       collections?.map((partner) => {
-        partner.geo?.states.find((state) => {
+        partner.geo?.states.find(() => {
           geo.states.map((state) => {
             if (selectedState === state.name) {
               cities = state.cities.map((city) => city)
@@ -87,31 +83,18 @@ const Collection = ({
     return [...new Set(cities)].sort()
   }, [collections, selectedState, geo.states])
 
-  const indexOfLastItem = currentPage * itemsPerPage
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = collections?.slice(indexOfFirstItem, indexOfLastItem)
-
-  const totalPages = Math.ceil(collections?.length / itemsPerPage)
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page)
-  }
-
   const handleStateChange = (event) => {
     const newState = event.target?.value
     setSelectedState(newState)
     setSelectedCity('')
-    setCurrentPage(1)
   }
 
   const handleCityChange = (event) => {
     setSelectedCity(event.target?.value)
-    setCurrentPage(1)
   }
 
   const handleProductChange = (event) => {
     setSelectedProduct(event.target.value)
-    setCurrentPage(1)
   }
 
   const generateUrlGeo = (geo) => {
@@ -126,12 +109,7 @@ const Collection = ({
     return `/${arrUrl[0]}`
   }
 
-  const getPaginationGroup = () => {
-    const start = Math.floor((currentPage - 1) / 3) * 3
-    return new Array(Math.min(3, totalPages - start))
-      .fill()
-      .map((_, idx) => start + idx + 1)
-  }
+  const googleMapsUrl = getGoogleMaps(selectedCity || selectedState)
 
   return (
     <div className="flex flex-col gap-10">
@@ -208,46 +186,7 @@ const Collection = ({
         </div>
       </div>
 
-      <ul className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
-        {currentItems?.map((collection, index) => (
-          <li key={index}>
-            <Card collection={collection} />
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-4 flex justify-center">
-        {currentPage > 1 && (
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            className="mx-1 rounded bg-gray-200 px-3 py-2 text-gray-700"
-          >
-            &lt;
-          </button>
-        )}
-        {getPaginationGroup().map((pageNumber) => (
-          <button
-            key={pageNumber}
-            onClick={() => handlePageChange(pageNumber)}
-            className={cn(
-              'mx-1 rounded px-3 py-2',
-              currentPage === pageNumber
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-200 text-gray-700',
-            )}
-          >
-            {pageNumber}
-          </button>
-        ))}
-        {currentPage < totalPages && (
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            className="mx-1 rounded bg-gray-200 px-3 py-2 text-gray-700"
-          >
-            &gt;
-          </button>
-        )}
-      </div>
+      <Maps googleMapsUrl={googleMapsUrl} collections={collections} />
     </div>
   )
 }

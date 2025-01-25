@@ -1,32 +1,44 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 // Template
-import Head from 'next/head'
 import Templates from '@/components/Templates'
 
 // Components
-import Title from '@/components/Title'
-import BreadCrumb from '@/components/BreadCrumb'
-import ImgCatalogDescription from '@/components/ImgCatalogDescription'
+import { ContentProduct } from './components/ContentProduct'
+import { Utilities } from '../Home/components/Utilities'
+import { ListProduct } from './components/ListProduct'
+// import { Info } from '@/components/Info'
+// import { CommonQuestions } from '@/components/CommonQuestions'
+import { BackgroundImageFirst } from '@/components/BackgroundImage/first'
+import { BackgroundImageLast } from '@/components/BackgroundImage/last'
+import Header from '@/components/Templates/Header'
+import Footer from '@/components/Templates/Footer'
+import Copyright from '@/components/Templates/Copyright'
+import Ebooks from './components/Ebooks'
 
 // Others
 import { useEffect, useState } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Ebooks from './components/Ebooks'
-import ContentImgHTMLDesc from './components/ContentImgHTMLDesc'
-import PartnersButton from '../Home/components/PartnersButton'
-import UtilityCards from '../Home/components/UtilityCards'
-import { Info } from '@/components/Info'
-import { PRODUCT_CATALOG_DETAILS } from '@/utils/constants'
-import { CommonQuestions } from '@/components/CommonQuestions'
 
-export default function Categoria({ content }) {
-  const route = useRouter()
-  let pageUrl = route.asPath.split('/')
-  pageUrl = pageUrl[pageUrl.length - 1]
-
+export default function Categoria({ content, locale }) {
+  const router = useRouter()
+  const [fullUrl, setFullUrl] = useState('')
   const [category, setCategory] = useState(content?.category)
   const [metaDescription, setMetaDescription] = useState(
     content?.category?.metaDescription,
+  )
+  const [utilities, setUutilities] = useState(
+    content?.page?.components.utilities,
+  )
+  let pageUrl = router.asPath.split('/')
+  pageUrl = pageUrl[pageUrl.length - 1]
+
+  const arrHeader = content?.template?.find((item) => item?.label === 'header')
+  const header = arrHeader?.items.find(
+    (item) => item?.label === 'redesign-home',
+  )
+  const footer = content?.template?.find((item) => item?.label === 'footer')
+  const copyright = content?.template?.find(
+    (item) => item?.label === 'copyright',
   )
 
   useEffect(() => {
@@ -36,7 +48,18 @@ export default function Categoria({ content }) {
         .replace('{{geoName}}', '')
         .replace(/\s+\. /g, '. '),
     )
-  }, [pageUrl])
+  }, [content.category, pageUrl])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = window.location.href
+      setFullUrl(url)
+    }
+  }, [router])
+
+  useEffect(() => {
+    setUutilities(content?.page?.components.utilities)
+  }, [locale, content])
 
   return (
     <>
@@ -47,6 +70,7 @@ export default function Categoria({ content }) {
           content={metaDescription || category?.contentDescription}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={fullUrl} />
       </Head>
 
       <Templates
@@ -55,23 +79,34 @@ export default function Categoria({ content }) {
         menus={content?.menus}
         banner={content?.category?.banners}
       >
-        <BreadCrumb />
-        <Title title={category?.title} />
-        <ContentImgHTMLDesc
-          textHTML={category.description}
-          image={category.thumbnail}
-        />
-        <ImgCatalogDescription content={PRODUCT_CATALOG_DETAILS} />
-        {content.category.ebook && <Ebooks ebooks={content.category.ebook} />}
-        <PartnersButton partners={content?.partners?.types} />
-        <UtilityCards />
-        {content?.category?.info?.length > 0 && (
-          <Info info={content.category.info} />
-        )}
-        {content?.category?.faq &&
-          Object.entries(content.category.faq).length > 0 && (
-            <CommonQuestions faq={content.category.faq} />
+        <BackgroundImageFirst backgrounds={content?.page?.backgroundImages}>
+          <Header content={header} page={content?.page?.label} />
+          <ContentProduct
+            category={category}
+            technicalSheet={content?.page?.components.technicalSheet}
+          />
+        </BackgroundImageFirst>
+        <BackgroundImageLast backgrounds={content?.page?.backgroundImages}>
+          {content?.products.length > 0 && (
+            <ListProduct
+              products={content?.products.map((product) => ({
+                ...product,
+                label: `${content?.category?.label}/${product.label}`,
+              }))}
+            />
           )}
+          <Ebooks ebooks={content?.category?.ebook} />
+          <Utilities utilities={utilities} className="pb-20" />
+          {/* {content?.category?.info?.length > 0 && (
+            <Info info={content.category.info} classNameContainer="pb-20" />
+          )} */}
+          {/* {content?.category?.faq &&
+            Object.entries(content.category.faq).length > 0 && (
+              <CommonQuestions faq={content.category.faq} />
+            )} */}
+          <Footer content={footer} />
+          <Copyright content={copyright} />
+        </BackgroundImageLast>
       </Templates>
     </>
   )

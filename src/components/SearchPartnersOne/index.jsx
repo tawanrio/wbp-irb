@@ -14,11 +14,10 @@ export default function SearchPartners({
 }) {
   return (
     <article
+      id="content-img-description_"
       className="flex flex-col items-center"
-      id={`content-img-description_`}
     >
       <div className="my-4 flex w-full max-w-7xl flex-col px-6 md:my-10 md:justify-between md:gap-10 md:px-14">
-        {title && <SectionTitle title={title} line />}
         {collections.length > 0 ? (
           <Collections
             geo={geo}

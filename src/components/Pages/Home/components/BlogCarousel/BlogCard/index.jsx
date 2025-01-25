@@ -1,28 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { formatTitle, getUrlImage, sanitizeHtml } from '@/utils/functions'
+import { formatTitle } from '@/utils/functions'
 import { cn } from '@/utils/cn'
 
 export const BlogCard = ({ post }) => {
-  const [sanitizedExcerpt, setSanitizedExcerpt] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
-  const imageUrl = getUrlImage(post)
-  const formattedTitle = formatTitle(post?.title?.rendered)
-
-  useEffect(() => {
-    if (post?.excerpt?.rendered) {
-      setSanitizedExcerpt(sanitizeHtml(post.excerpt.rendered))
-    }
-  }, [post])
+  // const imageUrl = getUrlImage(post)
+  const formattedTitle = formatTitle(post?.title)
 
   return (
     <div className="flex flex-col items-start justify-start overflow-hidden pb-1.5">
       <figure className="relative h-[285.96px] w-full">
         <Image
-          src={imageUrl}
-          alt={post?.title?.rendered}
+          src={post.featuredImg.url}
+          alt={post?.title}
           width={350}
           height={285.96}
           priority
@@ -36,11 +29,11 @@ export const BlogCard = ({ post }) => {
       </figure>
       <section className="flex flex-grow flex-col items-start justify-between gap-6 px-4 pt-6">
         <h3 className="line-clamp-2 text-2xl font-black text-[#982225]">
-          {post?.title?.rendered}
+          {post?.title}
         </h3>
         <p
           className="line-clamp-4 text-lg font-thin text-[#222]"
-          dangerouslySetInnerHTML={{ __html: sanitizedExcerpt }}
+          dangerouslySetInnerHTML={{ __html: post.contentHTML }}
         />
         <Link
           href={`blog/${formattedTitle}`}

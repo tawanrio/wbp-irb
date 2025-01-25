@@ -72,23 +72,22 @@ export default function FormDistributor({
 
   return (
     <div className="flex w-full flex-col justify-between gap-2 md:my-0 md:gap-2 md:px-0">
-      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
-        <div className="mt-2 flex flex-col">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="companyName">
             Razão social
           </label>
           <input
             id="companyName"
             type="text"
-            placeholder="Razão social"
             required
             className="border px-4 py-2"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="tradingName">
             Nome fantasia
           </label>
@@ -96,13 +95,12 @@ export default function FormDistributor({
             id="tradingName"
             type="text"
             required
-            placeholder="Nome fantasia"
             className="border px-4 py-2"
             value={tradingName}
             onChange={(e) => settradingName(e.target.value)}
           />
-        </div>
-        <div className="mt-2 flex flex-col">
+        </fieldset>
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="cnpj">
             CNPJ
           </label>
@@ -111,14 +109,13 @@ export default function FormDistributor({
             mask="99.999.999/9999-99"
             ref={cnpjRef}
             required
-            placeholder="CNPJ"
             className="border px-4 py-2"
             value={cnpj}
             onChange={(e) => setCnpj(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="email">
             E-mail
           </label>
@@ -126,14 +123,13 @@ export default function FormDistributor({
             id="email"
             type="email"
             required
-            placeholder="E-mail"
             className="border px-4 py-2"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="phone">
             Telefone
           </label>
@@ -142,14 +138,13 @@ export default function FormDistributor({
             mask="(99) 99999-9999"
             ref={phoneRef}
             required
-            placeholder="Telefone"
             className="border px-4 py-2"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
-        </div>
+        </fieldset>
 
-        <div className="mt-2 flex flex-col">
+        <fieldset className="mt-2 flex flex-col">
           <label className="text-lg font-bold" htmlFor="logo">
             Anexar logomarca
           </label>
@@ -165,7 +160,7 @@ export default function FormDistributor({
             Formatos suportados: JPEG, PNG; Dimensões: 400x200 pixels; Tamanho
             máximo do arquivo: 3MB.
           </span>
-        </div>
+        </fieldset>
       </div>
 
       <InputsAddress setAddress={setAddress} resetInputs={resetInputs} />
