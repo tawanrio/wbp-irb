@@ -75,7 +75,7 @@ export default function Home({ content }) {
           <Header content={header} page={content?.page?.label} />
           <ServicesOverview content={serviceOverview} />
           <ContentProduct
-            category={content.categories[0]}
+            category={content?.categories[0]}
             technicalSheet={content?.page?.components.technicalSheet}
           />
         </BackgroundImageFirst>

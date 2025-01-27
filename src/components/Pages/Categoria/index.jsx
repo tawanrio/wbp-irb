@@ -20,6 +20,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 export default function Categoria({ content, locale }) {
+  console.log(content)
+
   const router = useRouter()
   const [fullUrl, setFullUrl] = useState('')
   const [category, setCategory] = useState(content?.category)

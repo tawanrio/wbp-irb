@@ -33,7 +33,7 @@ export default function Nav({ content }) {
         style={{
           ...(menuOpen && { opacity: '1', zIndex: '10' }),
           background: menuOpen && colors.bg,
-          color: colors.text,
+          color: colors?.text,
         }}
         className={cn(
           'absolute right-14 top-24 mt-8 flex w-7/12 flex-col rounded-lg p-4 capitalize opacity-0 backdrop-blur-md duration-500 lg:relative lg:right-0 lg:top-0 lg:z-50 lg:mt-0 lg:w-full lg:flex-row lg:items-center lg:justify-end lg:gap-0 lg:p-0 lg:opacity-100 lg:backdrop-blur-none',

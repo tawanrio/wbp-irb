@@ -10,7 +10,7 @@ export function insertMenuInTemplate({
 
   template
     ?.find((template) => template.label === templateName)
-    .items.find((item) => {
+    ?.items?.find((item) => {
       if (item.label === itemTemplateName) {
         if (!Array.isArray(item.nav)) {
           item.nav = []

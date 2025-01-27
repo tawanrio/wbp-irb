@@ -83,7 +83,7 @@ export default function Templates({ children, template, page, menus }) {
       <CookiePopup />
       <ToastContainer />
       <LanguageSwitcher />
-      <Header content={header} page={page.label} />
+      <Header content={header} page={page?.label} />
       <main>{children}</main>
       <Footer content={footer} />
       <Copyright content={copyright} />
