@@ -15,7 +15,6 @@ import { Form as FormDb } from '@/service/model/schemas/formsSchema'
 export default function index({ content, locale }) {
   return (
     <>
-    <>teste</>
       {locale !== 'pt' ? (
         <HomeEn content={content} />
       ) : (
